@@ -31,7 +31,7 @@ The following table shows how different user actions affect iOS push enablement,
 
 <sup>* If the app does not use provisional push, `Foreground Push Enabled` is `false` until the user allows push notifications. If the app uses provisional push, `Foreground Push Enabled` is `true` at the start of the first session. For more information, see [Provisional authorization and quiet push](#provisional-push).</sup>
 
-<sup>** Starting with [Braze Swift SDK version 7.5.0](https://github.com/braze-inc/braze-swift-sdk/releases/tag/7.5.0), the `optInWhenPushAuthorized` configuration property controls whether push subscription state is automatically set to opted in when push permission becomes authorized. For more information, see [Updating push subscription states](#update-push-subscription-state).</sup>
+<sup>** Starting with [Braze Swift SDK version 7.5.0](https://github.com/braze-inc/braze-swift-sdk/releases/tag/7.5.0), the `optInWhenPushAuthorized` configuration property controls whether push subscription state is automatically set to `Opted-In` when push permission becomes authorized. For more information, see [Updating push subscription states](#update-push-subscription-state).</sup>
 
 ## Push permission
 
