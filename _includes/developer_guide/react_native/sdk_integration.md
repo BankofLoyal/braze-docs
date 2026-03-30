@@ -47,7 +47,7 @@ If your app uses Expo, see [Using the Expo plugin](#using-the-expo-plugin). If y
 
 ##### 2.1 Install the Braze Expo plugin
 
-Ensure that your version of the Braze Expo Plugin is at least 4.1.0. For the full list of supported versions, check out the [Braze Expo Plugin repository](https://github.com/braze-inc/braze-expo-plugin?tab=readme-ov-file#version-support).
+Ensure that your version of the Braze Expo plugin is at least 4.1.0. For the full list of supported versions, check out the [Braze Expo plugin repository](https://github.com/braze-inc/braze-expo-plugin?tab=readme-ov-file#version-support).
 
 ```bash
 npx expo install @braze/expo-plugin
@@ -130,7 +130,7 @@ When using `androidNotificationLargeIcon` and `androidNotificationSmallIcon`, fo
 
 To use custom push notification icons with the Braze Expo plugin:
 
-1. Create your icon files following Android's requirements as detailed in [Icon requirements](#icon-requirements).
+1. Create your icon files following the Icon requirements listed below.
 2. Place them in your project's Android native directories at `android/app/src/main/res/drawable-<density>/` (for example, `android/app/src/main/res/drawable-mdpi/`, `drawable-hdpi/`, or similar.)
 3. Alternatively, if you're managing assets in your React Native directory, you can use Expo's [app.json icon configuration](https://docs.expo.dev/versions/latest/config/app/#icon) or create an [Expo config plugin](https://docs.expo.dev/config-plugins/introduction/) to copy the icons to the Android drawable folders during prebuild.
 
@@ -187,7 +187,7 @@ Run your application as specified in the [Expo docs](https://docs.expo.dev/workf
 
 ##### Set up Android
 
-**2.1 Add our repository**
+**2.1 Add the Kotlin Gradle plugin**
 
 In your top-level project `build.gradle`, add the following under `buildscript` > `dependencies`:
 
@@ -406,7 +406,7 @@ npx expo install @braze/expo-plugin
 
 ##### Step 2.2: Add the plugin to your app.json
 
-In your `app.json`, add the Braze Expo Plugin. You can provide the following configuration options:
+In your `app.json`, add the Braze Expo plugin. You can provide the following configuration options:
 
 | Method                                        | Type    | Description                                                                                                                                              |
 | --------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -484,7 +484,7 @@ When using `androidNotificationLargeIcon` and `androidNotificationSmallIcon`, fo
 
 To use custom push notification icons with the Braze Expo plugin:
 
-1. Create your icon files following Android's requirements as detailed in [Icon requirements](#icon-requirements).
+1. Create your icon files following the Icon requirements listed below.
 2. Place them in your project's Android native directories at `android/app/src/main/res/drawable-<density>/` (for example, `android/app/src/main/res/drawable-mdpi/`, `drawable-hdpi/`, or similar.)
 3. Alternatively, if you're managing assets in your React Native directory, you can use Expo's [app.json icon configuration](https://docs.expo.dev/versions/latest/config/app/#icon) or create an [Expo config plugin](https://docs.expo.dev/config-plugins/introduction/) to copy the icons to the Android drawable folders during prebuild.
 
@@ -763,7 +763,7 @@ static Braze *_braze = nil;
 {% tabs %}
 {% tab React Native SDK 19.2.0+ %}
 
-Import the library and create a `Braze` instance in your React Native code:
+Import the library in your React Native code:
 
 ```javascript
 import Braze from "@braze/react-native-sdk";
