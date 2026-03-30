@@ -1,6 +1,6 @@
 ## About the React Native Braze SDK
 
-Integrating the React Native Braze SDK provides basic analytics functionality and lets you integrate in-app messages and Content Cards for both iOS and Android with just one codebase.
+Integrating the React Native Braze SDK provides basic analytics functionality and lets you integrate in-app messages and Content Cards for both iOS and Android with one codebase.
 
 ## New Architecture compatibility
 
@@ -11,7 +11,7 @@ The following minimum SDK version is compatible with all apps using [React Nativ
 Starting with SDK version 6.0.0, Braze uses a React Native Turbo Module, which is compatible with both the New Architecture and legacy bridge architecture&#8212;meaning no additional setup is required.
 
 {% alert warning %}
-If your iOS app conforms to `RCTAppDelegate` and follows our previous `AppDelegate` setup, review the samples in [Complete native setup](#reactnative_step-2-complete-native-setup) to prevent any crashes from occurring when subscribing to events in the Turbo Module.
+If your iOS app conforms to `RCTAppDelegate` and follows our previous `AppDelegate` setup, review the samples in [Complete native setup](#reactnative_step-2-complete-native-setup) to prevent crashes when subscribing to events in the Turbo Module.
 {% endalert %}
 
 ## Integrating the React Native SDK
@@ -36,18 +36,21 @@ yarn add @braze/react-native-sdk
 {% endtabs %}
 
 <a id="step-2-choose-a-setup-option"></a>
+<a id="reactnative_step-2-complete-native-setup"></a>
 ### Step 2: Complete native setup
 
-If your app uses Expo, see [Using the Expo plugin](#using-the-expo-plugin). If your app uses pure React Native, see [Using React Native CLI](#using-react-native-cli).
+If your app uses Expo, see [Using the Expo plugin](#reactnative-using-the-expo-plugin). If your app uses pure React Native, see [Using React Native CLI](#reactnative-using-react-native-cli).
 
 {% tabs %}
 {% tab React Native SDK 19.2.0+ %}
 
-#### Using the Expo plugin
+#### Using the Expo plugin {#reactnative-using-the-expo-plugin}
 
 ##### 2.1 Install the Braze Expo plugin
 
-Ensure that your version of the Braze Expo plugin is at least 4.1.0. For the full list of supported versions, check out the [Braze Expo plugin repository](https://github.com/braze-inc/braze-expo-plugin?tab=readme-ov-file#version-support).
+Ensure that your version of the Braze Expo plugin is at least 4.1.0. For the full list of supported versions, see the [Braze Expo plugin repository](https://github.com/braze-inc/braze-expo-plugin?tab=readme-ov-file#version-support).
+
+The following code snippet shows the command to install the Braze Expo plugin:
 
 ```bash
 npx expo install @braze/expo-plugin
@@ -55,7 +58,7 @@ npx expo install @braze/expo-plugin
 
 ##### 2.2 Add the plugin to your app.json
 
-In your `app.json`, add the Braze Expo plugin. The API key and endpoint are no longer set here&#8212;they are provided at runtime via `Braze.initialize()` from JavaScript. You can provide the following configuration options:
+In your `app.json`, add the Braze Expo plugin. The API key and endpoint are no longer set here&#8212;they are provided at runtime via `Braze.initialize()` from JavaScript. Add the following optional configuration parameters based on your implementation needs:
 
 | Method                                        | Type    | Description                                                                                                                                              |
 | --------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -86,7 +89,7 @@ In your `app.json`, add the Braze Expo plugin. The API key and endpoint are no l
 | `iosForwardUniversalLinks`                    | boolean | iOS only. Specifies if the SDK should automatically recognize and forward universal links to the system methods (default: `false`). |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 role="presentation" }
 
-Example configuration:
+The following code snippet shows an example `app.json` configuration:
 
 ```json
 {
@@ -139,13 +142,13 @@ The Braze Expo plugin references these icons using Android's drawable resource s
 **Icon requirements**
 
 - **Small icon:** Must be a white silhouette on a transparent background (this is an Android platform requirement)
-- **Large icon:** Can be a full-color image
-- **Format:** PNG format is recommended
+- **Large icon:** Can be a full-color image.
+- **Format:** PNG format is recommended.
 - **Naming:** Use lowercase letters, numbers, and underscores only (for example, `my_large_icon.png`)
 
 **Configuration in app.json**
 
-Use the `@drawable/` prefix followed by the filename _without_ the file extension. For example, if your icon file is named `large_icon.png`, reference it as `@drawable/large_icon`:
+The following code snippet shows how to reference Android notification icons in `app.json` using the `@drawable/` prefix:
 
 ```json
 {
@@ -177,19 +180,21 @@ For more information on Android notification icons, see [Android's notification 
 
 Prebuilding your application generates the native files necessary for the Braze Expo plugin to work.
 
+The following code snippet shows the command to prebuild your application:
+
 ```bash
 npx expo prebuild
 ```
 
-Run your application as specified in the [Expo docs](https://docs.expo.dev/workflow/customizing/). Keep in mind, if you make any changes to the configuration options, you'll be required to prebuild and run the application again.
+Run your application as specified in the [Expo docs](https://docs.expo.dev/workflow/customizing/). If you make changes to the configuration options, prebuild and run the application again.
 
-#### Using React Native CLI
+#### Using React Native CLI {#reactnative-using-react-native-cli}
 
 ##### Set up Android
 
 **2.1 Add the Kotlin Gradle plugin**
 
-In your top-level project `build.gradle`, add the following under `buildscript` > `dependencies`:
+The following code snippet shows how to add the Kotlin Gradle plugin in your top-level project `build.gradle` under `buildscript` > `dependencies`:
 
 ```groovy
 buildscript {
@@ -205,7 +210,7 @@ This adds Kotlin to your project.
 
 **2.2 Configure the Braze SDK**
 
-Create a `braze.xml` file in your project's `res/values` folder. The API key and endpoint are provided at runtime from JavaScript, so they are not required in this file. To enable delayed initialization, add `com_braze_enable_delayed_initialization` to the file:
+Create a `braze.xml` file in your project's `res/values` folder. The API key and endpoint are provided at runtime from JavaScript, so they are not required in this file. The following code snippet shows how to enable delayed initialization with `com_braze_enable_delayed_initialization`:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -218,7 +223,7 @@ Create a `braze.xml` file in your project's `res/values` folder. The API key and
 You can still add other native configuration values to `braze.xml` (such as push, session timeout, and logging settings). These are applied automatically when `Braze.initialize()` is called from JavaScript.
 {% endalert %}
 
-Add the required permissions to your `AndroidManifest.xml` file:
+The following code snippet shows the required permissions for your `AndroidManifest.xml` file:
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
@@ -232,7 +237,7 @@ On Braze SDK version 12.2.0 or later, you can automatically pull in the android-
 **2.3 Implement user session tracking**
 
 The calls to `openSession()` and `closeSession()` are handled automatically.
-Add the following code to the `onCreate()` method of your `MainApplication` class:
+The following code snippet shows what to add to the `onCreate()` method of your `MainApplication` class:
 
 {% subtabs local %}
 {% subtab JAVA %}
@@ -262,7 +267,7 @@ override fun onCreate() {
 
 **2.4 Handle intent updates**
 
-If your MainActivity has `android:launchMode` set to `singleTask`, add the following code to your `MainActivity` class:
+If your MainActivity has `android:launchMode` set to `singleTask`, the following code snippet shows what to add to your `MainActivity` class:
 
 {% subtabs local %}
 {% subtab JAVA %}
@@ -302,7 +307,7 @@ pod 'BrazeLocation', :podspec => 'https://raw.githubusercontent.com/braze-inc/br
 
 Since React Native automatically links the libraries to the native platform, you can install the SDK with the help of CocoaPods.
 
-From the root folder of the project:
+The following code snippet shows how to install pods from the root folder of the project:
 
 ```bash
 # To install using the React Native New Architecture
@@ -319,7 +324,7 @@ Use `BrazeReactInitializer.configure` in your `AppDelegate` to register native c
 {% subtabs local %}
 {% subtab SWIFT %}
 
-Import the Braze SDK at the top of the `AppDelegate.swift` file:
+The following code snippet shows how to import the Braze SDK at the top of the `AppDelegate.swift` file:
 
 ```swift
 import BrazeKit
@@ -330,6 +335,8 @@ In the `application(_:didFinishLaunchingWithOptions:)` method, register your nat
 
 - **`configure` closure**: Receives a `Braze.Configuration` and lets you set native configuration properties (logging, push, sessions, and more).
 - **`postInitialization` closure** _(optional)_: Receives the live `Braze` instance after creation, for setup that requires the instance (for example, storing a reference or setting delegates).
+
+The following code snippet shows an example `AppDelegate.swift` implementation that uses `BrazeReactInitializer.configure`:
 
 ```swift
 @main
@@ -357,7 +364,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 {% endsubtab %}
 {% subtab OBJECTIVE-C %}
 
-Import the Braze SDK at the top of the `AppDelegate.m` file:
+The following code snippet shows how to import the Braze SDK at the top of the `AppDelegate.m` file:
 
 ```objc
 @import BrazeKit;
@@ -365,6 +372,8 @@ Import the Braze SDK at the top of the `AppDelegate.m` file:
 ```
 
 In the `application:didFinishLaunchingWithOptions:` method, register your native configuration using `BrazeReactInitializer`. Do not set the API key or endpoint here&#8212;they are provided from JavaScript via `Braze.initialize()`.
+
+The following code snippet shows an example `AppDelegate.m` implementation that uses `BrazeReactInitializer`:
 
 ```objc
 - (BOOL)application:(UIApplication *)application
@@ -396,9 +405,9 @@ In the `application:didFinishLaunchingWithOptions:` method, register your native
 
 ##### Step 2.1: Install the Braze Expo plugin
 
-Ensure that your version of the Braze React Native SDK is at least 1.37.0. For the full list of supported versions, check out the [Braze React Native repository](https://github.com/braze-inc/braze-expo-plugin?tab=readme-ov-file#version-support).
+Ensure that your version of the Braze React Native SDK is at least 1.37.0. For the full list of supported versions, see the [Braze React Native repository](https://github.com/braze-inc/braze-react-native-sdk?tab=readme-ov-file#version-support).
 
-To install the Braze Expo plugin, run the following command:
+The following code snippet shows the command to install the Braze Expo plugin:
 
 ```bash
 npx expo install @braze/expo-plugin
@@ -437,7 +446,7 @@ In your `app.json`, add the Braze Expo plugin. You can provide the following con
 | `iosForwardUniversalLinks`                    | boolean | iOS only. Specifies if the SDK should automatically recognize and forward universal links to the system methods (default: `false`). When enabled, the SDK will automatically forward universal links to the system methods defined in [Supporting universal links in your app](https://braze-inc.github.io/braze-swift-sdk/documentation/brazekit/braze/configuration-swift.class/forwarduniversallinks/). Introduced in React Native SDK v11.1.0 and Expo Plugin v3.2.0. |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 role="presentation" }
 
-Example configuration:
+The following code snippet shows an example `app.json` configuration:
 
 ```json
 {
@@ -493,13 +502,13 @@ The Braze Expo plugin references these icons using Android's drawable resource s
 **Icon requirements**
 
 - **Small icon:** Must be a white silhouette on a transparent background (this is an Android platform requirement)
-- **Large icon:** Can be a full-color image
-- **Format:** PNG format is recommended
+- **Large icon:** Can be a full-color image.
+- **Format:** PNG format is recommended.
 - **Naming:** Use lowercase letters, numbers, and underscores only (for example, `my_large_icon.png`)
 
 **Configuration in app.json**
 
-Use the `@drawable/` prefix followed by the filename _without_ the file extension. For example, if your icon file is named `large_icon.png`, reference it as `@drawable/large_icon`:
+The following code snippet shows how to reference Android notification icons in `app.json` using the `@drawable/` prefix:
 
 ```json
 {
@@ -531,6 +540,8 @@ For more information on Android notification icons, see [Android's notification 
 
 Prebuilding your application generates the native files necessary for the Braze Expo plugin to work.
 
+The following code snippet shows the command to prebuild your application:
+
 ```bash
 npx expo prebuild
 ```
@@ -543,7 +554,7 @@ Run your application as specified in the [Expo docs](https://docs.expo.dev/workf
 
 **Step 2.1: Add our repository**
 
-In your top-level project `build.gradle`, add the following under `buildscript` > `dependencies`:
+The following code snippet shows how to add the Kotlin Gradle plugin in your top-level project `build.gradle` under `buildscript` > `dependencies`:
 
 ```groovy
 buildscript {
@@ -559,7 +570,7 @@ This adds Kotlin to your project.
 
 **Step 2.2: Configure the Braze SDK**
 
-To connect to Braze servers, create a `braze.xml` file in your project's `res/values` folder. Paste the following code and replace the API [key]({{site.baseurl}}/api/identifier_types/) and [endpoint]({{site.baseurl}}/api/basics/#endpoints) with your values:
+To connect to Braze servers, create a `braze.xml` file in your project's `res/values` folder. The following code snippet shows an example `braze.xml` configuration. Replace the API [key]({{site.baseurl}}/api/identifier_types/) and [endpoint]({{site.baseurl}}/api/basics/#endpoints) with your values:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -569,7 +580,7 @@ To connect to Braze servers, create a `braze.xml` file in your project's `res/va
 </resources>
 ```
 
-Add the required permissions to your `AndroidManifest.xml` file:
+The following code snippet shows the required permissions for your `AndroidManifest.xml` file:
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
@@ -583,7 +594,7 @@ On Braze SDK version 12.2.0 or later, you can automatically pull in the android-
 **Step 2.3: Implement user session tracking**
 
 The calls to `openSession()` and `closeSession()` are handled automatically.
-Add the following code to the `onCreate()` method of your `MainApplication` class:
+The following code snippet shows what to add to the `onCreate()` method of your `MainApplication` class:
 
 {% subtabs local %}
 {% subtab JAVA %}
@@ -613,7 +624,7 @@ override fun onCreate() {
 
 **Step 2.4: Handle intent updates**
 
-If your MainActivity has `android:launchMode` set to `singleTask`, add the following code to your `MainActivity` class:
+If your MainActivity has `android:launchMode` set to `singleTask`, the following code snippet shows what to add to your `MainActivity` class:
 
 {% subtabs local %}
 {% subtab JAVA %}
@@ -641,7 +652,7 @@ override fun onNewIntent(intent: Intent) {
 
 To import certain Braze libraries, such as BrazeUI, into an Objective-C++ file, you must use the `#import` syntax. Starting in version 7.4.0 of the Braze Swift SDK, binaries have an [optional distribution channel as dynamic XCFrameworks](https://github.com/braze-inc/braze-swift-sdk-prebuilt-dynamic), which are compatible with this syntax.
 
-If you'd like to use this distribution channel, manually override the CocoaPods source locations in your Podfile. Reference the sample below and replace `{your-version}` with the relevant version you wish to import:
+If you'd like to use this distribution channel, manually override the CocoaPods source locations in your Podfile. The following code snippet shows a sample override. Replace `{your-version}` with the relevant version you wish to import:
 
 ```ruby
 pod 'BrazeKit', :podspec => 'https://raw.githubusercontent.com/braze-inc/braze-swift-sdk-prebuilt-dynamic/{your-version}/BrazeKit.podspec'
@@ -653,7 +664,7 @@ pod 'BrazeLocation', :podspec => 'https://raw.githubusercontent.com/braze-inc/br
 
 Since React Native automatically links the libraries to the native platform, you can install the SDK with the help of CocoaPods.
 
-From the root folder of the project:
+The following code snippet shows how to install pods from the root folder of the project:
 
 ```bash
 # To install using the React Native New Architecture
@@ -668,17 +679,19 @@ cd ios && RCT_NEW_ARCH_ENABLED=0 pod install
 {% subtabs local %}
 {% subtab SWIFT %}
 
-Import the Braze SDK at the top of the `AppDelegate.swift` file:
+The following code snippet shows how to import the Braze SDK at the top of the `AppDelegate.swift` file:
 ```swift
 import BrazeKit
 import braze_react_native_sdk
 ```
 
-In the `application(_:didFinishLaunchingWithOptions:)` method, replace the API [key]({{site.baseurl}}/api/identifier_types/) and [endpoint]({{site.baseurl}}/api/basics/#endpoints) with your app's values. Then, create the Braze instance using the configuration, and create a static property on the `AppDelegate` for easy access:
+In the `application(_:didFinishLaunchingWithOptions:)` method, replace the API [key]({{site.baseurl}}/api/identifier_types/) and [endpoint]({{site.baseurl}}/api/basics/#endpoints) with your app's values. Then, create the Braze instance using the configuration, and create a static property on the `AppDelegate` for easy access.
 
 {% alert note %}
 Our example assumes an implementation of [RCTAppDelegate](https://github.com/facebook/react-native/blob/e64756ae5bb5c0607a4d97a134620fafcb132b3b/packages/react-native/Libraries/AppDelegate/RCTAppDelegate.h), which provides a number of abstractions in the React Native setup. If you are using a different setup for your app, be sure to adjust your implementation as needed.
 {% endalert %}
+
+The following code snippet shows an example `AppDelegate.swift` setup:
 
 ```swift
 func application(
@@ -711,17 +724,19 @@ static var braze: Braze? = nil
 {% endsubtab %}
 {% subtab OBJECTIVE-C %}
 
-Import the Braze SDK at the top of the `AppDelegate.m` file:
+The following code snippet shows how to import the Braze SDK at the top of the `AppDelegate.m` file:
 ```objc
 #import <BrazeKit/BrazeKit-Swift.h>
 #import "BrazeReactBridge.h"
 ```
 
-In the `application:didFinishLaunchingWithOptions:` method, replace the API [key]({{site.baseurl}}/api/identifier_types/) and [endpoint]({{site.baseurl}}/api/basics/#endpoints) with your app's values. Then, create the Braze instance using the configuration, and create a static property on the `AppDelegate` for easy access:
+In the `application:didFinishLaunchingWithOptions:` method, replace the API [key]({{site.baseurl}}/api/identifier_types/) and [endpoint]({{site.baseurl}}/api/basics/#endpoints) with your app's values. Then, create the Braze instance using the configuration, and create a static property on the `AppDelegate` for easy access.
 
 {% alert note %}
 Our example assumes an implementation of [RCTAppDelegate](https://github.com/facebook/react-native/blob/e64756ae5bb5c0607a4d97a134620fafcb132b3b/packages/react-native/Libraries/AppDelegate/RCTAppDelegate.h), which provides a number of abstractions in the React Native setup. If you are using a different setup for your app, be sure to adjust your implementation as needed.
 {% endalert %}
+
+The following code snippet shows an example `AppDelegate.m` setup:
 
 ```objc
 - (BOOL)application:(UIApplication *)application
@@ -763,7 +778,7 @@ static Braze *_braze = nil;
 {% tabs %}
 {% tab React Native SDK 19.2.0+ %}
 
-Import the library in your React Native code:
+The following code snippet shows how to import the library in your React Native code:
 
 ```javascript
 import Braze from "@braze/react-native-sdk";
@@ -773,7 +788,7 @@ Then call `Braze.initialize()` with your app identifier API key and SDK endpoint
 
 #### Standard initialization
 
-To initialize the SDK when your app starts, call `Braze.initialize()` in a `useEffect`:
+The following code snippet shows how to initialize the SDK when your app starts by calling `Braze.initialize()` in a `useEffect`:
 
 ```javascript
 import React, { useEffect } from "react";
@@ -792,7 +807,7 @@ const App = () => {
 
 #### Delayed initialization
 
-To defer SDK initialization until a later point in the session&#8212;for example, after the user grants consent or completes login&#8212;call `Braze.initialize()` when you're ready:
+The following code snippet shows how to defer SDK initialization until later in the session&#8212;for example, after the user grants consent or completes login:
 
 ```javascript
 function onUserConsent() {
@@ -806,7 +821,7 @@ Push notifications and deep links received before `Braze.initialize()` is called
 
 #### Platform-specific API keys
 
-Since your Android and iOS apps use different API keys, use platform detection:
+The following code snippet shows how to use platform detection when your Android and iOS apps use different API keys:
 
 ```javascript
 import { Platform } from "react-native";
@@ -831,7 +846,7 @@ All SDK method calls made before `Braze.initialize()` are ignored on iOS, so cal
 {% endtab %}
 {% tab React Native SDK 19.1.0 and earlier %}
 
-`import` the library in your React Native code. For more details, check out our [sample project](https://github.com/braze-inc/braze-react-native-sdk/tree/master/BrazeProject). 
+The following code snippet shows how to `import` the library in your React Native code. For more details, check out our [sample project](https://github.com/braze-inc/braze-react-native-sdk/tree/master/BrazeProject).
 
 ```javascript
 import Braze from "@braze/react-native-sdk";
@@ -847,7 +862,7 @@ import Braze from "@braze/react-native-sdk";
 
 You can verify that the SDK is integrated by checking session statistics in the dashboard. If you run your application on either platform, you should see a new session in the dashboard (in the **Overview** section).
 
-Open a session for a particular user by calling the following code in your app:
+The following code snippet shows how to open a session for a particular user in your app:
 
 ```javascript
 import Braze from "@braze/react-native-sdk";
@@ -861,13 +876,13 @@ Search for the user with `{some-user-id}` in the dashboard under **Audience** > 
 {% endtab %}
 {% tab React Native SDK 19.1.0 and earlier %}
 
-To test your SDK integration, start a new session on either platform for a user by calling the following code in your app.
+To test your SDK integration, the following code snippet shows how to start a new session on either platform for a user.
 
 ```javascript
 Braze.changeUser("userId");
 ```
 
-For example, you can assign the user ID at the startup of the app:
+The following code snippet shows an example of assigning the user ID at app startup:
 
 ```javascript
 import React, { useEffect } from "react";
@@ -894,6 +909,6 @@ In the Braze dashboard, go to [User Search]({{site.baseurl}}/user_guide/engageme
 
 After integrating the Braze SDK, you can start implementing common messaging features:
 
-- [Push Notifications]({{site.baseurl}}/developer_guide/push_notifications/): Set up and send push notifications to your users
-- [In-App Messages]({{site.baseurl}}/developer_guide/in_app_messages/): Display contextual messages within your app
-- [Banners]({{site.baseurl}}/developer_guide/banners/): Show persistent banners in your app interface
+- [Push Notifications]({{site.baseurl}}/developer_guide/push_notifications/): Set up and send push notifications to your users.
+- [In-App Messages]({{site.baseurl}}/developer_guide/in_app_messages/): Display contextual messages within your app.
+- [Banners]({{site.baseurl}}/developer_guide/banners/): Show persistent banners in your app interface.
