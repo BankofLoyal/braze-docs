@@ -63,7 +63,7 @@ Can't see the code because of the scroll bar? Learn how to fix that [here]({{sit
 For example, a push send event path can look like:
 
 ```
-currents-export/dataexport.prod-01.S3.integration.9a36000b-6234-8d2c-4f36-1a2b3c4d5e6f/event_type=users.messages.pushnotification.Send/date=2025-04-01-17/version=6/us-01/dataexport.prod-01.S3.integration.9a36000b-6234-8d2c-4f36-1a2b3c4d5e6f+0+123456.avro
+currents-export/dataexport.prod-01.S3.integration.69cadaaed2d51b7c75b1a3e5/event_type=users.messages.pushnotification.Send/date=2025-04-01-17/version=6/us-01/dataexport.prod-01.S3.integration.69cadaaed2d51b7c75b1a3e5+0+123456.avro
 ```
 
 The `version` path segment is a simple integer Currents version value, such as `version=6`.
