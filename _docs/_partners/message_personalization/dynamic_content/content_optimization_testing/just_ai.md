@@ -2,9 +2,7 @@
 nav_title: JustAI
 article_title: JustAI
 description: "This reference article outlines the partnership between Braze and JustAI, an AI-based SaaS business platform that creates personalized versions of existing campaigns and optimizes subject lines, creative content, and HTML email layouts over time."
-alias:
-  - /partners/just_ai/
-  - /partners/just_words/
+alias: ["/partners/just_ai/", "/partners/just_words/"]
 page_type: partner
 ---
 
@@ -106,7 +104,7 @@ JustAI works with Canvases and campaigns by using Connected Content. If you're c
 {% endtab %}
 {% endtabs %}
 
-#### Step 3.2:  Add personalization with custom attributes (optional)
+#### Step 3.2: Add personalization with custom attributes (optional)
 
 To personalize your messages with custom attributes (such as `industry`), use the following Liquid format:
 
