@@ -1,11 +1,11 @@
 ---
-nav_title: Glossaire analytique pour l’e-mail
-article_title: Glossaire analytique pour l’e-mail
+nav_title: Glossaire analytique pour l'e-mail
+article_title: Glossaire analytique pour l'e-mail
 layout: email_report_metrics
 page_order: 0
 excerpt_separator: ""
 page_type: glossary
-description: "Ce glossaire inclut les termes que vous trouverez dans la section d’analyse de votre campagne par e-mail ou de Canvas, après son lancement. Ce glossaire n’inclut pas les indicateurs Currents."
+description: "Ce glossaire inclut les termes que vous trouverez dans la section d'analyse de votre campagne par e-mail ou de votre Canvas, après son lancement. Ce glossaire n'inclut pas les indicateurs Currents."
 channel: 
   - email
 ---
@@ -19,10 +19,10 @@ channel:
 
 {% api %}
 
-### Variation
+### Variante
 
 {% apitags %}
-Total
+Count
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Variation' %}
@@ -33,10 +33,10 @@ Total
 
 {% api %}
 
-### Emailable
+### Joignable par e-mail
 
 {% apitags %}
-Total
+Count
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Emailable' %}
@@ -47,10 +47,10 @@ Total
 
 {% api %}
 
-### % d’audience
+### % d'audience
 
 {% apitags %}
-Pourcentage
+Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Audience' %}
@@ -64,10 +64,10 @@ Pourcentage
 ### Destinataires uniques
 
 {% apitags %}
-Total
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Unique Recipients' %} Ce numéro est reçu de Braze.
+{% multi_lang_include analytics/metrics.md metric='Unique Recipients' %} Ce nombre est fourni par Braze.
 
 <span class="calculation-line">Calcul : Total</span>
 
@@ -78,10 +78,10 @@ Total
 ### Envois
 
 {% apitags %}
-Total
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Sends' %}  Ces indicateurs sont fournis par Braze.
+{% multi_lang_include analytics/metrics.md metric='Sends' %}  Cet indicateur est fourni par Braze.
 
 <span class="calculation-line">Calcul : Total</span>
 
@@ -89,13 +89,13 @@ Total
 
 {% api %}
 
-### Envois de messages
+### Messages envoyés
 
 {% apitags %}
-Total
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Messages Sent' %}  Ces indicateurs sont fournis par Braze.
+{% multi_lang_include analytics/metrics.md metric='Messages Sent' %}  Cet indicateur est fourni par Braze.
 
 <span class="calculation-line">Calcul : Total</span>
 
@@ -106,21 +106,21 @@ Total
 ### Réceptions
 
 {% apitags %}
-Total
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Deliveries' %} Pour les e-mails, la *réception/distribution* est le nombre total de messages (envois) envoyés et reçus avec succès par les destinataires de l'e-mail.
+{% multi_lang_include analytics/metrics.md metric='Deliveries' %} Pour les e-mails, les *réceptions* correspondent au nombre total de messages (envois) envoyés et reçus avec succès par les destinataires joignables par e-mail.
 
-<span class="calculation-line">Calcul : (Envoie) - (Rebondit) </span>
+<span class="calculation-line">Calcul : (Envois) - (Rebonds) </span>
 
 {% endapi %}
 
 {% api %}
 
-### % de livraisons
+### % de réceptions
 
 {% apitags %}
-Pourcentage
+Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Deliveries %' %}
@@ -134,21 +134,21 @@ Pourcentage
 ### Rebonds
 
 {% apitags %}
-Nombre, pourcentage
+Count, Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Bounces' %} 
 
-Pour l'e-mail, le *taux de* *rebond* est le pourcentage de messages qui ont été envoyés sans succès ou désignés comme "renvoyés" ou "non reçus" par les services d'envoi utilisés ou qui n'ont pas été reçus par les utilisateurs visés par l'e-mail.
+Pour l'e-mail, le *% de rebonds* ou *taux de rebond* est le pourcentage de messages qui ont été envoyés sans succès ou désignés comme « renvoyés » ou « non reçus » par les services d'envoi utilisés, ou qui n'ont pas été reçus par les destinataires visés.
 
-Pour les clients utilisant SendGrid, un échec d'e-mail se compose d'un échec définitif, de spam (`spam_report_drops`) et d'e-mails envoyés à des adresses non valides (`invalid_emails`).
+Pour les clients utilisant Sendgrid, un rebond d'e-mail se compose des échecs d'envoi définitifs, du spam (`spam_report_drops`) et des e-mails envoyés à des adresses non valides (`invalid_emails`).
 
 {::nomarkdown}
 <span class="calculation-line">
     Calcul :
     <ul>
-        <li><b><i>Rebonds</i>:</b> Total</li>
-        <li><b><i>Taux de rebond (Bounce %</i> ) ou <i>taux de rebond (Bounce Rate %)</i>:</b> (Bounces)/(Envois)</li>
+        <li><b><i>Rebonds</i> :</b> Total</li>
+        <li><b><i>% de rebonds</i> ou <i>taux de rebond %</i> :</b> (Rebonds) / (Envois)</li>
     </ul>
 </span>
 {:/}
@@ -160,28 +160,28 @@ Pour les clients utilisant SendGrid, un échec d'e-mail se compose d'un échec d
 ### Échec d'envoi définitif
 
 {% apitags %}
-Total
+Count
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Hard Bounce' %} 
 
-<span class="calculation-line">Calcul : Compter </span>
+<span class="calculation-line">Calcul : Total </span>
 
 {% endapi %}
 
 {% api %}
 
-### Échec provisoire de livraison
+### Échec provisoire d'envoi
 
 {% apitags %}
-Total
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Soft Bounce' %} Si un e-mail reçoit un échec provisoire d'envoi, nous effectuons généralement une nouvelle tentative dans les 72 heures, mais le nombre de tentatives varie d'un destinataire à l'autre. 
+{% multi_lang_include analytics/metrics.md metric='Soft Bounce' %} Si un e-mail reçoit un échec provisoire d'envoi, une nouvelle tentative est généralement effectuée dans les 72 heures, mais le nombre de tentatives varie d'un destinataire à l'autre. 
 
-Bien que les échecs provisoires ne soient pas suivis dans l'analyse/analytique de votre campagne, vous pouvez surveiller les échecs provisoires dans le [journal d'activité des messages]({{site.baseurl}}/user_guide/administrative/app_settings/message_activity_log_tab/) ou exclure ces utilisateurs de vos envois à l'aide du [filtre de segmentation des échecs provis]({{site.baseurl}}/user_guide/engagement_tools/segments/segmentation_filters#soft-bounced)oires. Dans le journal d'activité des messages, vous pouvez également voir la raison des échecs provisoires et comprendre les écarts éventuels entre les "envois" et les "réception/distributions" de vos campagnes de communication par e-mail.
+Bien que les échecs provisoires d'envoi ne soient pas suivis dans l'analyse de votre campagne, vous pouvez les surveiller dans le [journal d'activité des messages]({{site.baseurl}}/user_guide/administrative/app_settings/message_activity_log_tab/) ou exclure ces utilisateurs de vos envois à l'aide du [filtre de segmentation des échecs provisoires]({{site.baseurl}}/user_guide/engagement_tools/segments/segmentation_filters#soft-bounced). Dans le journal d'activité des messages, vous pouvez également voir la raison des échecs provisoires et comprendre les écarts éventuels entre les « envois » et les « réceptions » de vos campagnes par e-mail.
 
-<span class="calculation-line">Calcul : Compter </span>
+<span class="calculation-line">Calcul : Total </span>
 
 {% endapi %}
 
@@ -190,7 +190,7 @@ Bien que les échecs provisoires ne soient pas suivis dans l'analyse/analytique 
 ### Spam
 
 {% apitags %}
-Nombre, pourcentage
+Count, Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Spam' %}
@@ -199,8 +199,8 @@ Nombre, pourcentage
 <span class="calculation-line">
     Calcul :
     <ul>
-        <li><b><i>Spam</i>:</b> Total</li>
-        <li><b><i>Spam %</i> ou <i>Spam Rate % :</i></b> (Marqué comme spam) / (Envois)</li>
+        <li><b><i>Spam</i> :</b> Total</li>
+        <li><b><i>% de spam</i> ou <i>taux de spam %</i> :</b> (Marqué comme spam) / (Envois)</li>
     </ul>
 </span>
 {:/}
@@ -212,17 +212,17 @@ Nombre, pourcentage
 ### Ouvertures uniques
 
 {% apitags %}
-Nombre, pourcentage
+Count, Percentage
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Unique Opens' %} Pour les e-mails, le suivi se fait sur une période de 7 jours.
+{% multi_lang_include analytics/metrics.md metric='Unique Opens' %} Pour les e-mails, le suivi se fait sur une période de sept jours. Cela signifie qu'un même utilisateur qui ouvre à nouveau le même e-mail après sept jours est comptabilisé comme une nouvelle ouverture unique. Par conséquent, le nombre d'ouvertures uniques affiché dans le tableau de bord peut être supérieur à celui obtenu par une simple requête `DISTINCT user_id` sur les données Currents. Pour faire correspondre les totaux du tableau de bord à partir de Currents, filtrez les événements où `is_unique` est `true`.
 
 {::nomarkdown}
 <span class="calculation-line">
     Calcul :
     <ul>
-        <li><b><i>Ouverture unique</i>:</b> Total</li>
-        <li><b><i>Pourcentage d'ouvertures uniques</i> ou <i>taux d'ouvertures uniques</i>:</b> (Ouvertures uniques) / (Livraisons)</li>
+        <li><b><i>Ouvertures uniques</i> :</b> Total</li>
+        <li><b><i>% d'ouvertures uniques</i> ou <i>taux d'ouvertures uniques</i> :</b> (Ouvertures uniques) / (Réceptions)</li>
     </ul>
 </span>
 {:/}
@@ -234,17 +234,17 @@ Nombre, pourcentage
 ### Clics uniques
 
 {% apitags %}
-Nombre, pourcentage
+Count, Percentage
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Unique Clicks' %} Ce suivi est effectué sur une période de sept jours pour les e-mails et mesuré par <a href='/docs/help/help_articles/data/dispatch_id/'>dispatch_id</a>. Cela inclut les clics sur les liens de désinscription fournis par Braze.
+{% multi_lang_include analytics/metrics.md metric='Unique Clicks' %} Ce suivi est effectué sur une période de sept jours pour les e-mails et mesuré par <a href='/docs/help/help_articles/data/dispatch_id/'>dispatch_id</a>. Cela inclut les clics sur les liens de désinscription fournis par Braze. Comme pour les ouvertures uniques, un utilisateur qui clique à nouveau sur le même lien après 7 jours est comptabilisé comme un nouveau clic unique. Pour faire correspondre les totaux du tableau de bord à partir de Currents, filtrez les événements où `is_unique` est `true`.
 
 {::nomarkdown}
 <span class="calculation-line">
     Calcul :
     <ul>
-        <li><b><i>Clics uniques</i>:</b> Total</li>
-        <li><b><i>Pourcentage de clics uniques</i> ou <i>taux de clics</i>:</b> (Clics uniques) / (Réceptions/distributions)</li>
+        <li><b><i>Clics uniques</i> :</b> Total</li>
+        <li><b><i>% de clics uniques</i> ou <i>taux de clics</i> :</b> (Clics uniques) / (Réceptions)</li>
     </ul>
 </span>
 {:/}
@@ -253,10 +253,10 @@ Nombre, pourcentage
 
 {% api %}
   
-### Désabonnés
+### Désabonnements
 
 {% apitags %}
-Nombre, pourcentage
+Count, Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Unsubscribers or Unsub' %}
@@ -265,8 +265,8 @@ Nombre, pourcentage
 <span class="calculation-line">
     Calcul :
     <ul>
-        <li><b><i>Désabonnés</i> ou <i>désabonnés</i>:</b> Total</li>
-        <li><b><i>Pourcentage de désabonnements</i> ou <i>taux de désabonnement</i>:</b> (Désinscriptions)/(Livraisons)</li>
+        <li><b><i>Désabonnements</i> :</b> Total</li>
+        <li><b><i>% de désabonnements</i> ou <i>taux de désabonnement</i> :</b> (Désabonnements) / (Réceptions)</li>
     </ul>
 </span>
 {:/}
@@ -278,12 +278,12 @@ Nombre, pourcentage
 ### Chiffre d'affaires
 
 {% apitags %}
-Total
+Count
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Revenue' %}
 
-<span class="calculation-line">Calcul : Compter </span>
+<span class="calculation-line">Calcul : Total </span>
 
 {% endapi %}
 
@@ -292,17 +292,17 @@ Total
 ### Conversions principales (A) ou événement de conversion principal
 
 {% apitags %}
-Nombre, pourcentage
+Count, Percentage
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Primary Conversions (A) or Primary Conversion Event' %} Pour les e-mails, les push et les webhooks, nous commençons à suivre les conversions après l'envoi initial.
+{% multi_lang_include analytics/metrics.md metric='Primary Conversions (A) or Primary Conversion Event' %} Pour les e-mails, les notifications push et les webhooks, le suivi des conversions commence après l'envoi initial.
 
 {::nomarkdown}
 <span class="calculation-line">
     Calcul :
     <ul>
-        <li><b><i>Conversions principales (A)</i> ou <i>événement de conversion principal</i>:</b> Total</li>
-        <li><b><i>Conversions primaires (A) %</i> ou <i>taux d'événement de conversion principal</i>:</b> (Conversions principales)/(Destinataires uniques)</li>
+        <li><b><i>Conversions principales (A)</i> ou <i>événement de conversion principal</i> :</b> Total</li>
+        <li><b><i>% de conversions principales (A)</i> ou <i>taux d'événement de conversion principal</i> :</b> (Conversions principales) / (Destinataires uniques)</li>
     </ul>
 </span>
 {:/}
@@ -314,7 +314,7 @@ Nombre, pourcentage
 ### Confiance
 
 {% apitags %}
-Total
+Count
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Confidence' %}
@@ -323,34 +323,34 @@ Total
 
 {% api %}
 
-### Ouverture automatique
+### Ouvertures automatiques
   
-{% multi_lang_include analytics/metrics.md metric='Machine Opens' %} Cette mesure est suivie à partir du 11 novembre 2021 pour SendGrid et du 2 décembre 2021 pour SparkPost.
+{% multi_lang_include analytics/metrics.md metric='Machine Opens' %} Cet indicateur est suivi à partir du 11 novembre 2021 pour Sendgrid et du 2 décembre 2021 pour SparkPost.
 
-<span class="calculation-line">Calcul : Compter </span>
+<span class="calculation-line">Calcul : Total </span>
 
 {% endapi %}
 
 {% api %}
 
-### Autre ouverture
+### Autres ouvertures
 
 {% apitags %}
-Total
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Other Opens' %} Notez qu'un utilisateur peut également ouvrir un e-mail (comme les comptes d'ouverture vers <i>Autres ouvertures</i>) avant qu'un compte d'<i>ouvertures machine</i> ne soit enregistré. Si un utilisateur ouvre un e-mail une fois (ou plus) après un événement d'ouverture automatique à partir d'une boîte de réception autre qu'Apple Mail, le nombre de fois où l'utilisateur ouvre l'e-mail est calculé pour les <i>autres ouvertures</i> et une seule fois pour les <i>ouvertures uniques</i>.
+{% multi_lang_include analytics/metrics.md metric='Other Opens' %} Notez qu'un utilisateur peut également ouvrir un e-mail (comptabilisé dans les <i>Autres ouvertures</i>) avant qu'une <i>ouverture automatique</i> ne soit enregistrée. Si un utilisateur ouvre un e-mail une ou plusieurs fois après un événement d'ouverture automatique depuis une boîte de réception autre qu'Apple Mail, le nombre de fois où l'utilisateur ouvre l'e-mail est comptabilisé dans les <i>Autres ouvertures</i> et une seule fois dans les <i>Ouvertures uniques</i>.
 
-<span class="calculation-line">Calcul : Compter </span>
+<span class="calculation-line">Calcul : Total </span>
 
 {% endapi %}
 
 {% api %}
 
-### Taux de Click-to-Open
+### Taux de clic par ouverture
 
 {% apitags %}
-Pourcentage
+Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Click-to-Open Rate' %}
