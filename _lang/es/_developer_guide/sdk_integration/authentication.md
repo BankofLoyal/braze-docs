@@ -815,7 +815,7 @@ En su lugar, utilizamos claves públicas/privadas para que ni siquiera los emple
 
 Cuando una solicitud es rechazada debido a un error de autenticación, el SDK invocará tu devolución de llamada utilizada para actualizar el JWT del usuario. 
 
-Las solicitudes se reintentarán periódicamente utilizando un método de retirada exponencial. Después de 50 intentos fallidos consecutivos, los reintentos se pausarán hasta el siguiente inicio de sesión. Cada SDK también tiene un método para solicitar manualmente un vaciado de datos.
+Las solicitudes se reintentarán periódicamente utilizando un backoff exponencial. Después de 50 intentos fallidos consecutivos, los reintentos se pausarán hasta el siguiente inicio de sesión. Cada SDK también tiene un método para solicitar manualmente un vaciado de datos.
 
 #### ¿Se puede utilizar la autenticación del SDK para usuarios anónimos? {#faq-anonymous-users}
 

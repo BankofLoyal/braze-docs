@@ -141,7 +141,7 @@ Count, Percentage
 
 Pour l'e-mail, le *% de rebonds* ou *taux de rebond* est le pourcentage de messages qui ont été envoyés sans succès ou désignés comme « renvoyés » ou « non reçus » par les services d'envoi utilisés, ou qui n'ont pas été reçus par les destinataires visés.
 
-Pour les clients utilisant Sendgrid, un rebond d'e-mail se compose des échecs d'envoi définitifs, du spam (`spam_report_drops`) et des e-mails envoyés à des adresses non valides (`invalid_emails`).
+Pour les clients utilisant SendGrid, un rebond d'e-mail se compose des échecs d'envoi définitifs, du spam (`spam_report_drops`) et des e-mails envoyés à des adresses non valides (`invalid_emails`).
 
 {::nomarkdown}
 <span class="calculation-line">
@@ -325,7 +325,7 @@ Count
 
 ### Ouvertures automatiques
   
-{% multi_lang_include analytics/metrics.md metric='Machine Opens' %} Cet indicateur est suivi à partir du 11 novembre 2021 pour Sendgrid et du 2 décembre 2021 pour SparkPost.
+{% multi_lang_include analytics/metrics.md metric='Machine Opens' %} Cet indicateur est suivi à partir du 11 novembre 2021 pour SendGrid et du 2 décembre 2021 pour SparkPost.
 
 <span class="calculation-line">Calcul : Total </span>
 
