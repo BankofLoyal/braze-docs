@@ -19,7 +19,7 @@ channel:
 
 The following table shows how different user actions affect iOS push enablement, foreground or background push registration, and push subscription status in Braze. When a user installs your app and starts their first session, their state is generally as shown in the first row. Each subsequent action may update some of these values but not others.
 
-| User action | `Foreground Push Enabled` | `Foreground Push Enabled for App` | Push registered | Push subscription status |
+| User action | `Foreground Push Enabled` | `Foreground Push Enabled for App` | Push registration type | Push subscription status |
 | --- | --- | --- | --- | --- |
 | User installs the app and logs a session | `false`* | Not updated | Background | `Subscribed` |
 | User receives the native iOS push prompt and selects **Allow** | `true` | `true` | Foreground | `Opted-In`** |
