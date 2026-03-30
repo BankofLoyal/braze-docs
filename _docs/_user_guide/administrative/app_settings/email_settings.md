@@ -61,12 +61,11 @@ You can also use [Liquid]({{site.baseurl}}/user_guide/personalization_and_dynami
 {% raw %}
 ```liquid
 {% if {{custom_attribute.${region}}} == 'US' %}
-us-support@company.com
+{% assign address = "us-support@company.com" %}
 {% elsif {{custom_attribute.${region}}} == 'EU' %}
-eu-support@company.com
+{% assign address = "eu-support@company.com" %}
 {% else %}
-global-support@company.com
-{% endif %}
+{% assign address = "global-support@company.com" %}{% endif %}{{address}}
 ```
 {% endraw %}
 
