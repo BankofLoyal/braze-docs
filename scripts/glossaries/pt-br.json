@@ -37,6 +37,7 @@
   "API": "API",
   "API ID": "ID da API",
   "API key": "chave de API",
+  "APNs": "APNs",
   "app": "app",
   "app group": "grupo de app",
   "app instance": "instância do app",
@@ -635,6 +636,7 @@
   "Select": "Selecionar",
   "Selected": "Selecionada",
   "sender reputation": "reputação do remetente",
+  "SendGrid": "SendGrid",
   "Sending": "Enviando",
   "Service": "Atendimento",
   "service provider": "prestador de serviço",
@@ -669,6 +671,7 @@
   "solutions partner": "parceira de solução",
   "Source": "Origem",
   "Sources": "Fontes",
+  "SparkPost": "SparkPost",
   "spam report": "relatório de spam",
   "SQL queries": "consultas de SQL",
   "Sripo": "Sripo",
@@ -794,5 +797,8 @@
   "Zendesk": "Zendesk",
   "Zeotap": "Zeotap",
   "zero-party data": "dados voluntários",
-  "Feature Flags": "Feature Flags"
+  "Feature Flags": "Feature Flags",
+  "BrazeAI": "BrazeAI",
+  "BrazeAI Operator": "BrazeAI Operator",
+  "BrazeAI Decisioning Studio": "BrazeAI Decisioning Studio"
 }

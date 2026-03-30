@@ -50,6 +50,7 @@
   "API ID": "ID de API",
   "API key": "clave de API",
   "APN": "APN",
+  "APNs": "APNs",
   "app": "aplicación",
   "app experience": "experiencia de la aplicación",
   "app group": "grupo de aplicaciones",
@@ -951,6 +952,7 @@
   "solutions partner": "socio de soluciones",
   "Source": "Fuente",
   "Sources": "Fuentes",
+  "SparkPost": "SparkPost",
   "spam": "correo no deseado",
   "spam report": "informe de correos no deseados",
   "spam testing": "pruebas de correo no deseado",
@@ -1131,5 +1133,9 @@
   "Zendesk": "Zendesk",
   "Zeotap": "Zeotap",
   "zero-party data": "zero-party data",
-  "Feature Flags": "Conmutador de características"
+  "Feature Flags": "Conmutador de características",
+  "BrazeAI": "BrazeAI",
+  "BrazeAI Operator": "BrazeAI Operator",
+  "BrazeAI Decisioning Studio": "BrazeAI Decisioning Studio",
+  "AI Copywriting Assistant": "el asistente de redacción con inteligencia artificial"
 }

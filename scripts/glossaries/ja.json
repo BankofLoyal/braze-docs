@@ -34,6 +34,7 @@
   "annual data point allotment": "年間データポイント割り当て",
   "API key": "API キー",
   "APN": "APN",
+  "APNs": "APNs",
   "app": "アプリ",
   "app group": "アプリグループ",
   "app instance": "アプリインスタンス",
@@ -335,6 +336,7 @@
   "Hightouch": "Hightouch",
   "HIPAA": "HIPAA",
   "horizon media": "Horizon Media",
+  "How it works": "仕組み",
   "HTML": "HTML",
   "idea": "アイデア",
   "identifier": "識別子",
@@ -756,5 +758,7 @@
   "Your message": "メッセージ",
   "Zapier": "Zapier",
   "Zeotap": "Zeotap",
-  "Feature Flags": "フィーチャーフラグ"
+  "Feature Flags": "フィーチャーフラグ",
+  "BrazeAI Operator": "BrazeAI Operator",
+  "BrazeAI Decisioning Studio": "BrazeAI Decisioning Studio"
 }

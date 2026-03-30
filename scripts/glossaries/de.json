@@ -61,6 +61,7 @@
   "API key": "API-Schlüssel",
   "APIs": "APIs",
   "APN": "APN",
+  "APNs": "APNs",
   "app": "App",
   "app experience": "App-Erlebnis",
   "app group": "App-Gruppe",
@@ -124,7 +125,6 @@
   "Brandenburg": "Brandenburg",
   "Braze": "Braze",
   "Braze account": "Braze-Konto",
-  "Braze AI": "Braze AI",
   "Braze Alloys": "Braze-Technologie-Partner",
   "Braze Canvas": "Braze-Canvas",
   "Braze currents": "Braze-Currents",
@@ -1031,7 +1031,7 @@
   "sender": "Sender",
   "sender reputation": "Absender-Reputation",
   "Senders": "Absender",
-  "sendgrid": "SendGrid",
+  "SendGrid": "SendGrid",
   "Sending": "Wird gesendet",
   "sense of belonging": "Zugehörigkeitsgefühl",
   "server": "Server",
@@ -1081,6 +1081,7 @@
   "Source": "Quelle",
   "Sources": "Quellen",
   "SP": "SP",
+  "SparkPost": "SparkPost",
   "spam report": "Spam-Bericht",
   "spam testing": "Spam-Test",
   "spam trap": "Spam-Trap",
@@ -1278,5 +1279,8 @@
   "Zendesk": "Zendesk",
   "zeotap": "Zeotap",
   "zero-party data": "Zero-Party-Daten",
-  "Feature Flags": "Feature-Flags"
+  "Feature Flags": "Feature-Flags",
+  "BrazeAI": "BrazeAI",
+  "BrazeAI Operator": "BrazeAI Operator",
+  "BrazeAI Decisioning Studio": "BrazeAI Decisioning Studio"
 }
