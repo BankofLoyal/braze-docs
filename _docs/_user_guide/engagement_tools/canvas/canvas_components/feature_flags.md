@@ -25,7 +25,12 @@ To create a Feature Flag component, first add a step to your Canvas. Drag and dr
 
 When a Canvas is stopped, archived, or a Feature Flag step is removed, users who went through that step no longer receive that step's feature flag and its properties. 
 
-For a feature flag that has no rollout and no feature flag experiment, after you stop a Canvas that contains a Feature Flag step referencing that flag, no users have that feature flag in the **Feature Flags Eligibility** tab, and no users match the `Feature Flags` segmentation filter for that feature flag. If the feature flag has a rollout, a feature flag experiment, or another active Canvas that references it, users may still be eligible through those channels.
+For a feature flag that has no rollout and no feature flag experiment, after you stop a Canvas that contains a Feature Flag step referencing that flag:
+
+- No users have that feature flag in the **Feature Flags Eligibility** tab
+- No users match the `Feature Flags` segmentation filter for that feature flag. 
+
+If the feature flag has a rollout, a feature flag experiment, or another active Canvas that references it, users may still be eligible through those channels.
 
 Properties in a Canvas step can be changed after launch, and even after a user goes through the step. Users always receive a real-time, dynamic version of the feature flag, instead of the older, previously saved version.
 
