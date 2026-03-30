@@ -94,10 +94,10 @@ Braze provides detailed audience statistics of the targeted channels in the foot
 
 The following table explains when each footer label is used and what it means.
 
-| Metric | When it is used |
+| Footer label | When it is used |
 | --- | --- |
-| _Estimated Audience_ | Braze does not run a full-database count by default. Audience size is estimated from a sample and extrapolated, similar to the **Reachable Users** range in the segment builder. Margins of error are expected, especially for large workspaces or small segments as a share of the workspace. |
-| _Current Audience_ | Braze can compute the default statistic with a full scan of workspace profiles, so the displayed audience size is a current, unsampled count (still subject to channel reachability, subscription rules, and other targeting options). |
+| **Estimated Audience** | Braze does not run a full-database count by default. Audience size is estimated from a sample and extrapolated, similar to the **Reachable Users** range in the segment builder. Margins of error are expected, especially for large workspaces or small segments as a share of the workspace. |
+| **Current Audience** | Braze can compute the default statistic with a full scan of workspace profiles, so the displayed audience size is a current, unsampled count (still subject to channel reachability, subscription rules, and other targeting options). |
 {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
 The number of reachable users may decrease if you use a [Global Control Group]({{site.baseurl}}/user_guide/engagement_tools/testing/global_control_group/) or set up message eligibility. 
