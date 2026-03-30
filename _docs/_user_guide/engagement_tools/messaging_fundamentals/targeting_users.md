@@ -90,11 +90,13 @@ For more information and best practices, refer to [Multivariate & A/B Testing]({
 
 #### Audience statistics
 
-Braze provides detailed audience statistics of the targeted channels in the footer. Depending on how large your workspace is, the footer labels this figure _Estimated Audience_ or _Current Audience_. The larger your user base is, the more likely the _Reachable Users_ amount is a rough estimate.
+Braze provides detailed audience statistics of the targeted channels in the footer. Depending on how large your workspace is, the footer labels this figure **Estimated Audience** or **Current Audience**. The larger your user base is, the more likely the **Reachable Users** amount is a rough estimate.
+
+The following table explains when each footer label is used and what it means.
 
 | Metric | When it is used |
 | --- | --- |
-| _Estimated Audience_ | Braze does not run a full-database count by default. Audience size is estimated from a sample and extrapolated, similar to the _Reachable Users_ range in the segment builder. Margins of error are expected, especially for large workspaces or small segments as a share of the workspace. |
+| _Estimated Audience_ | Braze does not run a full-database count by default. Audience size is estimated from a sample and extrapolated, similar to the **Reachable Users** range in the segment builder. Margins of error are expected, especially for large workspaces or small segments as a share of the workspace. |
 | _Current Audience_ | Braze can compute the default statistic with a full scan of workspace profiles, so the displayed audience size is a current, unsampled count (still subject to channel reachability, subscription rules, and other targeting options). |
 {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
