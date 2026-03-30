@@ -766,6 +766,6 @@ To request a rate limit increase from FCM, you can contact [Firebase Support](ht
 3. Select **Edit Quota**. 
 4. Enter a new value and submit your request.
 
-#### Request global rate limiting via Braze
+#### Apply a workspace rate limit
 
-To apply a workspace-wide limit for Android push notifications, contact [Braze Support]({{site.baseurl}}/help/support#access-the-support-portal).
+Apply a workspace rate limit for Android push notifications. This helps regulate the delivery rate of your outgoing messages. For more details, see [Workspace messaging rate limits]({{site.baseurl}}/user_guide/administrative/app_settings/messaging_rate_limits).
