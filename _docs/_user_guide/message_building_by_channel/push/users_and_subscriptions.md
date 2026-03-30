@@ -15,6 +15,24 @@ channel:
 
 {% multi_lang_include push/subscription_states.md %}
 
+## iOS user actions and push status {#ios-user-actions-push-status}
+
+The following table shows how different user actions affect iOS push enablement, foreground or background push registration, and push subscription status in Braze. When a user installs your app and starts their first session, their state is generally as shown in the first row. Each subsequent action may update some of these values but not others.
+
+| User action | `Foreground Push Enabled` | `Foreground Push Enabled for App` | Push registered | Push subscription status |
+| --- | --- | --- | --- | --- |
+| User installs the app and logs a session | `false`* | Not updated | Background | `Subscribed` |
+| User receives the native iOS push prompt and selects **Allow** | `true` | `true` | Foreground | `Opted-In`** |
+| User receives the native iOS push prompt and selects **Don't Allow** | `false` | Not updated | Background | Not updated |
+| User enables push from device settings and logs a session | `true` | `true` | Foreground | `Opted-In`** |
+| User disables push from device settings and logs a session | `false` | `false` | Background | Not updated |
+| User deletes the app | Not updated | Updated when push token is retired | Updated when push token is retired | Not updated |
+{: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 .reset-td-br-4 .reset-td-br-5 role="presentation" }
+
+<sup>* If the app does not use provisional push, `Foreground Push Enabled` is `false` until the user allows push notifications. If the app uses provisional push, `Foreground Push Enabled` is `true` at the start of the first session. For more information, see [Provisional authorization and quiet push](#provisional-push).</sup>
+
+<sup>** Starting with [Braze Swift SDK version 7.5.0](https://github.com/braze-inc/braze-swift-sdk/releases/tag/7.5.0), the `optInWhenPushAuthorized` configuration property controls whether push subscription state is automatically set to opted in when push permission becomes authorized. For more information, see [Updating push subscription states](#update-push-subscription-state).</sup>
+
 ## Push permission
 
 All push-enabled platforms - iOS, Web, and Android - require explicit opt-in via an OS-level system prompt, with some slight differences described below.
