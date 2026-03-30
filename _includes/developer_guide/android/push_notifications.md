@@ -768,4 +768,4 @@ To request a rate limit increase from FCM, you can contact [Firebase Support](ht
 
 #### Apply a workspace rate limit
 
-Apply a workspace rate limit for Android push notifications. This helps regulate the delivery rate of your outgoing messages. For more details, see [Workspace messaging rate limits]({{site.baseurl}}/user_guide/administrative/app_settings/messaging_rate_limits).
+You can apply a workspace rate limit for Android push notifications. This can help regulate the delivery rate of your outgoing messages. For more details, see [Workspace messaging rate limits]({{site.baseurl}}/user_guide/administrative/app_settings/messaging_rate_limits).
