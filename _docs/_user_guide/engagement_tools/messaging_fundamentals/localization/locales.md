@@ -185,6 +185,14 @@ When using the Multi-Language API with Canvas steps that were created after the 
 
 ## Frequently asked questions
 
+#### What are the limits for translation tags?
+
+When using translation tags, the following limits apply:
+
+- Each message can have up to 200 translation tags.
+- Each default text (the content between translation tags) can have up to 2,000 characters.
+- The translations per locale can have up to 409,600 bytes (approximately 409.6&nbsp;KB).
+
 #### Can I make a change to the translated copy in one of my locales?
 Yes. First, make the edit in the CSV, then upload the file again to make a change to the translated copy.
 
