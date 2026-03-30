@@ -34,7 +34,7 @@ Properties in a Canvas step can be changed after launch, and even after a user g
 
 {% multi_lang_include alerts/important_alerts.md alert='network dependency' %}
 
-## Overwrite properties
+## Overwrite properties {#overwriting-properties}
 
 When creating a feature flag you specify default properties. When setting up a feature flag Canvas step, you can either keep the default values, or overwrite the values for users who enter this step.
 
