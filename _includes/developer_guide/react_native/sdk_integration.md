@@ -35,6 +35,7 @@ yarn add @braze/react-native-sdk
 {% endtab %}
 {% endtabs %}
 
+<a id="step-2-choose-a-setup-option"></a>
 ### Step 2: Complete native setup
 
 If your app uses Expo, see [Using the Expo plugin](#using-the-expo-plugin). If your app uses pure React Native, see [Using React Native CLI](#using-react-native-cli).
