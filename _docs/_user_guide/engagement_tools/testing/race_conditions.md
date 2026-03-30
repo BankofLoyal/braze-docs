@@ -37,7 +37,7 @@ However, in some cases, the second event triggers first. This means a message is
 
 ### In-app messages
 
-With in-app messages, the situation can be more complicated. An in-app message must be loaded on the device before it can be triggered. If the trigger event is part of the user creation process, or the user falls out of the segment for the custom event during their first session, they may not see the in-app message.
+With in-app messages, the situation can be more complicated. An in-app message must be delivered to and cached in the SDK—typically at the start of a session—before it can be triggered. If the trigger event is part of the user creation process, or if the in-app message campaign is delivered before the user meets (or after they no longer meet) its audience criteria during their first session, they may not see the in-app message.
 
 ### Best practices
 
