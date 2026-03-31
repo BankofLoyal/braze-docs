@@ -192,7 +192,7 @@ The initial in-app message display operation can be set in Braze config using th
 
 ## Chaining two in-app messages in one session
 
-You can trigger an in-app message from session start, then trigger a second in-app message after a button is pressed in the first. To do this, log a custom event for the button click that will trigger the second message. The trigger for the second message must already be on the device (the user must already be eligible for the second message), and occur on the device side (the Braze SDK won't pick up custom attribute changes that occur on Braze servers). The default 30-second cooldown between in-app message triggers must be altered to show multiple in-app messages in quick succession. For platform-specific configuration, see the next section.
+You can trigger an in-app message from session start, then trigger a second in-app message after a button is pressed in the first. To do this, log a custom event for the button click that will trigger the second message. The trigger for the second message must already be on the device (the user must already be eligible for the second message), and occur on the device side (the Braze SDK won't pick up custom attribute changes that occur on Braze servers). The default 30-second cooldown between in-app message triggers must be altered to show multiple in-app messages in quick succession. For platform-specific configuration, see [Overriding the default rate limit](#overriding-the-default-rate-limit).
 
 ## Overriding the default rate limit
 
