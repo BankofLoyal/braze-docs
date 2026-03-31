@@ -84,7 +84,7 @@ JustAI works with Canvases and campaigns by using Connected Content. If you're c
 
 1. In the **Compose Messages** step of your campaign, create two variants.
 2. In the **Target Audience** step, go to the **A/B Testing** section and modify the percentages of users who will receive each of your variants (and your optional control group). You can further customize your test by selecting an optimization option. For more information about A/B tests for campaigns, refer to [Creating multivariate and A/B tests]({{site.baseurl}}/user_guide/engagement_tools/testing/multivariant_testing/create_multivariate_campaign/).
-3. In the message composer, paste in the Connected Content snippet from JustAI Console, such as the following snippet.
+3. In the message composer, paste in the Connected Content snippet from JustAI Console. The following Liquid snippet shows an example of this.
 
 {% raw %}
 ```liquid
