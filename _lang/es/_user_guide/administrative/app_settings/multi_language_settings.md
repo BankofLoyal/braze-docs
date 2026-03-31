@@ -1,55 +1,65 @@
 ---
-nav_title: Configuración multilingüe
-article_title: Configuración de traducción y multilingüe
+nav_title: Configuración de localización
+article_title: Configuración de localización
 alias: "/multi_language_support/"
 page_order: 5.5
-description: "Este artículo ofrece una visión general de la configuración multilingüe en el panel de control de Braze y cómo utilizar las configuraciones regionales en la mensajería."
+description: "Este artículo ofrece un resumen de la configuración multilingüe en el panel de Braze y cómo utilizar las configuraciones regionales en tu mensajería."
 ---
 
-# Configuración de traducción y multilingüe
+# Configuración de localización
 
-> La característica multilingüe te permite utilizar [etiquetas de traducción]({{ site.baseurl }}/user_guide/engagement_tools/messaging_fundamentals/localization/locales) para dirigirte a usuarios de diferentes idiomas y ubicaciones, todo ello en un solo mensaje.
+> La característica multilingüe te permite utilizar [etiquetas de traducción]({{site.baseurl}}/user_guide/engagement_tools/messaging_fundamentals/localization/locales/) para dirigirte a usuarios de diferentes idiomas y ubicaciones, todo ello en un solo mensaje.
 
-{% multi_lang_include locales.md section="Prerequisites" %}
+## Requisitos previos
+
+{% multi_lang_include locales.md section='multi-language prerequisites' %}
 
 ## Añadir una configuración regional
 
 1. Ve a **Configuración** > **Configuración de localización**.
-2. Selecciona **Añadir configuración regional** y, a continuación, selecciona **Configuración regional predeterminada** o **Atributos personalizados**.<br><br>![El desplegable "Añadir localización" con opciones para seleccionar la localización predeterminada o atributos personalizados.]({% image_buster /assets/img/multi-language_support/add_locale_options.png %}){: style="max-width:40%;"}
+2. Selecciona **Añadir configuración regional** y, a continuación, selecciona **Configuración regional predeterminada** o **Atributos personalizados**.
+
+![El desplegable "Añadir configuración regional" con opciones para seleccionar la configuración regional predeterminada o atributos personalizados.]({% image_buster /assets/img/multi-language_support/add_locale_options.png %}){: style="max-width:40%;"}
+
+{: start="3"}
 3. Introduce un nombre para la configuración regional.
-4. Selecciona los atributos de usuario correspondientes a la opción de localización que hayas elegido.
+4. [Selecciona un idioma para accesibilidad]({{site.baseurl}}/user_guide/engagement_tools/messaging_fundamentals/localization/locales/#language-settings-and-accessibility). Esta configuración permite que las tecnologías de asistencia, como los lectores de pantalla, pronuncien correctamente el texto.
+5. Selecciona los atributos de usuario correspondientes a la opción de configuración regional que hayas elegido. Al configurar una configuración regional, puedes seleccionar idiomas a partir de los atributos de usuario predeterminados o de atributos personalizados. No puedes seleccionar de ambos.
 
 {% tabs %}
 {% tab Default locale %}
 
-En **Configuración regional predeterminada**, utiliza los desplegables para seleccionar el idioma que se va a añadir y, opcionalmente, el país que se va a asociar al idioma.<br><br>![Una ventana llamada «Añadir configuración regional: idioma y país predeterminados» para especificar el idioma y el país.]({% image_buster /assets/img/multi-language_support/default_option.png %}){: style="max-width:80%;"}
+En **Configuración regional predeterminada**, utiliza los desplegables para seleccionar el idioma que se va a añadir y, opcionalmente, el país que se va a asociar al idioma.
+
+![Una ventana llamada «Añadir configuración regional - Idioma y país predeterminados» para especificar el idioma y el país.]({% image_buster /assets/img/multi-language_support/default_option.png %})
 
 {% endtab %}
 {% tab Custom attributes %}
 
-Para los **atributos personalizados**, utiliza el desplegable para seleccionar el atributo personalizado asociado y, en el campo de texto, introduce el valor.<br><br>![Una ventana llamada «Añadir configuración regional - Atributos personalizados» para especificar el atributo personalizado y el valor.]({% image_buster /assets/img/multi-language_support/custom_attributes_option.png %}){: style="max-width:80%;"}
+Para **Atributos personalizados**, utiliza el desplegable para seleccionar el atributo personalizado asociado y, en el campo de texto, introduce el valor.
+
+![Una ventana llamada «Añadir configuración regional - Atributos personalizados» para especificar el atributo personalizado y el valor.]({% image_buster /assets/img/multi-language_support/custom_attributes_option.png %})
 
 {% endtab %}
 {% endtabs %}
 
-{: start="5"}
-5\. Selecciona **Añadir configuración regional**. 
+{: start="6"}
+6. Selecciona **Añadir configuración regional**.
 
-Para conocer los pasos necesarios para utilizar estas configuraciones regionales en sus campañas de correo electrónico y Canvas, consulte [Utilización de configuraciones regionales]({{site.baseurl}}/user_guide/message_building_by_channel/email/using_locales/).
+Para conocer los pasos para utilizar estas configuraciones regionales en tus mensajes, consulta [Mensajes multilingües]({{site.baseurl}}/user_guide/engagement_tools/messaging_fundamentals/localization/locales/).
 
 ## Consideraciones
 
-- Al configurar una localización, puedes seleccionar los idiomas a partir de los atributos predeterminados del usuario o de atributos personalizados. No puedes elegir entre ambos.
-- Puedes seleccionar hasta dos atributos personalizados en una única localización, o hasta dos idiomas predeterminados para atributos de usuario. En ambos casos, el segundo atributo es opcional.
+- Puedes seleccionar hasta dos atributos personalizados en una única configuración regional, o hasta dos idiomas predeterminados para atributos de usuario. En ambos casos, el segundo atributo es opcional.
 - Al editar los valores traducidos en el archivo CSV, evita modificar los valores predeterminados del archivo.
 - La clave de configuración regional del archivo que has subido debe coincidir con la de tu configuración multilingüe.
 
-### Apoyo y priorización
+### Soporte y priorización
 
-- Los usuarios que coinciden con la localización de un atributo personalizado tienen prioridad sobre los usuarios que coinciden con un atributo predeterminado de usuario.
-- La compatibilidad con atributos personalizados se limita a los tipos de cadena y a la clave de comparación `equals`.
-- Si se elimina un atributo personalizado o se cambia su tipo, el usuario ya no podrá pertenecer a esa configuración regional y pasará a la siguiente en la lista de prioridades de configuraciones regionales a las que perteneces o recibirá traducciones de marketing predeterminadas.
-- Si una localización no es válida (el atributo personalizado ha cambiado o se ha eliminado), el error aparecerá en la página de **Soporte multilingüe**.
+- Si un usuario coincide tanto con una configuración regional definida por atributos personalizados como con una definida por atributos de usuario predeterminados, la configuración regional del atributo personalizado tiene prioridad.
+- Los atributos personalizados admiten valores de texto (cadena) con coincidencia exacta.
+- Si se elimina un atributo personalizado o se cambia su tipo, el usuario ya no podrá pertenecer a esa configuración regional y pasará a la siguiente en la lista de prioridades de configuraciones regionales a las que pertenece, o recibirá las traducciones de marketing predeterminadas.
+- Si una configuración regional no es válida (el atributo personalizado ha cambiado o se ha eliminado), el error aparecerá en la página de **Soporte multilingüe**.
 
 ## Preguntas más frecuentes
 
@@ -59,8 +69,8 @@ Puedes añadir hasta 200 configuraciones regionales.
 
 #### ¿Dónde se almacenan los archivos de traducción en Braze?
 
-Los archivos de traducción se almacenan a nivel de campaña, lo que significa que cada variante de mensaje debe tener traducciones cargadas.
+Los archivos de traducción se almacenan a nivel de campaña, lo que significa que cada variante de mensaje debe tener traducciones cargadas. Las traducciones también se pueden almacenar en bloques de contenido. Cuando el bloque se añade a un mensaje, sus traducciones se incluyen automáticamente.
 
 #### ¿El nombre de la configuración regional tiene que seguir un patrón o formato específico?
 
-No. Puedes utilizar la convención de nomenclatura que prefieras. El nombre de la configuración regional se utiliza al seleccionar la configuración regional en el editor y aparecerá en los encabezados del archivo que descargue con los identificadores de traducción.
+No. Puedes utilizar la convención de nomenclatura que prefieras. El nombre de la configuración regional se utiliza al seleccionar la configuración regional en el editor y aparecerá en los encabezados del archivo que descargues con los ID de traducción.

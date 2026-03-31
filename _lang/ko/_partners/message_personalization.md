@@ -4,11 +4,11 @@ article_title: 메시지 개인화 파트너
 page_order: 1
 
 page_type: landing
-description: "이 랜딩 페이지에는 Braze 캠페인 및 캔버스에 추가 개인화를 추가하도로고 허용하는 Braze 파트너(Alloys)가 나열되어 있습니다."
+description: "이 랜딩 페이지에는 Braze 캠페인 및 캔버스에 추가 개인화를 지원하는 Braze 파트너(Alloys)가 나열되어 있습니다."
 layout: partner_page
 search_tag: Partner
 
-partner_top_header: "Message Personalization"
+partner_top_header: "메시지 개인화"
 
 valid_partner_list:
 - name: Jacquard
@@ -27,6 +27,8 @@ valid_partner_list:
   url: /docs/partners/movable_ink/
 - name: Sheetlabs
   url: /docs/partners/sheetlabs/
+- name: Limbik
+  url: /docs/partners/limbik/
 - name: Amplitude
   url: /docs/partners/amplitude/
 - name: Certona
@@ -69,7 +71,7 @@ valid_partner_list:
   url: /docs/partners/stylitics/
 - name: NiftyImages
   url: /docs/partners/niftyimages/
-- name: 미래 국가
+- name: Future Anthem
   url: /docs/partners/future_anthem
 - name: SEEN
   url: /docs/partners/seen
@@ -85,7 +87,7 @@ valid_partner_list:
   url: /docs/partners/foursquare/
 - name: Infillion
   url: /docs/partners/infillion/
-- name: 로플랫
+- name: loplat
   url: /docs/partners/loplat/
 - name: Radar
   url: /docs/partners/radar/
@@ -97,4 +99,6 @@ valid_partner_list:
   url: /docs/partners/viralsweep/
 - name: Mention Me
   url: /docs/partners/mention_me/
+- name: VideoSmart
+  url: /docs/partners/videosmart/
 ---
