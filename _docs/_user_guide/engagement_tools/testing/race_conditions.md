@@ -35,6 +35,10 @@ In Braze, one of the most common race conditions occurs with messages that targe
 
 However, in some cases, the second event triggers first. This means a message is attempting to be sent to a user that doesn’t exist yet. As a result, the user never receives it. This also applies to events or attributes, where the event or attribute attempts to be logged to a user profile that hasn’t been created yet.
 
+### In-app messages
+
+With in-app messages, the situation can be more nuanced. An in-app message must be delivered to and cached in the SDK—typically at the start of a session—before it can be triggered. If the trigger event is part of the user creation process, or if the in-app message campaign is delivered before the user meets (or after they no longer meet) its audience criteria during their first session, they may not see the in-app message.
+
 ### Best practices
 
 #### Introduce delays
