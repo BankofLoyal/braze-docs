@@ -72,6 +72,20 @@ In Canvas, you'll see in-app message performance mapped onto the Canvas you've c
 
 {% endif %}
 
+#### Estimated Audience and Current Audience
+
+Depending on how large your workspace is, the **Campaign Details** panel may label audience statistics **Estimated Audience** or **Current Audience**.
+
+The following table explains when each label is used and what it means.
+
+| Footer label | When it is used |
+| --- | --- |
+| **Estimated Audience** | Braze does not run a full-database count by default. Audience size is estimated from a sample and extrapolated, similar to the **Reachable Users** range in the segment builder. Margins of error are expected, especially for large workspaces or small segments as a share of the workspace. |
+| **Current Audience** | Braze can compute the default statistic with a full scan of workspace profiles, so the displayed audience size is a current, unsampled count (still subject to channel reachability, subscription rules, and other targeting options). |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
+
+For details on sampling behavior, **Calculate exact statistics**, and segmenting **Reachable users**, see [Measure segment size]({{site.baseurl}}/user_guide/engagement_tools/segments/measuring_segment_size/).
+
 {% if include.channel == "Content Card" %}
 
 #### Control groups {#cc-control-group}
