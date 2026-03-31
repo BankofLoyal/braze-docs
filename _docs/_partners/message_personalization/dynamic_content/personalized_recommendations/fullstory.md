@@ -27,7 +27,10 @@ Before you start, you need the following:
 
 |Requirement     | Description |                        
 |-----------------------|-----------------|
-| Fullstory account | A Fullstory account is required to take advantage of this partnership. |
+| A Fullstory Session API Authorization Token   | See Step 1 below.  | 
+| A Braze Connected Content Authorization Token enabled | See the note below on Early Access |
+| A Braze Canvas Context Step |See the note below on Early Access |
+| Enabled Braze AI Agent Step | See the note below on Early Access|
 {: .reset-td-br-1 .reset-td-br-2 role=“presentation”}
 
 {% alert important%} Braze Agents , Canvas Context, and Connected Content Authorization Tokens are all in Early Access. If interested in leveraging this solution, speak to your Braze CSM about enabling these tools. {%endalert%}
