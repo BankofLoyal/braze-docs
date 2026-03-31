@@ -119,22 +119,11 @@ Se links em suas notificações por push estão abrindo no app inesperadamente, 
 3. **Verifique o registro de push do iOS:** Para iOS, revise a etapa 1 do guia de integração de push em [registrando notificações por push com APNs]({{site.baseurl}}/developer_guide/platform_integration_guides/swift/push_notifications/integration/#step-1-register-for-push-notifications-with-apns). Certifique-se de que seu objeto delegate seja atribuído de forma síncrona antes que o app termine de iniciar. Esta etapa deve ser concluída no método `application:didFinishLaunchingWithOptions:`.
 4. **Teste sua integração:** Após fazer ajustes, teste o comportamento da notificação por push em dispositivos iOS e Android para confirmar que o problema foi resolvido.
 
-## O título do push é cortado no iOS, mas exibido corretamente no Android
+## Migrar para uma chave de autenticação .p8
 
-Se o título da sua notificação por push contém personalização com Liquid e aparece completo no Android, mas truncado no iOS, isso é causado pela forma como cada plataforma lida com caracteres de nova linha (`\n`) na string do título.
+As chaves de autenticação `.p8` da Apple são a abordagem obrigatória para push via APNs na Braze. Diferentemente dos tipos de arquivo de certificado legados, as chaves `.p8` não expiram e suportam todos os seus apps com uma única chave, eliminando a necessidade de renovações anuais de certificados e reduzindo o risco de falhas na entrega de push.
 
-O Android remove automaticamente espaços em branco, tabulações e novas linhas das strings de título de push. O iOS não faz isso, então se uma variável Liquid resolve para um valor que contém uma nova linha no final, o iOS trata a nova linha como o fim do título e corta o texto restante.
-
-Por exemplo, um título como `Regarding your flight from {% raw %}{{${city_from}}}{% endraw %} to {% raw %}{{${city_to}}}{% endraw %}` pode exibir `Regarding your flight from` no iOS se a variável `city_from` incluir uma nova linha no final.
-
-Para corrigir isso, aplique o filtro Liquid `strip_newlines` e envolva o título inteiro em um bloco `capture`:
-
-{% raw %}
-```liquid
-{% capture title %}Regarding your flight from {{${city_from}}} to {{${city_to}}}{% endcapture %}
-{{ title | strip_newlines }}
-```
-{% endraw %}
+Se você está usando atualmente um certificado `.p12` ou `.pem`, migre para uma chave `.p8` o mais rápido possível. Para instruções sobre como criar e fazer upload de uma chave `.p8`, consulte [Fazer upload do seu certificado de push APNs]({{site.baseurl}}/developer_guide/push_notifications/?sdktab=swift). Para orientações da Apple sobre como gerar uma chave `.p8` a partir da sua conta de desenvolvedor, consulte [Comunicar-se com APNs usando tokens de autenticação](https://developer.apple.com/help/account/capabilities/communicate-with-apns-using-authentication-tokens/).
 
 ## As notificações por push da web não estão se comportando como esperado
 

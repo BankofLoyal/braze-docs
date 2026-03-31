@@ -60,7 +60,7 @@ Si vous avez défini une limite de débit pour votre campagne ou Canvas, il est 
 
 #### Statut du groupe de contrôle
 
-S'il s'agit d'une campagne à canal unique ou d'un Canvas avec un groupe de contrôle, il est possible que vous fassiez partie du groupe de contrôle.
+S'il s'agit d'une campagne à canal unique ou d'un canvas avec un groupe de contrôle, il est possible que vous fassiez partie du groupe de contrôle.
 
   1. Vérifiez la [distribution des variantes]({{site.baseurl}}/user_guide/engagement_tools/campaigns/testing_and_more/multivariate_testing/#step-5-distribute-users-among-your-variants) pour voir s'il existe un groupe de contrôle.
   2. Si c'est le cas, créez un segment filtrant par [groupe de contrôle de la campagne]({{site.baseurl}}/user_guide/engagement_tools/campaigns/ideas_and_strategies/retargeting_campaigns/#in-campaign-control-group-filter), puis [exportez le segment]({{site.baseurl}}/user_guide/data_and_analytics/export_braze_data/segment_data_to_csv/#exporting-to-csv) et vérifiez si votre ID utilisateur figure dans cette liste.
@@ -116,25 +116,14 @@ Si les liens de vos notifications push s'ouvrent dans l'application de manière 
 
 1. **Examinez l'implémentation du délégué push :** Assurez-vous que le délégué push de Braze est correctement implémenté. Pour des instructions détaillées, consultez le guide d'intégration des notifications push pour votre [plateforme]({{site.baseurl}}/developer_guide/home/).
 2. **Vérifiez la gestion personnalisée des liens :** Vérifiez si l'application inclut un traitement personnalisé pour tous les liens `https://`. Les configurations personnalisées peuvent remplacer les comportements par défaut. Collaborez avec votre équipe de développement pour examiner et ajuster ces paramètres si nécessaire.
-3. **Vérifiez l'enregistrement push iOS :** Pour iOS, revenez à l'étape 1 du guide d'intégration push concernant l'[enregistrement des notifications push avec les APN]({{site.baseurl}}/developer_guide/platform_integration_guides/swift/push_notifications/integration/#step-1-register-for-push-notifications-with-apns). Assurez-vous que votre objet délégué est assigné de manière synchrone avant que l'application ne finisse de se lancer. Cette étape doit être réalisée dans la méthode `application:didFinishLaunchingWithOptions:`.
+3. **Vérifiez l'enregistrement push iOS :** Pour iOS, revenez à l'étape 1 du guide d'intégration push concernant l'[enregistrement des notifications push avec les APNs]({{site.baseurl}}/developer_guide/platform_integration_guides/swift/push_notifications/integration/#step-1-register-for-push-notifications-with-apns). Assurez-vous que votre objet délégué est assigné de manière synchrone avant que l'application ne finisse de se lancer. Cette étape doit être réalisée dans la méthode `application:didFinishLaunchingWithOptions:`.
 4. **Testez votre intégration :** Après avoir effectué les ajustements, testez le comportement des notifications push sur les appareils iOS et Android pour confirmer que le problème est résolu.
 
-## Le titre du push est tronqué sur iOS mais s'affiche correctement sur Android
+## Migrer vers une clé d'authentification .p8
 
-Si le titre de votre notification push contient une personnalisation Liquid et apparaît complet sur Android mais tronqué sur iOS, cela est dû à la manière dont chaque plateforme gère les caractères de retour à la ligne (`\n`) dans la chaîne de caractères du titre.
+Les clés d'authentification Apple `.p8` sont l'approche requise pour les notifications push APNs dans Braze. Contrairement aux anciens types de fichiers de certificat, les clés `.p8` n'expirent pas et prennent en charge toutes vos applications sous une seule clé, éliminant ainsi le besoin de renouvellements annuels de certificats et réduisant le risque d'échecs de distribution des push.
 
-Android supprime automatiquement les espaces, tabulations et retours à la ligne des chaînes de caractères de titre push. iOS ne le fait pas : si une variable Liquid se résout en une valeur contenant un retour à la ligne final, iOS traite ce retour à la ligne comme la fin du titre et coupe le texte restant.
-
-Par exemple, un titre comme `Regarding your flight from {% raw %}{{${city_from}}}{% endraw %} to {% raw %}{{${city_to}}}{% endraw %}` pourrait afficher `Regarding your flight from` sur iOS si la variable `city_from` inclut un retour à la ligne final.
-
-Pour corriger cela, appliquez le filtre Liquid `strip_newlines` et encapsulez l'ensemble du titre dans un bloc `capture` :
-
-{% raw %}
-```liquid
-{% capture title %}Regarding your flight from {{${city_from}}} to {{${city_to}}}{% endcapture %}
-{{ title | strip_newlines }}
-```
-{% endraw %}
+Si vous utilisez actuellement un certificat `.p12` ou `.pem`, migrez vers une clé `.p8` dès que possible. Pour les instructions de création et de téléchargement d'une clé `.p8`, consultez [Télécharger votre certificat push APNs]({{site.baseurl}}/developer_guide/push_notifications/?sdktab=swift). Pour les recommandations d'Apple sur la génération d'une clé `.p8` depuis votre compte développeur, consultez [Communiquer avec les APNs à l'aide de jetons d'authentification](https://developer.apple.com/help/account/capabilities/communicate-with-apns-using-authentication-tokens/).
 
 ## Les notifications push web ne fonctionnent pas comme prévu
 

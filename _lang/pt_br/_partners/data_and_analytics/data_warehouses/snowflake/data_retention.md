@@ -1,27 +1,27 @@
 ---
 nav_title: "Retenção de dados"
-article_title: Retenção de Dados Snowflake
+article_title: Retenção de dados Snowflake
 page_order: 3
 description: "Esta página mostra como reter todos os dados de eventos quando a política de retenção da Braze é aplicada."
 page_type: partner
 search_tag: Partner
 ---
 
-# retenção de dados Snowflake
+# Retenção de dados Snowflake
 
-> Braze anonimiza (remove informações pessoalmente identificáveis, ou IPI) a partir da maioria dos dados de eventos armazenados no Snowflake que têm mais de dois anos. Certos eventos são retidos até que um usuário seja excluído, conforme descrito mais adiante nesta página. Se você usar o compartilhamento de dados do Snowflake, poderá optar por reter os dados completos dos eventos em seu ambiente armazenando uma cópia em sua conta do Snowflake antes que a política de retenção seja aplicada.
+> A Braze anonimiza (remove informações de identificação pessoal, ou IPI) a maioria dos dados de eventos armazenados no Snowflake que têm mais de dois anos. Certos eventos são retidos até que um usuário seja excluído, conforme descrito mais adiante nesta página. Se você usar o compartilhamento de dados do Snowflake, poderá optar por reter os dados completos dos eventos em seu ambiente armazenando uma cópia na sua conta do Snowflake antes que a política de retenção seja aplicada.
 
 Esta página apresenta duas maneiras de reter dados não anonimizados: 
 
-- Copie seus dados para outro banco de dados Snowflake
-- Descarregue seus dados para um estágio
+- Copiar seus dados para outro banco de dados Snowflake
+- Descarregar seus dados para um estágio
 
 {% alert warning %}
-Braze anonimamente os dados de eventos para usuários que são excluídos do Braze, conforme descrito em [Assistência Técnica de Proteção de Dados]({{site.baseurl}}/dp-technical-assistance/). Nenhum dado copiado fora do banco de dados compartilhado será incluído neste processo, pois a Braze não o gerencia mais.
+A Braze anonimiza automaticamente os dados de eventos para usuários que são excluídos da Braze, conforme descrito em [Assistência Técnica de Proteção de Dados]({{site.baseurl}}/dp-technical-assistance/). Nenhum dado copiado fora do banco de dados compartilhado será incluído nesse processo, pois a Braze não o gerencia mais. 
 {% endalert %}
 
 ## Eventos isentos da política de retenção de dois anos
-Braze retém eventos relacionados ao ciclo de vida do usuário, status de inscrição e envio de mensagens até que um usuário seja excluído. Os seguintes eventos estão isentos da política padrão de retenção de dois anos:
+A Braze retém eventos relacionados ao ciclo de vida do usuário, status de inscrição e envio de mensagens de entrada até que um usuário seja excluído. Os seguintes eventos estão isentos da política padrão de retenção de dois anos:
 - `users.UserOrphan`
 - `users.UserDeleteRequest`
 - `users.behaviors.subscription.GlobalStateChange`
@@ -33,7 +33,7 @@ Braze retém eventos relacionados ao ciclo de vida do usuário, status de inscri
 
 Você pode reter dados não anonimizados copiando seus dados do esquema compartilhado `BRAZE_RAW_EVENTS` para outro banco de dados e esquema no Snowflake. Para fazer isso, siga estas etapas:
 
-1. Na sua conta Snowflake, crie o procedimento `COPY_BRAZE_SHARE`, que será usado para copiar todos os dados compartilhados pela Braze para outro banco de dados e esquema dentro do Snowflake. 
+1. Na sua conta do Snowflake, crie o procedimento `COPY_BRAZE_SHARE`, que será usado para copiar todos os dados compartilhados pela Braze para outro banco de dados e esquema dentro do Snowflake. 
 
 {% raw %}
 ```sql
@@ -132,10 +132,10 @@ $$;
 {% endraw %}
 
 {: start="2"}
-2\. Execute um dos comandos abaixo na sua conta do Snowflake para executar o procedimento.
+2. Execute um dos comandos abaixo na sua conta do Snowflake para executar o procedimento.
 
 {% tabs %}
-{% tab Default %}
+{% tab Padrão %}
 
 Por padrão, o procedimento fará backup dos dados com mais de dois anos para todos os tipos de eventos `USERS_*`. 
 
@@ -148,9 +148,9 @@ CALL COPY_BRAZE_SHARE('SOURCE_DB', 'SOURCE_SCHEMA', 'DEST_DB', 'DEST_SCHEMA')
 ```
 {% endraw %}
 {% endtab %}
-{% tab Filtered %}
+{% tab Filtrado %}
 
-Especifique um filtro para escolher quais dados de idade fazer backup e especifique um filtro de nome de tabela para fazer backup apenas das tabelas de eventos selecionadas. 
+Especifique um filtro para escolher a idade dos dados para backup e especifique um filtro de nome de tabela para fazer backup apenas das tabelas de eventos selecionadas. 
 
 {% raw %}
 ```sql
@@ -164,7 +164,7 @@ CALL COPY_BRAZE_SHARE('SOURCE_DB', 'SOURCE_SCHEMA', 'DEST_DB', 'DEST_SCHEMA', DA
 {% endtabs %}
 
 {% alert note %}
-Executar repetidamente o procedimento não criará registros duplicados porque ele verifica o `SF_CREATED_AT` mais recente e só faz backup de dados posteriores.
+Executar o procedimento repetidamente faz backup apenas das linhas com `SF_CREATED_AT` maior que o máximo já existente na sua tabela, o que evita copiar linhas que já foram salvas.
 {% endalert %}
 
 ## Descarregando dados para o estágio
@@ -244,10 +244,10 @@ $$;
 {% endraw %}
 
 {: start="2"}
-2\. Execute um dos comandos abaixo para executar o procedimento. 
+2. Execute um dos comandos abaixo para executar o procedimento. 
 
 {% tabs %}
-{% tab Default %}
+{% tab Padrão %}
 
 Por padrão, o procedimento copiará todas as tabelas com o prefixo `USERS_`.
 
@@ -266,7 +266,7 @@ LIST @MY_EXPORT_STAGE;
 ```
 {% endraw %}
 {% endtab %}
-{% tab Filtered %}
+{% tab Filtrado %}
 
 Especifique um filtro no procedimento para descarregar apenas as tabelas especificadas.
 
