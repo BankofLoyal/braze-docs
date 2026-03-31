@@ -776,7 +776,7 @@
   "segmentation tool": "세분화 툴",
   "Segments": "세그먼트",
   "Select": "선택",
-  "Selected": "선택됨",
+  "Selected": "선택된",
   "Selection": "선택",
   "sender": "발신자",
   "sender reputation": "발신자 평판",
@@ -966,5 +966,16 @@
   "Zapier": "Zapier",
   "Zendesk": "Zendesk",
   "zeotap": "Zeotap",
-  "zero-party data": "제로파티 데이터"
+  "zero-party data": "제로파티 데이터",
+  "Connection Error": "연결 오류",
+  "Component settings": "Component 설정",
+  "This window": "현재 창",
+  "Image:": "이미지:",
+  "General": "기본설정",
+  "Dimension": "크기 및 위치",
+  "Fullscreen": "전체화면",
+  "Desktop": "데스크탑",
+  "Tablet": "태블릿",
+  "Add image": "이미지 추가",
+  "New window": "새 창"
 }

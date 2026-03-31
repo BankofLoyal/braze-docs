@@ -569,7 +569,7 @@
   "predictive tool": "outil prédictif",
   "preheader": "accroche",
   "Prerequisites": "Conditions préalables",
-  "Preview": "Prévisualiser",
+  "Preview": "Prévisualisation",
   "Previous": "Précédent",
   "primary conversion event": "événement de conversion principal",
   "priming for push": "amorçage de push",
@@ -834,5 +834,15 @@
   "Zapier": "Zapier",
   "Zendesk": "Zendesk",
   "zeotap": "Zeotap",
-  "zero-party data": "données zero-party"
+  "zero-party data": "données zero-party",
+  "Connection Error": "Erreur de connexion",
+  "Mobile Landscape": "Mobile format paysage",
+  "Image:": "Image :",
+  "Comment": "Commentaire",
+  "Fullscreen": "Plein écran",
+  "Desktop": "Ordinateur de bureau",
+  "Tablet": "Tablette",
+  "Add image": "Ajouter image",
+  "This window": "Cette fenêtre",
+  "New window": "Nouvelle fenêtre"
 }
