@@ -1,6 +1,6 @@
 {% if include.section == "Differing audience size" %}
 
-The target population size that displayed in a campaign or Canvas may differ from the [reachable audience size for a segment]({{site.baseurl}}/user_guide/engagement_tools/segments/measuring_segment_size#segment-membership-calculation), even if you're directly adding that segment into your campaign or Canvas without additional filters. 
+The target population size that is displayed in a campaign or Canvas may differ from the [reachable audience size for a segment]({{site.baseurl}}/user_guide/engagement_tools/segments/measuring_segment_size#segment-membership-calculation), even if you're directly adding that segment into your campaign or Canvas without additional filters. 
 This may happen for several reasons:
 
 - When a Global Control Group applies to a campaign or Canvas, users in that Global Control Group are excluded in the reachable users count.
