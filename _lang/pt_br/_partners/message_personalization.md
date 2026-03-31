@@ -4,7 +4,7 @@ article_title: Parceiros de personalização de mensagens
 page_order: 1
 
 page_type: landing
-description: "Essa landing page lista os parceiros da Braze (Alloys) que permitem que você adicione personalização extra às suas campanhas e canvas da Braze."
+description: "Essa landing page lista os parceiros da Braze (Alloys) que permitem que você adicione personalização extra às suas campanhas e Canvas da Braze."
 layout: partner_page
 search_tag: Partner
 

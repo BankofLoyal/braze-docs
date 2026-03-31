@@ -205,7 +205,7 @@ Con esta configuración, no incluyas ningún filtro en el paso **Audiencia objet
 
 Si lo deseas, especifica las horas tranquilas (el tiempo durante el cual no se enviarán tus mensajes) para tu Canvas. Marca **Activar horas tranquilas** en tu **Configuración de envío**. A continuación, selecciona tus horas tranquilas en la hora local de tu usuario y la acción que seguirá si el mensaje se desencadena dentro de esas horas tranquilas.
 
-![La página «Horas tranquilas» muestra una casilla para habilitar las horas tranquilas. Si se habilita, se puede establecer la hora de inicio, la hora de finalización y el comportamiento alternativa.]({% image_buster /assets/img/quiet_hours.png %})
+![La página «Horas tranquilas» muestra una casilla para habilitar las horas tranquilas. Si se habilita, se puede establecer la hora de inicio, la hora de finalización y el comportamiento alternativo.]({% image_buster /assets/img/quiet_hours.png %})
 
 ### Paso 2: Construye tu Canvas
 

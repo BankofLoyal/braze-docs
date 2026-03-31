@@ -53,7 +53,7 @@ Você pode usar a Braze para criar campanhas de envio de mensagens acessíveis e
 
 ## Escolha de um canal de envio de mensagens
 
-Ao determinar qual canal de envio de mensagens é melhor para suas campanhas e canvas, pense sempre no conteúdo e na urgência da sua mensagem:
+Ao determinar qual canal de envio de mensagens é melhor para suas campanhas e Canvas, pense sempre no conteúdo e na urgência da sua mensagem:
 
 - **Conteúdo** é o nível de engajamento visual da sua mensagem. É possível adicionar multimídia e outros ativos ao seu texto para tornar seu conteúdo mais rico.
 - **Urgência** é uma medida da rapidez com que uma mensagem consegue notificar o usuário e atrair sua atenção. As notificações que o usuário pode visualizar imediatamente têm alta urgência, enquanto as mensagens que exigem que o usuário faça login no app têm baixa urgência.
