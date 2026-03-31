@@ -17,7 +17,13 @@ Das Löschen von Nutzer:innen befindet sich derzeit im Early Access. Wenden Sie 
 
 ## Voraussetzungen
 
-Um Nutzer:innen zu löschen, müssen Sie Administrator sein oder über die Berechtigung **Nutzer:in löschen** verfügen.
+Um Nutzer:innen zu löschen, müssen Sie Administrator sein oder über die Berechtigung **Nutzer:innen löschen** verfügen. Um Löschprotokolle von Nutzer:innen einzusehen, müssen Sie Administrator sein oder über die Berechtigung **Löschprotokolle von Nutzer:innen anzeigen** verfügen. Die folgenden Berechtigungen steuern das Löschen von Nutzer:innen und die Löschprotokolle:
+
+| Berechtigung | Beschreibung |
+|------------|-------------|
+| Nutzer:innen löschen | Nutzer:innen einzeln oder in großen Mengen dauerhaft löschen. |
+| Löschprotokolle von Nutzer:innen anzeigen | Löschprotokolle von Nutzer:innen einsehen. |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation"}
 
 ## Über das Löschen von Nutzer:innen
 

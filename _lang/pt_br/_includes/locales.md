@@ -1,17 +1,9 @@
-{% if include.section == "Prerequisites" %}
-## Pré-requisitos
+{% if include.section == "multi-language prerequisites" %}
 
-Para editar e gerenciar o [suporte multilíngue]({{site.baseurl}}/multi_language_support/), você precisa das seguintes [permissões de usuário]({{site.baseurl}}/user_guide/administrative/app_settings/manage_your_braze_users/user_permissions/) para o seu espaço de trabalho:
-
-- Ver Configurações de Localização
-- Editar Configurações de Localização
-- Excluir Configurações de Localização
-
-Para adicionar a localidade a uma mensagem, você precisa da permissão "Editar Campanhas".
-
-{% alert important %}
-O suporte multilíngue está atualmente em acesso antecipado. Fale com seu gerente de conta da Braze se estiver interessado em participar desse acesso antecipado.
-{% endalert %}
+| Recurso | Permissões de usuário obrigatórias |
+| --- | --- |
+| Localidades multilíngues | Você precisa dessas permissões para criar e gerenciar localidades multilíngues:<br><br> {::nomarkdown}Permissões granulares: <ul><li>Editar Configurações de Localização</li><li>Excluir Configurações de Localização</li></ul> Permissões legadas: <ul><li> Gerenciar Configurações Multilíngues</li></ul>{:/} |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
 {% endif %}
 
@@ -40,12 +32,12 @@ Sim, mas certifique-se de verificar se a formatação HTML não é traduzida jun
 
 | Cenário                                                                                                                                                 | Validação na Braze                                                                                            |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
-| Um arquivo de tradução não tem localidades associadas à mensagem atual.                                                                               | Esse arquivo de tradução não será carregado.                                                                       |
-| Um arquivo de tradução está sem alguns blocos de texto, como um texto dentro de tags de tradução Liquid, da mensagem de e-mail atual.                                | Esse arquivo de tradução não será carregado.                                                                       |
-| O arquivo de tradução inclui o texto padrão que não corresponde aos blocos de texto da mensagem de e-mail atual.                                          | Esse arquivo de tradução não será carregado. Corrija isso no seu CSV antes de tentar fazer upload novamente.               |
+| Um arquivo de tradução não tem localidades associadas à mensagem atual.                                                                               | Esse arquivo de tradução não será enviado.                                                                       |
+| Um arquivo de tradução está sem alguns blocos de texto, como um texto dentro de tags de tradução Liquid, da mensagem de e-mail atual.                                | Esse arquivo de tradução não será enviado.                                                                       |
+| O arquivo de tradução inclui o texto padrão que não corresponde aos blocos de texto da mensagem de e-mail atual.                                          | Esse arquivo de tradução não será enviado. Corrija isso no seu CSV antes de tentar fazer upload novamente.               |
 | O arquivo de tradução inclui localidades que não existem nas configurações de **Suporte Multilíngue**.                                                           | Essas localidades não serão salvas na Braze.                                                                      |
-| O arquivo de tradução inclui blocos de texto que não existem na mensagem atual (como o rascunho atual no momento em que as traduções são carregadas). | Os blocos de texto que não existirem na sua mensagem atual não serão salvos do arquivo de tradução na Braze. |
-| Remoção de uma localidade da mensagem depois que essa localidade já tiver sido carregada para a mensagem como parte do arquivo de tradução.                           | A remoção da localidade removerá todas as traduções associadas à localidade na sua mensagem.                   |
+| O arquivo de tradução inclui blocos de texto que não existem na mensagem atual (como o rascunho atual no momento em que é feito o upload das traduções). | Os blocos de texto que não existirem na sua mensagem atual não serão salvos do arquivo de tradução na Braze. |
+| Remoção de uma localidade da mensagem depois que essa localidade já tiver sido enviada para a mensagem como parte do arquivo de tradução.                           | A remoção da localidade removerá todas as traduções associadas à localidade na sua mensagem.                   |
 {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
 {% endif %}

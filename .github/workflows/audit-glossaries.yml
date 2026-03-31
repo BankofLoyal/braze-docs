@@ -69,7 +69,7 @@ jobs:
           done
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
@@ -103,6 +103,9 @@ jobs:
           TITLE="Glossary audit: ${{ steps.audit.outputs.mismatches }} mismatches, ${{ steps.audit.outputs.missing }} missing terms ($DATE)"
 
           BODY=$(cat glossary_audit_report.md)
+
+          # Ensure the label exists (create or update if it already does)
+          gh label create "glossary-audit" --description "Automated glossary audit findings" --color "FBCA04" --force
 
           # Close any previous open audit issues
           gh issue list --label "glossary-audit" --state open --json number -q '.[].number' | while read num; do

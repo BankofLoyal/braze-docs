@@ -83,7 +83,7 @@ jobs:
       # ------------------------------------------------------------------
       - name: Set up Python
         if: steps.changes.outputs.count != '0'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
@@ -134,19 +134,30 @@ jobs:
         run: python scripts/auto_translate.py summary
 
       - name: Create pull request
+        id: create-pr
         if: steps.changes.outputs.count != '0'
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: auto-translate/${{ github.run_id }}
           base: develop
           title: "Auto-translations — ${{ github.event.head_commit.message || 'manual run' }}"
           body-path: translation_pr_body.md
-          labels: auto-translation
+          labels: |
+            auto-translation
+            In Review
           commit-message: "chore: auto-translate changed English docs"
           delete-branch: true
           add-paths: |
             _lang/
+
+      - name: Request Copilot review
+        if: steps.create-pr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api repos/${{ github.repository }}/pulls/${{ steps.create-pr.outputs.pull-request-number }}/requested_reviewers \
+            --method POST -f 'reviewers[]=copilot'
 
       - name: Report failures
         if: steps.translate.outcome == 'failure' || steps.qc.outcome == 'failure' || steps.verify.outcome == 'failure'

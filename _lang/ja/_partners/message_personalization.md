@@ -1,14 +1,14 @@
 ---
-nav_title: メッセージのパーソナライズ
+nav_title: メッセージのパーソナライゼーション
 article_title: メッセージパーソナライゼーションパートナー
 page_order: 1
 
 page_type: landing
-description: "このランディングページには、Brazeパートナー（Alloys）がリストされており、BrazeキャンペーンやCanvasに追加のパーソナライゼーションを追加することができます。"
+description: "このランディングページには、Brazeのキャンペーンやキャンバスに追加のパーソナライゼーションを加えることができるBrazeパートナー（Alloys）がリストされています。"
 layout: partner_page
 search_tag: Partner
 
-partner_top_header: "Message Personalization"
+partner_top_header: "メッセージパーソナライゼーション"
 
 valid_partner_list:
 - name: Jacquard
@@ -27,6 +27,8 @@ valid_partner_list:
   url: /docs/partners/movable_ink/
 - name: Sheetlabs
   url: /docs/partners/sheetlabs/
+- name: Limbik
+  url: /docs/partners/limbik/
 - name: Amplitude
   url: /docs/partners/amplitude/
 - name: Certona
@@ -83,7 +85,7 @@ valid_partner_list:
   url: /docs/partners/bluedot/
 - name: Foursquare
   url: /docs/partners/foursquare/
-- name: インフィリオン
+- name: Infillion
   url: /docs/partners/infillion/
 - name: loplat
   url: /docs/partners/loplat/
@@ -97,4 +99,6 @@ valid_partner_list:
   url: /docs/partners/viralsweep/
 - name: Mention Me
   url: /docs/partners/mention_me/
+- name: VideoSmart
+  url: /docs/partners/videosmart/
 ---

@@ -97,8 +97,8 @@ Note as seguintes diferenças entre as convenções de nomenclatura da Braze e d
 
 | Esquema da Braze | Esquema do Snowflake | Descrição |
 | ----------- | ----------- | ----------- |
-| `braze_id` | `"USER_ID"` | O identificador exclusivo que é atribuído automaticamente pela Braze. |
-| `external_id` | `"EXTERNAL_USER_ID"` | O identificador exclusivo do perfil de um usuário que é definido pelo cliente. |
+| `braze_id` | `"USER_ID"` | O identificador exclusivo atribuído automaticamente pela Braze. |
+| `external_id` | `"EXTERNAL_USER_ID"` | O identificador exclusivo do perfil de um usuário, definido pelo cliente. |
 {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
 ## Informações importantes e limitações
@@ -142,10 +142,20 @@ O arquivo de dados históricos de eventos no Snowflake remonta a abril de 2019. 
 
 {% multi_lang_include partners/snowflake_pii_gdpr.md %}
 
+### Consultando dados compartilhados: `TIME` e performance de consultas
+
+Os dados de eventos nas visualizações de compartilhamento de dados (por exemplo, `USERS_BEHAVIORS_CUSTOMEVENT_SHARED`) são **clusterizados no campo `TIME`**. Ao filtrar por **quando o evento ocorreu**, use **`TIME`** como filtro preferencial. Consultas que restringem linhas usando **`TIME`** são geralmente **mais performáticas** do que consultas que filtram por **`SF_CREATED_AT`**, porque a clusterização está alinhada com o horário do evento.
+
+| Campo | Significado |
+| ----- | ------- |
+| `TIME` | Timestamp Unix do momento em que o evento ocorreu. Prefira este campo ao filtrar por horário de ocorrência. |
+| `SF_CREATED_AT` | Timestamp de quando a linha foi carregada no Snowflake (horário de ingestão). |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
+
 ### Velocidade, performance e custo das consultas
 
-A velocidade, a performance e o custo de qualquer consulta executada nos dados são determinados pelo tamanho do data warehouse que você usa para consultar os dados. Em alguns casos, dependendo da quantidade de dados que estiver acessando para análise de dados, talvez seja necessário usar um tamanho de warehouse maior para que a consulta seja bem-sucedida. O Snowflake tem excelentes recursos disponíveis sobre a melhor forma de determinar o tamanho a ser usado, incluindo [Visão geral dos warehouses](https://docs.snowflake.net/manuals/user-guide/warehouses-overview.html) e [Considerações sobre warehouses](https://docs.snowflake.net/manuals/user-guide/warehouses-considerations.html).
+A velocidade, a performance e o custo de qualquer consulta executada nos dados são determinados pelo tamanho do warehouse que você usa para consultar os dados. Em alguns casos, dependendo da quantidade de dados que estiver acessando para análise de dados, talvez seja necessário usar um tamanho de warehouse maior para que a consulta seja bem-sucedida. O Snowflake tem excelentes recursos disponíveis sobre a melhor forma de determinar o tamanho a ser usado, incluindo [Visão geral dos warehouses](https://docs.snowflake.net/manuals/user-guide/warehouses-overview.html) e [Considerações sobre warehouses](https://docs.snowflake.net/manuals/user-guide/warehouses-considerations.html).
 
-> Para obter um conjunto de exemplos de consultas como referência ao configurar o Snowflake, confira nossos exemplos de [consultas]({{site.baseurl}}/partners/data_and_infrastructure_agility/data_warehouses/snowflake/sample_queries/) e de [configuração do pipeline de eventos ETL]({{site.baseurl}}/partners/data_and_infrastructure_agility/data_warehouses/snowflake/etl_pipline_setup/).
+> Para obter um conjunto de exemplos de consultas como referência ao configurar o Snowflake, confira nossos exemplos de [consultas]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/sample_queries/) e de [configuração do pipeline de eventos ETL]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/etl_pipline_setup/).
 
 Para instruções de configuração, consulte [Ingestão de Dados na Nuvem: integrações com data warehouse]({{site.baseurl}}/user_guide/data/unification/cloud_ingestion/integrations/).
