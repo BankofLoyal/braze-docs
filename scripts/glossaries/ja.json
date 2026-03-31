@@ -357,6 +357,7 @@
   "IDFV": "IDFV",
   "iHeartRadio": "iHeartRadio",
   "image": "画像, 写真",
+  "Image:": "画像:",
   "images": "画像",
   "impersonation": "偽装 or なりすまし",
   "implicit cost": "暗黙的なコスト",
@@ -789,6 +790,5 @@
   "Yodel Mobile": "Yodel Mobile",
   "Your message": "メッセージ",
   "Zapier": "Zapier",
-  "Zeotap": "Zeotap",
-  "Image:": "画像:"
+  "Zeotap": "Zeotap"
 }
