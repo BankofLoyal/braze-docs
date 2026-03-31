@@ -657,6 +657,61 @@ def repair_front_matter(english_content, translated_content):
     return translated_content, repairs
 
 
+def repair_yaml_syntax(translated_content):
+    """Validate YAML front matter and auto-fix common parse errors.
+
+    Fixes:
+    - German „...ASCII" → „...Unicode" (ASCII closing quote inside YAML strings)
+    - Unquoted values containing colons (wraps in double quotes)
+    """
+    import yaml as _yaml
+
+    tr_fm, tr_body = _extract_front_matter(translated_content)
+    if not tr_fm:
+        return translated_content, []
+
+    try:
+        _yaml.safe_load(tr_fm)
+        return translated_content, []
+    except _yaml.YAMLError:
+        pass
+
+    repairs = []
+    repaired_fm = tr_fm
+
+    # Fix 1: German ASCII closing quotes — „(text)" where " is U+0022
+    if "\u201e" in repaired_fm:
+        fixed = re.sub(r'\u201e([^\u201e\u201c]*?)"', '\u201e\\1\u201c', repaired_fm)
+        if fixed != repaired_fm:
+            repaired_fm = fixed
+            repairs.append("yaml_syntax — replaced ASCII closing quotes after „ with Unicode \u201c")
+
+    # Fix 2: Unquoted values containing bare colons
+    fixed_lines = []
+    for line in repaired_fm.split("\n"):
+        m = re.match(r'^(\s*(?:description|name|title|nav_title|article_title'
+                     r'|guide_top_text|guide_top_header|glossary_top_header'
+                     r'|glossary_top_text|glossary_filter_text'
+                     r'|search_tag)):\s+(.+)$', line)
+        if m:
+            key_part, value = m.group(1), m.group(2)
+            if not value.startswith('"') and ":" in value:
+                escaped = value.replace("\\", "\\\\").replace('"', '\\"')
+                line = f'{key_part}: "{escaped}"'
+                repairs.append(f"yaml_syntax — quoted {key_part.strip()} (contains colon)")
+        fixed_lines.append(line)
+    repaired_fm = "\n".join(fixed_lines)
+
+    if repairs:
+        try:
+            _yaml.safe_load(repaired_fm)
+            translated_content = f"---\n{repaired_fm}\n---\n{tr_body}"
+        except _yaml.YAMLError:
+            repairs.append("yaml_syntax — auto-repair attempted but YAML still invalid")
+
+    return translated_content, repairs
+
+
 def _extract_code_blocks(content):
     """Extract fenced code blocks with positions."""
     pattern = re.compile(r'(^```[^\n]*\n)(.*?)(^```\s*$)', re.MULTILINE | re.DOTALL)
@@ -991,6 +1046,9 @@ def qc_check_file(english_path, translated_path, lang_key):
         english_content, translated_content
     )
     findings["repairs"].extend(fm_repairs)
+
+    translated_content, yaml_repairs = repair_yaml_syntax(translated_content)
+    findings["repairs"].extend(yaml_repairs)
 
     translated_content, cb_repairs = repair_code_blocks(
         english_content, translated_content
