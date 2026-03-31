@@ -57,11 +57,4 @@ Braze calculates an expiration time of one day as 24 hours after users are eligi
 
 ### How can in-app messages be dismissed, and what are the associated click events?
 
-Assuming there are no customizations, these are the different ways a user can dismiss an in-app message and the associated click events.
-
-| Dismissal | Click event |
-| - | - |
-| Outside tap dismissals (iOS) | If the user taps outside of a traditional in-app message (and outside tap dismissals are enabled), the dismissal is only registered as an impression, not a body click. Drag-and-drop in-app messages cannot be dismissed by outside taps. |
-| App is closed upon receiving the message (iOS or Android)<br><br>Tap "X" to close the message (iOS or Android) | Closing the message does not trigger an impression; the impression itself is logged when the in-app message is triggered and shows on the user's device. However, a "Close Message" button click is logged for drag-and-drop in-app messages. |
-| Tap on the message body (iOS or Android) | For traditional in-app messages, this registers as an impression and body click. Drag-and-drop in-app mesages do not have "body clicks".|
-{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
+Braze logs clicks and events differently for traditional and drag-and-drop in-app messages. For details on the relationship between dismissals and click events, refer to the [Report metrics glossary]({{site.baseurl}}/user_guide/data/activation/report_metrics/) and filter for "In-App Message".
