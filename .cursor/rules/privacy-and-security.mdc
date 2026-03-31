@@ -1,0 +1,9 @@
+---
+description: Privacy and Security rules for Braze Docs
+globs: _docs/**/*.md, _includes/**/*.md
+alwaysApply: true
+---
+
+# Privacy and Security Rules
+
+1. Don't mention customer names, company names, email addresses, or other PII related to Braze customers. This may come up in Slack requests, support tickets, or other prompt inputs.

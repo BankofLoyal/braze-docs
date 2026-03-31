@@ -46,6 +46,12 @@ Wenn Sie möchten, dass das Push-Token dem/der ursprünglichen Nutzer:in wieder 
 1. Lassen Sie den/die ursprüngliche:n Nutzer:in sich bei dem Profil mit dem fehlenden Push-Token anmelden.
 2. Triggern Sie einen neuen Push-Versand. Dadurch wird das Token zurück auf das Konto übertragen, sofern Push auf Geräteebene noch aktiviert ist.
 
+### Warum öffnet „Web-URL in der mobilen App öffnen" beim Testen einer Entwurfs-Kampagne immer die App?
+
+Wenn sich eine Kampagne noch im Status **Entwurf** befindet und Sie einen Test-Push senden, öffnet das Tippen auf die Benachrichtigung immer zuerst die App – unabhängig davon, ob die Option **Web-URL in der mobilen App öffnen** ausgewählt oder deaktiviert ist. Wenn die Kampagne **Live** ist, funktioniert das Klickverhalten wie konfiguriert.
+
+Wenn Sie **Web-URL öffnen** ohne die Option **In der App** ausgewählt haben, wird der Link direkt im Standardbrowser des Geräts geöffnet. Wenn Sie **Web-URL in der mobilen App öffnen** ausgewählt haben, wird der Link in einer In-App-Webansicht geöffnet.
+
 ### Was ist der Unterschied zwischen „Send to Production" und „Send to Development" bei iOS-Push-Zertifikaten?
 
 Beim Hinzufügen eines Apple-Push-Zertifikats in Braze bestimmen die Optionen **Send to Production** und **Send to Development**, welches APNs-Gateway (Apple Push Notification Service) Braze für die Zustellung von Push-Benachrichtigungen verwendet:

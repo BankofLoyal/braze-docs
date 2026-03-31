@@ -15,7 +15,7 @@ Tool:
 
 ## Feature availability
 
-All Braze customers will immediately have access to Audience Sync to Google and Facebook. To unlock additional Audience Sync destinations including TikTok, Pinterest, Snapchat, or Criteo, you will need to purchase Audience Sync Pro. Contact your Braze account manager for more details.
+All Braze customers immediately have access to Audience Sync to Google and Facebook, but customers who use message credits can access all Audience Sync partners. To unlock additional Audience Sync destinations, purchase Audience Sync Pro. Contact your Braze account manager for more details.
 
 ## Use cases
 
