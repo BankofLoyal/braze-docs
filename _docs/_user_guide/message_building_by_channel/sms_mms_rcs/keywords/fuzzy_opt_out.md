@@ -40,7 +40,7 @@ To configure fuzzy opt-out, go to the subscription group keyword management page
 5. If you selected **Send opt-out instructions**, enter your custom text in the **Opt-out instruction message** field. This field is required for this setting.
 6. Select **Save**.
 
-![Section to edit opt-out keywords.]({% image_buster /assets/img/sms/fuzzy2.png %})
+![Section to edit opt-out keywords and provide an opt-out instruction message.]({% image_buster /assets/img/sms/fuzzy2.png %})
 
 ## Best practices for fuzzy opt-out messages
 
