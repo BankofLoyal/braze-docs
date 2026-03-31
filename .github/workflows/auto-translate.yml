@@ -151,14 +151,6 @@ jobs:
           add-paths: |
             _lang/
 
-      - name: Request Copilot review
-        if: steps.create-pr.outputs.pull-request-number
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh api repos/${{ github.repository }}/pulls/${{ steps.create-pr.outputs.pull-request-number }}/requested_reviewers \
-            --method POST -f 'reviewers[]=copilot'
-
       - name: Report failures
         if: steps.translate.outcome == 'failure' || steps.qc.outcome == 'failure' || steps.verify.outcome == 'failure'
         run: |
