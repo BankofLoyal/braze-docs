@@ -34,7 +34,7 @@ An `inapp` (or "[standard]({{site.baseurl}}/user_guide/message_building_by_chann
 
 ### `templated_iam` (templated)
 
-A `templated_iam` (or "templated") in-app message isn't yet templated with the necessary information. Braze needs to make another request to pull in the information before the message can display.
+A `templated_iam` (or "templated") in-app message isn't yet templated with the necessary information. Braze must make another request to pull in the information before the message can appear.
 
 {% multi_lang_include in-app_messages/templated_iams.md %}
 
