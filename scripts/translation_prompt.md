@@ -79,6 +79,7 @@ A style guide for the target language may be appended to the end of these instru
 - Preserve markdown formatting (bold `**`, italic `*`, lists, tables, horizontal rules)
 - Preserve the exact YAML front matter structure: key order, indentation, and quoting style
 - If a YAML value is quoted in English (e.g., `nav_title: "Some title"`), keep it quoted in the translation
+- **YAML-safe quotation marks**: When a YAML value is wrapped in ASCII double quotes (`"`), never use ASCII `"` (U+0022) inside that value. For German, use `„` (U+201E) and `"` (U+201C) as quotation marks. For French, use `«` and `»`. For other languages, use the language's standard typographic quotes — never bare ASCII `"` inside a YAML-quoted string, as it will break the YAML parser.
 - Preserve numbered list continuation markers like `{: start="5"}`
 - Preserve Kramdown table classes like `{: .reset-td-br-1 .reset-td-br-2 role="presentation" }`
 - Do NOT escape `[`, `]`, or `!` characters — use them as-is in markdown syntax

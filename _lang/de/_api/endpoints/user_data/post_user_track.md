@@ -5,7 +5,7 @@ search_tag: Endpoint
 page_order: 4
 layout: api_page
 page_type: reference
-description: "Dieser Artikel beschreibt die Details des Braze-Endpunkts „Nutzer:innen tracken"."
+description: "Dieser Artikel beschreibt die Details des Braze-Endpunkts „Nutzer:innen tracken“."
 toc_headers: h2
 ---
 {% api %}
