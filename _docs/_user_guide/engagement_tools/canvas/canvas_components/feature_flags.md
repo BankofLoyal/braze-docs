@@ -27,14 +27,14 @@ When a Canvas is stopped, archived, or a Feature Flag step is removed, users who
 
 For a feature flag that has no rollout and no feature flag experiment, after you stop a Canvas that contains a Feature Flag step referencing that flag:
 
-- No users have that feature flag in the **Feature Flags Eligibility** tab
+- No users have that feature flag in the **Feature Flags Eligibility** tab.
 - No users match the `Feature Flags` segmentation filter for that feature flag. 
 
 If the feature flag has a rollout, a feature flag experiment, or another active Canvas that references it, users may still be eligible through those channels.
 
 Properties in a Canvas step can be changed after launch, and even after a user goes through the step. Users always receive a real-time, dynamic version of the feature flag, instead of the older, previously saved version.
 
-- **Two Canvases reference the same feature flag and a user enters both:** The user receives the value set in the Canvas they entered most recently, not the earlier Canvas. That value appears in the **Feature Flags Eligibility** tab.
+- **Two Canvases reference the same feature flag, and a user enters both:** The user receives the value set in the Canvas they entered most recently, not the earlier Canvas. That value appears in the **Feature Flags Eligibility** tab.
 - **A Canvas has two Feature Flag steps that reference the same feature flag:** The user receives the value set in the second step while they are on that path, and that value appears in the **Feature Flags Eligibility** tab.
 
 {% multi_lang_include alerts/important_alerts.md alert='network dependency' %}
