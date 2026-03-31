@@ -104,6 +104,9 @@ jobs:
 
           BODY=$(cat glossary_audit_report.md)
 
+          # Ensure the label exists (create or update if it already does)
+          gh label create "glossary-audit" --description "Automated glossary audit findings" --color "FBCA04" --force
+
           # Close any previous open audit issues
           gh issue list --label "glossary-audit" --state open --json number -q '.[].number' | while read num; do
             gh issue close "$num" --comment "Superseded by new audit run on $DATE."
