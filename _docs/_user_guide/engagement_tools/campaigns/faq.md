@@ -74,9 +74,15 @@ For a user to be eligible for entry, they must be eligible for both checks. For 
 
 The user must be in the segment for 24 hours before the launch. If the user is not eligible in the first check, then Braze does not attempt the second check.
 
+### Examples
+
 For example, if a campaign is scheduled to be delivered at 7 pm UTC, we start queuing the campaign sends as soon as a time zone is identified (such as Samoa). This means we're getting ready to send the message, not sending the campaign. If users don't match any filters when we check eligibility, they won't fall into the target audience.
 
 As another example, say you want to create two campaigns scheduled to send on the same day—one in the morning and one in the evening—and add a filter that users can only receive the second campaign if they've already received the first. With local time zone delivery, some users may not receive the second campaign. This is because we check eligibility when the user's time zone is identified, so if the scheduled time hasn't occurred in their time zone yet, they haven't received the first campaign, meaning they won't be eligible for the second campaign.
+
+For a visual of how a user might be in a segment during the first check but not the second, see this timeline:
+
+![Timeline of a user entering the segment before the first check, then leaving before the second.]({% image_buster /assets/img/local_time_zone_diagram.png %})
 
 ### How do I schedule a local time zone campaign?
 
