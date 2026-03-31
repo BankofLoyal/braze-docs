@@ -27,13 +27,15 @@ Before you start, you need the following:
 
 |Requirement     | Description |                        
 |-----------------------|-----------------|
-| A Fullstory Session API Authorization Token   | See Step 1 below.  | 
-| A Braze Connected Content Authorization Token enabled | See the note below on Early Access |
-| A Braze Canvas Context Step |See the note below on Early Access |
-| Enabled Braze AI Agent Step | See the note below on Early Access|
-{: .reset-td-br-1 .reset-td-br-2 role=“presentation”}
+| A Fullstory Session API Authorization Token   | See Step 1 below. |
+| A Braze Connected Content Authorization Token enabled | See the note below on Early Access. |
+| A Braze Canvas Context step | See the note below on Early Access. |
+| Enabled Braze AI Agent step | See the note below on Early Access. |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
-{% alert important%} Braze Agents , Canvas Context, and Connected Content Authorization Tokens are all in Early Access. If interested in leveraging this solution, speak to your Braze CSM about enabling these tools. {%endalert%}
+{% alert important %}
+Braze Agents, Canvas Context, and Connected Content Authorization Tokens are all in Early Access. If you're interested in leveraging this solution, speak to your Braze CSM about enabling these tools.
+{% endalert %}
 
 ## Integrate Fullstory
 
@@ -56,7 +58,7 @@ In the response to this request, Fullstory provides a session profile ID. This p
 ### Step 2: Create the Connected Content token authentication
 
 1. In Braze, go to **Settings** > **Workspace Settings** > **Connected Content** > **Add Credential** > **Token Authentication**. 
-2. Name the authentication “fullstory”.
+2. Name the authentication `fullstory`.
 3. Add the header key “Authorization”. Supply the header value Fullstory provided in the previous step. 
 4. Under **Allowed Domain**, enter **api.fullstory.com**.
 
@@ -70,7 +72,7 @@ Using Fullstory's [Activation Streams](https://help.fullstory.com/hc/en-us/artic
 
 By leveraging Canvas Context steps and Connected Content, you can use this ID to make an API request to Fullstory, retrieve the session data, and store it as a variable for use later in the journey. 
 
-![Screenshot of Braze Canvas Context step showing the context variable "summary_result" being created and populated with a Connected Content call to Fullstory, to retrieve a session summary]({% image_buster /assets/img/fullstory/3.png %})
+![Braze Canvas Context step showing the context variable "summary_result" being created and populated with a Connected Content call to Fullstory, to retrieve a session summary]({% image_buster /assets/img/fullstory/2.png %})
 
 With the authorization token created earlier, use the following request structure to pull the session summary data. 
 
@@ -82,7 +84,7 @@ With the authorization token created earlier, use the following request structur
 {% endraw %}
 
 {% alert note %}
-The response is stored as the Liquid tag {% raw %}`{{context.${summary_result}.response}}`{% endraw %}. We use this Context tag in subsequent Canvas steps.
+The response is stored as the Liquid tag {% raw %}`{{context.${summary_result}.response}}`{% endraw %}. Use this Context tag in subsequent Canvas steps.
 {% endalert %}
 
 At this stage, the Canvas can access the response to the Connected Content call, which contains the entire message payload for a user's session.
@@ -154,7 +156,7 @@ You can leverage any of the data available in the object above using the context
 {% alert note %}
 To avoid unexpected behavior, include an Audience Path step after the Context step, which can drop users out of the context if their Context tag is empty, indicating the Connected Content call failed or otherwise returned no information.
 
-![Screenshot of Braze Audience step]({% image_buster /assets/img/fullstory/3.png %})
+![The Audience Path step in Braze]({% image_buster /assets/img/fullstory/3.png %})
 
 {% endalert %}
 
@@ -162,17 +164,19 @@ To avoid unexpected behavior, include an Audience Path step after the Context st
 
 By creating an [Agent step]({{site.baseurl}}/user_guide/brazeai/agents/creating_agents) in a Canvas triggered by Fullstory, and including the Context step outlined above, you can reference Fullstory’s session summary data in the agent. 
 
-In this example, we use this data to allow the Braze agent to generate appropriate message copy for use in a Content Card, which can encourage the user to return to their abandoned basket.
+In this example, you use this data to allow the Braze agent to generate appropriate message copy for use in a Content Card, which can encourage the user to return to their abandoned basket.
 
-![Braze Agent Context editor with the prompt.]({% image_buster /assets/img/fullstory/4.png %})
+![Screenshot of the Braze Agent Context creator with the prompt]({% image_buster /assets/img/fullstory/4.png %})
 
 Use the same name for the Context Liquid tag created in this step as the context Liquid tag used in the AI Agent step created earlier. 
 
-The prompt required for your use case varies, but for our best practices for creating effective agent prompts, see [Writing Instructions]({{site.baseurl}}/user_guide/brazeai/agents/reference/#writing-instructions). 
+The prompt required for your use case varies. For best practices on creating effective agent prompts, see [Writing Instructions]({{site.baseurl}}/user_guide/brazeai/agents/reference/#writing-instructions). 
 
-In your Canvas, select an Agent step and then select the **Session Context** agent. Save the output as a variable (in this case, "message"). Then, create a Message step that leverages the agent-created copy by using the Liquid tag {% raw %}`{{context.${message}.message}}`{% endraw %}.
+In your Canvas, select an AI Agent step, then select the **Session Context** agent from the dropdown. Save the output as a variable, in this case "message", which you can place into message copy by using the Liquid tag {% raw %}`{{context.${message}.message}}`{% endraw %}.
 
 ![Screenshot of Braze Agent Context Canvas step with the prompt]({% image_buster /assets/img/fullstory/5.png %})
+
+Create a Message step that leverages the AI Agent-created copy. Use the Liquid tag in this step.
 
 {% alert important %}
 Fullstory's Session Summary API may return sensitive identifiable user data. To ensure compliance while handling PII (personally identifiable information), confirm your Fullstory data capture rules exclude PII before leveraging this use case.
