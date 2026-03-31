@@ -87,7 +87,7 @@ Braze 대시보드에서 공유를 삭제하고 다시 생성하는 경우, 이�
 - 원시 이벤트 또는 사용자 데이터를 CRM(예: Salesforce)에 매핑
 - 기타 다양한 활용
 
-사용 가능한 테이블 및 열의 전체 목록은 [SQL 테이블 참조]({{site.baseurl}}/user_guide/engagement_tools/segments/sql_segments/sql_segments_tables/)를 참조하세요. Snowflake 데이터 공유에는 해당 참조의 모든 테이블과 스냅샷, 캠페인 및 Canvas 체인지로그, 에이전트 콘솔 이벤트, 메시지 재시도 이벤트에 대한 추가 Snowflake 전용 테이블이 포함됩니다.
+사용 가능한 테이블 및 열의 전체 목록은 [SQL 테이블 참조]({{site.baseurl}}/user_guide/engagement_tools/segments/sql_segments/sql_segments_tables/)를 참조하세요. Snowflake 데이터 공유에는 해당 참조의 모든 테이블과 스냅샷, 캠페인 및 캔버스 체인지로그, 에이전트 콘솔 이벤트, 메시지 재시도 이벤트에 대한 추가 Snowflake 전용 테이블이 포함됩니다.
 
 [원시 테이블 스키마를 다운로드]({% image_buster /assets/download_file/data-sharing-raw-table-schemas.txt %})하여 텍스트 파일로 확인할 수도 있습니다.
 
@@ -142,10 +142,20 @@ Snowflake의 과거 이벤트 데이터 아카이브는 2019년 4월까지 거�
 
 {% multi_lang_include partners/snowflake_pii_gdpr.md %}
 
+### 공유 데이터 쿼리: `TIME` 및 쿼리 성능
+
+데이터 공유 뷰(예: `USERS_BEHAVIORS_CUSTOMEVENT_SHARED`)의 이벤트 데이터는 **`TIME` 필드를 기준으로 클러스터링**되어 있습니다. **이벤트 발생 시점**을 기준으로 필터링할 때는 **`TIME`**을 기본 필터로 사용하세요. **`TIME`**으로 행을 제한하는 쿼리는 클러스터링이 이벤트 시간과 일치하기 때문에 **`SF_CREATED_AT`**로 필터링하는 쿼리보다 일반적으로 **더 높은 성능**을 보입니다.
+
+| 필드 | 의미 |
+| ----- | ------- |
+| `TIME` | 이벤트가 발생한 Unix 타임스탬프입니다. 발생 시점 기준으로 필터링할 때 이 필드를 사용하세요. |
+| `SF_CREATED_AT` | 행이 Snowflake에 로드된 타임스탬프(수집 시간)입니다. |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
+
 ### 쿼리 속도, 성능, 비용
 
 데이터에 대해 실행하는 모든 쿼리의 속도, 성능 및 비용은 데이터를 쿼리하는 데 사용하는 웨어하우스 크기에 따라 결정됩니다. 경우에 따라 분석을 위해 접근하는 데이터 양에 따라 쿼리가 성공하려면 더 큰 웨어하우스 크기를 사용해야 할 수 있습니다. Snowflake는 [웨어하우스 개요](https://docs.snowflake.net/manuals/user-guide/warehouses-overview.html) 및 [웨어하우스 고려 사항](https://docs.snowflake.net/manuals/user-guide/warehouses-considerations.html)을 포함하여 최적의 크기를 결정하는 방법에 대한 훌륭한 리소스를 제공합니다.
 
-> Snowflake 설정 시 참조할 수 있는 예시 쿼리 세트는 [샘플 쿼리]({{site.baseurl}}/partners/data_and_infrastructure_agility/data_warehouses/snowflake/sample_queries/) 및 [ETL 이벤트 파이프라인 설정]({{site.baseurl}}/partners/data_and_infrastructure_agility/data_warehouses/snowflake/etl_pipline_setup/) 예시를 확인하세요.
+> Snowflake 설정 시 참조할 수 있는 예시 쿼리 세트는 [샘플 쿼리]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/sample_queries/) 및 [ETL 이벤트 파이프라인 설정]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/etl_pipline_setup/) 예시를 확인하세요.
 
 설정 방법은 [클라우드 데이터 수집: 데이터 웨어하우스 통합]({{site.baseurl}}/user_guide/data/unification/cloud_ingestion/integrations/)을 참조하세요.

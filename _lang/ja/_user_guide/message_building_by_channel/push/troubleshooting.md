@@ -116,25 +116,14 @@ Braze エクスポートエンドポイントを使用してユーザープロ�
 
 1. **プッシュデリゲートの実装を見直す：** Braze プッシュデリゲートが正しく実装されていることを確認します。詳細な手順については、お使いの[プラットフォーム]({{site.baseurl}}/developer_guide/home/)のプッシュ通知統合ガイドを参照してください。
 2. **カスタムリンクの処理を検査する：** アプリにすべての `https://` リンクのカスタム処理が含まれているかどうかを確認します。カスタム設定によってデフォルトの動作が上書きされる可能性があります。開発者チームと協力し、必要に応じてこれらの設定を見直し、調整してください。
-3. **iOS のプッシュ登録を確認する：** iOS の場合は、[APN へのプッシュ通知の登録]({{site.baseurl}}/developer_guide/platform_integration_guides/swift/push_notifications/integration/#step-1-register-for-push-notifications-with-apns)に関するプッシュ統合ガイドのステップ 1 を再確認します。アプリの起動が完了する前に、デリゲートオブジェクトが同期的に割り当てられるようにしてください。このステップは `application:didFinishLaunchingWithOptions:` メソッドで完了する必要があります。
+3. **iOS のプッシュ登録を確認する：** iOS の場合は、[APNs へのプッシュ通知の登録]({{site.baseurl}}/developer_guide/platform_integration_guides/swift/push_notifications/integration/#step-1-register-for-push-notifications-with-apns)に関するプッシュ統合ガイドのステップ 1 を再確認します。アプリの起動が完了する前に、デリゲートオブジェクトが同期的に割り当てられるようにしてください。このステップは `application:didFinishLaunchingWithOptions:` メソッドで完了する必要があります。
 4. **統合をテストする：** 調整後、iOS と Android の両方のデバイスでプッシュ通知の動作をテストし、問題が解決したことを確認します。
 
-## プッシュタイトルが iOS で切れるが Android では正しく表示される
+## .p8 認証キーへの移行
 
-プッシュ通知のタイトルに Liquid パーソナライゼーションが含まれており、Android では完全に表示されるのに iOS では途中で切れる場合、これは各プラットフォームがタイトル文字列内の改行文字（`\n`）を処理する方法の違いが原因です。
+Apple の `.p8` 認証キーは、Braze での APNs プッシュに必要なアプローチです。レガシーの証明書ファイルタイプとは異なり、`.p8` キーは有効期限がなく、単一のキーですべてのアプリをサポートするため、年次の証明書更新が不要になり、プッシュ配信の失敗リスクを軽減できます。
 
-Android はプッシュタイトル文字列から空白、タブ、改行を自動的に除去します。iOS はそうしないため、Liquid 変数が末尾に改行を含む値に解決されると、iOS はその改行をタイトルの終わりとして扱い、残りのテキストを切り捨てます。
-
-例えば、`Regarding your flight from {% raw %}{{${city_from}}}{% endraw %} to {% raw %}{{${city_to}}}{% endraw %}` のようなタイトルは、`city_from` 変数に末尾の改行が含まれている場合、iOS では `Regarding your flight from` と表示される可能性があります。
-
-これを修正するには、`strip_newlines` Liquid フィルターを適用し、タイトル全体を `capture` ブロックで囲みます。
-
-{% raw %}
-```liquid
-{% capture title %}Regarding your flight from {{${city_from}}} to {{${city_to}}}{% endcapture %}
-{{ title | strip_newlines }}
-```
-{% endraw %}
+現在 `.p12` または `.pem` 証明書を使用している場合は、できるだけ早く `.p8` キーに移行してください。`.p8` キーの作成とアップロードの手順については、「[APNs プッシュ証明書をアップロードする]({{site.baseurl}}/developer_guide/push_notifications/?sdktab=swift)」を参照してください。Apple の開発者アカウントから `.p8` キーを生成する方法については、Apple のガイダンス「[Communicate with APNs using authentication tokens](https://developer.apple.com/help/account/capabilities/communicate-with-apns-using-authentication-tokens/)」を参照してください。
 
 ## Web プッシュ通知が期待どおりに動作しない
 

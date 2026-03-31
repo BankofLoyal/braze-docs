@@ -15,6 +15,12 @@ channel: email
 
 Se vários usuários com e-mails correspondentes estiverem em um segmento para receber uma campanha, um perfil de usuário aleatório com esse endereço de e-mail será escolhido no momento do envio. Dessa forma, o e-mail é enviado apenas uma vez e é deduplicado, garantindo que o e-mail não chegue ao mesmo endereço várias vezes.
 
+Os cenários a seguir podem fazer parecer que um usuário recebeu um e-mail duas vezes:
+
+- **Ocorreu um erro durante a criação da campanha ou do Canvas:** O usuário pode não receber literalmente o mesmo envio duas vezes, mas pode receber dois e-mails separados com o mesmo assunto. Quando uma campanha ou Canvas é duplicado, verifique os detalhes de configuração do e-mail, como imagens ou linhas de assunto. Você também pode consultar os changelogs para ver se a campanha ou o Canvas foi modificado após o lançamento — uma duplicata pode compartilhar a mesma linha de assunto que a original quando o usuário a recebeu.
+- **Vários perfis de usuário têm encaminhamento de e-mail:** Se um usuário tiver várias contas em um determinado app, mas uma conta encaminhar e-mails, o usuário receberá a campanha uma vez por caixa de entrada; o e-mail pode aparecer duas vezes na caixa de entrada para onde as mensagens são encaminhadas. Apenas alguns provedores indicam quando um e-mail foi encaminhado de outra conta.
+- **Configuração de e-mail do destinatário:** Alguns clientes mesclam caixas de entrada ("caixa de entrada universal"). Se a mesma campanha direcionar várias contas que compartilham uma caixa de entrada, pode parecer que uma pessoa recebeu a campanha duas vezes quando, na verdade, dois perfis distintos foram contatados. O destinatário pode confirmar se várias contas estão combinadas em uma caixa de entrada.
+
 Note que essa deduplicação ocorre quando os usuários direcionados estão incluídos no mesmo envio. As campanhas disparadas podem resultar em vários envios para o mesmo endereço de e-mail (mesmo dentro de um período em que os usuários poderiam ser excluídos devido à reelegibilidade) se diferentes usuários com endereços de e-mail correspondentes registrarem o evento de gatilho em momentos diferentes. Os usuários não são deduplicados por e-mail na entrada do Canvas, portanto, é possível que não sejam deduplicados além da primeira etapa de um Canvas se estiverem progredindo em momentos ligeiramente diferentes devido ao limite de frequência de entrada. Quando um usuário vinculado a um determinado endereço de e-mail abre ou clica em um e-mail, todos os perfis de usuário que compartilham esse endereço de e-mail são marcados como tendo aberto ou clicado na campanha.
 
 #### Exceção: campanhas disparadas por API
@@ -45,13 +51,21 @@ As métricas de entrega de e-mail (entregas, bounces e taxa de spam) podem não 
 
 Soft bounces são e-mails que são devolvidos devido a um problema temporário ou transitório, como "caixa de correio cheia", "servidor temporariamente indisponível" e outros. Se um e-mail com soft bounce ainda não tiver sido entregue após 72 horas, esse e-mail não será contabilizado nas métricas de entrega da campanha.
 
+### O que é um loop de feedback de e-mail?
+
+Um loop de feedback de e-mail (FBL) permite que os remetentes monitorem sua reputação identificando campanhas que recebem um alto volume de reclamações. Para ver as etapas de implementação de um loop de feedback do Gmail, consulte o artigo [Loop de Feedback do Google](https://support.google.com/a/answer/6254652).
+
 ### O que são pixels de rastreamento de abertura?
 
 [Os pixels de rastreamento de abertura]({{site.baseurl}}/user_guide/administrative/app_settings/email_settings/#changing-location-of-tracking-pixel) aproveitam o domínio de rastreamento de cliques de e-mail de um remetente para rastrear eventos de abertura de e-mail. O pixel é uma tag de imagem anexada ao HTML do e-mail. É mais comumente o último elemento HTML dentro da tag body. Quando um usuário carrega seu e-mail, é feita uma solicitação para preencher a imagem do domínio de rastreamento da marca, que registra um evento de abertura.
 
 ### O que acontece quando uma campanha de e-mail ou um Canvas é interrompido?
 
-Os usuários serão impedidos de entrar no Canvas e nenhuma outra mensagem será enviada. Para campanhas de e-mail e canvas, o botão Parar não significa que o envio será interrompido imediatamente. Isso ocorre porque, quando as solicitações de envio são enviadas, elas não podem ser impedidas de serem entregues ao usuário.
+Os usuários são impedidos de entrar no Canvas e nenhuma outra mensagem é enviada. 
+
+Para campanhas de e-mail e canvas, o botão Parar não interrompe o envio imediatamente. Quando as solicitações de envio são enviadas, elas não podem ser impedidas de serem entregues ao usuário, o que pode acontecer após algum atraso. 
+
+Embora a Braze não envie mais solicitações depois que a campanha ou o Canvas for interrompido, a análise de dados ainda pode aumentar enquanto o ESP termina de processar as solicitações que já estão em andamento.
 
 ### Por que estou vendo mais cliques em e-mails do que aberturas?
 
@@ -75,6 +89,12 @@ Para obter práticas recomendadas sobre como lidar com essas respostas, consulte
 ### A Braze pode rastrear links de cancelamento de inscrição contados para a métrica "Cancelamento de inscrição"?
 
 A Braze rastreia links de cancelamento de inscrição se o seguinte Liquid for usado nos e-mails: {%raw%}`${set_user_to_unsubscribed_url}`{%endraw%}
+
+### Por que estou vendo um número diferente de cancelamentos de inscrição em relação aos cliques no meu link de cancelamento de inscrição?
+
+Se houver mais _Cancelamentos de inscrição_ do que usuários que clicaram no link de cancelamento de inscrição no corpo do e-mail, as ações do cabeçalho list-unsubscribe geralmente explicam a diferença — um clique no cabeçalho list-unsubscribe conta como um _Cancelamento de inscrição_, mas não como um _Clique_ no link do corpo.
+
+Se o número total de cliques no link de cancelamento de inscrição no corpo for maior que o número de _Cancelamentos de inscrição_, os usuários podem ter clicado no link mais de uma vez.
 
 ### Posso adicionar um link "visualizar este e-mail em um navegador" aos meus e-mails?
 
@@ -100,10 +120,56 @@ Para mais detalhes sobre como o escaneamento do lado do servidor pode afetar as 
 
 - Mudanças na proporção do seu público usando o Apple Mail ou outros clientes de e-mail com recursos de privacidade.
 - Atualizações nas funcionalidades de privacidade do provedor de e-mail ou comportamentos de detecção de bots.
-- Mudanças na segmentação ou direcionamento do seu público.
+- Mudanças na segmentação ou no direcionamento do seu público.
 
 As porcentagens de abertura de máquina não são uma medida confiável de engajamento real. Para uma visão mais precisa da performance do e-mail, concentre-se em *Outras Aberturas* (aberturas não-máquina) e *Cliques Únicos*. Você também pode comparar essas métricas ao longo do tempo usando o [Dashboard de Performance de E-mail]({{site.baseurl}}/user_guide/analytics/dashboard/email_performance_dashboard/).
 
 ### A métrica *Aberturas Únicas* inclui *Aberturas de Máquina*?
 
 Sim. *Aberturas Únicas* inclui *Aberturas de Máquina*. Na página **Análise de dados da campanha** e no **Construtor de Relatórios**, você pode visualizar ambas as métricas.
+
+### Por que meu volume de entrega de e-mail não corresponde ao meu volume de envio?
+
+Depois que um e-mail é enviado, a caixa de entrada do destinatário decide quando ele será entregue. As mensagens podem ser adiadas por horas ou dias devido a uma caixa de correio cheia, limitação do ESP a partir de um determinado IP e motivos semelhantes.
+
+Quando mensagens adiadas são entregues em um dia diferente do dia de envio, as _Entregas_ podem exceder os _Envios_ para o mesmo intervalo de datas. Quando muitos adiamentos são entregues em um único dia, os _Envios_ podem exceder as _Entregas_ para esse intervalo.
+
+### Por que estou vendo um aviso para incluir um link de cancelamento de inscrição quando meu e-mail já tem um?
+
+Esse aviso pode persistir para campanhas duplicadas a partir de uma campanha que não tinha um link de cancelamento de inscrição. Para resolvê-lo:
+
+- Para e-mails HTML, acesse a guia **Texto simples** e selecione **Regenerar a partir do HTML**.
+- Após duplicar, duplique a variante e remova a variante original. **Não** selecione a variante original, ou o aviso pode ser transferido.
+
+### Quais são os motivos pelos quais meu usuário não recebeu uma campanha de e-mail?
+
+Os motivos pelos quais um usuário não recebeu uma campanha de e-mail incluem:
+
+- Ele não era elegível para receber o e-mail.
+- O endereço de e-mail dele é inválido ou não existe.
+- Ele pode ter perdido ou excluído a mensagem.
+- A mensagem pode estar na pasta de spam dele.
+
+### Como posso otimizar imagens no Outlook?
+
+O Outlook frequentemente usa renderização no estilo Microsoft Word, o que pode adicionar uma borda ao redor das imagens. Você pode envolver o conteúdo para que ele fique oculto em clientes Office usando comentários condicionais padrão, por exemplo:
+
+```html
+<!--[if !mso]><!-- -->
+<span>Content hidden in Outlook desktop</span>
+<!--<![endif]-->
+```
+
+### Posso usar imagens SVG ou WEBP nas minhas mensagens de e-mail?
+
+Imagens SVG não são renderizadas no Gmail web ou Gmail iOS. O WEBP não é suportado de forma consistente entre os clientes. Em vez disso, use formatos amplamente suportados, como PNG ou JPEG, para que as imagens sejam renderizadas de forma confiável.
+
+### Variáveis Liquid atribuídas em uma parte do criador de mensagens podem ser usadas em outra?
+
+Não. Cada parte do e-mail (assunto, corpo, cabeçalhos, botões e assim por diante) é gerada separadamente, então variáveis Liquid atribuídas em um campo não estão disponíveis em outro. Atribua as variáveis em cada campo que precisar delas.
+
+### Meu modelo de e-mail está faltando. Onde ele está?
+
+Acesse **Modelos** > **Modelos de e-mail**. Você pode filtrar por tipo (HTML ou arrastar e soltar).
+
+Confirme que você tem permissão para visualizar modelos — consulte [Permissões de usuário]({{site.baseurl}}/user_guide/administrative/app_settings/manage_your_braze_users/user_permissions/).
