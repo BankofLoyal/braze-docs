@@ -57,4 +57,4 @@ Braze calculates an expiration time of one day as 24 hours after users are eligi
 
 ### How can in-app messages be dismissed, and what are the associated click events?
 
-Braze logs clicks and events differently for traditional and drag-and-drop in-app messages. For details on the relationship between dismissals and click events, refer to the [Report metrics glossary]({{site.baseurl}}/user_guide/data/activation/report_metrics/) and filter for "In-App Message".
+Braze logs clicks and events differently for traditional and drag-and-drop in-app messages. For information on the relationship between dismissals and click events, refer to the [Report metrics glossary]({{site.baseurl}}/user_guide/data/activation/report_metrics/) and filter for "In-App Message".
