@@ -30,7 +30,7 @@ Braze sends the following types of in-app messages to user devices upon session 
 
 ### `inapp` (standard)
 
-An `inapp` (or "[standard]({{site.baseurl}}/user_guide/message_building_by_channel/in-app_messages/#standard-message-types)") in-app message is already templated with the necessary information, such as custom attributes that Braze already knows. Generally, once the in-app message downloads to the device, the trigger event causes the SDK to display the `inapp` in-app message even when the device is offline or on airplane mode.
+An `inapp` (or "[standard]({{site.baseurl}}/user_guide/message_building_by_channel/in-app_messages/#standard-message-types)") in-app message is already templated with the necessary information, such as custom attributes that Braze already knows. Generally, when the in-app message downloads to the device, the trigger event causes the SDK to display the `inapp` in-app message even when the device is offline or on airplane mode.
 
 ### `templated_iam` (templated)
 
