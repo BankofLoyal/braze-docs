@@ -26,7 +26,7 @@ In-app messages can't be triggered through the API or by API events&#8212;only c
 
 ## Types of in-app messages
 
-Braze sends two types of in-app messages to user devices upon session start: `inapp` and `templated_iam`. As a dashboard user, you won't see the different types, but Braze handles them differently depending on the setup and content.
+Braze sends the following types of in-app messages to user devices upon session start: `inapp` and `templated_iam`. As a dashboard user, you don't see the different types, but Braze handles them differently depending on the setup and content.
 
 ### `inapp` (standard)
 
