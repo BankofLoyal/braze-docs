@@ -80,7 +80,7 @@ The following table explains when each label is used and what it means.
 | **Current Audience** | Braze can compute the default statistic with a full scan of workspace profiles, so the displayed audience size is a current, unsampled count (still subject to channel reachability, subscription rules, and other targeting options). |
 {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
-For sampling behavior, **Calculate exact statistics**, and segment **Reachable users**, see [Measure segment size]({{site.baseurl}}/user_guide/engagement_tools/segments/measuring_segment_size/).
+For details on sampling behavior, **Calculate exact statistics**, and segmenting **Reachable users**, see [Measure segment size]({{site.baseurl}}/user_guide/engagement_tools/segments/measuring_segment_size/).
 
 {% if include.channel == "Content Card" %}
 
