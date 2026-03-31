@@ -2539,6 +2539,8 @@ validurls['/docs/partners/data_and_infrastructure_agility/data_warehouses/snowfl
 validurls['/docs/partners/data_and_infrastructure_agility/data_warehouses/snowflake/user_attributes'] = '/docs/partners/data_and_analytics/data_warehouses/snowflake/user_attributes';
 validurls['/docs/partners/data_and_infrastructure_agility/leads_capture/facebook_via_zapier'] = '/docs/partners/data_and_analytics/leads_capture/facebook_via_zapier';
 validurls['/docs/partners/data_and_infrastructure_agility/leads_capture/justuno'] = '/docs/partners/data_and_analytics/leads_capture/justuno';
+validurls['/docs/partners/just_words/'] = '/docs/partners/message_personalization/dynamic_content/content_optimization_testing/just_ai/';
+validurls['/docs/partners/message_personalization/dynamic_content/content_optimization_testing/just_words/'] = '/docs/partners/message_personalization/dynamic_content/content_optimization_testing/just_ai/';
 validurls['/docs/partners/data_and_infrastructure_agility/leads_capture/outgrow'] = '/docs/partners/data_and_analytics/leads_capture/outgrow';
 validurls['/docs/partners/message_orchestration/channel_extensions/loyalty/viralsweep'] = '/docs/partners/data_and_analytics/leads_capture/viralsweep';
 validurls['/docs/partners/message_orchestration/channel_extensions/loyalty/antavo'] = '/docs/partners/data_and_analytics/loyalty/antavo';

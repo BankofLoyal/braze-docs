@@ -60,9 +60,13 @@ The following are all available permissions you can assign at the Team level. An
 - View Campaigns
 - Edit Campaigns
 - Archive Campaigns
+- Launch Campaigns
+- Approve and Deny Campaigns
 - View Canvases
 - Edit Canvases
 - Archive Canvases
+- Launch Canvases
+- Approve and Deny Canvases
 - View Content Blocks
 - Edit Content Blocks
 - Archive Content Blocks
@@ -72,6 +76,10 @@ The following are all available permissions you can assign at the Team level. An
 - Archive Feature Flags
 - View Segments
 - Edit Segments
+- Archive Segments
+- View IAM Templates
+- Edit IAM Templates
+- Archive IAM Templates
 - View Email Templates
 - Edit Email Templates
 - Archive Email Templates
@@ -83,20 +91,15 @@ The following are all available permissions you can assign at the Team level. An
 - View Media Library Assets
 - Edit Media Library Assets
 - Delete Media Library Assets
-- Launch Campaigns
-- Launch Canvases
 - Export User Data
 - View User Profiles (PII Redacted)
 - Edit Dashboard Users
-- Approve Campaigns
-- Approve Canvases
 - Edit Canvas Templates
 - View Canvas Templates
 - Archive Canvas Templates
 - View Dashboard Reports
 - Edit Dashboard Reports
 - Delete Dashboard Reports
-- View PII
 
 {% endtab %}
 {% tab Legacy permissions %}
