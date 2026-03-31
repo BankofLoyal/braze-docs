@@ -139,15 +139,16 @@ Refer to [Data types]({{site.baseurl}}/user_guide/engagement_tools/canvas/create
 
 ### Delays in sending with Connected Content
 
-All users in a batch are processed before any users advance. After batch processing completes, successful users move to the next step while failed users are retried separately—successful users don't wait for retry attempts to succeed before advancing.
+All users in a batch are processed before any users advance. After batch processing completes, successful users move to the next step, while failed users are retried separately—successful users don't wait for retry attempts to succeed before advancing.
 
-**Retry behavior**: Context steps (and all Canvas steps) use Canvas-specific retry mechanisms, not the standard Connected Content retry behavior. If a Connected Content call fails, Braze retries the step approximately 13 times with exponential backoff. If all retries fail, the user exits the Canvas.
+#### Retry behavior
 
-{% alert note %}
+Context steps (and all Canvas steps) use Canvas-specific retry mechanisms, not the standard Connected Content retry behavior. If a Connected Content call fails, Braze retries the step approximately 13 times with exponential backoff. Connected Content calls can retry more than five times in steps that aren't Message steps. If all retries fail, the user exits the Canvas.
+
 The `:retry` tag used in standard Connected Content doesn't apply to Connected Content calls made within Canvas steps. Canvas steps have their own retry logic optimized for Canvas workflows.
-{% endalert %}
 
-**Processing time**: The time it takes to process all users through a Context step depends on:
+The time it takes to process all users through a Context step depends on:
+
 - The number of users entering the step
 - Whether Connected Content is used (and its response time)
 - The batch size (default 1,000 users per batch)
@@ -221,7 +222,7 @@ Your appointment is scheduled for {{canvas_entry_properties.${appointment_time} 
 This results in the following message: 
 
 ```
-Your appointment is scheduled for 2025-08-05 8:15am, we'll see you then!
+Your appointment is scheduled for 2025-08-05 8:15 am, we'll see you then!
 ```
 
 Because the America/Los Angeles time zone is specified using Liquid, the timestamp here is in PST.
