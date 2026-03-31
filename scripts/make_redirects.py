@@ -115,6 +115,42 @@ def parse_redirect(line: str):
     return (m.group(1), m.group(2)) if m else None
 
 
+# Find the best insertion point for a new redirect by matching the most
+# leading path segments with existing entries, so new entries land near
+# similar ones rather than at the end of the file.
+def find_insertion_point(lines, new_key):
+    new_segments = new_key.rstrip("/").strip("/").split("/")
+    placeholder_idx = None
+    best_match_len = 0
+    last_best_idx = None
+
+    for i, line in enumerate(lines):
+        if line.strip() == "// validurls['OLD'] = 'NEW';":
+            placeholder_idx = i
+            continue
+        parsed = parse_redirect(line)
+        if not parsed:
+            continue
+        existing_segments = parsed[0].rstrip("/").strip("/").split("/")
+        match_len = 0
+        for a, b in zip(new_segments, existing_segments):
+            if a == b:
+                match_len += 1
+            else:
+                break
+        if match_len > best_match_len:
+            best_match_len = match_len
+            last_best_idx = i
+        elif match_len == best_match_len and match_len > 0:
+            last_best_idx = i
+
+    if last_best_idx is not None and best_match_len > 0:
+        return last_best_idx + 1
+    if placeholder_idx is not None:
+        return placeholder_idx
+    return len(lines)
+
+
 # Remove duplicate lines while preserving single blank lines
 def remove_duplicates(lines):
     unique_lines = []
@@ -175,7 +211,8 @@ def main():
             parsed = parse_redirect(redirect_line)
             comp = (norm_for_compare(parsed[0]), norm_for_compare(parsed[1])) if parsed else None
             if comp and comp not in existing_norm:
-                lines.append(redirect_line + "\n")
+                idx = find_insertion_point(lines, parsed[0])
+                lines.insert(idx, redirect_line + "\n")
                 existing_norm.add(comp)
                 redirects_added += 1
 

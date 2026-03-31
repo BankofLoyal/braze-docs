@@ -102,6 +102,8 @@ Puedes elegir una de las tres formas en que los usuarios pueden entrar en tu Can
     En este ejemplo, según las opciones basadas en el tiempo, los usuarios entran en este Canvas todos los martes a las 12 p. m. en su zona horaria local cada semana, comenzando el 14 de noviembre de 2025 hasta el 31 de diciembre de 2025.
 
     ![La página «Horario de entrada» con el tipo establecido en «Programado». Debido a la selección, se muestran opciones basadas en el tiempo, incluyendo frecuencia, hora de inicio, recurrencia, días y más.]({% image_buster /assets/img_archive/Canvas_Scheduled_Delivery.png %})
+
+    Cuando se utiliza la entrega en zona horaria local, Braze evalúa la elegibilidad de entrada dos veces: primero en la hora de Samoa (UTC+13 o UTC+14 durante el horario de verano) en el día programado, y de nuevo en la zona horaria local del usuario. Un usuario debe ser elegible en ambas comprobaciones para entrar en el Canvas. Si tus filtros de entrada utilizan ventanas de tiempo relativas (por ejemplo, «hace más de 2 días»), es posible que el período de 24 horas no haya transcurrido en el momento de la primera comprobación, lo que provocaría que los usuarios entren un día tarde. Para evitar esto, utiliza una ventana de tiempo más amplia, como al menos dos días. Para más detalles, consulta [¿Cuándo evalúa Braze a los usuarios para la entrega en zona horaria local?]({{site.baseurl}}/user_guide/engagement_tools/campaigns/faq/#when-does-braze-evaluate-users-for-local-time-zone-delivery)
   {% endtab %}
   {% tab Action-Based Delivery %}
     Con la entrega basada en acciones, los usuarios entrarán en el Canvas y empezarán a recibir mensajes cuando realicen determinadas acciones, como abrir tu aplicación, realizar una compra o desencadenar un evento personalizado.
@@ -193,7 +195,7 @@ En el caso de los Canvas dirigidos a los canales de correo electrónico y push, 
 - **El usuario B** tiene la adhesión voluntaria al correo electrónico, pero no está habilitado para push. Este usuario recibirá el correo electrónico pero no recibirá el push.
 - **El usuario C** ha optado por la adhesión voluntaria al correo electrónico y está habilitado para push. Este usuario recibirá tanto el correo electrónico como el push.
 
-Para ello, configura los **Ajustes de suscripción** para enviar este Canvas «solo a los usuarios que hayan dado su consentimiento». Esta opción garantizará que solo los usuarios que hayan optado por recibirla reciban tu correo electrónico, y Braze solo enviará tu push a los usuarios que estén habilitados para push de forma predeterminada. 
+Para ello, configura los **Ajustes de suscripción** para enviar este Canvas «solo a los usuarios que hayan dado su consentimiento». Esta opción garantizará que solo los usuarios con adhesión voluntaria reciban tu correo electrónico, y Braze solo enviará tu push a los usuarios que estén habilitados para push de forma predeterminada. 
 
 Estos ajustes de suscripción se aplican en cada paso, lo que significa que no hay ningún efecto sobre la audiencia de entrada. Por lo tanto, esta configuración se utiliza para evaluar la elegibilidad de un usuario para recibir cada paso en Canvas.
 
@@ -203,7 +205,7 @@ Con esta configuración, no incluyas ningún filtro en el paso **Audiencia objet
 
 Si lo deseas, especifica las horas tranquilas (el tiempo durante el cual no se enviarán tus mensajes) para tu Canvas. Marca **Activar horas tranquilas** en tu **Configuración de envío**. A continuación, selecciona tus horas tranquilas en la hora local de tu usuario y la acción que seguirá si el mensaje se desencadena dentro de esas horas tranquilas.
 
-![La página «Horas tranquilas» muestra una casilla para habilitar las horas tranquilas. Si se habilita, se puede establecer la hora de inicio, la hora de finalización y el comportamiento de alternativa.]({% image_buster /assets/img/quiet_hours.png %})
+![La página «Horas tranquilas» muestra una casilla para habilitar las horas tranquilas. Si se habilita, se puede establecer la hora de inicio, la hora de finalización y el comportamiento alternativo.]({% image_buster /assets/img/quiet_hours.png %})
 
 ### Paso 2: Construye tu Canvas
 

@@ -1,17 +1,9 @@
-{% if include.section == "Prerequisites" %}
-## Conditions préalables
+{% if include.section == "multi-language prerequisites" %}
 
-Pour modifier et gérer [la prise en charge multilingue]({{site.baseurl}}/multi_language_support/), vous devez disposer des [autorisations utilisateur]({{site.baseurl}}/user_guide/administrative/app_settings/manage_your_braze_users/user_permissions/) suivantes pour votre espace de travail :
-
-- Afficher les paramètres de localisation
-- Modifier les paramètres de localisation
-- Supprimer les paramètres de localisation
-
-Pour ajouter la locale à un message, vous devez disposer de l'autorisation « Modifier les campagnes ».
-
-{% alert important %}
-La prise en charge multilingue est actuellement en accès anticipé. Contactez votre Account Manager Braze si vous souhaitez participer à cet accès anticipé.
-{% endalert %}
+| Fonctionnalité | Autorisations utilisateur requises |
+| --- | --- |
+| Locales multilingues | Vous devez disposer des autorisations suivantes pour créer et gérer les locales multilingues :<br><br> {::nomarkdown}Autorisations granulaires : <ul><li>Modifier les paramètres de localisation</li><li>Supprimer les paramètres de localisation</li></ul> Autorisations héritées : <ul><li> Gérer les paramètres multilingues</li></ul>{:/} |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
 {% endif %}
 
