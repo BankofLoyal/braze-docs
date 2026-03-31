@@ -30,6 +30,8 @@ Before you start, you need the following:
 | Fullstory account | A Fullstory account is required to take advantage of this partnership. |
 {: .reset-td-br-1 .reset-td-br-2 role=“presentation”}
 
+{% alert important%} Braze Agents , Canvas Context, and Connected Content Authorization Tokens are all in Early Access. If interested in leveraging this solution, speak to your Braze CSM about enabling these tools. {%endalert%}
+
 ## Integrate Fullstory
 
 ### Step 1: Set up Fullstory for Session Summary API enablement {#step-1}
@@ -54,6 +56,8 @@ In the response to this request, Fullstory provides a session profile ID. This p
 2. Name the authentication “fullstory”.
 3. Add the header key “Authorization”. Supply the header value Fullstory provided in the previous step. 
 4. Under **Allowed Domain**, enter **api.fullstory.com**.
+
+![Screenshot of Braze showing the Edit Credential fields]({% image_buster /assets/img/fullstory/1.png %}){: style="max-width:50%;"}
 
 ## Use cases
 
@@ -146,6 +150,9 @@ You can leverage any of the data available in the object above using the context
 
 {% alert note %}
 To avoid unexpected behavior, include an Audience Path step after the Context step, which can drop users out of the context if their Context tag is empty, indicating the Connected Content call failed or otherwise returned no information.
+
+![Screenshot of Braze Audience step]({% image_buster /assets/img/fullstory/3.png %})
+
 {% endalert %}
 
 ### Produce appropriate copy
