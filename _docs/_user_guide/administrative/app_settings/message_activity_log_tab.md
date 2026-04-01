@@ -37,6 +37,7 @@ You can filter by the following content logged in the **Message Activity Log**:
 - Live Activity errors
 - Bad user trigger errors
 - Braze Agents [daily invocation limit]({{site.baseurl}}/user_guide/brazeai/agents/deploying_agents/#monitor-your-agent) errors
+- Braze Agents unavailable [model]({{site.baseurl}}/user_guide/brazeai/agents/reference/#models) errors
 
 These messages can come from our own system, your apps or platforms, or our third-party partners. This can result in an infinite number of messages that can appear in this log.
 
@@ -113,6 +114,7 @@ The **Message Activity Log** shows test logs for these messaging channels:
 - SMS
 - WhatsApp
 - LINE
+- KakaoTalk
 - Webhook
 
 Test send logs are not available for the following channels: email, Content Cards, in-app messages, and push.

@@ -58,6 +58,10 @@ glossaries:
     description: Segments users by when their user profile was created. If a user was added by CSV or API, then this filter reflects the date they were added. If the user isn't added by CSV or API and has their first session tracked by the SDK, then this filter reflects the date of that first session.
     tags:
       - Other Filters
+  - name: Created From
+    description: "Segments users by where their user profile was created.<br><br>The following values are supported:<br>- SDK (<code>sdk</code>): User profile created through the Braze SDK.<br>- REST API (<code>rest</code>): User profile created through the Braze REST API.<br>- Push Token Import (<code>pti</code>): User profile created through push token import.<br>- CSV (<code>csv</code>): User profile created through CSV import.<br>- Demo (<code>demo</code>): User profile created through demo data.<br>- SMS (<code>sms</code>): User profile created through SMS.<br>- Shopify (<code>shopify</code>): User profile created through Shopify.<br>- WhatsApp (<code>whats_app</code>): User profile created through WhatsApp.<br>- Provider Event (<code>provider_event</code>): User profile created through a provider event.<br>- Provider Sync (<code>provider_sync</code>): User profile created through a provider sync.<br>- Landing Page (<code>landing_page</code>): User profile created through a landing page."
+    tags:
+      - Other Filters
   - name: Nested Custom Attributes
     description: Attributes that are the properties of custom attributes.<br><br>When filtering a nested time custom attribute, you can choose to filter based on "Day of Year" or "Time". "Day of Year" checks only the month and day for comparison. "Time" compares the full timestamp, including the year.
     tags:
@@ -175,7 +179,7 @@ glossaries:
     tags:
       - Retargeting
   - name: Last Received SMS
-    description: Segments your users by the time that the last message was delivered to the SMS provider. This doesn't guarantee that the message was delivered to the user's device. (24-hour period)<br><br>Time zone:<br>Company's Time Zone
+    description: Segments your users by the time that the last SMS, MMS, or RCS message was delivered to the SMS or RCS provider. This doesn't guarantee that the message was delivered to the user's device. (24-hour period)<br><br>Time zone:<br>Company's Time Zone
     tags:
       - Retargeting
   - name: Last Received Webhook
@@ -191,15 +195,15 @@ glossaries:
     tags:
       - Devices
   - name: Clicked/Opened Campaign
-    description: Filter by interaction with a specific campaign. For email messaging, the open event includes both machine opens and non-machine opens.<br><br> For email, this also includes the option to filter by "opened any email (machine opens)" and "opened any email (other opens)". Clicks on unsubscribe links and preference centers don't count toward this filter. If multiple users share the same email address:<br>- When the email is opened or clicked, all other users with that same email address also have their profiles updated. <br>- If the original user changes their email address after the message is sent and before the open or click, the open or click gets applied to all remaining users with that email address instead of the original user.<br><br>For SMS, an interaction is defined as:<br>- The user last sent a reply SMS matching a given keyword category. This is attributed to the most recent campaign received by all users with this phone number. The campaign must have been received in the last four hours.<br>- The user last selected any shortened link in an SMS message that has user click tracking turned on, from a given campaign.
+    description: Filter by interaction with a specific campaign. For email messaging, the open event includes both machine opens and non-machine opens.<br><br> For email, this also includes the option to filter by "opened any email (machine opens)" and "opened any email (other opens)". Clicks on unsubscribe links and preference centers don't count toward this filter. If multiple users share the same email address:<br>- When the email is opened or clicked, all other users with that same email address also have their profiles updated. <br>- If the original user changes their email address after the message is sent and before the open or click, the open or click gets applied to all remaining users with that email address instead of the original user.<br><br>For SMS and RCS, an interaction is defined as:<br>- The user last sent a reply SMS or RCS matching a given keyword category. This is attributed to the most recent campaign received by all users with this phone number. The campaign must have been received in the last four hours.<br>- The user last selected any shortened link in an SMS or RCS message that has user click tracking turned on, from a given campaign.
     tags:
       - Retargeting
   - name: Clicked/Opened Campaign or Canvas With Tag
-    description: Filter by interaction with a specific campaign that has a specific tag. For email messaging, the open event includes both machine opens and non-machine opens.<br><br> For email, this includes the option to filter by "opened any email (machine opens)" and "opened any email (other opens)". If multiple users share the same email address:<br>- When the email is opened or clicked, all other users with that same email address also have their profiles updated. <br>- If the original user changes their email address after the message is sent and before the open or click, the open or click gets applied to all remaining users with that email address instead of the original user.<br><br>For SMS, an interaction is defined as:<br>- The user last sent a reply SMS matching a given keyword category. This is attributed to the most recent campaign received by all users with this phone number. The campaign must have been received in the last four hours.<br>- When the user last selected any shortened link in an SMS message that has user click tracking turned on, from a given campaign or Canvas step with tag.
+    description: Filter by interaction with a specific campaign that has a specific tag. For email messaging, the open event includes both machine opens and non-machine opens.<br><br> For email, this includes the option to filter by "opened any email (machine opens)" and "opened any email (other opens)". If multiple users share the same email address:<br>- When the email is opened or clicked, all other users with that same email address also have their profiles updated. <br>- If the original user changes their email address after the message is sent and before the open or click, the open or click gets applied to all remaining users with that email address instead of the original user.<br><br>For SMS and RCS, an interaction is defined as:<br>- The user last sent a reply SMS or RCS matching a given keyword category. This is attributed to the most recent campaign received by all users with this phone number. The campaign must have been received in the last four hours.<br>- When the user last selected any shortened link in an SMS or RCS message that has user click tracking turned on, from a given campaign or Canvas step with tag.
     tags:
       - Retargeting
   - name: Clicked/Opened Step
-    description: Filter by interaction with a specific Canvas component. For email messaging, the open event includes both machine opens and non-machine opens.<br><br>For email, this includes the option to filter by "opened any email (machine opens)" and "opened any email (other opens)".<br><br>For SMS, an interaction is defined as:<br>- The user last sent a reply SMS matching a given keyword category. This is attributed to the most recent campaign received by all users with this phone number. The campaign must have been received in the last four hours. <br>- The user last selected any shortened link in an SMS message that has user click tracking turned on, from a given Canvas step.
+    description: Filter by interaction with a specific Canvas component. For email messaging, the open event includes both machine opens and non-machine opens.<br><br>For email, this includes the option to filter by "opened any email (machine opens)" and "opened any email (other opens)".<br><br>For SMS and RCS, an interaction is defined as:<br>- The user last sent a reply SMS or RCS matching a given keyword category. This is attributed to the most recent campaign received by all users with this phone number. The campaign must have been received in the last four hours. <br>- The user last selected any shortened link in an SMS or RCS message that has user click tracking turned on, from a given Canvas step.
     tags:
       - Retargeting
   - name: Clicked Alias in Campaign
@@ -231,7 +235,7 @@ glossaries:
     tags:
       - Retargeting
   - name: Last Sent Specific SMS Inbound Keyword Category
-    description: Segments your users by when they last sent an SMS to a specific subscription group within a specific keyword category.
+    description: Segments your users by when they last sent an SMS, MMS, or RCS to a specific subscription group within a specific keyword category.
     tags:
       - Retargeting
   - name: Converted From Campaign
@@ -275,7 +279,7 @@ glossaries:
     tags:
       - Retargeting
   - name: Subscription Group
-    description: Segments your users by their subscription group for email, SMS/MMS, or WhatsApp. Archived Groups do not appear and cannot be used.
+    description: Segments your users by their subscription group for email, SMS, MMS, RCS, or WhatsApp. Archived Groups do not appear and cannot be used.
     tags:
       - Channel subscription behavior
   - name: Email Available
@@ -611,7 +615,7 @@ glossaries:
     tags:
       - Social activity
   - name: Phone Number
-    description: Segments your users by the E.164 formatted phone number field.<br><br> When a phone number is sent to Braze, Braze tries to coerce it into the <a href="/docs/user_guide/message_building_by_channel/sms/phone_numbers/user_phone_numbers/#importing-phone-numbers">e.164 format</a> that is used to send across SMS and WhatsApp channels. The coercion process can fail if the number isn't formatted properly, which results in the user profile having an unformatted phone number but not a sending phone number. This segment filter returns users by their e.164 formatted phone number (when available).<br><br>Use cases:<br> - Use this filter to understand the most accurate target audience size when sending SMS or WhatsApp messages.  <br>- Use regular expressions (regex) with this filter to segment by phone numbers with a specific country code. <br>- Use this filter to segment users by phone numbers that failed the e.164 coercion process.
+    description: Segments your users by the E.164 formatted phone number field.<br><br> When a phone number is sent to Braze, Braze tries to coerce it into the <a href="/docs/user_guide/message_building_by_channel/sms/phone_numbers/user_phone_numbers/#importing-phone-numbers">e.164 format</a> that is used to send across SMS, RCS, and WhatsApp channels. The coercion process can fail if the number isn't formatted properly, which results in the user profile having an unformatted phone number but not a sending phone number. This segment filter returns users by their e.164 formatted phone number (when available).<br><br>Use cases:<br> - Use this filter to understand the most accurate target audience size when sending SMS, RCS, or WhatsApp messages.  <br>- Use regular expressions (regex) with this filter to segment by phone numbers with a specific country code. <br>- Use this filter to segment users by phone numbers that failed the e.164 coercion process.
     tags:
       - Other Filters
 ---
