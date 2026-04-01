@@ -107,7 +107,7 @@ The email opening tracking pixel is an invisible 1 x 1&nbsp;px image and is auto
 
 ### Placement
 
-The default behavior in Braze is to append the tracking pixel to the bottom of your email, typically in a `<body>` tag. For the majority of users, this is the ideal place to put the pixel. 
+The default behavior in Braze is to append the tracking pixel to the bottom of your email, typically in a `<body>` tag. For the majority of users, this is the ideal place to put the pixel.
 
 While the pixel is already styled to cause as few visual changes as possible, any unintentional visual changes would be the least visible at the bottom of an email. This is also the default for email providers such as SendGrid and SparkPost.
 
