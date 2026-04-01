@@ -84,6 +84,15 @@ For a visual of how a user might be in a segment during the first check but not 
 
 ![Timeline of a user entering the segment before the first check, then leaving before the second.]({% image_buster /assets/img/local_time_zone_diagram.png %})
 
+{% details Timeline description %}
+
+1. User A enters the segment at 6:59 PST (4:59 Samoan).
+2. Braze checks for segment membership at 7 Samoan to determine which users are eligible to receive the campaign in the next 24 hours. User A is in the segmet at this point.
+3. The segment has a 24 hour window, so User A exits the segment 24 hours after they joined: 6:59 PST (4:59 Samoan).
+4. The local time campaign sends at 7 PST, so User A has already exited the segment.
+
+{% enddetails %}
+
 ### How do I schedule a local time zone campaign?
 
 When scheduling a campaign, choose to send it at a designated time and then select **Send campaign to users in their local time zone**.
