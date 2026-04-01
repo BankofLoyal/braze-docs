@@ -28,7 +28,7 @@ As a convenience, a summary of supported personalization tags are provided. For 
 | Card Attributes | `{{card.${api_id}}}` <br> `{{card.${name}}}` |
 | Geofencing Events | `{{event_properties.${geofence_name}}}` <br> `{{event_properties.${geofence_set_name}}}` |
 | Event Properties <br> (These are custom to your workspace.)| `{{event_properties.${your_custom_event_property}}}` |
-| Canvas Context Variables | `{{context}}` |
+| Canvas Context Variables | `{{context.${variable_name}}}` |
 | Custom Attributes <br> (These are custom to your workspace.) | `{{custom_attribute.${your_custom_attribute}}}` |
 | <a href='/docs/api/objects_filters/trigger_properties_object/'>API Trigger Properties</a> |`{{api_trigger_properties}}` |
 | Canvas Entry Properties | `{{context.${property_name}}}` |
