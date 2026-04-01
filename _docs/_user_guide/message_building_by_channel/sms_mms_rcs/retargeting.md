@@ -33,7 +33,7 @@ When building audiences with user retargeting, you may wish to include or exclud
 Users can be filtered by when they last received an SMS, MMS, or RCS or if they have received an SMS, MMS, or RCS from a specific campaign. Filters can be set in the **Target Audiences** step of the campaign builder. 
 
 {% alert note %}
-When a message is delivered, opened, or clicked, Braze updates data for all profiles that share the same phone number and email, so users who "received" the message can match this filter even if they were not originally sent it.
+When a message is received, opened, or clicked, Braze updates data for all profiles that share the same phone number as the profile that logged the interaction. Users who share a phone number with someone who received, opened, or clicked the message can match this filter even if they were not originally in the campaign or were not directly sent the message.
 {% endalert %}
 
 #### Filter by last received SMS/MMS/RCS

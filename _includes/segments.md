@@ -72,6 +72,6 @@ When you're ready to use a stale Segment Extension, review the refresh settings,
 
 {% if include.section == "same channel identifier" %}
 
-When a message is delivered, opened, or clicked, Braze updates data for all profiles that share the same channel identifier (for example, email or phone number), so users who share an identifier with someone who received the message can match this filter even if they were not originally sent it.
+When a message is received, opened, or clicked, Braze updates data for all profiles that share the same channel identifier as the profile that logged the interaction (for example, the same email address for email, or the same phone number for SMS or WhatsApp). Users who share an identifier with someone who received, opened, or clicked the message can match this filter even if they were not originally in the campaign or were not directly sent the message.
 
 {% endif %}
