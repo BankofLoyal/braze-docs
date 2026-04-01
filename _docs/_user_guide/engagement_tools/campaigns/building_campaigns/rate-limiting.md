@@ -25,6 +25,10 @@ Braze will try to evenly distribute the message sends throughout the minute, but
 
 As you create more segments, there are going to be cases where the membership of those segments overlaps. If you're sending out campaigns to those segments, you want to be sure that you are not messaging your users too often. If a user receives too many messages within a short time period, they will feel over-encumbered and either turn off push notifications or uninstall your app.
 
+{% alert tip %}
+Set a [workspace messaging rate limit]({{site.baseurl}}/user_guide/administrative/app_settings/messaging_rate_limits) to enforce a rate limit across an entire workspace.
+{% endalert %}
+
 #### Relevant segment filters
 
 Braze provides the following filters to help you limit the rate at which your users receive messages:
