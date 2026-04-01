@@ -74,7 +74,7 @@ For a user to be eligible for entry, they must be eligible for both checks. For 
 
 The user must be in the segment for 24 hours before the launch. If the user is not eligible in the first check, then Braze does not attempt the second check.
 
-### Examples
+#### Examples
 
 For example, if a campaign is scheduled to be delivered at 7 pm UTC, we start queuing the campaign sends as soon as a time zone is identified (such as Samoa). This means we're getting ready to send the message, not sending the campaign. If users don't match any filters when we check eligibility, they won't fall into the target audience.
 
