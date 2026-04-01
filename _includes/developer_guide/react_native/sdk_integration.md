@@ -40,11 +40,12 @@ yarn add @braze/react-native-sdk
 ### Step 2: Complete native setup
 
 If your app uses Expo, see [Using the Expo plugin](#reactnative-using-the-expo-plugin). If your app uses pure React Native, see [Using React Native CLI](#reactnative-using-react-native-cli).
+Choose one setup method in each version tab: Expo plugin or React Native CLI.
 
 {% tabs %}
 {% tab React Native SDK 19.2.0+ %}
 
-#### Using the Expo plugin {#reactnative-using-the-expo-plugin}
+#### Method 1: Using the Expo plugin {#reactnative-using-the-expo-plugin}
 
 ##### 2.1 Install the Braze Expo plugin
 
@@ -58,13 +59,10 @@ npx expo install @braze/expo-plugin
 
 ##### 2.2 Add the plugin to your app.json
 
-In your `app.json`, add the Braze Expo plugin. The API key and endpoint are no longer set here&#8212;they are provided at runtime via `Braze.initialize()` from JavaScript. Add the following optional configuration parameters based on your implementation needs:
+In your `app.json`, add the Braze Expo plugin. The API key and endpoint are no longer set here. Provide them at runtime via `Braze.initialize()` from JavaScript. Add the following optional configuration parameters based on your implementation needs:
 
 | Method                                        | Type    | Description                                                                                                                                              |
 | --------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `androidApiKey`                               | string  | **Deprecated.** Set the Android API key at runtime via `Braze.initialize()` instead. |
-| `iosApiKey`                                   | string  | **Deprecated.** Set the iOS API key at runtime via `Braze.initialize()` instead.     |
-| `baseUrl`                                     | string  | **Deprecated.** Set the SDK endpoint at runtime via `Braze.initialize()` instead.    |
 | `enableBrazeIosPush`                          | boolean | iOS only. Whether to use Braze to handle push notifications on iOS.                       |
 | `enableFirebaseCloudMessaging`                | boolean | Android only. Whether to use Firebase Cloud Messaging for push notifications.             |
 | `firebaseCloudMessagingSenderId`              | string  | Android only. Your Firebase Cloud Messaging sender ID.                                    |
@@ -134,7 +132,8 @@ When using `androidNotificationLargeIcon` and `androidNotificationSmallIcon`, fo
 To use custom push notification icons with the Braze Expo plugin:
 
 1. Create your icon files following the Icon requirements listed below.
-2. Place them in your project's Android native directories at `android/app/src/main/res/drawable-<density>/` (for example, `android/app/src/main/res/drawable-mdpi/`, `drawable-hdpi/`, or similar.)
+2. Place them in your project's Android native directories at `android/app/src/main/res/drawable-<density>/`.
+   For example, use `android/app/src/main/res/drawable-mdpi/` and `android/app/src/main/res/drawable-hdpi/`.
 3. Alternatively, if you're managing assets in your React Native directory, you can use Expo's [app.json icon configuration](https://docs.expo.dev/versions/latest/config/app/#icon) or create an [Expo config plugin](https://docs.expo.dev/config-plugins/introduction/) to copy the icons to the Android drawable folders during prebuild.
 
 The Braze Expo plugin references these icons using Android's drawable resource system.
@@ -188,7 +187,7 @@ npx expo prebuild
 
 Run your application as specified in the [Expo docs](https://docs.expo.dev/workflow/customizing/). If you make changes to the configuration options, prebuild and run the application again.
 
-#### Using React Native CLI {#reactnative-using-react-native-cli}
+#### Method 2: Using React Native CLI {#reactnative-using-react-native-cli}
 
 ##### Set up Android
 
@@ -231,7 +230,7 @@ The following code snippet shows the required permissions for your `AndroidManif
 ```
 
 {% alert tip %}
-On Braze SDK version 12.2.0 or later, you can automatically pull in the android-sdk-location library by setting `importBrazeLocationLibrary=true` in your `gradle.properties` file.
+On Braze Android SDK version 12.2.0 or later, you can automatically pull in the android-sdk-location library by setting `importBrazeLocationLibrary=true` in your `gradle.properties` file.
 {% endalert %}
 
 **2.3 Implement user session tracking**
@@ -291,9 +290,9 @@ override fun onNewIntent(intent: Intent) {
 
 ##### Set up iOS
 
-**2.1 (Optional) Configure Podfile for dynamic XCFrameworks**
+**2.5 (Optional) Configure Podfile for dynamic XCFrameworks**
 
-To import certain Braze libraries, such as BrazeUI, into an Objective-C++ file, you must use the `#import` syntax. Starting in version 7.4.0 of the Braze Swift SDK, binaries have an [optional distribution channel as dynamic XCFrameworks](https://github.com/braze-inc/braze-swift-sdk-prebuilt-dynamic), which are compatible with this syntax.
+To import certain Braze libraries, such as BrazeUI, into an Objective-C++ file, you must use the `#import` syntax. Starting in version `7.4.0` of the Braze Swift SDK, binaries have an [optional distribution channel as dynamic XCFrameworks](https://github.com/braze-inc/braze-swift-sdk-prebuilt-dynamic), which are compatible with this syntax.
 
 If you'd like to use this distribution channel, manually override the CocoaPods source locations in your Podfile. Reference the sample below and replace `{your-version}` with the relevant version you wish to import:
 
@@ -303,7 +302,7 @@ pod 'BrazeUI', :podspec => 'https://raw.githubusercontent.com/braze-inc/braze-sw
 pod 'BrazeLocation', :podspec => 'https://raw.githubusercontent.com/braze-inc/braze-swift-sdk-prebuilt-dynamic/{your-version}/BrazeLocation.podspec'
 ```
 
-**2.2 Install pods**
+**2.6 Install pods**
 
 Since React Native automatically links the libraries to the native platform, you can install the SDK with the help of CocoaPods.
 
@@ -317,7 +316,7 @@ cd ios && pod install
 cd ios && RCT_NEW_ARCH_ENABLED=0 pod install
 ```
 
-**2.3 Configure the Braze SDK**
+**2.7 Configure the Braze SDK**
 
 Use `BrazeReactInitializer.configure` in your `AppDelegate` to register native configuration. The closures you provide are stored and applied later when `Braze.initialize(apiKey, endpoint)` is called from JavaScript.
 
@@ -396,12 +395,13 @@ The following code snippet shows an example `AppDelegate.m` implementation that 
 
 {% alert important %}
 `BrazeReactInitializer.configure()` only stores your configuration. No Braze instance exists until `Braze.initialize()` is called from JavaScript, so do not call any Braze SDK methods in the AppDelegate after `configure()`.
+When you call `Braze.initialize()` again, the same `configure` and `postInitialization` blocks are applied to the new Braze instance.
 {% endalert %}
 
 {% endtab %}
 {% tab React Native SDK 19.1.0 and earlier %}
 
-#### Using the Expo plugin
+#### Method 1: Using the Expo plugin
 
 ##### Step 2.1: Install the Braze Expo plugin
 
@@ -548,11 +548,11 @@ npx expo prebuild
 
 Run your application as specified in the [Expo docs](https://docs.expo.dev/workflow/customizing/). Keep in mind, if you make any changes to the configuration options, you'll be required to prebuild and run the application again.
 
-#### Using React Native CLI
+#### Method 2: Using React Native CLI
 
 ##### Set up Android
 
-**Step 2.1: Add our repository**
+**Step 2.1: Add the Kotlin Gradle plugin**
 
 The following code snippet shows how to add the Kotlin Gradle plugin in your top-level project `build.gradle` under `buildscript` > `dependencies`:
 
@@ -588,7 +588,7 @@ The following code snippet shows the required permissions for your `AndroidManif
 ```
 
 {% alert tip %}
-On Braze SDK version 12.2.0 or later, you can automatically pull in the android-sdk-location library by setting `importBrazeLocationLibrary=true` in your `gradle.properties` file .
+On Braze Android SDK version 12.2.0 or later, you can automatically pull in the android-sdk-location library by setting `importBrazeLocationLibrary=true` in your `gradle.properties` file.
 {% endalert %}
 
 **Step 2.3: Implement user session tracking**
@@ -648,9 +648,9 @@ override fun onNewIntent(intent: Intent) {
 
 ##### Set up iOS
 
-**Step 2.1: (Optional) Configure Podfile for dynamic XCFrameworks**
+**Step 2.5: (Optional) Configure Podfile for dynamic XCFrameworks**
 
-To import certain Braze libraries, such as BrazeUI, into an Objective-C++ file, you must use the `#import` syntax. Starting in version 7.4.0 of the Braze Swift SDK, binaries have an [optional distribution channel as dynamic XCFrameworks](https://github.com/braze-inc/braze-swift-sdk-prebuilt-dynamic), which are compatible with this syntax.
+To import certain Braze libraries, such as BrazeUI, into an Objective-C++ file, you must use the `#import` syntax. Starting in version `7.4.0` of the Braze Swift SDK, binaries have an [optional distribution channel as dynamic XCFrameworks](https://github.com/braze-inc/braze-swift-sdk-prebuilt-dynamic), which are compatible with this syntax.
 
 If you'd like to use this distribution channel, manually override the CocoaPods source locations in your Podfile. The following code snippet shows a sample override. Replace `{your-version}` with the relevant version you wish to import:
 
@@ -660,7 +660,7 @@ pod 'BrazeUI', :podspec => 'https://raw.githubusercontent.com/braze-inc/braze-sw
 pod 'BrazeLocation', :podspec => 'https://raw.githubusercontent.com/braze-inc/braze-swift-sdk-prebuilt-dynamic/{your-version}/BrazeLocation.podspec'
 ```
 
-**Step 2.2: Install pods**
+**Step 2.6: Install pods**
 
 Since React Native automatically links the libraries to the native platform, you can install the SDK with the help of CocoaPods.
 
@@ -674,7 +674,7 @@ cd ios && pod install
 cd ios && RCT_NEW_ARCH_ENABLED=0 pod install
 ```
 
-**Step 2.3: Configure the Braze SDK**
+**Step 2.7: Configure the Braze SDK**
 
 {% subtabs local %}
 {% subtab SWIFT %}
@@ -816,7 +816,7 @@ function onUserConsent() {
 ```
 
 {% alert warning %}
-Push notifications and deep links received before `Braze.initialize()` is called are not processed on iOS. On Android, deep links from push notifications do not resolve while the SDK is waiting to be initialized. If your app relies on push or deep links at launch, use [standard initialization](#standard-initialization) instead.
+On iOS, push notifications received before `Braze.initialize()` are queued and processed after initialization. On Android, deep links from push notifications do not resolve while the SDK is waiting to be initialized. If your app relies on immediate deep link handling at launch, use [standard initialization](#standard-initialization) instead.
 {% endalert %}
 
 #### Platform-specific API keys
@@ -846,7 +846,7 @@ All SDK method calls made before `Braze.initialize()` are ignored on iOS, so cal
 {% endtab %}
 {% tab React Native SDK 19.1.0 and earlier %}
 
-The following code snippet shows how to `import` the library in your React Native code. For more details, check out our [sample project](https://github.com/braze-inc/braze-react-native-sdk/tree/master/BrazeProject).
+For React Native SDK 19.1.0 and earlier, native initialization happens in Step 2. Import the library in your React Native code to call Braze methods. For more details, check out our [sample project](https://github.com/braze-inc/braze-react-native-sdk/tree/master/BrazeProject).
 
 ```javascript
 import Braze from "@braze/react-native-sdk";
