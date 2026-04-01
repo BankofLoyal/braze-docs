@@ -89,7 +89,7 @@ For a visual of how a user might be in a segment during the first check but not 
 1. User A enters the segment at 6:59 PST (4:59 Samoan).
 2. Braze checks for segment membership at 7 Samoan to determine which users are eligible to receive the campaign in the next 24 hours. User A is in the segmet at this point.
 3. The segment has a 24 hour window, so User A exits the segment 24 hours after they joined: 6:59 PST (4:59 Samoan).
-4. The local time campaign sends at 7 PST, so User A has already exited the segment.
+4. The local time campaign sends at 7 PST, but User A has already exited the segment.
 
 {% enddetails %}
 
