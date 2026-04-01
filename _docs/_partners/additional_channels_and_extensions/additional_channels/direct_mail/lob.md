@@ -78,7 +78,7 @@ The following is an example request body for the Lob postcards endpoint. While t
 },
 "front": "https://lob.com/postcardfront.pdf",
 "back": "https://lob.com/postcardback.pdf",
-"use_type": "marketing,
+"use_type": "marketing",
 "size": "6x11"
 ```
 {% endraw %}
