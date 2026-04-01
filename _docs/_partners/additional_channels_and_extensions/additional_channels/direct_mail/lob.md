@@ -72,12 +72,14 @@ The following is an example request body for the Lob postcards endpoint. While t
 "to": {
     "name": "{{${first_name}}} {{${last_name}}}",
     "address_line1": "{{custom_attribute.${address_line1}}}",
-    "address_city": "{{custom_attribute.${address_city}}}"
+    "address_city": "{{custom_attribute.${address_city}}}",
     "address_zip": "{{custom_attribute.${address_zip}}}",
     "address_country": "{{custom_attribute.${address_country}}}"
 },
 "front": "https://lob.com/postcardfront.pdf",
-"back": "https://lob.com/postcardback.pdf"
+"back": "https://lob.com/postcardback.pdf",
+"use_type": "marketing,
+"size": "6x11"
 ```
 {% endraw %}
 
