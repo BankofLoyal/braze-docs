@@ -82,6 +82,6 @@ When you create a new campaign or Canvas, the name may take some time to propaga
 
 If your storage bucket is unavailable at the time of data transfer, that data is lost. Braze is not able to backfill events that were not successfully delivered. To avoid data loss, ensure your storage bucket is available and properly configured at all times.
 
-### How often does the schema ID update?
+### How often does the Currents version in the storage path change?
 
-Schema IDs are global across all event types and increment sequentially. Updates can occur at any time, and Braze will notify customers by email about upcoming changes. Each time a schema update occurs for any event type, the next available global ID is assigned. We recommend reading files recursively from the root path to handle schema ID changes. For more details, refer to [Avro schema changes]({{site.baseurl}}/user_guide/data/braze_currents/event_delivery_semantics/#avro-schema-changes).
+The `version=<currents_version>` segment in the storage path advances with each Currents release on a monthly cadence (for example, `version=6` to `version=7`). We recommend reading files recursively from the root path rather than hardcoding a specific version segment, so your pipeline automatically picks up data after a version change. For more details on the path format, refer to [Event delivery semantics]({{site.baseurl}}/user_guide/data/braze_currents/event_delivery_semantics/). For a history of changes by version, refer to the [Currents changelog]({{site.baseurl}}/user_guide/data/distribution/braze_currents/event_glossary/currents_changelogs).

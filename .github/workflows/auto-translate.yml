@@ -1,6 +1,8 @@
 # Translates English docs into all supported languages using Claude.
-# Currently manual-only (workflow_dispatch). Re-enable the push trigger
-# below once the workflow is production-ready.
+#
+# Triggers automatically when a deploy PR merges to main (nightly or manual),
+# detecting changed _docs/ and _includes/ markdown files.
+# Also supports manual runs via workflow_dispatch with explicit file paths.
 #
 # Flow:
 #   1. Identify _docs/ and _includes/ markdown files changed in the push
@@ -12,9 +14,9 @@
 name: Auto-translate
 
 on:
-  # push:
-  #   branches: [main]
-  #   paths: ['_docs/**', '_includes/**']
+  push:
+    branches: [main]
+    paths: ['_docs/**', '_includes/**']
   workflow_dispatch:
     inputs:
       files:
@@ -150,14 +152,6 @@ jobs:
           delete-branch: true
           add-paths: |
             _lang/
-
-      - name: Request Copilot review
-        if: steps.create-pr.outputs.pull-request-number
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh api repos/${{ github.repository }}/pulls/${{ steps.create-pr.outputs.pull-request-number }}/requested_reviewers \
-            --method POST -f 'reviewers[]=copilot'
 
       - name: Report failures
         if: steps.translate.outcome == 'failure' || steps.qc.outcome == 'failure' || steps.verify.outcome == 'failure'

@@ -11,6 +11,8 @@ description: "This article provides steps on how to use locales in your messages
 
 > After adding locales to your workspace, you can target users in different languages all within a single push, email, banner, in-app message, or Content Block.
 
+{% multi_lang_include alerts/important_alerts.md alert='multi-language ea' %}
+
 ## Prerequisites
 
 {% tabs %}

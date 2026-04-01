@@ -33,6 +33,8 @@ valid_partner_list:
   url: /docs/partners/amplitude/
 - name: Certona
   url: /docs/partners/certona/
+- name: CataBoom
+  url: /docs/partners/cataboom/
 - name: Future Anthem
   url: /docs/partners/future_anthem/
 - name: Judo

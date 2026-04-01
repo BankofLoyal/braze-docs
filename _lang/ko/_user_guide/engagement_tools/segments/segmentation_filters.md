@@ -219,7 +219,7 @@ glossaries:
     tags:
       - Retargeting
   - name: Hard Bounced
-    description: 이메일 주소가 하드바운스되었는지 여부(예: 이메일 주소가 유효하지 않은 경우)에 따라 사용자를 세분화합니다.
+    description: "이메일 주소가 하드바운스되었는지 여부(예: 이메일 주소가 유효하지 않은 경우)에 따라 사용자를 세분화합니다."
     tags:
       - Retargeting
   - name: Soft Bounced
