@@ -8,7 +8,7 @@ The following minimum SDK version is compatible with all apps using [React Nativ
 
 {% sdk_min_versions reactnative:2.0.1 %}
 
-Starting with SDK version 6.0.0, Braze uses a React Native Turbo Module, which is compatible with both the New Architecture and legacy bridge architecture&#8212;meaning no additional setup is required.
+Starting with SDK version 6.0.0, Braze uses a React Native Turbo Module, which is compatible with both the New Architecture and legacy bridge architecture. This means no additional setup is required.
 
 {% alert warning %}
 If your iOS app conforms to `RCTAppDelegate` and follows our previous `AppDelegate` setup, review the samples in [Complete native setup](#reactnative_step-2-complete-native-setup) to prevent crashes when subscribing to events in the Turbo Module.
@@ -59,7 +59,7 @@ npx expo install @braze/expo-plugin
 
 ##### 2.2 Add the plugin to your app.json
 
-In your `app.json`, add the Braze Expo plugin. The API key and endpoint are no longer set here. Provide them at runtime via `Braze.initialize()` from JavaScript. Add the following optional configuration parameters based on your implementation needs:
+In your `app.json`, add the Braze Expo plugin. The API key and endpoint are no longer set here. Provide them at runtime through `Braze.initialize()` from JavaScript. Add the following optional configuration parameters based on your implementation needs:
 
 | Method                                        | Type    | Description                                                                                                                                              |
 | --------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -330,7 +330,7 @@ import BrazeKit
 import braze_react_native_sdk
 ```
 
-In the `application(_:didFinishLaunchingWithOptions:)` method, register your native configuration using `BrazeReactInitializer.configure`. Do not set the API key or endpoint here&#8212;they are provided from JavaScript via `Braze.initialize()`.
+In the `application(_:didFinishLaunchingWithOptions:)` method, register your native configuration using `BrazeReactInitializer.configure`. Do not set the API key or endpoint here. They are provided from JavaScript through `Braze.initialize()`.
 
 - **`configure` closure**: Receives a `Braze.Configuration` and lets you set native configuration properties (logging, push, sessions, and more).
 - **`postInitialization` closure** _(optional)_: Receives the live `Braze` instance after creation, for setup that requires the instance (for example, storing a reference or setting delegates).
@@ -370,7 +370,7 @@ The following code snippet shows how to import the Braze SDK at the top of the `
 @import braze_react_native_sdk;
 ```
 
-In the `application:didFinishLaunchingWithOptions:` method, register your native configuration using `BrazeReactInitializer`. Do not set the API key or endpoint here&#8212;they are provided from JavaScript via `Braze.initialize()`.
+In the `application:didFinishLaunchingWithOptions:` method, register your native configuration using `BrazeReactInitializer`. Do not set the API key or endpoint here. They are provided from JavaScript through `Braze.initialize()`.
 
 The following code snippet shows an example `AppDelegate.m` implementation that uses `BrazeReactInitializer`:
 
@@ -807,7 +807,7 @@ const App = () => {
 
 #### Delayed initialization
 
-The following code snippet shows how to defer SDK initialization until later in the session&#8212;for example, after the user grants consent or completes login:
+The following code snippet shows how to defer SDK initialization until later in the session. For example, after the user grants consent or completes login:
 
 ```javascript
 function onUserConsent() {
