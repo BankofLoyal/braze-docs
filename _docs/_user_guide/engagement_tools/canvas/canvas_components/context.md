@@ -211,7 +211,7 @@ Your appointment is scheduled for {{canvas_entry_properties.${appointment_time} 
 This results in the following message: 
 
 ```
-Your appointment is scheduled for 2025-08-05 4:15pm, we’ll see you then!
+Your appointment is scheduled for 2025-08-05 4:15 PM, we’ll see you then!
 ```
 
 Because no time zone is specified using Liquid, the timestamp here is in UTC. 
@@ -227,7 +227,7 @@ Your appointment is scheduled for {{canvas_entry_properties.${appointment_time} 
 This results in the following message: 
 
 ```
-Your appointment is scheduled for 2025-08-05 8:15 am, we'll see you then!
+Your appointment is scheduled for 2025-08-05 8:15 AM, we'll see you then!
 ```
 
 Because the America/Los Angeles time zone is specified using Liquid, the timestamp here is in PST.
