@@ -31,7 +31,7 @@ Users can be filtered by when they last received a WhatsApp or if they have rece
 Filters users who have received a message from a specific WhatsApp campaign. With this filter, you also have the option to filter off those that have not received messages from a WhatsApp campaign.
 
 {% alert note %}
-When a message is delivered, opened, or clicked, Braze updates data for all profiles that share the same channel identifier (for example, phone number), so users who share an identifier with someone who received the message can match "received" filters even if they were not originally sent it.
+When a WhatsApp message is delivered, opened, or clicked, Braze updates data for all profiles that share the same phone number as the profile that logged the interaction, so users who share that number with someone who received, opened, or clicked the message can match "received" filters even if they were not directly sent it.
 {% endalert %}
 
 ![Filter for receiving a WhatsApp campaign.]({% image_buster /assets/img/whatsapp/whatsapp22.png %}){: style="max-width:75%"}

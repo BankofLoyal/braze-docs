@@ -103,7 +103,7 @@ Use this filter to find users who have or have not received your target campaign
 
 ### Received message from campaign or Canvas with tag 
 
-Use this filter to find users who have or have not received a campaign or Canvas that has your target tag. {% multi_lang_include segments.md section='same channel identifier' %}
+Use this filter to find users who have or have not received a campaign or Canvas that has your target tag.
 
 ![]({% image_buster /assets/img_archive/received_campaign_with_tag.png %})
 
