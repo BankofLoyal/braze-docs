@@ -19,7 +19,21 @@ description: "この記事では、「ライブアクティビティを開始」
 
 ライブアクティビティを作成した後、任意の Segment のアクティビティをリモートで開始するために POST リクエストを送信できます。Apple のライブアクティビティの詳細については、[Starting and updating Live Activities with ActivityKit push notifications](https://developer.apple.com/documentation/activitykit/starting-and-updating-live-activities-with-activitykit-push-notifications) を参照してください。
 
-`content-available` が設定されていない場合、Apple プッシュ通知サービス（APN）のデフォルトの優先度は 10 です。`content-available` が設定されている場合、この優先度は 5 です。詳細については、[Apple プッシュオブジェクト]({{site.baseurl}}/api/objects_filters/messaging/apple_object)を参照してください。
+`content-available` が設定されていない場合、Apple プッシュ通知サービス（APNs）のデフォルトの優先度は 10 です。`content-available` が設定されている場合、この優先度は 5 です。詳細については、[Apple プッシュオブジェクト]({{site.baseurl}}/api/objects_filters/messaging/apple_object)を参照してください。
+
+{% alert tip %}
+ライブアクティビティを終了するには、[`/messages/live_activity/update`]({{site.baseurl}}/api/endpoints/messaging/live_activity/update/) エンドポイントで `end_activity` を `true` に設定して使用します。
+{% endalert %}
+
+## 自動非表示のスケジュール設定
+
+ライブアクティビティの開始後に自動非表示をスケジュールするには、バックエンドから更新エンドポイントへのフォローアップリクエストをスケジュールします。
+
+1. 後で再利用できる `activity_id` を含む `/messages/live_activity/start` リクエストを送信します。
+2. その `activity_id` とターゲット終了時間をバックエンドスケジューラーに保存します。
+3. ターゲット終了時間に、`end_activity` を `true` に設定した `/messages/live_activity/update` リクエストを送信します。
+4. 同じ更新リクエストで非表示の動作を設定します。詳細については、[`/messages/live_activity/update`]({{site.baseurl}}/api/endpoints/messaging/live_activity/update/) エンドポイントを参照してください。
+5. [メッセージアクティビティログ]({{site.baseurl}}/user_guide/administrative/app_settings/message_activity_log_tab/)で送信イベントと結果イベントを確認します。
 
 {% apiref postman %}https://documenter.getpostman.com/view/4689407/SVYrsdsG?version=latest#2300226e-f26a-4154-9bcc-5883f1f294cd {% endapiref %}
 
@@ -45,7 +59,6 @@ description: "この記事では、「ライブアクティビティを開始」
   "activity_attributes_type": "(required, string) The activity attributes type you define within `liveActivities.registerPushToStart` in your app",
   "activity_attributes": "(required, object) The static attribute values for the activity type (such as the sports team names, which don't change)",
   "content_state": "(required, object) You define the ContentState parameters when you create your Live Activity. Pass the updated values for your ContentState using this object. The format of this request must match the shape you initially defined.",
-  "dismissal_date": "(optional, datetime in ISO-8601 format) The time to remove the Live Activity from the user’s UI. If this time is in the past, the Live Activity will be removed immediately.",
   "stale_date": "(optional, datetime in ISO-8601 format) The time the Live Activity content is marked as outdated in the user’s UI.",
   "notification": "(required, object) Include an `apple_push` object to define a push notification that creates an alert for the user, displayed on paired watchOS devices. Should include `notification.alert.title` and `notification.alert.body`",
   // One of the following:
@@ -64,7 +77,6 @@ description: "この記事では、「ライブアクティビティを開始」
 | `activity_attributes_type` | 必須 | 文字列 | アプリ内の `liveActivities.registerPushToStart` で定義するアクティビティ属性タイプ。 |
 | `activity_attributes` | 必須 | オブジェクト | アクティビティタイプの静的属性値（スポーツチームの名前など、変更されないもの）。 |
 | `content_state` | 必須 | オブジェクト | ライブアクティビティを作成する際に `ContentState` パラメーターを定義します。このオブジェクトを使用して、`ContentState` の更新された値を渡します。<br><br>このリクエストの形式は、最初に定義した形状と一致している必要があります。 |
-| `dismissal_date` | オプション | 日時 <br>（[ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) 文字列） | このパラメーターは、ユーザーの UI からライブアクティビティを削除する時間を定義します。<br><br>この削除日は、`end_activity` を `true` に設定した `/messages/live_activity/update` リクエストを受信した後に適用されます。 |
 | `stale_date` | オプション | 日時 <br>（[ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) 文字列） | このパラメーターは、ライブアクティビティのコンテンツがユーザーの UI で古いものとしてマークされる時間をシステムに通知します。 |
 | `notification` | 必須 | オブジェクト | プッシュ通知を定義する [`apple_push`]({{site.baseurl}}/api/objects_filters/messaging/apple_object/) オブジェクトを含めます。このプッシュ通知の動作は、ユーザーがアクティブかどうか、またはユーザーがプロキシデバイスを使用しているかどうかによって異なります。{::nomarkdown}<ul><li><code>notification</code> が含まれており、更新が配信されたときにユーザーが iPhone でアクティブである場合、更新されたライブアクティビティ UI がスライドダウンしてプッシュ通知のように表示されます。</li><li><code>notification</code> が含まれており、ユーザーが iPhone でアクティブでない場合、ロック画面に更新されたライブアクティビティ UI を表示するために画面が点灯します。</li><li><code>notification alert</code> は、標準のプッシュ通知として表示されません。さらに、ユーザーが Apple Watch のようなプロキシデバイスを持っている場合、<code>alert</code> がそこに表示されます。</li></ul>{:/} |
 | `external_user_ids` | `segment_id` または `audience` が提供されている場合はオプション | 文字列の配列 | [外部ユーザー ID]({{site.baseurl}}/api/objects_filters/user_attributes_object/#braze-user-profile-fields) を参照してください。最大 50 の外部ユーザー ID。 |
@@ -90,7 +102,6 @@ curl --location --request POST 'https://rest.iad-01.braze.com/messages/live_acti
         "team1Name": "Chiefs",
         "team2Name": "Bills"
     },
-    "dismissal_date": "2024-01-22T00:00:00+0000",
     "stale_date": "2024-01-22T16:55:49+0000",
     "notification": {
         "alert": {

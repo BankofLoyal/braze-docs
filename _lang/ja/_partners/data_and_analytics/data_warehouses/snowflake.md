@@ -50,9 +50,9 @@ Snowflake のデータ共有の詳細については、[Introduction to Secure D
 | Snowflake アカウント | `admin` の権限を持つ Snowflake アカウントが必要です。 |
 {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
-## 安全なデータ共有の設定
+## Secure Data Sharing の設定
 
-Snowflake では、データ共有は[データプロバイダー](https://docs.snowflake.net/manuals/user-guide/data-sharing-intro.html#providers)と[データ消費者](https://docs.snowflake.net/manuals/user-guide/data-sharing-intro.html#consumers)の間で行われます。このコンテキストでは、データシェアを作成して送信するため、Braze アカウントがデータプロバイダーとなります。一方、データシェアを使用してデータベースを作成するため、Snowflake アカウントがデータ消費者となります。詳細は、[Snowflake: Consuming Shared Data](https://docs.snowflake.com/en/user-guide/data-share-consumers) を参照してください。
+Snowflake では、データ共有は[データプロバイダー](https://docs.snowflake.net/manuals/user-guide/data-sharing-intro.html#providers)と[データ消費者](https://docs.snowflake.net/manuals/user-guide/data-sharing-intro.html#consumers)の間で行われます。このコンテキストでは、データシェアを作成して送信するため、Braze アカウントがデータプロバイダーとなります。一方、データシェアを使用してデータベースを作成するため、Snowflake アカウントがデータ消費者となります。詳細については、[Snowflake: Consuming Shared Data](https://docs.snowflake.com/en/user-guide/data-share-consumers) を参照してください。
 
 ### ステップ 1: Braze からデータシェアを送信する
 
@@ -87,7 +87,7 @@ Currents と同様に、Snowflake Secure Data Sharing を使用して次のこ�
 - 生のイベントまたはユーザーデータを CRM（Salesforce など）にマッピングする
 - その他多数
 
-利用可能なテーブルと列の完全なリストについては、[SQL テーブルリファレンス]({{site.baseurl}}/user_guide/engagement_tools/segments/sql_segments/sql_segments_tables/)を参照してください。Snowflake データ共有には、そのリファレンスのすべてのテーブルに加え、スナップショット、キャンペーンおよびキャンバスの変更ログ、エージェントコンソールイベント、メッセージリトライイベント用の Snowflake 専用テーブルが含まれます。
+利用可能なテーブルと列の完全なリストについては、[SQL テーブルリファレンス]({{site.baseurl}}/user_guide/engagement_tools/segments/sql_segments/sql_segments_tables/)を参照してください。Snowflake データ共有には、そのリファレンスのすべてのテーブルに加え、スナップショット、キャンペーンおよび Canvas の変更ログ、エージェントコンソールイベント、メッセージリトライイベント用の Snowflake 専用テーブルが含まれます。
 
 [未加工のテーブルスキーマをダウンロード]({% image_buster /assets/download_file/data-sharing-raw-table-schemas.txt %})してテキストファイルとして確認することもできます。
 
@@ -142,10 +142,20 @@ Snowflake の履歴イベントデータのアーカイブは2019年4月まで�
 
 {% multi_lang_include partners/snowflake_pii_gdpr.md %}
 
+### 共有データのクエリ: `TIME` とクエリパフォーマンス
+
+データ共有ビュー（例: `USERS_BEHAVIORS_CUSTOMEVENT_SHARED`）のイベントデータは、**`TIME` フィールドでクラスタリングされています**。**イベントが発生した時刻**でフィルタリングする場合は、**`TIME`** を優先フィルターとして使用してください。**`TIME`** で行を制限するクエリは、**`SF_CREATED_AT`** でフィルタリングするクエリよりも一般的に**パフォーマンスが高くなります**。これは、クラスタリングがイベント時刻に基づいているためです。
+
+| フィールド | 意味 |
+| ----- | ------- |
+| `TIME` | イベントが発生した Unix タイムスタンプです。発生時刻でフィルタリングする場合はこちらを使用してください。 |
+| `SF_CREATED_AT` | 行が Snowflake に読み込まれたタイムスタンプ（取り込み時刻）です。 |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
+
 ### スピード、パフォーマンス、クエリのコスト
 
 データに対して実行されるクエリの速度、パフォーマンス、およびコストは、データのクエリに使用するウェアハウスのサイズによって決まります。場合によっては、分析のためにアクセスしているデータ量に応じて、クエリを成功させるためにより大きなウェアハウスサイズを使用する必要があるかもしれません。Snowflake には、[ウェアハウスの概要](https://docs.snowflake.net/manuals/user-guide/warehouses-overview.html)や[ウェアハウスの考慮事項](https://docs.snowflake.net/manuals/user-guide/warehouses-considerations.html)など、どのサイズを使用するかを最適に判断する方法に関する優れたリソースが用意されています。
 
-> Snowflake の設定時に参照できるサンプルクエリセットについては、[サンプルクエリ]({{site.baseurl}}/partners/data_and_infrastructure_agility/data_warehouses/snowflake/sample_queries/)および [ETL イベントパイプライン設定]({{site.baseurl}}/partners/data_and_infrastructure_agility/data_warehouses/snowflake/etl_pipline_setup/)の例をご確認ください。
+> Snowflake の設定時に参照できるサンプルクエリセットについては、[サンプルクエリ]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/sample_queries/)および [ETL イベントパイプライン設定]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/etl_pipline_setup/)の例をご確認ください。
 
 設定手順については、[クラウドデータ取り込み: データウェアハウス統合]({{site.baseurl}}/user_guide/data/unification/cloud_ingestion/integrations/)を参照してください。

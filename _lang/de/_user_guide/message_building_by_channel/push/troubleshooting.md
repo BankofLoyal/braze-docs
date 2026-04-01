@@ -96,7 +96,7 @@ Wenn das Klicken auf eine Push-Benachrichtigung Ihre App nicht öffnet, überpr�
 2. **Push-Integration prüfen:** Deeplinking von einem Push in die App wird automatisch durch die Braze [Standard-Push-Integration]({{site.baseurl}}/developer_guide/push_notifications/?sdktab=swift) behandelt. Bestätigen Sie, dass die Integration korrekt implementiert ist, einschließlich einer eventuellen angepassten Delegate-Behandlung.
 3. **Ausführliche Logs erfassen:** [Aktivieren Sie die ausführliche Protokollierung]({{site.baseurl}}/developer_guide/sdk_integration/verbose_logging), reproduzieren Sie das Problem und stellen Sie die Logs dem Braze Support zur Verfügung.
 
-## Push-Klicks werden unerwartet in der App geöffnet
+## Push-Klicks öffnen unerwartet in der App
 
 Wenn Links in Push-Benachrichtigungen unerwartet in Ihrer App statt in Ihrem Webbrowser geöffnet werden, liegt möglicherweise ein Problem mit der Konfiguration Ihrer Kampagne oder der SDK-Implementierung vor. Befolgen Sie diese Schritte zur Hilfe.
 
@@ -115,26 +115,15 @@ Wenn dies nicht das Problem ist, liegt möglicherweise ein Problem mit Ihrer Pus
 Wenn Links in Ihren Push-Benachrichtigungen unerwartet in der App geöffnet werden, kann dies an Problemen mit der Integration Ihrer Push-Benachrichtigungen oder mit den Anpassungseinstellungen liegen. Befolgen Sie diese Schritte zur Fehlerbehebung:
 
 1. **Überprüfen Sie die Implementierung des Push-Delegaten:** Stellen Sie sicher, dass der Push-Delegat von Braze korrekt implementiert ist. Ausführliche Anweisungen finden Sie in der Integrationsanleitung für Push-Benachrichtigungen für Ihre [Plattform]({{site.baseurl}}/developer_guide/home/).
-2. **Prüfen Sie die angepasste Linkbehandlung:** Prüfen Sie, ob die App eine angepasste Handhabung für alle `https://`-Links enthält. Angepasste Konfigurationen können die Standardverhaltensweisen außer Kraft setzen. Arbeiten Sie mit Ihrem Entwickler:innen-Team zusammen, um diese Einstellungen zu überprüfen und ggf. anzupassen.
+2. **Prüfen Sie die angepasste Linkbehandlung:** Prüfen Sie, ob die App eine angepasste Handhabung für alle `https://`-Links enthält. Angepasste Konfigurationen können die Standardverhaltensweisen außer Kraft setzen. Arbeiten Sie mit Ihrem Entwicklungsteam zusammen, um diese Einstellungen zu überprüfen und ggf. anzupassen.
 3. **Überprüfen Sie die iOS-Push-Registrierung:** Für iOS sehen Sie sich Schritt 1 der Anleitung zur Push-Integration zur [Registrierung von Push-Benachrichtigungen mit APNs]({{site.baseurl}}/developer_guide/platform_integration_guides/swift/push_notifications/integration/#step-1-register-for-push-notifications-with-apns) an. Stellen Sie sicher, dass Ihr Delegate-Objekt synchron zugewiesen wird, bevor die App den Start beendet. Diesen Schritt sollten Sie in der Methode `application:didFinishLaunchingWithOptions:` durchführen.
 4. **Testen Sie Ihre Integration:** Nachdem Sie die Anpassungen vorgenommen haben, testen Sie das Verhalten der Push-Benachrichtigung sowohl auf iOS- als auch auf Android-Geräten, um sicherzustellen, dass das Problem behoben ist.
 
-## Push-Titel wird auf iOS abgeschnitten, wird aber auf Android korrekt angezeigt
+## Zu einem .p8-Authentifizierungsschlüssel migrieren
 
-Wenn Ihr Push-Benachrichtigungstitel Liquid-Personalisierung enthält und auf Android vollständig angezeigt wird, aber auf iOS abgeschnitten ist, liegt dies daran, wie jede Plattform Zeilenumbruchzeichen (`\n`) im Titel-String behandelt.
+Apple `.p8`-Authentifizierungsschlüssel sind der erforderliche Ansatz für APNs-Push in Braze. Im Gegensatz zu älteren Zertifikatsdateitypen laufen `.p8`-Schlüssel nicht ab und unterstützen alle Ihre Apps unter einem einzigen Schlüssel, wodurch jährliche Zertifikatserneuerungen entfallen und das Risiko von Push-Zustellungsfehlern reduziert wird.
 
-Android entfernt automatisch Leerzeichen, Tabulatoren und Zeilenumbrüche aus Push-Titel-Strings. iOS tut dies nicht – wenn also eine Liquid-Variable zu einem Wert aufgelöst wird, der einen abschließenden Zeilenumbruch enthält, behandelt iOS den Zeilenumbruch als Ende des Titels und schneidet den restlichen Text ab.
-
-Zum Beispiel könnte ein Titel wie `Regarding your flight from {% raw %}{{${city_from}}}{% endraw %} to {% raw %}{{${city_to}}}{% endraw %}` auf iOS als `Regarding your flight from` angezeigt werden, wenn die Variable `city_from` einen abschließenden Zeilenumbruch enthält.
-
-Um dies zu beheben, wenden Sie den Liquid-Filter `strip_newlines` an und umschließen Sie den gesamten Titel mit einem `capture`-Block:
-
-{% raw %}
-```liquid
-{% capture title %}Regarding your flight from {{${city_from}}} to {{${city_to}}}{% endcapture %}
-{{ title | strip_newlines }}
-```
-{% endraw %}
+Wenn Sie derzeit ein `.p12`- oder `.pem`-Zertifikat verwenden, migrieren Sie so bald wie möglich zu einem `.p8`-Schlüssel. Anweisungen zum Erstellen und Hochladen eines `.p8`-Schlüssels finden Sie unter [Ihr APNs-Push-Zertifikat hochladen]({{site.baseurl}}/developer_guide/push_notifications/?sdktab=swift). Apples Anleitung zum Generieren eines `.p8`-Schlüssels aus Ihrem Entwicklerkonto finden Sie unter [Mit APNs über Authentifizierungstoken kommunizieren](https://developer.apple.com/help/account/capabilities/communicate-with-apns-using-authentication-tokens/).
 
 ## Web-Push-Benachrichtigungen funktionieren nicht wie erwartet
 
