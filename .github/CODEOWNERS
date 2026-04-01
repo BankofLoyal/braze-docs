@@ -1,3 +1,4 @@
 # CODEOWNERS file for Braze Docs
 # For details, see: https://help.github.com/articles/about-codeowners/
 # No codeowner assignments at this time.
+.github/ @braze-inc/security
