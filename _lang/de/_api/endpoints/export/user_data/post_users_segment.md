@@ -5,7 +5,7 @@ search_tag: Endpoint
 page_order: 4
 layout: api_page
 page_type: reference
-description: "Dieser Artikel enthält Details zum Braze-Endpunkt „Nutzer:innen nach Segment exportieren"."
+description: "Dieser Artikel enthält Details zum Braze-Endpunkt „Nutzer:innen nach Segment exportieren“."
 
 ---
 {% api %}

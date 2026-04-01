@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Evaluate Copilot review comments on auto-translation PRs using Claude.
+Evaluate Cursor Bugbot review comments on auto-translation PRs using Claude.
 
-Fetches Copilot's inline review comments, sends them to Claude for evaluation,
+Fetches Bugbot's inline review comments, sends them to Claude for evaluation,
 applies valid fixes, updates glossaries when systemic issues are found,
 and posts a summary comment on the PR.
 
 Usage:
-    PR_NUMBER=123 python scripts/review_copilot.py
+    PR_NUMBER=123 python scripts/review_bugbot.py
 """
 
 import json
@@ -33,7 +33,7 @@ LANGUAGES = {
     "pt_br": {"glossary": "pt-br", "name": "Portuguese (Brazil)"},
 }
 
-SUMMARY_FILE = REPO_ROOT / "copilot_review_summary.md"
+SUMMARY_FILE = REPO_ROOT / "bugbot_review_summary.md"
 
 
 def _get_client():
@@ -47,8 +47,8 @@ def _get_client():
 
 # ── GitHub API helpers ───────────────────────────────────────────────────────
 
-def fetch_copilot_comments():
-    """Fetch inline review comments left by Copilot on the PR."""
+def fetch_bugbot_comments():
+    """Fetch inline review comments left by Cursor Bugbot on the PR."""
     result = subprocess.run(
         ["gh", "api", "--paginate",
          f"repos/{REPO}/pulls/{PR_NUMBER}/comments"],
@@ -59,10 +59,10 @@ def fetch_copilot_comments():
         return []
 
     all_comments = json.loads(result.stdout)
-    copilot_logins = {"copilot[bot]", "github-copilot[bot]"}
+    bugbot_logins = {"cursor[bot]"}
     return [
         c for c in all_comments
-        if c.get("user", {}).get("login", "") in copilot_logins
+        if c.get("user", {}).get("login", "") in bugbot_logins
     ]
 
 
@@ -123,7 +123,7 @@ def read_window(file_path, center_line=None, half_window=25):
 
 SYSTEM_PROMPT = """\
 You are a translation quality reviewer for Braze documentation. You evaluate
-review comments from GitHub Copilot on machine-translated documentation and
+review comments from Cursor Bugbot on machine-translated documentation and
 decide which fixes to apply.
 
 ## Decision criteria
@@ -180,7 +180,7 @@ def build_user_prompt(comments, rules_excerpt):
         s = f"### Comment {i} (ID: {ctx['id']})\n"
         s += f"**File:** `{ctx['file']}`\n"
         s += f"**Language:** {ctx['language']}\n"
-        s += f"**Copilot says:**\n{ctx['body']}\n\n"
+        s += f"**Bugbot says:**\n{ctx['body']}\n\n"
         s += f"**Diff context:**\n```\n{ctx['diff_hunk']}\n```\n\n"
         s += f"**File context (around line {ctx['line']}):**\n```\n{ctx['file_context']}\n```\n\n"
 
@@ -286,7 +286,7 @@ def apply_glossary_update(update):
 # ── Summary ──────────────────────────────────────────────────────────────────
 
 def generate_summary(results, applied, dismissed, glossary_updates):
-    lines = ["## Copilot review — automated evaluation\n"]
+    lines = ["## Bugbot review — automated evaluation\n"]
     lines.append(
         f"**Evaluated by:** Claude | "
         f"**Comments:** {len(results)} | "
@@ -313,7 +313,7 @@ def generate_summary(results, applied, dismissed, glossary_updates):
         lines.append("| Comment | Reason |")
         lines.append("|---------|--------|")
         for r in dismissed:
-            body = (r.get("_copilot_body") or "")[:80].replace("|", "\\|")
+            body = (r.get("_bugbot_body") or "")[:80].replace("|", "\\|")
             reason = (r.get("reason") or "").replace("|", "\\|")
             lines.append(f"| {body}… | {reason} |")
         lines.append("")
@@ -329,7 +329,7 @@ def generate_summary(results, applied, dismissed, glossary_updates):
         lines.append("")
 
     if not applied and not dismissed:
-        lines.append("Copilot found no inline issues. PR is ready for human review.\n")
+        lines.append("Bugbot found no inline issues. PR is ready for human review.\n")
 
     return "\n".join(lines)
 
@@ -341,9 +341,9 @@ def main():
         print("ERROR: PR_NUMBER environment variable is required")
         sys.exit(1)
 
-    print(f"Fetching Copilot comments for PR #{PR_NUMBER}...")
-    raw_comments = fetch_copilot_comments()
-    print(f"Found {len(raw_comments)} Copilot inline comment(s)")
+    print(f"Fetching Bugbot comments for PR #{PR_NUMBER}...")
+    raw_comments = fetch_bugbot_comments()
+    print(f"Found {len(raw_comments)} Bugbot inline comment(s)")
 
     if not raw_comments:
         summary = generate_summary([], [], [], [])
@@ -393,7 +393,7 @@ def main():
     glossary_updates = []
 
     for r in results:
-        r["_copilot_body"] = comment_body_map.get(r.get("comment_id"), "")
+        r["_bugbot_body"] = comment_body_map.get(r.get("comment_id"), "")
 
         if r.get("valid") and r.get("fix"):
             if apply_fix(r["fix"]):

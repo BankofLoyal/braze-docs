@@ -1,9 +1,9 @@
-# Evaluates Copilot review comments on auto-translation PRs using Claude.
+# Evaluates Cursor Bugbot review comments on auto-translation PRs using Claude.
 # Applies valid fixes, updates glossaries, and posts a summary.
 #
-# Triggered when Copilot submits a review on a PR with the 'auto-translation' label.
+# Triggered when Bugbot submits a review on a PR with the 'auto-translation' label.
 # After evaluation, swaps "In Review" → "status: done" to signal human readiness.
-name: Review Copilot comments
+name: Review Bugbot comments
 
 on:
   pull_request_review:
@@ -14,16 +14,15 @@ permissions:
   pull-requests: write
 
 jobs:
-  review-copilot:
+  review-bugbot:
     if: >-
-      (github.event.review.user.login == 'copilot[bot]' ||
-       github.event.review.user.login == 'github-copilot[bot]') &&
+      github.event.review.user.login == 'cursor[bot]' &&
       contains(github.event.pull_request.labels.*.name, 'auto-translation') &&
       github.event.pull_request.user.login == 'github-actions[bot]' &&
       startsWith(github.event.pull_request.head.ref, 'auto-translate/')
     runs-on: ubuntu-latest
     concurrency:
-      group: copilot-review-pr-${{ github.event.pull_request.number }}
+      group: bugbot-review-pr-${{ github.event.pull_request.number }}
       cancel-in-progress: false
     env:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -43,12 +42,12 @@ jobs:
       - name: Install dependencies
         run: pip install anthropic
 
-      - name: Evaluate Copilot comments
+      - name: Evaluate Bugbot comments
         id: review
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python scripts/review_copilot.py
+        run: python scripts/review_bugbot.py
 
       - name: Commit and push fixes
         if: steps.review.outputs.fixes_applied != '0'
@@ -57,7 +56,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add _lang/ scripts/glossaries/
           git diff --cached --quiet && echo "No changes to commit" && exit 0
-          git commit -m "fix: apply Copilot review suggestions (automated)"
+          git commit -m "fix: apply Bugbot review suggestions (automated)"
           git push
 
       - name: Post summary comment
@@ -65,9 +64,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ -f copilot_review_summary.md ]; then
+          if [ -f bugbot_review_summary.md ]; then
             gh pr comment ${{ github.event.pull_request.number }} \
-              --body-file copilot_review_summary.md
+              --body-file bugbot_review_summary.md
           fi
 
       - name: Update labels

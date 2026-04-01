@@ -138,3 +138,11 @@ For this integration, the user alias must use the following format so that Braze
 {% endalert %}
 
 {% endif %}
+
+{% if include.alert == 'multi-language ea' %}
+
+{% alert important %}
+Multi-language messages and locale translations are currently in early access. Contact your customer success manager if you’re interested in participating in this early access.
+{% endalert %}
+
+{% endif %}

@@ -6,7 +6,7 @@ page_order: 1
 
 layout: api_page
 page_type: reference
-description: "Dieser Artikel enthält Einzelheiten zum Endpunkt „Live-Aktivität starten"."
+description: "Dieser Artikel enthält Einzelheiten zum Endpunkt „Live-Aktivität starten“."
 
 ---
 {% api %}

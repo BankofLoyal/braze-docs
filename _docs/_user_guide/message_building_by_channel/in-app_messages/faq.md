@@ -54,3 +54,7 @@ To prevent this, during your campaign setup, select **Re-evaluate campaign eligi
 ### How does Braze calculate an in-app message expiration set to "after 1 day(s)"?
 
 Braze calculates an expiration time of one day as 24 hours after users are eligible to receive a message.
+
+### How can in-app messages be dismissed, and what are the associated click events?
+
+Braze logs clicks and events differently for traditional and drag-and-drop in-app messages. For information on the relationship between dismissals and click events, refer to the [Report metrics glossary]({{site.baseurl}}/user_guide/data/activation/report_metrics/) and filter for "In-App Message".
