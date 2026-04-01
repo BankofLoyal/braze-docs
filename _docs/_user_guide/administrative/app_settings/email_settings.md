@@ -111,7 +111,7 @@ The default behavior in Braze is to append the tracking pixel to the bottom of y
 
 While the pixel is already styled to cause as few visual changes as possible, any unintentional visual changes would be the least visible at the bottom of an email. This is also the default for email providers such as SendGrid and SparkPost.
 
-To reduce unexpected behavior, keep Liquid inside that `<body>` content only, and don't use Liquid to output extra `<html>`, `<head>`, or `<body>` tags. Nested or duplicate document-level tags can change how the email is parsed and where the pixel lands, which can affect open tracking and layout. For more information, see [Using Liquid]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/liquid/using_liquid/).
+To reduce unexpected behavior, keep Liquid inside `<html>` tags. Nested or duplicate document-level tags can change how the email is parsed and where the pixel lands, which can affect open tracking and layout. For more information, see [Using Liquid]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/liquid/using_liquid/).
 
 ### Update the placement
 
