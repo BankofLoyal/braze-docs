@@ -143,7 +143,7 @@ glossaries:
     tags:
       - Retargeting
   - name: Received Message from Canvas Step
-    description: Segments your users by whether or not they have received a specific Canvas component.<br><br>For Content Cards and in-app messages, this is when a user logs an impression, not when the card or in-app message is sent.<br><br> For push and webhooks, this is when the message is sent to the user.<br><br> For WhatsApp, this is when the last message API request is sent to WhatsApp, not when the message is delivered to the user's device.<br><br> For emails, the targeted user profile will match this filter when an email request is sent to the email service provider (regardless if it actually gets delivered).<br><br> For SMS and RCS, this is when the last message was delivered to the SMS or RCS provider. This doesn't guarantee that the message was delivered to the user's device.<br><br> When a message is delivered, opened, or clicked, Braze updates data for all profiles that share the same channel identifier (for example, email or phone number), so users who share an identifier with someone who received the message can match this filter even if their profile was not directly sent the campaign.
+    description: Segments your users by whether they have received a specific Canvas component.<br><br>For Content Cards and in-app messages, this is when a user logs an impression, not when the card or in-app message is sent.<br><br> For push and webhooks, this is when the message is sent to the user.<br><br> For WhatsApp, this is when the last message API request is sent to WhatsApp, not when the message is delivered to the user's device.<br><br> For emails, the targeted user profile will match this filter when an email request is sent to the email service provider (regardless if it actually gets delivered).<br><br> For SMS and RCS, this is when the last message was delivered to the SMS or RCS provider. This doesn't guarantee that the message was delivered to the user's device.<br><br> When a message is delivered, opened, or clicked, Braze updates data for all profiles that share the same channel identifier (for example, email or phone number), so users who share an identifier with someone who received the message can match this filter even if their profile was not directly sent the campaign.
     tags:
       - Retargeting
   - name: Last Received Message from Specific Canvas Step
@@ -151,11 +151,11 @@ glossaries:
     tags:
       - Retargeting
   - name: Last Received Message from Specific Campaign
-    description: Segments your users by whether or not they have received a specific campaign.<br><br> Because data is updated for all profiles that share the same channel identifier (for example, email or phone) when a delivery, open, or click occurs, a user who shares an identifier with someone who received a message may not match this filter even if they were never explicitly sent the message.<br><br> This filter doesn't consider when users received other campaigns.
+    description: Segments your users by whether they have received a specific campaign.<br><br> Because data is updated for all profiles that share the same channel identifier (for example, email or phone) when a delivery, open, or click occurs, a user who shares an identifier with someone who received a message may not match this filter even if they were never explicitly sent the message.<br><br> This filter doesn't consider when users received other campaigns.
     tags:
       - Retargeting
   - name: Received Message from Campaign or Canvas with Tag
-    description: Segments your users by whether or not they have received a specific campaign or Canvas with a specific tag.<br><br> For Content Cards, Banners (Campaigns only), and in-app messages, this is when a user logs an impression, not when the card or in-app message is sent.<br><br> For push and webhooks, this is when the message is sent to the user.<br><br> For WhatsApp, this is when the last message API request is sent to WhatsApp, not when the message is delivered to the user's device.<br><br> For emails, the targeted user profile will match this filter when an email request is sent to the email service provider (regardless if it actually gets delivered).<br><br> For SMS and RCS, this is when the last message was delivered to the SMS or RCS provider. This doesn't guarantee that the message was delivered to the user's device.<br><br> When a message is delivered, opened, or clicked, Braze updates data for all profiles that share the same channel identifier (for example, email or phone number), so users who share an identifier with someone who received the message can match this filter even if their profile was not directly sent the campaign.
+    description: Segments your users by whether they have received a specific campaign or Canvas with a specific tag.<br><br> For Content Cards, Banners (Campaigns only), and in-app messages, this is when a user logs an impression, not when the card or in-app message is sent.<br><br> For push and webhooks, this is when the message is sent to the user.<br><br> For WhatsApp, this is when the last message API request is sent to WhatsApp, not when the message is delivered to the user's device.<br><br> For emails, the targeted user profile will match this filter when an email request is sent to the email service provider (regardless if it actually gets delivered).<br><br> For SMS and RCS, this is when the last message was delivered to the SMS or RCS provider. This doesn't guarantee that the message was delivered to the user's device.<br><br> When a message is delivered, opened, or clicked, Braze updates data for all profiles that share the same channel identifier (for example, email or phone number), so users who share an identifier with someone who received the message can match this filter even if their profile was not directly sent the campaign.
     tags:
       - Retargeting
   - name: Last Received Message from Campaign or Canvas With Tag
@@ -163,7 +163,7 @@ glossaries:
     tags:
       - Retargeting
   - name: Has Never Received a Message from Campaign or Canvas Step
-    description: Segments your users by whether or not they have received any campaign or Canvas component.
+    description: Segments your users by whether they have received any campaign or Canvas component.
     tags:
       - Retargeting
   - name: Last Received Email
@@ -219,7 +219,7 @@ glossaries:
     tags:
       - Retargeting
   - name: Hard Bounced
-    description: Segment your users by whether or not their email address has hard bounced (such as the email address is invalid).
+    description: Segment your users by whether their email address has hard bounced (such as the email address is invalid).
     tags:
       - Retargeting
   - name: Soft Bounced
@@ -227,11 +227,11 @@ glossaries:
     tags:
       - Retargeting
   - name: Has Marked You As Spam
-    description: Segments your users by whether or not they have marked your messages as spam.
+    description: Segments your users by whether they have marked your messages as spam.
     tags:
       - Retargeting
   - name: Invalid Phone Number
-    description: Segments your users by whether or not their phone number is invalid.
+    description: Segments your users by whether their phone number is invalid.
     tags:
       - Retargeting
   - name: Last Sent Specific SMS Inbound Keyword Category
@@ -239,19 +239,19 @@ glossaries:
     tags:
       - Retargeting
   - name: Converted From Campaign
-    description: Segments your users by whether or not they have converted on a specific campaign. This filter doesn't include users that are in the control group.
+    description: Segments your users by whether they have converted on a specific campaign. This filter doesn't include users that are in the control group.
     tags:
       - Retargeting
   - name: Converted From Canvas
-    description: Segments your users by whether or not they have converted on a specific Canvas. This filter doesn't include users that are in the control group.
+    description: Segments your users by whether they have converted on a specific Canvas. This filter doesn't include users that are in the control group.
     tags:
       - Retargeting
   - name: In Campaign Control Group
-    description: Segments your users by whether or not they were in the control group for a specific multivariate campaign.
+    description: Segments your users by whether they were in the control group for a specific multivariate campaign.
     tags:
       - Retargeting
   - name: In Canvas Control Group
-    description: Segments your users by whether or not they were in the control group for a specific Canvas. This filter only evaluates users who have entered the Canvas, so users who never entered are excluded from results entirely.<br><br>For example, if you filter for users who are not in the control group for a Canvas, you receive only users who entered the Canvas and were assigned to a non-control variant—users who never entered the Canvas are not included. To include all users regardless of Canvas entry, use the <code>Entered Canvas Variation</code> filter instead.
+    description: Segments your users by whether they were in the control group for a specific Canvas. This filter only evaluates users who have entered the Canvas, so users who never entered are excluded from results entirely.<br><br>For example, if you filter for users who are not in the control group for a Canvas, you receive only users who entered the Canvas and were assigned to a non-control variant—users who never entered the Canvas are not included. To include all users regardless of Canvas entry, use the <code>Entered Canvas Variation</code> filter instead.
     tags:
       - Retargeting
   - name: Last Enrolled in Any Control Group
@@ -259,7 +259,7 @@ glossaries:
     tags:
       - Retargeting
   - name: Entered Canvas Variation
-    description: Segments your users by whether or not they have entered a variation path of a specific Canvas. This filter evaluates all users.<br><br>For example, if you filter for users who have not entered a Canvas variation control group, you receive all users who are not in the control group regardless if they entered the Canvas.
+    description: Segments your users by whether they have entered a variation path of a specific Canvas. This filter evaluates all users.<br><br>For example, if you filter for users who have not entered a Canvas variation control group, you receive all users who are not in the control group regardless if they entered the Canvas.
     tags:
       - Retargeting
   - name: Last Received Any Message
@@ -271,7 +271,7 @@ glossaries:
     tags:
       - Retargeting
   - name: Clicked card
-    description: Segments your users by whether or not they have clicked a specific Content Card. This filter is available as a subfilter of "Clicked/opened campaign", "Clicked/opened campaign or Canvas with Tag", and "Clicked/opened step".
+    description: Segments your users by whether they have clicked a specific Content Card. This filter is available as a subfilter of "Clicked/opened campaign", "Clicked/opened campaign or Canvas with Tag", and "Clicked/opened step".
     tags:
       - Retargeting
   - name: Feature Flags
@@ -443,7 +443,7 @@ glossaries:
     tags:
       - Demographic attributes
   - name: Has App
-    description: Segments by whether or not a user has ever installed your app. This includes users who currently have your app installed and those that have uninstalled in the past. This generally requires users to open the app (start a session) to be included in this filter. However, there are some exceptions, such as if a user was imported into Braze and manually associated with your app.
+    description: Segments by whether a user has ever installed your app. This includes users who currently have your app installed and those that have uninstalled in the past. This generally requires users to open the app (start a session) to be included in this filter. However, there are some exceptions, such as if a user was imported into Braze and manually associated with your app.
     tags:
       - App
   - name: Most Recent App Version Name
@@ -523,7 +523,7 @@ glossaries:
     tags:
       - Location
   - name: Location Available
-    description: Segments your users by whether or not they have reported their locations. In order to use this filter, your app needs to have <a href="/docs/search/?query=location%20tracking">location tracking integrated.</a>
+    description: Segments your users by whether they have reported their locations. In order to use this filter, your app needs to have <a href="/docs/search/?query=location%20tracking">location tracking integrated.</a>
     tags:
       - Location
   - name: Amplitude Cohorts
