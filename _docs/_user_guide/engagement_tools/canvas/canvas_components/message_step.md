@@ -81,7 +81,7 @@ Use the following Liquid when referencing these entry properties: {% raw %}``con
 For example, consider the following request: `\"context\" : {\"product_name\" : \"shoes\", \"product_price\" : 79.99}`. You could add the word "shoes" to a message with the Liquid `{{context.${product_name}}}`.
 {% endraw %}
 
-You can also leverage [context and event properties]({{site.baseurl}}/user_guide/engagement_tools/canvas/create_a_canvas/context_and_event_properties/context_and_event_properties/) in any Message step to guide your users through personalized steps throughout your Canvas workflow.
+You can also leverage [context and event properties]({{site.baseurl}}/user_guide/engagement_tools/canvas/create_a_canvas/context_and_event_properties/) in any Message step to guide your users through personalized steps throughout your Canvas workflow.
 
 ### Event properties
 
