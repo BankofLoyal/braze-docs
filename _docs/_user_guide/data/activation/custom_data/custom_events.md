@@ -61,7 +61,7 @@ You can view up to 100 usage reports at a time by selecting the checkboxes for m
 
 To export the list of custom events as a CSV file, select the **Export all** button at the top of the page. The CSV file will be generated, and a download link will be emailed to you.
 
-## Log custom events
+## Log custom events {#logging-custom-events}
 
 Custom events require additional setup. Refer to the list below for documentation about each platform, where you'll find information about the methods used to log custom events and how to add properties and quantities to your custom events.
 
