@@ -1,11 +1,9 @@
-{% if include.section == "Prerequisites" %}
-## Prerequisites
+{% if include.section == "multi-language prerequisites" %}
 
-To edit and manage [multi-language support]({{site.baseurl}}/multi_language_support/), you must have the "Manage Multi-Language Settings" user permission. To add the locale to a message, you'll need permissions for editing campaigns.
-
-{% alert important %}
-Multi-language support is currently in early access. Contact your Braze account manager if you’re interested in participating in this early access.
-{% endalert %}
+| Feature | Required user permissions |
+| --- | --- |
+| Multi-language locales | You need these permissions to create and manage multi-language locales:<br><br> {::nomarkdown}Granular permissions: <ul><li>Edit Localization Settings</li><li>Delete Localization Settings</li></ul> Legacy permissions: <ul><li> Manage Multi Language Settings</li></ul>{:/} |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
 {% endif %}
 

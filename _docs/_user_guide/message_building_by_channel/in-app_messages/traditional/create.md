@@ -343,11 +343,16 @@ Finally, after you've selected the action the in-app message will be triggered o
 
 You can choose between the following message priorities:
 
-- Low priority (shown after other messages)
-- Medium priority
 - High priority (shown before other messages)
+- Medium priority (default)
+- Low priority (shown after other messages)
 
-The high, medium, and low options for triggered message priorities are buckets, and as such multiple messages could have the same selected priority. To set priorities within these buckets, click **Set Exact Priority**, and you will be able to drag and drop campaigns to order them with the correct priority.
+The high, medium, and low options for triggered message priorities are buckets, and as such, multiple messages could have the same selected priority. When multiple messages share the same priority, the most recently created or assigned message takes precedence and is shown first:
+
+- **Default priority bucket:** When two campaigns share the same trigger and use the default (medium) priority, the campaign that was created last receives the trigger.
+- **Specific priority bucket:** When multiple campaigns share the same trigger and are assigned to a specific priority bucket, the campaign most recently assigned to that bucket receives the trigger.
+
+To set priorities within these buckets, click **Set Exact Priority**, and you can drag and drop campaigns to order them with the correct priority.
 
 ![An example of how priority is set for an in-app message campaign and Canvas.]({% image_buster /assets/img_archive/bucket_prioritization.png %}){: style="max-width:70%"}
 
@@ -374,6 +379,12 @@ Enabling this option will result in a slight delay (< 100ms) between when a user
 <br><br>
 Do not use this option for messages that can be triggered while a user is offline or when eligibility and Liquid re-evaluation are not required.
 {% endalert %}
+
+##### Use data added by REST API in a message
+
+User data that the [`/users/track` endpoint]({{site.baseurl}}/api/endpoints/user_data/post_user_track/) adds in the same session can sometimes be used in that user's in-app message. For example, if a user is in the audience for an in-app message that is waiting on a trigger, starts a session, and in that same session the REST API updates their profile, that new data can appear in the in-app message when **Re-evaluate campaign eligibility before displaying** is selected. Braze won't template the in-app message until it's time to render.
+
+If one trigger both sends data to Braze and fires the in-app message, the message can't use that newly updated profile data, even with a scheduled delay. Use two separate triggers instead: one to send the data, and one to trigger the in-app message.
 
 #### Choose conversion events
 

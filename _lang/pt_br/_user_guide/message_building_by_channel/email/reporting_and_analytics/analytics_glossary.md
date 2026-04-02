@@ -5,7 +5,7 @@ layout: email_report_metrics
 page_order: 0
 excerpt_separator: ""
 page_type: glossary
-description: "Este glossário inclui os termos que serão encontrados na seção de análise de dados da sua campanha de e-mail ou do Canva, após o lançamento. Este glossário não inclui as métricas do Currents."
+description: "Este glossário inclui os termos que serão encontrados na seção de análise de dados da sua campanha de e-mail ou do Canvas, após o lançamento. Este glossário não inclui as métricas do Currents."
 channel: 
   - email
 ---
@@ -22,7 +22,7 @@ channel:
 ### Variação
 
 {% apitags %}
-Contagem
+Count
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Variation' %}
@@ -36,7 +36,7 @@ Contagem
 ### Envio de e-mail
 
 {% apitags %}
-Contagem
+Count
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Emailable' %}
@@ -50,12 +50,12 @@ Contagem
 ### % de público
 
 {% apitags %}
-Porcentagem
+Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Audience' %}
 
-<span class="calculation-line">Cálculo: (Número de destinatários na variante) / (destinatários únicos)</span>
+<span class="calculation-line">Cálculo: (Número de destinatários na variante) / (Destinatários únicos)</span>
 
 {% endapi %}
 
@@ -64,10 +64,10 @@ Porcentagem
 ### Destinatários únicos
 
 {% apitags %}
-Contagem
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Unique Recipients' %} Esse número é recebido do Braze.
+{% multi_lang_include analytics/metrics.md metric='Unique Recipients' %} Esse número é recebido da Braze.
 
 <span class="calculation-line">Cálculo: Contagem</span>
 
@@ -78,10 +78,10 @@ Contagem
 ### Envios
 
 {% apitags %}
-Contagem
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Sends' %}  Essa métrica é fornecida pelo Braze.
+{% multi_lang_include analytics/metrics.md metric='Sends' %}  Essa métrica é fornecida pela Braze.
 
 <span class="calculation-line">Cálculo: Contagem</span>
 
@@ -92,10 +92,10 @@ Contagem
 ### Mensagens enviadas
 
 {% apitags %}
-Contagem
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Messages Sent' %}  Essa métrica é fornecida pelo Braze.
+{% multi_lang_include analytics/metrics.md metric='Messages Sent' %}  Essa métrica é fornecida pela Braze.
 
 <span class="calculation-line">Cálculo: Contagem</span>
 
@@ -106,12 +106,12 @@ Contagem
 ### Entregas
 
 {% apitags %}
-Contagem
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Deliveries' %} Para e-mails, *Entregas* é o número total de mensagens (Envios) enviadas e recebidas com sucesso por partes que podem enviar e-mails.
+{% multi_lang_include analytics/metrics.md metric='Deliveries' %} Para e-mails, *Entregas* é o número total de mensagens (Envios) enviadas e recebidas com sucesso por partes que podem receber e-mails.
 
-<span class="calculation-line">Cálculo: (Sends) - (Bounces) </span>
+<span class="calculation-line">Cálculo: (Envios) - (Bounces) </span>
 
 {% endapi %}
 
@@ -120,7 +120,7 @@ Contagem
 ### Entregas %
 
 {% apitags %}
-Porcentagem
+Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Deliveries %' %}
@@ -134,21 +134,21 @@ Porcentagem
 ### Bounces
 
 {% apitags %}
-Contagem, porcentagem
+Count, Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Bounces' %} 
 
 Para e-mail, a % de *bounce* ou a *taxa de bounce* é a porcentagem de mensagens que foram enviadas sem sucesso ou designadas como "devolvidas" ou "não recebidas" dos serviços de envio usados ou não recebidas pelos usuários de e-mail pretendidos.
 
-Um envio de e-mail para clientes que usam o SendGrid consiste em hard bounce, spam (`spam_report_drops`) e e-mails enviados para endereços inválidos (`invalid_emails`).
+Um bounce de e-mail para clientes que usam o SendGrid consiste em hard bounces, spam (`spam_report_drops`) e e-mails enviados para endereços inválidos (`invalid_emails`).
 
 {::nomarkdown}
 <span class="calculation-line">
     Cálculo:
     <ul>
         <li><b><i>Bounces</i>:</b> Contagem</li>
-        <li><b><i>Bounce %</i> ou <i>Bounce Rate %</i>:</b> (Bounces) / (Sends)</li>
+        <li><b><i>Bounce %</i> ou <i>Bounce Rate %</i>:</b> (Bounces) / (Envios)</li>
     </ul>
 </span>
 {:/}
@@ -160,7 +160,7 @@ Um envio de e-mail para clientes que usam o SendGrid consiste em hard bounce, sp
 ### Hard bounce
 
 {% apitags %}
-Contagem
+Count
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Hard Bounce' %} 
@@ -174,12 +174,12 @@ Contagem
 ### Soft bounce
 
 {% apitags %}
-Contagem
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Soft Bounce' %} Se um e-mail receber um soft bounce, geralmente tentaremos novamente dentro de 72 horas, mas o número de tentativas de nova tentativa varia de acordo com o destinatário. 
+{% multi_lang_include analytics/metrics.md metric='Soft Bounce' %} Se um e-mail receber um soft bounce, geralmente tentaremos novamente dentro de 72 horas, mas o número de tentativas varia de acordo com o destinatário. 
 
-Embora os soft bounces não sejam rastreados na análise de dados da sua campanha, é possível monitorar os soft bounces no [registro de atividades de mensagens]({{site.baseurl}}/user_guide/administrative/app_settings/message_activity_log_tab/) ou excluir esses usuários do seu envio com o [filtro de segmento Soft Bounced]({{site.baseurl}}/user_guide/engagement_tools/segments/segmentation_filters#soft-bounced). No registro de atividades de mensagens, você também pode ver o motivo dos soft bounces e entender possíveis discrepâncias entre os "envios" e as "entregas" de suas campanhas de e-mail.
+Embora os soft bounces não sejam rastreados na análise de dados da sua campanha, é possível monitorar os soft bounces no [Registro de atividades de mensagens]({{site.baseurl}}/user_guide/administrative/app_settings/message_activity_log_tab/) ou excluir esses usuários do seu envio com o [filtro de segmento Soft Bounced]({{site.baseurl}}/user_guide/engagement_tools/segments/segmentation_filters#soft-bounced). No Registro de atividades de mensagens, você também pode ver o motivo dos soft bounces e entender possíveis discrepâncias entre os "envios" e as "entregas" das suas campanhas de e-mail.
 
 <span class="calculation-line">Cálculo: Contagem </span>
 
@@ -190,7 +190,7 @@ Embora os soft bounces não sejam rastreados na análise de dados da sua campanh
 ### Spam
 
 {% apitags %}
-Contagem, porcentagem
+Count, Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Spam' %}
@@ -200,7 +200,7 @@ Contagem, porcentagem
     Cálculo:
     <ul>
         <li><b><i>Spam</i>:</b> Contagem</li>
-        <li><b><i>Spam %</i> ou <i>Spam Rate %</i>:</b> (Marcado como Spam) / (Envia)</li>
+        <li><b><i>Spam %</i> ou <i>Spam Rate %</i>:</b> (Marcado como Spam) / (Envios)</li>
     </ul>
 </span>
 {:/}
@@ -209,20 +209,20 @@ Contagem, porcentagem
 
 {% api %}
   
-### Aberturas únicas projetadas
+### Aberturas únicas
 
 {% apitags %}
-Contagem, porcentagem
+Count, Percentage
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Unique Opens' %} Para o envio de e-mail, esse rastreamento é feito em um período de 7 dias.
+{% multi_lang_include analytics/metrics.md metric='Unique Opens' %} Para e-mail, esse rastreamento é feito em um período de sete dias. Isso significa que um único usuário que abrir o mesmo e-mail novamente após sete dias conta como uma nova abertura única. Como resultado, as contagens de aberturas únicas no dashboard podem ser maiores do que uma simples consulta `DISTINCT user_id` nos dados do Currents. Para corresponder às contagens do dashboard a partir do Currents, filtre por eventos em que `is_unique` seja `true`.
 
 {::nomarkdown}
 <span class="calculation-line">
     Cálculo:
     <ul>
-        <li><b><i>Aberturas exclusivas</i>:</b> Contagem</li>
-        <li><b><i>Unique Opens % (% de aberturas únicas)</i> ou <i>Unique Open Rate (taxa de abertura única)</i>:</b> (Aberturas únicas) / (Entregas)</li>
+        <li><b><i>Aberturas únicas</i>:</b> Contagem</li>
+        <li><b><i>% de aberturas únicas</i> ou <i>Taxa de abertura única</i>:</b> (Aberturas únicas) / (Entregas)</li>
     </ul>
 </span>
 {:/}
@@ -231,20 +231,20 @@ Contagem, porcentagem
 
 {% api %}
 
-### Cliques únicos projetados
+### Cliques únicos
 
 {% apitags %}
-Contagem, porcentagem
+Count, Percentage
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Unique Clicks' %} Isso é rastreado em um período de sete dias para e-mails e medido por <a href='/docs/help/help_articles/data/dispatch_id/'>dispatch_id</a>. Isso inclui cliques em links de cancelamento de inscrição fornecidos pela Braze.
+{% multi_lang_include analytics/metrics.md metric='Unique Clicks' %} Isso é rastreado em um período de sete dias para e-mails e medido por <a href='/docs/help/help_articles/data/dispatch_id/'>dispatch_id</a>. Isso inclui cliques em links de cancelamento de inscrição fornecidos pela Braze. Assim como as aberturas únicas, um usuário que clicar no mesmo link novamente após 7 dias conta como um novo clique único. Para corresponder às contagens do dashboard a partir do Currents, filtre por eventos em que `is_unique` seja `true`.
 
 {::nomarkdown}
 <span class="calculation-line">
     Cálculo:
     <ul>
         <li><b><i>Cliques únicos</i>:</b> Contagem</li>
-        <li><b><i>% de cliques únicos</i> ou <i>taxa de cliques</i>:</b> (Cliques únicos) / (Entregas)</li>
+        <li><b><i>% de cliques únicos</i> ou <i>Taxa de cliques</i>:</b> (Cliques únicos) / (Entregas)</li>
     </ul>
 </span>
 {:/}
@@ -256,7 +256,7 @@ Contagem, porcentagem
 ### Cancelamento de inscrição
 
 {% apitags %}
-Contagem, porcentagem
+Count, Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Unsubscribers or Unsub' %}
@@ -266,7 +266,7 @@ Contagem, porcentagem
     Cálculo:
     <ul>
         <li><b><i>Cancelamento de inscrição</i> ou <i>Unsub</i>:</b> Contagem</li>
-        <li><b><i>% de cancelamentos de inscrição</i> ou <i>taxa de cancelamento de inscrição</i>:</b> (Cancelamentos de inscrição) / (Entregas)</li>
+        <li><b><i>% de cancelamentos de inscrição</i> ou <i>Taxa de cancelamento de inscrição</i>:</b> (Cancelamentos de inscrição) / (Entregas)</li>
     </ul>
 </span>
 {:/}
@@ -278,7 +278,7 @@ Contagem, porcentagem
 ### Receita
 
 {% apitags %}
-Contagem
+Count
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Revenue' %}
@@ -292,10 +292,10 @@ Contagem
 ### Conversões primárias (A) ou evento de conversão primária
 
 {% apitags %}
-Contagem, porcentagem
+Count, Percentage
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Primary Conversions (A) or Primary Conversion Event' %} Para envios de e-mail, push e webhooks, começamos a rastrear as conversões após o envio inicial.
+{% multi_lang_include analytics/metrics.md metric='Primary Conversions (A) or Primary Conversion Event' %} Para e-mails, push e webhooks, começamos a rastrear as conversões após o envio inicial.
 
 {::nomarkdown}
 <span class="calculation-line">
@@ -314,7 +314,7 @@ Contagem, porcentagem
 ### Confiança
 
 {% apitags %}
-Contagem
+Count
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Confidence' %}
@@ -336,10 +336,10 @@ Contagem
 ### Outras aberturas
 
 {% apitags %}
-Contagem
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Other Opens' %} Note que um usuário também pode abrir um e-mail (como as contagens de abertura para <i>Outras aberturas</i>) antes que uma contagem de <i>Aberturas de máquina</i> seja registrada. Se um usuário abrir um e-mail uma vez (ou mais) após um evento de abertura de máquina de uma caixa de entrada que não seja do Apple Mail, a quantidade de vezes que o usuário abrir o e-mail será calculada para <i>Outras aberturas</i> e apenas uma vez para <i>Aberturas exclusivas</i>.
+{% multi_lang_include analytics/metrics.md metric='Other Opens' %} Note que um usuário também pode abrir um e-mail (como as contagens de abertura para <i>Outras aberturas</i>) antes que uma contagem de <i>Aberturas por máquina</i> seja registrada. Se um usuário abrir um e-mail uma vez (ou mais) após um evento de abertura por máquina de uma caixa de entrada que não seja do Apple Mail, a quantidade de vezes que o usuário abrir o e-mail será calculada para <i>Outras aberturas</i> e apenas uma vez para <i>Aberturas únicas</i>.
 
 <span class="calculation-line">Cálculo: Contagem </span>
 
@@ -350,7 +350,7 @@ Contagem
 ### Taxa de cliques por abertura
 
 {% apitags %}
-Porcentagem
+Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Click-to-Open Rate' %}

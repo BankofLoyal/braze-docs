@@ -1,150 +1,187 @@
 ---
-nav_title: Localidades em mensagens
-article_title: Tradução de localidades
+nav_title: Mensagens multilíngues
+article_title: Mensagens multilíngues
 alias: /locales_in_messages/
 page_order: 0
 page_type: reference
-description: "Este artigo fornece etapas sobre como usar localidades em suas mensagens."
+description: "Este artigo fornece etapas sobre como usar locais nas suas mensagens."
 ---
 
-# Tradução de localidades
+# Mensagens multilíngues
 
-> Depois de adicionar localidades ao seu espaço de trabalho, é possível direcionar usuários em diferentes idiomas em um único push, e-mail, banner ou mensagem no app.
+> Depois de adicionar locais ao seu espaço de trabalho, você pode direcionar usuários em diferentes idiomas em um único push, e-mail, banner, mensagem no app ou bloco de conteúdo.
 
-{% multi_lang_include locales.md section="Prerequisites" %}
-
-## Uso de localidades
-
-### Etapa 1: Configure as localizações em seu espaço de trabalho {#workspace-setup}
-
-Antes de usar localidades e tags de tradução, é necessário [adicionar localidades ao seu espaço de trabalho]({{site.baseurl}}/user_guide/administrative/app_settings/multi_language_settings).
-
-### Etapa 2: Adicione tags Liquid de tradução à sua mensagem {#add-translation-tags}
-
-Adicione as tags de tradução {% raw %}`{% translation your_id_here %}` e `{% endtranslation %}`{% endraw %} para envolver todos os URLs de texto, imagem ou link que serão traduzidos.
-
-Cada tradução deve ter um `id` exclusivo. Por exemplo, ao traduzir uma saudação simples, você pode nomear o ID como "greeting":
-
-{% raw %}`{% translation greeting %}Hello!{% endtranslation}`{% endraw %}
-
-#### Localização de blocos HTML
-
-Um parágrafo mais complicado pode ter várias tags de tradução ("offer_text" e "offer_amount"):
-
-{% raw %}
-```
-{% translation offer_text %}Sign up now to save{% endtranslation %}
-<b>{% translation offer_amount %}50% Off{% endtranslation %}</b>
-```
-{% endraw %}
-
-{% alert important %}
-O fato de envolver grandes blocos HTML em tags de tradução pode causar problemas de estilo ou folha de estilo. Envolva as menores seções de texto possíveis.
-{% endalert %}
-
-#### Localização de links
-
-Para localizar links de tag âncora, certifique-se de envolver **apenas as partes específicas do idioma** e não todo o atributo de URL `href`. Se você envolver o URL inteiro, o modelo de link poderá não funcionar corretamente.
-
-##### Uso correto
-
-{% raw %}
-```
-<a href="https://www.braze.com/{% translation link_href %}en{% endtranslation %}/page"></a>
-```
-{% endraw %}
-
-##### Uso incorreto
-
-{% raw %}
-```
-<a href="{% translation link_href %}https://www.braze.com/en/page{% endtranslation %}"></a>
-```
-{% endraw %}
-
-### Etapa 3: Escolha as localizações das mensagens {#choose-locales}
-
-Depois que as tags de tradução estiverem na mensagem, acesse as configurações multilíngues da mensagem e selecione uma ou mais localizações a serem traduzidas para essa mensagem.
-
-![Configurações em vários idiomas com um campo suspenso para selecionar as localizações.]({% image_buster /assets/img/multi-language_support/manage_language_dropdown.png %}){: style="max-width:80%;"}
+## Pré-requisitos
 
 {% tabs %}
-{% tab Email %}
-Selecione **Multi-Language (Vários idiomas** ) no menu Content (Conteúdo) ao editar sua mensagem.
+{% tab Multi-language locales %}
 
-![Configurações em vários idiomas para e-mail.]({% image_buster /assets/img/multi-language_support/email_multi_language.png %}){: style="max-width:45%;"}
-
-{% endtab %}
-
-{% tab Push %}
-Selecione **Gerenciar idiomas** ao editar sua mensagem.
-
-![Configurações em vários idiomas para push.]({% image_buster /assets/img/multi-language_support/push_manage_languages.png %})
+{% multi_lang_include locales.md section='multi-language prerequisites' %}
 
 {% endtab %}
+{% tab Message types %}
 
-{% tab In-app message %}
-{% subtabs %}
-{% subtab Drag-and-Drop Editor %}
-Selecione **Manage Languages (Gerenciar idiomas** ) na parte inferior da seção **Build**.
+| Recurso | Permissões de usuário necessárias |
+| --- | --- |
+| Tipos&nbsp;de&nbsp;mensagem | Você precisa destas permissões para adicionar locais e traduções a campanhas e canvas:<br><br> {::nomarkdown}Permissões granulares: <ul><li>Edit Campaigns</li><li>Edit Canvases</li></ul> Permissões legadas: <ul><li>Access Campaigns, Canvases, Cards, Content Blocks, Feature Flags, Segments, Media Library, Locations, Promotion Codes, and Preference Centers</li></ul>{:/} |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
-![Configurações em vários idiomas para mensagens no app do tipo arrastar e soltar.]({% image_buster /assets/img/multi-language_support/iam_dnd_manage_languages.png %}){: style="max-width:45%;"}
-
-{% endsubtab %}
-{% subtab Traditional editor %}
-
-Selecione **Gerenciar idiomas** ao editar sua mensagem.
-
-![Configurações em vários idiomas para mensagens no app em HTML.]({% image_buster /assets/img/multi-language_support/iam_html_manage_languages.png %})
-
-{% endsubtab %}
-{% endsubtabs %}
 {% endtab %}
+{% tab Templates %}
 
-{% tab Banner %}
-Selecione **Gerenciar idiomas** ao editar sua mensagem.
-
-![Configurações em vários idiomas para banners.]({% image_buster /assets/img/multi-language_support/banner_manage_languages.png %})
+| Recurso | Permissões de usuário necessárias |
+| --- | --- |
+| Modelos | Você precisa destas permissões para o tipo de modelo ao qual deseja adicionar locais e traduções:<br><br> {::nomarkdown}Permissões granulares: <ul><li>Edit Email Templates</li><li>Edit IAM Templates</li><li>Edit Content Block Templates</li></ul> Permissões legadas: <ul><li>Access Campaigns, Canvases, Cards, Content Blocks, Feature Flags, Segments, Media Library, Locations, Promotion Codes, and Preference Centers</li></ul>{:/} |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
 {% endtab %}
 {% endtabs %}
 
-### Etapa 4: Baixar o modelo CSV {#download-csv}
+## Uso de locais
 
-Após selecionar suas localidades, selecione **Baixar modelo** para baixar um modelo CSV contendo uma matriz de suas IDs de tradução e localidades selecionadas.
+### Etapa 1: Configure os locais
 
-![Exemplo de CSV para as localidades en, fr e es.]({% image_buster /assets/img/multi-language_support/example_translation_csv.png %}){: style="max-width:70%;"}
+Antes de adicionar traduções a uma mensagem, você deve primeiro [criar os locais que deseja suportar]({{site.baseurl}}/user_guide/administrative/app_settings/multi_language_settings/). Os locais definem as variantes de idioma (e opcionalmente região) disponíveis para envio de mensagens.
 
-### Etapa 5: Faça upload de um CSV preenchido {#upload-csv}
+### Etapa 2: Marque o conteúdo para tradução
 
-{% alert important %}
-Quaisquer alterações nas IDs ou localizações no arquivo CSV não serão atualizadas automaticamente em sua mensagem. Para atualizar as traduções, atualize o arquivo CSV e faça upload do arquivo novamente.
-{% endalert %}
+Envolva o texto que deseja traduzir com as Liquid tags de tradução {% raw %}`{% translation your_id_here %}` e `{% endtranslation %}`{% endraw %} e atribua um ID de tag. Os IDs das tags de tradução devem ser únicos dentro de uma mensagem. Considere usar nomes de ID semânticos que descrevam claramente o texto, como {% raw %}`{% translation header %}`{% endraw %}.
 
-Aqui está o formato de um exemplo de CSV preenchido:
-
-```
-Variant1,,,,
-,Translation tags,en,es,fr
-title,We noticed you've left something behind,We noticed you've left something behind,Notamos que has dejado algo atrás,Nous avons remarqué que vous avez oublié quelque chose derrière vous
-offer_text,Check out now and receive,Check out now and receive,Paga ahora y recibe,Payez maintenant et recevez
-offer_amount,10% Off,10% Off,10% de Descuento,10 % de réduction
-cta,CHECK OUT NOW,CHECK OUT NOW,VERIFICAR AHORA,VÉRIFIER MAINTENANT
-```
-
-### Etapa 6: Prévia das localizações {#preview-locales}
-
-Ao fazer a prévia da mensagem, selecione a opção **Usuário multilíngue** no menu suspenso **Pré-visualizar como usuário**. Isso permite que você alterne entre diferentes definições de localização para prévia de todas as traduções de sua mensagem.
-
-![Prévias de localidades]({% image_buster /assets/img/multi-language_support/multi_language_user_preview.png %})
+Aqui está um exemplo de mensagem marcada para tradução: {% raw %}`{% translation greeting %}Hello!{% endtranslation %}`{% endraw %}
 
 {% alert tip %}
-Confira nossa [API de tradução]({{site.baseurl}}/api/endpoints/translations) para gerenciar e atualizar traduções em suas campanhas e canvas.
+Destaque o texto que deseja traduzir e use o atalho de teclado **Cmd + Alt + L** (macOS) ou **Ctrl + Alt + L** (Windows) para envolver nas tags de tradução.<br><br> Esse atalho funciona em todos os canais que suportam envio de mensagens multilíngue, exceto nos editores de arrastar e soltar para e-mail e blocos de conteúdo. Para esses, use o botão **Add personalization** na barra lateral esquerda para adicionar tags de tradução.
 {% endalert %}
 
-## Envio de mensagens da direita para a esquerda
+#### Localizando URLs
 
-Ao preencher o arquivo de tradução para idiomas que são escritos da direita para a esquerda (como o árabe), envolva a tradução com `span` para que ela seja formatada corretamente:
+Ao traduzir conteúdo, URLs exigem tratamento especial para evitar links quebrados.
+
+##### URLs padrão (estáticas)
+
+URLs estáticas são inseridas manualmente no editor (por exemplo, `https://example.com`). Também recomendamos o seguinte:
+
+| Recomendação | Motivo |
+| --- | --- |
+| Mantenha o protocolo (`https://`) fora das tags de tradução. Envolva apenas o domínio e o caminho (por exemplo, `example.com/en`). | Tradutores podem acidentalmente alterar ou remover caracteres especiais, causando links quebrados. |
+| Não inclua parâmetros de consulta dentro das tags de tradução (por exemplo, `?utm_source=promo`). | Tradutores podem acidentalmente alterar ou remover caracteres especiais, resultando em links quebrados. |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
+
+Uma URL padrão que segue ambas as recomendações é:
+
+{% raw %}
+```
+<a href="{% translation id_1 %}{% landing_page_url xyz%}{% endtranslation %}">Click Here</a>
+```
+{% endraw %}
+
+{% alert important %}
+Se você estiver usando [rastreamento de links de e-mail](#email-link-tracking) (link aliasing ou modelos de link), é necessária configuração adicional quando URLs estão envolvidas em tags de tradução.
+{% endalert %}
+
+#### Atributos e estrutura HTML
+
+Envolva apenas texto legível por humanos nas tags de tradução. Evite envolver atributos HTML (como `class`, `style` ou `id`) ou outro código estrutural. Atributos HTML controlam layout, estilização e funcionalidade. Envolvê-los em tags de tradução pode quebrar a formatação ou os estilos nas versões localizadas da sua mensagem.
+
+Este texto está corretamente envolvido:
+
+{% raw %}
+```
+<p class="headline" style="color: red;">
+  {% translation id_1 %}Welcome to our sale{% endtranslation %}
+</p>
+```
+{% endraw %}
+
+{% details Texto envolvido incorretamente %}
+
+Este texto está envolvido **incorretamente**:
+
+{% raw %}
+```
+{% translation id_1 %}
+<p class="headline" style="color: red;">
+  Welcome to our sale
+</p>
+{% endtranslation %}
+```
+{% endraw %}
+
+{% enddetails %}
+
+### Etapa 3: Adicione locais à sua mensagem
+
+Após adicionar tags de tradução à sua mensagem, selecione **Manage languages** no editor (**Languages** nos editores de arrastar e soltar para e-mail e blocos de conteúdo) e selecione pelo menos um local para o qual deseja adicionar traduções.
+
+![O menu suspenso Adicionar local com opções para selecionar o local padrão ou atributos personalizados.]({% image_buster /assets/img/multi-language_support/select_locale_type.png %}){: style="max-width:70%;"}
+
+#### Blocos de conteúdo contendo traduções
+
+Se sua mensagem contém blocos de conteúdo que já possuem traduções salvas, você não precisa fazer upload dessas traduções novamente. As traduções salvas são aplicadas automaticamente quando o bloco de conteúdo é adicionado à sua mensagem.
+
+No modal **Manage languages**, os blocos de conteúdo com traduções salvas aparecem na lista, junto com os locais que suportam. Isso permite que você veja quais partes da sua mensagem já estão localizadas antes de adicionar novas traduções.
+
+![A seção Manage languages com uma lista de blocos de conteúdo que possuem traduções salvas.]({% image_buster /assets/img/multi-language_support/content_blocks_translations.png %}){: style="max-width:70%;"}
+
+{% alert important %}
+Certifique-se de que cada bloco de conteúdo inclua traduções para todos os locais adicionados à sua mensagem. Se um bloco de conteúdo não tiver traduções para um dos locais que você adicionou, ele será exibido no idioma original para os usuários desse local.
+{% endalert %}
+
+### Etapa 4: Adicione traduções
+
+Após selecionar os locais, adicione traduções à sua mensagem usando um dos seguintes métodos:
+
+![A guia Adicionar traduções com opções para fazer upload de traduções por CSV ou conectando-se a parceiros de tradução.]({% image_buster /assets/img/multi-language_support/add_translations.png %}){: style="max-width:70%;"}
+
+{% tabs %}
+{% tab Upload CSV template %}
+
+Selecione **Download template** para baixar um CSV contendo uma matriz dos seus IDs de tradução e locais selecionados. Insira as traduções para cada local. Faça upload do arquivo completo e as traduções serão aplicadas à sua mensagem.
+
+{% alert important %}
+Para evitar problemas de exibição com caracteres não ingleses, evite usar o Excel para o seu CSV de tradução.
+{% endalert %}
+
+![CSV com tags de tradução para título, texto da oferta, valor da oferta e CTA.]({% image_buster /assets/img/multi-language_support/csv_template_example.png %}){: style="max-width:50%;"}
+
+{% endtab %}
+{% tab Use the translation API %}
+
+Use uma API de tradução de parceiro para gerenciar e atualizar traduções nas suas campanhas e canvas. Isso é útil se você usa um sistema externo para localização ou deseja se conectar diretamente com um parceiro de tradução.
+
+Para usar os endpoints de tradução com canvas, inclua os seguintes parâmetros:
+  - `workflow_id`
+  - `step_id`
+  - `message_variation_id` 
+
+{% alert note %}
+Ao usar a API de tradução com etapas do canva que foram criadas após o lançamento do canva, o `message_variation_id` que você passar para a API estará vazio ou em branco.
+{% endalert %}
+
+{% endtab %}
+{% endtabs %}
+
+### Etapa 5: Visualize as traduções
+
+Para visualizar sua mensagem, selecione a opção **Multi-Language User** no menu suspenso **Preview as User**. Isso permite que você alterne entre diferentes definições de local para visualizar todas as traduções da sua mensagem.
+
+![Prévias de locais]({% image_buster /assets/img/multi-language_support/multi_language_user_preview.png %}){: style="max-width:70%;"}
+
+## Gerenciando traduções
+
+### Duplicando etapas do canva ou campanhas, e traduções
+
+Quando você duplica uma etapa do canva, campanha ou variação, as traduções são incluídas. Isso também vale ao copiar entre espaços de trabalho, desde que os locais estejam definidos nesse espaço de trabalho de destino. Certifique-se de revisar e atualizar as traduções ao fazer modificações no seu canva ou campanha.
+
+### Salvando traduções em blocos de conteúdo
+
+Os blocos de conteúdo suportam multilíngue da mesma forma que as mensagens. Ao criar ou editar blocos de conteúdo, você pode marcar conteúdo para tradução, adicionar locais e fazer upload de traduções usando um CSV ou a [API de tradução]({{site.baseurl}}/api/endpoints/translations/).
+
+As traduções salvas permanecem associadas ao bloco de conteúdo. Quando o bloco é adicionado a uma mensagem, suas traduções são incluídas automaticamente.
+
+### Mensagens da direita para a esquerda
+
+Ao preencher o arquivo de tradução para idiomas escritos da direita para a esquerda (como o árabe), envolva a tradução com `span` para que ela seja formatada corretamente:
 
 {% raw %}
 ```
@@ -152,48 +189,91 @@ Ao preencher o arquivo de tradução para idiomas que são escritos da direita p
 ```
 {% endraw %}
 
-## Gerenciamento de traduções
+### Rastreamento de links de e-mail
 
-### Edição de traduções para campanhas e telas lançadas
+Em campanhas de e-mail, a Braze rastreia links adicionando informações de rastreamento (parâmetros de consulta) a cada URL. Esse comportamento suporta tanto [link aliasing]({{site.baseurl}}/user_guide/message_building_by_channel/email/templates/link_aliasing/) quanto [modelos de link]({{site.baseurl}}/user_guide/message_building_by_channel/email/templates/link_template).
 
-Depois que uma campanha ou uma tela for lançada, você ainda poderá modificar as traduções quando estiver no modo de rascunho. Isso se aplica se estiver editando traduções diretamente no criador, fazendo upload de CSV ou por meio da API. 
+Quando uma URL está envolvida em tags de tradução, a Braze pode não conseguir determinar onde adicionar essas informações de rastreamento. Para garantir que isso funcione corretamente, você deve incluir um caractere especial no final da URL para indicar onde o rastreamento deve ser adicionado.
 
-Para obter mais detalhes sobre o gerenciamento de campanhas e Canvas após o lançamento, consulte [Edição de campanhas lançadas]({{site.baseurl}}/user_guide/engagement_tools/campaigns/managing_campaigns/change_your_campaign_after_launch/) e [rascunhos do Canvas e edição pós-lançamento]({{site.baseurl}}/user_guide/engagement_tools/canvas/managing_canvases/canvas_drafts/).
+As URLs usam dois caracteres especiais para controlar como isso funciona:
+  - `?` adiciona rastreamento a uma URL que ainda não o possui.
+  - `&` adiciona rastreamento adicional se um `?` já estiver presente na URL. Uma URL pode conter apenas um `?`.
 
-### Duplicação de etapas ou campanhas do Canva e traduções
+| URL | Contém&nbsp;`?` | Descrição | Exemplo |
+| --- | --- | --- | --- |
+| URL padrão | Não | Adicione `?` após a tag de tradução de fechamento se a URL ainda não contiver um. | {% raw %}```<a href="https://{% translation id_1 %}example.com{% endtranslation %}?">Shop Now</a>```{% endraw %} |
+| URL padrão | Sim | Use `&` no final da URL (após a tag de tradução de fechamento) se ela já contiver `?`. | {% raw %}```<a href="https://{% translation id_1 %}example.com{% endtranslation %}?ref=4&">Shop Now</a>```{% endraw %} |
+| Gerada por Liquid | Não | Use `?` após as tags de tradução de fechamento se a URL gerada ainda não contiver um. | {% raw %}```<a href="{% translation id_1 %}{{ product_url }}{% endtranslation %}?">Shop Now</a>``` {% endraw %} |
+| Gerada por Liquid | Sim | Use `&` após a tag de tradução de fechamento se a URL gerada já contiver um `?`. | {% raw %}```<a href="{% translation id_1 %}{% landing_page_url xyz %}{% endtranslation %}&">Shop Now</a>```{% endraw %} |
+{: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 .reset-td-br-4 role="presentation" }
 
-As traduções são copiadas junto com uma etapa do canva, campanha ou variação de campanha. Isso também se aplica ao copiar entre espaços de trabalho, desde que as localizações estejam definidas no espaço de trabalho de destino. Certifique-se de revisar e atualizar as traduções adequadamente ao fazer modificações em seu Canva ou campanha.
+### Configurações de idioma e acessibilidade
 
-### Uso da API multilíngue com o Canvas
+Para canais baseados em HTML (e-mail, mensagem no app, banners, landing pages e Cartões de conteúdo), a Braze adiciona um atributo de idioma de acessibilidade (`lang`) à mensagem renderizada. Esse atributo ajuda tecnologias assistivas, como leitores de tela, a interpretar e pronunciar o texto corretamente.
 
-Para usar a [API multilíngue com as telas]({{site.baseurl}}/api/endpoints/translations/), você deve incluir `workflow_id`, `step_id` e `message_variation_id` na lista de parâmetros.
+Sem isso, um leitor de tela assume que o conteúdo está no idioma padrão que o usuário definiu no dispositivo durante a configuração. Se a mensagem estiver em um idioma diferente, o leitor de tela pode não pronunciar tudo corretamente.
 
-#### Etapas do canva adicionadas aos rascunhos pós-lançamento
+#### Configurando o idioma de acessibilidade
 
-Ao usar a API multilíngue com etapas do Canva que foram criadas após o lançamento do Canvas, o endereço `message_variation_id` que você passar para a API estará vazio ou em branco.
+Você pode definir o idioma de acessibilidade em dois níveis:
+
+##### Nível da mensagem
+
+Nas configurações da sua mensagem, acesse a seção **Accessibility** e selecione um idioma no menu suspenso ou use Liquid para definir dinamicamente o idioma de acessibilidade. Isso se aplica a todo o conteúdo da mensagem.
+
+##### Nível do local
+
+Para mensagens multilíngues, defina o idioma de acessibilidade em cada local nas **Localization Settings**. Quando novas mensagens são criadas, {% raw %}`{{accessibility_language}}`{% endraw %} é selecionado por padrão na seção **Accessibility**. Isso mapeia o idioma de acessibilidade para as configurações do seu local.
+
+#### Padrões
+
+O idioma de acessibilidade é mapeado para o atributo HTML `lang`, um [requisito WCAG 2.1 Nível A](https://dequeuniversity.com/rules/axe/4.2/html-has-lang) (Critério de Sucesso 3.1.1). Para conteúdo multilíngue, você também pode definir o idioma em blocos de conteúdo individuais usando o atributo `lang` diretamente no seu HTML.
 
 ## Perguntas frequentes
 
-#### Posso fazer uma alteração na cópia traduzida em uma de minhas localizações?
-Sim. Primeiro, faça a edição no CSV e, em seguida, faça upload do arquivo novamente para fazer uma alteração na cópia traduzida.
+#### Quais são os limites para tags de tradução?
 
-#### Posso aninhar tags de tradução?
+Ao usar tags de tradução, os seguintes limites se aplicam:
+
+- Cada mensagem pode ter até 200 tags de tradução.
+- Cada texto padrão (o conteúdo entre as tags de tradução) pode ter até 2.000 caracteres.
+- As traduções por local podem ter até 409.600 bytes (aproximadamente 409,6&nbsp;KB).
+
+#### Posso fazer uma alteração no texto traduzido em um dos meus locais?
+
+Sim. Primeiro, faça a edição no CSV, depois faça upload do arquivo novamente para aplicar a alteração no texto traduzido.
+
+### A Braze fornece traduções?
+
+Não. Você deve [fornecer suas próprias traduções](#step-4-add-translations) fazendo upload de um CSV ou usando a API de tradução.
+
+### Posso aninhar tags de tradução?
+
 Não.
 
-#### As traduções são compatíveis com HTML para estilo?
-Sim, mas certifique-se de verificar se o estilo HTML não está traduzido com o conteúdo.
-
 #### Posso envolver mensagens HTML inteiras em uma tag de tradução?
-Não, suas tags de tradução devem ser tão pequenas quanto possível para evitar limitações de performance ou tamanho.
 
-#### Que validações ou verificações extras o Braze faz?
+Não. Como boa prática, você deve envolver apenas texto legível por humanos ou conteúdo que precisa ser localizado. Isso ajuda a evitar formatação quebrada, links ou outros elementos não textuais.
 
-| Cenário                                                                                                                                                 | Validação em Braze                                                                                            |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
-| Um arquivo de tradução não tem localidades associadas à mensagem atual.                                                                               | Esse arquivo de tradução não será carregado.                                                                       |
-| Um arquivo de tradução está sem alguns blocos de texto, como um texto dentro de tags de tradução Liquid, da mensagem de e-mail atual.                                | Esse arquivo de tradução não será carregado.                                                                       |
-| O arquivo de tradução inclui o texto padrão que não corresponde aos blocos de texto da mensagem de e-mail atual.                                          | Esse arquivo de tradução não será carregado. Corrija isso em seu CSV antes de tentar fazer upload novamente.               |
-| O arquivo de tradução inclui localizações que não existem nas configurações **do Suporte multilíngue**.                                                           | Essas localizações não serão salvas no Braze.                                                                      |
-| O arquivo de tradução inclui blocos de texto que não existem na mensagem atual (como o rascunho atual no momento em que as traduções são feitas upload). | Os blocos de texto que não existirem em sua mensagem atual não serão salvos do arquivo de tradução para o Braze. |
-| Remoção de uma localização da mensagem depois que essa localização já tiver sido carregada para a mensagem como parte do arquivo de tradução.                           | A remoção da localidade removerá todas as traduções associadas à localidade em sua mensagem.                   |
+Além disso, considere envolver partes menores e semanticamente relacionadas do texto para criar traduções precisas e evitar limitações de performance ou tamanho.
+
+#### Posso fazer uma alteração no texto traduzido em um dos meus locais?
+
+Sim. Se estiver usando um CSV, primeiro faça a edição no arquivo, depois faça upload novamente para aplicar a alteração no texto traduzido. Se estiver usando a [API de tradução]({{site.baseurl}}/api/endpoints/translations/), use os endpoints de atualização para fazer alterações.
+
+#### Que validações ou verificações extras a Braze faz?
+
+| Cenário | Validação na Braze |
+| --- | --- |
+| Uma mensagem contém dois ou mais IDs de tradução correspondentes que mapeiam para textos diferentes. | Esse arquivo de tradução não será baixado. |
+| Um arquivo de tradução está sem um ou mais IDs de tags de tradução. | Esse arquivo de tradução não será carregado. |
+| Um arquivo de tradução contém locais que estão ausentes na mensagem. | Esse arquivo de tradução não será carregado. |
+| As tags de tradução devem ser adicionadas a uma mensagem antes de baixar o modelo de tradução. | Esse arquivo de tradução não será baixado. |
+| Tags de tradução encontradas no arquivo carregado estão ausentes na sua mensagem. | As traduções extras não serão salvas na mensagem. |
+| {% raw %}Uma mensagem contém uma ou mais Liquid tags quebradas. Para abrir tags, use `{% translation your_id_here %}`, feche tags de tradução com `{% endtranslation %}`.{% endraw %} | Esse arquivo de tradução não será baixado. |
+| Um arquivo de tradução contém texto padrão que não corresponde ao que está na mensagem. | As traduções são adicionadas, mas o texto original da mensagem não é atualizado. |
+| Um ou mais locais em uma mensagem foram excluídos nas configurações e não existem mais. | As traduções que já foram adicionadas continuam a existir na mensagem. Se forem excluídas da mensagem, as traduções são perdidas. |
+| Tags de tradução contêm URLs completas ou URLs geradas por Liquid. | Tags de tradução contendo URLs são identificadas caso ocorram problemas com links quebrados ou rastreamento de links. |
+| Tags de tradução incluem parâmetros de consulta. | Tags de tradução contendo parâmetros de consulta são identificadas caso ocorram problemas com links quebrados ou rastreamento de links. |
+| Tags de tradução contêm atributos ou estruturas HTML. | Tags de tradução contendo atributos ou estruturas HTML são identificadas caso ocorram problemas com estilos e formatação. |
 {: .reset-td-br-1 .reset-td-br-2 role="presentation" }

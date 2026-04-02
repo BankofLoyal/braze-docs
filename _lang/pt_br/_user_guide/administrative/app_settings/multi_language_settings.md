@@ -1,66 +1,76 @@
 ---
-nav_title: Configurações em vários idiomas
-article_title: Configurações de tradução e de vários idiomas
+nav_title: Configurações de localização
+article_title: Configurações de localização
 alias: "/multi_language_support/"
 page_order: 5.5
-description: "Este artigo fornece uma visão geral das configurações multilíngues no dashboard da Braze e como usar localidades em seu envio de mensagens."
+description: "Este artigo fornece uma visão geral das configurações multilíngues no dashboard da Braze e como usar localidades no seu envio de mensagens."
 ---
 
-# Configurações de tradução e de vários idiomas
+# Configurações de localização
 
-> O recurso multilíngue permite o uso de [tags de tradução]({{ site.baseurl }}/user_guide/engagement_tools/messaging_fundamentals/localization/locales) para direcionamento a usuários em diferentes idiomas e locais, tudo em uma única mensagem.
+> O recurso multilíngue permite que você use [tags de tradução]({{site.baseurl}}/user_guide/engagement_tools/messaging_fundamentals/localization/locales/) para direcionar usuários em diferentes idiomas e locais, tudo dentro de uma única mensagem.
 
-{% multi_lang_include locales.md section="Prerequisites" %}
+## Pré-requisitos
 
-## Adicionar um local
+{% multi_lang_include locales.md section='multi-language prerequisites' %}
 
-1. Acesse **Settings** > **Localization Settings (** **Configurações** > **Configurações de localização**).
-2. Selecione **Add locale (Adicionar localidade)** e, em seguida, selecione **Default locale (Localidade padrão)** ou **Custom Attributes (Atributos personalizados)**.<br><br>![O menu suspenso "Add locale" (Adicionar localidade) com opções para selecionar a localidade padrão ou atributos personalizados.]({% image_buster /assets/img/multi-language_support/add_locale_options.png %}){: style="max-width:40%;"}
-3. Digite um nome para a localização.
-4. Selecione as respectivas atribuições do usuário para a opção de localização escolhida.
+## Adicionar uma localidade
+
+1. Acesse **Configurações** > **Configurações de Localização**.
+2. Selecione **Add locale** e, em seguida, selecione **Default locale** ou **Custom Attributes**.
+
+![O menu suspenso "Add locale" com opções para selecionar a localidade padrão ou atributos personalizados.]({% image_buster /assets/img/multi-language_support/add_locale_options.png %}){: style="max-width:40%;"}
+
+{: start="3"}
+3. Digite um nome para a localidade.
+4. [Selecione um idioma para acessibilidade]({{site.baseurl}}/user_guide/engagement_tools/messaging_fundamentals/localization/locales/#language-settings-and-accessibility). Essa configuração permite que tecnologias assistivas, como leitores de tela, pronunciem o texto corretamente.
+5. Selecione os respectivos atributos do usuário para a opção de localidade escolhida. Ao configurar uma localidade, você pode selecionar idiomas nos atributos padrão do usuário ou nos atributos personalizados. Não é possível selecionar de ambos.
 
 {% tabs %}
 {% tab Default locale %}
 
-Para **Localização padrão**, use os menus suspensos para selecionar o idioma a ser adicionado e, opcionalmente, o país a ser associado ao idioma.<br><br>![Uma janela chamada "Add locale - Default Language and Country" para especificar o idioma e o país.]({% image_buster /assets/img/multi-language_support/default_option.png %}){: style="max-width:80%;"}
+Para **Localidade padrão**, use os menus suspensos para selecionar o idioma a ser adicionado e, opcionalmente, o país a ser associado ao idioma.
+
+![Uma janela chamada "Adicionar localidade - Idioma e País Padrão" para especificar o idioma e o país.]({% image_buster /assets/img/multi-language_support/default_option.png %})
 
 {% endtab %}
 {% tab Custom attributes %}
 
-Para **atributos personalizados**, use o menu suspenso para selecionar o atributo personalizado associado e, no campo de texto, insira o valor.<br><br>![Uma janela chamada "Add locale - Custom Attributes" (Adicionar localidade - Atributos personalizados) para especificar o atributo personalizado e o valor.]({% image_buster /assets/img/multi-language_support/custom_attributes_option.png %}){: style="max-width:80%;"}
+Para **Atributos personalizados**, use o menu suspenso para selecionar o atributo personalizado associado e, no campo de texto, insira o valor.
+
+![Uma janela chamada "Adicionar localidade - Atributos Personalizados" para especificar o atributo personalizado e o valor.]({% image_buster /assets/img/multi-language_support/custom_attributes_option.png %})
 
 {% endtab %}
 {% endtabs %}
 
-{: start="5"}
-5\. Selecione **Add locale (Adicionar localização)**. 
+{: start="6"}
+6. Selecione **Add locale**.
 
-Para obter as etapas de uso dessas localidades em suas campanhas de e-mail e no Canva, consulte [Uso de localidades]({{site.baseurl}}/user_guide/message_building_by_channel/email/using_locales/).
+Para saber como usar essas localidades nas suas mensagens, consulte [Mensagens multilíngues]({{site.baseurl}}/user_guide/engagement_tools/messaging_fundamentals/localization/locales/).
 
 ## Considerações
 
-- Ao configurar uma localização, é possível selecionar idiomas nos atributos padrão do usuário ou nos atributos personalizados. Não é possível selecionar entre os dois.
-- É possível selecionar até dois atributos personalizados em uma única localização ou até dois idiomas padrão de atributos de usuário. Em ambos os casos, o segundo atributo é opcional.
+- É possível selecionar até dois atributos personalizados em uma única localidade ou até dois idiomas padrão de atributos de usuário. Em ambos os casos, o segundo atributo é opcional.
 - Ao fazer edições nos valores traduzidos no arquivo CSV, evite modificar quaisquer valores padrão no arquivo.
-- A chave de localização em seu arquivo feito upload deve corresponder à chave em suas configurações multilíngues.
+- A chave de localidade no arquivo enviado deve corresponder àquela nas suas configurações multilíngues.
 
 ### Suporte e priorização
 
-- Os usuários que correspondem a um atributo personalizado de localização são priorizados antes dos usuários que correspondem a um atributo de usuário padrão.
-- O suporte a atributos personalizados é limitado a tipos de string e à chave de comparação `equals`.
-- Se um atributo personalizado for excluído ou seu tipo for alterado, o usuário não poderá mais se enquadrar nessa localidade e irá para a lista de prioridades de localidades em que se enquadra ou receberá traduções padrão de marketing.
-- Se uma localidade for inválida (o atributo personalizado foi alterado ou excluído), o erro aparecerá na página **Suporte multilíngue**.
+- Se um usuário corresponder tanto a uma localidade definida por atributos personalizados quanto a uma definida por atributos padrão do usuário, a localidade de atributo personalizado será priorizada.
+- Atributos personalizados aceitam valores de texto (string) com correspondência exata.
+- Se um atributo personalizado for excluído ou seu tipo for alterado, o usuário não poderá mais se enquadrar nessa localidade e irá descer na lista de prioridades das localidades às quais pertence ou receberá as traduções de marketing padrão.
+- Se uma localidade for inválida (o atributo personalizado foi alterado ou excluído), o erro aparecerá na página **Multi-Language Support**.
 
 ## Perguntas frequentes
 
-#### Quantas localizações posso adicionar?
+#### Quantas localidades posso adicionar?
 
 Você pode adicionar até 200 localidades.
 
-#### Onde os arquivos de tradução são armazenados no Braze?
+#### Onde os arquivos de tradução são armazenados na Braze?
 
-Os arquivos de tradução são armazenados no nível da campanha, o que significa que cada variante de mensagens deve ter traduções feitas upload.
+Os arquivos de tradução são armazenados no nível da campanha, o que significa que cada variante de mensagem deve ter traduções enviadas. As traduções também podem ser armazenadas em Content Blocks. Quando o bloco é adicionado a uma mensagem, suas traduções são incluídas automaticamente.
 
-#### O nome da localização precisa seguir um padrão ou formato específico?
+#### O nome da localidade precisa seguir um padrão ou formato específico?
 
-Não. Você pode usar sua convenção de nomenclatura preferida. O nome da localização é usado ao selecionar a localização no editor e estará nos cabeçalhos do arquivo baixado com os IDs de tradução.
+Não. Você pode usar sua convenção de nomenclatura preferida. O nome da localidade é usado ao selecionar a localidade no editor e estará nos cabeçalhos do arquivo que você baixar com os IDs de tradução.

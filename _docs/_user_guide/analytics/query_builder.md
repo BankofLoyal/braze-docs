@@ -13,6 +13,10 @@ alias: /query_builder/
 
 Because the Query Builder allows direct access to some customer data, you can only access the Query Builder if you have the "View PII" [permission]({{site.baseurl}}/user_guide/administrative/app_settings/manage_your_braze_users/user_permissions/).
 
+### Available data tables
+
+Query Builder uses the same Snowflake SQL tables as [SQL Segment Extensions]({{site.baseurl}}/user_guide/engagement_tools/segments/sql_segments/) and [Snowflake Data Sharing]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/). For a complete list of available tables and their columns, refer to the [SQL table reference]({{site.baseurl}}/user_guide/engagement_tools/segments/segment_extension/sql_segments/sql_segments_tables/).
+
 ## Running reports in the Query Builder
 
 To run a Query Builder report:
@@ -37,7 +41,7 @@ See [Query templates]({{site.baseurl}}/user_guide/analytics/query_builder/query_
 
 ### Data timeframe
 
-All queries surface data from the last 60 days.
+Queries return data from the past 60 days. If you use Currents or [Snowflake Data Sharing]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/), you may be able to query up to two years of data, which is how long your data is retained in Snowflake. For more details about extended data retention, contact your customer success manager.
 
 ### Query Builder time zone
 
@@ -86,7 +90,7 @@ To generate SQL with the AI Query Builder:
 
 ### Tips
 
-- Familiarize yourself with the available [Snowflake data tables]({{site.baseurl}}/user_guide/engagement_tools/segments/sql_segments/sql_segments_tables/). Asking for data that doesn't exist in these tables may result in ChatGPT making up a fake table.
+- Familiarize yourself with the available tables and columns in the [SQL table reference]({{site.baseurl}}/user_guide/engagement_tools/segments/segment_extension/sql_segments/sql_segments_tables/). Asking for data that doesn't exist in these tables may result in ChatGPT making up a fake table.
 - Familiarize yourself with the [SQL writing rules]({{site.baseurl}}/user_guide/data_and_analytics/query_builder/#custom-sql) for this feature. Not following these rules will cause an error.
 - You can send up to 20 prompts per minute with the AI Query Builder.
 

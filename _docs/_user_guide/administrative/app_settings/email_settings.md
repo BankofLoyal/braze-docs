@@ -27,13 +27,17 @@ When configuring your email settings, your outbound email settings identify whic
 {% tabs local %}
 {% tab Display Name Address %}
 
-In this section, you can add the names and email addresses you can use when Braze sends emails to your users. The display names and email addresses are available in the **Edit Sending Info** options as you compose your email campaign. Note that updates made to the outbound email settings do not retroactively affect existing sends.
+In this section, you can add the names and email addresses you can use when Braze sends emails to your users. The display names and email addresses are available in the **Sending Info** options as you compose your email campaign. Note that updates made to the outbound email settings do not retroactively affect existing sends.
 
 !["Outbound Email Settings" section with fields for different display names and domains.]({% image_buster /assets/img/email_settings/display_name_address.png %})
 
-#### Personalizing with Liquid
+#### Personalize with Liquid
 
-You can also use [Liquid]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/liquid/) in the **From Display Name** and **Local Part** fields to dynamically template the sending email based on custom attributes. For example, you can use conditional logic to send from different brands or regions:
+You can also use [Liquid]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/liquid/) in the **From Display Name**, **Local Part**, and **Domain** fields to dynamically template the sender name and email address based on custom attributes. Note that to use Liquid in the **Domain** field, you must go to an email campaign's **Sending Info** options and select the **Customize from display name + address** checkbox.
+
+![Sending settings with fields for customizing the from display name, address, and domain.]({% image_buster /assets/img/email_settings/email_campaign_domain.png %})
+
+For example, you can use conditional logic to send from different brands or regions:
 
 {% raw %}
 ```liquid
@@ -50,23 +54,22 @@ Default to English Display Name
 {% endtab %}
 {% tab Reply-To Address %}
 
-Adding an email address in this section allows you to select it as a reply-to address for your email campaign. You can also make an email address the default one by selecting **Make Default**. These email addresses will be available in the **Edit Sending Info** options as you compose your email campaign.
+Adding an email address in this section allows you to select it as a reply-to address for your email campaign. You can also make an email address the default one by selecting **Make Default**. These email addresses will be available in the **Sending Info** options as you compose your email campaign.
 
 !["Reply-To Address" section with fields to enter multiple reply-to addresses.]({% image_buster /assets/img/email_settings/reply_to_address.png %}){: style="max-width:75%;" }
 
-#### Personalizing with Liquid
+#### Personalize with Liquid
 
 You can also use [Liquid]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/liquid/) in the **Reply-To Address** field to dynamically template the reply-to address based on custom attributes. For example, you can use conditional logic to send replies to different regions or departments:
 
 {% raw %}
 ```liquid
 {% if {{custom_attribute.${region}}} == 'US' %}
-us-support@company.com
+{% assign address = "us-support@company.com" %}
 {% elsif {{custom_attribute.${region}}} == 'EU' %}
-eu-support@company.com
+{% assign address = "eu-support@company.com" %}
 {% else %}
-global-support@company.com
-{% endif %}
+{% assign address = "global-support@company.com" %}{% endif %}{{address}}
 ```
 {% endraw %}
 
@@ -102,11 +105,15 @@ For example, you can add {% raw %}`{{custom_attribute.${support_agent}}}`{% endr
 
 The email opening tracking pixel is an invisible 1 x 1&nbsp;px image and is automatically inserted into your email HTML. This pixel helps Braze detect whether your users have opened your email. When a user's email client makes a request to our tracking pixel, the request can contain information such as the IP address, user agent, and timestamp. Email open information can be very useful, helping you determine effective marketing strategies by understanding the corresponding open rates.
 
-### Placing the tracking pixel
+### Placement
 
-The default behavior in Braze is to append the tracking pixel to the bottom of your email. For the majority of users, this is the ideal place to put the pixel. While the pixel is already styled to cause as few visual changes as possible, any unintentional visual changes would be the least visible at the bottom of an email. This is also the default for email providers such as SendGrid and SparkPost.
+The default behavior in Braze is to append the tracking pixel to the bottom of your email, typically in a `<body>` tag. For the majority of users, this is the ideal place to put the pixel.
 
-### Changing location of tracking pixel
+While the pixel is already styled to cause as few visual changes as possible, any unintentional visual changes would be the least visible at the bottom of an email. This is also the default for email providers such as SendGrid and SparkPost.
+
+To reduce unexpected behavior, keep Liquid inside `<html>` tags. Nested or duplicate document-level tags can change how the email is parsed and where the pixel lands, which can affect open tracking and layout. For more information, see [Using Liquid]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/liquid/using_liquid/).
+
+### Update the placement
 
 Braze currently supports overriding the ESP's default open tracking pixel location (the last tag in the `<body>` of an email) to move it to the first tag in the `<body>`.
   

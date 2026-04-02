@@ -14,6 +14,7 @@ glossary_tag_name: Filter Category
 glossary_filter_text: "Select a category to narrow the glossary:"
 
 # channel to icon/fa or image mapping
+# NOTE: glossary_tags names must match the "tags" under each glossary entry exactly (filter/checkbox logic). Do not translate.
 glossary_tags:
   - name: Segment or CSV membership
   - name: Custom attribute
@@ -33,6 +34,8 @@ glossary_tags:
   - name: Intelligence and predictive
   - name: Social activity
   - name: Other Filters
+  - name: Advertising use cases
+  - name: User Attributes
 
 glossaries:
   - name: Segment Membership
@@ -55,6 +58,10 @@ glossaries:
     description: Segments users by when their user profile was created. If a user was added by CSV or API, then this filter reflects the date they were added. If the user isn't added by CSV or API and has their first session tracked by the SDK, then this filter reflects the date of that first session.
     tags:
       - Other Filters
+  - name: Created From
+    description: "Segments users by where their user profile was created.<br><br>The following values are supported:<br>- SDK (<code>sdk</code>): User profile created through the Braze SDK.<br>- REST API (<code>rest</code>): User profile created through the Braze REST API.<br>- Push Token Import (<code>pti</code>): User profile created through push token import.<br>- CSV (<code>csv</code>): User profile created through CSV import.<br>- Demo (<code>demo</code>): User profile created through demo data.<br>- SMS (<code>sms</code>): User profile created through SMS.<br>- Shopify (<code>shopify</code>): User profile created through Shopify.<br>- WhatsApp (<code>whats_app</code>): User profile created through WhatsApp.<br>- Provider Event (<code>provider_event</code>): User profile created through a provider event.<br>- Provider Sync (<code>provider_sync</code>): User profile created through a provider sync.<br>- Landing Page (<code>landing_page</code>): User profile created through a landing page."
+    tags:
+      - Other Filters
   - name: Nested Custom Attributes
     description: Attributes that are the properties of custom attributes.<br><br>When filtering a nested time custom attribute, you can choose to filter based on "Day of Year" or "Time". "Day of Year" checks only the month and day for comparison. "Time" compares the full timestamp, including the year.
     tags:
@@ -71,7 +78,7 @@ glossaries:
     description: Determines the earliest time that a user has performed a specially recorded event. (24-hour period) <br><br>Example:<br> First Abandoned Cart Less than 1 day ago<br><br>Time zone:<br>Company's Time Zone
     tags:
       - Custom events
-  - name: Last Did Custom Event 
+  - name: Last Did Custom Event
     description: Determines the latest time that a user has performed a specially recorded event. This filter supports decimals, such as 0.25 hours. (24-hour period) <br><br>Example:<br> Last Abandoned Cart Less than 1 day ago<br><br>Time zone:<br>Company's Time Zone
     tags:
       - Custom events
@@ -83,7 +90,7 @@ glossaries:
     description: Determines whether or not a user has performed a specially recorded event in relation to a specific property between 0 and 50 times in the last specified number of calendar days between 1 and 30. (Calendar Day = 1 calendar day looks at 24-48 hours of user history)<br><a href="/docs/x-in-y-behavior/">Learn more about X-in-Y behavior here.</a> <br><br>Example:<br> Added to Favorites w/ property "event_name" exactly 0 times in the last 1 calendar day<br><br>Time zone:<br>UTC - To account for all time zones, 1 calendar day looks at 24-48 hours of user history, depending on the time the segment is evaluated; for 2 calendar days, looks at 48-72 hours of user history, and so on.
     tags:
       - Custom events
-  - name: Email Address 
+  - name: Email Address
     description: Allows you to designate your campaign recipients by individual email addresses for testing. This can also be used to send transactional emails to all your users (including unsubscribed) using the "Email Address is not Blank" specifier within the filter, so that you can maximize delivery of emails regardless of opt-in status. <br><br>This filter only checks if user profiles have an email address, whereas the <a href="/docs/user_guide/engagement_tools/segments/segmentation_filters#email-available">Email Available</a> filter checks for additional criteria.
     tags:
       - Other Filters
@@ -128,15 +135,15 @@ glossaries:
     tags:
       - Sessions
   - name: Received Message from Campaign
-    description: Segments your users by whether or not they have received a specific campaign. This filter only captures users who were explicitly sent the message, and not other users with the same email or phone number who received duplicate messages. To capture duplicate users, use <a href="/docs/user_guide/engagement_tools/segments/segmentation_filters/#received-message-from-campaign-or-canvas-with-tag">Received Message from Campaign or Canvas with Tag</a>.<br><br> For Content Cards, Banners, and in-app messages, this is when a user logs an impression, not when the card or in-app message is sent.<br><br>For push and webhooks, this is when the message is sent to the user.<br><br> For WhatsApp, this is when the last message API request is sent to WhatsApp, not when the message is delivered to the user's device. <br><br>For emails, this is when an email request is sent to the email service provider (regardless if it actually gets delivered).<br><br>For SMS, this is when the last message was delivered to the SMS provider. This doesn't guarantee that the message was delivered to the user's device.
+    description: Segments your users by whether or not they have received a specific campaign. This filter only captures users who were explicitly sent the message, and not other users with the same email or phone number who received duplicate messages. To capture duplicate users, use <a href="/docs/user_guide/engagement_tools/segments/segmentation_filters/#received-message-from-campaign-or-canvas-with-tag">Received Message from Campaign or Canvas with Tag</a>.<br><br> For Content Cards, Banners, and in-app messages, this is when a user logs an impression, not when the card or in-app message is sent.<br><br>For push and webhooks, this is when the message is sent to the user.<br><br> For WhatsApp, this is when the last message API request is sent to WhatsApp, not when the message is delivered to the user's device. <br><br>For emails, this is when an email request is sent to the email service provider (regardless if it actually gets delivered).<br><br>For SMS and RCS, this is when the last message was delivered to the SMS or RCS provider. This doesn't guarantee that the message was delivered to the user's device.
     tags:
       - Retargeting
   - name: Received Campaign Variant
-    description: Segments your users by which variant of a multivariate campaign they have received. This filter only captures users who were explicitly sent the message, and not other users with the same email or phone number who received duplicate messages. To capture duplicate users, use <a href="/docs/user_guide/engagement_tools/segments/segmentation_filters/#received-message-from-campaign-or-canvas-with-tag">Received Message from Campaign or Canvas with Tag</a>.<br><br> For Content Cards, Banners, and in-app messages, this is when a user logs an impression, not when the card or in-app message is sent.<br><br>For push and webhooks, this is when the message is sent to the user.<br><br> For WhatsApp, this is when the last message API request is sent to WhatsApp, not when the message is delivered to the user's device. <br><br>For emails, this is when an email request is sent to the email service provider (regardless if it actually gets delivered).<br><br>For SMS, this is when the last message was delivered to the SMS provider. This doesn't guarantee that the message was delivered to the user's device.
+    description: Segments your users by which variant of a multivariate campaign they have received. This filter only captures users who were explicitly sent the message, and not other users with the same email or phone number who received duplicate messages. To capture duplicate users, use <a href="/docs/user_guide/engagement_tools/segments/segmentation_filters/#received-message-from-campaign-or-canvas-with-tag">Received Message from Campaign or Canvas with Tag</a>.<br><br> For Content Cards, Banners, and in-app messages, this is when a user logs an impression, not when the card or in-app message is sent.<br><br>For push and webhooks, this is when the message is sent to the user.<br><br> For WhatsApp, this is when the last message API request is sent to WhatsApp, not when the message is delivered to the user's device. <br><br>For emails, this is when an email request is sent to the email service provider (regardless if it actually gets delivered).<br><br>For SMS and RCS, this is when the last message was delivered to the SMS or RCS provider. This doesn't guarantee that the message was delivered to the user's device.
     tags:
       - Retargeting
   - name: Received Message from Canvas Step
-    description: Segments your users by whether or not they have received a specific Canvas component. This filter only captures users who were explicitly sent the message, and not other users with the same email or phone number who received duplicate messages. To capture duplicate users, use <a href="/docs/user_guide/engagement_tools/segments/segmentation_filters/#received-message-from-campaign-or-canvas-with-tag">Received Message from Campaign or Canvas with Tag</a>.<br><br> For Content Cards and in-app messages, this is when a user logs an impression, not when the card or in-app message is sent.<br><br>For push and webhooks, this is when the message is sent to the user.<br><br> For WhatsApp, this is when the last message API request is sent to WhatsApp, not when the message is delivered to the user's device. <br><br>For emails, this is when an email request is sent to the email service provider (regardless if it actually gets delivered).<br><br>For SMS, this is when the last message was delivered to the SMS provider. This doesn't guarantee that the message was delivered to the user's device.
+    description: Segments your users by whether or not they have received a specific Canvas component. This filter only captures users who were explicitly sent the message, and not other users with the same email or phone number who received duplicate messages. To capture duplicate users, use <a href="/docs/user_guide/engagement_tools/segments/segmentation_filters/#received-message-from-campaign-or-canvas-with-tag">Received Message from Campaign or Canvas with Tag</a>.<br><br> For Content Cards and in-app messages, this is when a user logs an impression, not when the card or in-app message is sent.<br><br>For push and webhooks, this is when the message is sent to the user.<br><br> For WhatsApp, this is when the last message API request is sent to WhatsApp, not when the message is delivered to the user's device. <br><br>For emails, this is when an email request is sent to the email service provider (regardless if it actually gets delivered).<br><br>For SMS and RCS, this is when the last message was delivered to the SMS or RCS provider. This doesn't guarantee that the message was delivered to the user's device.
     tags:
       - Retargeting
   - name: Last Received Message from Specific Canvas Step
@@ -148,7 +155,7 @@ glossaries:
     tags:
       - Retargeting
   - name: Received Message from Campaign or Canvas with Tag
-    description: Segments your users by whether or not they have received a specific campaign or Canvas with a specific tag. Unlike "Received Message from Campaign" and "Received Message from Canvas Step", this filter captures all users with the same email or phone number who received duplicate messages.<br><br> For Content Cards, Banners (Campaigns only), and in-app messages, this is when a user logs an impression, not when the card or in-app message is sent.<br><br>For push and webhooks, this is when the message is sent to the user.<br><br> For WhatsApp, this is when the last message API request is sent to WhatsApp, not when the message is delivered to the user's device. <br><br>For emails, this is when an email request is sent to the email service provider (regardless if it actually gets delivered). When multiple users share the same email address:<br>- On the initial send, only the specific targeted user's profile is updated. <br>- When the email is delivered, or if the user then opens the email or a link in the email, all users sharing that email address appear to have received the message.<br><br>For SMS, this is when the last message was delivered to the SMS provider. This doesn't guarantee that the message was delivered to the user's device.
+    description: Segments your users by whether or not they have received a specific campaign or Canvas with a specific tag. Unlike "Received Message from Campaign" and "Received Message from Canvas Step", this filter captures all users with the same email or phone number who received duplicate messages.<br><br> For Content Cards, Banners (Campaigns only), and in-app messages, this is when a user logs an impression, not when the card or in-app message is sent.<br><br>For push and webhooks, this is when the message is sent to the user.<br><br> For WhatsApp, this is when the last message API request is sent to WhatsApp, not when the message is delivered to the user's device. <br><br>For emails, this is when an email request is sent to the email service provider (regardless if it actually gets delivered). When multiple users share the same email address:<br>- On the initial send, only the specific targeted user's profile is updated. <br>- When the email is delivered, or if the user then opens the email or a link in the email, all users sharing that email address appear to have received the message.<br><br>For SMS and RCS, this is when the last message was delivered to the SMS or RCS provider. This doesn't guarantee that the message was delivered to the user's device.
     tags:
       - Retargeting
   - name: Last Received Message from Campaign or Canvas With Tag
@@ -172,7 +179,7 @@ glossaries:
     tags:
       - Retargeting
   - name: Last Received SMS
-    description: Segments your users by the time that the last message was delivered to the SMS provider. This doesn't guarantee that the message was delivered to the user's device. (24-hour period)<br><br>Time zone:<br>Company's Time Zone
+    description: Segments your users by the time that the last SMS, MMS, or RCS message was delivered to the SMS or RCS provider. This doesn't guarantee that the message was delivered to the user's device. (24-hour period)<br><br>Time zone:<br>Company's Time Zone
     tags:
       - Retargeting
   - name: Last Received Webhook
@@ -188,15 +195,15 @@ glossaries:
     tags:
       - Devices
   - name: Clicked/Opened Campaign
-    description: Filter by interaction with a specific campaign. For email messaging, the open event includes both machine opens and non-machine opens.<br><br> For email, this also includes the option to filter by "opened any email (machine opens)" and "opened any email (other opens)". Clicks on unsubscribe links and preference centers don't count toward this filter. If multiple users share the same email address:<br>- When the email is opened or clicked, all other users with that same email address also have their profiles updated. <br>- If the original user changes their email address after the message is sent and before the open or click, the open or click gets applied to all remaining users with that email address instead of the original user.<br><br>For SMS, an interaction is defined as:<br>- The user last sent a reply SMS matching a given keyword category. This is attributed to the most recent campaign received by all users with this phone number. The campaign must have been received in the last four hours.<br>- The user last selected any shortened link in an SMS message that has user click tracking turned on, from a given campaign.
+    description: Filter by interaction with a specific campaign. For email messaging, the open event includes both machine opens and non-machine opens.<br><br> For email, this also includes the option to filter by "opened any email (machine opens)" and "opened any email (other opens)". Clicks on unsubscribe links and preference centers don't count toward this filter. If multiple users share the same email address:<br>- When the email is opened or clicked, all other users with that same email address also have their profiles updated. <br>- If the original user changes their email address after the message is sent and before the open or click, the open or click gets applied to all remaining users with that email address instead of the original user.<br><br>For SMS and RCS, an interaction is defined as:<br>- The user last sent a reply SMS or RCS matching a given keyword category. This is attributed to the most recent campaign received by all users with this phone number. The campaign must have been received in the last four hours.<br>- The user last selected any shortened link in an SMS or RCS message that has user click tracking turned on, from a given campaign.
     tags:
       - Retargeting
   - name: Clicked/Opened Campaign or Canvas With Tag
-    description: Filter by interaction with a specific campaign that has a specific tag. For email messaging, the open event includes both machine opens and non-machine opens.<br><br> For email, this includes the option to filter by "opened any email (machine opens)" and "opened any email (other opens)". If multiple users share the same email address:<br>- When the email is opened or clicked, all other users with that same email address also have their profiles updated. <br>- If the original user changes their email address after the message is sent and before the open or click, the open or click gets applied to all remaining users with that email address instead of the original user.<br><br>For SMS, an interaction is defined as:<br>- The user last sent a reply SMS matching a given keyword category. This is attributed to the most recent campaign received by all users with this phone number. The campaign must have been received in the last four hours.<br>- When the user last selected any shortened link in an SMS message that has user click tracking turned on, from a given campaign or Canvas step with tag.
+    description: Filter by interaction with a specific campaign that has a specific tag. For email messaging, the open event includes both machine opens and non-machine opens.<br><br> For email, this includes the option to filter by "opened any email (machine opens)" and "opened any email (other opens)". If multiple users share the same email address:<br>- When the email is opened or clicked, all other users with that same email address also have their profiles updated. <br>- If the original user changes their email address after the message is sent and before the open or click, the open or click gets applied to all remaining users with that email address instead of the original user.<br><br>For SMS and RCS, an interaction is defined as:<br>- The user last sent a reply SMS or RCS matching a given keyword category. This is attributed to the most recent campaign received by all users with this phone number. The campaign must have been received in the last four hours.<br>- When the user last selected any shortened link in an SMS or RCS message that has user click tracking turned on, from a given campaign or Canvas step with tag.
     tags:
       - Retargeting
   - name: Clicked/Opened Step
-    description: Filter by interaction with a specific Canvas component. For email messaging, the open event includes both machine opens and non-machine opens.<br><br>For email, this includes the option to filter by "opened any email (machine opens)" and "opened any email (other opens)".<br><br>For SMS, an interaction is defined as:<br>- The user last sent a reply SMS matching a given keyword category. This is attributed to the most recent campaign received by all users with this phone number. The campaign must have been received in the last four hours. <br>- The user last selected any shortened link in an SMS message that has user click tracking turned on, from a given Canvas step.
+    description: Filter by interaction with a specific Canvas component. For email messaging, the open event includes both machine opens and non-machine opens.<br><br>For email, this includes the option to filter by "opened any email (machine opens)" and "opened any email (other opens)".<br><br>For SMS and RCS, an interaction is defined as:<br>- The user last sent a reply SMS or RCS matching a given keyword category. This is attributed to the most recent campaign received by all users with this phone number. The campaign must have been received in the last four hours. <br>- The user last selected any shortened link in an SMS or RCS message that has user click tracking turned on, from a given Canvas step.
     tags:
       - Retargeting
   - name: Clicked Alias in Campaign
@@ -216,19 +223,19 @@ glossaries:
     tags:
       - Retargeting
   - name: Soft Bounced
-    description: Segment your users by whether they soft bounced X times in Y days. Segment filters can only look back 30 days, but you can look back further with Segment Extensions.<br><br>This filter operates differently than a soft bounce event in Currents. The Soft Bounced segment filter counts a soft bounce if there was no successful delivery during the 72 hour retry period. In Currents, every unsuccessful retry is sent as a soft bounce event. 
+    description: Segment your users by whether they soft bounced X times in Y days. Segment filters can only look back 30 days, but you can look back further with Segment Extensions.<br><br>This filter operates differently than a soft bounce event in Currents. The Soft Bounced segment filter counts a soft bounce if there was no successful delivery during the 72 hour retry period. In Currents, every unsuccessful retry is sent as a soft bounce event.
     tags:
       - Retargeting
   - name: Has Marked You As Spam
     description: Segments your users by whether or not they have marked your messages as spam.
     tags:
       - Retargeting
-  - name: Invalid Phone Number 
+  - name: Invalid Phone Number
     description: Segments your users by whether or not their phone number is invalid.
     tags:
       - Retargeting
   - name: Last Sent Specific SMS Inbound Keyword Category
-    description: Segments your users by when they last sent an SMS to a specific subscription group within a specific keyword category. 
+    description: Segments your users by when they last sent an SMS, MMS, or RCS to a specific subscription group within a specific keyword category.
     tags:
       - Retargeting
   - name: Converted From Campaign
@@ -244,7 +251,7 @@ glossaries:
     tags:
       - Retargeting
   - name: In Canvas Control Group
-    description: Segments your users by whether or not they were in the control group for a specific Canvas. This filter only evaluates users who have entered the Canvas.<br><br>For example, if you filter for users who are not in the control group for a Canvas, you receive all users who entered the Canvas but are not in the control group.
+    description: Segments your users by whether or not they were in the control group for a specific Canvas. This filter only evaluates users who have entered the Canvas, so users who never entered are excluded from results entirely.<br><br>For example, if you filter for users who are not in the control group for a Canvas, you receive only users who entered the Canvas and were assigned to a non-control variant—users who never entered the Canvas are not included. To include all users regardless of Canvas entry, use the <code>Entered Canvas Variation</code> filter instead.
     tags:
       - Retargeting
   - name: Last Enrolled in Any Control Group
@@ -256,14 +263,14 @@ glossaries:
     tags:
       - Retargeting
   - name: Last Received Any Message
-    description: Segments your users by determining the last message that was received. (24-hour period)<br><br> For Content Cards, Banners, and in-app messages, this is when a user last logged an impression, not when the card or in-app message was last sent.<br><br>For push and webhooks, this is when any message was sent to the user.<br><br> For WhatsApp, this is when the last message API request was sent to WhatsApp, not when the message was delivered to the user's device. <br><br>For emails, this is when an email request is sent to the email service provider (regardless if it actually gets delivered). When multiple users share the same email address:<br>- On the initial send, only the specific targeted user's profile is updated. <br>- When the email is delivered, or if the user then opens the email or a link in the email, all users sharing that email address appear to have received the message.<br><br>For SMS, this is when the last message was delivered to the SMS provider. This doesn't guarantee that the message was delivered to the user's device.<br><br>Example:<br>Last Received Message Less than 1 Day ago = less than 24 hours ago<br><br>Time zone:<br>Company's Time Zone
+    description: Segments your users by determining the last message that was received. (24-hour period)<br><br> For Content Cards, Banners, and in-app messages, this is when a user last logged an impression, not when the card or in-app message was last sent.<br><br>For push and webhooks, this is when any message was sent to the user.<br><br> For WhatsApp, this is when the last message API request was sent to WhatsApp, not when the message was delivered to the user's device. <br><br>For emails, this is when an email request is sent to the email service provider (regardless if it actually gets delivered). When multiple users share the same email address:<br>- On the initial send, only the specific targeted user's profile is updated. <br>- When the email is delivered, or if the user then opens the email or a link in the email, all users sharing that email address appear to have received the message.<br><br>For SMS and RCS, this is when the last message was delivered to the SMS or RCS provider. This doesn't guarantee that the message was delivered to the user's device.<br><br>Example:<br>Last Received Message Less than 1 Day ago = less than 24 hours ago<br><br>Time zone:<br>Company's Time Zone
     tags:
       - Retargeting
   - name: Last Engaged With Message
-    description: Segments your users by the last time they have clicked or opened one of your messaging channels (Banners, Content Card, email, in-app, SMS, push, WhatsApp). For email messaging, the open event includes both machine opens and non-machine opens. (24-hour period)<br><br>For emails, this is when an email request is sent to the email service provider (regardless if it actually gets delivered). This also includes the option to filter by "opened any email (machine opens)" and "opened any email (other opens)". When multiple users share the same email address:<br>- On the initial send, only the specific targeted user's profile is updated. <br>- When the email is delivered, or if the user then opens the email or a link in the email, all users sharing that email address appear to have received the message.<br><br>For SMS, this is when the user last selected any shortened link in a message that has user click tracking turned on.<br><br>Time zone:<br>Company's Time Zone
+    description: Segments your users by the last time they have clicked or opened one of your messaging channels (Banners, Content Card, email, in-app, SMS, RCS, push, WhatsApp). For email messaging, the open event includes both machine opens and non-machine opens. (24-hour period)<br><br>For emails, this is when an email request is sent to the email service provider (regardless if it actually gets delivered). This also includes the option to filter by "opened any email (machine opens)" and "opened any email (other opens)". When multiple users share the same email address:<br>- On the initial send, only the specific targeted user's profile is updated. <br>- When the email is delivered, or if the user then opens the email or a link in the email, all users sharing that email address appear to have received the message.<br><br>For SMS and RCS, this is when the user last selected any shortened link in a message that has user click tracking turned on.<br><br>Time zone:<br>Company's Time Zone
     tags:
       - Retargeting
-  - name: Clicked card 
+  - name: Clicked card
     description: Segments your users by whether or not they have clicked a specific Content Card. This filter is available as a subfilter of "Clicked/opened campaign", "Clicked/opened campaign or Canvas with Tag", and "Clicked/opened step".
     tags:
       - Retargeting
@@ -272,7 +279,7 @@ glossaries:
     tags:
       - Retargeting
   - name: Subscription Group
-    description: Segments your users by their subscription group for email, SMS/MMS, or WhatsApp. Archived Groups do not appear and cannot be used.
+    description: Segments your users by their subscription group for email, SMS, MMS, RCS, or WhatsApp. Archived Groups do not appear and cannot be used.
     tags:
       - Channel subscription behavior
   - name: Email Available
@@ -287,7 +294,7 @@ glossaries:
     description: Segments your users by their subscription status for email.
     tags:
       - Channel subscription behavior
-  - name: Email Unsubscribed Date 
+  - name: Email Unsubscribed Date
     description: Segments your users by the date on which they unsubscribed from future emails.
     tags:
       - Channel subscription behavior
@@ -345,7 +352,7 @@ glossaries:
       - Purchase behavior
   - name: Last Made Purchase
     description: Filter users by the last time they made a purchase.
-    tags: 
+    tags:
       - Purchase behavior
   - name: Last Purchased Product
     description: Filter users by when they last purchased a specific product.
@@ -442,15 +449,15 @@ glossaries:
   - name: Most Recent App Version Name
     description: Segments by the recent name of the user's app.<br><br>When using "less than" or "less than or equal to", if the main app version doesn't exist, this filter returns `true` because the user is older than the app version. This means that if the user’s last main app version doesn't exist, they automatically match the filter.
     tags:
-      - App 
+      - App
   - name: Most Recent App Version Number
     description: Segments by the recent app version number of the user's app.<br><br>When using “less than” or “less than or equal to”, if the main app version doesn't exist, this filter returns `true` because the user is older than the app version. This means that if the user’s last main app version doesn't exist, they automatically match the filter.<br><br>It may take time for the current app versions to populate. The app version on the user profile updates when the information is captured by the SDK, which relies on when users open their apps. If the user doesn't open the app, the current version won't be updated. These filters also won't apply retroactively. It's good to use "greater than" or "equal" to current and future versions, but using past version filters may cause unexpected behaviors.
     tags:
-      - App 
+      - App
   - name: Uninstalled
     description: Segments your users by whether they have uninstalled your app and have not reinstalled it.
     tags:
-      - Uninstall 
+      - Uninstall
   - name: Device Carrier
     description: Segments your users by their device carrier.
     tags:
@@ -474,15 +481,15 @@ glossaries:
   - name: Most Recent Device Locale
     description: Segments your users by the <a href="/docs/user_guide/engagement_tools/campaigns/ideas_and_strategies/localizing_a_campaign/">locale information</a> from the most recently used device.
     tags:
-      - Devices      
+      - Devices
   - name: Most Recent Watch Model
     description: Segments your users by their most recent smartwatch model.
     tags:
-      - Devices    
+      - Devices
   - name: Provisionally Authorized on iOS
     description: Allows you to find users who are provisionally authorized on iOS 12 for a given app.
     tags:
-      - Devices   
+      - Devices
   - name: Web Browser
     description: Segments your users by the web browser they use to access your website.
     tags:
@@ -494,7 +501,7 @@ glossaries:
   - name: Device IDFV
     description: Allows you to designate your campaign recipients by IDFV for testing.
     tags:
-      - Advertising use cases 
+      - Advertising use cases
   - name: Device Google Ad ID
     description: Segments your users by the Google ad ID.
     tags:
@@ -506,7 +513,7 @@ glossaries:
   - name: Device Windows Ad ID
     description: Segments your users by the Windows ad ID.
     tags:
-      - Advertising use cases  
+      - Advertising use cases
   - name: Ad Tracking Enabled
     description: Allows you to filter based on whether your users have opted-in to ad tracking. Ad tracking relates to the IDFA or "identifier for advertisers" assigned to all iOS devices by Apple, which can be set by SDKs. This identifier allows advertisers to track users and serve them targeted ads.
     tags:
@@ -558,15 +565,15 @@ glossaries:
   - name: Install Attribution Adgroup
     description: Segments your users by the ad group that their install was attributed to.
     tags:
-      - Install Attribution
+      - Install attribution
   - name: Install Attribution Campaign
     description: Segments your users by the ad campaign that their install was attributed to.
     tags:
-      - Install Attribution
+      - Install attribution
   - name: Install Attribution Source
     description: Segments your users by the source that their install was attributed to.
     tags:
-      - Install Attribution
+      - Install attribution
   - name: Churn Risk Category
     description:  Segments your users by churn risk category according to a specific prediction.
     tags:
@@ -608,7 +615,7 @@ glossaries:
     tags:
       - Social activity
   - name: Phone Number
-    description: Segments your users by the E.164 formatted phone number field.<br><br> When a phone number is sent to Braze, Braze tries to coerce it into the <a href="/docs/user_guide/message_building_by_channel/sms/phone_numbers/user_phone_numbers/#importing-phone-numbers">e.164 format</a> that is used to send across SMS and WhatsApp channels. The coercion process can fail if the number isn't formatted properly, which results in the user profile having an unformatted phone number but not a sending phone number. This segment filter returns users by their e.164 formatted phone number (when available).<br><br>Use cases:<br> - Use this filter to understand the most accurate target audience size when sending SMS or WhatsApp messages.  <br>- Use regular expressions (regex) with this filter to segment by phone numbers with a specific country code. <br>- Use this filter to segment users by phone numbers that failed the e.164 coercion process.
+    description: Segments your users by the E.164 formatted phone number field.<br><br> When a phone number is sent to Braze, Braze tries to coerce it into the <a href="/docs/user_guide/message_building_by_channel/sms/phone_numbers/user_phone_numbers/#importing-phone-numbers">e.164 format</a> that is used to send across SMS, RCS, and WhatsApp channels. The coercion process can fail if the number isn't formatted properly, which results in the user profile having an unformatted phone number but not a sending phone number. This segment filter returns users by their e.164 formatted phone number (when available).<br><br>Use cases:<br> - Use this filter to understand the most accurate target audience size when sending SMS, RCS, or WhatsApp messages.  <br>- Use regular expressions (regex) with this filter to segment by phone numbers with a specific country code. <br>- Use this filter to segment users by phone numbers that failed the e.164 coercion process.
     tags:
-      - Other filters
+      - Other Filters
 ---

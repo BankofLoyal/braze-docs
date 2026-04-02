@@ -1,0 +1,108 @@
+# Weekly audit of translation glossaries against source-of-truth localization
+# files in the platform and SDK repos.
+#
+# Compares scripts/glossaries/*.json against the actual UI translations in
+# the Braze platform dashboard, Android SDK, Swift SDK, and GrapesJS editor.
+# Auto-fixes exact mismatches and adds missing terms, then opens a PR.
+name: Audit glossaries
+
+on:
+  schedule:
+    - cron: '0 6 * * 0'   # Every Sunday at 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout braze-docs
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Clone reference repos
+        env:
+          GH_TOKEN: ${{ secrets.REFERENCE_REPO_TOKEN }}
+        run: |
+          clone_repo() {
+            local org=$1 repo=$2
+            echo "Cloning $org/$repo..."
+            git clone --depth 1 --filter=blob:none --sparse \
+              "https://x-access-token:${GH_TOKEN}@github.com/${org}/${repo}.git" \
+              "../${repo}" 2>/dev/null || \
+            git clone --depth 1 \
+              "https://github.com/${org}/${repo}.git" \
+              "../${repo}" 2>/dev/null || \
+            echo "  WARNING: Could not clone ${org}/${repo} — skipping"
+          }
+
+          clone_repo Appboy platform
+          clone_repo braze-inc braze-android-sdk
+          clone_repo braze-inc braze-swift-sdk
+          clone_repo braze-inc grapesjs
+
+          for repo in platform braze-android-sdk braze-swift-sdk grapesjs; do
+            if [ -d "../${repo}" ]; then
+              cd "../${repo}"
+              git sparse-checkout init --cone 2>/dev/null || true
+              case $repo in
+                platform)
+                  git sparse-checkout set dashboard/config/locales 2>/dev/null || true ;;
+                braze-android-sdk)
+                  git sparse-checkout set android-sdk-ui/src/main/res 2>/dev/null || true ;;
+                braze-swift-sdk)
+                  git sparse-checkout set Sources/BrazeUI/Resources/Localization 2>/dev/null || true ;;
+                grapesjs)
+                  git sparse-checkout set src/i18n/locale 2>/dev/null || true ;;
+              esac
+              cd "$GITHUB_WORKSPACE"
+            fi
+          done
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Audit and fix glossaries
+        id: audit
+        run: |
+          python scripts/audit_glossaries.py \
+            --fix \
+            --platform-repo ../platform \
+            --android-repo ../braze-android-sdk \
+            --swift-repo ../braze-swift-sdk \
+            --grapesjs-repo ../grapesjs \
+            --output glossary_audit_report.json
+
+      - name: Ensure labels exist
+        if: steps.audit.outputs.total_changes != '0' && steps.audit.outputs.total_changes != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create "glossary-audit" --description "Automated glossary audit findings" --color "FBCA04" --force
+          gh label create "status: done" --description "Work is done and ready to be merged." --color "0E8A16" --force
+
+      - name: Create pull request
+        if: steps.audit.outputs.total_changes != '0' && steps.audit.outputs.total_changes != ''
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: glossary-audit/${{ github.run_id }}
+          base: develop
+          title: "Glossary sync: ${{ steps.audit.outputs.fixes_applied }} fixes, ${{ steps.audit.outputs.terms_added }} new terms"
+          body-path: glossary_audit_report.md
+          labels: |
+            glossary-audit
+            status: done
+          commit-message: "chore: sync glossaries with source-of-truth repos"
+          delete-branch: true
+          add-paths: |
+            scripts/glossaries/

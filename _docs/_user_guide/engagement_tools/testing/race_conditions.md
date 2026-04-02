@@ -33,7 +33,13 @@ In Braze, one of the most common race conditions occurs with messages that targe
 1. A user gets created;
 2. The same user is immediately targeted for a message, performs a custom event, or logs a custom attribute.
 
-However, in some cases, the second event triggers first. This means a message is attempting to be sent to a user that doesn’t exist yet. As a result, the user never receives it. This also applies to events or attributes, where the event or attribute attempts to be logged to a user profile that hasn’t been created yet.
+However, in some cases, the second event triggers first. This means a message is attempting to be sent to a user that doesn’t exist yet. As a result, the user never receives it. This also applies to events or attributes, where the event or attribute attempts to be logged to a user profile that hasn't been created yet.
+
+In the case of in-app messages, the in-app message must load onto the user's device before being triggered. If the trigger event is part of the onboarding process, or the user exits the segment for the custom event as part of their first session, it's likely the user won't see the in-app message.
+
+### In-app messages
+
+With in-app messages, the situation can be more nuanced. An in-app message must be delivered to and cached in the SDK—typically at the start of a session—before it can be triggered. If the trigger event is part of the user creation process, or if the in-app message campaign is delivered before the user meets (or after they no longer meet) its audience criteria during their first session, they may not see the in-app message.
 
 ### Best practices
 
@@ -80,7 +86,7 @@ When these objects are included with the trigger, the attributes are processed f
 
 Use the [`/users/track/sync/` endpoint]({{site.baseurl}}/api/endpoints/user_data/post_user_track_synchronous) to record custom events and purchases and update user profile attributes synchronously. Using this endpoint to update user profiles at the same time and in a single call can help prevent potential race conditions.
 
-{% include early_access_beta_alert.md feature='This endpoint' type='beta' %}
+{% multi_lang_include early_access_beta_alert.md feature='This endpoint' type='beta' %}
 
 ## Scenario 3: Matching action-based triggers and audience filters
 

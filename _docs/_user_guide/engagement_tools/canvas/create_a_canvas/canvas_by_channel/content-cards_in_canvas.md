@@ -1,5 +1,5 @@
 ---
-nav_title: Content cards
+nav_title: Content Cards
 article_title: Content Cards in Canvas
 page_order: 1
 page_type: reference
