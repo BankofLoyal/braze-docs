@@ -72,7 +72,7 @@ To avoid SPF failures, you must create the MX and TXT records and have them prop
 To set up Apple Private Relay, you should ideally have a custom MAIL FROM domain set up.
 
 1. Sign in with Apple.
-2. Follow [Apple’s documentation](https://developer.apple.com/help/account/capabilities/configure-private-email-relay-service/) to register the email domains.
+2. Follow [Apple's documentation](https://developer.apple.com/help/account/capabilities/configure-private-email-relay-service) to register the email domains.
 
 {% alert important %}
 Confirm your DKIM/SPF matches what you register per the instructions linked.
