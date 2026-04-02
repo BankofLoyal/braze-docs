@@ -27,11 +27,11 @@ guide_featured_list:
   - name: Exit Criteria
     link: /docs/user_guide/engagement_tools/canvas/create_a_canvas/exit_criteria/
     image: /assets/img/braze_icons/users-right.svg
-  - name: Canvas Entry Properties and Event Properties
-    link: /docs/user_guide/engagement_tools/canvas/create_a_canvas/canvas_entry_properties_event_properties/
+  - name: Context and Event Properties
+    link: /docs/user_guide/engagement_tools/canvas/create_a_canvas/context_and_event_properties/canvas_persistent_entry_properties/
     image: /assets/img/braze_icons/user-check-01.svg
   - name: Persistent Entry Properties
-    link: /docs/user_guide/engagement_tools/canvas/create_a_canvas/canvas_entry_properties_event_properties/canvas_persistent_entry_properties/
+    link: /docs/user_guide/engagement_tools/canvas/create_a_canvas/context_and_event_properties/canvas_persistent_entry_properties
     image: /assets/img/braze_icons/dataflow-03.svg
   - name: Content Cards in Canvas
     link: /docs/user_guide/engagement_tools/canvas/create_a_canvas/canvas_by_channel/content-cards_in_canvas/
