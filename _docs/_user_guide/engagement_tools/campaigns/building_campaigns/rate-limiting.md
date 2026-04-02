@@ -25,10 +25,6 @@ Braze will try to evenly distribute the message sends throughout the minute, but
 
 As you create more segments, there are going to be cases where the membership of those segments overlaps. If you're sending out campaigns to those segments, you want to be sure that you are not messaging your users too often. If a user receives too many messages within a short time period, they will feel over-encumbered and either turn off push notifications or uninstall your app.
 
-{% alert tip %}
-Set a [workspace messaging rate limit]({{site.baseurl}}/user_guide/administrative/app_settings/messaging_rate_limits) to enforce a rate limit across an entire workspace.
-{% endalert %}
-
 #### Relevant segment filters
 
 Braze provides the following filters to help you limit the rate at which your users receive messages:
@@ -88,6 +84,10 @@ If you anticipate large campaigns driving a spike in user activity and overloadi
 When targeting users during campaign creation, you can navigate to **Target Audiences** (for campaigns) or **Send Settings** (for Canvas) to select a rate limit (in various increments from as low as 10 to as high as 500,000 messages per minute).
 
 Note that non-rate-limited campaigns may exceed these delivery limits. However, be aware that messages will be aborted if they’re delayed 72 hours or more due to a low rate limit. If the rate limit is too low, the creator of the campaign will receive alerts in the dashboard and by email.
+
+{% alert tip %}
+Set a [workspace messaging rate limit]({{site.baseurl}}/user_guide/administrative/app_settings/messaging_rate_limits) to enforce a rate limit across an entire workspace.
+{% endalert %}
 
 #### Example
 
