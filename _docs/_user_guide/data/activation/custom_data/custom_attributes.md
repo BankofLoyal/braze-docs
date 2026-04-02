@@ -271,5 +271,5 @@ Using our purchase methods to record in-app purchases establishes the Lifetime V
 If you would like to segment on the number of times a specific purchase has occurred, you should also record that purchase individually as an [incrementing custom attribute]({{site.baseurl}}/developer_guide/platform_integration_guides/swift/analytics/setting_custom_attributes/#incrementingdecrementing-custom-attributes).
 {% endalert %}
 
-You can change the data type of your custom attribute, but you should be aware of the impacts of [changing data types]({{site.baseurl}}/help/help_articles/data/change_custom_data_type/).
+You can change the data type of your custom attribute, but you should be aware of the impacts of [changing data types]({{site.baseurl}}/user_guide/data/activation/custom_data/managing_custom_data/#forcing-data-type-comparisons).
 

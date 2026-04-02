@@ -124,7 +124,7 @@ When possible, breaking changes will be preceded by an announcement and a migrat
 
 ### Snowflake regions
 
-Braze currently hosts all user-level data in the Snowflake AWS US East-1, EU-Central (Frankfurt), AP-Southeast-2 (Sydney) and AP-Southeast-3 (Jakarta) regions. For users outside of those regions, Braze can provide data sharing to joint customers who are hosting their Snowflake infrastructure across any AWS, Azure, or GCP region.
+Braze currently hosts all user-level data in the Snowflake AWS US East-1, EU-Central (Frankfurt), AP-Northeast-1 (Tokyo), AP-Southeast-2 (Sydney), and AP-Southeast-3 (Jakarta) regions. For users outside of those regions, Braze can provide data sharing to joint customers who are hosting their Snowflake infrastructure across any AWS, Azure, or GCP region.
 
 ### Data retention
 
