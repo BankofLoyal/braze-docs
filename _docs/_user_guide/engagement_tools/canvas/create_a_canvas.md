@@ -31,7 +31,7 @@ guide_featured_list:
     link: /docs/user_guide/engagement_tools/canvas/create_a_canvas/context_and_event_properties/
     image: /assets/img/braze_icons/user-check-01.svg
   - name: Persistent Entry Properties
-    link: /docs/user_guide/engagement_tools/canvas/create_a_canvas/context_and_event_properties/canvas_persistent_entry_properties
+    link: /docs/user_guide/engagement_tools/canvas/create_a_canvas/context_and_event_properties/canvas_persistent_entry_properties/
     image: /assets/img/braze_icons/dataflow-03.svg
   - name: Content Cards in Canvas
     link: /docs/user_guide/engagement_tools/canvas/create_a_canvas/canvas_by_channel/content-cards_in_canvas/
