@@ -25,7 +25,7 @@ Some common custom event use cases include:
 - Generating more sophisticated analytics with [Currents]({{site.baseurl}}/user_guide/data/braze_currents/)
 - Setting up [exit criteria]({{site.baseurl}}/user_guide/engagement_tools/canvas/create_a_canvas/exit_criteria) to define when users should exit your Canvas
 
-## Manage custom events
+## Manage custom events {#managing-custom-events}
 
 You can manage, create, or blocklist custom events in the dashboard by going to **Data Settings** > **Custom Events**.
 
