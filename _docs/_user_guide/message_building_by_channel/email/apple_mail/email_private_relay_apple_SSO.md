@@ -69,14 +69,16 @@ To avoid SPF failures, you must create the MX and TXT records and have them prop
 
 ## Configure Amazon SES
 
-### Configure a custom MAIL FROM domain
-
-To set up Apple Private Relay for Amazon Simple Email Service (SES), you must first configure a custom MAIL FROM domain in SES. For more details, see [AWS's documentation](https://docs.aws.amazon.com/ses/latest/dg/mail-from.html).
-
-### Register domains with Apple
+To set up Apple Private Relay, you should ideally have a custom MAIL FROM domain set up.
 
 1. Sign in with Apple.
-2. Follow [Apple's documentation](https://developer.apple.com/help/account/configure-app-capabilities/configure-private-email-relay-service) to register the email domains.
+2. Follow [Apple's documentation](https://developer.apple.com/help/account/capabilities/configure-private-email-relay-service) to register the email domains.
+
+{% alert important %}
+Confirm your DKIM/SPF matches what you register per the instructions linked.
+{% endalert %}
+
+{:start="3"}
 3. Apple will automatically check the domains, show which ones are verified, and provide the option to reverify or delete the domains.
 
 {% endtab %}
