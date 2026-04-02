@@ -41,7 +41,7 @@ See [Query templates]({{site.baseurl}}/user_guide/analytics/query_builder/query_
 
 ### Data timeframe
 
-All queries surface data from the last 60 days.
+Queries return data from the past 60 days. If you use Currents or [Snowflake Data Sharing]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/), you may be able to query up to two years of data, which is how long your data is retained in Snowflake. For more details about extended data retention, contact your customer success manager.
 
 ### Query Builder time zone
 
