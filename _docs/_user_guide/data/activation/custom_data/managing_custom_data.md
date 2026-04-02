@@ -173,6 +173,10 @@ When deleting custom data, keep in mind the following details:
 Braze automatically recognizes data types for attribute data that is sent to us. However, in the event multiple data types are applied to a single attribute, you can force the data type of any attribute to let us know what it is. Select from the dropdown in the **Data Type** column.
 
 {% alert note %}
+As of March 30, 2026, auto-detect only sets a data type upon initial ingestion. To change the data type after initial ingestion, update it manually using the following steps.
+{% endalert %}
+
+{% alert note %}
 Forcing data types does not apply to event properties or purchase properties.
 {% endalert %}
 
