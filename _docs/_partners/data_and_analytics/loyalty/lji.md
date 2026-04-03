@@ -9,27 +9,27 @@ search_tag: Partner
 
 # GRAVTY® Loyalty Platform
 
-> [GRAVTY®](https://gravty.io/) is an enterprise-grade loyalty technology platform that enables brands to build, manage, and scale next-generation loyalty programs — driving deeper customer engagement through personalized, data-led experiences.
+> [GRAVTY®](https://www.lji.io//) is an enterprise-grade loyalty technology platform that enables brands to build, manage, and scale next-generation loyalty programs — driving deeper customer engagement through personalized, data-led experiences.
 
 ## About the integration
 
-This integration connects GRAVTY® with Braze to enable seamless, multi-channel customer engagement. GRAVTY® acts as the publisher, triggering and syncing customer data and events, while Braze transforms this data into personalized communications across channels such as SMS, email, and push notifications.
+This integration connects GRAVTY® with Braze to enable seamless, multi-channel customer engagement. GRAVTY® acts as the publisher, sending customer data to Braze as attributes, events, and purchases, enabling personalization and communication triggers, while Braze stores this data and delivers messages across channels such as SMS, email, and push notifications.
 
-1. **Member & Transaction Sync**: Sync member profiles, attributes, and transaction data to Braze using `/users/track` for real-time personalization and segmentation.
-2. **Campaign Triggering**: Trigger Braze Campaigns via `/campaigns/trigger/send` to send immediate, single-message communications such as OTPs and alerts.
-3. **Canvas Triggering**: Initiate multi-step customer journeys using `/canvas/trigger/send` for lifecycle and engagement use cases.
-4.  **Personalization**: Leverage synced attributes like loyalty status, points balance, and behavior to drive targeted messaging.
 ## Use cases
 
-This integration supports the following scenarios:
+This integration supports the following Braze functionalities:
 
-1. **Member Profile Sync**: Synchronize member profiles and attributes with Braze whenever a member is created or updated.
+1. **User Data Sync (`/users/track`)**  
+   Sync member attributes, events, and purchases to Braze for segmentation and personalization.
 
-2. **Transaction & Event Sync**: Send member transactions and behavioral events to Braze to support segmentation and audience targeting.
+2. **Campaign Triggering (`/campaigns/trigger/send`)**  
+   Trigger one-time or transactional messages using Braze Campaigns.
 
-3. **Real-time Communication Triggers**: Trigger real-time communications from GRAVTY to Braze based on configured loyalty events—such as points accrual, tier upgrades, and transactions
+3. **Canvas Triggering (`/canvas/trigger/send`)**  
+   Initiate multi-step journeys and lifecycle campaigns using Braze Canvas.
 
-4. **Lifecycle and Personalized Engagement**: Leverage synchronized loyalty data and events to run lifecycle campaigns (e.g., welcome journeys, re-engagement campaigns) and deliver personalized communications through Braze.
+4. **Segmentation and Personalization**  
+   Use synced data to build targeted audiences and deliver personalized communications.
 
 ## Prerequisites
 
