@@ -104,6 +104,8 @@ valid_partner_list:
   url: /docs/partners/amazon_personalize/
 - name: Certona
   url: /docs/partners/certona/
+- name: CataBoom
+  url: /docs/partners/cataboom/
 - name: Playable
   url: /docs/partners/playable/
 - name: Movable Ink

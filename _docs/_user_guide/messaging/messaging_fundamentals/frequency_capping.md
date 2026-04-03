@@ -85,6 +85,10 @@ When targeting users during campaign creation, you can navigate to **Target Audi
 
 Note that non-rate-limited campaigns may exceed these delivery limits. However, be aware that messages will be aborted if they’re delayed 72 hours or more due to a low rate limit. If the rate limit is too low, the creator of the campaign will receive alerts in the dashboard and by email.
 
+{% alert tip %}
+Set a [workspace messaging rate limit]({{site.baseurl}}/user_guide/administrative/app_settings/messaging_rate_limits) to enforce a rate limit across an entire workspace.
+{% endalert %}
+
 #### Example
 
 If you are trying to send out 75,000 messages with a 10,000-per-minute rate limit, the delivery will be spread out over eight minutes. Your campaign will deliver no more than 10,000 messages for each of the first seven minutes, and 5,000 over the last minute.

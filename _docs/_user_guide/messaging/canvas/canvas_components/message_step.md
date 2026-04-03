@@ -22,7 +22,7 @@ To create a Message component, first add a step to your Canvas. Drag and drop th
 ### Step 1: Select your messaging channel
 
 You can select from the following messaging channels: 
-- Banners (in early access)
+- Banners
 - Content Cards
 - Email
 - LINE

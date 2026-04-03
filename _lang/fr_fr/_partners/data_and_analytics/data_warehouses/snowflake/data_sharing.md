@@ -114,6 +114,7 @@ Braze héberge actuellement toutes les données au niveau utilisateur dans les r
 
  - US East-1
  - EU-Central (Francfort)
+ - AP-Northeast-1 (Tokyo)
  - AP-Southeast-2 (Sydney)
  - AP-Southeast-3 (Jakarta)
  

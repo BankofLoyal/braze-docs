@@ -34,7 +34,7 @@ Preserve all of the following exactly as they appear in the English source:
 - **These YAML values**: `page_order`, `layout`, `page_type`, `channel`, `platform`, `tool`, `link`, `image`, `permalink`, `hidden`, `noindex`, `config_only`, `search_rank`, `page_layout`
 - **Liquid tags**: `{% ... %}` and `{{ ... }}` — copy exactly, including all parameters, whitespace, and hyphens
 - **Code blocks** (fenced with ``` or ~~~) — preserve all content inside verbatim
-- **Inline code** (wrapped in backticks) — preserve exactly
+- **Inline code** (wrapped in backticks) — preserve exactly, UNLESS the backtick-wrapped text is clearly a UI label or dropdown option (not actual code, a variable name, or a technical identifier). UI labels in backticks should be translated to match the localized Braze dashboard while keeping the backtick formatting. For example, "do" and "do not" wrapped in backticks are UI dropdown options and should be translated; "user_id" and "campaign_name" wrapped in backticks are code and must not be translated.
 - **URLs and link targets** `](url)` — preserve the URL exactly
 - **Image paths** and `{% image_buster ... %}` tags — preserve exactly
 - **HTML tags** — preserve exactly
@@ -77,8 +77,11 @@ A style guide for the target language may be appended to the end of these instru
 
 - Preserve all blank lines and overall whitespace structure
 - Preserve markdown formatting (bold `**`, italic `*`, lists, tables, horizontal rules)
+- **Italics**: Always use asterisks (`*text*`) for italic formatting, never underscores (`_text_`). Underscore-based italics break in many Markdown renderers when adjacent to non-Latin characters (Japanese, Korean, etc.).
 - Preserve the exact YAML front matter structure: key order, indentation, and quoting style
 - If a YAML value is quoted in English (e.g., `nav_title: "Some title"`), keep it quoted in the translation
+- **YAML-safe translations**: If your translation introduces characters that are special in YAML (colons `:`, hash `#`, square brackets `[]`, curly braces `{}`, or ASCII double quotes `"`), you MUST wrap the entire value in double quotes even if the English source was unquoted. For example, if the English `description: Segment users by whether they bounced` becomes a translation containing `(예: ...)` or `(z.B.: ...)`, the value needs quotes: `description: "...예: ...에 따라..."`. Failing to quote will break the YAML parser.
+- **YAML-safe quotation marks**: When a YAML value is wrapped in ASCII double quotes (`"`), avoid *unescaped* ASCII `"` (U+0022) inside that value. For prose, use typographic quotation marks: for German, use `„` (U+201E) and `"` (U+201C); for French, use `«` and `»`; for other languages, use the language's standard typographic quotes. Use escaped ASCII quotes (`\"`) only when literal ASCII quotes are required (for example, in HTML attributes or code) inside a YAML-quoted string.
 - Preserve numbered list continuation markers like `{: start="5"}`
 - Preserve Kramdown table classes like `{: .reset-td-br-1 .reset-td-br-2 role="presentation" }`
 - Do NOT escape `[`, `]`, or `!` characters — use them as-is in markdown syntax
@@ -102,10 +105,10 @@ The file `_includes/rate_limits.md` uses Liquid conditionals with include parame
 
 ### Translation quality
 
+- **Always translate from the English source as the primary input.** If an existing translation is provided, use it only as a reference for terminology consistency — do NOT copy it verbatim or use it as your starting template. The existing translation may contain errors, omissions, or outdated content. Your output must accurately reflect the current English source, not the previous translation.
 - Adapt sentence structure naturally for the target language — do not translate word-for-word
 - The content should read as if it was originally written in the target language, not translated
 - Maintain consistent terminology throughout the file; follow the approved glossary
-- If an existing translation is provided, maintain consistency with its terminology and style choices
 - Keep translations concise; do not expand significantly beyond the English source length
 
 ### Inclusivity

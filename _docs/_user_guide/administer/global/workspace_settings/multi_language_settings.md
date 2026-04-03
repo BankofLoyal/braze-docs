@@ -10,6 +10,8 @@ description: "This article provides an overview of multi-language settings in th
 
 > The multi-language feature allows you to use [translation tags]({{site.baseurl}}/user_guide/messaging/messaging_fundamentals/localization/locales_in_messages/) to target users in different languages and locations all within a single message.
 
+{% multi_lang_include alerts/important_alerts.md alert='multi-language ea' %}
+
 ## Prerequisites
 
 {% multi_lang_include locales.md section='multi-language prerequisites' %}

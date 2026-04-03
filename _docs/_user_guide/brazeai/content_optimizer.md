@@ -51,9 +51,11 @@ Content Optimizer is similar to the Message step in Canvas, with features like q
 
 Each user receives one message per entry into the Content Optimizer step. Re-entries are treated as new, with no memory of previous variants.
 
-For best results, use Content Optimizer in Canvases where users enter the step gradually over time, such as in recurring or always-on Canvases with consistent daily volume. If all users enter the step at once, the agent won’t have time to learn from early results. The step will behave more like a static A/B test than a live optimization engine.
+## Canvas entry setup
 
-This means you can still use Content Optimizer in single-send or short-term Canvases, but only if users are entering the step over a prolonged period (for example, through a delay step, scheduled entry, or API-triggered flow). Make sure the step has enough traffic and time to observe performance differences before reaching most users.
+For best results, use Content Optimizer in Canvases where users enter the step gradually and regularly over time, such as in recurring or always-on Canvases with consistent daily volume. If all users enter the step at once, the agent won’t have time to learn from early results. The step will behave more like a static A/B test than a live optimization engine.
+
+The best fit for Content Optimizer is in daily recurring entry Canvases, as well as event-triggered and API-triggered Canvases with relatively consistent daily user entries. If you do use Content Optimizer in single-send Canvases or "spiky" entry Canvases (like recurring monthly), consider using [Entry controls]({{site.baseurl}}/user_guide/engagement_tools/canvas/create_a_canvas/create_a_canvas/#selecting-entry-controls) to smooth out user entries over the course of multiple days.
 
 ### Key concepts
 

@@ -283,9 +283,9 @@ For the full purchase object schema and examples, see [Purchase object]({{site.b
 To change the data type of a custom attribute or event:
 
 1. Go to **Data Settings** and select either **Custom Attributes** or **Custom Events**.
-3. Find your attribute or event from the list, and select <i class="fa fa-ellipsis-v" aria-hidden="true"></i> **More actions**.
-4. Select a new **Data type** from the dropdown.
-5. Select **Save**.
+2. Find your attribute or event from the list, and select <i class="fa fa-ellipsis-v" aria-hidden="true"></i> **More actions**.
+3. Select a new **Data type** from the dropdown.
+4. Select **Save**.
 
 If you change the data type of a custom attribute or event (for example, changing `time` to `string`), consider the following:
 

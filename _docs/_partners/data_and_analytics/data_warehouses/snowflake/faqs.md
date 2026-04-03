@@ -15,7 +15,8 @@ No, as of now that is not supported.
 ### Do I need data share for the same region or cross region?
 Use data sharing for the same region in the following scenarios:
 - Your Snowflake account is in US-EAST-1 (AWS) and your Braze dashboard region is in the US.
-- Your Snowflake region is in EU-CENTRAL-1 and your Braze dashboard region is in the EU.
+- Your Snowflake region is in EU-CENTRAL-1 (AWS) and your Braze dashboard region is in the EU.
+- Your Snowflake region is in AP-Northeast-1 (AWS) and your Braze dashboard region is in Japan.
 - Your Snowflake region is in AP-Southeast-2 (AWS) and your Braze dashboard region is in Australia.
 - Your Snowflake region is in AP-Southeast-3 (AWS) and your Braze dashboard region is in Indonesia.
 

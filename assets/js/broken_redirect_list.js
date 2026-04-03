@@ -18,6 +18,11 @@ validurls['/docs/best_practices/'] = '/docs/help/home/';
 
 validurls['/docs/whatsapp_response_messaging/'] = '/docs/user_guide/channels/whatsapp/create_a_whatsapp_message/#response-messages';
 validurls['/docs/user_guide/message_building_by_channel/whatsapp/whatsapp_campaign_analytics/click_tracking/'] = '/docs/user_guide/channels/whatsapp/message_features_and_optimization/click_tracking/';
+validurls['/docs/user_guide/message_building_by_channel/kakaotalk/'] = '/docs/user_guide/channels/kakaotalk/';
+validurls['/docs/user_guide/message_building_by_channel/kakaotalk/create_kakaotalk_message/'] = '/docs/user_guide/channels/kakaotalk/create_kakaotalk_message/';
+validurls['/docs/user_guide/message_building_by_channel/kakaotalk/kakaotalk_click_tracking/'] = '/docs/user_guide/channels/kakaotalk/kakaotalk_click_tracking/';
+validurls['/docs/user_guide/message_building_by_channel/kakaotalk/kakaotalk_reporting/'] = '/docs/user_guide/channels/kakaotalk/kakaotalk_reporting/';
+validurls['/docs/user_guide/message_building_by_channel/kakaotalk/kakaotalk_setup/'] = '/docs/user_guide/channels/kakaotalk/kakaotalk_setup/';
 validurls['/docs/dashboard_features/#changing-email-subscriptions'] = '/docs/user_guide/channels/email/subscriptions/#changing-email-subscriptions';
 validurls['/docs/dashboard_features/#common-errors'] = '/docs/user_guide/data_and_analytics/user_data_collection/user_import/#common-errors';
 validurls['/docs/dashboard_features/#conversion-events'] = '/docs/user_guide/messaging/campaigns/testing_and_more/conversion_events/#conversion-events';

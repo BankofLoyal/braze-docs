@@ -5,7 +5,7 @@ search_tag: Endpunkt
 page_order: 5
 layout: api_page
 page_type: reference
-description: "Dieser Artikel enthält Einzelheiten zum Endpunkt „Canvase duplizieren"."
+description: "Dieser Artikel enthält Einzelheiten zum Endpunkt „Canvase duplizieren“."
 ---
 
 {% api %}

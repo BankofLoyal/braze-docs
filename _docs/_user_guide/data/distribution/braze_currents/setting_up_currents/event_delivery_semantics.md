@@ -96,20 +96,24 @@ Currents will never write empty files.
 
 ### Avro schema changes
 
-From time to time, Braze may make changes to the Avro schema when fields are added, changed, or removed. For our purposes here, there are two types of changes: breaking and non-breaking. In all cases, the Currents path version advances to indicate the schema was updated. Currents events written to Azure Blob Storage, Google Cloud Storage, and Amazon S3 write this as `version=<currents_version>` in the path. For example: `<your-bucket-prefix>/.../event_type=<event-type>/date=<date>/version=6/<environment>/...`.
+From time to time, Braze may make changes to the Avro schema when fields are added, changed, or removed. For our purposes here, there are two types of changes: breaking and non-breaking. All schema changes are bundled into Currents releases, and each release advances the `version=<currents_version>` segment in the storage path (for example, `version=6` to `version=7`). Currents events written to Azure Blob Storage, Google Cloud Storage, and Amazon S3 use the following path format:
+
+```
+<your-bucket-prefix>/<currents-integration-id>/event_type=<event-type>/date=<date>/version=<currents_version>/<environment>/<avro-file>
+```
 
 #### Non-breaking changes
 
-When a field is added to the Avro schema, we consider this a non-breaking change. Added fields will always be "optional" Avro fields (such as with a default value of `null`), so they will "match" older schemas according to the [Avro schema resolution spec](http://avro.apache.org/docs/current/spec.html#schema+resolution). These additions should not affect existing Extract, Transform, and Load (ETL) processes as the field will simply be ignored until it is added to your ETL process. 
+When a field is added to the Avro schema, we consider this a non-breaking change. Added fields will always be "optional" Avro fields (such as with a default value of `null`), so they will "match" older schemas according to the [Avro schema resolution spec](http://avro.apache.org/docs/current/spec.html#schema+resolution). These additions should not affect existing Extract, Transform, and Load (ETL) processes as the field will simply be ignored until it is added to your ETL process.
 
 {% alert important %}
 We recommend that your ETL setup is explicit about the fields it processes to avoid breaking the flow when new fields are added.
 {% endalert %}
 
-While we will strive to give advance warning in the case of all changes, we may include non-breaking changes to the schema at any time.
-
 #### Breaking changes
 
 When a field is removed from or changed in the Avro schema, we consider this a breaking change. Breaking changes may require modifications to existing ETL processes as fields that were in use may no longer be recorded as expected.
 
-All breaking changes to the schema will be communicated in advance of the change.
+All breaking changes will be communicated in advance of the release.
+
+For a full history of changes by version, refer to the [Currents changelog]({{site.baseurl}}/user_guide/data/distribution/braze_currents/event_glossary/currents_changelogs).

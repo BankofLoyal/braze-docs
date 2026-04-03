@@ -28,9 +28,9 @@ As a convenience, a summary of supported personalization tags are provided. For 
 | Card Attributes | `{{card.${api_id}}}` <br> `{{card.${name}}}` |
 | Geofencing Events | `{{event_properties.${geofence_name}}}` <br> `{{event_properties.${geofence_set_name}}}` |
 | Event Properties <br> (These are custom to your workspace.)| `{{event_properties.${your_custom_event_property}}}` |
-| Canvas Context Variables | `{{context}}` |
+| Canvas Context Variables | `{{context.${your_context_variable}}}` |
 | Custom Attributes <br> (These are custom to your workspace.) | `{{custom_attribute.${your_custom_attribute}}}` |
-| <a href='/docs/api/objects_filters/trigger_properties_object/'>API Trigger Properties</a> |`{{api_trigger_properties}}` |
+| <a href='/docs/api/objects_filters/trigger_properties_object/'>API Trigger Properties</a> | `{{api_trigger_properties.${your_api_trigger_property}}}` |
 | Canvas Entry Properties | `{{context.${property_name}}}` |
 {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
@@ -320,6 +320,17 @@ Show variant B
 ```
 {% endraw %}
 
+## eCommerce shopping cart tag {#shopping-cart-tag}
+
+The `shopping_cart` tag accesses a user's cart contents in eCommerce [abandoned cart]({{site.baseurl}}/user_guide/engagement_tools/canvas/ideas_and_strategies/ecommerce_use_cases/?tab=abandoned%20cart#abandoned-cart) and [abandoned checkout]({{site.baseurl}}/user_guide/engagement_tools/canvas/ideas_and_strategies/ecommerce_use_cases/?tab=abandoned%20checkout#abandoned-checkout) eCommerce Canvas use cases. Replace `CART_ID` with the actual cart ID value, such as {% raw %}`{{context.${cart_id}}}`{% endraw %}.
+
+{% raw %}
+```liquid
+{% shopping_cart CART_ID :abort_if_not_abandoned false %}
+```
+{% endraw %}
+
+The `abort_if_not_abandoned` parameter in this example applies only to the [abandoned checkout]({{site.baseurl}}/user_guide/engagement_tools/canvas/ideas_and_strategies/ecommerce_use_cases/?tab=abandoned%20checkout#abandoned-checkout) use case when used with the `ecommerce.checkout_started` event. It is not applicable to abandoned cart use cases. For details, see [`abort_if_not_abandoned`]({{site.baseurl}}/user_guide/engagement_tools/canvas/ideas_and_strategies/ecommerce_use_cases/?tab=abandoned%20checkout#abort-if-not-abandoned).
 
 [31]:https://docs.shopify.com/themes/liquid/tags/variable-tags
 [32]:https://docs.shopify.com/themes/liquid/tags/iteration-tags
