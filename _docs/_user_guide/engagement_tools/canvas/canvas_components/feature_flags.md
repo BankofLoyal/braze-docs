@@ -23,13 +23,23 @@ To create a Feature Flag component, first add a step to your Canvas. Drag and dr
 
 ## How this step works
 
-When a Canvas is stopped, or archived, or a step is removed, any user who has gone through that step will no longer receive the step's feature flag and its properties. The user will still be subject to the default rollout percentage and audience segmentation for that feature flag and any other Canvases that might still be active.
+When a Canvas is stopped, archived, or a Feature Flag step is removed, users who went through that step no longer receive that step's feature flag and its properties. 
 
-Properties in a Canvas step can be changed after launch, and even after a user goes through the step. Users will always receive a real-time, dynamic version of the feature flag, instead of the older, previously saved version.
+For a feature flag that has no rollout and no feature flag experiment, after you stop a Canvas that contains a Feature Flag step referencing that flag:
+
+- No users have that feature flag in the **Feature Flags Eligibility** tab.
+- No users match the `Feature Flags` segmentation filter for that feature flag. 
+
+If the feature flag has a rollout, a feature flag experiment, or another active Canvas that references it, users may still be eligible through those channels.
+
+Properties in a Canvas step can be changed after launch, and even after a user goes through the step. Users always receive a real-time, dynamic version of the feature flag, instead of the older, previously saved version.
+
+- **Two Canvases reference the same feature flag, and a user enters both:** The user receives the value set in the Canvas they entered most recently, not the earlier Canvas. That value appears in the **Feature Flags Eligibility** tab.
+- **A Canvas has two Feature Flag steps that reference the same feature flag:** The user receives the value set in the second step while they are on that path, and that value appears in the **Feature Flags Eligibility** tab.
 
 {% multi_lang_include alerts/important_alerts.md alert='network dependency' %}
 
-## Overwriting properties
+## Overwrite properties {#overwriting-properties}
 
 When creating a feature flag you specify default properties. When setting up a feature flag Canvas step, you can either keep the default values, or overwrite the values for users who enter this step.
 

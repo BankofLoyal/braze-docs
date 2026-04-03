@@ -2,10 +2,8 @@
 # files in the platform and SDK repos.
 #
 # Compares scripts/glossaries/*.json against the actual UI translations in
-# the Braze platform dashboard, Android SDK, Swift SDK, and GrapesJS editor
-# to surface terminology drift.
-#
-# Creates a GitHub Issue when mismatches or missing terms are detected.
+# the Braze platform dashboard, Android SDK, Swift SDK, and GrapesJS editor.
+# Auto-fixes exact mismatches and adds missing terms, then opens a PR.
 name: Audit glossaries
 
 on:
@@ -14,7 +12,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+  pull-requests: write
   issues: write
 
 jobs:
@@ -25,13 +24,13 @@ jobs:
     steps:
       - name: Checkout braze-docs
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Clone reference repos
         env:
           GH_TOKEN: ${{ secrets.REFERENCE_REPO_TOKEN }}
         run: |
-          # Clone repos needed for localization comparison.
-          # Public repos use HTTPS; private repos use the PAT.
           clone_repo() {
             local org=$1 repo=$2
             echo "Cloning $org/$repo..."
@@ -49,7 +48,6 @@ jobs:
           clone_repo braze-inc braze-swift-sdk
           clone_repo braze-inc grapesjs
 
-          # Sparse-checkout only the locale directories we need
           for repo in platform braze-android-sdk braze-swift-sdk grapesjs; do
             if [ -d "../${repo}" ]; then
               cd "../${repo}"
@@ -69,47 +67,42 @@ jobs:
           done
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
-      - name: Run glossary audit
+      - name: Audit and fix glossaries
         id: audit
         run: |
           python scripts/audit_glossaries.py \
+            --fix \
             --platform-repo ../platform \
             --android-repo ../braze-android-sdk \
             --swift-repo ../braze-swift-sdk \
             --grapesjs-repo ../grapesjs \
-            --output glossary_audit_report.json || true
+            --output glossary_audit_report.json
 
-          # Read stats for the issue
-          if [ -f glossary_audit_report.json ]; then
-            mismatches=$(python3 -c "import json; r=json.load(open('glossary_audit_report.json')); print(r['stats']['total_mismatches'])")
-            missing=$(python3 -c "import json; r=json.load(open('glossary_audit_report.json')); print(r['stats']['total_missing'])")
-            echo "mismatches=${mismatches}" >> "$GITHUB_OUTPUT"
-            echo "missing=${missing}" >> "$GITHUB_OUTPUT"
-            echo "has_findings=$([ $mismatches -gt 0 ] || [ $missing -gt 0 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
-          else
-            echo "has_findings=false" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Create or update issue
-        if: steps.audit.outputs.has_findings == 'true'
+      - name: Ensure labels exist
+        if: steps.audit.outputs.total_changes != '0' && steps.audit.outputs.total_changes != ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          DATE=$(date +%Y-%m-%d)
-          TITLE="Glossary audit: ${{ steps.audit.outputs.mismatches }} mismatches, ${{ steps.audit.outputs.missing }} missing terms ($DATE)"
+          gh label create "glossary-audit" --description "Automated glossary audit findings" --color "FBCA04" --force
+          gh label create "status: done" --description "Work is done and ready to be merged." --color "0E8A16" --force
 
-          BODY=$(cat glossary_audit_report.md)
-
-          # Close any previous open audit issues
-          gh issue list --label "glossary-audit" --state open --json number -q '.[].number' | while read num; do
-            gh issue close "$num" --comment "Superseded by new audit run on $DATE."
-          done
-
-          gh issue create \
-            --title "$TITLE" \
-            --body "$BODY" \
-            --label "glossary-audit"
+      - name: Create pull request
+        if: steps.audit.outputs.total_changes != '0' && steps.audit.outputs.total_changes != ''
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: glossary-audit/${{ github.run_id }}
+          base: develop
+          title: "Glossary sync: ${{ steps.audit.outputs.fixes_applied }} fixes, ${{ steps.audit.outputs.terms_added }} new terms"
+          body-path: glossary_audit_report.md
+          labels: |
+            glossary-audit
+            status: done
+          commit-message: "chore: sync glossaries with source-of-truth repos"
+          delete-branch: true
+          add-paths: |
+            scripts/glossaries/

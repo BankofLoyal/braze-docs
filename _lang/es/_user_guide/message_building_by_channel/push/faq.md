@@ -14,7 +14,7 @@ channel:
 
 ### ¿Qué sucede cuando varios usuarios inician sesión en un solo dispositivo?
 
-Cuando un usuario cierra sesión en un dispositivo o sitio web, seguirá estando disponible mediante notificaciones push hasta que otro usuario inicie sesión. En ese momento, el token de notificaciones push se reasigna al nuevo usuario. Esto se debe a que cada dispositivo solo puede tener una suscripción push activa por aplicación o sitio web.
+Cuando un usuario cierra sesión en un dispositivo o sitio web, seguirá siendo alcanzable mediante notificaciones push hasta que otro usuario inicie sesión. En ese momento, el token de notificaciones push se reasigna al nuevo usuario. Esto se debe a que cada dispositivo solo puede tener una suscripción push activa por aplicación o sitio web.
 
 Cuando se reasigna un token de notificaciones push, el cambio se refleja en el **registro de cambios push** del perfil de usuario. Puedes encontrarlo en la pestaña **Interacción** del perfil de usuario.
 
@@ -28,11 +28,11 @@ Para enviar la notificación push de prueba a un solo dispositivo, puedes elimin
 
 ### ¿Qué significa «Error al enviar la notificación push porque la carga útil no era válida»?
 
-Este mensaje indica que APN rechazó la solicitud push debido a una carga útil no válida (por ejemplo, una carga útil vacía o una carga útil demasiado grande).
+Este mensaje indica que APN rechazó la solicitud push debido a una carga útil no válida (por ejemplo, una carga útil vacía o demasiado grande).
 
 Para obtener más información y conocer los pasos siguientes, consulta [Mensajes de error comunes de push]({{site.baseurl}}/user_guide/message_building_by_channel/push/push_error_codes/).
 
-### ¿Por qué un usuario con adhesión voluntaria no tiene un token de notificaciones push?
+### ¿Por qué un usuario suscrito no tiene un token de notificaciones push?
 
 Esto puede suceder si el token de notificaciones push del usuario se reasignó a otra persona que utilizó el mismo dispositivo.
 
@@ -45,6 +45,12 @@ Si deseas que el token de notificaciones push se reasigne al usuario original:
 
 1. Pide al usuario original que inicie sesión en el perfil con el token de notificaciones push faltante.
 2. Desencadena un nuevo envío push. Esto devolverá el token a la cuenta si todavía tiene habilitada la función push a nivel de dispositivo.
+
+### ¿Por qué «Abrir URL web dentro de la aplicación móvil» siempre abre la aplicación cuando estoy probando un borrador de campaña?
+
+Cuando una campaña aún está en estado de **borrador** y envías una notificación push de prueba, al tocar la notificación siempre se abre primero la aplicación, independientemente de si la opción **Abrir URL web dentro de la aplicación móvil** está seleccionada o no. Cuando la campaña está **en vivo**, el comportamiento al hacer clic funciona según lo configurado.
+
+Si seleccionaste **Abrir URL web** sin la opción **Dentro de la aplicación**, el enlace se abre directamente en el navegador predeterminado del dispositivo. Si seleccionaste **Abrir URL web dentro de la aplicación móvil**, el enlace se abre en una vista web dentro de la aplicación.
 
 ### ¿Cuál es la diferencia entre «Enviar a producción» y «Enviar a desarrollo» en los certificados push de iOS?
 

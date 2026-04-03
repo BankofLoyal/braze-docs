@@ -78,6 +78,24 @@ Braze 내보내기 엔드포인트를 사용하여 고객 프로필을 내보낼
 
 내부 사용자를 대상으로 푸시 전송을 테스트할 때는 푸시 알림을 받으려는 사용자가 현재 관련 앱에 로그인되어 있는지 확인하세요. 이로 인해 사용자가 푸시를 받지 못하거나 세그먼트에 포함되지 않았다고 생각되는 푸시를 받을 수 있습니다.
 
+## 푸시 알림을 클릭해도 앱이 열리지 않음
+
+푸시 알림을 클릭해도 앱이 열리지 않는 경우 플랫폼에 따라 다음 사항을 확인하세요.
+
+### Android
+
+1. **클릭 시 동작을 확인합니다:** 캠페인이 클릭 시 앱을 열도록 구성되어 있는지 확인합니다.
+2. **딥링크 처리를 확인합니다:** `braze.xml` 파일에서 `com_braze_handle_push_deep_links_automatically`가 `true`로 설정되어 있는지 `false`로 설정되어 있는지 확인합니다.
+   - `true`로 설정된 경우 Braze SDK가 딥링크를 직접 처리하며 앱이 예상대로 열립니다.
+   - `false`로 설정된 경우 앱에서 푸시 수신 및 열기 의도를 수신하고 처리할 방송 수신기가 필요합니다. 이 수신기가 올바르게 구현되었는지 확인하세요.
+3. **상세 로그를 수집합니다:** [상세 로깅을 활성화]({{site.baseurl}}/developer_guide/sdk_integration/verbose_logging)하고 문제를 재현한 다음 `braze.xml` 및 `AndroidManifest.xml`과 함께 로그를 Braze 고객지원에 제공하세요.
+
+### iOS
+
+1. **클릭 시 동작을 확인합니다:** 캠페인이 클릭 시 앱을 열도록 구성되어 있는지 확인합니다.
+2. **푸시 통합을 확인합니다:** 푸시에서 앱으로의 딥링킹은 Braze [표준 푸시 통합]({{site.baseurl}}/developer_guide/push_notifications/?sdktab=swift)에 의해 자동으로 처리됩니다. 커스텀 델리게이트 처리를 포함하여 통합이 올바르게 구현되었는지 확인하세요.
+3. **상세 로그를 수집합니다:** [상세 로깅을 활성화]({{site.baseurl}}/developer_guide/sdk_integration/verbose_logging)하고 문제를 재현한 다음 로그를 Braze 고객지원에 제공하세요.
+
 ## 푸시 클릭 시 예기치 않게 앱에서 열림
 
 푸시 알림의 링크가 웹 브라우저가 아닌 앱에서 예기치 않게 열리는 문제가 발생하는 경우 캠페인 구성 또는 SDK 구현에 문제가 있을 수 있습니다. 다음 단계를 참조하여 도움을 받으세요.
@@ -98,25 +116,14 @@ Braze 내보내기 엔드포인트를 사용하여 고객 프로필을 내보낼
 
 1. **푸시 델리게이트 구현을 검토합니다:** Braze 푸시 델리게이트가 올바르게 구현되었는지 확인합니다. 자세한 지침은 사용 중인 [플랫폼]({{site.baseurl}}/developer_guide/home/)의 푸시 알림 통합 가이드를 참조하세요.
 2. **커스텀 링크 처리를 검사합니다:** 앱에 모든 `https://` 링크에 대한 커스텀 처리가 포함되어 있는지 확인합니다. 커스텀 구성이 기본 동작을 재정의할 수 있습니다. 필요한 경우 개발팀과 협력하여 이러한 설정을 검토하고 조정하세요.
-3. **iOS 푸시 등록을 확인합니다:** iOS의 경우 푸시 통합 가이드의 1단계에서 [APN에 푸시 알림을 등록하는]({{site.baseurl}}/developer_guide/platform_integration_guides/swift/push_notifications/integration/#step-1-register-for-push-notifications-with-apns) 방법을 참조하세요. 앱 실행이 완료되기 전에 델리게이트 오브젝트가 동기적으로 할당되었는지 확인하세요. 이 단계는 `application:didFinishLaunchingWithOptions:` 메서드에서 완료해야 합니다.
+3. **iOS 푸시 등록을 확인합니다:** iOS의 경우 푸시 통합 가이드의 1단계에서 [APNs에 푸시 알림을 등록하는]({{site.baseurl}}/developer_guide/platform_integration_guides/swift/push_notifications/integration/#step-1-register-for-push-notifications-with-apns) 방법을 참조하세요. 앱 실행이 완료되기 전에 델리게이트 오브젝트가 동기적으로 할당되었는지 확인하세요. 이 단계는 `application:didFinishLaunchingWithOptions:` 메서드에서 완료해야 합니다.
 4. **통합을 테스트합니다:** 조정을 마친 후 iOS 및 Android 기기 모두에서 푸시 알림 동작을 테스트하여 문제가 해결되었는지 확인합니다.
 
-## iOS에서 푸시 제목이 잘리지만 Android에서는 정상적으로 표시됨
+## .p8 인증 키로 마이그레이션
 
-푸시 알림 제목에 Liquid 개인화가 포함되어 있고 Android에서는 완전하게 표시되지만 iOS에서는 잘리는 경우, 이는 각 플랫폼이 제목 문자열의 줄바꿈 문자(`\n`)를 처리하는 방식의 차이 때문입니다.
+Apple `.p8` 인증 키는 Braze에서 APNs 푸시에 필요한 방식입니다. 레거시 인증서 파일 유형과 달리 `.p8` 키는 만료되지 않으며 단일 키로 모든 앱을 지원하므로 연간 인증서 갱신이 필요 없고 푸시 전달 실패 위험이 줄어듭니다.
 
-Android는 푸시 제목 문자열에서 공백, 탭, 줄바꿈을 자동으로 제거합니다. iOS는 그렇지 않으므로, Liquid 변수가 후행 줄바꿈이 포함된 값으로 확인되면 iOS는 줄바꿈을 제목의 끝으로 처리하고 나머지 텍스트를 잘라냅니다.
-
-예를 들어, `Regarding your flight from {% raw %}{{${city_from}}}{% endraw %} to {% raw %}{{${city_to}}}{% endraw %}`와 같은 제목은 `city_from` 변수에 후행 줄바꿈이 포함된 경우 iOS에서 `Regarding your flight from`으로 표시될 수 있습니다.
-
-이 문제를 해결하려면 `strip_newlines` Liquid 필터를 적용하고 전체 제목을 `capture` 블록으로 감싸세요:
-
-{% raw %}
-```liquid
-{% capture title %}Regarding your flight from {{${city_from}}} to {{${city_to}}}{% endcapture %}
-{{ title | strip_newlines }}
-```
-{% endraw %}
+현재 `.p12` 또는 `.pem` 인증서를 사용하고 있다면 가능한 한 빨리 `.p8` 키로 마이그레이션하세요. `.p8` 키를 생성하고 업로드하는 방법은 [APNs 푸시 인증서 업로드]({{site.baseurl}}/developer_guide/push_notifications/?sdktab=swift)를 참조하세요. 개발자 계정에서 `.p8` 키를 생성하는 방법에 대한 Apple의 안내는 [인증 토큰을 사용하여 APNs와 통신](https://developer.apple.com/help/account/capabilities/communicate-with-apns-using-authentication-tokens/)을 참조하세요.
 
 ## 웹 푸시 알림이 예상대로 작동하지 않음
 

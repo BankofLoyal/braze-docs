@@ -1,6 +1,8 @@
 # Translates English docs into all supported languages using Claude.
-# Currently manual-only (workflow_dispatch). Re-enable the push trigger
-# below once the workflow is production-ready.
+#
+# Triggers automatically when a deploy PR merges to main (nightly or manual),
+# detecting changed _docs/ and _includes/ markdown files.
+# Also supports manual runs via workflow_dispatch with explicit file paths.
 #
 # Flow:
 #   1. Identify _docs/ and _includes/ markdown files changed in the push
@@ -12,9 +14,9 @@
 name: Auto-translate
 
 on:
-  # push:
-  #   branches: [main]
-  #   paths: ['_docs/**', '_includes/**']
+  push:
+    branches: [main]
+    paths: ['_docs/**', '_includes/**']
   workflow_dispatch:
     inputs:
       files:
@@ -83,7 +85,7 @@ jobs:
       # ------------------------------------------------------------------
       - name: Set up Python
         if: steps.changes.outputs.count != '0'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
@@ -134,15 +136,18 @@ jobs:
         run: python scripts/auto_translate.py summary
 
       - name: Create pull request
+        id: create-pr
         if: steps.changes.outputs.count != '0'
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: auto-translate/${{ github.run_id }}
           base: develop
           title: "Auto-translations — ${{ github.event.head_commit.message || 'manual run' }}"
           body-path: translation_pr_body.md
-          labels: auto-translation
+          labels: |
+            auto-translation
+            In Review
           commit-message: "chore: auto-translate changed English docs"
           delete-branch: true
           add-paths: |

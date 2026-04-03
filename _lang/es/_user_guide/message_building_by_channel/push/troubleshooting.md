@@ -3,7 +3,7 @@ nav_title: Solución de problemas
 article_title: Solución de problemas Push
 page_order: 24
 page_type: reference
-description: "Esta página contiene pasos para la solución de problemas relacionados con el canal de mensajería Push."
+description: "Esta página contiene pasos para la solución de problemas relacionados con el canal de mensajería push."
 channel: push
 ---
 
@@ -78,13 +78,31 @@ Comprueba que estás utilizando el tipo correcto de notificación push. Por ejem
 
 Cuando pruebes los envíos push con usuarios internos, asegúrate de que el usuario que deseas que reciba la notificación push esté conectado a la aplicación correspondiente. Esto puede provocar que el usuario no reciba una notificación push o que reciba una notificación push para la que crees que no está segmentado.
 
+## Al hacer clic en una notificación push no se abre la aplicación
+
+Si al hacer clic en una notificación push no se abre tu aplicación, comprueba lo siguiente según tu plataforma.
+
+### Android
+
+1. **Verifica el comportamiento al hacer clic:** Confirma que la campaña está configurada para abrir la aplicación al hacer clic.
+2. **Comprueba el manejo de vínculos profundos:** En tu archivo `braze.xml`, comprueba si `com_braze_handle_push_deep_links_automatically` está configurado como `true` o `false`.
+   - Si está configurado como `true`, el SDK de Braze maneja los vínculos profundos directamente y la aplicación debería abrirse como se espera.
+   - Si está configurado como `false`, tu aplicación necesita un receptor de difusión para escuchar y manejar las intenciones de push recibidas y abiertas. Verifica que este receptor esté implementado correctamente.
+3. **Recopila registros detallados:** [Habilita el registro detallado]({{site.baseurl}}/developer_guide/sdk_integration/verbose_logging), reproduce el problema y proporciona los registros junto con tu `braze.xml` y `AndroidManifest.xml` al soporte de Braze.
+
+### iOS
+
+1. **Verifica el comportamiento al hacer clic:** Confirma que la campaña está configurada para abrir la aplicación al hacer clic.
+2. **Comprueba la integración push:** La vinculación en profundidad desde una notificación push hacia la aplicación se maneja automáticamente mediante la [integración push estándar]({{site.baseurl}}/developer_guide/push_notifications/?sdktab=swift) de Braze. Confirma que la integración esté implementada correctamente, incluyendo cualquier manejo de delegado personalizado.
+3. **Recopila registros detallados:** [Habilita el registro detallado]({{site.baseurl}}/developer_guide/sdk_integration/verbose_logging), reproduce el problema y proporciona los registros al soporte de Braze.
+
 ## Los clics push se abren inesperadamente en la aplicación
 
 Si tienes problemas con enlaces en notificaciones push que se abren inesperadamente en tu aplicación en lugar de en tu navegador web, es posible que haya un problema con la configuración de tu campaña o la implementación del SDK. Consulta estos pasos para obtener ayuda.
 
 ### Verificar el comportamiento al hacer clic
 
-En tu campaña o paso en Canvas, comprueba que la opción **Abrir URL web dentro de la aplicación móvil** no esté seleccionada. Si es así, desmarca la selección y vuelve a lanzar. 
+En tu campaña o paso en Canvas, comprueba que la opción **Abrir URL web dentro de la aplicación móvil** no esté seleccionada. Si lo está, desmarca la selección y vuelve a lanzar. 
 
 ![Campo «Comportamiento al hacer clic» de la configuración de una notificación push establecido en «Abrir URL web» con la opción «Abrir URL web dentro de la aplicación móvil» desmarcada.]({% image_buster /assets/img/push_on_click.png %})
 
@@ -98,25 +116,14 @@ Si los enlaces de tus notificaciones push se abren inesperadamente en la aplicac
 
 1. **Revisa la implementación del delegado push:** Asegúrate de que el delegado push de Braze se haya implementado correctamente. Para obtener instrucciones detalladas, consulta la guía de integración de notificaciones push para tu [plataforma]({{site.baseurl}}/developer_guide/home/).
 2. **Inspecciona el manejo de enlaces personalizados:** Comprueba si la aplicación incluye un manejo personalizado para todos los enlaces `https://`. Las configuraciones personalizadas pueden anular los comportamientos predeterminados. Colabora con tu equipo de desarrollo para revisar y ajustar esta configuración si es necesario.
-3. **Verifica el registro de notificaciones push en iOS:** Para iOS, vuelve al paso 1 de la guía de integración de notificaciones push sobre [el registro de notificaciones push con APN]({{site.baseurl}}/developer_guide/platform_integration_guides/swift/push_notifications/integration/#step-1-register-for-push-notifications-with-apns). Asegúrate de que tu objeto delegado se asigne de forma sincrónica antes de que la aplicación termine de iniciarse. Este paso debe completarse en el método `application:didFinishLaunchingWithOptions:`.
+3. **Verifica el registro de notificaciones push en iOS:** Para iOS, vuelve al paso 1 de la guía de integración de notificaciones push sobre [el registro de notificaciones push con APNs]({{site.baseurl}}/developer_guide/platform_integration_guides/swift/push_notifications/integration/#step-1-register-for-push-notifications-with-apns). Asegúrate de que tu objeto delegado se asigne de forma sincrónica antes de que la aplicación termine de iniciarse. Este paso debe completarse en el método `application:didFinishLaunchingWithOptions:`.
 4. **Prueba tu integración:** Después de realizar los ajustes, comprueba el funcionamiento de las notificaciones push en dispositivos iOS y Android para confirmar que el problema se ha resuelto.
 
-## El título push se corta en iOS pero se muestra correctamente en Android
+## Migrar a una clave de autenticación .p8
 
-Si el título de tu notificación push contiene personalización con Liquid y aparece completo en Android pero truncado en iOS, esto se debe a cómo cada plataforma maneja los caracteres de nueva línea (`\n`) en la cadena del título.
+Las claves de autenticación `.p8` de Apple son el método requerido para las notificaciones push de APNs en Braze. A diferencia de los tipos de archivo de certificado heredados, las claves `.p8` no caducan y admiten todas tus aplicaciones con una sola clave, eliminando la necesidad de renovaciones anuales de certificados y reduciendo el riesgo de fallos en la entrega de notificaciones push.
 
-Android elimina automáticamente los espacios en blanco, tabulaciones y saltos de línea de las cadenas del título push. iOS no lo hace, por lo que si una variable Liquid se resuelve con un valor que contiene un salto de línea al final, iOS trata el salto de línea como el final del título y corta el texto restante.
-
-Por ejemplo, un título como `Regarding your flight from {% raw %}{{${city_from}}}{% endraw %} to {% raw %}{{${city_to}}}{% endraw %}` podría mostrar `Regarding your flight from` en iOS si la variable `city_from` incluye un salto de línea al final.
-
-Para solucionar esto, aplica el filtro Liquid `strip_newlines` y envuelve todo el título en un bloque `capture`:
-
-{% raw %}
-```liquid
-{% capture title %}Regarding your flight from {{${city_from}}} to {{${city_to}}}{% endcapture %}
-{{ title | strip_newlines }}
-```
-{% endraw %}
+Si actualmente estás utilizando un certificado `.p12` o `.pem`, migra a una clave `.p8` lo antes posible. Para obtener instrucciones sobre cómo crear y cargar una clave `.p8`, consulta [Cargar tu certificado push de APNs]({{site.baseurl}}/developer_guide/push_notifications/?sdktab=swift). Para obtener la guía de Apple sobre cómo generar una clave `.p8` desde tu cuenta de desarrollador, consulta [Comunicarse con APNs usando tokens de autenticación](https://developer.apple.com/help/account/capabilities/communicate-with-apns-using-authentication-tokens/).
 
 ## Las notificaciones push web no funcionan como se esperaba
 
@@ -137,7 +144,7 @@ table {
 }
 </style>
 
-| OS      | Atajos de teclado                                                  |
+| SO      | Atajos de teclado                                                  |
 | ------- | ------------------------------------------------------------------- |
 | Mac      | `Fn` + `F12`<br>`Ctrl` + `Shift` + `I` |
 | Windows | `F12`<br>`Ctrl` + `Shift` + `I` |

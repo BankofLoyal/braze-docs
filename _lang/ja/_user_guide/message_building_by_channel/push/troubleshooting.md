@@ -78,17 +78,35 @@ Braze エクスポートエンドポイントを使用してユーザープロ�
 
 内部ユーザーでプッシュ送信をテストする場合、プッシュ通知を受け取りたいユーザーが現在該当アプリにログインしていることを確認してください。これが原因で、ユーザーがプッシュを受け取らなかったり、セグメント対象ではないと思われるプッシュを受け取ったりすることがあります。
 
+## プッシュ通知をクリックしてもアプリが開かない
+
+プッシュ通知をクリックしてもアプリが開かない場合は、プラットフォームに応じて以下を確認してください。
+
+### Android
+
+1. **クリック時の動作を確認する：** キャンペーンがクリック時にアプリを開くように設定されていることを確認します。
+2. **ディープリンクの処理を確認する：** `braze.xml` ファイルで、`com_braze_handle_push_deep_links_automatically` が `true` または `false` に設定されているか確認します。
+   - `true` に設定されている場合、Braze SDK がディープリンクを直接処理し、アプリは期待どおりに開きます。
+   - `false` に設定されている場合、アプリにはプッシュの受信と開封のインテントをリッスンして処理するブロードキャストレシーバーが必要です。このレシーバーが正しく実装されていることを確認してください。
+3. **詳細ログを収集する：** [詳細ログを有効にし]({{site.baseurl}}/developer_guide/sdk_integration/verbose_logging)、問題を再現して、ログと `braze.xml` および `AndroidManifest.xml` を Braze サポートに提供してください。
+
+### iOS
+
+1. **クリック時の動作を確認する：** キャンペーンがクリック時にアプリを開くように設定されていることを確認します。
+2. **プッシュの統合を確認する：** プッシュからアプリへのディープリンクは、Braze の[標準プッシュ統合]({{site.baseurl}}/developer_guide/push_notifications/?sdktab=swift)によって自動的に処理されます。カスタムデリゲートの処理を含め、統合が正しく実装されていることを確認してください。
+3. **詳細ログを収集する：** [詳細ログを有効にし]({{site.baseurl}}/developer_guide/sdk_integration/verbose_logging)、問題を再現して、ログを Braze サポートに提供してください。
+
 ## プッシュのクリックが予期せずアプリ内で開く
 
 プッシュ通知のリンクが Web ブラウザではなくアプリで予期せず開く問題が発生している場合、キャンペーンの設定または SDK の実装に問題がある可能性があります。以下のステップを参照してください。
 
 ### クリック時の動作を確認する
 
-キャンペーンまたはキャンバスステップで、[**モバイルアプリ内で Web URL を開く**] が選択されていないことを再確認します。選択されている場合は、選択をクリアして再起動します。 
+キャンペーンまたはキャンバスステップで、[**モバイルアプリ内で Web URL を開く**] が選択されていないことを再確認します。選択されている場合は、選択を解除して再起動します。 
 
 ![プッシュ通知の設定における「クリック時の動作」フィールドは「Web URL を開く」に設定され、「モバイルアプリ内で Web URL を開く」はチェックされていない。]({% image_buster /assets/img/push_on_click.png %})
 
-クリック時の動作「Web URL を開く」のデフォルトのインタラクションは、SDK のバージョンによって異なります。SDK バージョン iOS 2.29.0 および Android 2.0.0 以降では、このオプションはデフォルトで選択されており、Web URL はアプリ内の Web ビューで開きます。これらのバージョンより前では、このオプションはデフォルトでクリアされ、Web URL はデバイスのデフォルトの Web ブラウザで開きます。
+クリック時の動作「Web URL を開く」のデフォルトのインタラクションは、SDK のバージョンによって異なります。SDK バージョン iOS 2.29.0 および Android 2.0.0 以降では、このオプションはデフォルトで選択されており、Web URL はアプリ内の Web ビューで開きます。これらのバージョンより前では、このオプションはデフォルトで未選択となっており、Web URL はデバイスのデフォルトの Web ブラウザで開きます。
 
 これが問題でない場合は、プッシュの実装に問題がある可能性があります。 
 
@@ -98,25 +116,14 @@ Braze エクスポートエンドポイントを使用してユーザープロ�
 
 1. **プッシュデリゲートの実装を見直す：** Braze プッシュデリゲートが正しく実装されていることを確認します。詳細な手順については、お使いの[プラットフォーム]({{site.baseurl}}/developer_guide/home/)のプッシュ通知統合ガイドを参照してください。
 2. **カスタムリンクの処理を検査する：** アプリにすべての `https://` リンクのカスタム処理が含まれているかどうかを確認します。カスタム設定によってデフォルトの動作が上書きされる可能性があります。開発者チームと協力し、必要に応じてこれらの設定を見直し、調整してください。
-3. **iOS のプッシュ登録を確認する：** iOS の場合は、[APN へのプッシュ通知の登録]({{site.baseurl}}/developer_guide/platform_integration_guides/swift/push_notifications/integration/#step-1-register-for-push-notifications-with-apns)に関するプッシュ統合ガイドのステップ 1 を再確認します。アプリの起動が完了する前に、デリゲートオブジェクトが同期的に割り当てられるようにしてください。このステップは `application:didFinishLaunchingWithOptions:` メソッドで完了する必要があります。
+3. **iOS のプッシュ登録を確認する：** iOS の場合は、[APNs へのプッシュ通知の登録]({{site.baseurl}}/developer_guide/platform_integration_guides/swift/push_notifications/integration/#step-1-register-for-push-notifications-with-apns)に関するプッシュ統合ガイドのステップ 1 を再確認します。アプリの起動が完了する前に、デリゲートオブジェクトが同期的に割り当てられるようにしてください。このステップは `application:didFinishLaunchingWithOptions:` メソッドで完了する必要があります。
 4. **統合をテストする：** 調整後、iOS と Android の両方のデバイスでプッシュ通知の動作をテストし、問題が解決したことを確認します。
 
-## プッシュタイトルが iOS で切れるが Android では正しく表示される
+## .p8 認証キーへの移行
 
-プッシュ通知のタイトルに Liquid パーソナライゼーションが含まれており、Android では完全に表示されるのに iOS では途中で切れる場合、これは各プラットフォームがタイトル文字列内の改行文字（`\n`）を処理する方法の違いが原因です。
+Apple の `.p8` 認証キーは、Braze での APNs プッシュに必要なアプローチです。レガシーの証明書ファイルタイプとは異なり、`.p8` キーは有効期限がなく、単一のキーですべてのアプリをサポートするため、年次の証明書更新が不要になり、プッシュ配信の失敗リスクを軽減できます。
 
-Android はプッシュタイトル文字列から空白、タブ、改行を自動的に除去します。iOS はそうしないため、Liquid 変数が末尾に改行を含む値に解決されると、iOS はその改行をタイトルの終わりとして扱い、残りのテキストを切り捨てます。
-
-例えば、`Regarding your flight from {% raw %}{{${city_from}}}{% endraw %} to {% raw %}{{${city_to}}}{% endraw %}` のようなタイトルは、`city_from` 変数に末尾の改行が含まれている場合、iOS では `Regarding your flight from` と表示される可能性があります。
-
-これを修正するには、`strip_newlines` Liquid フィルターを適用し、タイトル全体を `capture` ブロックで囲みます。
-
-{% raw %}
-```liquid
-{% capture title %}Regarding your flight from {{${city_from}}} to {{${city_to}}}{% endcapture %}
-{{ title | strip_newlines }}
-```
-{% endraw %}
+現在 `.p12` または `.pem` 証明書を使用している場合は、できるだけ早く `.p8` キーに移行してください。`.p8` キーの作成とアップロードの手順については、「[APNs プッシュ証明書をアップロードする]({{site.baseurl}}/developer_guide/push_notifications/?sdktab=swift)」を参照してください。Apple の開発者アカウントから `.p8` キーを生成する方法については、Apple のガイダンス「[Communicate with APNs using authentication tokens](https://developer.apple.com/help/account/capabilities/communicate-with-apns-using-authentication-tokens/)」を参照してください。
 
 ## Web プッシュ通知が期待どおりに動作しない
 
@@ -188,10 +195,10 @@ Android のプッシュ権限をリセットするには、この [Mozilla サ�
 {% endtab %}
 {% tab Safari %}
 
-### MacOS で Safari をリセットする
+### macOS で Safari をリセットする
 
 {% alert note %}
-これらのステップは MacOS 専用です。Apple は Windows 版 Safari の Web プッシュをサポートしていません。
+これらのステップは macOS 専用です。Apple は Windows 版 Safari の Web プッシュをサポートしていません。
 {% endalert %}
 
 1. Safari を開きます。

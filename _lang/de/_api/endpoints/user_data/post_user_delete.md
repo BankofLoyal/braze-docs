@@ -5,7 +5,7 @@ search_tag: Endpoint
 page_order: 5
 layout: api_page
 page_type: reference
-description: "Dieser Artikel beschreibt die Details des Braze-Endpunkts „Nutzer:innen löschen"."
+description: "Dieser Artikel beschreibt die Details des Braze-Endpunkts „Nutzer:innen löschen“."
 
 ---
 {% api %}

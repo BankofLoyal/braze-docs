@@ -1,7 +1,7 @@
 ---
-nav_title: Recommandations générées par l’IA
+nav_title: Recommandations générées par l'IA
 article_title: "Créer des recommandations d'articles basées sur l'intelligence artificielle"
-description: "Cet article de référence explique comment créer une recommandation d'article d'intelligence artificielle pour les articles d'un catalogue."
+description: "Cet article de référence explique comment créer une recommandation d'article par intelligence artificielle pour les articles d'un catalogue."
 page_order: 1
 ---
 
@@ -9,120 +9,120 @@ page_order: 1
 
 > Découvrez comment créer un moteur de recommandation par intelligence artificielle à partir des articles de votre catalogue.
 
-## À propos des recommandations d'articles de l'intelligence artificielle
+## À propos des recommandations d'articles par intelligence artificielle
 
-Utilisez les recommandations d'articles de l'intelligence artificielle pour calculer les produits les plus populaires ou créer des recommandations personnalisées de l'intelligence artificielle pour un [catalogue]({{site.baseurl}}/user_guide/data/activation/catalogs/) spécifique. Après avoir créé votre recommandation, vous pouvez utiliser la personnalisation pour insérer ces produits dans vos messages.
+Les recommandations d'articles par intelligence artificielle vous permettent de calculer les produits les plus populaires ou de créer des recommandations personnalisées par intelligence artificielle pour un [catalogue]({{site.baseurl}}/user_guide/data/activation/catalogs/) spécifique. Une fois votre recommandation créée, vous pouvez utiliser la personnalisation pour insérer ces produits dans vos messages.
 
 {% alert tip %}
-Les [recommandations personnalisées par intelligence artificielle](#recommendation-types) fonctionnent mieux avec des centaines ou des milliers d'articles et généralement au moins 30 000 utilisateurs avec des données d'achat ou d'interaction. Il s'agit d'une indication approximative qui peut varier. Les autres types de recommandations peuvent fonctionner avec moins de données.
+Les [recommandations personnalisées par intelligence artificielle](#recommendation-types) fonctionnent mieux avec au moins quelques centaines d'articles de catalogue, au maximum 100 000 articles de catalogue, et généralement au moins 30 000 utilisateurs avec des données d'achat ou d'interaction. Il s'agit d'une indication approximative qui peut varier. Les autres types de recommandations peuvent fonctionner avec moins de données, y compris lorsque **Les plus populaires** est utilisé comme solution de repli.
 {% endalert %}
 
 {% multi_lang_include brazeai/recommendations/ai.md section="Plan-specific features" %}
 
-## Création d'une recommandation d'article par l'intelligence artificielle
+## Créer une recommandation d'article par intelligence artificielle
 
 ### Conditions préalables
 
-Avant de commencer, vous devrez effectuer les opérations suivantes :
+Avant de commencer, vous devez disposer des éléments suivants :
 
-- Vous devez avoir au moins un [catalogue]({{site.baseurl}}/user_guide/data/activation/catalogs/) pour utiliser l'un des types de recommandation décrits ci-dessous.
-- Vous devez disposer de données d'achat ou d'événement sur Braze (événements personnalisés ou objet d'achat) qui incluent une référence à des ID de produits uniques stockés dans un catalogue.
+- Au moins un [catalogue]({{site.baseurl}}/user_guide/data/activation/catalogs/) pour utiliser l'un des types de recommandation décrits ci-dessous.
+- Des données d'achat ou d'événement dans Braze (événements personnalisés ou objet d'achat) qui incluent une référence à l'article et correspondent aux ID d'articles du catalogue.
 
-### Étape 1 : Créer une nouvelle recommandation
+### Étape 1 : Créer une nouvelle recommandation
 
-Vous pouvez créer une recommandation d'élément d'intelligence artificielle à partir de n'importe quel endroit du tableau de bord :
+Vous pouvez créer une recommandation d'article par intelligence artificielle depuis deux endroits du tableau de bord :
 
 {% tabs local %}
 {% tab From the navigation menu %}
-1. Sélectionnez **Analyse** > **Recommandation de produits avec l’IA**.
-2. Sélectionnez **Créer une prédiction** > **Recommandation d'élément d'intelligence artificielle**.
+1. Accédez à **Analyse** > **Recommandation de produits avec l'IA**.
+2. Sélectionnez **Créer une prédiction** > **Recommandation d'article par intelligence artificielle**.
 {% endtab %}
 
 {% tab From a catalog %}
-Vous pouvez également choisir de créer une recommandation directement à partir d'un catalogue individuel. Sélectionnez votre catalogue dans la page **Catalogues**, puis sélectionnez **Créer une recommandation**.
+Vous pouvez également créer une recommandation directement depuis un catalogue individuel. Sélectionnez votre catalogue dans la page **Catalogues**, puis sélectionnez **Créer une recommandation**.
 {% endtab %}
 {% endtabs %}
 
-### Étape 2 : Ajouter les détails de la recommandation
+### Étape 2 : Ajouter les détails de la recommandation
 
-Donnez à votre recommandation un nom et une description facultative.
+Donnez un nom à votre recommandation et ajoutez une description facultative.
 
-![L'étape "Détails de la recommandation" avec les champs nom et description.]({% image_buster /assets/img/item_recs_1.png %})
+![L'étape « Détails de la recommandation » avec les champs nom et description.]({% image_buster /assets/img/item_recs_1.png %})
 
-### Étape 3 : Définissez votre recommandation {#recommendation-type}
+### Étape 3 : Définir votre recommandation {#recommendation-type}
 
-Sélectionnez un type de recommandation. Chaque type utilise les six derniers mois de données d'interaction avec l'article, telles que les données d'un achat ou d'un événement personnalisé. Pour des informations plus détaillées et des cas d'utilisation pour chacun d'entre eux, voir [Types et cas d'utilisation]({{site.baseurl}}/user_guide/brazeai/recommendations/).
+Sélectionnez un type de recommandation. Chaque type utilise les six derniers mois de données d'interaction avec les articles, comme les données d'achat ou d'événement personnalisé. Pour plus de détails et des cas d'utilisation pour chaque type, consultez [Types et cas d'utilisation]({{site.baseurl}}/user_guide/brazeai/recommendations/).
 
 {% alert tip %}
-Lors de l'utilisation de **Plus récent** ou **Personnalisé par l'intelligence artificielle**, les utilisateurs dont les données sont insuffisantes pour créer des recommandations individualisées recevront les articles **les plus populaires** en guise de solution de repli. La proportion d'utilisateurs recevant la solution de secours **Les plus populaires** est affichée sur la page **Analyse**.
+Avec les types **Plus récent** ou **Personnalisé par l'intelligence artificielle**, les utilisateurs dont les données sont insuffisantes pour générer des recommandations individualisées recevront les articles **les plus populaires** en guise de solution de repli. Vous pouvez consulter une estimation de la proportion d'utilisateurs recevant la solution de repli **Les plus populaires** sur la page **Analyse**. Cette solution de repli ne renvoie que les articles présents dans le catalogue associé.
 {% endalert %}
 
 #### Étape 3.1 : Exclure les achats ou interactions antérieurs (facultatif)
 
-Pour éviter de suggérer des articles qu'un utilisateur a déjà achetés ou avec lesquels il a déjà interagi, sélectionnez **Ne pas recommander d'articles avec lesquels les utilisateurs ont déjà interagi.** Cette option n'est disponible que lorsque le **type de** recommandation est défini sur **Intelligence artificielle personnalisée**.
+Pour éviter de suggérer des articles qu'un utilisateur a déjà achetés ou avec lesquels il a déjà interagi, sélectionnez **Ne pas recommander d'articles avec lesquels les utilisateurs ont déjà interagi**. Cette option n'est disponible que lorsque le **type** de recommandation est défini sur **Personnalisé par l'intelligence artificielle**.
 
 ![Étape « Définir votre recommandation » avec « Personnalisé par l'intelligence artificielle » comme type et l'option « Ne pas recommander les articles avec lesquels les utilisateurs ont déjà interagi » sélectionnée.]({% image_buster /assets/img/item_recs_2-3.png %})
 
-Ce paramètre empêche les messages de réutiliser les éléments qu'un utilisateur a déjà achetés ou avec lesquels il a interagi, à condition que la recommandation ait été mise à jour récemment. Les articles achetés ou ayant fait l'objet d'une interaction entre les mises à jour des recommandations peuvent encore apparaître. Pour la version gratuite des recommandations de produits, les mises à jour sont hebdomadaires. Pour la version pro des recommandations de produits avec l’IA, les mises à jour ont lieu toutes les 24 heures.
+Ce paramètre empêche les messages de réutiliser les articles qu'un utilisateur a déjà achetés ou avec lesquels il a interagi, à condition que la recommandation ait été mise à jour récemment. Les articles achetés ou ayant fait l'objet d'une interaction entre deux mises à jour de la recommandation peuvent toutefois encore apparaître. Pour la version gratuite des recommandations d'articles, les mises à jour sont hebdomadaires. Pour la version pro des recommandations d'articles par intelligence artificielle, les mises à jour ont lieu toutes les 24 heures.
 
-Par exemple, lorsque vous utilisez la version pro des recommandations d'articles par intelligence artificielle, si un utilisateur achète quelque chose puis reçoit un e-mail marketing dans les 30 minutes, l'article qu'il vient d'acheter risque de ne pas être exclu de l'e-mail à temps. Toutefois, les messages envoyés après 24 heures ne comporteront pas cet élément.
+Par exemple, avec la version pro des recommandations d'articles par intelligence artificielle, si un utilisateur achète un produit puis reçoit un e-mail marketing dans les 30 minutes, l'article qu'il vient d'acheter risque de ne pas être exclu de l'e-mail à temps. En revanche, les messages envoyés après 24 heures ne comporteront pas cet article.
 
 #### Étape 3.2 : Sélectionner un catalogue
 
-S'il n'est pas déjà renseigné, sélectionnez le [catalogue]({{site.baseurl}}/user_guide/data/activation/catalogs/) à partir duquel cette recommandation tirera les articles.
+S'il n'est pas déjà renseigné, sélectionnez le [catalogue]({{site.baseurl}}/user_guide/data/activation/catalogs/) à partir duquel cette recommandation tirera ses articles.
 
 #### Étape 3.3 : Ajouter une sélection (facultatif)
 
-Si vous souhaitez mieux contrôler votre recommandation, choisissez une [sélection]({{site.baseurl}}/user_guide/data/activation/catalogs/selections/) pour appliquer des filtres personnalisés. Les sélections filtrent les recommandations en fonction de colonnes spécifiques de votre catalogue, telles que la marque, la taille ou l'emplacement/localisation. Les sélections qui contiennent du liquide ne peuvent pas être utilisées dans votre recommandation.
+Si vous souhaitez mieux contrôler votre recommandation, choisissez une [sélection]({{site.baseurl}}/user_guide/data/activation/catalogs/selections/) pour appliquer des filtres personnalisés. Les sélections filtrent les recommandations en fonction de colonnes spécifiques de votre catalogue, telles que la marque, la taille ou l'emplacement. Les sélections contenant du Liquid ne peuvent pas être utilisées dans votre recommandation.
 
 ![Un exemple de la sélection « en stock » choisie pour la recommandation.]({% image_buster /assets/img/item_recs_2-2.png %})
 
 {% alert tip %}
-Si vous ne trouvez pas votre sélection, vérifiez qu’elle est configurée dans votre catalogue.
+Si vous ne trouvez pas votre sélection, vérifiez qu'elle est bien configurée dans votre catalogue.
 {% endalert %}
 
-### Étape 4 : Sélectionnez l'interaction à l'origine des recommandations
+### Étape 4 : Sélectionner l'interaction à l'origine des recommandations
 
-Sélectionnez l'événement pour lequel vous souhaitez que cette recommandation soit optimisée. Cet événement est généralement un achat, mais il peut également s'agir de toute interaction avec un article.
+Sélectionnez l'événement pour lequel vous souhaitez optimiser cette recommandation. Il s'agit généralement d'un achat, mais cela peut aussi être n'importe quelle interaction avec un article.
 
 Vous pouvez optimiser pour :
 
-- Événements d'achat avec l'[objet d'achat]({{site.baseurl}}/api/objects_filters/purchase_object/)
-- Événements personnalisés représentant un achat
-- Événements personnalisés qui représentent toute autre interaction avec le produit (comme les consultations de produits, les clics ou les lectures de médias)
+- Les événements d'achat avec l'[objet d'achat]({{site.baseurl}}/api/objects_filters/purchase_object/)
+- Les événements personnalisés représentant un achat
+- Les événements personnalisés représentant toute autre interaction avec un article (comme les consultations de produits, les clics ou les lectures de médias)
 
-Si vous choisissez un **événement personnalisé**, sélectionnez votre événement dans la liste.
+Si vous choisissez **Événement personnalisé**, sélectionnez votre événement dans la liste.
 
-![L'événement personnalisé "Achat terminé" a été sélectionné en fonction de la manière dont les événements sont actuellement suivis.]({% image_buster /assets/img/item_recs_3.png %})
+![L'événement personnalisé « Achat terminé » sélectionné en fonction de la manière dont les événements sont actuellement suivis.]({% image_buster /assets/img/item_recs_3.png %})
 
 {% alert note %}
-Les événements personnalisés doivent disposer de données suffisantes avant d'apparaître dans la liste des événements. Si votre événement personnalisé n'apparaît pas, cela peut être dû au fait que le backend Braze ne l'a pas encore traité ou qu'il manque de données suffisantes pour l'entraînement du modèle. Les recommandations de l'intelligence artificielle s'appuient sur des données historiques pour générer des informations. Par conséquent, les événements nouvellement créés ou rarement déclenchés ne seront pas disponibles tant que davantage de données n'auront pas été collectées.
+Les événements personnalisés doivent disposer de suffisamment de données avant d'apparaître dans la liste des événements. Si votre événement personnalisé n'apparaît pas, c'est peut-être parce que le backend de Braze ne l'a pas encore traité ou qu'il ne dispose pas de suffisamment de données pour l'entraînement du modèle. Les recommandations par intelligence artificielle s'appuient sur des données historiques pour générer des informations : les événements nouvellement créés ou rarement déclenchés ne seront donc pas disponibles tant que davantage de données n'auront pas été collectées.
 {% endalert %}
 
-### Étape 5 : Choisissez le nom de la propriété correspondante {#property-name}
+### Étape 5 : Choisir le nom de la propriété correspondante {#property-name}
 
-Pour créer une recommandation, vous devez indiquer à Braze le champ de votre événement d'interaction (objet d'achat ou événement personnalisé) dont l'identifiant unique correspond au champ `id` d'un article dans le catalogue. Vous avez des doutes ? [Consultez les conditions](#requirements).
+Pour créer une recommandation, vous devez indiquer à Braze quel champ de votre événement d'interaction (objet d'achat ou événement personnalisé) contient l'identifiant unique correspondant au champ `id` d'un article dans le catalogue. Vous avez un doute ? [Consultez les conditions requises](#requirements).
 
 Sélectionnez ce champ pour le **nom de la propriété**.
 
-Le champ **Nom de la propriété** sera pré-rempli avec une liste de champs envoyés par le SDK à Braze. Si suffisamment de données sont fournies, ces propriétés seront également classées par ordre de probabilité d'être la propriété correcte. Sélectionnez celle qui correspond au champ `id` du catalogue.
+Le champ **Nom de la propriété** sera pré-rempli avec une liste de champs envoyés via le SDK à Braze. Si suffisamment de données sont disponibles, ces propriétés seront également classées par ordre de probabilité d'être la bonne propriété. Sélectionnez celle qui correspond au champ `id` du catalogue.
 
-![Le nom de la propriété"purchase_item" sélectionné qui correspond aux ID des articles dans le catalogue.]({% image_buster /assets/img/item_recs_4.png %})
+![Le nom de la propriété « purchase_item » sélectionné, qui correspond aux ID des articles dans le catalogue.]({% image_buster /assets/img/item_recs_4.png %})
 
-#### Conditions {#requirements}
+#### Conditions requises {#requirements}
 
-La sélection de votre propriété est soumise à certaines conditions :
+La sélection de votre propriété est soumise à certaines conditions :
 
-- Doit correspondre au champ `id` du catalogue que vous avez sélectionné.
-- **Si vous avez sélectionné Objet d'achat :** Doit être le `product_id` ou un champ des `properties` de votre événement d’interaction.
-- **Si vous avez sélectionné Événement personnalisé :** Doit être un champ de votre événement personnalisé `properties`.
-- Les champs imbriqués doivent être saisis dans le menu déroulant **Nom de la propriété** en notation par points, au format `event_property.nested_property`. Par exemple, si vous sélectionnez la propriété imbriquée `district_name` dans la propriété d'événement `location`, vous devez saisir `location.district_name`.
-- **Si vous utilisez [des événements de commerce électronique]({{site.baseurl}}/user_guide/data/activation/custom_data/recommended_events/ecommerce_events/) pour former les recommandations d'articles :** Veuillez ajouter`products.product_id`pour accéder à l'ID du produit à partir des événements.
+- Elle doit correspondre au champ `id` du catalogue sélectionné.
+- **Si vous avez sélectionné l'objet d'achat :** il doit s'agir du `product_id` ou d'un champ des `properties` de votre événement d'interaction.
+- **Si vous avez sélectionné un événement personnalisé :** il doit s'agir d'un champ des `properties` de votre événement personnalisé.
+- Les champs imbriqués doivent être saisis dans le menu déroulant **Nom de la propriété** en notation par points, au format `event_property.nested_property`. Par exemple, pour sélectionner la propriété imbriquée `district_name` dans la propriété d'événement `location`, saisissez `location.district_name`.
+- **Si vous utilisez des [événements e-commerce]({{site.baseurl}}/user_guide/data/activation/custom_data/recommended_events/ecommerce_events/) pour entraîner les recommandations d'articles :** ajoutez `products.product_id` pour accéder à l'ID du produit à partir des événements.
 - Le champ peut se trouver à l'intérieur d'un tableau de produits ou se terminer par un tableau d'ID. Dans les deux cas, chaque ID de produit sera traité comme un événement distinct et séquentiel avec le même horodatage.
 
 #### Exemples de mappages
 
-Les exemples de mappages suivants font tous deux référence à ce catalogue d'exemples :
+Les exemples de mappages suivants font tous deux référence à ce catalogue d'exemple :
 
 <style type="text/css">
 .tg td{word-break:normal;}
@@ -133,30 +133,30 @@ Les exemples de mappages suivants font tous deux référence à ce catalogue d'e
 <thead>
   <tr>
     <th class="tg-0pky">id</th>
-    <th class="tg-0pky">titre</th>
-    <th class="tg-0pky">prix</th>
+    <th class="tg-0pky">title</th>
+    <th class="tg-0pky">price</th>
   </tr>
 </thead>
 <tbody>
   <tr>
     <td class="tg-0pky">ADI-BL-7</td>
-    <td class="tg-0pky">Adidas Noir Taille 7</td>
-    <td class="tg-0pky">100,00 USD</td>
+    <td class="tg-0pky">Adidas Black Size 7</td>
+    <td class="tg-0pky">100.00 USD</td>
   </tr>
   <tr>
     <td class="tg-0pky">ADI-RD-8</td>
-    <td class="tg-0pky">Adidas Rouge pointure 44</td>
-    <td class="tg-0pky">100,00 USD</td>
+    <td class="tg-0pky">Adidas Red Size 8</td>
+    <td class="tg-0pky">100.00 USD</td>
   </tr>
   <tr>
     <td class="tg-0pky">ADI-WH-9</td>
-    <td class="tg-0pky">Adidas Blanc Taille 9</td>
-    <td class="tg-0pky">100,00 USD</td>
+    <td class="tg-0pky">Adidas White Size 9</td>
+    <td class="tg-0pky">100.00 USD</td>
   </tr>
   <tr>
     <td class="tg-0pky">ADI-PP-10</td>
-    <td class="tg-0pky">Adidas Purple Taille 10</td>
-    <td class="tg-0pky">75,00 USD</td>
+    <td class="tg-0pky">Adidas Purple Size 10</td>
+    <td class="tg-0pky">75.00 USD</td>
   </tr>
 </tbody>
 </table>
@@ -164,13 +164,13 @@ Les exemples de mappages suivants font tous deux référence à ce catalogue d'e
 {% tabs %}
 {% tab Custom event %}
 
-Imaginons que vous souhaitiez utiliser l'événement personnalisé `added_to_cart` pour pouvoir recommander des produits similaires avant que le client ne passe à la caisse. L'événement `added_to_cart` a pour propriété d'événement `product_sku`.
+Imaginons que vous souhaitiez utiliser l'événement personnalisé `added_to_cart` pour recommander des produits similaires avant que le client ne passe à la caisse. L'événement `added_to_cart` possède une propriété d'événement `product_sku`.
 
-La propriété `product_sku` doit alors inclure au moins une des valeurs de la colonne `id` du catalogue d’échantillons : "ADI-BL-7", "ADI-RD-8", "ADI-WH-9" ou "ADI-PP-10". Vous n'avez pas besoin d'événements pour chaque produit du catalogue, mais vous avez besoin de certains d'entre eux afin que le moteur de recommandation dispose de suffisamment de contenu pour travailler.
+La propriété `product_sku` doit alors inclure au moins une des valeurs de la colonne `id` du catalogue d'exemple : « ADI-BL-7 », « ADI-RD-8 », « ADI-WH-9 » ou « ADI-PP-10 ». Vous n'avez pas besoin d'événements pour chaque article du catalogue, mais il en faut suffisamment pour que le moteur de recommandation dispose de contenu exploitable.
 
 ##### Exemple d'objet d'événement personnalisé
 
-Cet événement comporte `"product_sku": "ADI-BL-7"`, ce qui correspond au premier produit du catalogue d'échantillons.
+Cet événement comporte `"product_sku": "ADI-BL-7"`, ce qui correspond au premier article du catalogue d'exemple.
 
 ```json
 {
@@ -188,9 +188,9 @@ Cet événement comporte `"product_sku": "ADI-BL-7"`, ce qui correspond au premi
 }
 ```
 
-##### Exemple d'objet d'événement personnalisé avec un tableau d'objets
+##### Exemple d'objet d'événement personnalisé avec un tableau de produits
 
-Si les propriétés de votre événement contiennent plusieurs produits dans un tableau, chaque ID de produit sera traité comme un événement distinct et séquentiel. Cet événement peut utiliser la propriété `products.sku` pour faire correspondre les premier et troisième articles du catalogue d'échantillons.
+Si les propriétés de votre événement contiennent plusieurs produits dans un tableau, chaque ID de produit sera traité comme un événement distinct et séquentiel. Cet événement peut utiliser la propriété `products.sku` pour correspondre aux premier et troisième articles du catalogue d'exemple.
 
 ```json
 {
@@ -214,7 +214,7 @@ Si les propriétés de votre événement contiennent plusieurs produits dans un 
 
 ##### Exemple d'objet d'événement personnalisé avec un objet imbriqué contenant un tableau d'ID de produit
 
-Si vos ID de produits sont des valeurs dans un tableau plutôt que des objets, vous pouvez utiliser la même notation et chaque ID de produit sera traité comme un événement distinct et séquentiel. Ceci peut être combiné de manière flexible avec des objets imbriqués dans l'événement suivant en configurant la propriété comme `purchase.product_skus` pour qu'elle corresponde aux premier et troisième articles du catalogue d'exemples.
+Si vos ID de produits sont des valeurs dans un tableau plutôt que des objets, vous pouvez utiliser la même notation et chaque ID de produit sera traité comme un événement distinct et séquentiel. Cette approche peut être combinée de manière flexible avec des objets imbriqués dans l'événement suivant en configurant la propriété comme `purchase.product_skus` pour correspondre aux premier et troisième articles du catalogue d'exemple.
 
 ```json
 {
@@ -238,15 +238,15 @@ Si vos ID de produits sont des valeurs dans un tableau plutôt que des objets, v
 {% endtab %}
 {% tab Purchase object %}
 
-Un objet d'achat est transmis par l'API lorsqu'un achat a été effectué.
+Un objet d'achat est transmis via l'API lorsqu'un achat a été effectué.
 
-En termes de mappage, la logique est la même pour les objets d'achat que pour les événements personnalisés, à ceci près que vous pouvez choisir d'utiliser le site `product_id` de l'objet d'achat ou un champ de l'objet `properties`.
+En termes de mappage, la logique est la même pour les objets d'achat que pour les événements personnalisés, à ceci près que vous pouvez choisir d'utiliser le `product_id` de l'objet d'achat ou un champ de l'objet `properties`.
 
-Rappelez-vous, vous n'avez pas besoin d'événements pour chaque produit du catalogue, mais vous avez besoin de certains d'entre eux afin que le moteur de recommandation dispose de suffisamment de contenu pour travailler.
+N'oubliez pas que vous n'avez pas besoin d'événements pour chaque article du catalogue, mais il en faut suffisamment pour que le moteur de recommandation dispose de contenu exploitable.
 
 ##### Exemple d'objet d'achat mappé à l'ID du produit
 
-Cet événement comporte `"product_id": "ADI-BL-7`, ce qui correspond au premier produit du catalogue.
+Cet événement comporte `"product_id": "ADI-BL-7`, ce qui correspond au premier article du catalogue.
 
 ```json
 {
@@ -298,8 +298,8 @@ Cet événement a pour propriété `"sku": "ADI-RD-8"`, qui correspond au deuxi�
 {% endtab %}
 {% endtabs %}
 
-### Étape 6 : Former la recommandation
+### Étape 6 : Entraîner la recommandation
 
-Lorsque vous êtes prêt, sélectionnez **Créer une recommandation**. Ce processus peut durer de 10 minutes à 36 heures. Vous recevrez un e-mail lorsque la recommandation aura été entraînée avec succès ou une explication sur les raisons de l'échec de la création.
+Lorsque vous êtes prêt, sélectionnez **Créer une recommandation**. Ce processus peut prendre de 10 minutes à 36 heures. Vous recevrez un e-mail de confirmation lorsque la recommandation aura été entraînée avec succès, ou une explication en cas d'échec.
 
-Vous trouverez la recommandation sur la page des **prédictions**, où vous pourrez ensuite la modifier ou l'archiver si nécessaire. Les recommandations seront automatiquement recyclées une fois par semaine (payant) ou par mois (gratuit).
+Vous trouverez la recommandation sur la page **Prédictions**, où vous pourrez la modifier ou l'archiver selon vos besoins. Les recommandations sont automatiquement ré-entraînées une fois par semaine (version payante) ou par mois (version gratuite).

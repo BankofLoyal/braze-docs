@@ -139,15 +139,21 @@ Refer to [Data types]({{site.baseurl}}/user_guide/engagement_tools/canvas/create
 
 ### Delays in sending with Connected Content
 
-All users in a batch are processed before any users advance. After batch processing completes, successful users move to the next step while failed users are retried separately—successful users don't wait for retry attempts to succeed before advancing.
+All users in a batch are processed before any users advance. After batch processing completes, successful users move to the next step, while failed users are retried separately—successful users don't wait for retry attempts to succeed before advancing.
 
-**Retry behavior**: Context steps (and all Canvas steps) use Canvas-specific retry mechanisms, not the standard Connected Content retry behavior. If a Connected Content call fails, Braze retries the step approximately 13 times with exponential backoff. If all retries fail, the user exits the Canvas.
+#### Retry behavior
 
-{% alert note %}
+In Canvas steps (including Context steps), Braze uses Canvas-specific retry mechanisms rather than the standard Connected Content retry behavior. If a Connected Content call fails:
+
+ - For Message steps, Connected Content calls can retry up to five times. 
+ - For all other steps, Braze retries the step approximately 13 times with exponential backoff. 
+
+If all retries fail, the user exits the Canvas.
+
 The `:retry` tag used in standard Connected Content doesn't apply to Connected Content calls made within Canvas steps. Canvas steps have their own retry logic optimized for Canvas workflows.
-{% endalert %}
 
-**Processing time**: The time it takes to process all users through a Context step depends on:
+The time it takes to process all users through a Context step depends on:
+
 - The number of users entering the step
 - Whether Connected Content is used (and its response time)
 - The batch size (default 1,000 users per batch)
@@ -159,7 +165,7 @@ If your Connected Content endpoint has rate limits, consider that Context steps 
 With Canvas Context generally available, all default timestamp event properties in action-based Canvases are in UTC. This change is part of a broader effort to ensure a more predictable and consistent experience when editing Canvas steps and messages. Note that this change impacts all action-based Canvases, whether the specific Canvas is using a Context step or not.
 
 {% alert important %}
-In all circumstances, we strongly recommend using [Liquid time_zone filters]({{site.baseurl}}/user_guide/engagement_tools/canvas/create_a_canvas/canvas_entry_properties_event_properties/#things-to-know) for timestamps to be represented in the desired time zone. You can reference this [frequently asked question](#faq-example) for an example.
+In all circumstances, we strongly recommend using [Liquid time_zone filters]({{site.baseurl}}/user_guide/engagement_tools/canvas/create_a_canvas/context_and_event_properties/#timestamps-for-triggers) for timestamps to be represented in the desired time zone. You can reference this [frequently asked question](#faq-example) for an example.
 {% endalert %}
 
 ## Frequently asked questions
@@ -205,7 +211,7 @@ Your appointment is scheduled for {{canvas_entry_properties.${appointment_time} 
 This results in the following message: 
 
 ```
-Your appointment is scheduled for 2025-08-05 4:15pm, we’ll see you then!
+Your appointment is scheduled for 2025-08-05 4:15 PM, we’ll see you then!
 ```
 
 Because no time zone is specified using Liquid, the timestamp here is in UTC. 
@@ -221,7 +227,7 @@ Your appointment is scheduled for {{canvas_entry_properties.${appointment_time} 
 This results in the following message: 
 
 ```
-Your appointment is scheduled for 2025-08-05 8:15am, we'll see you then!
+Your appointment is scheduled for 2025-08-05 8:15 AM, we'll see you then!
 ```
 
 Because the America/Los Angeles time zone is specified using Liquid, the timestamp here is in PST.

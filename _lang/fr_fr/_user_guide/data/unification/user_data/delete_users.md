@@ -17,7 +17,13 @@ La suppression d'utilisateurs est actuellement en accès anticipé. Contactez vo
 
 ## Conditions préalables
 
-Pour supprimer des utilisateurs, vous devez être administrateur ou disposer des autorisations **Delete User**.
+Pour supprimer des utilisateurs, vous devez être administrateur ou disposer de l'autorisation **Delete Users**. Pour consulter les enregistrements de suppression d'utilisateurs, vous devez être administrateur ou disposer de l'autorisation **View User Deletion Records**. Les autorisations suivantes contrôlent la suppression des utilisateurs et les enregistrements de suppression :
+
+| Autorisation | Description |
+|------------|-------------|
+| Delete Users | Supprimer définitivement des utilisateurs individuellement ou en masse. |
+| View User Deletion Records | Consulter les enregistrements de suppression d'utilisateurs. |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation"}
 
 ## À propos de la suppression d'utilisateurs
 
