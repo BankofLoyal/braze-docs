@@ -12,7 +12,7 @@ page_order: 3
 > Content Optimizer is an agent that helps you test and optimize message content at scale, using AI to generate and evaluate high volumes of content variants automatically.
 
 {% alert important %}
-Content Optimizer is currently in beta and only available for email messages. For help getting started, contact your customer success manager.
+Content Optimizer is currently in beta and only available for these channels: email and push notifications. For help getting started, contact your customer success manager.
 {% endalert %}
 
 ## About Content Optimizer
@@ -38,6 +38,10 @@ Learn how to create a [Content Optimizer step]({{site.baseurl}}/user_guide/engag
 | CTA copy & tone | Increase click-throughs | Compare action-led, benefit-focused, and first-person CTA phrasing. |
 | Themed content combinations | Discover high-performing combinations | Mix and match themed subject, body, and CTA components to find the best overall combination. |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 role="presentation" }
+
+### Push notifications
+
+
 
 ## How it works
 
@@ -70,7 +74,7 @@ The best fit for Content Optimizer is in daily recurring entry Canvases, as well
 
 ## Limitations
 
-- Content Optimizer is currently in beta and only available for email messages.
+- Content Optimizer is currently in beta and only available for these channels: email and push notifications.
 - The agent can generate up to 125 combinations per step:
    - Up to 3 components per step
    - Up to 5 variants for each component

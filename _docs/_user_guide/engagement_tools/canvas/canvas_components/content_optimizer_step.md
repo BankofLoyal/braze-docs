@@ -29,8 +29,11 @@ Drag and drop the **Content Optimizer** component from the sidebar, or select th
 The base message is the starting point for your step. Variants for each content component are dynamically inserted based on the combinations defined in the **Content Optimizer Settings** tab. 
 
 {% alert note %}
-During the beta period, email is the only supported channel. 
+During the beta period, the supported channels are email and push notifications. 
 {% endalert %}
+
+{% tabs local %}
+{% tab Email %}
 
 From the **Messaging Channels** tab, select **Email** and create your base email message. Refer to our dedicated [Email]({{site.baseurl}}/user_guide/message_building_by_channel/email) section for help. 
 
@@ -42,6 +45,23 @@ Supported components to optimize include:
 - Body Header
 - Body Content
 - Primary CTA
+
+{% endtab %}
+{% tab Push notifications %}
+
+From the **Messaging Channels** tab, select **Push notifications** and create your base push notification. Refer to our dedicated [Push]({{site.baseurl}}/user_guide/message_building_by_channel/push) section for help. 
+
+The Content Optimizer agent uses the selected push platforms specified in this variant to send all messages. You can either start with a new design or select an existing template for this message. At this step, consider which components of the message you want to optimize for. You will define these in [step 4](#step-4).
+
+Supported components to optimize include:
+
+- Subject
+- Body Header
+- Body Content
+- Primary CTA
+
+{% endtab %}
+{% endtabs %}
 
 ### Step 3: Specify delivery settings
 
@@ -96,7 +116,12 @@ As the Canvas runs, the agent mixes and matches variants across components to ge
 
 ### Step 5: Select optimization event
 
-The optimization event determines how the Content Optimizer agent evaluates performance and allocates traffic to content combinations over time. 
+The optimization event determines how the Content Optimizer agent evaluates performance and allocates traffic to content combinations over time.
+
+Your selected optimization event applies to all content components in this step.
+
+{% tabs local %}
+{% tab Email %}
 
 For email, you can optimize for one of the following events. The agent uses opens and clicks that are registered within 7 days of sending a message to shift delivery toward higher-performing content combinations.
 
@@ -106,7 +131,19 @@ For email, you can optimize for one of the following events. The agent uses open
 | Clicks | Optimizes for combinations that drive engagement with links. Does not include bot clicks or Braze-recognized unsubscribe clicks. | Driving traffic, engagement, or conversion from links |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 role="presentation" }
 
-Your selected optimization event applies to all content components in this step. 
+{% endtab %}
+{% tab Push notifications %}
+
+For push notifications, you can optimize for one of the following events.
+
+| Event | Description | Use cases |
+| --- | --- | --- |
+|  |  |  | 
+|  |  |  | 
+{: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 role="presentation" }
+
+{% endtab %}
+{% endtabs %}
 
 ## Best practices
 
