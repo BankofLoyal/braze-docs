@@ -9,7 +9,7 @@ search_tag: Partner
 
 # GRAVTY® Loyalty Platform
 
-> [GRAVTY®](https://www.lji.io//) is an enterprise-grade loyalty technology platform that enables brands to build, manage, and scale next-generation loyalty programs — driving deeper customer engagement through personalized, data-led experiences.
+> [GRAVTY®](https://www.lji.io/) is an enterprise-grade loyalty technology platform that enables brands to build, manage, and scale next-generation loyalty programs — driving deeper customer engagement through personalized, data-led experiences.
 
 ## About the integration
 
