@@ -2882,7 +2882,8 @@ validurls['/docs/user_guide/data/custom_data/recommended_events/product_blocks']
 validurls['/docs/user_guide/data/activation/custom_data'] = '/docs/user_guide/data/activation/';
 validurls['/docs/user_guide/data/activation/custom_data/events'] = '/docs/user_guide/data/activation/events/events_overview/';
 validurls['/docs/user_guide/data/activation/custom_data/purchase_events'] = '/docs/user_guide/data/activation/events/purchase_events/';
-validurls['/docs/user_guide/data/activation/custom_data/custom_events'] = '/docs/user_guide/data/activation/events/custom_events/';
+validurls['/docs/user_guide/data/activation/custom_data/custom_events'] = '/docs/user_guide/data/activation/events/custom_events/custom_event_properties/';
+validurls['/docs/user_guide/data/activation/custom_data/custom_events/'] = '/docs/user_guide/data/activation/events/custom_events/custom_event_properties/';
 validurls['/docs/user_guide/data/activation/custom_data/custom_events/nested_objects'] = '/docs/user_guide/data/activation/events/custom_events/nested_objects/';
 validurls['/docs/user_guide/data/activation/events/custom_events/#custom-event-properties'] = '/docs/user_guide/data/activation/events/custom_events/custom_event_properties/';
 validurls['/docs/user_guide/data/activation/events/custom_events/#custom-event-property-storage'] = '/docs/user_guide/data/activation/events/custom_events/custom_event_properties/#custom-event-property-storage';
