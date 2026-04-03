@@ -85,11 +85,9 @@ Use this filter to find users who last received a specific campaign before or af
 
 ![]({% image_buster /assets/img_archive/last_received_specific_campaign.png %})
 
-### Last received message from specific campaign or Canvas with tag 
+### Last received message from campaign or Canvas with tag 
 
-Use this filter to find users who last received a specific campaign or Canvas with a given tag before or after a specified date or number of days. This filter doesn't consider when users received other campaigns or Canvases.
-
-{% multi_lang_include segments.md section='same channel identifier' %}
+Use this filter to find users who last received a campaign or Canvas with a given tag before or after a specified date or number of days. This filter doesn't consider when users received other campaigns or Canvases.
 
 ![]({% image_buster /assets/img_archive/last_received_campaign_with_tag.png %})
 
