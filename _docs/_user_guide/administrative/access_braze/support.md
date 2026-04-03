@@ -35,7 +35,7 @@ After a user is designated as a support contact, the Braze support portal will s
 
 ## View cases from your company
 
-To view all cases submitted by any company user, use the **My Org's** filter views in the support portal. Cases from all submission channels (web form, email, or portal) are included in these views.
+If you're a designated support contact, use the **My Org's** filter views in the support portal to view all cases submitted by users in your company. Cases from all submission channels (web form, email, or portal) are included in these views.
 
 ## Provide developer console screenshots
 
