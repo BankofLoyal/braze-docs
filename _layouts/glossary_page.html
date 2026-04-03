@@ -60,9 +60,10 @@ hide_breadcrumb: false
   {%- if glossary_list != '' -%}
     {%- assign glossary_list = glossary_list | append: ','  -%}
   {%- endif -%}
+  {%- assign glossary_display = glossary['display_name'] | default: glossary['name'] -%}
   {%- capture glossary_list -%}
   {{ glossary_list }}
-  "{{ glossary['name'] | downcase | replace: '"', '\\"' }}": ["{{ glossary['name'] | slugify | downcase | replace: '"', '\\"' }}","{{ glossary['name'] | replace: '"', '\\"' }}","{{ glossary['description'] | replace: '"', '\\"' }}","{{ glossary['metric'] | replace: '"', '\\"' }}","{{ glossary['calculation'] | replace: '"', '\\"' }}","{{ glossary['field'] | replace: '"', '\\"' }}",
+  "{{ glossary['name'] | downcase | replace: '"', '\\"' }}": ["{{ glossary['name'] | slugify | downcase | replace: '"', '\\"' }}","{{ glossary_display | replace: '"', '\\"' }}","{{ glossary['description'] | replace: '"', '\\"' }}","{{ glossary['metric'] | replace: '"', '\\"' }}","{{ glossary['calculation'] | replace: '"', '\\"' }}","{{ glossary['field'] | replace: '"', '\\"' }}",
   {%- endcapture -%}
   {%- assign glossary_tag = '' -%}
   {%- assign glossary_list = glossary_list | append: '['  -%}
@@ -286,11 +287,12 @@ $(document).ready(function() {
       {%- assign glossary_sorted = page.glossaries | sort: 'name' -%}
       {%- for glossary in glossary_sorted -%}
       {%- assign glossary_id = glossary['name'] | slugify | downcase -%}
+      {%- assign glossary_title = glossary['display_name'] | default: glossary['name'] -%}
         <span id="filter_{{ glossary_id }}" class="term">
           <div id="{{ glossary_id }}" class="anchor"></div>
-          <div class="content"><p class="title">{{ glossary['name'] }} <a class="glossary_share" data-clipboard-text="#{{ glossary_id }}" id="cp_{{glossary_id}}"><i class="fas fa-link"></i></a><span id="dv_cp_{{glossary_id}}"></span></p>
+          <div class="content"><p class="title">{{ glossary_title }} <a class="glossary_share" data-clipboard-text="#{{ glossary_id }}" id="cp_{{glossary_id}}"><i class="fas fa-link"></i></a><span id="dv_cp_{{glossary_id}}"></span></p>
             {%- if glossary['image'] -%}
-            <img src="{{ glossary['image'] }}" alt="{{ glossary['name'] }} image" />
+            <img src="{{ glossary['image'] }}" alt="{{ glossary_title }} image" />
             {%- endif -%}
             <p class="desc">{{ glossary['description'] }}</p>
             {%- if glossary['metric'] -%}
