@@ -6,6 +6,9 @@
 #   are included in the PR and land on develop when it merges.
 #
 # Fork PRs: skipped — the bot cannot push back to a fork branch.
+#
+# Shares concurrency group with auto-update-redirects.yml on develop so both
+# workflows never push to the same PR branch at once after that workflow lands.
 
 name: "Auto-update sitemap last-modified dates"
 
@@ -21,10 +24,11 @@ on:
 permissions:
   contents: write
 
+# Same group as auto-update-redirects.yml: one PR-branch writer at a time.
 # Overlapping runs are not canceled so rapid pushes still get a full run each.
 # Rebase before push reduces non-fast-forward failures if another run committed first.
 concurrency:
-  group: sitemaps-${{ github.event.pull_request.number }}
+  group: pr-branch-automation-${{ github.event.pull_request.number }}
   cancel-in-progress: false
 
 jobs:
@@ -58,5 +62,5 @@ jobs:
             git add _data/sitemap_*.json
             git commit -m "chore: auto-update sitemap last-modified dates"
             git pull --rebase --no-edit origin "$HEAD_REF"
-            git push
+            git push origin "HEAD:$HEAD_REF"
           fi
