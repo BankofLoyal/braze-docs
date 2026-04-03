@@ -111,6 +111,8 @@ After the integration process completes, Braze will automatically pull that chan
 
 ### Step 2.2: Generate LINE subscription groups in Braze
 
+{% multi_lang_include alerts/note_alerts.md alert='subscription group limit' %}
+
 1. Go to the Braze Technology Partners page for LINE and input the information you noted from your LINE **Providers** tab:
    - Provider ID
    - Channel ID

@@ -14,6 +14,8 @@ channel:
 
 > WhatsApp subscription groups are created upon integrating WhatsApp with your app through the **Technology Partner Portal**.
 
+{% multi_lang_include alerts/note_alerts.md alert='subscription group limit' %}
+
 ## WhatsApp subscription states
 
 There are two subscription states for WhatsApp users: `subscribed` and `unsubscribed`.
