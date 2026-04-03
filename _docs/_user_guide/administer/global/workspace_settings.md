@@ -35,7 +35,7 @@ guide_featured_list:
 - name: Identifier field-level encryption
   link: /docs/user_guide/data/infrastructure/field_level_encryption
   image: /assets/img/braze_icons/mail-01.svg
-- name: Workspace messaging rate limits
+- name: Messaging rate limits
   link: /docs/user_guide/administer/global/workspace_settings/messaging_rate_limits
   image: /assets/img/braze_icons/mail-01.svg
 ---

@@ -1,5 +1,5 @@
 ---
-nav_title: Workspace messaging rate limits
+nav_title: Messaging rate limits
 article_title: Workspace messaging rate limits
 alias: /workspace_messaging_rate_limits/
 page_type: reference

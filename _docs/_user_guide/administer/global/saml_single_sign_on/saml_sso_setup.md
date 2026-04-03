@@ -3,6 +3,7 @@ nav_title: SAML SSO setup
 article_title: SAML SSO Setup
 page_order: 0
 page_type: tutorial
+toc_headers: h2
 description: "This article will walk you through how to enable SAML single sign-on for your Braze account."
 
 ---
