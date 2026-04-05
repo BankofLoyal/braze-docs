@@ -1,7 +1,7 @@
 ---
 nav_title: GRAVTY®
 article_title: GRAVTY® Loyalty Platform
-description: "Industry’s first cloud-native, enterprise-class, patented technology, reshaping the loyalty program landscape through advanced AI, serverless, and autonomous capabilities."
+description: "This article outlines the partnership between Braze and GRAVTY®, an enterprise-grade loyalty platform that enables brands to design, manage, and scale data-driven loyalty programs for enhanced customer engagement and retention."
 alias: /partners/gravty/
 page_type: partner
 search_tag: Partner
@@ -9,7 +9,10 @@ search_tag: Partner
 
 # GRAVTY® Loyalty Platform
 
-> [GRAVTY®](https://www.lji.io/) is an enterprise-grade loyalty technology platform that enables brands to build, manage, and scale next-generation loyalty programs — driving deeper customer engagement through personalized, data-led experiences.
+> [GRAVTY®](https://www.lji.io/) is an enterprise-grade loyalty platform that enables brands across Retail, Travel, Restaurants/QSR, and Financial Services to design, manage, and scale next-generation programs—driving measurable growth in engagement, retention, and customer lifetime value through personalized, data-led experiences.
+Built on a flexible, API-first architecture, GRAVTY® supports real-time earn and burn, partner ecosystem management, and seamless integration across channels—empowering teams to launch faster, innovate continuously, and deliver consistent, scalable loyalty experiences.
+
+_This integration is maintained by LJI._
 
 ## About the integration
 
