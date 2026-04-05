@@ -1,62 +1,59 @@
 ---
 nav_title: GRAVTY®
-article_title: GRAVTY® Loyalty Cloud
-description: "Industry’s first cloud-native, enterprise-class, patented technology, reshaping the loyalty program landscape through advanced AI, serverless, and autonomous capabilities."
-alias: /partners/gravty/
+article_title: GRAVTY® Loyalty Platform
+description: "This article outlines the partnership between Braze and GRAVTY®, an enterprise-grade loyalty platform that enables brands to design, manage, and scale data-driven loyalty programs for enhanced customer engagement and retention."
+alias: /partners/lji/
 page_type: partner
 search_tag: Partner
 ---
 
-# GRAVTY® Loyalty Cloud
+# GRAVTY® Loyalty Platform
 
-> [GRAVTY®](https://gravty.io/) is an enterprise-grade loyalty technology platform that enables brands to build, manage, and scale next-generation loyalty programs — driving deeper customer engagement through personalized, data-led experiences.
+> [GRAVTY®](https://www.lji.io/) is an enterprise-grade loyalty platform that enables brands across Retail, Travel, Restaurants/QSR, and Financial Services to design, manage, and scale next-generation programs—driving measurable growth in engagement, retention, and customer lifetime value through personalized, data-led experiences.
+Built on a flexible, API-first architecture, GRAVTY® supports real-time earn and burn, partner ecosystem management, and seamless integration across channels—empowering teams to launch faster, innovate continuously, and deliver consistent, scalable loyalty experiences.
+
+_This integration is maintained by LJI._
 
 ## About the integration
 
-This integration connects GRAVTY® with Braze to enable seamless, multi-channel customer engagement. GRAVTY® acts as the publisher, triggering and syncing customer data and events, while Braze transforms this data into personalized communications across channels such as SMS, email, and push notifications.
-
-* **Member & Transaction Sync**: Sync member profiles, attributes, and transaction data to Braze using `/users/track` for real-time personalization and segmentation.
-* **Campaign Triggering**: Trigger Braze Campaigns via `/campaigns/trigger/send` to send immediate, single-message communications such as OTPs and alerts.
-* **Canvas Triggering**: Initiate multi-step customer journeys using `/canvas/trigger/send` for lifecycle and engagement use cases.
-* **Personalization**: Leverage synced attributes like loyalty status, points balance, and behavior to drive targeted messaging.
-* **Real-time Engagement**: Enable instant communication based on member actions and events occurring in GRAVTY®.
+This integration connects GRAVTY® with Braze to enable seamless, multi-channel customer engagement. GRAVTY® acts as the publisher, sending customer data to Braze as attributes, events, and purchases, enabling personalization and communication triggers, while Braze stores this data and delivers messages across channels such as SMS, email, and push notifications.
 
 ## Use cases
 
-This integration supports the following scenarios:
+This integration supports the following Braze functionalities:
 
-1. **Member Data Synchronization**  
-   Sync member profiles and attributes to Braze on member creation or updates.
+1. **User Data Sync (`/users/track`)**  
+   Sync member attributes, events, and purchases to Braze for segmentation and personalization.
 
-2. **Transaction & Event Sync**  
-   Send member purchases and behavioral events to Braze for segmentation and targeting.
+2. **Campaign Triggering (`/campaigns/trigger/send`)**  
+   Trigger one-time or transactional messages using Braze Campaigns.
 
-3. **Real-time Communication Triggers**  
-   Trigger messages when key events occur (for example, points earned, tier upgrades, or transactions).
+3. **Canvas Triggering (`/canvas/trigger/send`)**  
+   Initiate multi-step journeys and lifecycle campaigns using Braze Canvas.
 
-4. **Lifecycle Engagement**  
-   Initiate campaigns such as welcome emails after enrollment or re-engagement journeys based on member activity.
-
-5. **Personalized Messaging**  
-   Use synced loyalty data and attributes to deliver targeted and relevant communications.
+4. **Segmentation and Personalization**  
+   Use synced data to build targeted audiences and deliver personalized communications.
 
 ## Prerequisites
 
 Before you start, ensure you have the following:
 
-| Requirement | Description |
-| :--- | :--- |
-| GRAVTY® Account | A GRAVTY® account with the required permissions to configure integrations and manage event subscriptions. |
-| Braze Account | An active Braze account with API access enabled. |
-| Braze REST API Key | A REST API key with `campaigns.trigger.send`, `canvas.trigger.send`, and `users.track` permissions. |
-| Braze API Endpoint | Your Braze REST endpoint (for example, `https://rest.fra-01.braze.eu`). |
-| Campaign / Canvas IDs | Required for triggering messages from GRAVTY®. |
+| Requirement | Description                                                                                                                                                                 |
+| :--- |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| GRAVTY® Account | A GRAVTY® account with the required permissions to configure integrations and manage event subscriptions.                                                                   |
+| Braze Account | An active Braze account with API access enabled.                                                                                                                            |
+| Braze REST API Key | A REST API key with `campaigns.trigger.send`, `canvas.trigger.send`, and `users.track` permissions.<br><br>Create this key in the Braze dashboard from **Settings > API Keys**. |
+| Braze API Endpoint | Your Braze REST endpoint (for example, `https://rest.fra-01.braze.eu`).                                                                                                     |
+| Campaign / Canvas IDs | Required for triggering messages from GRAVTY®.                                                                                                                              |
 {: .reset-td-br-1 .reset-td-br-2 role="presentation"}
 
 
 ## Integration
 
 The GRAVTY® integration with Braze is API-based and enables real-time data synchronization and communication triggering.
+
+![GRAVTY® integration flow using Braze APIs for data sync and communication delivery.]({% image_buster /assets/img/lji/braze-gravty-integration.png %})
+
 
 ### Step 1: Connect Braze with GRAVTY®
 
@@ -65,71 +62,45 @@ The GRAVTY® integration with Braze is API-based and enables real-time data sync
 3. Select **Braze** as the integration provider.
 4. Provide the required details:
    * **API URL** (Braze REST endpoint)
-   * **API Key** (Braze REST API key)
+    * **API Key** (Braze REST API key)
 5. Save the configuration and ensure the connection is active.
 
-<figure style="text-align:center; padding: 16px 0;">
-  <img src="/assets/img/lji/braze-subscriber-setup.png" style="width:70%; border-radius:12px;" />
-  <figcaption style="font-size:14px; color:#666;">
-    Connecting Braze as a subscriber in GRAVTY®
-  </figcaption>
-</figure>
+![Connecting Braze as a subscriber in GRAVTY®.]({% image_buster /assets/img/lji/braze-subscriber-setup.png %})
 
 ---
 
-### Step 2: Configure Attribute Mapping
+### Step 2: Configure Template Attribute Mapping
 
-After saving the Braze subscriber, you will be redirected to the **Attribute Mapping** page in GRAVTY® to configure field mapping for data synchronization.
+After saving the Braze subscriber, you will be redirected to the **Template Attribute Mapping** page in GRAVTY® to configure how data is mapped to Braze.
 
 To configure field mapping in GRAVTY®:
 
 1. Click **Add New Field**.
-2. Select the GRAVTY® attribute from the dropdown.
-3. Enter the corresponding Braze attribute name (custom attribute) where the data should be mapped.
-4. Repeat the steps to add additional mappings as needed.
-5. Save the configuration.
+2. Select the **GRAVTY® attribute** from the dropdown.
+3. Enter the corresponding **Braze attribute name** (custom attribute) where the data should be mapped.
 
-<figure style="text-align:center; padding: 16px 0;">
-  <img src="/assets/img/lji/gravty-attribute-mapping.png" style="width:70%; border-radius:12px;" />
-  <figcaption style="font-size:14px; color:#666;">
-    Attribute mapping configuration for Braze member sync
-  </figcaption>
-</figure>
+{% alert important %}
+There is no need to map `external_id`. GRAVTY® automatically generates and maps it internally by hashing the member ID to ensure consistent and secure identification in Braze.
+{% endalert %}
 
-* Attribute mapping is used to construct the Braze `/users/track` payload for syncing data, including member attributes, events, purchases, and their properties.
-* This configuration is primarily used for **data synchronization (User Sync)** and is not required for Campaign or Canvas triggers.
-* A prefix-based naming convention (for example, `event__`, `purchase__`, `purchaseproperty__`) is used to identify the type of data being synced.
-* Supports configurable sync behavior through a **"Sync Only Updated Attributes"** toggle:
-  * When enabled, only modified attributes are sent
-  * Otherwise, full member data including attributes, events, and purchases are synced
+4. Repeat steps **1–3** to add additional mappings as needed.
+5. Click **Save** to apply the configuration.
+
+![Attribute mapping configuration for Braze member sync.]({% image_buster /assets/img/lji/gravty-attribute-mapping.png %})
+
+{% alert note %}
+The integration supports all Braze custom attribute data types, including numbers (integer, float), strings, arrays, booleans, objects, arrays of objects, and dates.
+{% endalert %}
 
 ---
 
-### Example: Member Sync and Triggered Communication
+### Step 3: Test the Integration
 
-* Member data synced from GRAVTY® is available in Braze user profiles.
+Trigger a sample event  in GRAVTY® to verify that sync, communication triggers, and overall integration are working as expected.
 
-<figure style="text-align:center; padding: 16px 0;">
-  <img src="/assets/img/lji/braze-member-profile.png" style="width:70%; border-radius:12px;" />
-  <figcaption style="font-size:14px; color:#666;">
-    Example of a synced member profile in Braze
-  </figcaption>
-</figure>
-
-* Events such as tier upgrades can trigger communications using Campaigns or Canvas.
-
-<figure style="text-align:center; padding: 16px 0;">
-  <img src="/assets/img/lji/braze-trigger-example.png" style="width:70%; border-radius:12px;" />
-  <figcaption style="font-size:14px; color:#666;">
-    Example of a triggered communication in Braze
-  </figcaption>
-</figure>
+![The data fields are populated based on the configured field mapping.]({% image_buster /assets/img/lji/braze-member-profile.png %})
 
 ---
-## Data Handling and Request Behavior
+## Support
 
-* Uses `external_id` as the unique identifier in Braze, generated by hashing the GRAVTY® member ID to ensure secure and consistent identity mapping.
-* Supports Braze-compatible data types as defined in Braze documentation.
-* Includes a `User-Agent` header (`partner-LoyaltyJuggernaut-GRAVTY/<version>`) in API requests to help identify the integration source.
-* Requests are batched when payloads exceed Braze limits; purchases are sent in chunks of up to 75 items per request to ensure compliance with payload size and rate limits.
-* Exponential backoff retry logic is implemented to gracefully handle transient failures, with increasing wait intervals between retries to reduce load and improve reliability.
+For assistance with integration setup or troubleshooting, contact the LJI support team at **support@lji.io**.
