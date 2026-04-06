@@ -155,7 +155,7 @@ For email, you can optimize for one of the following events. The agent uses open
 {% endtab %}
 {% tab Push notifications %}
 
-For push notifications, you can optimize **Opens**. This optimizes combinations that get recipients to open the push notification. You can use this optimization event to test variations in subject lines.
+For push notifications, you can optimize **Opens**. This optimizes combinations that get recipients to open the push notification. You can use this optimization event to test variations in title or message copy.
 
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 role="presentation" }
 
