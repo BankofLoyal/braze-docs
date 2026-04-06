@@ -34,27 +34,27 @@ guide_featured_list:
 
 # channel to icon/fa or image mapping
 glossary_tags:
-  - name: 캠페인
-  - name: 캔버스
-  - name: 카탈로그
-  - name: 콘텐츠 블록
-  - name: 사용자 지정 이벤트
-  - name: 이메일 목록
-  - name: 이메일 템플릿
+  - name: Campaigns
+  - name: Canvas
+  - name: Catalogs
+  - name: Content Blocks
+  - name: Custom Events
+  - name: Email List
+  - name: Email Templates
   - name: KPI
-  - name: 미디어 라이브러리
+  - name: Media Library
   - name: Purchases
-  - name: 환경설정 센터
-  - name: 메시지 예약
+  - name: Preference Center
+  - name: Schedule Messages
   - name: SCIM
-  - name: SDK 인증
-  - name: 세그먼트
-  - name: 메시지 보내기
+  - name: SDK Authentication
+  - name: Segments
+  - name: Send Messages
   - name: SMS
-  - name: 구독 그룹
-  - name: 사용자 데이터
-  - name: 라이브 활동
-  - name: 클라우드 데이터 수집
+  - name: Subscription Groups
+  - name: User Data
+  - name: Live Activity
+  - name: Cloud Data Ingestion
 
 glossaries:
   - name: "<a href='/docs/api/endpoints/user_data/post_user_alias/'>/users/alias/new</a>"
