@@ -58,6 +58,13 @@
         "/^[^\\n]*Lorem ipsum[^\\n]*$/gim",
         "/\\b[a-z]{2,}in['\\u2019]/gi"
       ]
+    },
+    {
+      "filename": "_docs/_contributing/styling_examples.md",
+      "words": [
+        "UNBROKENHIGHLIGHTTHATISVERYLONGUNBROKENHIGHLIGHTTHATISVERYLONG",
+        "UNBROKENWORDTHATISVERYLONGUNBROKENWORDTHATISVERYLONG"
+      ]
     }
   ]
 }
