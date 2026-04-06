@@ -97,6 +97,12 @@ Your verified domains display in the Deliverability Center.
 
 You can also access Google Postmaster in the Braze dashboard by going to **Partner Integrations** > **Technology Partners** > **Google Postmaster**. After integrating, Braze pulls reputation and error data for the last 30 days. The data may not be immediately available and could take several minutes to populate.
 
+### Invalid or expired authorization
+
+If you receive an alert that Google Postmaster Tools authorization credentials are invalid, email sending from Braze is **not** affected. Only the connection between Braze and Google Postmaster breaks, which stops Gmail reputation and error data from syncing to the Deliverability Center until you reconnect.
+
+To restore the integration, go to **Partner Integrations** > **Technology Partners**, open **Google Postmaster**, select **Disconnect**, then run through the connection flow again (same steps as in [Integrating Google Postmaster](#integrating-google-postmaster)).
+
 ### Metrics and definitions
 
 The following metrics and definitions apply to Google Postmaster Tools.
