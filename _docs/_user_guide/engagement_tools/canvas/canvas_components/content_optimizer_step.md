@@ -172,6 +172,14 @@ To review performance, open the step-level analytics panel to see metrics by con
 
 ![Content Optimizer analytics for three buttons and the percentage of allocation of sends, which trend upwards.]({% image_buster /assets/img/content_optimizer/content_optimizer_analytics.png %})
 
+### Why step analytics differ from general analytics
+
+Reasons that analytics in the Content Optimizer step differ from the **Analytics** section include:
+
+- Push sends are de-duplicated for sends to the same user on difference devices.
+- In general, clicks and opens are de-duplicated to be unique for each user. Only clicks and opens that happen within seven days of sending a message are counted in the Content Optimizer step.
+
+
 ## Troubleshooting
 
 | Issue | Description | Fix |
