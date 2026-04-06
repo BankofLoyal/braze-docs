@@ -12,6 +12,7 @@
   ],
   "ignorePaths": [
     "_lang/**",
+    "_docs/_hidden/**",
     "node_modules/**",
     "vendor/**",
     ".git/**",
