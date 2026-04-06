@@ -19,6 +19,12 @@
     "config/cspell/unique-unknown-from-full-sweep.txt"
   ],
   "ignoreRegExpList": [
+    "Urls",
+    "Email",
+    "href",
+    "/^---\\s*\\r?\\n[\\s\\S]*?\\r?\\n---\\s*\\r?\\n/",
+    "/@[a-z0-9][-a-z0-9.]*\\.[a-z]{2,}\\b/gi",
+    "/\\b(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+(?:com|io|net|org|dev|co|app|ai|us|uk|edu|gov|me|xyz|cloud|tech|bz|ca|de|fr|jp)\\b/gi",
     "/\\{::[^}]+\\}/g",
     "/\\{:[^}]*\\}/g",
     "/\\{%[\\s\\S]*?%\\}/g",
@@ -34,6 +40,12 @@
       "filename": "**/*.md",
       "dictionaries": ["en_us", "braze-words"],
       "ignoreRegExpList": [
+        "Urls",
+        "Email",
+        "href",
+        "/^---\\s*\\r?\\n[\\s\\S]*?\\r?\\n---\\s*\\r?\\n/",
+        "/@[a-z0-9][-a-z0-9.]*\\.[a-z]{2,}\\b/gi",
+        "/\\b(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+(?:com|io|net|org|dev|co|app|ai|us|uk|edu|gov|me|xyz|cloud|tech|bz|ca|de|fr|jp)\\b/gi",
         "/\\{::[^}]+\\}/g",
         "/\\{:[^}]*\\}/g",
         "/\\{%[\\s\\S]*?%\\}/g",
