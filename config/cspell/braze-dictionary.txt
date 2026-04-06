@@ -318,6 +318,7 @@ hiddenlist
 Highspot
 Hightouch
 Hightouch's
+HIPAA
 HMAC
 homehub
 Homescreen
