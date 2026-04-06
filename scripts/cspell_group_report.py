@@ -46,12 +46,25 @@ def parse_lines(lines: list[str]) -> dict[str, list[tuple[str, int]]]:
 
 def render_markdown(by_word: dict[str, list[tuple[str, int]]]) -> str:
     lines_out: list[str] = []
-    lines_out.append("# cspell issues grouped by unknown word\n")
+    lines_out.append("# cspell issues grouped by unknown word\n\n")
+    lines_out.append(
+        "Local-only backlog (gitignored). Regenerated with full-repo `cspell lint` "
+        "on `_docs/**/*.md` and `_includes/**/*.md`, piped through "
+        "`scripts/cspell_group_report.py`. Each section lists every `file:line` "
+        "for that token.\n\n"
+    )
     lines_out.append(
         f"**Unique words:** {len(by_word)}  \n"
         f"**Total occurrences:** {sum(len(v) for v in by_word.values())}\n"
     )
     lines_out.append("\n---\n")
+
+    if not by_word:
+        lines_out.append(
+            "\n_No unknown words — `cspell lint` found no issues for this scope "
+            "(or no issue lines were piped to this script)._\n"
+        )
+        return "".join(lines_out)
 
     for word in sorted(by_word.keys(), key=lambda w: (w.lower(), w)):
         locs = by_word[word]
@@ -72,13 +85,6 @@ def main() -> int:
         input_lines = sys.stdin.read().splitlines()
 
     by_word = parse_lines(input_lines)
-    if not by_word:
-        print(
-            "No cspell issue lines parsed. Pipe cspell stderr/stdout here or pass a log file path.",
-            file=sys.stderr,
-        )
-        return 1
-
     sys.stdout.write(render_markdown(by_word))
     return 0
 
