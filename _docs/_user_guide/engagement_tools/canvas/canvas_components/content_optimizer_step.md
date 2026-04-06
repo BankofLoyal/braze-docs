@@ -132,7 +132,7 @@ As the Canvas runs, the agent mixes and matches variants across components to ge
 | Email | Body Content | {% raw %}`{% message_component "Body Content" %}`{% endraw %} | 
 | Email | Primary CTA | {% raw %}`{% message_component "Primary CTA" %}`{% endraw %} | 
 | Push | Title | {% raw %}`{% message_component "Title" %}`{% endraw %} | 
-| Push | Message | {% raw %} `{% message_component "Message" %}`{% endraw %} | 
+| Push | Message | {% raw %}`{% message_component "Message" %}`{% endraw %} | 
 {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
 ### Step 5: Select optimization event
