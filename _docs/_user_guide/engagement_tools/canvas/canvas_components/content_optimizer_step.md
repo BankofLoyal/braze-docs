@@ -55,10 +55,8 @@ The Content Optimizer agent uses the selected push platforms specified in this v
 
 Supported components to optimize include:
 
-- Subject
-- Body Header
-- Body Content
-- Primary CTA
+- Title
+- Message
 
 {% endtab %}
 {% endtabs %}
@@ -77,19 +75,40 @@ You can add up to three content components per step and up to five variants per 
 
 #### Step 4.1: Configure content components
 
-To configure components:
+To configure components, go to the **Content Optimizer Settings** tab.
 
-1. Go to the **Content Optimizer Settings** tab.
-2. Choose which components you want to optimize. Supported options:
-  - Subject
-  - Body Header
-  - Body Content
-  - Primary CTA
-3. For each selected component, define a set of alternative versions of that content (variants). Use clear, distinct variants that differ in tone, structure, or content. This helps Content Optimizer identify top performers more effectively. You can:
+{% tabs local %}
+{% tab Email %}
+
+Choose which components you want to optimize for email messages. Supported options are:
+
+- Subject
+- Body Header
+- Body Content
+- Primary CTA
+
+For each selected component, define a set of alternative versions of that content (variants). Use clear, distinct variants that differ in tone, structure, or content. This helps Content Optimizer identify top performers more effectively. You can:
   - Write your own variants manually.
   - Use AI-generated suggestions to explore new options quickly.
 
 ![Content Optimizer Settings interface showing options to add and configure content components for email optimization. Each component has input fields for entering different variants. Visible text includes component names and fields for entering variant text.]({% image_buster /assets/img/content_optimizer/content_optimizer_settings.png %})
+
+{% endtab %}
+{% tab Push notifications %}
+
+Choose which components you want to optimize for push notifications. Supported options are:
+- Title
+- Message
+
+For each selected component, define a set of alternative versions of that content (variants). Use clear, distinct variants that differ in tone, structure, or content. This helps Content Optimizer identify top performers more effectively. You can:
+  - Write your own variants manually.
+  - Use AI-generated suggestions to explore new options quickly.
+
+![Content Optimizer settings showing options to add and configure content components for push optimization.]({% image_buster /assets/img/content_optimizer/add_content_components_push.png %})
+
+{% endtab %}
+{% endtabs %}
+
 
 #### Step 4.2: Add Liquid to your message
 
@@ -104,14 +123,16 @@ If you don’t add a Liquid tag for a selected content component, you’ll see a
 
 As the Canvas runs, the agent mixes and matches variants across components to generate different content combinations. Over time, higher-performing combinations are prioritized for delivery, helping you improve performance without manual intervention.
 
-#### Liquid reference
+#### Liquid references
 
-| Component | Liquid snippet |
-| --- | --- | 
-| Subject | {% raw %}`{% message_component "Subject" %}`{% endraw %} |
-| Body Header | {% raw %}`{% message_component "Body Header" %}`{% endraw %} |
-| Body Content | {% raw %}`{% message_component "Body Content" %}`{% endraw %} | 
-| Primary CTA | {% raw %}`{% message_component "Primary CTA" %}`{% endraw %} | 
+| Channel | Component | Liquid snippet |
+| --- | --- | --- |
+| Email | Subject | {% raw %}`{% message_component "Subject" %}`{% endraw %} |
+| Email | Body Header | {% raw %}`{% message_component "Body Header" %}`{% endraw %} |
+| Email | Body Content | {% raw %}`{% message_component "Body Content" %}`{% endraw %} | 
+| Email | Primary CTA | {% raw %}`{% message_component "Primary CTA" %}`{% endraw %} | 
+| Push | Title | {% raw %}`{% message_component "Title" %}`{% endraw %} | 
+| Push | Message | {% raw %} `{% message_component "Message" %}`{% endraw %} | 
 {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
 ### Step 5: Select optimization event
@@ -134,12 +155,8 @@ For email, you can optimize for one of the following events. The agent uses open
 {% endtab %}
 {% tab Push notifications %}
 
-For push notifications, you can optimize for one of the following events.
+For push notifications, you can optimize **Opens**. This optimizes combinations that get recipients to open the push notification. You can use this optimization event to test variations in subject lines.
 
-| Event | Description | Use cases |
-| --- | --- | --- |
-|  |  |  | 
-|  |  |  | 
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 role="presentation" }
 
 {% endtab %}
