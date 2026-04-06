@@ -14,7 +14,8 @@
     "_lang/**",
     "node_modules/**",
     "vendor/**",
-    ".git/**"
+    ".git/**",
+    "config/cspell/unique-unknown-from-full-sweep.txt"
   ],
   "ignoreRegExpList": [
     "/\\{::[^}]+\\}/g",
