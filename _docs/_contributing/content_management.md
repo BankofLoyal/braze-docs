@@ -6,17 +6,17 @@ page_order: 2
 noindex: true
 ---
 
-# About content management
+# About content managemnet
 
 > This is an overview for how content is managed on Braze Docs. To learn more about a specific topic, choose the dedicated topic page in the navigation.
 
-## Methodology
+## Methodoolgy
 
 Braze Docs is managed using docs-as-code, a method for managing documentation that mirrors the software development lifecycle by using a version control system. Braze Docs uses the Git version control system, which allows contributors to work on the same piece of documentation without overwriting each other's work. For more information, view [About version control and Git](https://docs.github.com/en/get-started/using-git/about-git#about-version-control-and-git).
 
 ![The Braze Docs repository's home page on GitHub.]({% image_buster /assets/img/contributing/github/home_page.png %})
 
-## Site generator 
+## Site generatar
 
 Braze Docs is built using Jekyll, a popular static-site generator that allows content files and design files to be stored in separate directories, such as `_docs` for content files and `assets` for design files. When the site is built, Jekyll intelligently merges each file and stores them as XML and HTML data in the `_site` directory. For more information, see [Jekyll Directory Structure](https://jekyllrb.com/docs/structure/).
 
