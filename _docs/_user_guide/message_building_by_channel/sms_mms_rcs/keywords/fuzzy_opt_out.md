@@ -35,7 +35,7 @@ To configure fuzzy opt-out, go to the subscription group keyword management page
 2. In **Global Keywords**, find the **Opt-out** category and select the pencil icon.
 3. Toggle **Fuzzy Opt-Out** to **On**.
 4. Select your preferred **Fuzzy Opt-Out Logic** option:
-   - **Automatically unsubscribe**: When a user sends a message similar to an opt-out keyword, they are immediately unsubscribed without being prompted. The standard opt-out confirmation message is then sent.
+   - **Automatically unsubscribe:** When a user sends a message similar to an opt-out keyword, they are immediately unsubscribed without being prompted. The standard opt-out confirmation message is then sent.
    - **Send opt-out instructions:** When a user sends a message similar to an opt-out keyword, Braze sends a custom reply (the **Opt-out instruction message**) explaining how to unsubscribe.
 5. If you selected **Send opt-out instructions**, enter your custom text in the **Opt-out instruction message** field. This field is required for this setting.
 6. Select **Save**.
