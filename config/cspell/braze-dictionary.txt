@@ -8,6 +8,8 @@
 #    line, sorted alphabetically). Multi-word names are allowed on a single line.
 # 4. If CI reports an unknown word: fix a real typo in the Markdown, OR add the token here.
 # 5. Do not add misspellings to silence the checker. Skip common English words already in en_US.
+#    Exception: Shoptify is listed because it appears on purpose in Do/Don't examples (versus
+#    Shopify) in writing_style_guide.md and localized mirrors—do not replace with Shopify here.
 #
 # Branded capitalization (Canvas, Segment, Branch, etc.):
 # - cspell’s job is “is this token spelled like a known word?”, not “is this the correct
@@ -105,6 +107,7 @@ SMS
 SQL
 Seberg
 Segment
+# See header: intentional wrong example in style guide tables, not the Shopify product.
 Shoptify
 Singular
 Snowflake
