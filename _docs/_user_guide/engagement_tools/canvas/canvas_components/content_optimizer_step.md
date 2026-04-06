@@ -109,7 +109,6 @@ For each selected component, define a set of alternative versions of that conten
 {% endtab %}
 {% endtabs %}
 
-
 #### Step 4.2: Add Liquid to your message
 
 After defining at least two variants for each component, copy the associated Liquid tag for each one and paste it into the corresponding location in your base message.
@@ -178,7 +177,6 @@ Reasons that analytics in the Content Optimizer step differ from the **Analytics
 
 - Push sends are de-duplicated for sends to the same user on difference devices.
 - In general, clicks and opens are de-duplicated to be unique for each user. Only clicks and opens that happen within seven days of sending a message are counted in the Content Optimizer step.
-
 
 ## Troubleshooting
 

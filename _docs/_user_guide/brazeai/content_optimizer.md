@@ -45,10 +45,8 @@ Learn how to create a [Content Optimizer step]({{site.baseurl}}/user_guide/engag
 | --- | --- | --- |
 | Title variations | Increase open rate | Test clarity, urgency, personalization, and tone in the push title. |
 | Body copy styles | Improve engagement | Compare concise, benefit-led, and action-oriented messaging in the push body. |
-| CTA framing | Increase downstream conversions | Test direct versus curiosity-driven language to encourage users to open and act. |
-| Urgency and timing language | Drive immediate action | Compare time-sensitive wording, reminders, and limited-time messaging approaches. |
-| Themed content combinations | Discover high-performing combinations | Mix and match title and body variants to find the most effective overall push message. |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 role="presentation" }
+
 ## How it works
 
 Content Optimizer uses a non-contextual [multi-armed bandit](https://en.wikipedia.org/wiki/Multi-armed_bandit) algorithm to allocate more sends to high-performing variants and reduce allocation to underperforming ones. Over time, this results in continuous improvement of your message content, with minimal manual intervention.
