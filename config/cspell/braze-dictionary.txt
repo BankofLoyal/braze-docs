@@ -22,6 +22,8 @@
 #   dedicated prose linter (for example Vale) if you need capitalization rules in CI.
 #
 # Liquid / Jekyll / Kramdown tokens are mostly stripped by cspell.json patterns.
+# Colloquial spellings that drop final -g before an apostrophe (for example Fishin', runnin’)
+# are skipped by a dedicated ignoreRegExpList entry in cspell.json, not by listing each word here.
 #
 # Bulk update: ~714 tokens from 2026-04-06 full-repo cspell sweep were merged after excluding
 # obvious typos, lorem ipsum, and test strings. Remaining issues are listed in
