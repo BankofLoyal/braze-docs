@@ -15,7 +15,7 @@ page_order: 4
 
 ![iOS message chat that shows outbound opt-out messages in response to the inbound fuzzy opt-out "Please stopppp".]({% image_buster /assets/img/sms/fuzzy1.jpg %}){: style="float:right;max-width:30%;margin-left:15px;"}
 
-> Users that send SMS, MMS, and RCS with Braze must adhere to the applicable laws, regulations, and industry standards that are defined. For opt-out, the laws dictate that when a user texts "STOP" that all subsequent messaging related to that messaging program will be stopped. Braze automatically processes these messages and unsubscribes the user.<br><br>Fuzzy opt-out attempts to recognize when an inbound message does not match an [opt-out keyword]({{site.baseurl}}/user_guide/channels/sms_mms_and_rcs/message_features_and_optimization/keyword_processing/optin_optout/), but indicates opt-out intent. If fuzzy opt-out is enabled and an inbound keyword response is deemed "fuzzy," Braze will automatically respond with a response message that instructs users to opt out.
+> Users that send SMS, MMS, and RCS with Braze must adhere to the applicable laws, regulations, and industry standards that are defined. For opt-out, the laws dictate that when a user texts "STOP" that all subsequent messaging related to that messaging program will be stopped. Braze automatically processes these messages and unsubscribes the user.<br><br>Fuzzy opt-out attempts to recognize when an inbound message does not match an [opt-out keyword]({{site.baseurl}}/user_guide/channels/sms_mms_and_rcs/message_features_and_optimization/keyword_processing/optin_optout/), but indicates opt-out intent. If fuzzy opt-out is enabled and an inbound keyword response is deemed "fuzzy," you can configure Braze to either automatically unsubscribe the user or respond with a message that instructs them how to opt out manually.
 
 Currently, only opt-out keywords created using English as the [local language]({{site.baseurl}}/user_guide/channels/sms_mms_and_rcs/message_features_and_optimization/keyword_processing/keyword_handling/#multi-language-support) are supported.
 
@@ -32,11 +32,15 @@ For example, "Stpo" or "Please stopppp" will be deemed fuzzy, and a fuzzy opt-ou
 To configure fuzzy opt-out, navigate to the subscription group keyword management page.
 
 1. Go to **Audience** > **Subscription Group Management** and select an **SMS/MMS/RCS** subscription group.
-2. In **Global Keywords**, find the **opt-out** category and select the pencil icon.
-3. Enable **Fuzzy Opt-Out** by toggling it on.
-4. Modify the fuzzy opt-out response as desired. 
+2. In **Global Keywords**, find the **Opt-out** category and select the pencil icon.
+3. Toggle **Fuzzy Opt-Out** to **On**.
+4. Select your preferred **Fuzzy Opt-Out Logic** option:
+   - **Automatically unsubscribe:** When a user sends a message similar to an opt-out keyword, they are immediately unsubscribed without being prompted. The standard opt-out confirmation message is then sent.
+   - **Send opt-out instructions:** When a user sends a message similar to an opt-out keyword, Braze sends a custom reply (the **Opt-out instruction message**) explaining how to unsubscribe.
+5. If you selected **Send opt-out instructions**, enter your custom text in the **Opt-out instruction message** field. This field is required for this setting.
+6. Select **Save**.
 
-![Section to edit opt-out keywords.]({% image_buster /assets/img/sms/fuzzy2.png %})
+![Section to edit opt-out keywords and provide an opt-out instruction message.]({% image_buster /assets/img/sms/fuzzy2.png %})
 
 ## Best practices for fuzzy opt-out messages
 
@@ -45,10 +49,12 @@ To ensure a clear, compliant, and positive experience for your subscribers, it's
 ### Critical considerations
 
 {% alert warning %}
-**DO NOT** configure your fuzzy opt-out message to confirm an unsubscribe. Your fuzzy opt-out message must not contain language that implies a user has already successfully unsubscribed. For example, **do not** use "You have been unsubscribed," "You will not receive any more messages from this number," or "You are now opted out".
+If you selected **Send opt-out instructions**, **do not** configure your fuzzy opt-out message to confirm an unsubscribe. Your fuzzy opt-out message must not contain language that implies a user has already successfully unsubscribed. For example, **do not** use "You have been unsubscribed," "You will not receive any more messages from this number," or "You are now opted out".
 {% endalert %}
 
-The fuzzy opt-out message is sent before the user has successfully opted out. Using confirmation language misleads the subscriber into believing they are unsubscribed when they are not, leading to continued unwanted messages, subscriber frustration, and significant compliance risks.
+The fuzzy opt-out message is sent before the user has successfully opted out. Using confirmation language (such as "You have been unsubscribed") misleads the subscriber into believing they are unsubscribed when they are not, leading to continued unwanted messages, subscriber frustration, and significant compliance risks.
+
+To unsubscribe users immediately upon a fuzzy match, use the **Automatically unsubscribe setting** instead.
 
 {% alert warning %}
 **DO NOT** configure your fuzzy opt-out message to be identical or similar to your exact opt-out keyword.
@@ -58,7 +64,7 @@ If your fuzzy message is the same as, or too close to, your exact opt-out keywor
 
 ### Examples of fuzzy opt-out messages
 
-Focus on guiding users. For example, if your opt-out keyword is "STOP", these are good and poor examples of fuzzy opt-out messages you could create:
+If you choose **Send opt-out instructions**, focus your message on guiding the user. For example, if your opt-out keyword is "STOP", these are good and poor examples of fuzzy opt-out messages you could create:
 
 <table role="presentation" class="reset-td-br-1 reset-td-br-2">
   <thead>

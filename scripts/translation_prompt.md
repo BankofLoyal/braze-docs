@@ -12,6 +12,7 @@ Translate the provided English documentation file into the specified target lang
   - `title`, `nav_title`, `article_title`
   - `description`, `descriptions`
   - `name` (inside `guide_featured_list`, `guide_menu_list`, `doc_menu_list`, `doc_menu_list2`) — but see "Glossary filter identifiers" below for special handling of `name` inside `glossary_tags` and `glossaries`
+  - `display_name` (inside `glossaries` entries, for non-Latin-script languages — add this field with the translated name while keeping `name` in English)
   - `guide_top_header`, `guide_top_text`
   - `guide_featured_title`
   - `guide_footer_header`, `guide_footer_text`
@@ -44,7 +45,7 @@ Preserve all of the following exactly as they appear in the English source:
 - **Tokens with underscores** (e.g., `user_id`, `campaign_name`) — preserve exactly
 - **Markdown link syntax structure** — translate the link text but preserve `[text](url)` structure and URLs
 - **Glossary filter identifiers** — on pages that use `glossary_tags` (e.g., `layout: glossary_page`):
-  - **Non-Latin-script languages (e.g., Japanese, Korean, Chinese, Arabic, Thai, and any other language whose characters are not in the basic Latin alphabet):** preserve the following YAML values exactly as in the English source — do not translate them: the `glossary_tags` list (each `- name:` value), each `glossaries` entry `name`, and every `tags` list item. Non-Latin characters are stripped by Jekyll's `slugify` filter and the JavaScript `string_to_slug` function, producing empty or identical HTML IDs that break the filtering UI. Only translate the `description` values inside `glossaries` entries.
+  - **Non-Latin-script languages (e.g., Japanese, Korean, Chinese, Arabic, Thai, and any other language whose characters are not in the basic Latin alphabet):** preserve the following YAML values exactly as in the English source — do not translate them: the `glossary_tags` list (each `- name:` value), each `glossaries` entry `name`, and every `tags` list item. Non-Latin characters are stripped by Jekyll's `slugify` filter and the JavaScript `string_to_slug` function, producing empty or identical HTML IDs that break the filtering UI. Instead, add a `display_name` field to each `glossaries` entry with the translated name. The layout will show `display_name` to the user while using `name` for filtering. Example: `- name: Custom Event` followed by `display_name: "カスタムイベント"`. Only translate `description` values and add `display_name` — do not translate `name` or `tags`.
   - **Latin-script languages (e.g., German, Spanish, French, Portuguese):** you may translate `glossary_tags` names, entry `name` values, and `tags` — but you **must** ensure that `glossary_tags` name values and corresponding entry `tags` values are **identical strings** so the filter/checkbox matching works correctly.
 
 ## Braze product terminology
