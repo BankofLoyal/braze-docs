@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "language": "en",
+  "dictionaries": ["en_us", "braze-words"],
+  "dictionaryDefinitions": [
+    {
+      "name": "braze-words",
+      "path": "./config/cspell/braze-dictionary.txt",
+      "description": "Braze docs: product terms, glossary, Liquid/Kramdown tokens, and intentional style-guide wording."
+    }
+  ],
+  "ignorePaths": [
+    "_lang/**",
+    "node_modules/**",
+    "vendor/**",
+    ".git/**"
+  ],
+  "ignoreRegExpList": [
+    "/\\{::[^}]+\\}/g",
+    "/\\{:[^}]*\\}/g",
+    "/\\{%[\\s\\S]*?%\\}/g",
+    "/\\{\\{[\\s\\S]*?\\}\\}/g",
+    "/`[^`]*`/g",
+    "/<[^>\\s][^>]*>/g"
+  ],
+  "overrides": [
+    {
+      "filename": "**/*.md",
+      "dictionaries": ["en_us", "braze-words"],
+      "ignoreRegExpList": [
+        "/\\{::[^}]+\\}/g",
+        "/\\{:[^}]*\\}/g",
+        "/\\{%[\\s\\S]*?%\\}/g",
+        "/\\{\\{[\\s\\S]*?\\}\\}/g",
+        "/`[^`]*`/g",
+        "/<[^>\\s][^>]*>/g"
+      ]
+    }
+  ]
+}
