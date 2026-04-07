@@ -807,6 +807,7 @@ validurls['/docs/user_guide/engagement_tools/campaigns/ideas_and_strategies/gett
 validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_more/rate-limiting/'] = '/docs/user_guide/messaging/campaigns/building_campaigns/rate-limiting#rate-limiting-and-frequency-capping';
 validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_more/sending_test_push_notifications'] = '/docs/user_guide/messaging/campaigns/test_campaigns/sending_test_messages/';
 validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_more/sending_test_messages/'] = '/docs/user_guide/messaging/messaging_fundamentals/sending_test_messages/';
+validurls['/docs/user_guide/messaging/messaging_fundamentals/message_prioritization/'] = '/docs/user_guide/channels/in_app_messages/traditional/#choose-a-priority';
 validurls['/docs/user_guide/messaging/channels/test_messaging'] = '/docs/developer_guide/platform_wide/sending_test_messages/';
 validurls['/docs/user_guide/engagement_tools/canvas/canvas_components/experiment_paths/'] = '/docs/user_guide/messaging/canvas/canvas_components/experiment_step/';
 validurls['/docs/user_guide/message_building_by_channel/content_cards/overview/'] = '/docs/user_guide/channels/content_cards/';
@@ -942,6 +943,9 @@ validurls['/docs/user_guide/administrative/app_settings/company_settings/automat
 validurls['/docs/user_guide/administrative/app_settings/company_settings/automated_user_provisioning/'] = '/docs/user_guide/administer/global/user_management/automated_user_provisioning/';
 validurls['/docs/user_guide/administrative/app_settings/internal_groups_tab'] = '/docs/user_guide/administer/global/user_management/internal_groups';
 validurls['/docs/user_guide/administrative/app_settings/internal_groups_tab/'] = '/docs/user_guide/administer/global/user_management/internal_groups/';
+validurls['/docs/user_guide/administrative/manage_user/adding_test_users/'] = '/docs/user_guide/administer/global/user_management/internal_groups/';
+validurls['/docs/user_guide/administrative/manage_user/managing_users/'] = '/docs/user_guide/administer/global/user_management/manage_company_users/';
+validurls['/docs/user_guide/administrative/app_settings/manage_user_permissions/'] = '/docs/user_guide/administer/global/user_management/permissions/';
 validurls['/docs/user_guide/administrative/app_settings/single_sign_on'] = '/docs/user_guide/administer/global/saml_single_sign_on';
 validurls['/docs/user_guide/administer/global/saml__single_sign_on'] = '/docs/user_guide/administer/global/saml_single_sign_on';
 validurls['/docs/user_guide/administer/global/saml__single_sign_on/'] = '/docs/user_guide/administer/global/saml_single_sign_on/';
@@ -1509,6 +1513,8 @@ validurls['/docs/developer_guide/platform_integration_guides/swift/advanced_use_
 validurls['/docs/developer_guide/platform_integration_guides/swift/advanced_use_cases/locations_and_geofences'] = '/docs/developer_guide/platform_integration_guides/swift/geofences';
 
 validurls['/docs/developer_guide/platform_integration_guides/web/initial_sdk_setup'] = '/docs/developer_guide/platform_integration_guides/web/sdk_integration';
+validurls['/docs/developer_guide/sdk_integration/web/initial_sdk_setup'] = '/docs/developer_guide/sdk_integration/?sdktab=web';
+validurls['/docs/developer_guide/sdk_integration/web/initial_sdk_setup/'] = '/docs/developer_guide/sdk_integration/?sdktab=web';
 validurls['/docs/developer_guide/platform_integration_guides/web/amp_support'] = '/docs/developer_guide/platform_integration_guides/web/sdk_integration/#accelerated-mobile-pages-amp';
 validurls['/docs/developer_guide/platform_integration_guides/web/push_notifications/integration'] = '/docs/developer_guide/platform_integration_guides/web/push_notifications';
 validurls['/docs/developer_guide/platform_integration_guides/web/push_notifications/mobile_push'] = '/docs/developer_guide/platform_integration_guides/web/push_notifications/safari_push';
@@ -1584,6 +1590,11 @@ validurls['/docs/user_guide/data_and_analytics/reporting/engagement_reports'] = 
 validurls['/docs/user_guide/data_and_analytics/reporting/funnel_reports'] = '/docs/user_guide/analytics/reports/funnel_reports';
 validurls['/docs/user_guide/data_and_analytics/reporting/global_control_group_reporting'] = '/docs/user_guide/audience/global_control_group';
 validurls['/docs/user_guide/data_and_analytics/reporting/report_builder'] = '/docs/user_guide/analytics/reports/report_builder';
+validurls['/docs/user_guide/data_and_analytics/reporting/report_builder/'] = '/docs/user_guide/analytics/reports/report_builder/';
+validurls['/docs/user_guide/data_and_analytics/report_builder/'] = '/docs/user_guide/analytics/reports/report_builder/';
+validurls['/docs/user_guide/data_and_analytics/report_builder/report_builder/'] = '/docs/user_guide/analytics/reports/report_builder/';
+validurls['/docs/user_guide/data_and_analytics/custom_details/custom_events_report/'] = '/docs/user_guide/analytics/reports/custom_events_report/';
+validurls['/docs/user_guide/data_and_analytics/reporting/performance_overview/'] = '/docs/user_guide/analytics/dashboards/home/#performance-overview';
 validurls['/docs/user_guide/data_and_analytics/reporting/reports_overview'] = '/docs/user_guide/analytics/reports/reports_overview';
 validurls['/docs/user_guide/data_and_analytics/reporting/retention_reports'] = '/docs/user_guide/analytics/reports/retention_reports';
 validurls['/docs/user_guide/data_and_analytics/reporting/revenue_report'] = '/docs/user_guide/analytics/reports/revenue_report';
@@ -3583,6 +3594,7 @@ validurls['/docs/user_guide/engagement_tools/segments/segment_extension/sql_segm
 validurls['/docs/user_guide/engagement_tools/segments/segment_extension/sql_segments/use_cases/'] = '/docs/user_guide/audience/segments/segment_extension/sql_segments/use_cases/';
 validurls['/docs/user_guide/engagement_tools/segments/segment_insights/'] = '/docs/user_guide/audience/segments/segment_insights/';
 validurls['/docs/user_guide/engagement_tools/segments/segmentation_filters/'] = '/docs/user_guide/audience/segments/segmentation_filters/';
+validurls['/docs/user_guide/engagement_tools/segments/segment_filters/'] = '/docs/user_guide/audience/segments/segmentation_filters/';
 validurls['/docs/user_guide/engagement_tools/segments/troubleshooting/'] = '/docs/user_guide/audience/segments/troubleshooting/';
 
 // Audience > Suppression lists, User profiles, Manage users (extracted from segments)
@@ -3633,6 +3645,7 @@ validurls['/docs/user_guide/analytics/dashboard/'] = '/docs/user_guide/analytics
 validurls['/docs/user_guide/analytics/dashboard/home_dashboard/'] = '/docs/user_guide/analytics/dashboards/home/';
 validurls['/docs/user_guide/analytics/dashboard/api_usage_dashboard/'] = '/docs/user_guide/analytics/dashboards/api_usage/';
 validurls['/docs/user_guide/analytics/dashboard/email_performance_dashboard/'] = '/docs/user_guide/analytics/dashboards/channel_performance/';
+validurls['/docs/user_guide/analytics/dashboards/email_performance_dashboard/'] = '/docs/user_guide/analytics/dashboards/channel_performance/';
 validurls['/docs/user_guide/analytics/dashboard/conversions_dashboard/'] = '/docs/user_guide/analytics/dashboards/conversions/';
 validurls['/docs/user_guide/analytics/dashboard/deliverability_center/'] = '/docs/user_guide/analytics/dashboards/deliverability_center/';
 validurls['/docs/user_guide/analytics/dashboard/ecommerce_revenue_dashboard/'] = '/docs/user_guide/analytics/dashboards/dashboard_builder/ecommerce_revenue_dashboard/';
@@ -3661,6 +3674,8 @@ validurls['/docs/user_guide/analytics/query_builder/'] = '/docs/user_guide/analy
 validurls['/docs/user_guide/analytics/query_builder/building_queries/'] = '/docs/user_guide/analytics/reports/query_builder/building_queries/';
 validurls['/docs/user_guide/analytics/query_builder/query_templates/'] = '/docs/user_guide/analytics/reports/query_builder/query_templates/';
 validurls['/docs/user_guide/analytics/query_builder/sql_variables/'] = '/docs/user_guide/analytics/reports/query_builder/sql_variables/';
+validurls['/docs/user_guide/analytics/reports/query_builder/table_reference/'] = '/docs/user_guide/audience/segments/segment_extension/sql_segments/sql_segments_tables/';
+validurls['/docs/user_guide/analytics/reports/report_builder_v2/'] = '/docs/user_guide/analytics/reports/report_builder/';
 
 // Analytics > Reports > Global control group report (from engagement_tools/testing)
 validurls['/docs/user_guide/engagement_tools/testing/global_control_group/'] = '/docs/user_guide/audience/global_control_group/';
@@ -3703,7 +3718,10 @@ validurls['/docs/user_guide/engagement_tools/campaigns/building_campaigns/delive
 validurls['/docs/user_guide/engagement_tools/campaigns/building_campaigns/delivery_types/triggered_delivery/campaign_connector/'] = '/docs/user_guide/messaging/campaigns/schedule_your_campaign/triggered_delivery/campaign_connector/';
 validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_more/'] = '/docs/user_guide/messaging/campaigns/test_campaigns/';
 validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_more/campaign_analytics/'] = '/docs/user_guide/messaging/campaigns/test_campaigns/campaign_analytics/';
+validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_analytics/campaign_analytics/'] = '/docs/user_guide/messaging/campaigns/test_campaigns/campaign_analytics/';
+validurls['/docs/user_guide/engagement_tools/campaigns/settings/global_message_settings/'] = '/docs/user_guide/administer/global/workspace_settings/messaging_rate_limits/';
 validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_more/triggered_action_based/'] = '/docs/user_guide/messaging/campaigns/test_campaigns/triggered_action_based/';
+validurls['/docs/user_guide/engagement/campaigns/settings/rate_limiting/'] = '/docs/user_guide/messaging/messaging_fundamentals/frequency_capping/';
 validurls['/docs/user_guide/engagement_tools/canvas/'] = '/docs/user_guide/messaging/canvas/';
 validurls['/docs/user_guide/engagement_tools/canvas/canvas_components/action_paths/'] = '/docs/user_guide/messaging/canvas/canvas_components/action_paths/';
 validurls['/docs/user_guide/engagement_tools/canvas/canvas_components/agent_step/'] = '/docs/user_guide/messaging/canvas/canvas_components/agent_step/';
@@ -3718,7 +3736,11 @@ validurls['/docs/user_guide/engagement_tools/canvas/canvas_components/experiment
 validurls['/docs/user_guide/engagement_tools/canvas/canvas_components/experiment_step/winning_path/'] = '/docs/user_guide/messaging/canvas/canvas_components/experiment_step/winning_path/';
 validurls['/docs/user_guide/engagement_tools/canvas/canvas_components/message_step/'] = '/docs/user_guide/messaging/canvas/canvas_components/message_step/';
 validurls['/docs/user_guide/engagement_tools/canvas/canvas_components/user_update/'] = '/docs/user_guide/messaging/canvas/canvas_components/user_update/';
+validurls['/docs/user_guide/engagement_tools/canvas/canvas_components/canvas_entry_properties/'] = '/docs/user_guide/messaging/design_and_edit/personalize/sources/canvas_entry_properties/';
+validurls['/docs/user_guide/engagement_tools/canvas/canvas_components/exit_criteria/'] = '/docs/user_guide/messaging/canvas/create_a_canvas/exit_criteria/';
 validurls['/docs/user_guide/engagement_tools/canvas/create_a_canvas/'] = '/docs/user_guide/messaging/canvas/create_a_canvas/';
+validurls['/docs/user_guide/engagement_tools/canvas/create_a_canvas/canvas_entry_methods/'] = '/docs/user_guide/messaging/canvas/create_a_canvas/#step-12-determine-your-canvas-entry-schedule';
+validurls['/docs/user_guide/engagement_tools/canvas/create_a_canvas/entry_methods/scheduled_entry/'] = '/docs/user_guide/messaging/canvas/create_a_canvas/#step-12-determine-your-canvas-entry-schedule';
 validurls['/docs/user_guide/engagement_tools/canvas/create_a_canvas/canvas_by_channel/'] = '/docs/user_guide/messaging/canvas/create_a_canvas/canvas_by_channel/';
 validurls['/docs/user_guide/engagement_tools/canvas/create_a_canvas/canvas_by_channel/content-cards_in_canvas/'] = '/docs/user_guide/messaging/canvas/create_a_canvas/canvas_by_channel/content-cards_in_canvas/';
 validurls['/docs/user_guide/engagement_tools/canvas/create_a_canvas/canvas_by_channel/in-app_messages_in_canvas/'] = '/docs/user_guide/messaging/canvas/create_a_canvas/canvas_by_channel/in-app_messages_in_canvas/';
@@ -4482,6 +4504,7 @@ validurls['/docs/user_guide/message_building_by_channel/email/drag_and_drop/over
 validurls['/docs/user_guide/message_building_by_channel/email/drag_and_drop/overview/'] = '/docs/user_guide/channels/email/drag_and_drop/';
 validurls['/docs/user_guide/message_building_by_channel/email/drag_and_drop/dnd_editor_blocks'] = '/docs/user_guide/channels/email/drag_and_drop/dnd_editor_blocks';
 validurls['/docs/user_guide/message_building_by_channel/email/drag_and_drop/dnd_editor_blocks/'] = '/docs/user_guide/channels/email/drag_and_drop/dnd_editor_blocks/';
+validurls['/docs/user_guide/message_building_by_channel/email/drag_and_drop_editor/'] = '/docs/user_guide/channels/email/drag_and_drop/';
 validurls['/docs/user_guide/message_building_by_channel/email/drag_and_drop/faq'] = '/docs/user_guide/channels/email/drag_and_drop/faq';
 validurls['/docs/user_guide/message_building_by_channel/email/drag_and_drop/faq/'] = '/docs/user_guide/channels/email/drag_and_drop/faq/';
 validurls['/docs/user_guide/message_building_by_channel/email/html_editor'] = '/docs/user_guide/channels/email/html_editor';
