@@ -114,6 +114,7 @@ Braze는 현재 다음 Snowflake AWS 리전에서 모든 사용자 수준 데이
 
  - US East-1
  - EU-Central (Frankfurt)
+ - AP-Northeast-1 (Tokyo)
  - AP-Southeast-2 (Sydney)
  - AP-Southeast-3 (Jakarta)
  
