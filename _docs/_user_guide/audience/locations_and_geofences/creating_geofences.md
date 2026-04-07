@@ -205,7 +205,7 @@ Next, add geofences to your geofence set.
 3. (Optional) Select **Show Advanced Settings**. Within this section, you can configure several options:
 
    - Select the checkboxes for **Enable Analytics for Enter** and **Enable Analytics for Exit** to log geofence entry and exit events in the [`USERS_BEHAVIORS_GEOFENCE_DATAEVENT_SHARED` SQL table]({{site.baseurl}}/user_guide/audience/segments/segment_extension/sql_segments/sql_segments_tables/#USERS_BEHAVIORS_GEOFENCE_DATAEVENT_SHARED).
-   - Set a cooldown if desired, which is the number of seconds that must pass before the same user can trigger another entry or exit event for that geofence.
+   - Configure a cooldown period if desired, which determines how many seconds must pass before the same user can trigger another entry or exit event for that geofence. If you don't set a cooldown, the default is six hours.
    - Use the **Android Notification Responsiveness** field to set the maximum delay (in seconds) Android devices use when delivering entry or exit events to your app.
 
 4. Select **Save Geofence Set** to save.
