@@ -943,7 +943,7 @@ validurls['/docs/user_guide/administrative/app_settings/company_settings/automat
 validurls['/docs/user_guide/administrative/app_settings/company_settings/automated_user_provisioning/'] = '/docs/user_guide/administer/global/user_management/automated_user_provisioning/';
 validurls['/docs/user_guide/administrative/app_settings/internal_groups_tab'] = '/docs/user_guide/administer/global/user_management/internal_groups';
 validurls['/docs/user_guide/administrative/app_settings/internal_groups_tab/'] = '/docs/user_guide/administer/global/user_management/internal_groups/';
-validurls['/docs/user_guide/administrative/manage_user/adding_test_users/'] = '/docs/user_guide/administer/global/user_management/internal_groups/';
+validurls['/docs/user_guide/administrative/manage_user/adding_test_users/'] = '/docs/user_guide/administer/global/user_management/internal_groups/#adding-test-users';
 validurls['/docs/user_guide/administrative/manage_user/managing_users/'] = '/docs/user_guide/administer/global/user_management/manage_company_users/';
 validurls['/docs/user_guide/administrative/app_settings/manage_user_permissions/'] = '/docs/user_guide/administer/global/user_management/permissions/';
 validurls['/docs/user_guide/administrative/app_settings/single_sign_on'] = '/docs/user_guide/administer/global/saml_single_sign_on';
@@ -1321,7 +1321,7 @@ validurls['/docs/list-unsubscribe/'] = '/docs/user_guide/administrative/app_sett
 validurls['/docs/user_guide/data_and_analytics/cloud_ingestion/file_integrations/'] = '/docs/user_guide/data_and_analytics/cloud_ingestion/file_storage_integrations/';
 
 validurls['/docs/home/templates/tutorial'] = '/docs/contributing/templates/';
-validurls['/docs/user_guide/data_and_analytics/your_reports/report_builder'] = '/docs/user_guide/data_and_analytics/reporting/report_builder/';
+validurls['/docs/user_guide/data_and_analytics/your_reports/report_builder'] = '/docs/user_guide/analytics/reports/report_builder/';
 validurls['/docs/recommendations'] = '/docs/user_guide/brazeai/recommendations';
 validurls['/docs/api/endpoints/scim/post_update_existing_user_account'] = '/docs/api/endpoints/scim/put_update_existing_user_account/';
 validurls['/docs/user_guide/message_building_by_channel/email/reporting'] = '/docs/user_guide/channels/email/reporting/';
@@ -1589,7 +1589,7 @@ validurls['/docs/user_guide/data_and_analytics/reporting/data_by_segments'] = '/
 validurls['/docs/user_guide/data_and_analytics/reporting/engagement_reports'] = '/docs/user_guide/analytics/reports/engagement_reports';
 validurls['/docs/user_guide/data_and_analytics/reporting/funnel_reports'] = '/docs/user_guide/analytics/reports/funnel_reports';
 validurls['/docs/user_guide/data_and_analytics/reporting/global_control_group_reporting'] = '/docs/user_guide/audience/global_control_group';
-validurls['/docs/user_guide/data_and_analytics/reporting/report_builder'] = '/docs/user_guide/analytics/reports/report_builder';
+validurls['/docs/user_guide/data_and_analytics/reporting/report_builder'] = '/docs/user_guide/analytics/reports/report_builder/';
 validurls['/docs/user_guide/data_and_analytics/reporting/report_builder/'] = '/docs/user_guide/analytics/reports/report_builder/';
 validurls['/docs/user_guide/data_and_analytics/report_builder/'] = '/docs/user_guide/analytics/reports/report_builder/';
 validurls['/docs/user_guide/data_and_analytics/report_builder/report_builder/'] = '/docs/user_guide/analytics/reports/report_builder/';
