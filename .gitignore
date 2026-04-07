@@ -25,6 +25,3 @@ translation_results.json
 translation_pr_body.md
 qc_results.json
 glossary_audit_report.*
-
-# Local-only cspell backlog (full-repo sweep output); not committed
-config/cspell/unique-unknown-from-full-sweep.txt
