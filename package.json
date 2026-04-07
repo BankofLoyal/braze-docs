@@ -1,5 +1,9 @@
 {
+  "scripts": {
+    "spellcheck": "cspell lint --no-progress"
+  },
   "devDependencies": {
-    "@types/node": "^22.13.9"
+    "@types/node": "^22.13.9",
+    "cspell": "^8.17.5"
   }
 }

@@ -59,10 +59,12 @@ To blocklist custom data, you need the [user permissions]({{site.baseurl}}/user_
 - Export Promotion Codes
 - View Preference Centers
 - Edit Preference Centers
+- View Reports
+- Edit Reports
 
 {% enddetails %}
 
-Blocklisted data is not sent by the SDK, and the Braze dashboard doesn't process blocklisted data from other sources (for example, the API). However, blocklisting doesn't remove data from user profiles or retroactively decrease the amount of data points incurred for that custom data object.
+Blocklisted data is not sent by the SDK, and the Braze dashboard doesn't process blocklisted data from other sources (for example, the API). However, blocklisting doesn't remove data from user profiles or retroactively decrease the amount of data points incurred for that custom data object. Blocklisted data is hidden and can still be used for Liquid templating.
 
 ### Blocklisting custom attributes, custom events, and products
 

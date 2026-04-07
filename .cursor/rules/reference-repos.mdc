@@ -51,6 +51,10 @@ When content has been verified using these Braze source repos, **never publish c
 
 Keep your reference repos current when verifying SDK behavior, APIs, or product behavior so documentation checks use the latest code.
 
-- Pull the latest changes in each reference repo before you start verifying.
-- From the parent folder (the one containing `braze-docs` and the reference repos), run `git pull` in each repo you need, or use a loop to update all of them.
-- If you're unsure when a repo was last updated, run a pull before relying on it for verification.
+**Before using reference repos for verification:** As your first step, run `git pull --ff-only` in each sibling repo you plan to read or search (only the repos the task needs—for example, just `braze-web-sdk` for a Web SDK doc check). Do this before searching or opening files in those repos so conclusions reflect the latest code.
+
+**When you can skip pulling:** You don't need to pull reference repos when the task clearly doesn't depend on them (for example, typos, style-only edits, or docs that don't claim behavior tied to SDK or platform code).
+
+**How to pull:** From the parent folder (the one containing `braze-docs` and the reference repos), run `git pull --ff-only` in each repo you need, or use a loop to update several at once.
+
+If you're unsure whether a repo is current, run a pull before you rely on it for verification.
