@@ -123,8 +123,8 @@
   document.addEventListener('DOMContentLoaded', function() {
     var pageUrl = window.location.href.split('#')[0].split('?')[0];
 
-    var claudePrompt = 'Hi Claude! Can you please read [this page](' + pageUrl + ') and prepare to answer questions about it?';
-    var chatgptPrompt = 'Hi ChatGPT! Can you please read [this page](' + pageUrl + ') and prepare to answer questions about it?';
+    var claudePrompt = 'Hi Claude! Can you please read ' + pageUrl + ' and prepare to answer questions about it?';
+    var chatgptPrompt = 'Hi ChatGPT! Can you please read ' + pageUrl + ' and prepare to answer questions about it?';
 
     var claudeUrl = 'https://claude.ai/new?q=' + encodeURIComponent(claudePrompt);
     var chatgptUrl = 'https://chatgpt.com/?model=auto&q=' + encodeURIComponent(chatgptPrompt);
