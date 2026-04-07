@@ -111,7 +111,7 @@ Update the user's profile by using one of the methods described in [Subscription
 
 Within the WhatsApp message template creator, you can include the "marketing opt-out" option. Any time you include this, ensure the template is used in a Canvas with a subsequent step for a subscription group change. 
 
-1. Create a message template with the "marketing opt-out" quick reply.<br>![Message template with a footer option of "Marketing opt-out"]({% image_buster /assets/img/whatsapp/whatsapp121.png %})<br><br>![Section to configure a marketing oopt-out button.]({% image_buster /assets/img/whatsapp/whatsapp122.png %})<br><br>
+1. Create a message template with the "marketing opt-out" quick reply.<br>![Message template with a footer option of "Marketing opt-out"]({% image_buster /assets/img/whatsapp/whatsapp121.png %})<br><br>![Section to configure a marketing opt-out button.]({% image_buster /assets/img/whatsapp/whatsapp122.png %})<br><br>
 2. Create a Canvas that uses this message template.<br><br>
 3. Follow the steps in the preceding example but with the trigger text "STOP PROMOTIONS".<br><br>
 4. Update the user's subscription status by using one of the methods described in [Subscription groups]({{site.baseurl}}/user_guide/channels/whatsapp/whatsapp_setup/subscription_groups/#update-subscription-status).

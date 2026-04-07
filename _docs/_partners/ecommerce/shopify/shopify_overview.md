@@ -30,7 +30,7 @@ Braze offers two integration options for Shopify merchants that are designed to 
 
 ## How the integration works
 
-If you've already set up and turned on historical backfill in your configuration settings, the intial data sync will immediately begin. Braze will import all customers and order placed events from the last 90 days prior to your Shopify integration connection. When Braze imports your Shopify customers, we will assign the `external_id` type that you chose in your configuration settings.
+If you've already set up and turned on historical backfill in your configuration settings, the initial data sync will immediately begin. Braze will import all customers and order placed events from the last 90 days prior to your Shopify integration connection. When Braze imports your Shopify customers, we will assign the `external_id` type that you chose in your configuration settings.
 
 If you plan to integrate with a custom external ID (for either the [standard integration]({{site.baseurl}}/partners/ecommerce/shopify/shopify_standard_integration/#step-4-configure-how-you-manage-users) or the [custom integration]({{site.baseurl}}/partners/ecommerce/shopify/shopify_custom_integration/#step-6-configure-how-you-manage-users-optional)), you will be required to add your custom external ID as a Shopify customer metafield to all existing Shopify customer profiles and then perform the [historical backfill]({{site.baseurl}}/partners/ecommerce/shopify/shopify_data_features/#historical-backfill). 
 
@@ -93,7 +93,7 @@ This table shows which Shopify marketing opt-in states correlate with the status
 | Shopify marketing opt-in state | Braze subscription group state |
 | --- | --- |
 | Email is subscribed | Subscribed |
-| Email is unsubcribed | Unsubscribed |
+| Email is unsubscribed | Unsubscribed |
 | Email is pending confirmation | Unsubscribed |
 | Email is invalid | Unsubscribed |
 | SMS subscribed | Subscribed |

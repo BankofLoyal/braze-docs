@@ -86,7 +86,7 @@ Replace the following:
 
 #### Linking to Punchh web page
 
-To link to a Puncch-hosted web page, add `{% raw %}{{jwt}}{% endraw %}` to the dynamic generation URL [you created earlier](#step-1-create-a-coupon-campaign-in-punchh). Your link should be similar to the following: 
+To link to a Punchh-hosted web page, add `{% raw %}{{jwt}}{% endraw %}` to the dynamic generation URL [you created earlier](#step-1-create-a-coupon-campaign-in-punchh). Your link should be similar to the following: 
 
 {% raw %}
 ```

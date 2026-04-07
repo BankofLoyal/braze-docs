@@ -75,9 +75,9 @@ The most direct way to use images and videos directly from Cloudinary's DAM in y
 Refer to [Video]({{site.baseurl}}/user_guide/channels/in_app_messages/customize/video_in_custom_html/) for specific Android and iOS considerations. 
 
 {% endtab %}
-{% tab Convert videoes into GIFs %}
+{% tab Convert videos into GIFs %}
 
-## Convert videoes to GIFs for emails
+## Convert videos to GIFs for emails
 
 Use the `f_auto:animated` [Cloudinary Transformation](https://cloudinary.com/documentation/image_transformations/) to automatically convert video assets to GIFs. This is of particular value if you're using the Braze email channel, as GIFs are optimized to reduce email payloads, which, if too high, can cause deliverability issues. 
 

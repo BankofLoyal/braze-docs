@@ -12,7 +12,7 @@ channel:
 
 > To use the WhatsApp messaging channel, you'll need a phone number that meets WhatsApp’s requirements for its [Cloud API](https://developers.facebook.com/docs/whatsapp/cloud-api/phone-numbers) or [On-Premises API](https://developers.facebook.com/docs/whatsapp/on-premises/phone-numbers).
 
-You must acquire your phone number yourself, as Braze won't provision the number for you. You can either purchase a physical phone with a SIM card through your business phone provider or use one of our partners: Twilio or Infoblip. **You must have your own Twilio or Infobip account because this cannot be done through Braze.**
+You must acquire your phone number yourself, as Braze won't provision the number for you. You can either purchase a physical phone with a SIM card through your business phone provider or use one of our partners: Twilio or Infobip. **You must have your own Twilio or Infobip account because this cannot be done through Braze.**
 
 ## WhatsApp API requirements
 
@@ -61,7 +61,7 @@ If you follow the next steps, you connect your phone number to Twilio, which mea
 
 ## Acquiring an Infobip phone number 
 
-1. In the Infobip console, go to **Channels and Numbers** and select **Numbers**.<br><br>![Infoblip "Channels and Numbers" section with "Numbers" listed beneath.]({% image_buster /assets/img/whatsapp/infoblip_numbers.png %}){: style="max-width:30%;"}<br><br>
+1. In the Infobip console, go to **Channels and Numbers** and select **Numbers**.<br><br>![Infobip "Channels and Numbers" section with "Numbers" listed beneath.]({% image_buster /assets/img/whatsapp/infoblip_numbers.png %}){: style="max-width:30%;"}<br><br>
 
 2. Select **Buy Number** > the country where you want to send messages > **SMS**.<br><br>![Button to buy a number.]({% image_buster /assets/img/whatsapp/infoblip_buy.png %})<br><br>
 

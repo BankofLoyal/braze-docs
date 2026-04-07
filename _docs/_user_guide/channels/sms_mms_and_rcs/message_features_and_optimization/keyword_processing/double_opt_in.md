@@ -20,7 +20,7 @@ While not an explicit requirement of the Telephone Consumer Protection Act of 19
 
 ## Double opt-in workflows
 
-Double opt-in empowers you to obtain explict consent through inbound and outbound opt-in campaigns.
+Double opt-in empowers you to obtain explicit consent through inbound and outbound opt-in campaigns.
 
 ### Outbound
 

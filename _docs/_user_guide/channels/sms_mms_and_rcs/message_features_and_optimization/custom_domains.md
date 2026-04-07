@@ -33,7 +33,7 @@ Self-serve custom domains empower you to configure and manage your own custom do
 
 ## Delegating your custom domain
 
-We require you to delegate your custom domain to Braze so that we can faciliate proper routing and infrastructure compatibility with our link shortening and click tracking services. When you delegate your domain to Braze, we automatically handle the certificate renewal to prevent a lapse in service. 
+We require you to delegate your custom domain to Braze so that we can facilitate proper routing and infrastructure compatibility with our link shortening and click tracking services. When you delegate your domain to Braze, we automatically handle the certificate renewal to prevent a lapse in service. 
 
 ## Adding a custom domain
 

@@ -222,7 +222,7 @@ Refer to the following table for details on the `Button` editor block.
 |---|---|
 |Link Type| Determines the action when clicking the button and sets the appropriate protocol. |
 |URL| Dynamic based on the **Open web page** link type.|
-|Mail to, Subject, and Body| For the **Send email** link type, this sets the receipent email address, subject, and content that will populate in a draft email when the user selects the button.|
+|Mail to, Subject, and Body| For the **Send email** link type, this sets the recipient email address, subject, and content that will populate in a draft email when the user selects the button.|
 |Tel| For the **Make call** and **Send SMS** link type, this sets the phone number the user will call or text when selecting the button.|
 |Message| For the **Send SMS** link type, this sets the content that will populate in a draft SMS message when the user selects the button.|
 |Button options| Sets various button options, such as font, width, color, and others.|

@@ -14,7 +14,7 @@ Braze is proud to now offer [Retention Reports]({{site.baseurl}}/user_guide/anal
 ![Full Report]({% image_buster /assets/img/retention_report_full_report.png %})
 
 {% alert important %}
-As of January 13th, 2020 this feature is not yet available to our client deployed in our EU region or our HIPPA-compliant cluster. We will make this report available to those regions as we continue to deploy functionality across our entire platform.
+As of January 13th, 2020 this feature is not yet available to our client deployed in our EU region or our HIPAA-compliant cluster. We will make this report available to those regions as we continue to deploy functionality across our entire platform.
 {% endalert %}
 
 ## New email Content Block API endpoint

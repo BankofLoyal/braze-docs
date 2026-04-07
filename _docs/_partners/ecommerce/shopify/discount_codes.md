@@ -50,7 +50,7 @@ Then, upload your CSV file and select **Save List**.
 
 If you want to use your unique discount codes in a single-send campaign, or you don't mind users receiving multiple unique codes across different campaigns or Canvas steps, copy the code's Liquid snippet from the promotion codes list you saved.
 
-![A Liquid code snipppet with a button copy it.][4]{: style="max-width:60%;"}
+![A Liquid code snippet with a button copy it.][4]{: style="max-width:60%;"}
 
 Paste the Liquid snippet into a campaign or Canvas step. 
 

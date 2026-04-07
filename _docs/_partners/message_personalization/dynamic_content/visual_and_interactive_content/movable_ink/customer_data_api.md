@@ -103,7 +103,7 @@ Next, determine which users you want to target for this campaign. For details, r
 
 Make sure not to use A/B testing in your campaign by clearing the **Control Group** checkbox. If a control group is included, a percentage of users will not have data sent to Movable Ink. All of your audience should go to the variant rather than the control group.
 
-![A/B Testing panel in a Braze campaign with 100% variant distrubtion assigned to Variant 1, and no control group.]({% image_buster /assets/img/movable_ink/cd_api_webhook_ab.png %})
+![A/B Testing panel in a Braze campaign with 100% variant distribution assigned to Variant 1, and no control group.]({% image_buster /assets/img/movable_ink/cd_api_webhook_ab.png %})
 
 #### Step 2c: Choose conversion events (optional)
 

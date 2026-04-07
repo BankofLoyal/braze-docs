@@ -133,7 +133,7 @@ You can build a product message by using a WhatsApp template message or response
 {: start="5"}
 5. Select the [message type](#product-message-types) you'd like to use.
 
-![Mesage layout selection of "Multi-product".]({% image_buster /assets/img/whatsapp/multi-product_message_layout.png %}){: style="max-width:90%;"}
+![Message layout selection of "Multi-product".]({% image_buster /assets/img/whatsapp/multi-product_message_layout.png %}){: style="max-width:90%;"}
 
 {: start="6"}
 6. Continue building your message.
@@ -244,7 +244,7 @@ Use Liquid to build cart URLs directly in your response message. This is best if
 {% endtab %}
 {% tab Connected Content %}
 
-Make an API call to your eCommerce system to generate a personalized checkout URL. This is best if you needi dynamic cart URL generation or complex product mapping.
+Make an API call to your eCommerce system to generate a personalized checkout URL. This is best if you need dynamic cart URL generation or complex product mapping.
 
 #### Setup
 

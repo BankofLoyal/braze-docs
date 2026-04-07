@@ -663,7 +663,7 @@ You can use custom properties from your Banner campaign to retrieve key–value 
 
 - Send metadata for your third-party analytics or integrations.
 - Use metadata such as a `timestamp` or JSON object to trigger conditional logic.
-- Control the behavior of a banner based on included metadate like `ratio` or `format`.
+- Control the behavior of a banner based on included metadata like `ratio` or `format`.
 
 ### Prerequisites
 

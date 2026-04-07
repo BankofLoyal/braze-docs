@@ -21,7 +21,7 @@ Ads That Click to WhatsApp are an efficient way to bring both new and existing c
 
 1. In the Meta Ads Manager, create an ad on Facebook, Instagram, or other platforms by following the step-by-step guide [How to create Ads That Click to WhatsApp](https://business.whatsapp.com/products/create-ads-that-click-to-whatsapp). **Do not** set up automated responses; you will set up responses in Braze instead.
 
-![Ads Manager with a composer to create an engagment ad.]({% image_buster /assets/img/whatsapp/meta_ads_composer.png %})
+![Ads Manager with a composer to create an engagement ad.]({% image_buster /assets/img/whatsapp/meta_ads_composer.png %})
 
 When setting up the pre-filled message, which will be sent by the user to your WhatsApp Business Account, include a specific word or phrase that you’ll use to trigger a response specific to the particular ad. In this example, a food delivery app is using "free delivery" because that is promoted in their ad. 
 
