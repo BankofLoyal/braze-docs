@@ -17,9 +17,9 @@ An event object is an object that gets passed through the API when a specific ev
 
 For steps on how to set up custom events for a specific platform, refer to the Platform Integration Guide in the [Developer Guide]({{site.baseurl}}/developer_guide/home/). Refer to the relevant article based on your platform:
 
-- [Android]({{site.baseurl}}/developer_guide/platform_integration_guides/android/analytics/tracking_custom_events/)
-- [iOS]({{site.baseurl}}/developer_guide/platform_integration_guides/swift/analytics/tracking_custom_events/)
-- [Web]({{site.baseurl}}/developer_guide/platform_integration_guides/web/analytics/tracking_custom_events/)
+- [Android]({{site.baseurl}}/developer_guide/analytics/logging_events/?tab=android)
+- [iOS]({{site.baseurl}}/developer_guide/analytics/logging_events/?tab=swift)
+- [Web]({{site.baseurl}}/developer_guide/analytics/logging_events/?tab=web)
 
 ### Object body
 
@@ -45,6 +45,10 @@ For steps on how to set up custom events for a specific platform, refer to the P
 - [External user ID]({{site.baseurl}}/api/basics/#user-ids)
 - [App identifier]({{site.baseurl}}/api/identifier_types/)
 - [ISO 8601 time code](https://en.wikipedia.org/wiki/ISO_8601)
+
+{% alert note %}
+Some identifier pairs can't be used together in a single request. When both `email` and `phone` are provided, `email` takes precedence over `phone`. For full details, refer to [Identifier resolution]({{site.baseurl}}/api/objects_filters/user_attributes_object/#identifier-resolution).
+{% endalert %}
 
 #### Update existing profiles only
 
@@ -85,7 +89,7 @@ Using reserved keys as custom event property names will result in API errors whe
 
 ### Event property persistence
 
-Event properties are designed for filtering of, and Liquid personalization in, messages triggered by their parent events. By default, they are not persisted on the Braze user profile. To use event property values in segmentation, refer to [custom events]({{site.baseurl}}/user_guide/data_and_analytics/custom_data/custom_events/), which details the various approaches to storing event property values long-term.
+Event properties are designed for filtering of, and Liquid personalization in, messages triggered by their parent events. By default, they are not persisted on the Braze user profile. To use event property values in segmentation, refer to [custom events]({{site.baseurl}}/user_guide/data/activation/events/custom_events/), which details the various approaches to storing event property values long-term.
 
 #### Event example request
 

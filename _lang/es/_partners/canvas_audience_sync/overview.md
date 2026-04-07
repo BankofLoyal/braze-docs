@@ -13,16 +13,16 @@ Tool:
 
 > La característica Braze Audience Sync te ayuda a ampliar el alcance de tus campañas a muchas de las principales tecnologías sociales y publicitarias. A través de [Braze Canvas]({{site.baseurl}}/user_guide/engagement_tools/canvas), las marcas pueden sincronizar de forma dinámica y segura datos de usuarios de primera mano en el ecosistema publicitario para impulsar el marketing y la eficiencia operativa.
 
-## Disponibilidad de características
+## Disponibilidad de la característica
 
-Todos los clientes de Braze tendrán acceso inmediato a la Sincronización de Audiencias con Google y Facebook. Para desbloquear destinos adicionales de Audience Sync, como TikTok, Pinterest, Snapchat o Criteo, tendrás que comprar Audience Sync Pro. Póngase en contacto con su gestor de cuentas Braze para obtener más información.
+Todos los clientes de Braze tienen acceso inmediato a Audience Sync con Google y Facebook, pero los clientes que utilizan créditos de mensajes pueden acceder a todos los socios de Audience Sync. Para desbloquear destinos adicionales de Audience Sync, compra Audience Sync Pro. Ponte en contacto con tu director de cuentas de Braze para obtener más información.
 
-## Ejemplos
+## Casos de uso
 
 - Dirigirse a usuarios de alto valor utilizando canales propios y de pago para aumentar las compras o la interacción.
-- Creación de audiencias similares de sus usuarios de alto valor para optimizar los costes de adquisición de nuevos usuarios y las conversiones.
-- Reorientar a los usuarios con anuncios que son menos receptivos a otros canales de marketing.
-- Crear audiencias de supresión para evitar que los usuarios reciban anuncios cuando ya son consumidores fieles de su marca.
+- Crear audiencias similares de tus usuarios de alto valor para optimizar los costos de adquisición de nuevos usuarios y las conversiones.
+- Reorientar con anuncios a los usuarios que son menos receptivos a otros canales de marketing.
+- Crear audiencias de supresión para evitar que los usuarios reciban anuncios cuando ya son consumidores fieles de tu marca.
 
 ## Resumen
 
@@ -36,8 +36,8 @@ table td {
 | --- | --- | --- | --- | --- |
 | [Criteo]({{site.baseurl}}/partners/canvas_audience_sync/criteo_audience_sync/) | Hasta 24 horas | 250.000 solicitudes por minuto. Por lotes cada 5 segundos con un reintento automático basado en la respuesta de Google. | Sí | {::nomarkdown}<ul><li>Criteo admite hasta 1.000 audiencias de anuncios.</li><li>La audiencia mínima es de 500 personas, y la recomendada es de más de 20.000.</li></ul>{:/} |
 | [Facebook o Instagram]({{site.baseurl}}/partners/canvas_audience_sync/facebook_audience_sync/) | Hasta 24 horas | 190.000 cuentas de anuncios por hora | Sí | {::nomarkdown}<ul><li>Facebook admite hasta 500 audiencias de anuncios.</li><li>Facebook requiere audiencias de al menos 1.000 usuarios.</li></ul>{:/} |
-| [Google Ads o YouTube]({{site.baseurl}}/partners/canvas_audience_sync/google_audience_sync/) | Entre 6 y 12 horas | Por lotes cada 5 segundos con un auto-reintento basado en la respuesta de Google | No | {::nomarkdown}<ul><li><b>A juego con el cliente:</b> Utiliza el anuncio del móvil, la dirección de correo electrónico o el número de teléfono.</li><li>Google Audience requiere al menos 5.000 usuarios para empezar a publicar anuncios.</li><li>El tamaño de la audiencia se mostrará como cero hasta que haya al menos 1.000 usuarios.</li></ul>{:/} |
-| [LinkedIn]({{site.baseurl}}/partners/canvas_audience_sync/linkedin_audience_sync/) | 48 horas | LinkedIn procesa 10 consultas por segundo y 100.000 usuarios por solicitud. Braze agrupa a los usuarios cada 5 segundos. | Audiencias predictivas con IA | {::nomarkdown}<ul><li>El tamaño mínimo de la audiencia es de 300 miembros, teniendo en cuenta la ubicación.</li><li>LinkedIn muestra la tasa en el panel de Braze.</li></ul>{:/} |
+| [Google Ads o YouTube]({{site.baseurl}}/partners/canvas_audience_sync/google_audience_sync/) | Entre 6 y 12 horas | Por lotes cada 5 segundos con un reintento automático basado en la respuesta de Google | No | {::nomarkdown}<ul><li><b>Coincidencia de clientes:</b> Utiliza el anuncio del móvil, la dirección de correo electrónico o el número de teléfono.</li><li>Google Audience requiere al menos 5.000 usuarios para empezar a publicar anuncios.</li><li>El tamaño de la audiencia se mostrará como cero hasta que haya al menos 1.000 usuarios.</li></ul>{:/} |
+| [LinkedIn]({{site.baseurl}}/partners/canvas_audience_sync/linkedin_audience_sync/) | 48 horas | LinkedIn procesa 10 consultas por segundo y 100.000 usuarios por solicitud. Braze agrupa a los usuarios cada 5 segundos. | Audiencias predictivas con IA | {::nomarkdown}<ul><li>El tamaño mínimo de la audiencia es de 300 miembros, teniendo en cuenta la segmentación por ubicación.</li><li>LinkedIn muestra la tasa de coincidencia en el dashboard de Braze.</li></ul>{:/} |
 | [Pinterest]({{site.baseurl}}/partners/canvas_audience_sync/pinterest_audience_sync/) | Entre 24 y 48 horas | Pinterest procesa 7 consultas por segundo y 1.900 usuarios por solicitud. Braze agrupa a los usuarios cada 5 segundos. | Sí | Las audiencias de Pinterest requieren al menos 100 usuarios. |
 | [Snapchat]({{site.baseurl}}/partners/canvas_audience_sync/snapchat_audience_sync/) | N/A | Snapchat procesa 10 consultas por segundo y 100.000 usuarios por solicitud. Braze agrupa a los usuarios cada 5 segundos. | Sí | Snapchat admite hasta 1.000 audiencias de anuncios. |
 | [TikTok]({{site.baseurl}}/partners/canvas_audience_sync/tiktok_audience_sync/) | Entre 24 y 48 horas | TikTok procesa 50 consultas por segundo y 10.000 usuarios por solicitud. Braze agrupa a los usuarios cada 5 segundos. | Sí | {::nomarkdown}<ul><li>TikTok admite hasta 400 audiencias de anuncios.</li><li>Las audiencias de TikTok requieren al menos 1.000 usuarios para empezar a mostrar anuncios.</li></ul>{:/} |
@@ -50,24 +50,24 @@ Para utilizar Audience Sync con Google o Facebook, conecta tu cuenta de anuncios
 
 ![Socio tecnológico de Facebook.]({% image_buster /assets/img/audience_sync/facebook_partner.png %}){: style="max-width:35%;"} ![Socio tecnológico de Google Ads.]({% image_buster /assets/img/audience_sync/google_ads_partner.png %}){: style="max-width:35%;"}
 
-Después de conectar tu cuenta publicitaria, puedes crear un Canvas con un paso en Canvas de Sincronización de audiencia.
+Después de conectar tu cuenta publicitaria, puedes crear un Canvas con un paso de Audience Sync.
 
-![Menú del componente Canvas para añadir el paso Sincronizar audiencia al recorrido del usuario.]({% image_buster /assets/img/audience_sync/audience_sync7.png %}){: style="max-width:75%;"}
+![Menú del componente Canvas para añadir el paso Audience Sync al recorrido del usuario.]({% image_buster /assets/img/audience_sync/audience_sync7.png %}){: style="max-width:75%;"}
 
 A continuación, selecciona el socio para sincronizar audiencias.
 
-![Opción para seleccionar tu socio de sincronización de audiencia en el paso Sincronización de audiencia.]({% image_buster /assets/img/audience_sync/audience_sync4.png %}){: style="max-width:85%;"}
+![Opción para seleccionar tu socio de sincronización de audiencia en el paso Audience Sync.]({% image_buster /assets/img/audience_sync/audience_sync4.png %}){: style="max-width:85%;"}
 
-Para cada socio, tendrás que configurar lo siguiente como parte del paso de sincronización de audiencias: 
+Para cada socio, tendrás que configurar lo siguiente como parte del paso de Audience Sync: 
 
 - Cuenta publicitaria
 - Audiencia 
 - Acción de añadir o eliminar usuarios 
 - Campos que deben coincidir 
 
-Tenga en cuenta que Braze sincronizará a los usuarios en cuanto entren en el paso Sincronización de público dentro de su Canvas. 
+Ten en cuenta que Braze sincronizará a los usuarios en cuanto entren en el paso de Audience Sync dentro de tu Canvas. 
 
-Para cada destino de la Sincronización de Audiencias, el socio puede tener diferentes requisitos sobre los campos que podemos enviar. Consulta la documentación específica del socio para más detalles. 
+Para cada destino de Audience Sync, el socio puede tener diferentes requisitos sobre los campos que podemos enviar. Consulta la documentación específica del socio para más detalles. 
 
 ### Audience Sync Pro
 
@@ -75,35 +75,35 @@ Para utilizar un socio de Audience Sync Pro, como TikTok, Pinterest, Snapchat o 
 
 ![Audience Sync Pro sin socios seleccionados todavía.]({% image_buster /assets/img/audience_sync/audience_sync_pro1.png %}){: style="max-width:75%;"}
 
-Primero, selecciona los socios que pretendes utilizar seleccionando Seleccionar socios. Cada compra de Audience Sync Pro te proporcionará 3 destinos asignados de Audience Sync Pro, que estarán disponibles en cada uno de tus espacios de trabajo dentro de tu panel.
+Primero, selecciona los socios que pretendes utilizar seleccionando Seleccionar socios. Cada compra de Audience Sync Pro te proporcionará 3 destinos asignados de Audience Sync Pro, que estarán disponibles en cada uno de tus espacios de trabajo dentro de tu dashboard.
 
 ![Opción de seleccionar hasta tres socios para conectarse a Braze.]({% image_buster /assets/img/audience_sync/audience_sync_pro2.png %}){: style="max-width:65%;"}
 
-Después de seleccionar tus destinos de Audience Sync Pro, conecta la cuenta de publicidad de tu socio seleccionado haciendo clic en el mosaico de socios.
+Después de seleccionar tus destinos de Audience Sync Pro, conecta la cuenta publicitaria de tu socio seleccionado haciendo clic en el mosaico del socio.
 
 ![Un ejemplo de Snapchat y TikTok seleccionados como socios para Audience Sync.]({% image_buster /assets/img/audience_sync/audience_sync_pro3a.png %}){: style="max-width:70%;"}
 
-![Audiencia de Snapchat Sincroniza la configuración con el mensaje: "Has conectado correctamente 1 cuenta de Snapchat".]({% image_buster /assets/img/audience_sync/audience_sync_pro4.png %}){: style="max-width:70%;"}
+![Configuración de Audience Sync de Snapchat con el mensaje: "Has conectado correctamente 1 cuenta de Snapchat".]({% image_buster /assets/img/audience_sync/audience_sync_pro4.png %}){: style="max-width:70%;"}
 
-Por último, crea tu paso en Canvas para la Sincronización de Audiencias utilizando este destino de Audience Sync Pro.
+Por último, crea tu paso de Audience Sync en Canvas utilizando este destino de Audience Sync Pro.
 
-### Correos electrónicos de error de Sincronización de Audiencias
+### Correos electrónicos de error de Audience Sync
 
-Si el error está relacionado con la integración del socio en general (como un problema de autorización), se envía un correo electrónico al usuario que conectó la integración. Si ese usuario ya no existe, los administradores recibirán los correos electrónicos. 
+Si el error está relacionado con la integración general del socio (como un problema de autorización), se envía un correo electrónico al usuario que conectó la integración. Si ese usuario ya no existe, los administradores recibirán los correos electrónicos. 
 
-Si el error está relacionado con problemas con el componente Sincronización de audiencia (como "La audiencia no existe") en Canvas, se envía un correo electrónico al usuario que configuró el Canvas. Si ese usuario ya no existe, entonces recae en el administrador de la empresa.
+Si el error está relacionado con problemas con el componente de Audience Sync (como "La audiencia no existe") en Canvas, se envía un correo electrónico al usuario que configuró el Canvas. Si ese usuario ya no existe, entonces recae en el administrador de la empresa.
 
-Para configurar quién recibirá estos correos electrónicos, ponte en contacto con tu administrador del éxito del cliente para añadir destinatarios en **Preferencias de notificación**. Dado que esta característica cambiará el comportamiento actual, tendrás que añadir inmediatamente destinatarios a esta nueva preferencia de notificación, ya que Braze no da la adhesión voluntaria a nadie de forma predeterminada, y para asegurarte de que no se pierda ningún correo electrónico de error.
+Para configurar quién recibirá estos correos electrónicos, ponte en contacto con tu administrador del éxito del cliente para añadir destinatarios en **Preferencias de notificación**. Dado que esta característica cambiará el comportamiento actual, tendrás que añadir inmediatamente destinatarios a esta nueva preferencia de notificación, ya que Braze no incluye a nadie de forma predeterminada mediante adhesión voluntaria, para asegurarte de que no se pierda ningún correo electrónico de error.
 
-## Consideraciones sobre la privacidad de los datos
+## Consideraciones sobre la privacidad de datos
 
 {% alert important %}
-Esta documentación no pretende ofrecer asesoramiento jurídico ni puede considerarse como tal. El uso de Audience Sync está sujeto a requisitos legales específicos. Para asegurarse de que lo utiliza de conformidad con la legislación vigente, consulte a su asesor jurídico.
+Esta documentación no pretende ofrecer asesoramiento jurídico ni puede considerarse como tal. El uso de Audience Sync está sujeto a requisitos legales específicos. Para asegurarte de que lo utilizas de conformidad con la legislación vigente, consulta a tu asesor jurídico.
 {% endalert %}
 
-Al crear audiencias para el seguimiento de anuncios, es posible que desee incluir o excluir a determinados usuarios en función de sus preferencias y para cumplir con las leyes de privacidad, como el derecho de "No vender ni compartir" en virtud de la [CCPA](https://oag.ca.gov/privacy/ccpa). Los vendedores deben implementar los filtros pertinentes para la elegibilidad de los usuarios dentro de sus criterios de entrada en Canvas. A continuación enumeramos algunas opciones.
+Al crear audiencias para el seguimiento de anuncios, es posible que desees incluir o excluir a determinados usuarios en función de sus preferencias y para cumplir con las leyes de privacidad, como el derecho de "No vender ni compartir" en virtud de la [CCPA](https://oag.ca.gov/privacy/ccpa). Los especialistas en marketing deben implementar los filtros pertinentes para la elegibilidad de los usuarios dentro de sus criterios de entrada en Canvas. A continuación enumeramos algunas opciones.
 
-Si has recogido el [IDFA de iOS a través del SDK de Braze]({{site.baseurl}}/developer_guide/platform_integration_guides/ios/initial_sdk_setup/other_sdk_customizations/#optional-idfa-collection), podrás utilizar el filtro "Seguimiento de anuncios habilitado". Selecciona el valor como `true` para enviar sólo a los usuarios a los destinos de Audience Sync en los que hayan optado por la adhesión voluntaria.
+Si has recopilado el [IDFA de iOS a través del SDK de Braze]({{site.baseurl}}/developer_guide/platform_integration_guides/ios/initial_sdk_setup/other_sdk_customizations/#optional-idfa-collection), podrás utilizar el filtro "Seguimiento de anuncios habilitado". Selecciona el valor como `true` para enviar solo a los usuarios a los destinos de Audience Sync en los que hayan optado por la adhesión voluntaria.
 
 ![Un Canvas con una audiencia de entrada de "El seguimiento de anuncios habilitado es verdadero".]({% image_buster /assets/img/audience_sync/audience_sync2.png %})
 
@@ -111,14 +111,12 @@ Si estás recopilando `opt-ins`, `opt-outs`, `Do Not Sell Or Share`, o cualquier
 
 ![Un Canvas con una audiencia de entrada de "opted_in_marketing es igual a verdadero".]({% image_buster /assets/img/audience_sync/audience_sync.png %})
 
-Para saber más sobre cómo cumplir estas leyes de Protección de Datos dentro de la plataforma Braze, consulta la [Asistencia Técnica sobre Protección de Datos]({{site.baseurl}}/dp-technical-assistance/).
+Para saber más sobre cómo cumplir estas leyes de protección de datos dentro de la plataforma Braze, consulta la [Asistencia técnica sobre protección de datos]({{site.baseurl}}/dp-technical-assistance/).
 
 ## Gestión del consentimiento para la segmentación publicitaria
 
 Como anunciante, es tu responsabilidad gestionar el consentimiento para el seguimiento de anuncios o la segmentación de tus usuarios.
 
-Para enviar anuncios a tus usuarios, debes cumplir todas las leyes y normativas aplicables, así como las políticas y requisitos de la plataforma publicitaria. Utiliza Braze sólo para segmentar y sincronizar usuarios cuando hayas obtenido su consentimiento. 
+Para enviar anuncios a tus usuarios, debes cumplir todas las leyes y normativas aplicables, así como las políticas y requisitos de la plataforma publicitaria. Utiliza Braze solo para segmentar y sincronizar usuarios cuando hayas obtenido su consentimiento. 
 
-Para mantener actualizadas tus listas de audiencia en estas plataformas publicitarias y eliminar a los usuarios que hayan revocado su consentimiento, configura un Canvas para eliminar a los usuarios de estas listas de audiencia existentes mediante un paso en Canvas de Sincronización de audiencias.
-
-
+Para mantener actualizadas tus listas de audiencia en estas plataformas publicitarias y eliminar a los usuarios que hayan revocado su consentimiento, configura un Canvas para eliminar a los usuarios de estas listas de audiencia existentes mediante un paso de Audience Sync.

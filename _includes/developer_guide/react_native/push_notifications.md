@@ -140,17 +140,63 @@ To enable Braze to handle deep links inside React components when a push notific
 
 To learn more about what deep links are, see our [FAQ article]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/deep_linking_to_in-app_content/#what-is-deep-linking).
 
+{% alert important %}
+If you're migrating an existing React Native push integration, re-test deep linking after you upgrade the Braze SDK, React Native, Expo, or related libraries. Confirm that:
+- [React Native Linking](https://reactnative.dev/docs/linking) is still configured and handling your deep link URLs.
+- Your iOS initial push payload handling (see [Step 3.1: Store the push notification payload on app launch](#step-3-1)) is implemented and still called on app launch.
+- Any native delegate or listener methods you use to handle push click events are still registered and invoked as expected.
+{% endalert %}
+
 {% tabs local %}
 {% tab Android Native %}
 If you're using the [Braze Expo plugin]({{site.baseurl}}/developer_guide/platforms/react_native/sdk_integration/?tab=expo#step-2-choose-a-setup-option), you can handle push notification deep links automatically by setting `androidHandlePushDeepLinksAutomatically` to `true` in your `app.json`.
 
 To handle deep links manually instead, refer to the native Android documentation: [Adding deep links]({{site.baseurl}}/developer_guide/push_notifications/deep_linking).
 
+#### Step 3.1: Store the push notification payload on app launch
+
+{% alert note %}
+This is supported as of React Native SDK 19.1.0.
+{% endalert %}
+
+Add `populateInitialPushPayloadFromIntent` to your main activity's `onCreate()` method. This must be called before React Native initializes to capture the initial Intent data. For example:
+
+```kotlin
+override fun onCreate(savedInstanceState: Bundle?) {
+  BrazeReactUtils.populateInitialPushPayloadFromIntent(intent)
+  super.onCreate(savedInstanceState)
+}
+```
+
+#### Step 3.2: Handle deep links from a closed state
+
+In addition to the base scenarios handled by [React Native Linking](https://reactnative.dev/docs/linking), implement the `Braze.getInitialPushPayload` method and retrieve the `url` value to account for deep links from push notifications that open your app when it isn't running. For example:
+
+```javascript
+// Handles deep links when an app is launched from a hard close via push click.
+Braze.getInitialPushPayload(pushPayload => {
+  if (pushPayload) {
+    console.log('Braze.getInitialPushPayload is ' + pushPayload);
+    showToast('Initial URL is ' + pushPayload.url);
+    handleOpenUrl({ pushPayload.url });
+  }
+});
+```
+{% alert note %}
+This method requires the native setup in Step 3.1 for your platform. If you're using the Braze Expo plugin, this may be handled automatically.
+{% endalert %}
+
 {% endtab %}
 {% tab iOS Native %}
-#### Step 3.1: Store the push notification payload on app launch
+
+{% alert important %}
+To handle deep links from push notifications on iOS, you must also configure link handling in your native iOS layer.
+{% endalert %}
+
+This includes registering a custom URL scheme and implementing a URL handler in your `AppDelegate`. For full setup instructions, see [Handling deep links]({{site.baseurl}}/developer_guide/platforms/swift/in_app_messages/deep_linking/?tab=objective-c) in the native iOS documentation.
+#### Step 3.1: Store the push notification payload on app launch {#step-3-1}
 {% alert note %}
-Skip step 3.1 if you're using the Braze Expo plugin, as this is functionality is handled automatically.
+Skip step 3.1 if you're using the Braze Expo plugin, as this functionality is handled automatically.
 {% endalert %}
 
 For iOS, add `populateInitialPayloadFromLaunchOptions` to your AppDelegate's `didFinishLaunchingWithOptions` method. For example:
@@ -202,8 +248,7 @@ func application(
 In addition to the base scenarios handled by [React Native Linking](https://reactnative.dev/docs/linking), implement the `Braze.getInitialPushPayload` method and retrieve the `url` value to account for deep links from push notifications that open your app when it isn't running. For example:
 
 ```javascript
-// Handles deep links when an iOS app is launched from a hard close via push click.
-// This edge case is not handled in the React Native Linking library and is provided as a workaround by Braze.
+// Handles deep links when an app is launched from a hard close via push click.
 Braze.getInitialPushPayload(pushPayload => {
   if (pushPayload) {
     console.log('Braze.getInitialPushPayload is ' + pushPayload);
@@ -213,7 +258,7 @@ Braze.getInitialPushPayload(pushPayload => {
 });
 ```
 {% alert note %}
-Braze provides this workaround since React Native's Linking API does not support this scenario due to a race condition on app startup.
+This method requires the native setup in Step 3.1 for your platform. If you're using the Braze Expo plugin, this may be handled automatically.
 {% endalert %}
 
 #### Step 3.3: Enable Universal Links (optional)
@@ -475,3 +520,14 @@ For iOS integrations, you can also reference our [push notification setup tutori
 If your device token won't register with Braze, first review [Push notifications stopped working](#troubleshooting-stopped-working).
 
 If your issue persists, there may be a separate dependency interfering with your Braze push notification configuration. You can try removing it or manually call `Braze.registerPushToken` instead.
+
+#### Deep links from push notifications don't open {#troubleshooting-deep-links}
+
+If deep links from push notifications stop opening after a migration, check the following:
+
+1. Verify your [React Native Linking](https://reactnative.dev/docs/linking) setup is still valid in your upgraded app.
+2. For iOS native integrations, confirm you implemented `populateInitialPayloadFromLaunchOptions` and `Braze.getInitialPushPayload` so that, when the app is launched from a terminated state, it can retrieve the initial push payload and pass its `url` into your deep link handler.
+3. If you're using the Braze Expo plugin, verify `androidHandlePushDeepLinksAutomatically` is set correctly for your implementation.
+4. Review recently added dependencies for overrides to notification handling or app delegate behavior.
+
+If you've completed these checks and the issue persists, [open a support ticket]({{site.baseurl}}/user_guide/administrative/access_braze/support/) and include SDK logs plus reproduction steps.
