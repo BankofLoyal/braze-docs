@@ -25,7 +25,7 @@ description: "This article provides an overview of multi-language settings in th
 
 {: start="3"}
 3. Enter a name for the locale.
-4. [Select a language for accessibility]({{site.baseurl}}/user_guide/engagement_tools/messaging_fundamentals/localization/locales/#language-settings-and-accessibility). This setting allows assistive technologies like screen readers to correctly pronounce text.
+4. [Select a language for accessibility]({{site.baseurl}}/user_guide/messaging/messaging_fundamentals/localization/locales_in_messages/#language-settings-and-accessibility). This setting allows assistive technologies like screen readers to correctly pronounce text.
 5. Select the respective user attributes for your chosen locale option. When setting up a locale, you can either select languages from the default user attributes or custom attributes. You can't select from both.
 
 {% tabs %}

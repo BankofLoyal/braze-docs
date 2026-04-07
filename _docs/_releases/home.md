@@ -48,7 +48,7 @@ Cloud Data Ingestion (CDI) has a new design that separates sources and syncs, so
 
 {% multi_lang_include release_type.md release="General availability" %}
 
-After adding locales to your workspace, use [multi-language translations]({{site.baseurl}}/user_guide/messaging/messaging_fundamentals/localization/locales/) to target users in different languages all within a single push, email, Banner, in-app message, or Content Block.
+After adding locales to your workspace, use [multi-language translations]({{site.baseurl}}/user_guide/messaging/messaging_fundamentals/localization/locales_in_messages/) to target users in different languages all within a single push, email, Banner, in-app message, or Content Block.
 
 ![Locale previews]({% image_buster /assets/img/multi-language_support/multi_language_user_preview.png %}){: style="max-width:70%;"}
 

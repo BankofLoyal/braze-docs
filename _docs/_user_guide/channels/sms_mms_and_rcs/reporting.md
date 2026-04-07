@@ -26,7 +26,7 @@ You can track SMS opt-ins and opt-outs with the following methods:
 
 | Method | Description |
 |--------|-------------|
-| Segmenter | The segmenter displays the number of users in a specific [Subscription Group]({{site.baseurl}}/user_guide/engagement_tools/segments/segmentation_filters#subscription-group). It does not deduplicate by phone number—if multiple users share the same phone number, each instance is counted separately. |
+| Segmenter | The segmenter displays the number of users in a specific [Subscription Group]({{site.baseurl}}/user_guide/audience/segments/segmentation_filters/#subscription-group). It does not deduplicate by phone number—if multiple users share the same phone number, each instance is counted separately. |
 | Subscription group timeseries | Provides a daily snapshot of subscriptions for email and phone numbers. The timeseries counts subscriptions, unsubscribes, and resubscribes. For example, if a user subscribes, unsubscribes, and then resubscribes, they are counted as one subscribed user. |
 | Currents | Use Currents to export [subscription and engagement events]({{site.baseurl}}/message_events_glossary/) for your own reporting. |
 {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
@@ -37,7 +37,7 @@ The _Opt-In_ and _Opt-Out_ statistics in the **SMS/MMS/RCS Performance** panel r
 
 ### Track SMS campaign opt-outs
 
-Track SMS opt-outs at the campaign level by using the inbound receive table instead of the subscription group state change table. For example, in [Query Builder]({{site.baseurl}}/user_guide/analytics/query_builder/) or your data warehouse, you can run a query that references the `USERS_MESSAGES_SMS_INBOUNDRECEIVE` or [`USERS_MESSAGES_SMS_INBOUNDRECEIVE_SHARED`]({{site.baseurl}}/user_guide/engagement_tools/segments/segment_extension/sql_segments/sql_segments_tables/#USERS_MESSAGES_SMS_INBOUNDRECEIVE_SHARED) table.
+Track SMS opt-outs at the campaign level by using the inbound receive table instead of the subscription group state change table. For example, in [Query Builder]({{site.baseurl}}/user_guide/analytics/query_builder/) or your data warehouse, you can run a query that references the `USERS_MESSAGES_SMS_INBOUNDRECEIVE` or [`USERS_MESSAGES_SMS_INBOUNDRECEIVE_SHARED`]({{site.baseurl}}/user_guide/audience/segments/segment_extension/sql_segments/sql_segments_tables/#USERS_MESSAGES_SMS_INBOUNDRECEIVE_SHARED) table.
 
 This example query references the `USERS_MESSAGES_SMS_INBOUNDRECEIVE` table:
 

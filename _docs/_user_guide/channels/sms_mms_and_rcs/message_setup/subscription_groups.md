@@ -46,7 +46,7 @@ To set a user's subscription group state, use one of the following methods:
 
 #### Update a user's state in a Canvas
 
-When updating a user's subscription group status as part of a Canvas flow, use a [User Update]({{site.baseurl}}/user_guide/engagement_tools/canvas/canvas_components/user_update/) step instead of a webhook. The User Update step waits for processing to complete before advancing the user to the next step, so subsequent messaging steps use the updated subscription status.
+When updating a user's subscription group status as part of a Canvas flow, use a [User Update]({{site.baseurl}}/user_guide/messaging/canvas/canvas_components/user_update/) step instead of a webhook. The User Update step waits for processing to complete before advancing the user to the next step, so subsequent messaging steps use the updated subscription status.
 
 If you use a webhook to update subscription groups, the user advances as soon as the webhook is sent—not when the subscription change finishes processing. This can create a race condition where a follow-up SMS step executes before the user is subscribed, causing the message to fail for a portion of users. If you must use a webhook, add a Delay step of at least 1 minute before the next messaging step.
 

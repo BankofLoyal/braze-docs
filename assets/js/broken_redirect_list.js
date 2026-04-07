@@ -3795,7 +3795,7 @@ validurls['/docs/user_guide/engagement_tools/messaging_fundamentals/localization
 validurls['/docs/user_guide/engagement_tools/messaging_fundamentals/localization/locales/'] = '/docs/user_guide/messaging/messaging_fundamentals/localization/locales_in_messages/';
 validurls['/docs/user_guide/engagement_tools/messaging_fundamentals/localization/right_to_left_messages/'] = '/docs/user_guide/messaging/messaging_fundamentals/localization/right_to_left_messages/';
 validurls['/docs/user_guide/engagement_tools/messaging_fundamentals/product_blocks/'] = '/docs/user_guide/messaging/design_and_edit/product_blocks/';
-validurls['/docs/user_guide/engagement_tools/canvas/create_a_canvas/rate_limiting/'] = '/docs/user_guide/messaging/messaging_fundamentals/rate_limiting/';
+validurls['/docs/user_guide/engagement_tools/canvas/create_a_canvas/rate_limiting/'] = '/docs/user_guide/messaging/messaging_fundamentals/frequency_capping/#rate-limiting-and-canvas-components';
 validurls['/docs/user_guide/engagement_tools/messaging_fundamentals/reeligibility/'] = '/docs/user_guide/messaging/messaging_fundamentals/re_eligibility/';
 validurls['/docs/user_guide/engagement_tools/messaging_fundamentals/about_statuses/'] = '/docs/user_guide/messaging/governance/statuses/';
 validurls['/docs/user_guide/messaging/messaging_fundamentals/statuses/'] = '/docs/user_guide/messaging/governance/statuses/';
@@ -4284,8 +4284,8 @@ validurls['/docs/user_guide/message_building_by_channel/in-app_messages/traditio
 validurls['/docs/user_guide/message_building_by_channel/in-app_messages/traditional/customize/color_profiles_and_css/'] = '/docs/user_guide/channels/in_app_messages/customize/color_profiles_and_css_templates/';
 validurls['/docs/user_guide/message_building_by_channel/in-app_messages/traditional/customize/video'] = '/docs/user_guide/channels/in_app_messages/customize/video_in_custom_html';
 validurls['/docs/user_guide/message_building_by_channel/in-app_messages/traditional/customize/video/'] = '/docs/user_guide/channels/in_app_messages/customize/video_in_custom_html/';
-validurls['/docs/user_guide/message_building_by_channel/in-app_messages/traditional/templates'] = '/docs/user_guide/channels/in_app_messages/templates';
-validurls['/docs/user_guide/message_building_by_channel/in-app_messages/traditional/templates/'] = '/docs/user_guide/channels/in_app_messages/templates/';
+validurls['/docs/user_guide/message_building_by_channel/in-app_messages/traditional/templates'] = '/docs/user_guide/messaging/templates/in_app_message_templates/';
+validurls['/docs/user_guide/message_building_by_channel/in-app_messages/traditional/templates/'] = '/docs/user_guide/messaging/templates/in_app_message_templates/';
 validurls['/docs/user_guide/message_building_by_channel/in-app_messages/reporting'] = '/docs/user_guide/channels/in_app_messages/reporting';
 validurls['/docs/user_guide/message_building_by_channel/in-app_messages/reporting/'] = '/docs/user_guide/channels/in_app_messages/reporting/';
 validurls['/docs/user_guide/message_building_by_channel/in-app_messages/best_practices'] = '/docs/user_guide/channels/in_app_messages/best_practices';
@@ -4304,8 +4304,8 @@ validurls['/docs/user_guide/message_building_by_channel/in-app_messages/creative
 validurls['/docs/user_guide/message_building_by_channel/in-app_messages/creative_details/'] = '/docs/user_guide/channels/in_app_messages/message_types/';
 validurls['/docs/user_guide/message_building_by_channel/in-app_messages/drag_and_drop'] = '/docs/user_guide/channels/in_app_messages/drag_and_drop';
 validurls['/docs/user_guide/message_building_by_channel/in-app_messages/drag_and_drop/'] = '/docs/user_guide/channels/in_app_messages/drag_and_drop/';
-validurls['/docs/user_guide/message_building_by_channel/in-app_messages/drag_and_drop/editor_blocks'] = '/docs/user_guide/channels/in_app_messages/drag_and_drop/editor_blocks';
-validurls['/docs/user_guide/message_building_by_channel/in-app_messages/drag_and_drop/editor_blocks/'] = '/docs/user_guide/channels/in_app_messages/drag_and_drop/editor_blocks/';
+validurls['/docs/user_guide/message_building_by_channel/in-app_messages/drag_and_drop/editor_blocks'] = '/docs/user_guide/messaging/design_and_edit/editor_blocks/';
+validurls['/docs/user_guide/message_building_by_channel/in-app_messages/drag_and_drop/editor_blocks/'] = '/docs/user_guide/messaging/design_and_edit/editor_blocks/';
 validurls['/docs/user_guide/message_building_by_channel/in-app_messages/traditional'] = '/docs/user_guide/channels/in_app_messages/traditional';
 validurls['/docs/user_guide/message_building_by_channel/in-app_messages/traditional/'] = '/docs/user_guide/channels/in_app_messages/traditional/';
 validurls['/docs/user_guide/message_building_by_channel/in-app_messages/traditional/create'] = '/docs/user_guide/channels/in_app_messages/traditional';

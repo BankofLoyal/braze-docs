@@ -43,7 +43,7 @@ description: "This article provides steps on how to use locales in your messages
 
 ### Step 1: Set up locales
 
-Before you can add translations to a message, you must first [create the locales you want to support]({{site.baseurl}}/user_guide/administrative/app_settings/multi_language_settings/). Locales define the language (and optionally region) variants available for messaging. 
+Before you can add translations to a message, you must first [create the locales you want to support]({{site.baseurl}}/user_guide/administer/global/workspace_settings/multi_language_settings/). Locales define the language (and optionally region) variants available for messaging. 
 
 ### Step 2: Mark content for translation
 
@@ -193,7 +193,7 @@ When filling in the translation file for languages that are written from right-t
 
 ### Email link tracking
 
-In email campaigns, Braze tracks links by adding tracking information (query parameters) to each URL. This behavior supports both [link aliasing]({{site.baseurl}}/user_guide/message_building_by_channel/email/templates/link_aliasing/) and [link templating]({{site.baseurl}}/user_guide/message_building_by_channel/email/templates/link_template).
+In email campaigns, Braze tracks links by adding tracking information (query parameters) to each URL. This behavior supports both [link aliasing]({{site.baseurl}}/user_guide/messaging/templates/email_templates/link_aliasing/) and [link templating]({{site.baseurl}}/user_guide/messaging/templates/email_templates/link_template/).
 
 When a URL is wrapped in translation tags, Braze may not be able to determine where to add this tracking information. To ensure this works correctly, you must include a special character at the end of the URL to indicate where tracking should be added.
 

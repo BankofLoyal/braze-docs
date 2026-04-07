@@ -185,5 +185,5 @@ No. Each part of the email (subject, body, headers, buttons, and so on) is gener
 
 Go to **Templates** > **Email Templates**. You can filter by type (HTML or drag-and-drop).
 
-Confirm you have permission to view templates—see [User permissions]({{site.baseurl}}/user_guide/administrative/app_settings/manage_your_braze_users/user_permissions/).
+Confirm you have permission to view templates—see [User permissions]({{site.baseurl}}/user_guide/administer/global/user_management/permissions/).
 

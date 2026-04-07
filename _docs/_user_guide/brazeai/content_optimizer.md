@@ -55,7 +55,7 @@ Each user receives one message per entry into the Content Optimizer step. Re-ent
 
 For best results, use Content Optimizer in Canvases where users enter the step gradually and regularly over time, such as in recurring or always-on Canvases with consistent daily volume. If all users enter the step at once, the agent won’t have time to learn from early results. The step will behave more like a static A/B test than a live optimization engine.
 
-The best fit for Content Optimizer is in daily recurring entry Canvases, as well as event-triggered and API-triggered Canvases with relatively consistent daily user entries. If you do use Content Optimizer in single-send Canvases or "spiky" entry Canvases (like recurring monthly), consider using [Entry controls]({{site.baseurl}}/user_guide/engagement_tools/canvas/create_a_canvas/create_a_canvas/#selecting-entry-controls) to smooth out user entries over the course of multiple days.
+The best fit for Content Optimizer is in daily recurring entry Canvases, as well as event-triggered and API-triggered Canvases with relatively consistent daily user entries. If you do use Content Optimizer in single-send Canvases or "spiky" entry Canvases (like recurring monthly), consider using [Entry controls]({{site.baseurl}}/user_guide/messaging/canvas/create_a_canvas/#selecting-entry-controls) to smooth out user entries over the course of multiple days.
 
 ### Key concepts
 

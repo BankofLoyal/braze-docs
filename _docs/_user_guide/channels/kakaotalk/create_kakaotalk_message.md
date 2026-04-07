@@ -24,12 +24,12 @@ KakaoTalk is supported in both campaigns and Canvas. Campaigns are best suited f
 
 ![Panel with options to select messaging channel.]({% image_buster /assets/img/kakaotalk/kakaotalk_campaign.png %}){: style="max-width:30%" }
 
-3. You can add additional variants to your campaign, allowing you to choose different message types and layouts. For more information, refer to [Multivariate and A/B testing](https://www.braze.com/docs/user_guide/engagement_tools/testing/multivariant_testing/).
+3. You can add additional variants to your campaign, allowing you to choose different message types and layouts. For more information, refer to [Multivariate and A/B testing](https://www.braze.com/docs/user_guide/messaging/ab_testing/).
 
 {% endtab %}
 {% tab Canvas %}
 
-1. [Create your Canvas](https://www.braze.com/docs/user_guide/engagement_tools/canvas/create_a_canvas/create_a_canvas/).
+1. [Create your Canvas](https://www.braze.com/docs/user_guide/messaging/canvas/create_a_canvas/).
 2. Add a Message step in the Canvas builder and select **KakaoTalk**.
 
 ![Canvas messaging channel selections.]({% image_buster /assets/img/kakaotalk/kakaotalk_canvas.png %})
@@ -194,7 +194,7 @@ After selecting your test users, select **Send Test**. A notification will indic
 To preview and send a test message to an existing user, you must have "View PII" permissions. You can preview and send a test message to a custom user without those permissions.
 {% endalert %}
 
-To review the results of a send or troubleshoot issues, go to **Settings** > **Message Activity Log**. For more information, refer to [Message Activity Log]({{site.baseurl}}/user_guide/administrative/app_settings/message_activity_log_tab/).
+To review the results of a send or troubleshoot issues, go to **Settings** > **Message Activity Log**. For more information, refer to [Message Activity Log]({{site.baseurl}}/user_guide/administer/global/workspace_settings/logs_and_alerts/message_activity_log/).
 
 ## Step 5: Build the remainder of your campaign or Canvas
 
@@ -202,7 +202,7 @@ Refer to the following sections for details on how best to use our tools to buil
 
 ### Choose delivery schedule or trigger
 
-KakaoTalk messages can be delivered based on a scheduled time, an action, or an API trigger. For more about scheduling and trigger options, refer to [Schedule your campaign]({{site.baseurl}}/user_guide/engagement_tools/campaigns/building_campaigns/delivery_types/) or [Entry schedule types]({{site.baseurl}}/user_guide/engagement_tools/canvas/create_a_canvas/create_a_canvas/#entry-schedule-types) (for your Canvas).
+KakaoTalk messages can be delivered based on a scheduled time, an action, or an API trigger. For more about scheduling and trigger options, refer to [Schedule your campaign]({{site.baseurl}}/user_guide/messaging/campaigns/schedule_your_campaign/) or [Entry schedule types]({{site.baseurl}}/user_guide/messaging/canvas/create_a_canvas/#entry-schedule-types) (for your Canvas).
 
 You can specify delivery controls, such as allowing users to become re-eligible to receive the campaign, or turn on frequency capping rules. For action-based delivery, you can also set the campaign’s duration and Quiet Hours.
 

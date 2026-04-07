@@ -388,4 +388,4 @@ If custom events aren't appearing as expected, confirm that your developer team 
 - Ask your developer team to verify that the event is logged correctly and triggered from the expected user action.
 - When your team opens a ticket with Braze Support, include [verbose logs]({{site.baseurl}}/developer_guide/sdk_integration/verbose_logging/) and relevant code snippets.
 - If your app uses Swift or Android, your developer team can use the [SDK debugger prerequisites](https://www.braze.com/docs/developer_guide/sdk_integration/debugging/#prerequisites) to help generate verbose logs.
-- If your developer team can't identify the issue, open a [Braze Support ticket]({{site.baseurl}}/user_guide/administer/access_braze/support/).
+- If your developer team can't identify the issue, open a [Braze Support ticket]({{site.baseurl}}/user_guide/administer/personal/braze_support/).
