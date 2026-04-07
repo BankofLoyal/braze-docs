@@ -217,6 +217,7 @@ Diátaxis
 DMARC
 Dreamhost
 drilldown
+drilldowns
 Droidboy
 droplist
 DTC
@@ -360,6 +361,7 @@ inputmatch
 INSERTBUCKETNAME
 INSTALLATTRIBUTION
 intercaps
+intraday
 iOS
 IOSFOREGROUND
 iPad

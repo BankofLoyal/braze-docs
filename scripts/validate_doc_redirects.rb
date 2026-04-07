@@ -4,6 +4,10 @@
 # Compares Jekyll-computed doc URLs between a base ref (default: origin/develop) and HEAD,
 # then checks assets/js/broken_redirect_list.js for matching old -> new mappings.
 #
+# With --json PATH, the report includes "required_mappings" (from → to) for every URL the
+# diff requires; use scripts/verify_redirect_targets_in_jekyll.rb to confirm destinations exist
+# in a Jekyll URL map (see jekyll_url_map_dump.rb).
+#
 # Usage (from repo root):
 #   bundle exec ruby scripts/validate_doc_redirects.rb
 #   bundle exec ruby scripts/validate_doc_redirects.rb --base origin/develop
@@ -250,6 +254,17 @@ def validate!(options)
     wrong << { old_url: from_norm, expected_new: to_norm, mapped_new: actual_to }
   end
 
+  required_mappings = needed.filter_map do |from_norm, to_norm|
+    if to_norm == :deleted_no_target
+      dest = redirects[from_norm]
+      next if dest.nil?
+
+      { "from" => from_norm, "to" => dest }
+    else
+      { "from" => from_norm, "to" => to_norm }
+    end
+  end
+
   report = {
     base_ref: base_ref,
     base_sha: resolve_ref,
@@ -262,7 +277,8 @@ def validate!(options)
     },
     missing: missing,
     wrong_target: wrong,
-    deleted_pages: deleted_warn
+    deleted_pages: deleted_warn,
+    required_mappings: required_mappings
   }
 
   if options[:json_out]
