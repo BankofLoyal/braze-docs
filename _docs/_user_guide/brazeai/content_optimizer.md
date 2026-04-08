@@ -20,6 +20,7 @@ Content Optimizer is currently in beta and only available for these channels: em
 Content Optimizer is an agent that runs in a Canvas step. It helps you define message components to test, generate variants using Generative AI or manual input, and automatically optimize which content combinations are sent to users. This feature helps you to:
 
 - Optimize subject lines, body header, body content, or primary CTA for emails.
+- Optimize titles and messages for push notifications.
 - Continuously improve message performance without manual A/B test setup.
 - Test high volumes of content variants quickly, leveraging AI for ideation.
 - Automatically phase out underperforming content and scale up winners.
@@ -79,8 +80,11 @@ The best fit for Content Optimizer is in daily recurring entry Canvases, as well
 ## Considerations
 
 - Content Optimizer is currently in beta and only available for these channels: email and push notifications.
-- The agent can generate up to 125 combinations per step:
+- For email, the agent can generate up to 125 combinations per step:
    - Up to 3 components per step
+   - Up to 5 variants for each component
+- For push notifications, the agent can generate up to 25 combinations per step:
+   - Up to 2 components per step
    - Up to 5 variants for each component
 - Only one message is sent per user per entry. There is no memory of previous sends for re-entries.
 - Marketers must manually insert Liquid tags for each component in the message composer where the defined content component variants should render.
