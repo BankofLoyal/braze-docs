@@ -80,7 +80,7 @@ You can define up to four conversion events to track. These conversion events ca
 
 Next, select the conversion deadline, which is the maximum time that can pass between a user entering a campaign and the conversion event.
 
-![Example schedule details.]({% image_buster /assets/img/automated_ip_warming_conversions.png %})
+![Conversion settings showing conversion event selection and conversion deadline.]({% image_buster /assets/img/automated_ip_warming_conversions.png %})
 
 ### Step 5: Review and launch
 
