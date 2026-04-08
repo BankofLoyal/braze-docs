@@ -64,10 +64,25 @@ To perform automated IP warming, you must have the following:
 4. After adding the required number of templates, select **Next: Summary**.
 
 {% alert important %}
-Changes made to the campaigns created from the IP warming tool (such as changing the scheduled date, segment, volume) will not be reflected on the IP warming **Summary** page.
+Changes made to the campaigns created from the IP warming tool (such as changing the scheduled date, segment, volume) are not reflected on the IP warming **Summary** page.
 {% endalert %}
 
-### Step 4: Review and launch
+### Step 4: Select conversion events
+
+You can define up to four of the following conversion events to track. These conversion events cannot be updated after the automated IP warming plan has launched.
+
+- Starts session
+- Places order
+- Performs custom event
+- Upgrade app
+- Opens email
+- Clicks email
+
+Next, select the conversion deadline, which is the maximum time that can pass between a user entering a campaign and the conversion event.
+
+![Conversion settings showing conversion event selection and conversion deadline.]({% image_buster /assets/img/automated_ip_warming_conversions.png %})
+
+### Step 5: Review and launch
 
 Review the details of your IP warming plan. Then, select **Launch**.
 
