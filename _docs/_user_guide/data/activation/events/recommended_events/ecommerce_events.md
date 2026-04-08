@@ -51,7 +51,7 @@ You can use the product viewed event to trigger when a customer views a product 
 {% subtab Web SDK %}
 
 ```javascript
-braze.logCustomEvent("ecommerce.product_viewed", {
+braze.logEcommerceEvent("ecommerce.product_viewed", {
     "product_id": "4111176",
     "product_name": "Torchie runners",
     "variant_id": "4111176700",
@@ -211,7 +211,7 @@ If there are two carts, add both to the merged user. Re-enqueue the Canvas if it
 {% subtab Web SDK %}
 
 ```javascript
-braze.logCustomEvent("ecommerce.cart_updated", {
+braze.logEcommerceEvent("ecommerce.cart_updated", {
     "cart_id": "cart_12345",
     "currency": "USD",
     "total_value": 199.98,
@@ -388,7 +388,7 @@ Similar to the `ecommerce.cart_updated` event, this event allows you to leverage
 {% subtab Web SDK %}
 
 ```javascript
-braze.logCustomEvent("ecommerce.checkout_started", {
+braze.logEcommerceEvent("ecommerce.checkout_started", {
     "checkout_id": "checkout_abc123",
     "cart_id": "cart_12345",
     "total_value": 199.98,
@@ -559,7 +559,7 @@ You can use the order placed event to trigger when a customer successfully compl
 {% subtab Web SDK %}
 
 ```javascript
-braze.logCustomEvent("ecommerce.order_placed", {
+braze.logEcommerceEvent("ecommerce.order_placed", {
     "order_id": "order_67890",
     "cart_id": "cart_12345",
     "total_value": 189.98,
