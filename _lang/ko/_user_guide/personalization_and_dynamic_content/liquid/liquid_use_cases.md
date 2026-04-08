@@ -15,7 +15,7 @@ description: "이 랜딩 페이지에서는 기념일, 앱 사용량, 카운트�
 ## 기념일 및 공휴일
 
 {% apitags %}
-기념일 및 공휴일
+Anniversaries and holidays
 {% endapitags %}
 
 - [사용자의 기념일 연도에 따라 메시지 맞춤 설정하기](#anniversary-year)
@@ -137,7 +137,7 @@ Message if today isn't one of the provided holidays.
 ## 앱 사용
 
 {% apitags %}
-앱 사용
+App usage
 {% endapitags %}
 
 - [사용자가 세션에 로그인한 경우 해당 사용자의 언어로 메시지 보내기](#app-session-language)
@@ -221,7 +221,7 @@ Message for a less active user
 ## 카운트다운
 
 {% apitags %}
-카운트다운
+Countdowns
 {% endapitags %}
 
 - [오늘 날짜에 X일 추가](#countdown-add-x-days)
@@ -539,7 +539,7 @@ Hi, the offer is only valid today.
 ## 커스텀 속성
 
 {% apitags %}
-커스텀 속성
+Custom attribute
 {% endapitags %}
 
 - [일치하는 사용자 지정 속성을 기반으로 메시지 개인화하기](#attribute-matching)
@@ -600,7 +600,7 @@ Hi {{name[0]}}, here's your message!
 ## 사용자 지정 이벤트
 
 {% apitags %}
-사용자 지정 이벤트
+Custom event
 {% endapitags %}
 
 - [사용자 지정 이벤트가 2시간 이내인 경우 푸시 알림 중단하기](#event-abort-push)
@@ -726,7 +726,7 @@ Did you forget something in your shopping cart?
 ## 언어
 
 {% apitags %}
-언어
+Language
 {% endapitags %}
 
 - [다른 언어로 월 이름 표시](#language-display-month)
@@ -841,7 +841,7 @@ tuesday default
 ## 기타
 
 {% apitags %}
-기타
+Miscellaneous
 {% endapitags %}
 
 - [마케팅 이메일을 차단한 고객에게는 이메일을 보내지 마세요.](#misc-avoid-blocked-emails)
@@ -1202,7 +1202,7 @@ All episodes of {{new_shows_clean | join: ', ' }} expire on 9/8 - watch them now
 ## 플랫폼 타겟팅
 
 {% apitags %}
-플랫폼 타겟팅
+Platform targeting
 {% endapitags %}
 
 - [기기 OS별로 사본 차별화](#platform-device-os)
@@ -1359,7 +1359,7 @@ Thanks for joining our SMS program!
 ## 시간대
 
 {% apitags %}
-시간대
+Time zones
 {% endapitags %}
 
 - [사용자의 시간대에 맞춘 템플릿](#users-time-zone)
@@ -1527,7 +1527,7 @@ Check out this new bar after work today. HH specials!
 ## 주/일/월
 
 {% apitags %}
-주/일/월
+Week/Day/Month
 {% endapitags %}
 
 - [전월의 이름을 메시지로 가져오기](#month-name)
