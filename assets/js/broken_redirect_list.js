@@ -4237,8 +4237,7 @@ validurls['/docs/user_guide/messaging/personalize_and_dynamic_content/content_bl
 validurls['/docs/user_guide/personalization_and_dynamic_content/liquid/supported_filters'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/filters';
 validurls['/docs/user_guide/message_building_by_channel/email/drag_and_drop/editor_components'] = '/docs/user_guide/messaging/design_and_edit/editor_blocks/?sdktab=email';
 
-// Engineer-reported 404s (deduped paths, 2026-04; targets validated against Jekyll URL map)
-// Rows sorted by source path for review.
+// Backfill dropped redirects, sorted by source path
 
 validurls['/docs/developer_guide/changelogs/web'] = '/docs/developer_guide/changelogs';
 validurls['/docs/developer_guide/platform_integration_guides/web/in-app_messaging'] = '/docs/developer_guide/in_app_messages';
@@ -4385,7 +4384,7 @@ validurls['/docs/user_guide/personalization_and_dynamic_content/liquid'] = '/doc
 validurls['/docs/user_guide/personalization_and_dynamic_content/liquid/abort_message'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/aborting_messages';
 validurls['/docs/user_guide/personalization_and_dynamic_content/liquid/liquid_filters/date_filters'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/filters/#date-filters';
 
-// Restored LHS from baseline (diff_validurls_lhs_baseline.rb --apply-restores)
+// Restored redirects from baseline
 validurls['/docs/user_guide/engagement_tools/segments/user_lookup'] = '/docs/user_guide/audience/segments/creating_a_segment';
 validurls['/docs/user_guide/engagement_tools/segments/segment_cohorts'] = '/docs/user_guide/audience/segments/segment_extension';
 validurls['/docs/user_guide/engagement_tools/locations_and_geofences/about'] = '/docs/user_guide/audience/locations_and_geofences/creating_geofences';
@@ -4413,7 +4412,7 @@ validurls['/docs/user_guide/engagement_tools/segments/measuring_segment_size/#me
 validurls['/docs/user_guide/engagement_tools/segments/troubleshooting/#troubleshooting-segments'] = '/docs/user_guide/engagement_tools/segments/troubleshooting/#troubleshoot-segments';
 validurls['/docs/user_guide/analytics/reporting/configuring_reporting/#configuring-reporting'] = '/docs/user_guide/analytics/reporting/configuring_reporting/#configure-reporting';
 
-// Engineer-flagged legacy paths (IA / bookmarks)
+// Legacy paths
 validurls['/docs/user_guide/data/unification/user_data/scheduled_merging'] = '/docs/user_guide/audience/manage_audience/merge_duplicate_users/#scheduled-merging';
 validurls['/docs/user_guide/analytics/email_insights'] = '/docs/user_guide/analytics/dashboards/channel_performance/#email-insights-dashboard';
 validurls['/docs/user_guide/analytics/report_builder_legacy'] = '/docs/user_guide/analytics/reports/report_builder/report_builder_legacy';
