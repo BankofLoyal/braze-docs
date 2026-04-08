@@ -13,7 +13,7 @@ alias: /query_builder/
 
 Because the Query Builder allows direct access to some customer data, you can only access the Query Builder if you have the "View PII" [permission]({{site.baseurl}}/user_guide/administer/global/user_management/permissions/).
 
-### Available data tables
+## Available data tables
 
 Query Builder uses the same Snowflake SQL tables as [SQL Segment Extensions]({{site.baseurl}}/user_guide/audience/segments/segment_extension/sql_segments/) and [Snowflake Data Sharing]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/). For a complete list of available tables and their columns, refer to the [SQL table reference]({{site.baseurl}}/user_guide/audience/segments/segment_extension/sql_segments/sql_segments_tables/).
 
