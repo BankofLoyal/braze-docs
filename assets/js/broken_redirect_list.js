@@ -3737,7 +3737,8 @@ validurls['/docs/user_guide/personalization_and_dynamic_content/liquid/setting_d
 validurls['/docs/user_guide/personalization_and_dynamic_content/liquid/supported_personalization_tags'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/supported_personalization_tags/';
 validurls['/docs/user_guide/personalization_and_dynamic_content/liquid/tutorials'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/tutorials/';
 validurls['/docs/user_guide/personalization_and_dynamic_content/liquid/using_liquid'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/using_liquid/';
-validurls['/docs/user_guide/personalization_and_dynamic_content/overview'] = '/docs/user_guide/messaging/canvas/';
+validurls['/docs/user_guide/personalization_and_dynamic_content/overview'] = '/docs/user_guide/messaging/design_and_edit/personalize';
+validurls['/docs/user_guide/personalization_and_dynamic_content/overview/'] = '/docs/user_guide/messaging/design_and_edit/personalize';
 validurls['/docs/user_guide/personalization_and_dynamic_content/promotion_codes'] = '/docs/user_guide/messaging/design_and_edit/personalize/sources/promotion_codes/';
 validurls['/docs/user_guide/personalization_and_dynamic_content/promotion_codes/create'] = '/docs/user_guide/messaging/design_and_edit/personalize/sources/promotion_codes/create/';
 validurls['/docs/user_guide/personalization_and_dynamic_content/promotion_codes/manage'] = '/docs/user_guide/messaging/design_and_edit/personalize/sources/promotion_codes/manage/';
@@ -3825,7 +3826,8 @@ validurls['/docs/user_guide/message_building_by_channel/webhooks/creating_a_webh
 validurls['/docs/user_guide/message_building_by_channel/webhooks/reporting'] = '/docs/user_guide/channels/webhooks/reporting/';
 validurls['/docs/user_guide/message_building_by_channel/webhooks/testing'] = '/docs/user_guide/messaging/messaging_fundamentals/sending_test_messages/?tab=webhook';
 validurls['/docs/user_guide/message_building_by_channel/webhooks/braze_to_braze_webhooks'] = '/docs/user_guide/channels/webhooks/use_case_create_a_braze_to_braze_webhook/';
-validurls['/docs/user_guide/message_building_by_channel/webhooks/lead_scoring'] = '/docs/user_guide/channels/email/html_editor/';
+validurls['/docs/user_guide/message_building_by_channel/webhooks/lead_scoring'] = '/docs/user_guide/get_started/b2b_use_cases/lead_scoring/#lead-handoff';
+validurls['/docs/user_guide/message_building_by_channel/webhooks/lead_scoring/'] = '/docs/user_guide/get_started/b2b_use_cases/lead_scoring/#lead-handoff';
 
 // --- LINE ---
 validurls['/docs/user_guide/message_building_by_channel/line'] = '/docs/user_guide/channels/line/';
