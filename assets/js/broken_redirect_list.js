@@ -502,7 +502,7 @@ validurls['/docs/user_guide/engagement_tools/campaigns/scheduling_and_organizing
 validurls['/docs/user_guide/engagement_tools/campaigns/scheduling_and_organizing/archiving_campaigns'] = '/docs/user_guide/messaging/campaigns/managing_campaigns/archiving_campaigns';
 validurls['/docs/user_guide/engagement_tools/campaigns/scheduling_and_organizing/duplicating_segments_and_campaigns'] = '/docs/user_guide/messaging/campaigns/managing_campaigns/duplicating_segments_and_campaigns';
 validurls['/docs/user_guide/engagement_tools/campaigns/scheduling_and_organizing/campaign_alerts'] = '/docs/user_guide/messaging/campaigns/manage_campaigns/campaign_alerts';
-validurls['/docs/copying_canvases_across_workspaces'] = '/docs/user_guide/messaging/campaigns/managing_campaigns/copying_to_workspace';
+validurls['/docs/copying_canvases_across_workspaces'] = '/docs/user_guide/messaging/governance/copy_across_workspaces';
 
 validurls['/docs/user_guide/engagement_tools/campaigns/ideas_and_strategies/ab_testing_with_random_buckets'] = '/docs/user_guide/messaging/ab_testing/concepts/random_bucket_numbers';
 validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_more/ab_testing_with_random_buckets'] = '/docs/user_guide/messaging/ab_testing/concepts/random_bucket_numbers';
