@@ -51,7 +51,7 @@ Supported components to optimize include:
 
 From the **Messaging Channels** tab, select **Push notifications** and create your base push notification. Refer to our dedicated [Push]({{site.baseurl}}/user_guide/channels/push) section for help. 
 
-The Content Optimizer agent uses the selected push platforms specified in this variant to send all messages. You can either start with a new design or select an existing template for this message. At this step, consider which components of the message you want to optimize for. You will define these in [step 4](#step-4).
+The Content Optimizer agent uses the selected push platforms specified in this variant to send all messages. You can either start with a new design or select an existing template for this message. At this step, consider which components of the message you want to optimize for. You define these in [step 4](#step-4).
 
 Supported components to optimize include:
 
