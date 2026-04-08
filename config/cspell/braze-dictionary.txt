@@ -307,6 +307,7 @@ GLOBALCONTROLGROUP
 GLOBALSTATECHANGE
 granularization
 granularized
+GRAVTY
 Grindr
 Grotesk
 Grouparoo
