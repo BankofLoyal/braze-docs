@@ -3788,81 +3788,10 @@ validurls['/docs/user_guide/messaging/personalize'] = '/docs/user_guide/messagin
 validurls['/docs/user_guide/messaging/templates/content_block_library'] = '/docs/user_guide/messaging/design_and_edit/content_blocks';
 validurls['/docs/user_guide/messaging/templates/faqs'] = '/docs/user_guide/messaging/design_and_edit/media_library/faq';
 validurls['/docs/user_guide/messaging/media_library'] = '/docs/user_guide/messaging/design_and_edit/media_library';
-validurls['/docs/user_guide/messaging/content/media_library'] = '/docs/user_guide/messaging/design_and_edit/media_library';
-validurls['/docs/user_guide/messaging/content/media_library/faq'] = '/docs/user_guide/messaging/design_and_edit/media_library/faq';
 validurls['/docs/user_guide/messaging/design_and_edit/image_specifications'] = '/docs/user_guide/messaging/design_and_edit/media_library/image_specifications';
 validurls['/docs/user_guide/messaging/reusable_content'] = '/docs/user_guide/messaging/design_and_edit';
 validurls['/docs/user_guide/messaging/reusable_content/content_blocks'] = '/docs/user_guide/messaging/design_and_edit/content_blocks';
 validurls['/docs/user_guide/messaging/reusable_content/product_blocks'] = '/docs/user_guide/messaging/design_and_edit/product_blocks';
-
-// Dissolve messaging/content/ — distribute into design_and_edit/ and templates/
-
-// --- Content landing ---
-validurls['/docs/user_guide/messaging/content'] = '/docs/user_guide/messaging/design_and_edit';
-
-// --- Content Blocks, Product Blocks ---
-validurls['/docs/user_guide/messaging/content/content_blocks'] = '/docs/user_guide/messaging/design_and_edit/content_blocks';
-validurls['/docs/user_guide/messaging/content/product_blocks'] = '/docs/user_guide/messaging/design_and_edit/product_blocks';
-
-// --- Personalize ---
-validurls['/docs/user_guide/messaging/content/personalize'] = '/docs/user_guide/messaging/design_and_edit/personalize';
-validurls['/docs/user_guide/messaging/content/personalize/overview'] = '/docs/user_guide/messaging/design_and_edit/personalize/overview';
-validurls['/docs/user_guide/messaging/content/personalize/canvas_persistent_entry_properties'] = '/docs/user_guide/messaging/design_and_edit/personalize/sources/canvas_entry_properties';
-validurls['/docs/user_guide/messaging/content/personalize/deep_linking_to_in-app_content'] = '/docs/user_guide/messaging/design_and_edit/personalize/deep_linking_to_in-app_content';
-validurls['/docs/user_guide/messaging/content/personalize/key_value_pairs'] = '/docs/user_guide/messaging/design_and_edit/personalize/sources/key_value_pairs';
-
-// --- Personalize > Liquid ---
-validurls['/docs/user_guide/messaging/content/personalize/liquid'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid';
-validurls['/docs/user_guide/messaging/content/personalize/liquid/using_liquid'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/using_liquid';
-validurls['/docs/user_guide/messaging/content/personalize/liquid/supported_personalization_tags'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/supported_personalization_tags';
-validurls['/docs/user_guide/messaging/content/personalize/liquid/operators'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/operators';
-validurls['/docs/user_guide/messaging/content/personalize/liquid/filters'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/filters';
-validurls['/docs/user_guide/messaging/content/personalize/liquid/advanced_filters'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/advanced_filters';
-validurls['/docs/user_guide/messaging/content/personalize/liquid/advanced_filters/message_extras'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/advanced_filters/message_extras';
-validurls['/docs/user_guide/messaging/content/personalize/liquid/setting_default_values'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/setting_default_values';
-validurls['/docs/user_guide/messaging/content/personalize/liquid/conditional_logic'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/conditional_logic';
-validurls['/docs/user_guide/messaging/content/personalize/liquid/aborting_messages'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/aborting_messages';
-validurls['/docs/user_guide/messaging/content/personalize/liquid/faq'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/faq';
-validurls['/docs/user_guide/messaging/content/personalize/liquid/liquid_use_cases'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/liquid_use_cases';
-validurls['/docs/user_guide/messaging/content/personalize/liquid/tutorials'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/tutorials';
-
-// --- Personalize > Connected Content ---
-validurls['/docs/user_guide/messaging/content/personalize/connected_content'] = '/docs/user_guide/messaging/design_and_edit/personalize/connected_content';
-validurls['/docs/user_guide/messaging/content/personalize/connected_content/making_an_api_call'] = '/docs/user_guide/messaging/design_and_edit/personalize/connected_content/making_an_api_call';
-validurls['/docs/user_guide/messaging/content/personalize/connected_content/local_connected_content_variables'] = '/docs/user_guide/messaging/design_and_edit/personalize/connected_content/local_connected_content_variables';
-validurls['/docs/user_guide/messaging/content/personalize/connected_content/aborting_connected_content'] = '/docs/user_guide/messaging/design_and_edit/personalize/connected_content/aborting_connected_content';
-validurls['/docs/user_guide/messaging/content/personalize/connected_content/caching_responses'] = '/docs/user_guide/messaging/design_and_edit/personalize/connected_content/caching_responses';
-validurls['/docs/user_guide/messaging/content/personalize/connected_content/user_profile_fields_connected_content'] = '/docs/user_guide/messaging/design_and_edit/personalize/connected_content/user_profile_fields_connected_content';
-validurls['/docs/user_guide/messaging/content/personalize/connected_content/connected_content_retries'] = '/docs/user_guide/messaging/design_and_edit/personalize/connected_content/connected_content_retries';
-validurls['/docs/user_guide/messaging/content/personalize/connected_content/public_apis'] = '/docs/user_guide/messaging/design_and_edit/personalize/connected_content/public_apis';
-
-// --- Personalize > Promotion Codes ---
-validurls['/docs/user_guide/messaging/content/personalize/promotion_codes'] = '/docs/user_guide/messaging/design_and_edit/personalize/sources/promotion_codes';
-validurls['/docs/user_guide/messaging/content/personalize/promotion_codes/create'] = '/docs/user_guide/messaging/design_and_edit/personalize/sources/promotion_codes/create';
-validurls['/docs/user_guide/messaging/content/personalize/promotion_codes/manage'] = '/docs/user_guide/messaging/design_and_edit/personalize/sources/promotion_codes/manage';
-validurls['/docs/user_guide/messaging/content/personalize/promotion_codes/migrating_from_data_feeds'] = '/docs/user_guide/messaging/design_and_edit/personalize/sources/promotion_codes/migrating_from_data_feeds';
-
-// --- Templates (promoted to messaging top-level) ---
-validurls['/docs/user_guide/messaging/content/templates'] = '/docs/user_guide/messaging/templates';
-validurls['/docs/user_guide/messaging/content/templates/managing_templates'] = '/docs/user_guide/messaging/templates/managing_templates';
-validurls['/docs/user_guide/messaging/content/templates/canvas_templates'] = '/docs/user_guide/messaging/templates/canvas_templates';
-validurls['/docs/user_guide/messaging/content/templates/email_templates'] = '/docs/user_guide/messaging/templates/email_templates';
-validurls['/docs/user_guide/messaging/content/templates/email_templates/email_template'] = '/docs/user_guide/messaging/templates/email_templates/email_template';
-validurls['/docs/user_guide/messaging/content/templates/email_templates/html_email_template'] = '/docs/user_guide/messaging/templates/email_templates/html_email_template';
-validurls['/docs/user_guide/messaging/content/templates/email_templates/link_aliasing'] = '/docs/user_guide/messaging/templates/email_templates/link_aliasing';
-validurls['/docs/user_guide/messaging/content/templates/email_templates/link_template'] = '/docs/user_guide/messaging/templates/email_templates/link_template';
-validurls['/docs/user_guide/messaging/content/templates/email_templates/faq'] = '/docs/user_guide/messaging/templates/email_templates/faq';
-validurls['/docs/user_guide/messaging/content/templates/in_app_message_templates'] = '/docs/user_guide/messaging/templates/in_app_message_templates';
-validurls['/docs/user_guide/messaging/content/templates/in_app_message_templates/onboarding'] = '/docs/user_guide/messaging/templates/in_app_message_templates/onboarding';
-validurls['/docs/user_guide/messaging/content/templates/in_app_message_templates/phone_number_capture'] = '/docs/user_guide/messaging/templates/in_app_message_templates/phone_number_capture';
-validurls['/docs/user_guide/messaging/content/templates/in_app_message_templates/email_capture'] = '/docs/user_guide/messaging/templates/in_app_message_templates/email_capture';
-validurls['/docs/user_guide/messaging/content/templates/in_app_message_templates/email_discount'] = '/docs/user_guide/messaging/templates/in_app_message_templates/email_discount';
-validurls['/docs/user_guide/messaging/content/templates/in_app_message_templates/email_image'] = '/docs/user_guide/messaging/templates/in_app_message_templates/email_image';
-validurls['/docs/user_guide/messaging/content/templates/in_app_message_templates/email_offer'] = '/docs/user_guide/messaging/templates/in_app_message_templates/email_offer';
-validurls['/docs/user_guide/messaging/content/templates/in_app_message_templates/email_confirmation_page'] = '/docs/user_guide/messaging/templates/in_app_message_templates/email_confirmation_page';
-validurls['/docs/user_guide/messaging/content/templates/in_app_message_templates/product_announcement'] = '/docs/user_guide/messaging/templates/in_app_message_templates/product_announcement';
-validurls['/docs/user_guide/messaging/content/templates/in_app_message_templates/seasonal_promo'] = '/docs/user_guide/messaging/templates/in_app_message_templates/seasonal_promo';
-validurls['/docs/user_guide/messaging/content/templates/webhook_templates'] = '/docs/user_guide/messaging/templates/webhook_templates';
 
 // Phase 4 channels IA migration: message_building_by_channel -> channels
 
