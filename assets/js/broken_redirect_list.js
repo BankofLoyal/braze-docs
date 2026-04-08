@@ -1170,6 +1170,8 @@ validurls['/docs/developer_guide/platform_integration_guides/ios/initial_sdk_set
 validurls['/docs/developer_guide/platform_integration_guides/tvos'] = '/docs/developer_guide/platforms/legacy_sdks/tvos';
 
 validurls['/docs/user_guide/message_building_by_channel/sms/sms_setup/sms_subscription_groups'] = '/docs/user_guide/channels/sms_mms_and_rcs/message_setup/subscription_groups';
+validurls['/docs/user_guide/message_building_by_channel/sms/sms_subscription_groups'] = '/docs/user_guide/channels/sms_mms_and_rcs/message_setup/subscription_groups';
+validurls['/docs/user_guide/message_building_by_channel/sms/sms_subscription_groups/'] = '/docs/user_guide/channels/sms_mms_and_rcs/message_setup/subscription_groups';
 validurls['/docs/developer_guide/platform_integration_guides/swift/in-app_messaging/customization/handling_in_app_display'] = '/docs/developer_guide/platforms/legacy_sdks/ios/in-app_messaging/customization/handling_in_app_display';
 validurls['/docs/user_guide/data_and_analytics/your_reports/engagement_reports'] = '/docs/user_guide/analytics/reports/engagement_reports';
 validurls['/docs/react_native/android_and_fireos'] = '/docs/developer_guide/sdk_integration/?sdktab=react%20native';
@@ -4360,6 +4362,8 @@ validurls['/docs/user_guide/message_building_by_channel/email/reporting_and_anal
 validurls['/docs/user_guide/message_building_by_channel/email/soft_bounces'] = '/docs/user_guide/channels/email/reporting/analytics_glossary';
 validurls['/docs/user_guide/message_building_by_channel/email/templates/email_template_management'] = '/docs/user_guide/messaging/templates/email_templates';
 validurls['/docs/user_guide/message_building_by_channel/email/templates/link_aliasing'] = '/docs/user_guide/messaging/templates/email_templates/link_aliasing';
+validurls['/docs/user_guide/message_building_by_channel/email/link_aliasing'] = '/docs/user_guide/messaging/templates/email_templates/link_aliasing';
+validurls['/docs/user_guide/message_building_by_channel/email/link_aliasing/'] = '/docs/user_guide/messaging/templates/email_templates/link_aliasing';
 validurls['/docs/user_guide/message_building_by_channel/email/templates/link_template'] = '/docs/user_guide/messaging/templates/email_templates/link_template';
 validurls['/docs/user_guide/message_building_by_channel/in-app_messages/customization'] = '/docs/user_guide/channels/in_app_messages/customize';
 validurls['/docs/user_guide/message_building_by_channel/in-app_messages/drag_and_drop/creating_a_message'] = '/docs/user_guide/channels/in_app_messages/drag_and_drop';
@@ -4434,6 +4438,8 @@ validurls['/docs/user_guide/message_building_by_channel/email/email_setup/email_
 validurls['/docs/user_guide/message_building_by_channel/email/email_setup/email_settings/'] = '/docs/user_guide/administer/global/workspace_settings/email_preferences';
 validurls['/docs/user_guide/message_building_by_channel/email/reporting_and_analytics/link_tracking'] = '/docs/user_guide/channels/email/email_setup/open_pixel_and_click_tracking';
 validurls['/docs/user_guide/message_building_by_channel/email/reporting_and_analytics/link_tracking/'] = '/docs/user_guide/channels/email/email_setup/open_pixel_and_click_tracking';
+validurls['/docs/user_guide/message_building_by_channel/email/link_tracking/link_aliasing'] = '/docs/user_guide/messaging/templates/email_templates/link_aliasing';
+validurls['/docs/user_guide/message_building_by_channel/email/link_tracking/link_aliasing/'] = '/docs/user_guide/messaging/templates/email_templates/link_aliasing';
 validurls['/docs/user_guide/engagement_tools/campaigns/scheduling_and_organizing/delivery_controls/quiet_hours'] = '/docs/user_guide/brazeai/intelligence_suite/intelligent_timing/#quiet-hours';
 validurls['/docs/user_guide/engagement_tools/campaigns/scheduling_and_organizing/delivery_controls/quiet_hours/'] = '/docs/user_guide/brazeai/intelligence_suite/intelligent_timing/#quiet-hours';
 validurls['/docs/user_guide/engagement_tools/templates_and_media/in-app_message_templates'] = '/docs/user_guide/messaging/templates/in_app_message_templates';
