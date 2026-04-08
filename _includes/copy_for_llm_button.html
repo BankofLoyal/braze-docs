@@ -51,15 +51,66 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (!copyBtn) return;
   
-  // Move the button to appear after the first h1 heading
-  const firstH1 = document.querySelector('#article-main h1');
-  if (firstH1) {
-    const buttonContainer = copyBtn.closest('.copy-for-llm-page-header');
-    if (buttonContainer) {
-      // Insert the button container after the first h1
-      firstH1.parentNode.insertBefore(buttonContainer, firstH1.nextSibling);
+  function getMarkdownPath(pathname) {
+    if (!pathname) {
+      return '/index.md';
     }
+
+    if (pathname.endsWith('/index.md')) {
+      return pathname;
+    }
+
+    if (pathname.endsWith('/')) {
+      return pathname.slice(0, -1) + '/index.md';
+    }
+
+    if (pathname.endsWith('.html')) {
+      return pathname.replace('.html', '/index.md');
+    }
+
+    return pathname + '/index.md';
   }
+
+  function repositionCopyButtons() {
+    const buttonContainer = copyBtn.closest('.copy-for-llm-page-header');
+    if (!buttonContainer) return;
+
+    const firstH1 = document.querySelector('#article-main h1');
+    const fallbackHeading = document.querySelector('#article-main h2, #article-main h3');
+    const targetHeading = firstH1 || fallbackHeading;
+    if (!targetHeading || !targetHeading.parentNode) return;
+
+    if (targetHeading.nextSibling !== buttonContainer) {
+      targetHeading.parentNode.insertBefore(buttonContainer, targetHeading.nextSibling);
+    }
+
+    // Keep button row near the title while avoiding overlap with right-floated title images.
+    buttonContainer.style.maxWidth = '';
+    var floatedEl = null;
+    targetHeading.querySelectorAll('img, a, span, div').forEach(function(el) {
+      if (!floatedEl && window.getComputedStyle(el).float === 'right') {
+        floatedEl = el;
+      }
+    });
+
+    if (floatedEl) {
+      var containerRect = buttonContainer.getBoundingClientRect();
+      var floatRect = floatedEl.getBoundingClientRect();
+      var availableWidth = Math.floor(floatRect.left - containerRect.left - 12);
+
+      if (availableWidth > 280) {
+        buttonContainer.style.maxWidth = availableWidth + 'px';
+      }
+    }
+
+    // Collapse the gap between heading and buttons so they sit tight together.
+    targetHeading.style.marginBottom = '0.15rem';
+    buttonContainer.style.marginTop = '0';
+  }
+
+  repositionCopyButtons();
+  setTimeout(repositionCopyButtons, 0);
+  window.addEventListener('resize', repositionCopyButtons);
   
   copyBtn.addEventListener('click', async function() {
     const markdownContent = this.getAttribute('data-markdown-content');
@@ -97,21 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // View as Markdown button functionality
   if (viewMarkdownBtn) {
     viewMarkdownBtn.addEventListener('click', function() {
-      // Get the current page URL and convert to /index.md format
-      const currentUrl = window.location.pathname;
-      let markdownUrl;
-      
-      // Handle different URL patterns to get to /index.md
-      if (currentUrl.endsWith('/')) {
-        // Remove trailing slash and add /index.md
-        markdownUrl = currentUrl.slice(0, -1) + '/index.md';
-      } else if (currentUrl.endsWith('.html')) {
-        // Replace .html with /index.md
-        markdownUrl = currentUrl.replace('.html', '/index.md');
-      } else {
-        // Add /index.md
-        markdownUrl = currentUrl + '/index.md';
-      }
+      const markdownUrl = getMarkdownPath(window.location.pathname);
       
       // Log custom event to Braze
       if (window.braze?.logCustomEvent) {
@@ -130,6 +167,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (buildWithLlmBtn) {
     buildWithLlmBtn.addEventListener('click', function() {
+      if (window.braze?.logCustomEvent) {
+        braze.logCustomEvent("build_with_llm_clicked", {
+          page_url: window.location.pathname,
+          page_title: document.title,
+          target_url: '{{ site.baseurl }}/developer_guide/getting_started/build_with_llm/'
+        });
+        braze.requestImmediateDataFlush();
+      }
+
       window.location.href = '{{ site.baseurl }}/developer_guide/getting_started/build_with_llm/';
     });
   }
@@ -179,9 +225,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <style>
 .copy-for-llm-wrapper {
   position: relative;
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   align-items: center;
+  max-width: 100%;
 }
 
 .copy-for-llm-button {
@@ -198,6 +246,8 @@ document.addEventListener('DOMContentLoaded', function() {
   cursor: pointer;
   box-shadow: none;
   text-decoration: none;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 .copy-for-llm-button:hover {
@@ -252,8 +302,11 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   .copy-for-llm-wrapper {
-    flex-wrap: wrap;
     gap: 0.25rem;
+  }
+
+  .copy-for-llm-page-header {
+    margin-bottom: 1rem;
   }
 }
 
@@ -266,9 +319,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Page header positioning */
 .copy-for-llm-page-header {
-  margin: 1rem 0;
+  margin: 0.5rem 0 1rem;
   display: flex;
   justify-content: flex-start;
+  width: 100%;
 }
 
 .copy-for-llm-page-header .copy-for-llm-wrapper {
@@ -277,8 +331,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* When positioned after h1, add some top margin for better spacing */
 h1 + .copy-for-llm-page-header {
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 </style>
 {%- endif -%}
