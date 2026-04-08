@@ -37,7 +37,7 @@ During the beta period, the supported channels are email and push notifications.
 
 From the **Messaging Channels** tab, select **Email** and create your base email message. Refer to our dedicated [Email]({{site.baseurl}}/user_guide/channels/email) section for help. 
 
-The Content Optimizer agent uses the send settings (such as the email domain and reply-to address) specified in this variant to send all messages. You can either start with a new design or select an existing template for this message. At this step, consider which components of the message you want to optimize for. You will define these in [step 4](#step-4).
+The Content Optimizer agent uses the send settings (such as the email domain and reply-to address) specified in this variant to send all messages. You can either start with a new design or select an existing template for this message. At this step, consider which components of the message you want to optimize for. You define these in [step 4](#step-4).
 
 Supported components to optimize include:
 
