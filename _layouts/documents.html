@@ -47,8 +47,8 @@ hide_binary_feedback: false
     </div>
     {%- endunless -%}
     
-    {%- comment -%} Add Copy for LLM button for developer guide pages {%- endcomment -%}
-    {%- if page.collection == 'developer_guide' -%}
+    {%- comment -%} Add Copy for LLM button for developer and user guide pages {%- endcomment -%}
+    {%- if page.collection == 'developer_guide' or page.collection == 'user_guide' -%}
     <div class="copy-for-llm-page-header">
       {% include copy_for_llm_button.html %}
     </div>
