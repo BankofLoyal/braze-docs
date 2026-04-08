@@ -499,8 +499,8 @@ validurls['/docs/user_guide/engagement_tools/campaigns/scheduling_and_organizing
 validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_more/campaign_calendar'] = '/docs/user_guide/messaging/campaigns/schedule_your_campaign/campaign_calendar';
 validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_more/conversion_events'] = '/docs/user_guide/messaging/messaging_fundamentals/conversion_events';
 validurls['/docs/user_guide/engagement_tools/campaigns/scheduling_and_organizing/change_your_campaign_after_launch'] = '/docs/user_guide/messaging/campaigns/manage_campaigns/change_your_campaign_after_launch';
-validurls['/docs/user_guide/engagement_tools/campaigns/scheduling_and_organizing/archiving_campaigns'] = '/docs/user_guide/messaging/campaigns/managing_campaigns/archiving_campaigns';
-validurls['/docs/user_guide/engagement_tools/campaigns/scheduling_and_organizing/duplicating_segments_and_campaigns'] = '/docs/user_guide/messaging/campaigns/managing_campaigns/duplicating_segments_and_campaigns';
+validurls['/docs/user_guide/engagement_tools/campaigns/scheduling_and_organizing/archiving_campaigns'] = '/docs/user_guide/messaging/governance/archiving';
+validurls['/docs/user_guide/engagement_tools/campaigns/scheduling_and_organizing/duplicating_segments_and_campaigns'] = '/docs/user_guide/messaging/governance/duplicating';
 validurls['/docs/user_guide/engagement_tools/campaigns/scheduling_and_organizing/campaign_alerts'] = '/docs/user_guide/messaging/campaigns/manage_campaigns/campaign_alerts';
 validurls['/docs/copying_canvases_across_workspaces'] = '/docs/user_guide/messaging/governance/copy_across_workspaces';
 
@@ -2768,7 +2768,7 @@ validurls['/docs/user_guide/data/user_data_collection/best_practices'] = '/docs/
 validurls['/docs/user_guide/data/user_data_collection/user_import'] = '/docs/user_guide/audience/manage_audience/import_users';
 validurls['/docs/user_guide/data/user_data_collection/user_import/csv_import'] = '/docs/user_guide/audience/manage_audience/import_users/csv_import';
 validurls['/docs/user_guide/data/user_data_collection/language_codes'] = '/docs/user_guide/data/unification/user_data/language_codes';
-validurls['/docs/user_guide/data/custom_data'] = '/docs/user_guide/data/activation';
+validurls['/docs/user_guide/data/custom_data'] = '/docs/user_guide/data/activation/custom_data';
 validurls['/docs/user_guide/data/custom_data/events'] = '/docs/user_guide/data/activation/events';
 validurls['/docs/user_guide/data/custom_data/purchase_events'] = '/docs/user_guide/data/activation/events/purchase_events';
 validurls['/docs/user_guide/data/custom_data/custom_events'] = '/docs/user_guide/data/activation/events/custom_events';
@@ -3681,7 +3681,6 @@ validurls['/docs/user_guide/engagement_tools/messaging_fundamentals/product_bloc
 validurls['/docs/user_guide/engagement_tools/canvas/create_a_canvas/rate_limiting'] = '/docs/user_guide/messaging/messaging_fundamentals/frequency_capping/#rate-limiting-and-canvas-components';
 validurls['/docs/user_guide/engagement_tools/messaging_fundamentals/reeligibility'] = '/docs/user_guide/messaging/messaging_fundamentals/re_eligibility';
 validurls['/docs/user_guide/engagement_tools/messaging_fundamentals/about_statuses'] = '/docs/user_guide/messaging/governance/statuses';
-validurls['/docs/user_guide/messaging/messaging_fundamentals/statuses'] = '/docs/user_guide/messaging/governance/statuses';
 validurls['/docs/user_guide/engagement_tools/messaging_fundamentals/targeting_users'] = '/docs/user_guide/messaging/messaging_fundamentals/target_users';
 validurls['/docs/user_guide/engagement_tools/campaigns/building_campaigns'] = '/docs/user_guide/messaging/campaigns';
 validurls['/docs/user_guide/engagement_tools/campaigns/getting_started'] = '/docs/user_guide/messaging/campaigns';
@@ -3788,7 +3787,6 @@ validurls['/docs/user_guide/messaging/personalize/connected_content/public_apis'
 validurls['/docs/user_guide/messaging/personalize'] = '/docs/user_guide/messaging/design_and_edit/personalize';
 validurls['/docs/user_guide/messaging/templates/content_block_library'] = '/docs/user_guide/messaging/design_and_edit/content_blocks';
 validurls['/docs/user_guide/messaging/templates/faqs'] = '/docs/user_guide/messaging/design_and_edit/media_library/faq';
-validurls['/docs/user_guide/messaging/templates/canvas_templates/create_a_canvas_template'] = '/docs/user_guide/messaging/templates/canvas_templates';
 validurls['/docs/user_guide/messaging/media_library'] = '/docs/user_guide/messaging/design_and_edit/media_library';
 validurls['/docs/user_guide/messaging/content/media_library'] = '/docs/user_guide/messaging/design_and_edit/media_library';
 validurls['/docs/user_guide/messaging/content/media_library/faq'] = '/docs/user_guide/messaging/design_and_edit/media_library/faq';
@@ -3848,8 +3846,6 @@ validurls['/docs/user_guide/messaging/content/personalize/promotion_codes/migrat
 validurls['/docs/user_guide/messaging/content/templates'] = '/docs/user_guide/messaging/templates';
 validurls['/docs/user_guide/messaging/content/templates/managing_templates'] = '/docs/user_guide/messaging/templates/managing_templates';
 validurls['/docs/user_guide/messaging/content/templates/canvas_templates'] = '/docs/user_guide/messaging/templates/canvas_templates';
-validurls['/docs/user_guide/messaging/content/templates/canvas_templates/create_a_canvas_template'] = '/docs/user_guide/messaging/templates/canvas_templates';
-validurls['/docs/user_guide/messaging/content/templates/canvas_templates/templates'] = '/docs/user_guide/messaging/templates/canvas_templates/braze_templates';
 validurls['/docs/user_guide/messaging/content/templates/email_templates'] = '/docs/user_guide/messaging/templates/email_templates';
 validurls['/docs/user_guide/messaging/content/templates/email_templates/email_template'] = '/docs/user_guide/messaging/templates/email_templates/email_template';
 validurls['/docs/user_guide/messaging/content/templates/email_templates/html_email_template'] = '/docs/user_guide/messaging/templates/email_templates/html_email_template';
@@ -3895,7 +3891,6 @@ validurls['/docs/user_guide/message_building_by_channel/webhooks/reporting'] = '
 validurls['/docs/user_guide/message_building_by_channel/webhooks/testing'] = '/docs/user_guide/messaging/messaging_fundamentals/sending_test_messages/?tab=webhook';
 validurls['/docs/user_guide/message_building_by_channel/webhooks/braze_to_braze_webhooks'] = '/docs/user_guide/channels/webhooks/use_case_create_a_braze_to_braze_webhook';
 validurls['/docs/user_guide/message_building_by_channel/webhooks/lead_scoring'] = '/docs/user_guide/channels/email/html_editor';
-validurls['/docs/user_guide/channels/webhooks/use_case_create_a_lead_scoring_workflow'] = '/docs/user_guide/get_started/b2b_use_cases/lead_scoring';
 
 // --- LINE ---
 validurls['/docs/user_guide/message_building_by_channel/line'] = '/docs/user_guide/channels/line';
@@ -4032,8 +4027,6 @@ validurls['/docs/user_guide/message_building_by_channel/email/html_editor/creati
 validurls['/docs/user_guide/message_building_by_channel/email/html_editor/css_inline'] = '/docs/user_guide/channels/email/html_editor/css_inline';
 validurls['/docs/user_guide/message_building_by_channel/email/html_editor/gmail_promotions_tab'] = '/docs/user_guide/channels/email/html_editor/gmail_promotions_tab';
 validurls['/docs/user_guide/message_building_by_channel/email/html_editor/troubleshooting'] = '/docs/user_guide/channels/email/html_editor/troubleshooting';
-validurls['/docs/user_guide/channels/email/drag_and_drop/overview'] = '/docs/user_guide/channels/email/drag_and_drop';
-validurls['/docs/user_guide/channels/email/html_editor/creating_an_email_campaign'] = '/docs/user_guide/channels/email/html_editor';
 validurls['/docs/user_guide/message_building_by_channel/email/transactional_message_api_campaign'] = '/docs/user_guide/channels/transactional_email/create_a_transactional_email';
 validurls['/docs/user_guide/message_building_by_channel/email/transactional_message_api_campaign/tracking_transactional_emails'] = '/docs/user_guide/channels/transactional_email/tracking';
 
