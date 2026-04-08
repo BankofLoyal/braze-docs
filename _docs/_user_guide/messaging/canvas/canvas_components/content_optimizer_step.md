@@ -35,7 +35,7 @@ During the beta period, the supported channels are email and push notifications.
 {% tabs local %}
 {% tab Email %}
 
-From the **Messaging Channels** tab, select **Email** and create your base email message. Refer to our dedicated [Email]({{site.baseurl}}/user_guide/message_building_by_channel/email) section for help. 
+From the **Messaging Channels** tab, select **Email** and create your base email message. Refer to our dedicated [Email]({{site.baseurl}}/user_guide/channels/email) section for help. 
 
 The Content Optimizer agent uses the send settings (such as the email domain and reply-to address) specified in this variant to send all messages. You can either start with a new design or select an existing template for this message. At this step, consider which components of the message you want to optimize for. You will define these in [step 4](#step-4).
 
@@ -49,7 +49,7 @@ Supported components to optimize include:
 {% endtab %}
 {% tab Push notifications %}
 
-From the **Messaging Channels** tab, select **Push notifications** and create your base push notification. Refer to our dedicated [Push]({{site.baseurl}}/user_guide/message_building_by_channel/push) section for help. 
+From the **Messaging Channels** tab, select **Push notifications** and create your base push notification. Refer to our dedicated [Push]({{site.baseurl}}/user_guide/channels/push) section for help. 
 
 The Content Optimizer agent uses the selected push platforms specified in this variant to send all messages. You can either start with a new design or select an existing template for this message. At this step, consider which components of the message you want to optimize for. You will define these in [step 4](#step-4).
 
@@ -63,7 +63,7 @@ Supported components to optimize include:
 
 ### Step 3: Specify delivery settings
 
-In the **Delivery Settings** tab, you can specify if the step should use Intelligent Timing or delivery validations. For more details, refer to [Edit delivery settings]({{site.baseurl}}/user_guide/engagement_tools/canvas/canvas_components/message_step/#step-2-edit-delivery-settings) in Message step.
+In the **Delivery Settings** tab, you can specify if the step should use Intelligent Timing or delivery validations. For more details, refer to [Edit delivery settings]({{site.baseurl}}/user_guide/messaging/canvas/canvas_components/message_step/#step-2-edit-delivery-settings) in Message step.
 
 ### Step 4: Add content components and variants {#step-4}
 
@@ -168,7 +168,7 @@ For push notifications, you can optimize **Opens**. This optimizes combinations 
 
 ## Analytics
 
-To review performance, open the step-level analytics panel to see metrics by content variant and overall combination performance. The Content Optimizer step uses the [same analytics as the Message step]({{site.baseurl}}/user_guide/engagement_tools/canvas/canvas_components/message_step/#analytics).
+To review performance, open the step-level analytics panel to see metrics by content variant and overall combination performance. The Content Optimizer step uses the [same analytics as the Message step]({{site.baseurl}}/user_guide/messaging/canvas/canvas_components/message_step/#analytics).
 
 ![Content Optimizer analytics for three buttons and the percentage of allocation of sends, which trend upwards.]({% image_buster /assets/img/content_optimizer/content_optimizer_analytics.png %})
 
