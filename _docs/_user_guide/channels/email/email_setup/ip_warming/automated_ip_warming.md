@@ -69,7 +69,7 @@ Changes made to the campaigns created from the IP warming tool (such as changing
 
 ### Step 4: Select conversion events
 
-You can define up to four conversion events to track. These conversion events cannot be updated after the automated IP warming plan has launched. 
+You can define up to four conversion events to track. These conversion events cannot be updated after the automated IP warming plan has launched.
 
 - Starts session
 - Places order
