@@ -2724,6 +2724,7 @@ validurls['/docs/api/endpoints/translations/get_translation_canvas'] = '/docs/ap
 validurls['/docs/api/endpoints/translations/put_update_translation_canvas'] = '/docs/api/endpoints/translations/canvas/put_update_translation_canvas';
 validurls['/docs/api/endpoints/translations/campaigns/get_bulk_translations_campaigns'] = '/docs/api/endpoints/translations/campaigns/get_translation_campaign';
 validurls['/docs/api/endpoints/translations/canvas/get_bulk_translations_canvases'] = '/docs/api/endpoints/translations/canvas/get_translation_canvas';
+validurls['/docs/api/endpoints/translations/content_blocks/get_source_content_block'] = '/docs/api/endpoints/translations/content_blocks/get_translation_content_block';
 
 validurls['/docs/developer_guide/sdk_integration/initialization'] = '/docs/developer_guide/sdk_integration';
 
