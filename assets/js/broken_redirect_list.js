@@ -4271,8 +4271,5 @@ validurls['/docs/user_guide/engagement_tools/surveys'] = '/docs/user_guide/chann
 // Content Cards — IA restructure
 validurls['/docs/user_guide/message_building_by_channel/content_cards/create_a_content_card'] = '/docs/user_guide/channels/content_cards/create_a_content_card/';
 
-// Content Blocks — moved from templates to design_and_edit
-validurls['/docs/user_guide/messaging/templates/content_blocks'] = '/docs/user_guide/messaging/design_and_edit/content_blocks/';
-
 // RCS — no dedicated page, part of combined SMS/MMS/RCS create page
 validurls['/docs/user_guide/channels/sms_mms_and_rcs/create/rcs'] = '/docs/user_guide/channels/sms_mms_and_rcs/create/';
