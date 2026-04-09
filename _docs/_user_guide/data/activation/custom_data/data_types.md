@@ -103,7 +103,7 @@ You can add a description to a custom attribute after it's created if you have t
 
 ### Adding tags
 
-You can add tags to a custom attribute after it's created if you have the "Manage Events, Attributes, Purchases" [user permission]({{site.baseurl}}/user_guide/administrative/app_settings/manage_your_braze_users/user_permissions/). The tags can then be used to filter the list of attributes. 
+You can add tags to a custom attribute after it's created if you have the "Manage Events, Attributes, Purchases" [user permission]({{site.baseurl}}/user_guide/administrative/app_settings/manage_your_braze_users/user_permissions/). You can then use the tags to filter the list of attributes. 
 
 ### Removing custom attributes
 
