@@ -4186,3 +4186,5 @@ validurls['/docs/user_guide/engagement_tools/canvas/testing_canvases/previewuser
 validurls['/docs/user_guide/message_building_by_channel/email/apple_mail/email_private_relay_apple_SSO/'] = '/docs/user_guide/channels/email/best_practices/apple_mail/email_private_relay_apple_SSO/';
 validurls['/docs/user_guide/message_building_by_channel/line/lineusers/'] = '/docs/user_guide/channels/line/message_users/';
 validurls['/docs/user_guide/message_building_by_channel/line/messagingusers/'] = '/docs/user_guide/channels/line/message_users/';
+validurls['/unlisted_docs/track_users_bulk_partners'] = '/docs/api/endpoints/user_data/post_user_track_bulk/';
+validurls['/unlisted_docs/track_users_bulk_partners/'] = '/docs/api/endpoints/user_data/post_user_track_bulk/';
