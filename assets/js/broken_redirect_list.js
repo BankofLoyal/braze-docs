@@ -239,6 +239,7 @@ validurls['/docs/user_guide/message_building_by_channel/sms/keywords/high_volume
 
 validurls['/docs/user_guide/personalization_and_dynamic_content/connected_content/about_connected_content'] = '/docs/user_guide/messaging/design_and_edit/personalize/connected_content/';
 validurls['/docs/user_guide/personalization_and_dynamic_content/liquid/content_blocks'] = '/docs/user_guide/messaging/design_and_edit/content_blocks/';
+validurls['/docs/user_guide/personalization_and_dynamic_content/content_blocks'] = '/docs/user_guide/messaging/design_and_edit/content_blocks/';
 validurls['/docs/user_guide/personalization_and_dynamic_content/liquid/advanced_use_cases'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/supported_personalization_tags/';
 validurls['/docs/user_guide/personalization_and_dynamic_content/liquid/accounting_for_null_attribute_values'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/conditional_logic/#accounting_for_null_attribute_values';
 validurls['/docs/user_guide/personalization_and_dynamic_content/liquid/overview'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/';
@@ -502,6 +503,7 @@ validurls['/docs/copying_canvases_across_workspaces'] = '/docs/user_guide/messag
 validurls['/docs/user_guide/engagement_tools/campaigns/ideas_and_strategies/ab_testing_with_random_buckets'] = '/docs/user_guide/messaging/ab_testing/concepts/random_bucket_numbers/';
 validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_more/ab_testing_with_random_buckets'] = '/docs/user_guide/messaging/ab_testing/concepts/random_bucket_numbers/';
 validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_more/ab_testing'] = '/docs/user_guide/messaging/ab_testing/';
+validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_optimization/ab_testing'] = '/docs/user_guide/messaging/ab_testing/';
 
 validurls['/docs/user_guide/engagement_tools/canvas/create_a_canvas/change_your_canvas_after_launch'] = '/docs/user_guide/messaging/canvas/managing_canvases/change_your_canvas_after_launch/';
 validurls['/docs/user_guide/engagement_tools/campaigns/scheduling_and_organizing/duplicating_segments_and_campaigns/#cloning-a-canvas'] = '/docs/user_guide/messaging/governance/duplicating/';
@@ -2634,6 +2636,7 @@ validurls['/docs/user_guide/message_building_by_channel/sms/sms_campaign_analyti
 validurls['/docs/user_guide/message_building_by_channel/sms/about_sms'] = '/docs/user_guide/channels/sms_mms_and_rcs/';
 validurls['/docs/user_guide/onboarding/platform_administrative_features'] = '/docs/user_guide/administer/';
 validurls['/docs/user_guide/message_building_by_channel/sms/sms_setup/sms_sending'] = '/docs/user_guide/channels/sms_mms_and_rcs/message_setup/sms_sending/';
+validurls['/docs/user_guide/message_building_by_channel/sms/sms_message_sending'] = '/docs/user_guide/channels/sms_mms_and_rcs/message_setup/sms_sending/';
 validurls['/docs/user_guide/message_building_by_channel/sms_mms_rcs/sms/terms'] = '/docs/user_guide/channels/sms_mms_and_rcs/message_setup/terms/';
 validurls['/docs/user_guide/message_building_by_channel/sms/faqs'] = '/docs/user_guide/channels/sms_mms_and_rcs/faqs/';
 validurls['/docs/user_guide/message_building_by_channel/sms/best_practices/best_practices'] = '/docs/user_guide/channels/sms_mms_and_rcs/compliance_and_delivery/best_practices/';
@@ -3417,6 +3420,7 @@ validurls['/docs/user_guide/data/distribution/export_braze_data/segment_data'] =
 
 // Audience > Manage audience (from data/unification)
 validurls['/docs/user_guide/data/unification/user_data/import_users'] = '/docs/user_guide/audience/manage_audience/import_users/';
+validurls['/docs/user_guide/data/unification/user_data/user_import'] = '/docs/user_guide/audience/manage_audience/import_users/';
 validurls['/docs/user_guide/data/unification/user_data/import_users/csv'] = '/docs/user_guide/audience/manage_audience/import_users/csv_import/';
 validurls['/docs/user_guide/data/unification/user_data/delete_users'] = '/docs/user_guide/audience/manage_audience/user_profiles/delete_users/';
 
@@ -3615,6 +3619,7 @@ validurls['/docs/user_guide/data/activation/catalogs/product_blocks'] = '/docs/u
 validurls['/docs/user_guide/engagement_tools'] = '/docs/user_guide/messaging/';
 validurls['/docs/user_guide/engagement_tools/testing'] = '/docs/user_guide/messaging/ab_testing/';
 validurls['/docs/user_guide/engagement_tools/testing/multivariant_testing'] = '/docs/user_guide/messaging/ab_testing/';
+validurls['/docs/user_guide/engagement_tools/testing/multivariate_testing'] = '/docs/user_guide/messaging/ab_testing/';
 validurls['/docs/user_guide/engagement_tools/testing/multivariant_testing/ab_test_projection'] = '/docs/user_guide/messaging/ab_testing/ab_test_projection/';
 validurls['/docs/user_guide/engagement_tools/templates_and_media'] = '/docs/user_guide/messaging/templates/';
 validurls['/docs/user_guide/engagement_tools/templates_and_media/media_library'] = '/docs/user_guide/messaging/design_and_edit/media_library/image_specifications/';
@@ -4003,6 +4008,7 @@ validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_more/seed_gro
 validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_optimization/conversion_events'] = '/docs/user_guide/messaging/messaging_fundamentals/conversion_events/';
 validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_optimizing/conversion_events'] = '/docs/user_guide/messaging/messaging_fundamentals/conversion_events/';
 validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_optimizing/multivariate_testing'] = '/docs/user_guide/messaging/ab_testing/';
+validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_optimization/multivariate_testing'] = '/docs/user_guide/messaging/ab_testing/';
 validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_reporting/campaign_analytics'] = '/docs/user_guide/messaging/campaigns/test_campaigns/campaign_analytics/';
 validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_retargeting/campaign_analytics'] = '/docs/user_guide/messaging/campaigns/test_campaigns/campaign_analytics/';
 validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_troubleshooting/message_activity_log'] = '/docs/user_guide/administer/global/workspace_settings/logs_and_alerts/message_activity_log/';
