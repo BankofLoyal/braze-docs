@@ -121,7 +121,7 @@ Note when triggering a message on an "Other" keyword response, you have the oppo
 
 #### Template keywords
 
-When triggering a campaign or Canvas component on an inbound SMS or MMS, you can optionally template the text or media attachments that your user sent into the body of your campaign or Canvas with Liquid. This will enable you to access the user's response which you can then include in your reply, apply conditional logic to, or anything else you can do with Liquid. 
+When triggering a campaign or Canvas component on an inbound SMS or MMS, you can optionally template the text or media attachments that your user sent into the body of your campaign or Canvas with Liquid. This enables you to access the user's response which you can then include in your reply, apply conditional logic to, or anything else you can do with Liquid. 
 
 {% raw %}
 
