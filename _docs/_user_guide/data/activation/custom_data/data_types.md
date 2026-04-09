@@ -119,7 +119,7 @@ Setting an attribute to `null` and setting it to `""` (empty string) are not the
 {% endalert %}
 
 - `null` removes the attribute from the user profile entirely. It does not appear in the profile or match any **IS NOT BLANK** filter. 
-- `""` sets the attribute to an empty string value. The attribute will appear on the profile with an empty string value, but will not match **IS NOT BLANK** filters (it is treated as blank).
+- `""` sets the attribute to an empty string value. The attribute appears on the profile with an empty string value, but does not match **IS NOT BLANK** filters (it is treated as blank).
 
 Additionally, `""` is only valid for string-type attributes. If the attribute's data type is set to a non-string type (such as boolean, number, or time) in the dashboard, sending `""` will not clear the value—use `null` instead.
 
