@@ -9,7 +9,7 @@ search_tag: Partner
 
 # GRAVTY® Loyalty Platform
 
-> [GRAVTY®](https://www.lji.io/) is an enterprise-grade loyalty platform from Loyalty Juggernaut Inc. (LJI) that enables brands across Retail, Travel, restaurants (including quick-service restaurants), and Financial Services to design, manage, and scale next-generation programs—driving measurable growth in engagement, retention, and customer lifetime value through personalized, data-led experiences.
+> [GRAVTY®](https://www.lji.io/) is an enterprise-grade loyalty platform from Loyalty Juggernaut Inc. (LJI) that enables brands across retail, travel, restaurants (including quick-service restaurants), and financial services to design, manage, and scale next-generation programs—driving measurable growth in engagement, retention, and customer lifetime value through personalized, data-led experiences.
 
 Built on a flexible, API-first architecture, GRAVTY® supports real-time earn and burn, partner ecosystem management, and integration across channels. Teams can launch faster, iterate on programs, and deliver loyalty experiences at scale.
 
@@ -75,7 +75,9 @@ After you save the Braze subscriber, GRAVTY® opens the **Template Attribute Map
 3. Enter the **Braze attribute name** (custom attribute) where the value should appear in Braze.
 
 {% alert important %}
-You don't need to map `external_id`. GRAVTY® generates and maps it internally by hashing the member ID for consistent identification in Braze.
+You don't need to map `external_id`. GRAVTY® generates it internally by hashing the member ID, and Braze receives that hashed value as `external_id` on the user profile.
+
+Before you enable the integration, confirm this matches how you set `external_id` in Braze today. If Braze already uses a different `external_id` for the same people, work with LJI to align identifiers before you sync data.
 {% endalert %}
 
 {: start="4"}
@@ -92,7 +94,7 @@ The integration supports Braze custom attribute data types, including numbers (i
 
 Trigger a sample event in GRAVTY® to confirm sync, communication triggers, and the end-to-end flow.
 
-![Braze user profile Overview with custom attributes such as tier and tier dates populated from GRAVTY® mapping.]({% image_buster /assets/img/lji/braze-member-profile.png %})
+![Braze user profile overview with custom attributes such as tier and tier dates populated from GRAVTY® mapping.]({% image_buster /assets/img/lji/braze-member-profile.png %})
 
 ## Support
 
