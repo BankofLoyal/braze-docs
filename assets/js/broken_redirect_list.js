@@ -4193,7 +4193,7 @@ validurls['/docs/user_guide/message_building_by_channel/line/messagingusers/'] =
 // ====================================================================
 
 // Short-path aliases (root-level docs shortcuts)
-validurls['/docs/advancement_behavior'] = '/docs/user_guide/engagement_tools/canvas/create_a_canvas/advancement/';
+validurls['/docs/advancement_behavior'] = '/docs/user_guide/messaging/canvas/canvas_components/message_step/';
 validurls['/docs/amphtml'] = '/docs/user_guide/channels/email/customize/amp_for_email/';
 validurls['/docs/blacklist'] = '/docs/api/endpoints/email/post_blacklist/';
 validurls['/docs/braze_support'] = '/docs/user_guide/administer/personal/braze_support/';
@@ -4205,13 +4205,13 @@ validurls['/docs/cloud_ingestion'] = '/docs/user_guide/data/unification/cloud_in
 validurls['/docs/cloud_ingestion#product-setup'] = '/docs/user_guide/data/unification/cloud_ingestion/#product-setup';
 validurls['/docs/data_transformation'] = '/docs/user_guide/data/unification/data_transformation/';
 validurls['/docs/line'] = '/docs/user_guide/channels/line/';
-validurls['/docs/messaging_interaction_data'] = '/docs/docs_pages/redirects/messaging_interaction_data/';
+validurls['/docs/messaging_interaction_data'] = 'https://braze.com/unlisted_docs/messaging_interaction_data/';
 validurls['/docs/multi_language_support'] = '/docs/user_guide/administer/global/workspace_settings/multi_language_settings/';
 validurls['/docs/persistent_entry'] = '/docs/user_guide/messaging/canvas/create_a_canvas/context_and_event_properties/canvas_persistent_entry_properties/';
 validurls['/docs/post_user_track_synchronous'] = '/docs/api/endpoints/user_data/post_user_track_synchronous/';
 validurls['/docs/scim_api_appendix'] = '/docs/api/objects_filters/scim_api_appendix/';
 validurls['/docs/scim_api_appendix#permissions-object'] = '/docs/api/objects_filters/scim_api_appendix/#permissions-object';
-validurls['/docs/support_contact'] = '/docs/hidden/other/support_contact/';
+validurls['/docs/support_contact'] = '/docs/user_guide/administer/personal/braze_support/';
 validurls['/docs/target_approvals'] = '/docs/docs_pages/redirects/target_approvals/';
 
 // API paths
