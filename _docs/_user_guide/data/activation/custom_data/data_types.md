@@ -91,7 +91,7 @@ Custom attributes support the data types listed in the [Definitions](#definition
 {% tabs %}
 {% tab Boolean %}
 
-Custom attributes can be blocklisted individually in the actions menu, or up to 100 attributes can be selected and blocklisted in bulk. If you block a custom attribute, no data will be collected regarding that attribute, existing data will be unavailable unless reactivated, and blocklisted attributes will not show up in filters or graphs. Additionally, if the attribute is currently referenced by filters or triggers in other areas of the Braze dashboard, a warning modal will appear explaining that all instances of the filters or triggers that reference it will be removed and archived.
+You can blocklist custom attributes individually in the actions menu, or you can select and blocklist up to 100 attributes in bulk. If you block a custom attribute, no data is collected regarding that attribute, existing data is unavailable unless reactivated, and blocklisted attributes do not show up in filters or graphs. Additionally, if the attribute is currently referenced by filters or triggers in other areas of the Braze dashboard, a warning modal appears explaining that all instances of the filters or triggers that reference it are removed and archived.
 
 ### Marking as personally identifiable information (PII)
 
