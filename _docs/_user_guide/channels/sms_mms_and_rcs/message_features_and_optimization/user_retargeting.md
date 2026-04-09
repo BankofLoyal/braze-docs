@@ -55,7 +55,7 @@ To trigger messages as users receive SMS, MMS, or RCS messages from a specific c
 ### Filter by advanced tracking links
 
 Retarget users who have clicked campaigns with [advanced tracking links]({{site.baseurl}}/user_guide/channels/sms_mms_and_rcs/message_features_and_optimization/link_shortening/).
-Only campaigns that have advanced tracking enabled will appear in the following dropdowns:
+Only campaigns that have advanced tracking enabled appear in the following dropdowns:
 
 #### Retarget users who have clicked a specific SMS, MMS, or RCS Campaign
 
