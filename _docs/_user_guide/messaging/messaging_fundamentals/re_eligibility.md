@@ -72,7 +72,7 @@ Consider the following scenario:
 * A campaign is set to send monthly on the 15th with re-eligibility set to 30 days.
 * There are fewer than 30 days between February 15 and March 15. 
 
-This means users who received the campaign on February 15 will not be eligible for the campaign to be sent on March 15. (A user can be marked as having "received" the campaign due to shared channel identifiers—for example, if they share an email or phone number with someone who received, opened, or clicked the message.) If the campaign is set to send daily at 8 am with re-eligibility of 1 day, and there's a latency in sending the message, users who received the campaign at 8:30 am will not be re-eligible yet on the following day at 8 am.
+This means users who received the campaign on February 15 are not eligible for the campaign to be sent on March 15. (A user can be marked as having "received" the campaign due to shared channel identifiers—for example, if they share an email or phone number with someone who received, opened, or clicked the message.) If the campaign is set to send daily at 8 am with re-eligibility of 1 day, and there's a latency in sending the message, users who received the campaign at 8:30 am are not re-eligible yet on the following day at 8 am.
 
 ## Multivariate testing
 
