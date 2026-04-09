@@ -4186,3 +4186,67 @@ validurls['/docs/user_guide/engagement_tools/canvas/testing_canvases/previewuser
 validurls['/docs/user_guide/message_building_by_channel/email/apple_mail/email_private_relay_apple_SSO/'] = '/docs/user_guide/channels/email/best_practices/apple_mail/email_private_relay_apple_SSO/';
 validurls['/docs/user_guide/message_building_by_channel/line/lineusers/'] = '/docs/user_guide/channels/line/message_users/';
 validurls['/docs/user_guide/message_building_by_channel/line/messagingusers/'] = '/docs/user_guide/channels/line/message_users/';
+
+// ====================================================================
+// Platform repo IA migration — added 2026-04-09
+// URLs referenced in the platform codebase that were missing redirects
+// ====================================================================
+
+// Short-path aliases (root-level docs shortcuts)
+validurls['/docs/advancement_behavior'] = '/docs/user_guide/engagement_tools/canvas/create_a_canvas/advancement/';
+validurls['/docs/amphtml'] = '/docs/user_guide/channels/email/customize/amp_for_email/';
+validurls['/docs/blacklist'] = '/docs/api/endpoints/email/post_blacklist/';
+validurls['/docs/braze_support'] = '/docs/user_guide/administer/personal/braze_support/';
+validurls['/docs/canvas_version_history'] = '/docs/user_guide/messaging/canvas/managing_canvases/canvas_version_history/';
+validurls['/docs/card_creation'] = '/docs/user_guide/channels/content_cards/create_a_content_card/card_creation/';
+validurls['/docs/cloning_canvases'] = '/docs/user_guide/messaging/canvas/managing_canvases/cloning_canvases/';
+validurls['/docs/cloning_canvases#limitations'] = '/docs/user_guide/messaging/canvas/managing_canvases/cloning_canvases/#limitations';
+validurls['/docs/cloud_ingestion'] = '/docs/user_guide/data/unification/cloud_ingestion/';
+validurls['/docs/cloud_ingestion#product-setup'] = '/docs/user_guide/data/unification/cloud_ingestion/#product-setup';
+validurls['/docs/data_transformation'] = '/docs/user_guide/data/unification/data_transformation/';
+validurls['/docs/line'] = '/docs/user_guide/channels/line/';
+validurls['/docs/messaging_interaction_data'] = '/docs/docs_pages/redirects/messaging_interaction_data/';
+validurls['/docs/multi_language_support'] = '/docs/user_guide/administer/global/workspace_settings/multi_language_settings/';
+validurls['/docs/persistent_entry'] = '/docs/user_guide/messaging/canvas/create_a_canvas/context_and_event_properties/canvas_persistent_entry_properties/';
+validurls['/docs/post_user_track_synchronous'] = '/docs/api/endpoints/user_data/post_user_track_synchronous/';
+validurls['/docs/scim_api_appendix'] = '/docs/api/objects_filters/scim_api_appendix/';
+validurls['/docs/scim_api_appendix#permissions-object'] = '/docs/api/objects_filters/scim_api_appendix/#permissions-object';
+validurls['/docs/support_contact'] = '/docs/hidden/other/support_contact/';
+validurls['/docs/target_approvals'] = '/docs/docs_pages/redirects/target_approvals/';
+
+// API paths
+validurls['/docs/api/api_key'] = '/docs/api/basics/';
+validurls['/docs/api/api_key#how-can-i-use-it'] = '/docs/api/basics/';
+validurls['/docs/api/endpoints/translations/content_blocks/get_view_translation_content_block'] = '/docs/api/endpoints/translations/content_blocks/get_translation_content_block/';
+validurls['/docs/api/home-new'] = '/docs/api/home/';
+validurls['/docs/api/new_home'] = '/docs/api/home/';
+
+// Email
+validurls['/docs/email/managing_subscriptions'] = '/docs/user_guide/channels/email/subscriptions/';
+
+// Help
+validurls['/docs/help/push'] = '/docs/developer_guide/push_notifications/';
+validurls['/docs/help/push#android-push-category'] = '/docs/user_guide/channels/push/platform_specific_resources/android/advanced_campaign_settings/#push-category';
+
+// Partners — restructured paths
+validurls['/docs/partners/anthropic'] = '/docs/partners/ai_model_providers/anthropic/';
+validurls['/docs/partners/openai'] = '/docs/partners/ai_model_providers/openai/';
+validurls['/docs/partners/gemini'] = '/docs/partners/ai_model_providers/google_gemini/';
+validurls['/docs/partners/shopify'] = '/docs/partners/ecommerce/shopify/';
+validurls['/docs/partners/datadog'] = '/docs/partners/data_and_analytics/business_intelligence/datadog/';
+validurls['/docs/partners/data_and_infrastructure_agility/monitoring/datadog'] = '/docs/partners/data_and_analytics/business_intelligence/datadog/';
+validurls['/docs/partners/data_and_infrastructure_agility/customer_data_platform/mParticle/mparticle'] = '/docs/partners/data_and_analytics/customer_data_platform/mparticle/';
+validurls['/docs/partners/data_and_infrastructure_agility/customer_data_platform/mParticle/mparticle_for_currents'] = '/docs/partners/data_and_analytics/customer_data_platform/mParticle/mparticle_for_currents/';
+validurls['/docs/partners/technology_partners/advertising_technologies/attribution/branch_for_attribution'] = '/docs/partners/message_orchestration/attribution/branch_for_attribution/';
+validurls['/docs/partners/message_personalization/dynamic_content/liftigniter'] = '/docs/hidden/archive_docs/liftigniter/';
+validurls['/docs/partners/message_personalization/location/gimbal'] = '/docs/partners/message_personalization/location/infillion/';
+
+// User guide — restructured paths
+validurls['/docs/user_guide/administrative/app_settings/manage_app_group/managing_time_zones'] = '/docs/user_guide/administer/global/admin_settings/workspace_time_zone/';
+validurls['/docs/user_guide/engagement_tools/segments/using_time_zones'] = '/docs/user_guide/administer/global/admin_settings/workspace_time_zone/';
+validurls['/docs/user_guide/message_building_by_channel/kakao'] = '/docs/user_guide/channels/kakaotalk/';
+validurls['/docs/user_guide/segments'] = '/docs/user_guide/audience/segments/';
+
+// Archived / removed partners (redirect to partners home)
+validurls['/docs/partners/data_and_infrastructure_agility/analytics/neura_insights'] = '/docs/partners/home/';
+validurls['/docs/partners/message_orchestration/attribution/ab180'] = '/docs/partners/home/';
