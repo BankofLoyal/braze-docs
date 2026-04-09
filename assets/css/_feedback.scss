@@ -98,22 +98,3 @@
     }
 }
 
-.gitedit_div {
-    color: $grey-boulder;
-    margin-bottom: 10px;
-    line-height: 20px;
-    vertical-align: middle;
-    padding-bottom: 8px;
-    img {
-        height: 20px;
-        vertical-align: middle;
-        margin-top: -4px;
-    }
-    a {
-        text-decoration: none;
-        &.hover,
-         :hover {
-            text-decoration: none;
-        }
-    }
-}
