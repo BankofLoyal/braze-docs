@@ -4247,6 +4247,10 @@ validurls['/docs/user_guide/engagement_tools/segments/using_time_zones'] = '/doc
 validurls['/docs/user_guide/message_building_by_channel/kakao'] = '/docs/user_guide/channels/kakaotalk/';
 validurls['/docs/user_guide/segments'] = '/docs/user_guide/audience/segments/';
 
+// Deprecated SDK platforms (archived docs)
+validurls['/docs/developer_guide/platform_integration_guides/windows_universal/initial_sdk_setup'] = '/docs/hidden/archive_docs/windows_universal/initial_sdk_setup/';
+validurls['/docs/developer_guide/platform_integration_guides/windows_universal/push_notifications'] = '/docs/hidden/archive_docs/windows_universal/push_notifications/';
+
 // Archived / removed partners (redirect to partners home)
 validurls['/docs/partners/data_and_infrastructure_agility/analytics/neura_insights'] = '/docs/partners/home/';
 validurls['/docs/partners/message_orchestration/attribution/ab180'] = '/docs/partners/home/';
