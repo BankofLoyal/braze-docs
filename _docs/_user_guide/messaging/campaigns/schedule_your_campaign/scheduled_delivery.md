@@ -58,3 +58,6 @@ If a user's profile does not have enough data to calculate an optimal time, you 
 
 Intelligent Timing campaigns work best for one-off and recurring messages where there is some flexibility regarding delivery time such as when they aren't well suited for breaking news or timed announcements.
 
+## Audience criteria evaluation with delays
+
+For campaigns that use scheduled delivery, audience criteria are always evaluated at the time of the scheduled send, not when the campaign launches. This applies to any delay between scheduling and sending—for example, rate limiting, local time zone, Intelligent Timing, or a trigger schedule.
