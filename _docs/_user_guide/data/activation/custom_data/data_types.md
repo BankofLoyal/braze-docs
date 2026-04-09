@@ -95,7 +95,7 @@ You can blocklist custom attributes individually in the actions menu, or you can
 
 ### Marking as personally identifiable information (PII)
 
-Administrators can also create custom attributes and mark them as PII from this page. These attributes will only be visible to admins and dashboard users with the “View Custom Attributes Marked as PII” permission.
+Administrators can also create custom attributes and mark them as PII from this page. These attributes are visible only to admins and dashboard users with the “View Custom Attributes Marked as PII” permission.
 
 ### Adding descriptions
 
