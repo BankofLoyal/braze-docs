@@ -4254,3 +4254,25 @@ validurls['/docs/developer_guide/platform_integration_guides/windows_universal/p
 // Archived / removed partners (redirect to partners home)
 validurls['/docs/partners/data_and_infrastructure_agility/analytics/neura_insights'] = '/docs/partners/home/';
 validurls['/docs/partners/message_orchestration/attribution/ab180'] = '/docs/partners/home/';
+
+// ====================================================================
+// BrazeAI Operator failed doc lookups — added 2026-04-09
+// ====================================================================
+
+// Email — IA restructure (message_building_by_channel → channels)
+validurls['/docs/user_guide/message_building_by_channel/email/creating_an_email'] = '/docs/user_guide/channels/email/html_editor/';
+validurls['/docs/user_guide/message_building_by_channel/email/managing_subscriptions'] = '/docs/user_guide/channels/email/subscriptions/';
+validurls['/docs/user_guide/message_building_by_channel/email/subscription_groups'] = '/docs/user_guide/channels/email/subscriptions/';
+
+// Surveys — old paths that never mapped to the new IA
+validurls['/docs/user_guide/message_building_by_channel/surveys'] = '/docs/user_guide/channels/in_app_messages/message_types/simple_survey/';
+validurls['/docs/user_guide/engagement_tools/surveys'] = '/docs/user_guide/channels/in_app_messages/message_types/simple_survey/';
+
+// Content Cards — IA restructure
+validurls['/docs/user_guide/message_building_by_channel/content_cards/create_a_content_card'] = '/docs/user_guide/channels/content_cards/create_a_content_card/';
+
+// Content Blocks — moved from templates to design_and_edit
+validurls['/docs/user_guide/messaging/templates/content_blocks'] = '/docs/user_guide/messaging/design_and_edit/content_blocks/';
+
+// RCS — no dedicated page, part of combined SMS/MMS/RCS create page
+validurls['/docs/user_guide/channels/sms_mms_and_rcs/create/rcs'] = '/docs/user_guide/channels/sms_mms_and_rcs/create/';
