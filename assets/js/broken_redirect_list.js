@@ -3948,6 +3948,7 @@ validurls['/docs/user_guide/message_building_by_channel/sms/setup'] = '/docs/use
 validurls['/docs/user_guide/personalization_and_dynamic_content/liquid/supported_filters'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/filters/';
 validurls['/docs/user_guide/message_building_by_channel/email/drag_and_drop/editor_components'] = '/docs/user_guide/messaging/design_and_edit/editor_blocks/?sdktab=email';
 
+validurls['/docs/user_guide/data/activation/attributes/nested_custom_attribute_support/#segmentation'] = '/docs/user_guide/audience/segments/segment_with_nested_custom_attributes/#filter-by-nested-custom-attributes';
 // Backfill dropped redirects, sorted by source path
 
 validurls['/docs/developer_guide/changelogs/web'] = '/docs/developer_guide/changelogs/';
