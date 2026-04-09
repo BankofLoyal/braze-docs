@@ -125,7 +125,7 @@ Additionally, `""` is only valid for string-type attributes. If the attribute's 
 
 ### Exporting data
 
-To export the list of custom attributes as a CSV file, select **Export all** at the top of the page. The CSV file will be generated, and a download link will be emailed to you.
+To export the list of custom attributes as a CSV file, select **Export all** at the top of the page. The system generates a CSV file and emails you a download link.
 
 ## Viewing usage reports
 
