@@ -87,7 +87,7 @@ Similar to Currents, you can use your Snowflake Secure Data Sharing to:
 - Map raw event or user data to a CRM (like Salesforce)
 - And more
 
-For a full list of available tables and columns, refer to the [SQL table reference]({{site.baseurl}}/user_guide/engagement_tools/segments/sql_segments/sql_segments_tables/). Snowflake Data Sharing includes all tables in that reference, plus additional Snowflake-exclusive tables for snapshots, campaign and Canvas changelogs, agent console events, and message retry events.
+For a full list of available tables and columns, refer to the [SQL table reference]({{site.baseurl}}/user_guide/audience/segments/segment_extension/sql_segments/sql_segments_tables/). Snowflake Data Sharing includes all tables in that reference, plus additional Snowflake-exclusive tables for snapshots, campaign and Canvas changelogs, agent console events, and message retry events.
 
 You can also [download the raw table schemas]({% image_buster /assets/download_file/data-sharing-raw-table-schemas.txt %}) as a text file.
 
@@ -124,7 +124,7 @@ When possible, breaking changes will be preceded by an announcement and a migrat
 
 ### Snowflake regions
 
-Braze currently hosts all user-level data in the Snowflake AWS US East-1, EU-Central (Frankfurt), AP-Southeast-2 (Sydney) and AP-Southeast-3 (Jakarta) regions. For users outside of those regions, Braze can provide data sharing to joint customers who are hosting their Snowflake infrastructure across any AWS, Azure, or GCP region.
+Braze currently hosts all user-level data in the Snowflake AWS US East-1, EU-Central (Frankfurt), AP-Northeast-1 (Tokyo), AP-Southeast-2 (Sydney), and AP-Southeast-3 (Jakarta) regions. For users outside of those regions, Braze can provide data sharing to joint customers who are hosting their Snowflake infrastructure across any AWS, Azure, or GCP region.
 
 ### Data retention
 

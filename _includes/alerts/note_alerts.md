@@ -37,3 +37,11 @@ All attributes are sourced from the Braze REST API.
 {% endalert %}
 
 {% endif %}
+
+{% if include.alert == 'subscription group limit' %}
+
+{% alert note %}
+You can add up to 350 subscription groups per workspace.
+{% endalert %}
+
+{% endif %}
