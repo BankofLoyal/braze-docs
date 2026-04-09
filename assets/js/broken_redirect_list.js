@@ -3919,6 +3919,7 @@ validurls['/docs/sms_faq'] = '/docs/user_guide/channels/sms_mms_and_rcs/faqs/';
 validurls['/docs/mms_faq'] = '/docs/user_guide/channels/sms_mms_and_rcs/faqs/';
 validurls['/docs/user_guide/data/technology_partners'] = '/docs/partners/data_and_analytics/';
 validurls['/docs/user_guide/analytics/dashboards/diagnostics_dashboard'] = '/docs/user_guide/analytics/dashboards/dashboard_builder/diagnostics_dashboard/';
+validurls['/docs/user_guide/analytics/dashboard/diagnostics_dashboard'] = '/docs/user_guide/analytics/dashboards/dashboard_builder/diagnostics_dashboard/';
 
 // Broken links resolved from scripts/temp/broken-links.csv (IA / renamed paths)
 validurls['/docs/user_guide/messaging/messaging_fundamentals/targeting_users/'] = '/docs/user_guide/messaging/messaging_fundamentals/target_users/';
