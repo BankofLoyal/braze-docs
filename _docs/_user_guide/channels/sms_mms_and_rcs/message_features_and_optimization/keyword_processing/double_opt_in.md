@@ -64,6 +64,10 @@ Users can also be entered into the double opt-in workflow if they are [subscribe
 
 Users can also enter the double opt-in workflow through subscription updates that occur outside of inbound messages. These sources include updates from the REST API, SDK, and preference center. When a user enters the double opt-in workflow through these sources, they will receive the **Opt-In Prompt Reply Message**.
 
+{% alert important %}
+When users are entered into the double opt-in workflow through sources other than inbound messages, they receive at most one opt-in prompt reply message in a rolling 24-hour period, regardless of the number of times they are entered into this workflow.
+{% endalert %}
+
 Each subscription source has a different enrollment behavior, as described in the following table.
 
 Source    | Double Opt-In Enrollment Behavior   

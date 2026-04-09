@@ -60,11 +60,15 @@ Name your Segment Extension by describing the type of users you intend to filter
 
 ### Step 3: Choose your criteria
 
-Select between purchase, message engagement, or custom event criteria for targeting. After you've selected the desired event type criteria, choose which purchased item, message interaction, or specific custom event you'd like to target for your user list. Then choose how many times (more than, less than, or equal to) the user would need to have completed the event, and the time period—for Segment Extensions specifically, you can go back up to the past 730 days (2 years).
+Select between purchase, message engagement, eCommerce recommended event, or custom event criteria for targeting. After you've selected the desired event type criteria, choose which purchased item, message interaction, eCommerce recommended event, or custom event you'd like to target for your user list. Then choose how many times (more than, less than, or equal to) the user would need to have completed the event, and the time period—for Segment Extensions specifically, you can go back up to the past 730 days (2 years).
 
 Segmentation based on event data from more than 730 days can be done using other filters located in **Segments**. When choosing your time period, you can specify a relative date range to select the past X number of days, a start date, an end date, or an exact date range (date A to date B).
 
 ![Segmentation criteria for users who performed a custom event more than 2 times in the date range of March 1st, 2025 through March 31st, 2025.]({% image_buster /assets/img/segment/segment_extension1.png %})
+
+If you are creating a Segment Extension using an eCommerce recommended event, first select **eCommerce Recommended Event** as your criterion, then select an event from the dropdown.
+
+![An eCommerce recommended event criterion with a dropdown of available recommended events.]({% image_buster /assets/img/segment/ecommerce_recommended_event_criterion.png %})
 
 #### Event property segmentation
 
@@ -80,7 +84,11 @@ For string properties, you can enter in multiple values at once. In the example 
 
 ![Segmenting based on datetime objects.]({% image_buster /assets/img/segment/property4.png %})
 
-We also support segmentation based on [nested event properties]({{site.baseurl}}/user_guide/data/activation/events/custom_events/nested_objects/).
+If you are using eCommerce recommended events and add an event property, the property dropdown will automatically populate with the properties available for that specific eCommerce recommended event.
+
+![Segment Extension details with a dropdown of available properties.]({% image_buster /assets/img/segment/ecommerce_recommended_event_properties.png %})
+
+We also support segmentation based on [nested event properties]({{site.baseurl}}/user_guide/data/activation/events/custom_events/nested_objects/). In the comparison dropdown, select the comparison that matches your nested property’s data type. You can use the same nested event property syntax to add nested properties for any eCommerce recommended events that contain nested properties. For info on the different nested properties available, see [Types of eCommerce recommended events]({{site.baseurl}}/user_guide/data/activation/events/recommended_events/ecommerce_events/#types-of-ecommerce-recommended-events). To generate the necessary schema for your Segment Extension’s property name, follow the steps in [Nested objects in custom events]({{site.baseurl}}/user_guide/data/activation/events/custom_events/nested_objects/).
 
 ![Segmenting based on nested event properties.]({% image_buster /assets/img/segment/nested_segment_extensions.png %})
 
