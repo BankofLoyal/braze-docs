@@ -115,7 +115,7 @@ If an action-based Canvas is triggered by an inbound SMS or MMS message, you can
 
 #### Trigger by arbitrary keywords
 
-Note when triggering a message on an "Other" keyword response, you will have the opportunity to evaluate the keyword body on an exact text match. This match follows the same rules as noted: Only the **exact, single-word message** will be processed (case _insensitive_). A keyword sent of `Hello Braze!` would not match the criteria shown in the following example. 
+Note when triggering a message on an "Other" keyword response, you have the opportunity to evaluate the keyword body on an exact text match. This match follows the same rules as noted: Only the **exact, single-word message** is processed (case _insensitive_). A keyword sent of `Hello Braze!` would not match the criteria shown in the following example. 
 
 ![Action-based SMS campaign with keyword category as "Other" where the message body is exactly "Hello" or "Hey".]({% image_buster /assets/img/sms/retargeting3.png %}){: style="margin-top:10px;"}
 
