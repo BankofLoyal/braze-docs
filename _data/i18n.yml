@@ -1,8 +1,8 @@
 en:
   next: NEXT
   previous: PREVIOUS
-  popular_topic: Popular Topics
-  helpful_resources: Helpful Resources
+  popular_topic: Popular topics
+  helpful_resources: Helpful resources
   braze_status: BRAZE SYSTEM STATUS
   braze_status_check: Checking Braze Status
   edit_github: Edit this page on GitHub

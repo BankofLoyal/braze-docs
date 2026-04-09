@@ -29,3 +29,19 @@ Braze doesn't generate profiles for users until they've used the app for the fir
 {% endalert %}
 
 {% endif %}
+
+{% if include.alert == 'Shopify attributes REST API' %}
+
+{% alert note %}
+All attributes are sourced from the Braze REST API.
+{% endalert %}
+
+{% endif %}
+
+{% if include.alert == 'subscription group limit' %}
+
+{% alert note %}
+You can add up to 350 subscription groups per workspace.
+{% endalert %}
+
+{% endif %}

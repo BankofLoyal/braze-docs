@@ -23,7 +23,7 @@ These parameters include:
 
 ## Anonymous user profiles
 
-Any user without a designated `external_id` is called an [anonymous user]({{site.baseurl}}/user_guide/data/user_data_collection/user_profile_lifecycle/anonymous_users/). For example, these could be users who visited your website but didn't sign up, or users who downloaded your mobile app but didn't create a profile.
+Any user without a designated `external_id` is called an [anonymous user]({{site.baseurl}}/user_guide/data/unification/user_data/user_profile_lifecycle/anonymous_users/). For example, these could be users who visited your website but didn't sign up, or users who downloaded your mobile app but didn't create a profile.
 
 Initially, when a user is recognized by the SDK, an anonymous user profile is created with an associated `braze_id`: a unique identifier that is automatically assigned by Braze, cannot be edited, and is device-specific. This identifier can be used to update the user profile through the [API]({{site.baseurl}}/api/endpoints/user_data/).
 
@@ -36,7 +36,7 @@ Additional benefits of using an `external_id` include the following:
 - Provide a consistent user experience across multiple devices and platforms (for example, not sending lapsing user notifications to a user's Android tablet when they are a loyal user of the iPhone app).
 - Improve the accuracy of your analytics by confirming users aren't creating a new user profile every time they uninstall and reinstall, or install the app on a different device.
 - Enable import of user data from sources outside the app using the [User Data endpoints]({{site.baseurl}}/api/endpoints/user_data/) and target users with transactional messages using our [messaging endpoints]({{site.baseurl}}/api/endpoints/messaging/).
-- Search for individual users using our "Testing" [filters]({{site.baseurl}}/user_guide/engagement_tools/segments/segmentation_filters/) within the segmenter, and on the [**Search Users**]({{site.baseurl}}/user_guide/engagement_tools/segments/user_profiles/) page.
+- Search for individual users using our "Testing" [filters]({{site.baseurl}}/user_guide/audience/segments/segmentation_filters/) within the segmenter, and on the [**Search Users**]({{site.baseurl}}/user_guide/audience/manage_audience/user_profiles/) page.
 
 ### Considerations for external IDs
 
@@ -59,12 +59,20 @@ One of two scenarios can occur when you identify anonymous users:
 
 In other words, you already have a user profile for this user. In this instance, Braze will do the following:
 1. Orphan the anonymous user
-2. Merge [specific user profile fields]({{site.baseurl}}/api/endpoints/user_data/post_users_merge/#merge_updates-behavior) that don't already exist on the identified user profile from the anonymous profile
+2. Merge [specific user profile fields]({{site.baseurl}}/api/endpoints/user_data/post_users_merge/#merge-behavior) that don't already exist on the identified user profile from the anonymous profile
 3. Remove the anonymous profile from your user base so the user counts aren't inflated
 
 If both the anonymous user and known user have a first name, the first name of the known user is maintained. If the known user has a null value and the anonymous user has a value, the anonymous user's value is merged into the known user's profile if the value falls under these [specific user profile fields]({{site.baseurl}}/api/endpoints/user_data/post_users_merge/#merge-behavior).
 
+{% alert important %}
+Not all data is merged from the anonymous profile. Push tokens and messaging history are carried over, and custom attributes, custom events, and purchase history from the anonymous profile are merged into the identified user only when those fields don't already exist on the identified user profile. When there is conflicting data, the identified user's values are kept. See [merge behavior]({{site.baseurl}}/api/endpoints/user_data/post_users_merge/#merge-behavior) for the full list of fields that are and aren't transferred.
+{% endalert %}
+
 For information on how to set an `external_id` against a user profile, see our documentation ([iOS]({{site.baseurl}}/developer_guide/analytics/setting_user_ids/?tab=swift), [Android]({{site.baseurl}}/developer_guide/analytics/setting_user_ids/?tab=android), [Web]({{site.baseurl}}/developer_guide/analytics/setting_user_ids/?tab=web)).
+
+{% alert note %}
+Orphaned users are not eligible to receive messages.
+{% endalert %}
 
 ## User aliases
 
@@ -86,6 +94,12 @@ User aliases also allow you to tag anonymous users with an identifier. For examp
 
 If an anonymous user profile with an alias is later recognized with an `external_id`, they will be treated as a normal identified user profile, but will retain their existing alias and can still be referenced by that alias.
 
+### Searching for a user alias
+
+If you know a user's alias name and label, you can find the user in **Search Users** with the format `alias_label:alias_name`. For example, if you have an alias-only profile with the name `alias_name: bobby_alias` and label `alias_label: m4pzOndtA-CnO0u`, you can find this user by entering `m4pzOndtA-CnO0u:bobby_alias`.
+
+If you don't know this information, you can call the [`Export user profile by identifier` endpoint]({{site.baseurl}}/api/endpoints/export/user_data/post_users_identifier/) and find the user alias in the API response.
+
 ### Setting aliases on known user profiles
 
 A user alias can also be set on a known user profile to reference a known user by another externally known ID. For example, a user may have a business intelligence tool ID (like an Amplitude ID) that you wish to reference within Braze.
@@ -95,7 +109,7 @@ For information on how to set a user alias, see our documentation for each platf
 ![A flow chart of a user profile's lifecycle in Braze. When changeUser() is called for an anonymous user, that user becomes an Identified User and data is migrated to their identified user profile. The Identified User has a Braze ID and external ID. At this point, if a second anonymous user has changeUser() called, user data fields that do not already exist on the Identified User will be merged. If the Identified User has an alias added to their existing user profile, no data will be affected but they will become an Identified User with alias. If a third anonymous user with the same alias label as the Identified User but a different alias name then has changeUser() called, any fields that do not exist on the Identified User will be merged and the alias label on the Identified User profile is maintained.]({% image_buster /assets/img_archive/Braze_User_flowchart.png %})
 
 {% alert tip %}
-Having trouble picturing how this may look for the user profile lifecycle of your customers? Visit [Best practices]({{site.baseurl}}/user_guide/data/user_data_collection/best_practices/) to view user data collection best practices.
+Having trouble picturing how this may look for the user profile lifecycle of your customers? Visit [Best practices]({{site.baseurl}}/user_guide/data/unification/user_data/best_practices/) to view user data collection best practices.
 {% endalert %}
 
 ## Advanced use case
@@ -108,7 +122,7 @@ Uninstalling and reinstalling an app will generate a new anonymous `braze_id` fo
 
 ### Troubleshooting with user IDs
 
-All user IDs can be used to find and identify users within your dashboard for testing. To find your user in the Braze dashboard, refer to [Adding Test Users]({{site.baseurl}}/user_guide/administrative/app_settings/developer_console/internal_groups_tab/#adding-test-users).
+All user IDs can be used to find and identify users within your dashboard for testing. To find your user in the Braze dashboard, refer to [Adding Test Users]({{site.baseurl}}/user_guide/administer/global/user_management/internal_groups/#adding-test-users).
 
 {% alert important %}
 Braze will ban or block users with over 5,000,000 sessions ("dummy users") and will no longer ingest their SDK events, as these users are generally the result of misintegration. If you find that this has happened to a legitimate user, contact your Braze account manager.
