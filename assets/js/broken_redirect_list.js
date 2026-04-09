@@ -3438,11 +3438,29 @@ validurls['/docs/user_guide/engagement_tools/locations_and_geofences/location_tr
 // Analytics > Dashboards (renamed from dashboard)
 validurls['/docs/user_guide/analytics/dashboard/api_usage_dashboard'] = '/docs/user_guide/analytics/dashboards/api_usage/';
 validurls['/docs/user_guide/analytics/dashboard/ecommerce_revenue_dashboard'] = '/docs/user_guide/analytics/dashboards/dashboard_builder/ecommerce_revenue_dashboard/';
+validurls['/docs/user_guide/analytics/dashboard/conversions_dashboard'] = '/docs/user_guide/analytics/dashboards/conversions/';
+validurls['/docs/user_guide/analytics/dashboard/deliverability_center'] = '/docs/user_guide/analytics/dashboards/deliverability_center/';
+validurls['/docs/user_guide/analytics/dashboard/email_performance_dashboard'] = '/docs/user_guide/analytics/dashboards/channel_performance/';
+validurls['/docs/user_guide/analytics/dashboard/home_dashboard'] = '/docs/user_guide/analytics/dashboards/home/';
 
 // Analytics > Reports (renamed from reporting)
 validurls['/docs/user_guide/analytics/reporting/dashboard_builder'] = '/docs/user_guide/analytics/dashboards/dashboard_builder/';
+validurls['/docs/user_guide/analytics/reporting/campaign_analytics'] = '/docs/user_guide/analytics/reports/campaign_analytics/';
+validurls['/docs/user_guide/analytics/reporting/canvas_analytics'] = '/docs/user_guide/analytics/reports/canvas_analytics/';
+validurls['/docs/user_guide/analytics/reporting/configuring_reporting'] = '/docs/user_guide/analytics/reports/configure_reporting/';
+validurls['/docs/user_guide/analytics/reporting/data_by_segments'] = '/docs/user_guide/analytics/reports/query_builder/data_by_segments/';
+validurls['/docs/user_guide/analytics/reporting/engagement_reports'] = '/docs/user_guide/analytics/reports/engagement_reports/';
+validurls['/docs/user_guide/analytics/reporting/funnel_reports'] = '/docs/user_guide/analytics/reports/funnel_reports/';
+validurls['/docs/user_guide/analytics/reporting/global_control_group_reporting'] = '/docs/user_guide/audience/global_control_group/';
+validurls['/docs/user_guide/analytics/reporting/report_builder'] = '/docs/user_guide/analytics/reports/report_builder/';
+validurls['/docs/user_guide/analytics/reporting/report_builder/report_builder_legacy'] = '/docs/user_guide/analytics/reports/report_builder/report_builder_legacy/';
+validurls['/docs/user_guide/analytics/reporting/report_metrics'] = '/docs/user_guide/analytics/metrics_glossary/';
+validurls['/docs/user_guide/analytics/reporting/retention_reports'] = '/docs/user_guide/analytics/reports/retention_reports/';
+validurls['/docs/user_guide/analytics/reporting/revenue_report'] = '/docs/user_guide/analytics/reports/revenue_report/';
 
 // Analytics > Reports > Query Builder (moved from analytics root)
+validurls['/docs/user_guide/analytics/query_builder'] = '/docs/user_guide/analytics/reports/query_builder/';
+validurls['/docs/user_guide/analytics/query_builder/query_templates'] = '/docs/user_guide/analytics/reports/query_builder/query_templates/';
 validurls['/docs/user_guide/analytics/query_builder/building_queries'] = '/docs/user_guide/analytics/reports/query_builder/building_queries/';
 validurls['/docs/user_guide/analytics/query_builder/sql_variables'] = '/docs/user_guide/analytics/reports/query_builder/sql_variables/';
 
@@ -3450,6 +3468,13 @@ validurls['/docs/user_guide/analytics/query_builder/sql_variables'] = '/docs/use
 validurls['/docs/user_guide/engagement_tools/testing/global_control_group'] = '/docs/user_guide/audience/global_control_group/';
 
 // Analytics > Tracking renames
+validurls['/docs/user_guide/analytics/tracking/email_tracking'] = '/docs/user_guide/channels/email/email_setup/open_pixel_and_click_tracking/';
+
+// Braze AI (short paths -> intelligence_suite / predictive_suite)
+validurls['/docs/user_guide/brazeai/intelligence/intelligent_selection'] = '/docs/user_guide/brazeai/intelligence_suite/intelligent_selection/';
+validurls['/docs/user_guide/brazeai/intelligence/intelligent_timing'] = '/docs/user_guide/brazeai/intelligence_suite/intelligent_timing/';
+validurls['/docs/user_guide/brazeai/predictive_churn'] = '/docs/user_guide/brazeai/predictive_suite/predictive_churn/';
+validurls['/docs/user_guide/brazeai/predictive_events'] = '/docs/user_guide/brazeai/predictive_suite/predictive_events/';
 
 // Day 3: Messaging migration redirects
 validurls['/docs/user_guide/engagement_tools/testing/multivariant_testing/multivariate_analytics'] = '/docs/user_guide/messaging/ab_testing/analytics/';
