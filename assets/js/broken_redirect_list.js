@@ -4193,7 +4193,7 @@ validurls['/docs/user_guide/message_building_by_channel/line/messagingusers/'] =
 // ====================================================================
 
 // Short-path aliases (root-level docs shortcuts)
-validurls['/docs/advancement_behavior'] = '/docs/user_guide/messaging/canvas/canvas_components/message_step/';
+validurls['/docs/advancement_behavior'] = '/docs/user_guide/messaging/canvas/canvas_components/message_step/#how-users-advance';
 validurls['/docs/amphtml'] = '/docs/user_guide/channels/email/customize/amp_for_email/';
 validurls['/docs/blacklist'] = '/docs/api/endpoints/email/post_blacklist/';
 validurls['/docs/braze_support'] = '/docs/user_guide/administer/personal/braze_support/';
@@ -4212,7 +4212,7 @@ validurls['/docs/post_user_track_synchronous'] = '/docs/api/endpoints/user_data/
 validurls['/docs/scim_api_appendix'] = '/docs/api/objects_filters/scim_api_appendix/';
 validurls['/docs/scim_api_appendix#permissions-object'] = '/docs/api/objects_filters/scim_api_appendix/#permissions-object';
 validurls['/docs/support_contact'] = '/docs/user_guide/administer/personal/braze_support/';
-validurls['/docs/target_approvals'] = '/docs/docs_pages/redirects/target_approvals/';
+validurls['/docs/target_approvals'] = '/docs/user_guide/messaging/governance/approvals';
 
 // API paths
 validurls['/docs/api/api_key'] = '/docs/api/basics/';
