@@ -321,7 +321,7 @@ A preference center is not considered an unsubscribe link. Your email recipients
 {% enddetails %}
 
 {% details Do I need to edit past email campaigns and Canvases to apply the one-click unsubscribe setting after enabling it? %}
-If you don't have any of the use cases for the message-level one-click list-unsubscribe setting, there's no required action as long as the setting is turned on under **Email Preferences**. Braze automatically adds the one-click unsubscribe headers to all outgoing marketing and promotional messages. However, if you do need to configure one-click unsubscribe behavior on a per-message level, you'll need to update prior campaigns and Canvas steps with the email accordingly.
+If you don't have any of the use cases for the message-level one-click list-unsubscribe setting, there's no required action as long as the setting is turned on under **Email Preferences**. Braze automatically adds the one-click unsubscribe headers to all outgoing marketing and promotional messages. However, if you do need to configure one-click unsubscribe behavior on a per-message level, you'll need to update prior campaigns and Canvas steps to set the desired message-level one-click list-unsubscribe behavior.
 {% enddetails %}
 
 {% details I can see the list-unsubscribe and one-click unsubscribe header in the original message or raw data, but why don't I see the Unsubscribe button in Gmail or Yahoo? %}
