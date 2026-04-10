@@ -61,7 +61,8 @@ From the bottom of the overview screen, select **Preview and Test**. Here, you c
 
 Then, you can **Copy preview link** to generate and copy a shareable preview link that shows what the email will look like for a random user. The link lasts for seven days before it needs to be regenerated.
 
-You can also switch between desktop, mobile, and plaintext views to get a sense of how your message will appear in different contexts. If you need to make any changes to the template, note that not all edits made in the **Classic** editor persist to the HTML editor or the preview of the email.
+You can also switch between desktop, mobile, and plaintext views to get a sense of how your message will appear in different contexts. If you need to make changes to the template, note that edits made in the **Classic** editor may not be reflected in the HTML editor or the email preview.
+
 
 {% alert tip %}
 Curious about what your email looks like for dark mode users? Select the **Dark Mode Preview** toggle located in the **Preview and Test** section (drag-and-drop editor only).
