@@ -4313,3 +4313,72 @@ validurls['/docs/user_guide/engagement_tools/canvas/canvas_components/audience_u
 
 // Short-path alias — drag-and-drop IAM creation
 validurls['/docs/create_dnd_iam'] = '/docs/user_guide/channels/in_app_messages/drag_and_drop/';
+
+// ====================================================================
+// BrazeAI Operator failed doc lookups — batch 3, added 2026-04-10
+// ====================================================================
+
+// --- Administer path fixes ---
+validurls['/docs/user_guide/administer/company_settings/workspaces'] = '/docs/user_guide/administer/global/create_and_manage_workspaces/';
+validurls['/docs/user_guide/administer/workspace_settings/internal_groups'] = '/docs/user_guide/administer/global/user_management/internal_groups/';
+
+// --- Analytics — missing segments, wrong nesting ---
+validurls['/docs/user_guide/analytics/overview'] = '/docs/user_guide/analytics/';
+validurls['/docs/user_guide/analytics/engagement_reports'] = '/docs/user_guide/analytics/reports/engagement_reports/';
+validurls['/docs/user_guide/analytics/report_builder'] = '/docs/user_guide/analytics/reports/report_builder/';
+validurls['/docs/user_guide/analytics/report_builder/metrics_glossary'] = '/docs/user_guide/analytics/metrics_glossary/';
+validurls['/docs/user_guide/analytics/report_builder_legacy'] = '/docs/user_guide/analytics/reports/report_builder/report_builder_legacy/';
+validurls['/docs/user_guide/analytics/report_metrics'] = '/docs/user_guide/analytics/metrics_glossary/';
+validurls['/docs/user_guide/analytics/report_metrics_glossary'] = '/docs/user_guide/analytics/metrics_glossary/';
+validurls['/docs/user_guide/analytics/reports/report_builder_v2'] = '/docs/user_guide/analytics/reports/report_builder/';
+validurls['/docs/user_guide/analytics/tracking/click_tracking'] = '/docs/user_guide/channels/email/email_setup/open_pixel_and_click_tracking/';
+
+// --- Analytics dashboards — wrong path or fabricated names ---
+validurls['/docs/user_guide/analytics/dashboard/channel_performance_dashboards'] = '/docs/user_guide/analytics/dashboards/channel_performance/';
+validurls['/docs/user_guide/analytics/dashboards/email_performance_dashboard'] = '/docs/user_guide/analytics/dashboards/channel_performance/?tab=email%20performance';
+validurls['/docs/user_guide/analytics/dashboards/overview'] = '/docs/user_guide/analytics/dashboards/home/';
+validurls['/docs/user_guide/analytics/dashboards/performance_overview'] = '/docs/user_guide/analytics/dashboards/home/';
+
+// --- BrazeAI — personalized_paths lives under experiment_step ---
+validurls['/docs/user_guide/brazeai/decisioning_studio/personalized_paths'] = '/docs/user_guide/messaging/canvas/canvas_components/experiment_step/personalized_paths/';
+
+// --- Channels — email ---
+validurls['/docs/user_guide/channels/email/email_setup/email_settings'] = '/docs/user_guide/administer/global/workspace_settings/email_preferences/';
+validurls['/docs/user_guide/channels/email/message_features_and_optimization/utm_tracking'] = '/docs/user_guide/channels/email/email_setup/open_pixel_and_click_tracking/';
+validurls['/docs/user_guide/channels/email/seed_groups'] = '/docs/user_guide/messaging/messaging_fundamentals/sending_test_messages/';
+validurls['/docs/user_guide/channels/email/unsubscribe'] = '/docs/user_guide/channels/email/subscriptions/';
+
+// --- Channels — SMS ---
+validurls['/docs/user_guide/channels/sms_mms_and_rcs/subscription_groups'] = '/docs/user_guide/channels/sms_mms_and_rcs/message_setup/subscription_groups/';
+validurls['/docs/user_guide/channels/sms_mms_and_rcs/sms/sms_subscription_groups'] = '/docs/user_guide/channels/sms_mms_and_rcs/message_setup/subscription_groups/';
+validurls['/docs/user_guide/channels/sms_mms_and_rcs/sms_subscription_groups'] = '/docs/user_guide/channels/sms_mms_and_rcs/message_setup/subscription_groups/';
+validurls['/docs/user_guide/channels/sms_mms_and_rcs/terms_to_know'] = '/docs/user_guide/get_started/terms_to_know/';
+validurls['/docs/user_guide/channels/sms_mms_and_rcs/message_setup/creating_sms_message'] = '/docs/user_guide/channels/sms_mms_and_rcs/create/';
+
+// --- Channels — KakaoTalk ---
+validurls['/docs/user_guide/channels/kakaotalk/set_up_kakaotalk'] = '/docs/user_guide/channels/kakaotalk/kakaotalk_setup/';
+validurls['/docs/user_guide/channels/kakaotalk/setup'] = '/docs/user_guide/channels/kakaotalk/kakaotalk_setup/';
+
+// --- Engagement tools — old paths ---
+validurls['/docs/user_guide/engagement_tools/segments/segment_extensions'] = '/docs/user_guide/audience/segments/segment_extension/';
+validurls['/docs/user_guide/engagement_tools/canvas/canvas_components/context_step'] = '/docs/user_guide/messaging/canvas/canvas_components/context/';
+validurls['/docs/user_guide/engagement_tools/testing_and_optimization/multivariate_testing'] = '/docs/user_guide/messaging/ab_testing/';
+
+// --- Get started ---
+validurls['/docs/user_guide/get_started/workspaces/copying_to_workspaces'] = '/docs/user_guide/messaging/governance/copy_across_workspaces/';
+
+// --- Message building by channel — old IA paths ---
+validurls['/docs/user_guide/message_building_by_channel/email/email_setup/email_authentication'] = '/docs/user_guide/channels/email/email_setup/authentication/';
+validurls['/docs/user_guide/message_building_by_channel/email/link_management'] = '/docs/user_guide/messaging/templates/email_templates/link_aliasing/';
+
+// --- Messaging — wrong path segments ---
+validurls['/docs/user_guide/messaging/campaigns/building_campaigns/delivery_types/scheduled_delivery'] = '/docs/user_guide/messaging/campaigns/schedule_your_campaign/scheduled_delivery/';
+validurls['/docs/user_guide/messaging/campaigns/delivery_methods/action_based_delivery'] = '/docs/user_guide/messaging/campaigns/schedule_your_campaign/triggered_delivery/';
+validurls['/docs/user_guide/messaging/campaigns/multivariate_testing'] = '/docs/user_guide/messaging/ab_testing/';
+validurls['/docs/user_guide/messaging/canvas/managing_canvases/post-launch_edits'] = '/docs/user_guide/messaging/canvas/managing_canvases/change_your_canvas_after_launch/';
+validurls['/docs/user_guide/messaging/channels/banners/about'] = '/docs/user_guide/channels/banners/';
+validurls['/docs/user_guide/messaging/personalize_and_dynamic_content/content_blocks'] = '/docs/user_guide/messaging/design_and_edit/content_blocks/';
+validurls['/docs/user_guide/messaging/templates/content_blocks'] = '/docs/user_guide/messaging/design_and_edit/content_blocks/';
+
+// --- Personalization — old top-level path ---
+validurls['/docs/user_guide/personalization_and_dynamic_content/catalogs/catalog_items'] = '/docs/user_guide/data/activation/catalogs/use/';
