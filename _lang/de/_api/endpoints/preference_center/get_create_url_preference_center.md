@@ -5,7 +5,7 @@ search_tag: Endpoint
 page_order: 1
 layout: api_page
 page_type: reference
-description: "Dieser Artikel beschreibt die Details des Braze-Endpunkts „URL für das Einstellungszentrum generieren"."
+description: "Dieser Artikel beschreibt die Details des Braze-Endpunkts „URL für das Einstellungszentrum generieren“."
 
 ---
 {% api %}

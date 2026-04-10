@@ -102,6 +102,8 @@ Você pode escolher uma das três maneiras pelas quais os usuários podem entrar
     Neste exemplo, com base nas opções de tempo, os usuários entram neste canva toda terça-feira às 12h no horário local deles, toda semana, começando em 14 de novembro de 2025 até 31 de dezembro de 2025.
 
     ![A página "Programação de Entrada" com o tipo definido como "Programado". Devido à seleção, opções baseadas em tempo são exibidas, incluindo frequência, horário de início, recorrência, dias e mais.]({% image_buster /assets/img_archive/Canvas_Scheduled_Delivery.png %})
+
+    Ao usar a entrega no horário local, a Braze avalia a elegibilidade de entrada duas vezes: primeiro no horário de Samoa (UTC+13 ou UTC+14 durante o horário de verão) no dia programado, e novamente no horário local do usuário. Um usuário deve ser elegível em ambas as verificações para entrar no canva. Se seus filtros de entrada usam janelas de tempo relativas (por exemplo, "mais de 2 dias atrás"), o período de 24 horas pode não ter decorrido no momento da primeira verificação, fazendo com que os usuários entrem um dia atrasados. Para evitar isso, use uma janela de tempo mais ampla, como pelo menos dois dias. Para saber mais, consulte [Quando a Braze avalia os usuários para entrega no horário local?]({{site.baseurl}}/user_guide/engagement_tools/campaigns/faq/#when-does-braze-evaluate-users-for-local-time-zone-delivery)
   {% endtab %}
   {% tab Action-Based Delivery %}
     Com a entrega baseada em ação, os usuários entrarão no canva e começarão a receber mensagens quando realizarem ações específicas, como abrir seu app, fazer uma compra ou disparar um evento personalizado.

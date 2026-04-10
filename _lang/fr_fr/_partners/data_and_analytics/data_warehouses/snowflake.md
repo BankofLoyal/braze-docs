@@ -52,7 +52,7 @@ Avant de pouvoir utiliser cette fonctionnalité, vous devez remplir les conditio
 
 ## Mise en place du partage sécurisé des données
 
-Avec Snowflake, le partage des données s'effectue entre un [fournisseur de données](https://docs.snowflake.net/manuals/user-guide/data-sharing-intro.html#providers) et un [consommateur de données](https://docs.snowflake.net/manuals/user-guide/data-sharing-intro.html#consumers). Dans ce contexte, votre compte Braze est le fournisseur de données, car il crée et envoie le partage de données, tandis que votre compte Snowflake est le consommateur de données, car il utilise ce partage pour créer une base de données. Pour plus de détails, consultez [Snowflake : Consommation de données partagées](https://docs.snowflake.com/en/user-guide/data-share-consumers).
+Avec Snowflake, le partage des données s'effectue entre un [fournisseur de données](https://docs.snowflake.net/manuals/user-guide/data-sharing-intro.html#providers) et un [consommateur de données](https://docs.snowflake.net/manuals/user-guide/data-sharing-intro.html#consumers). Dans ce contexte, votre compte Braze est le fournisseur de données, car il crée et envoie le partage de données&#8212;tandis que votre compte Snowflake est le consommateur de données, car il utilise ce partage pour créer une base de données. Pour plus de détails, consultez [Snowflake : Consommation de données partagées](https://docs.snowflake.com/en/user-guide/data-share-consumers).
 
 ### Étape 1 : Envoyer le partage de données depuis Braze
 
@@ -142,10 +142,20 @@ Les archives des données d'événements historiques dans Snowflake remontent à
 
 {% multi_lang_include partners/snowflake_pii_gdpr.md %}
 
+### Interrogation des données partagées : `TIME` et performances des requêtes
+
+Les données d'événements dans les vues de partage de données (par exemple, `USERS_BEHAVIORS_CUSTOMEVENT_SHARED`) sont **regroupées (clustered) sur le champ `TIME`**. Lorsque vous filtrez par **date de survenue de l'événement**, utilisez **`TIME`** comme filtre privilégié. Les requêtes qui restreignent les lignes à l'aide de **`TIME`** sont généralement **plus performantes** que celles qui filtrent sur **`SF_CREATED_AT`**, car le clustering est aligné sur l'heure de l'événement.
+
+| Champ | Signification |
+| ----- | ------- |
+| `TIME` | Horodatage unix correspondant au moment où l'événement s'est produit. Privilégiez ce champ pour filtrer par date de survenue. |
+| `SF_CREATED_AT` | Horodatage du moment où la ligne a été chargée dans Snowflake (heure d'ingestion). |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
+
 ### Rapidité, performance et coût des requêtes
 
 La vitesse, les performances et le coût de toute requête exécutée sur les données dépendent de la taille de l'entrepôt utilisé. Dans certains cas, selon le volume de données auquel vous accédez pour vos analyses, il peut être nécessaire d'utiliser un entrepôt plus grand pour que la requête aboutisse. Snowflake propose d'excellentes ressources pour vous aider à déterminer la taille optimale, notamment la [vue d'ensemble des entrepôts](https://docs.snowflake.net/manuals/user-guide/warehouses-overview.html) et les [considérations relatives aux entrepôts](https://docs.snowflake.net/manuals/user-guide/warehouses-considerations.html).
 
-> Pour consulter des exemples de requêtes utiles lors de la configuration de Snowflake, consultez nos [exemples de requêtes]({{site.baseurl}}/partners/data_and_infrastructure_agility/data_warehouses/snowflake/sample_queries/) et nos exemples de [configuration de pipeline d'événements ETL]({{site.baseurl}}/partners/data_and_infrastructure_agility/data_warehouses/snowflake/etl_pipline_setup/).
+> Pour consulter des exemples de requêtes utiles lors de la configuration de Snowflake, consultez nos [exemples de requêtes]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/sample_queries/) et nos exemples de [configuration de pipeline d'événements ETL]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/etl_pipline_setup/).
 
 Pour les instructions de configuration, consultez [Ingestion de données cloud : intégrations d'entrepôts de données]({{site.baseurl}}/user_guide/data/unification/cloud_ingestion/integrations/).

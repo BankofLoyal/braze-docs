@@ -2,26 +2,26 @@
 nav_title: "Datenaufbewahrung"
 article_title: Snowflake Datenaufbewahrung
 page_order: 3
-description: "Auf dieser Seite erfahren Sie, wie Sie die Daten aller Ereignisse aufbewahren, wenn die Richtlinie zur Bindung von Braze angewendet wird."
+description: "Auf dieser Seite erfahren Sie, wie Sie vollständige Ereignisdaten aufbewahren, wenn die Aufbewahrungsrichtlinie von Braze angewendet wird."
 page_type: partner
 search_tag: Partner
 ---
 
-# Snowflake Daten Bindung
+# Snowflake Datenaufbewahrung
 
-> Braze anonymisiert (entfernt persönlich identifizierbare Informationen oder PII) aus den meisten in Snowflake gespeicherten Daten zu Ereignissen, die mehr als zwei Jahre alt sind. Bestimmte Ereignisse werden aufbewahrt, bis ein Nutzer:innen gelöscht wird, wie weiter unten auf dieser Seite beschrieben. Wenn Sie die gemeinsame Nutzung von Snowflake-Daten verwenden, können Sie die vollständigen Daten der Ereignisse in Ihrer Umgebung aufbewahren, indem Sie eine Kopie in Ihrem Snowflake-Konto speichern, bevor die Richtlinie zur Bindung angewendet wird.
+> Braze anonymisiert (entfernt persönlich identifizierbare Informationen, oder PII) die meisten in Snowflake gespeicherten Ereignisdaten, die mehr als zwei Jahre alt sind. Bestimmte Ereignisse werden aufbewahrt, bis ein:e Nutzer:in gelöscht wird, wie weiter unten auf dieser Seite beschrieben. Wenn Sie Snowflake Data Sharing verwenden, können Sie die vollständigen Ereignisdaten in Ihrer Umgebung aufbewahren, indem Sie eine Kopie in Ihrem Snowflake-Konto speichern, bevor die Aufbewahrungsrichtlinie angewendet wird.
 
 Auf dieser Seite werden zwei Möglichkeiten vorgestellt, wie Sie nicht-anonymisierte Daten aufbewahren können: 
 
-- Kopieren Sie Ihre Daten in eine andere Snowflake Datenbank
-- Entladen Sie Ihre Daten auf eine Bühne
+- Kopieren Sie Ihre Daten in eine andere Snowflake-Datenbank
+- Entladen Sie Ihre Daten in eine Stage
 
 {% alert warning %}
-Braze anonymisiert automatisch die Daten von Nutzern:in, die von Braze gelöscht werden, wie in der [Technischen Unterstützung zum Datenschutz]({{site.baseurl}}/dp-technical-assistance/) beschrieben. Alle Daten, die außerhalb der gemeinsamen Datenbank kopiert werden, werden bei diesem Vorgang nicht berücksichtigt, da Braze sie nicht mehr verwaltet.
+Braze anonymisiert automatisch Ereignisdaten von Nutzer:innen, die aus Braze gelöscht werden, wie in der [Technischen Unterstützung zum Datenschutz]({{site.baseurl}}/dp-technical-assistance/) beschrieben. Alle Daten, die außerhalb der gemeinsamen Datenbank kopiert werden, sind von diesem Prozess nicht betroffen, da Braze sie nicht mehr verwaltet. 
 {% endalert %}
 
-## Ereignisse, die von der Richtlinie über die zweijährige Bindung ausgenommen sind
-Braze speichert Ereignisse im Zusammenhang mit dem Lebenszyklus eines Nutzers, dem Abo-Status und eingehenden Nachrichten, bis ein Nutzer:innen gelöscht wird. Die folgenden Ereignisse sind von der Standardrichtlinie zur zweijährigen Bindung ausgenommen:
+## Ereignisse, die von der zweijährigen Aufbewahrungsrichtlinie ausgenommen sind
+Braze bewahrt Ereignisse im Zusammenhang mit dem Nutzer:innen-Lebenszyklus, dem Abo-Status und eingehenden Nachrichten auf, bis ein:e Nutzer:in gelöscht wird. Die folgenden Ereignisse sind von der standardmäßigen zweijährigen Aufbewahrungsrichtlinie ausgenommen:
 - `users.UserOrphan`
 - `users.UserDeleteRequest`
 - `users.behaviors.subscription.GlobalStateChange`
@@ -29,11 +29,11 @@ Braze speichert Ereignisse im Zusammenhang mit dem Lebenszyklus eines Nutzers, d
 - `users.messages.sms.InboundReceive`
 - `users.messages.whatsapp.InboundReceive`
 
-## Kopieren aller Daten in eine andere Snowflake Datenbank
+## Kopieren aller Daten in eine andere Snowflake-Datenbank
 
-Sie können nicht anonymisierte Daten beibehalten, indem Sie Ihre Daten aus dem gemeinsamen `BRAZE_RAW_EVENTS` Schema in eine andere Datenbank und ein anderes Schema in Snowflake kopieren. Gehen Sie dazu folgendermaßen vor:
+Sie können nicht-anonymisierte Daten aufbewahren, indem Sie Ihre Daten aus dem gemeinsamen `BRAZE_RAW_EVENTS`-Schema in eine andere Datenbank und ein anderes Schema in Snowflake kopieren. Gehen Sie dazu folgendermaßen vor:
 
-1. Erstellen Sie in Ihrem Snowflake-Konto die Prozedur `COPY_BRAZE_SHARE`, mit der Sie alle von Braze freigegebenen Daten in eine andere Datenbank und ein anderes Schema in Snowflake kopieren. 
+1. Erstellen Sie in Ihrem Snowflake-Konto die Prozedur `COPY_BRAZE_SHARE`, mit der alle von Braze freigegebenen Daten in eine andere Datenbank und ein anderes Schema innerhalb von Snowflake kopiert werden. 
 
 {% raw %}
 ```sql
@@ -132,12 +132,12 @@ $$;
 {% endraw %}
 
 {: start="2"}
-2\. Führen Sie einen der folgenden Befehle in Ihrem Snowflake-Konto aus, um den Vorgang auszuführen.
+2. Führen Sie einen der folgenden Befehle in Ihrem Snowflake-Konto aus, um die Prozedur auszuführen.
 
 {% tabs %}
-{% tab Default %}
+{% tab Standard %}
 
-Standardmäßig sichert das Verfahren Daten, die älter als zwei Jahre sind, für alle `USERS_*` Ereignistypen. 
+Standardmäßig sichert die Prozedur Daten, die älter als zwei Jahre sind, für alle `USERS_*`-Event-Typen. 
 
 {% raw %}
 ```sql
@@ -148,9 +148,9 @@ CALL COPY_BRAZE_SHARE('SOURCE_DB', 'SOURCE_SCHEMA', 'DEST_DB', 'DEST_SCHEMA')
 ```
 {% endraw %}
 {% endtab %}
-{% tab Filtered %}
+{% tab Gefiltert %}
 
-Geben Sie einen Filter an, um auszuwählen, welche Altersdaten gesichert werden sollen, und geben Sie einen Tabellennamenfilter an, um nur ausgewählte Ereignistabellen zu sichern. 
+Geben Sie einen Filter an, um festzulegen, welches Alter der Daten gesichert werden soll, und geben Sie einen Tabellennamenfilter an, um nur ausgewählte Ereignistabellen zu sichern. 
 
 {% raw %}
 ```sql
@@ -164,14 +164,14 @@ CALL COPY_BRAZE_SHARE('SOURCE_DB', 'SOURCE_SCHEMA', 'DEST_DB', 'DEST_SCHEMA', DA
 {% endtabs %}
 
 {% alert note %}
-Durch wiederholtes Ausführen der Prozedur werden keine doppelten Datensätze erstellt, da diese Prozedur die aktuellste `SF_CREATED_AT` prüft und nur Daten sichert, die neuer sind als diese.
+Durch wiederholtes Ausführen der Prozedur werden nur Zeilen gesichert, deren `SF_CREATED_AT` größer ist als das Maximum, das bereits in Ihrer Tabelle vorhanden ist. So wird vermieden, dass bereits gesicherte Zeilen erneut kopiert werden.
 {% endalert %}
 
-## Entladen von Daten auf die Bühne
+## Entladen von Daten in eine Stage
 
-Sie können nicht anonymisierte Daten beibehalten, indem Sie Daten aus dem gemeinsamen Schema `BRAZE_RAW_EVENTS` auf eine Stufe entladen. Gehen Sie dazu folgendermaßen vor:
+Sie können nicht-anonymisierte Daten aufbewahren, indem Sie Daten aus dem gemeinsamen `BRAZE_RAW_EVENTS`-Schema in eine Stage entladen. Gehen Sie dazu folgendermaßen vor:
 
-1. Erstellen Sie die Prozedur `UNLOAD_BRAZE_SHARE`, mit der Sie alle von Braze freigegebenen Daten in die angegebene Phase kopieren.
+1. Erstellen Sie die Prozedur `UNLOAD_BRAZE_SHARE`, mit der alle von Braze freigegebenen Daten in die angegebene Stage kopiert werden.
 
 {% raw %}
 ```sql
@@ -244,10 +244,10 @@ $$;
 {% endraw %}
 
 {: start="2"}
-2\. Führen Sie einen der folgenden Befehle aus, um die Prozedur auszuführen. 
+2. Führen Sie einen der folgenden Befehle aus, um die Prozedur auszuführen. 
 
 {% tabs %}
-{% tab Default %}
+{% tab Standard %}
 
 Standardmäßig kopiert die Prozedur alle Tabellen mit dem Präfix `USERS_`.
 
@@ -266,7 +266,7 @@ LIST @MY_EXPORT_STAGE;
 ```
 {% endraw %}
 {% endtab %}
-{% tab Filtered %}
+{% tab Gefiltert %}
 
 Geben Sie einen Filter in der Prozedur an, um nur bestimmte Tabellen zu entladen.
 

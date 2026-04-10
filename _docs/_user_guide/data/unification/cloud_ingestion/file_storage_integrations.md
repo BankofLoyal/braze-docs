@@ -2,7 +2,7 @@
 nav_title: File storage integrations
 article_title: File Storage Integrations
 description: "This page covers Braze Cloud Data Ingestion and how to sync relevant data from S3 to Braze."
-page_order: 3
+page_order: 4
 page_type: reference
 
 ---
@@ -10,8 +10,6 @@ page_type: reference
 # File storage integrations
 
 > This page covers how to set up Cloud Data Ingestion support and sync relevant data from S3 to Braze.
-
-This page shows the sync and source steps that are currently in Early Access (EA). For steps for the generally available experience, see [General availability experience](#general-availability-experience).
 
 ## How it works
 
@@ -220,28 +218,6 @@ Give the role a name and a description, and select **Create Role**.
 8. Add contact email(s) for notifications if the sync breaks because of access or permissions issues. Optionally, turn on notifications for user-level errors and sync successes.
 9. Create the sync.
 
-{% details General availability experience %}
-
-1. To create a new integration, go to **Data Settings** > **Cloud Data Ingestion**, select **Create New Data Sync**, and select **S3 Import** from the file sources section. 
-2. Input the information from the AWS setup process to create a new sync. Specify the following:
-
-  - Role ARN
-  - External ID
-  - SQS URL (must be unique for each new integration)
-  - Bucket name
-  - Folder path (optional, must be unique across syncs in a workspace)
-  - Region
-
-{: start="3"}
-3. Name your integration, and select the data type for this integration. 
-
-{: start="4"}
-4. Add a contact email for notifications if the sync breaks because of access or permissions issues. Optionally, turn on notifications for user-level errors and sync successes. 
-
-{: start="5"}
-5. Finally, select **Test connection** to confirm Braze can access your bucket and list the files available to ingest (not the data inside those files). Then, save the sync. 
-
-{% enddetails %}
 
 ## Required file formats
 

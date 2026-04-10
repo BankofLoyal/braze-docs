@@ -19,7 +19,21 @@ description: "Cet article présente les détails de l'endpoint Démarrer une act
 
 Après avoir créé une activité en direct, vous pouvez effectuer une requête POST pour démarrer à distance votre activité pour n'importe quel segment donné. Pour en savoir plus sur les activités en direct d'Apple, consultez [Starting and updating Live Activities with ActivityKit push notifications](https://developer.apple.com/documentation/activitykit/starting-and-updating-live-activities-with-activitykit-push-notifications).
 
-Si `content-available` n'est pas défini, la priorité par défaut du service Apple Push Notification (APN) est 10. Si `content-available` est défini, cette priorité est de 5. Consultez l'[objet push Apple]({{site.baseurl}}/api/objects_filters/messaging/apple_object) pour plus de détails.
+Si `content-available` n'est pas défini, la priorité par défaut du service Apple Push Notification (APNs) est 10. Si `content-available` est défini, cette priorité est de 5. Consultez l'[objet push Apple]({{site.baseurl}}/api/objects_filters/messaging/apple_object) pour plus de détails.
+
+{% alert tip %}
+Pour mettre fin à une activité en direct, utilisez l'endpoint [`/messages/live_activity/update`]({{site.baseurl}}/api/endpoints/messaging/live_activity/update/) avec `end_activity` défini sur `true`.
+{% endalert %}
+
+## Planifier la suppression automatique
+
+Pour planifier la suppression automatique après le démarrage d'une activité en direct, programmez une requête de suivi vers l'endpoint de mise à jour depuis votre backend.
+
+1. Envoyez une requête `/messages/live_activity/start` avec un `activity_id` que vous pourrez réutiliser ultérieurement.
+2. Stockez cet `activity_id` et l'heure de fin souhaitée dans le planificateur de votre backend.
+3. À l'heure de fin prévue, envoyez une requête `/messages/live_activity/update` avec `end_activity` défini sur `true`.
+4. Configurez le comportement de suppression dans la même requête de mise à jour. Pour plus de détails, consultez l'endpoint [`/messages/live_activity/update`]({{site.baseurl}}/api/endpoints/messaging/live_activity/update/).
+5. Vérifiez les événements d'envoi et de résultat dans le [journal d'activité des messages]({{site.baseurl}}/user_guide/administrative/app_settings/message_activity_log_tab/).
 
 {% apiref postman %}https://documenter.getpostman.com/view/4689407/SVYrsdsG?version=latest#2300226e-f26a-4154-9bcc-5883f1f294cd {% endapiref %}
 
@@ -45,7 +59,6 @@ Pour utiliser cet endpoint, vous devrez effectuer les opérations suivantes :
   "activity_attributes_type": "(required, string) The activity attributes type you define within `liveActivities.registerPushToStart` in your app",
   "activity_attributes": "(required, object) The static attribute values for the activity type (such as the sports team names, which don't change)",
   "content_state": "(required, object) You define the ContentState parameters when you create your Live Activity. Pass the updated values for your ContentState using this object. The format of this request must match the shape you initially defined.",
-  "dismissal_date": "(optional, datetime in ISO-8601 format) The time to remove the Live Activity from the user’s UI. If this time is in the past, the Live Activity will be removed immediately.",
   "stale_date": "(optional, datetime in ISO-8601 format) The time the Live Activity content is marked as outdated in the user’s UI.",
   "notification": "(required, object) Include an `apple_push` object to define a push notification that creates an alert for the user, displayed on paired watchOS devices. Should include `notification.alert.title` and `notification.alert.body`",
   // One of the following:
@@ -64,7 +77,6 @@ Pour utiliser cet endpoint, vous devrez effectuer les opérations suivantes :
 | `activity_attributes_type`  | Requis | Chaîne de caractères | Le type d'attributs d'activité que vous définissez dans `liveActivities.registerPushToStart` dans votre application.  |
 | `activity_attributes` | Requis | Objet  | Les valeurs d'attributs statiques pour le type d'activité (comme les noms des équipes sportives, qui ne changent pas). |
 | `content_state` | Requis | Objet  | Vous définissez les paramètres `ContentState` lorsque vous créez votre activité en direct. Transmettez les valeurs mises à jour pour votre `ContentState` à l'aide de cet objet.<br><br>Le format de cette requête doit correspondre à la structure que vous avez initialement définie. |
-| `dismissal_date` | Facultatif | Datetime <br>(chaîne [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601)) | Ce paramètre définit le moment où l'activité en direct est supprimée de l'interface utilisateur.<br><br>Cette date de suppression est respectée après réception d'une requête `/messages/live_activity/update` avec `end_activity` défini sur `true`. |
 | `stale_date` | Facultatif | Datetime <br>(chaîne [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601)) | Ce paramètre indique au système quand le contenu de l'activité en direct est marqué comme obsolète dans l'interface utilisateur. |
 | `notification` | Requis | Objet | Incluez un objet [`apple_push`]({{site.baseurl}}/api/objects_filters/messaging/apple_object/) pour définir une notification push. Le comportement de cette notification push dépend de l'activité de l'utilisateur ou de l'utilisation éventuelle d'un appareil proxy. {::nomarkdown}<ul><li>Si une <code>notification</code> est incluse et que l'utilisateur est actif sur son iPhone lorsque la mise à jour est livrée, l'interface de l'activité en direct mise à jour glissera vers le bas et s'affichera comme une notification push.</li><li>Si une <code>notification</code> est incluse et que l'utilisateur n'est pas actif sur son iPhone, son écran s'allumera pour afficher l'interface de l'activité en direct mise à jour sur l'écran de verrouillage.</li><li>L'alerte <code>notification alert</code> ne s'affichera pas comme une notification push standard. De plus, si l'utilisateur dispose d'un appareil proxy, comme une Apple Watch, l'<code>alert</code> y sera affichée.</li></ul>{:/} |
 | `external_user_ids` | Facultatif si `segment_id` ou `audience` est fourni | Tableau de chaînes de caractères | Voir [ID utilisateur externe]({{site.baseurl}}/api/objects_filters/user_attributes_object/#braze-user-profile-fields). Maximum de 50 ID utilisateur externes.  |
@@ -90,7 +102,6 @@ curl --location --request POST 'https://rest.iad-01.braze.com/messages/live_acti
         "team1Name": "Chiefs",
         "team2Name": "Bills"
     },
-    "dismissal_date": "2024-01-22T00:00:00+0000",
     "stale_date": "2024-01-22T16:55:49+0000",
     "notification": {
         "alert": {
