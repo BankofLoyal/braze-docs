@@ -50,7 +50,7 @@ You can use the product viewed event to trigger when a customer views a product 
 {% subtabs %}
 {% subtab Web SDK %}
 
-{% sdk_min_versions web:6.8.0 %}
+{% sdk_min_versions web:6.7.0 %}
 
 On newer SDK versions, call `logEcommerceEvent()`:
 
@@ -238,7 +238,7 @@ If there are two carts, add both to the merged user. Re-enqueue the Canvas if it
 {% subtabs %}
 {% subtab Web SDK %}
 
-{% sdk_min_versions web:6.8.0 %}
+{% sdk_min_versions web:6.7.0 %}
 
 On newer SDK versions, call `logEcommerceEvent()`:
 
@@ -451,7 +451,7 @@ Similar to the `ecommerce.cart_updated` event, this event allows you to leverage
 {% subtabs %}
 {% subtab Web SDK %}
 
-{% sdk_min_versions web:6.8.0 %}
+{% sdk_min_versions web:6.7.0 %}
 
 On newer SDK versions, call `logEcommerceEvent()`:
 
@@ -658,7 +658,7 @@ You can use the order placed event to trigger when a customer successfully compl
 {% subtabs %}
 {% subtab Web SDK %}
 
-{% sdk_min_versions web:6.8.0 %}
+{% sdk_min_versions web:6.7.0 %}
 
 On newer SDK versions, call `logEcommerceEvent()`:
 
