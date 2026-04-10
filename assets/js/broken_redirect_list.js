@@ -3942,7 +3942,6 @@ validurls['/docs/user_guide/message_building_by_channel/whatsapp/whatsapp_campai
 validurls['/docs/user_guide/engagement_tools/canvas/ideas_and_strategies/matching_entry_and_exit_criteria/'] = '/docs/user_guide/messaging/canvas/ideas_and_strategies/matching_entry_and_exit_criteria/';
 validurls['/docs/user_guide/data/activation/custom_data/managing_custom_data/faq/'] = '/docs/user_guide/data/activation/custom_data/managing_custom_data/';
 
-validurls['/docs/user_guide/messaging/design_and_edit/personalize/deep_linking_to_in-app_content'] = '/docs/user_guide/messaging/design_and_edit/personalize/actions_and_media_urls/';
 validurls['/docs/user_guide/administrative/app_settings/email_settings/bot_filtering'] = '/docs/user_guide/administer/global/workspace_settings/email_preferences/bot_filtering/';
 validurls['/docs/user_guide/administrative/app_settings/messaging_rate_limits'] = '/docs/user_guide/administer/global/workspace_settings/messaging_rate_limits/';
 validurls['/docs/user_guide/message_building_by_channel'] = '/docs/user_guide/channels/';
@@ -3970,7 +3969,7 @@ validurls['/docs/user_guide/message_building_by_channel/sms/setup'] = '/docs/use
 validurls['/docs/user_guide/personalization_and_dynamic_content/liquid/supported_filters'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/filters/';
 validurls['/docs/user_guide/message_building_by_channel/email/drag_and_drop/editor_components'] = '/docs/user_guide/messaging/design_and_edit/editor_blocks/?sdktab=email';
 
-validurls['/docs/user_guide/data/activation/attributes/nested_custom_attribute_support/#segmentation'] = '/docs/user_guide/audience/segments/segment_with_nested_custom_attributes/#filter-by-nested-custom-attributes';
+validurls['/docs/user_guide/data/activation/attributes/nested_custom_attribute_support/#segmentation'] = '/docs/user_guide/data/activation/attributes/nested_custom_attribute_support/#segmentation';
 // Backfill dropped redirects, sorted by source path
 
 validurls['/docs/developer_guide/changelogs/web'] = '/docs/developer_guide/changelogs/';
