@@ -69,3 +69,9 @@ If the scheduled refresh is disabled for a Segment Extension, that extension wil
 When you're ready to use a stale Segment Extension, review the refresh settings, select the refresh schedule that matches your use case, and then save any modifications.
 
 {% endif %}
+
+{% if include.section == "same channel identifier" %}
+
+When a message is received, opened, or clicked, Braze updates data for all profiles that share the same channel identifier as the profile that logged the interaction (for example, the same email address for email, or the same phone number for SMS or WhatsApp). Users who share an identifier with someone who received, opened, or clicked the message can match this filter even if they were not originally in the campaign or were not directly sent the message.
+
+{% endif %}
