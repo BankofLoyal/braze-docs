@@ -187,3 +187,6 @@ Go to **Templates** > **Email Templates**. You can filter by type (HTML or drag-
 
 Confirm you have permission to view templates—see [User permissions]({{site.baseurl}}/user_guide/administer/global/user_management/permissions/).
 
+### Do I need to register domains for relay or masked emails?
+
+[Apple’s Private Email Relay]({{site.baseurl}}/user_guide/channels/email/best_practices/apple_mail/email_private_relay_apple_SSO/) requires you to register your sending domains in the Apple Developer Portal to prevent bounces. Google Shielded Email does not require a manual domain registration or allowlisting process.
