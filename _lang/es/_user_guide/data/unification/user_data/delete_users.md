@@ -17,7 +17,13 @@ La eliminación de usuarios se encuentra actualmente en acceso anticipado. Ponte
 
 ## Requisitos previos
 
-Para eliminar usuarios, debes ser administrador o tener permisos de **Delete User**.
+Para eliminar usuarios, debes ser administrador o tener el permiso **Delete Users**. Para ver los registros de eliminación de usuarios, debes ser administrador o tener el permiso **View User Deletion Records**. Los siguientes permisos controlan la eliminación de usuarios y los registros de eliminación:
+
+| Permiso | Descripción |
+|------------|-------------|
+| Delete Users | Eliminar usuarios de forma permanente, de manera individual o masiva. |
+| View User Deletion Records | Ver los registros de eliminación de usuarios. |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation"}
 
 ## Acerca de la eliminación de usuarios
 

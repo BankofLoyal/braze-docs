@@ -54,14 +54,14 @@ Bevor Sie dieses Feature nutzen können, müssen Sie Folgendes abschließen:
 
 Bei Snowflake findet Data Sharing zwischen einem [Datenanbieter](https://docs.snowflake.net/manuals/user-guide/data-sharing-intro.html#providers) und einem [Datenverbraucher](https://docs.snowflake.net/manuals/user-guide/data-sharing-intro.html#consumers) statt. In diesem Kontext ist Ihr Braze-Konto der Datenanbieter, da es den Datashare erstellt und versendet&#8212;während Ihr Snowflake-Konto der Datenverbraucher ist, da es den Datashare verwendet, um eine Datenbank zu erstellen. Weitere Einzelheiten finden Sie unter [Snowflake: Gemeinsame Daten nutzen](https://docs.snowflake.com/en/user-guide/data-share-consumers).
 
-### 1. Schritt: Senden Sie den Datashare von Braze
+### 1. Schritt: Datashare von Braze senden
 
 1. Gehen Sie in Braze zu **Partnerintegrationen** > **Data Sharing**.
 2. Geben Sie Ihre Snowflake-Kontodaten und Ihren Locator ein. Um Ihren Account-Locator zu ermitteln, führen Sie `SELECT CURRENT_ACCOUNT()` im Zielkonto aus.
 3. Wenn Sie einen CRR-Share verwenden, geben Sie den Cloud-Anbieter und die Region an.
 4. Wenn Sie fertig sind, wählen Sie **Datashare erstellen**. Dadurch wird der Datashare an Ihr Snowflake-Konto gesendet.
 
-### 2. Schritt: Erstellen Sie die Datenbank in Snowflake
+### 2. Schritt: Datenbank in Snowflake erstellen
 
 1. Nach ein paar Minuten sollten Sie den eingehenden Datashare in Ihrem Snowflake-Konto erhalten.
 2. Erstellen Sie mithilfe des eingehenden Datashare eine Datenbank zum Anzeigen und Abfragen der Tabellen. Zum Beispiel:
@@ -142,10 +142,20 @@ Das Archiv der historischen Ereignisdaten in Snowflake reicht bis April 2019 zur
 
 {% multi_lang_include partners/snowflake_pii_gdpr.md %}
 
+### Abfrage gemeinsam genutzter Daten: `TIME` und Abfrage-Performance
+
+Ereignisdaten in den Data-Sharing-Ansichten (z. B. `USERS_BEHAVIORS_CUSTOMEVENT_SHARED`) sind **nach dem Feld `TIME` geclustert**. Wenn Sie nach dem **Zeitpunkt des Ereignisses** filtern, verwenden Sie **`TIME`** als bevorzugten Filter. Abfragen, die Zeilen mit **`TIME`** einschränken, sind in der Regel **performanter** als Abfragen, die nach **`SF_CREATED_AT`** filtern, da das Clustering auf der Ereigniszeit basiert.
+
+| Feld | Bedeutung |
+| ----- | ------- |
+| `TIME` | Unix-Zeitstempel, zu dem das Ereignis stattgefunden hat. Verwenden Sie dieses Feld bevorzugt, wenn Sie nach dem Zeitpunkt des Vorkommens filtern. |
+| `SF_CREATED_AT` | Zeitstempel, zu dem die Zeile in Snowflake geladen wurde (Aufnahmezeitpunkt). |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
+
 ### Geschwindigkeit, Performance und Kosten der Abfragen
 
 Die Geschwindigkeit, Performance und Kosten jeder Abfrage, die auf den Daten ausgeführt wird, hängen von der Warehouse-Größe ab, die Sie zur Abfrage der Daten verwenden. Je nachdem, auf wie viele Daten Sie für Analytics zugreifen, kann es vorkommen, dass Sie eine größere Warehouse-Größe verwenden müssen, damit die Abfrage erfolgreich ist. Snowflake verfügt über ausgezeichnete Ressourcen zur Bestimmung der richtigen Größe, darunter [Übersicht über Warehouses](https://docs.snowflake.net/manuals/user-guide/warehouses-overview.html) und [Überlegungen zu Warehouses](https://docs.snowflake.net/manuals/user-guide/warehouses-considerations.html).
 
-> Eine Reihe von Beispielabfragen, auf die Sie bei der Einrichtung von Snowflake zurückgreifen können, finden Sie in unseren [Beispielabfragen]({{site.baseurl}}/partners/data_and_infrastructure_agility/data_warehouses/snowflake/sample_queries/) und Beispielen für die [Einrichtung der ETL-Ereignis-Pipeline]({{site.baseurl}}/partners/data_and_infrastructure_agility/data_warehouses/snowflake/etl_pipline_setup/).
+> Eine Reihe von Beispielabfragen, auf die Sie bei der Einrichtung von Snowflake zurückgreifen können, finden Sie in unseren [Beispielabfragen]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/sample_queries/) und Beispielen für die [Einrichtung der ETL-Ereignis-Pipeline]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/etl_pipline_setup/).
 
 Einrichtungsanweisungen finden Sie unter [Cloud-Datenaufnahme: Data-Warehouse-Integrationen]({{site.baseurl}}/user_guide/data/unification/cloud_ingestion/integrations/).

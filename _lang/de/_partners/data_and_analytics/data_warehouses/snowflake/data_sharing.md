@@ -114,6 +114,7 @@ Braze hostet derzeit alle Daten auf Nutzerebene in diesen Snowflake-AWS-Regionen
 
  - US East-1
  - EU-Central (Frankfurt)
+ - AP-Northeast-1 (Tokyo)
  - AP-Southeast-2 (Sydney)
  - AP-Southeast-3 (Jakarta)
  

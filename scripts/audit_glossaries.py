@@ -8,8 +8,11 @@ Compares scripts/glossaries/*.json against:
   - Swift SDK strings (Sources/BrazeUI/Resources/Localization/*.lproj/*.strings)
   - GrapesJS locale files (src/i18n/locale/{lang}.js)
 
+With --fix, automatically updates glossary files and writes a PR-ready summary.
+
 Usage:
     python audit_glossaries.py [--platform-repo ../platform] [--output report.json]
+    python audit_glossaries.py --fix [--output report.json]
 """
 
 import argparse
@@ -265,6 +268,33 @@ def _translations_match(glossary_val, source_val):
     return False
 
 
+def _is_ascii_only(s):
+    """True if string has no code points above 127 (no CJK, accents, etc.)."""
+    if not s:
+        return True
+    return all(ord(c) < 128 for c in s)
+
+
+def _has_non_ascii(s):
+    """True if the glossary/translation uses any character outside basic ASCII."""
+    return any(ord(c) >= 128 for c in (s or ""))
+
+
+def should_skip_ascii_downgrade(glossary_value, source_value):
+    """Avoid overwriting a localized glossary entry with ASCII-only source text.
+
+    Source repos sometimes ship English (or mixed) strings in non-English locale
+    files. The audit would otherwise \"fix\" the glossary to match that
+    English, de-localizing Korean/Japanese/etc. glossaries.
+
+    Note: Translations written only with ASCII Latin letters (e.g. Spanish
+    \"clic\") are not protected by this check.
+    """
+    if not source_value or glossary_value == source_value:
+        return False
+    return _has_non_ascii(glossary_value) and _is_ascii_only(source_value)
+
+
 COMMON_WORDS = frozenset({
     "a", "an", "the", "is", "it", "in", "on", "or", "and", "to", "of", "for",
     "by", "at", "as", "if", "no", "not", "but", "so", "do", "be", "we", "he",
@@ -348,19 +378,136 @@ def _load_docs_content(docs_path):
 
 
 # ---------------------------------------------------------------------------
+# Auto-fix
+# ---------------------------------------------------------------------------
+
+def apply_fixes(report):
+    """Apply audit fixes to glossary files on disk.
+
+    - Exact mismatches: update glossary value to match the source.
+    - Exact mismatches that would replace a non-ASCII glossary value with an
+      ASCII-only source value are skipped (avoids de-localization from
+      incomplete third-party locale files).
+    - Missing terms: add new entries with the source translation.
+    - Substring mismatches are skipped (ambiguous, need human judgment).
+
+    Returns {"fixes_applied": N, "terms_added": M, "fixes_skipped_downgrade": K,
+             "skipped_downgrade_details": [...], "details": {...}}.
+    """
+    total_fixed = 0
+    total_added = 0
+    total_skipped_downgrade = 0
+    skipped_downgrade_details = []
+    details = {}
+
+    for lang_key, lang_data in sorted(report["languages"].items()):
+        glossary_path = GLOSSARY_DIR / f"{lang_key}.json"
+        if not glossary_path.exists():
+            continue
+
+        glossary = json.loads(glossary_path.read_text("utf-8"))
+        lang_fixed = 0
+        lang_added = 0
+        lang_skipped_downgrade = 0
+
+        exact = [m for m in lang_data.get("mismatches", [])
+                 if m["match_type"] == "exact"]
+
+        mismatches_by_term = {}
+        for m in exact:
+            mismatches_by_term.setdefault(m["term"], []).append(m)
+        for term, term_mismatches in mismatches_by_term.items():
+            if term not in glossary:
+                continue
+            source_values = {m["source_value"] for m in term_mismatches}
+            if len(source_values) == 1:
+                new_val = term_mismatches[0]["source_value"]
+                old_val = glossary[term]
+                if should_skip_ascii_downgrade(old_val, new_val):
+                    lang_skipped_downgrade += 1
+                    src = term_mismatches[0].get("source", "")
+                    print(
+                        f"  {lang_key}: skipping '{term}' — would downgrade "
+                        f"localized glossary to ASCII-only source ({new_val!r})"
+                    )
+                    skipped_downgrade_details.append({
+                        "lang": lang_key,
+                        "term": term,
+                        "glossary_value": old_val,
+                        "source_value": new_val,
+                        "source": src,
+                    })
+                    continue
+                glossary[term] = new_val
+                lang_fixed += 1
+            else:
+                print(f"  {lang_key}: skipping '{term}' — conflicting sources: {source_values}")
+
+        glossary_lower = {k.lower() for k in glossary}
+        for m in lang_data.get("missing", []):
+            term = m["term"]
+            if term.lower() not in glossary_lower:
+                glossary[term] = m["source_translation"]
+                glossary_lower.add(term.lower())
+                lang_added += 1
+
+        if lang_fixed or lang_added:
+            sorted_glossary = {k: glossary[k] for k in sorted(glossary, key=str.lower)}
+            glossary_path.write_text(
+                json.dumps(sorted_glossary, ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            print(f"  {lang_key}: {lang_fixed} fixed, {lang_added} added")
+
+        total_fixed += lang_fixed
+        total_added += lang_added
+        total_skipped_downgrade += lang_skipped_downgrade
+        details[lang_key] = {
+            "fixed": lang_fixed,
+            "added": lang_added,
+            "skipped_downgrade": lang_skipped_downgrade,
+        }
+
+    return {
+        "fixes_applied": total_fixed,
+        "terms_added": total_added,
+        "fixes_skipped_downgrade": total_skipped_downgrade,
+        "skipped_downgrade_details": skipped_downgrade_details,
+        "details": details,
+    }
+
+
+# ---------------------------------------------------------------------------
 # Report generation
 # ---------------------------------------------------------------------------
 
-def generate_markdown_report(report):
-    """Generate a human-readable markdown summary from the audit report."""
-    lines = ["# Glossary Audit Report\n"]
+def generate_markdown_report(report, fix_results=None):
+    """Generate a markdown summary from the audit report.
+
+    When fix_results is provided, the report is formatted as a PR body
+    showing what was fixed, what was added, and what was skipped.
+    """
+    fixed_mode = fix_results is not None
+    lines = ["## Glossary audit summary\n"] if fixed_mode else ["# Glossary Audit Report\n"]
 
     stats = report["stats"]
-    lines.append(f"**Languages audited:** {stats['languages_audited']}")
-    lines.append(f"**Glossary entries checked:** {stats['total_glossary_entries']}")
-    lines.append(f"**Source strings scanned:** {stats['total_source_strings']}")
-    lines.append(f"**Mismatches found:** {stats['total_mismatches']}")
-    lines.append(f"**Missing high-value terms:** {stats['total_missing']}")
+
+    if fixed_mode:
+        lines.append(f"**Fixes applied:** {fix_results['fixes_applied']}")
+        lines.append(f"**Terms added:** {fix_results['terms_added']}")
+        sk = fix_results.get("fixes_skipped_downgrade", 0)
+        if sk:
+            lines.append(
+                f"**Fixes skipped (de-localization guard):** {sk}"
+            )
+        lines.append(f"**Languages audited:** {stats['languages_audited']}")
+        lines.append(f"**Source strings scanned:** {stats['total_source_strings']}")
+    else:
+        lines.append(f"**Languages audited:** {stats['languages_audited']}")
+        lines.append(f"**Glossary entries checked:** {stats['total_glossary_entries']}")
+        lines.append(f"**Source strings scanned:** {stats['total_source_strings']}")
+        lines.append(f"**Mismatches found:** {stats['total_mismatches']}")
+        lines.append(f"**Missing high-value terms:** {stats['total_missing']}")
     lines.append("")
 
     for lang_key, lang_data in sorted(report["languages"].items()):
@@ -369,41 +516,28 @@ def generate_markdown_report(report):
         if not mismatches and not missing:
             continue
 
-        lines.append(f"## {lang_key}\n")
+        exact = [m for m in mismatches if m["match_type"] == "exact"]
+        substr = [m for m in mismatches if m["match_type"] == "substring"]
 
-        if mismatches:
-            exact = [m for m in mismatches if m["match_type"] == "exact"]
-            substr = [m for m in mismatches if m["match_type"] == "substring"]
+        lines.append(f"### {lang_key}\n")
 
-            if exact:
-                lines.append("### Exact mismatches\n")
-                lines.append("| Term | Glossary | Source (UI) | Source repo |")
-                lines.append("|------|----------|-------------|-------------|")
-                for m in exact:
-                    lines.append(
-                        f"| {m['term']} | {m['glossary_value']} "
-                        f"| {m['source_value']} | {m['source']} |"
-                    )
-                lines.append("")
-
-            if substr:
-                lines.append("### Substring mismatches\n")
-                lines.append("| Term | Glossary | Source English | Source Translation | Source repo |")
-                lines.append("|------|----------|---------------|-------------------|-------------|")
-                for m in substr[:30]:
-                    lines.append(
-                        f"| {m['term']} | {m['glossary_value']} "
-                        f"| {m.get('source_english', '')} "
-                        f"| {m['source_value']} | {m['source']} |"
-                    )
-                if len(substr) > 30:
-                    lines.append(f"\n*...and {len(substr) - 30} more*\n")
-                lines.append("")
+        if exact:
+            header = "Fixed — exact mismatches" if fixed_mode else "Exact mismatches"
+            lines.append(f"**{header}**\n")
+            lines.append("| Term | Old value | New value (source) | Source repo |")
+            lines.append("|------|-----------|-------------------|-------------|")
+            for m in exact:
+                lines.append(
+                    f"| {m['term']} | {m['glossary_value']} "
+                    f"| {m['source_value']} | {m['source']} |"
+                )
+            lines.append("")
 
         if missing:
-            lines.append("### Missing terms (appear in docs but not in glossary)\n")
-            lines.append("| Term | Source Translation | Docs occurrences |")
-            lines.append("|------|--------------------|-----------------|")
+            header = "Added — new terms" if fixed_mode else "Missing terms (appear in docs but not in glossary)"
+            lines.append(f"**{header}**\n")
+            lines.append("| Term | Translation | Docs occurrences |")
+            lines.append("|------|-------------|-----------------|")
             for m in missing[:50]:
                 lines.append(
                     f"| {m['term']} | {m['source_translation']} "
@@ -412,6 +546,37 @@ def generate_markdown_report(report):
             if len(missing) > 50:
                 lines.append(f"\n*...and {len(missing) - 50} more*\n")
             lines.append("")
+
+        if substr:
+            header = "Skipped — substring mismatches (needs human review)" if fixed_mode else "Substring mismatches"
+            lines.append(f"**{header}**\n")
+            lines.append("| Term | Glossary | Source English | Source Translation | Source repo |")
+            lines.append("|------|----------|---------------|-------------------|-------------|")
+            for m in substr[:30]:
+                lines.append(
+                    f"| {m['term']} | {m['glossary_value']} "
+                    f"| {m.get('source_english', '')} "
+                    f"| {m['source_value']} | {m['source']} |"
+                )
+            if len(substr) > 30:
+                lines.append(f"\n*...and {len(substr) - 30} more*\n")
+            lines.append("")
+
+    if fixed_mode and fix_results.get("skipped_downgrade_details"):
+        lines.append("### Skipped — de-localization guard\n")
+        lines.append(
+            "These exact mismatches were not applied: glossary had non-ASCII "
+            "text but the source string was ASCII-only (usually English left "
+            "in a locale file). Update the source repo or fix manually.\n"
+        )
+        lines.append("| Language | Term | Glossary (kept) | Source (not applied) | Source repo |")
+        lines.append("|----------|------|-----------------|----------------------|-------------|")
+        for row in fix_results["skipped_downgrade_details"]:
+            lines.append(
+                f"| {row['lang']} | {row['term']} | {row['glossary_value']} "
+                f"| {row['source_value']} | {row.get('source', '')} |"
+            )
+        lines.append("")
 
     return "\n".join(lines)
 
@@ -528,15 +693,36 @@ def run_audit(args):
     output.write_text(json.dumps(report, indent=2, ensure_ascii=False))
     print(f"\nJSON report written to {output}")
 
+    # Auto-fix if requested
+    fix_results = None
+    if getattr(args, "fix", False) and (total_mismatches > 0 or total_missing > 0):
+        print("\nApplying fixes...")
+        fix_results = apply_fixes(report)
+        print(
+            f"  Total: {fix_results['fixes_applied']} fixed, "
+            f"{fix_results['terms_added']} added, "
+            f"{fix_results.get('fixes_skipped_downgrade', 0)} skipped (de-localization)"
+        )
+
     # Write markdown report
     md_output = output.with_suffix(".md")
-    md_output.write_text(generate_markdown_report(report))
+    md_output.write_text(generate_markdown_report(report, fix_results))
     print(f"Markdown report written to {md_output}")
 
     print(f"\nAudit complete:")
     print(f"  Languages:   {report['stats']['languages_audited']}")
     print(f"  Mismatches:  {total_mismatches}")
     print(f"  Missing:     {total_missing}")
+
+    if fix_results:
+        total_changes = fix_results["fixes_applied"] + fix_results["terms_added"]
+        gh_output = os.environ.get("GITHUB_OUTPUT")
+        if gh_output:
+            with open(gh_output, "a") as f:
+                f.write(f"fixes_applied={fix_results['fixes_applied']}\n")
+                f.write(f"terms_added={fix_results['terms_added']}\n")
+                f.write(f"total_changes={total_changes}\n")
+        return 0
 
     return 1 if total_mismatches > 0 or total_missing > 0 else 0
 
@@ -547,6 +733,8 @@ def main():
     parser.add_argument("--android-repo", help="Path to braze-android-sdk repo")
     parser.add_argument("--swift-repo", help="Path to braze-swift-sdk repo")
     parser.add_argument("--grapesjs-repo", help="Path to grapesjs repo")
+    parser.add_argument("--fix", action="store_true",
+                        help="Auto-fix glossaries and write a PR-ready summary")
     parser.add_argument(
         "--output", default="glossary_audit_report.json",
         help="Output path for the JSON report (default: glossary_audit_report.json)",

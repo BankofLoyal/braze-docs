@@ -6,7 +6,7 @@ page_order: 3
 layout: api_page
 page_type: reference
 alias: /users_identify_merge/
-description: "Dieser Artikel beschreibt die Details des Braze-Endpunkts „Nutzer:innen identifizieren"."
+description: "Dieser Artikel beschreibt die Details des Braze-Endpunkts „Nutzer:innen identifizieren“."
 
 ---
 {% api %}

@@ -5,6 +5,13 @@ module Jekyll
     RAW_MARKDOWN_KEY = "__export_merged_md"
     PUBLIC_MARKDOWN_KEY = "llm_markdown_content"
 
+    SUPPORTED_COLLECTIONS = %w[developer_guide user_guide].freeze
+
+    COLLECTION_LABELS = {
+      'developer_guide' => 'Developer Guide',
+      'user_guide' => 'User Guide'
+    }.freeze
+
     def self.init
       # Generation is triggered by markdown_copy_llm.rb after markdown export completes.
     end
@@ -12,22 +19,29 @@ module Jekyll
     def self.generate_llms_txt(site)
       return unless should_generate_llms_txt?(site)
 
-      documents = developer_guide_documents(site)
-      llms_content = generate_llms_content(site, documents)
-      llms_full_content = generate_llms_full_content(site, documents)
+      SUPPORTED_COLLECTIONS.each do |collection_name|
+        generate_llms_txt_for_collection(site, collection_name)
+      end
+    end
+
+    def self.generate_llms_txt_for_collection(site, collection_name)
+      documents = collection_documents(site, collection_name)
+      return if documents.empty?
+
+      label = COLLECTION_LABELS.fetch(collection_name, collection_name.tr('_', ' ').capitalize)
+      llms_content = generate_llms_content(site, documents, label)
+      llms_full_content = generate_llms_full_content(site, documents, label)
 
       site_dir = site.dest || File.join(site.source, '_site')
-      developer_guide_dir = File.join(site_dir, 'developer_guide')
-      Dir.mkdir(developer_guide_dir) unless Dir.exist?(developer_guide_dir)
-      llms_path = File.join(developer_guide_dir, 'llms.txt')
-      llms_full_path = File.join(developer_guide_dir, 'llms-full.txt')
+      collection_dir = File.join(site_dir, collection_name)
+      Dir.mkdir(collection_dir) unless Dir.exist?(collection_dir)
 
-      File.write(llms_path, llms_content)
-      File.write(llms_full_path, llms_full_content)
+      File.write(File.join(collection_dir, 'llms.txt'), llms_content)
+      File.write(File.join(collection_dir, 'llms-full.txt'), llms_full_content)
 
       Jekyll.logger.info(
         "LlmsTxtGenerator:",
-        "Generated llms.txt and llms-full.txt with #{documents.length} developer guide pages"
+        "Generated llms.txt and llms-full.txt with #{documents.length} #{label} pages"
       )
     end
 
@@ -36,14 +50,13 @@ module Jekyll
       (ENV['JEKYLL_ENV'] == 'production' || site.config['llms_txt'] == true)
     end
 
-    def self.developer_guide_documents(site)
-      collection = site.collections['developer_guide']
+    def self.collection_documents(site, collection_name)
+      collection = site.collections[collection_name]
       return [] unless collection
 
       docs = collection.docs.select { |doc| doc.output != false }
       ordered = sort_documents_like_nav_tree(docs)
 
-      # Safety fallback: if any docs were not represented in the tree, append them.
       seen = {}
       ordered.each { |doc| seen[doc.url.to_s] = true }
       docs.each do |doc|
@@ -66,7 +79,7 @@ module Jekyll
       documents.each do |doc|
         path_parts = doc.url.to_s.split('/')
         path_parts.shift # leading empty value
-        path_parts.shift # collection segment (developer_guide)
+        path_parts.shift # collection segment (e.g. developer_guide, user_guide)
 
         current = root
         max_index = path_parts.length - 1
@@ -284,13 +297,13 @@ module Jekyll
       full_text_fallback_from_frontmatter(doc)
     end
 
-    def self.generate_llms_content(site, documents)
+    def self.generate_llms_content(site, documents, label)
       content = <<~LLMS
         # Braze Documentation
 
-        Index of all Developer Guide pages and their headings.
+        Index of all #{label} pages and their headings.
 
-        ## Developer Guide
+        ## #{label}
 
       LLMS
 
@@ -318,11 +331,11 @@ module Jekyll
       content
     end
 
-    def self.generate_llms_full_content(site, documents)
+    def self.generate_llms_full_content(site, documents, label)
       content = <<~LLMS
-        # Braze Developer Guide Full Text
+        # Braze #{label} Full Text
 
-        Consolidated full markdown text for all pages in the Developer Guide collection.
+        Consolidated full markdown text for all pages in the #{label} collection.
 
       LLMS
 

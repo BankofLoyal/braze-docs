@@ -26,9 +26,9 @@ Oui. Le push de test est envoyé à chaque appareil compatible push associé au 
 
 Pour envoyer le push de test à un seul appareil, vous pouvez supprimer les jetons de notification push des autres appareils depuis le profil utilisateur avant de tester. Sinon, si vous envoyez via l'[endpoint `/messages/send`]({{site.baseurl}}/api/endpoints/messaging/send_messages/post_send_messages/), définissez `send_to_most_recent_device_only` sur `true` dans l'objet `apple_push` ou `android_push` afin que seul l'appareil le plus récemment actif reçoive la notification push.
 
-### Que signifie « Erreur lors de l'envoi de la notification push en raison d'un PAYLOAD non valide » ?
+### Que signifie « Erreur lors de l'envoi de la notification push en raison d'un payload non valide » ?
 
-Ce message indique que les APN ont rejeté la demande push en raison d'un PAYLOAD non valide (par exemple, un PAYLOAD vide ou trop volumineux).
+Ce message indique que les APN ont rejeté la demande push en raison d'un payload non valide (par exemple, un payload vide ou trop volumineux).
 
 Pour plus de détails et connaître les étapes suivantes, consultez la section [Messages d'erreur courants liés aux notifications push]({{site.baseurl}}/user_guide/message_building_by_channel/push/push_error_codes/).
 
@@ -45,6 +45,12 @@ Si vous souhaitez que le jeton de notification push soit réattribué à l'utili
 
 1. Demandez à l'utilisateur d'origine de se connecter au profil avec le jeton de notification push manquant.
 2. Déclenchez un nouvel envoi push. Le jeton sera alors transféré vers le compte si les notifications push sont toujours activées au niveau de l'appareil.
+
+### Pourquoi l'option « Ouvrir l'URL web dans l'application mobile » ouvre-t-elle toujours l'application lorsque je teste un brouillon de campagne ?
+
+Lorsqu'une campagne est encore au statut **Brouillon** et que vous envoyez un push de test, appuyer sur la notification ouvre toujours l'application en premier, que l'option **Ouvrir l'URL web dans l'application mobile** soit sélectionnée ou non. Lorsque la campagne est **en production**, le comportement au clic fonctionne comme configuré.
+
+Si vous avez sélectionné **Ouvrir l'URL web** sans l'option **Dans l'application**, le lien s'ouvre directement dans le navigateur par défaut de l'appareil. Si vous avez sélectionné **Ouvrir l'URL web dans l'application mobile**, le lien s'ouvre dans une vue web in-app.
 
 ### Quelle est la différence entre « Envoyer en production » et « Envoyer en développement » pour les certificats push iOS ?
 

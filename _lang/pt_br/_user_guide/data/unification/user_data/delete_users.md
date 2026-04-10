@@ -17,7 +17,13 @@ A exclusão de usuários está atualmente em acesso antecipado. Fale com seu ger
 
 ## Pré-requisitos
 
-Para excluir usuários, você deve ser um administrador ou ter permissões de **Excluir Usuário**.
+Para excluir usuários, você deve ser um administrador ou ter a permissão **Excluir Usuários**. Para visualizar registros de exclusão de usuários, você deve ser um administrador ou ter a permissão **Visualizar Registros de Exclusão de Usuários**. As seguintes permissões controlam a exclusão de usuários e os registros de exclusão:
+
+| Permissão | Descrição |
+|------------|-------------|
+| Excluir Usuários | Excluir permanentemente usuários individualmente ou em massa. |
+| Visualizar Registros de Exclusão de Usuários | Visualizar registros de exclusão de usuários. |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation"}
 
 ## Sobre a exclusão de usuários
 
@@ -105,7 +111,7 @@ Você pode verificar o status de uma exclusão usando [filtros de segmento](#seg
 Quando você solicita a exclusão de um segmento de usuários, um [filtro de segmento]({{site.baseurl}}/user_guide/engagement_tools/segments/managing_segments/#filters) chamado **Pendente de Exclusão** é criado automaticamente. Você pode usá-lo para:
 
 - Ver o conjunto exato de usuários vinculados a uma data específica de execução de exclusão.
-- Excluir esses usuários de Campaigns para que não recebam mensagens antes da remoção.
+- Excluir esses usuários de campanhas para que não recebam mensagens antes da remoção.
 - Exportar a lista caso você precise dela para conformidade ou manutenção de registros.
 
 ### Gerenciar Público
@@ -150,15 +156,15 @@ Não, isso não é um bug. Certos clientes estão limitados no número de usuár
 
 Se você quiser aumentar essa capacidade, entre em contato com seu gerente de conta da Braze. As solicitações são concedidas a critério da equipe de produto.
 
-### A fusão automática de usuários afeta a exclusão de usuários?
+### A mesclagem automática de usuários afeta a exclusão de usuários?
 
-Se uma fusão agendada incluir perfis de usuários pendentes de exclusão, a Braze ignora esses perfis e não os mescla. Para mesclar esses perfis, você deve removê-los da exclusão.
+Se uma mesclagem agendada incluir perfis de usuários pendentes de exclusão, a Braze ignora esses perfis e não os mescla. Para mesclar esses perfis, você deve removê-los da exclusão.
 
 ### O que acontece com os dados enviados para usuários pendentes de exclusão?
 
 Os dados enviados de sistemas externos ou SDKs ainda são aceitos, mas os usuários serão excluídos conforme programado, independentemente da atividade.
 
-### Canvas e Campaigns disparam para usuários pendentes de exclusão?
+### Canvas e campanhas disparam para usuários pendentes de exclusão?
 
 Sim. No entanto, você pode adicionar um filtro de inclusão de segmento para excluir todos os usuários com o [filtro de segmento](#segment-filters) **Pendente de Exclusão**.
 
