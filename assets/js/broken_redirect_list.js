@@ -4383,3 +4383,29 @@ validurls['/docs/user_guide/messaging/templates/content_blocks'] = '/docs/user_g
 
 // --- Personalization — old top-level path ---
 validurls['/docs/user_guide/personalization_and_dynamic_content/catalogs/catalog_items'] = '/docs/user_guide/data/activation/catalogs/use/';
+
+// ====================================================================
+// BrazeAI Operator failed doc lookups — batch 4, added 2026-04-10
+// ====================================================================
+
+// Data — csv_import moved under audience/manage_audience
+validurls['/docs/user_guide/data/unification/user_data/csv_import'] = '/docs/user_guide/audience/manage_audience/import_users/csv_import/';
+
+// Landing pages — old message_building_by_channel path
+validurls['/docs/user_guide/message_building_by_channel/landing_pages'] = '/docs/user_guide/messaging/landing_pages/';
+
+// Custom attributes — wrong nesting (extra custom_attributes/ parent)
+validurls['/docs/user_guide/data/activation/attributes/custom_attributes/array_of_objects'] = '/docs/user_guide/data/activation/attributes/array_of_objects/';
+validurls['/docs/user_guide/data/activation/attributes/custom_attributes/nested_custom_attributes'] = '/docs/user_guide/data/activation/attributes/nested_custom_attribute_support/';
+
+// In-app messages — old traditional/customize path
+validurls['/docs/user_guide/channels/in_app_messages/traditional/customize/html_in-app_messages'] = '/docs/user_guide/channels/in_app_messages/message_types/custom_html/';
+
+// Messaging fundamentals — misspelling (reeligibility → re_eligibility)
+validurls['/docs/user_guide/messaging/messaging_fundamentals/reeligibility'] = '/docs/user_guide/messaging/messaging_fundamentals/re_eligibility/';
+
+// Administrative — old path to workspace settings
+validurls['/docs/user_guide/administrative/workspace_settings'] = '/docs/user_guide/administer/global/workspace_settings/';
+
+// Personalization — canvas_entry_properties moved to design_and_edit/personalize/sources
+validurls['/docs/user_guide/personalization_and_dynamic_content/canvas_entry_properties'] = '/docs/user_guide/messaging/design_and_edit/personalize/sources/canvas_entry_properties/';
