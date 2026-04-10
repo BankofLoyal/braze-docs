@@ -22,11 +22,7 @@ For the canonical source of truth, consult the full style guide files listed bel
 
 ## File scope
 
-All normal contribution and editing work happens in the canonical English source
-files under `_docs/` and `_includes/`. Files under `_lang/` are
-machine-translated and managed exclusively by the `auto-translate` workflow
-(`.github/workflows/auto-translate.yml`). Never read, edit, or create files in
-`_lang/` unless you are explicitly running a translation workflow.
+All normal contribution and editing work happens in the canonical English source files under `_docs/` and `_includes/`. Files under `_lang/` are machine-translated and managed exclusively by the `auto-translate` workflow (`.github/workflows/auto-translate.yml`). Never read, edit, or create files in `_lang/` unless you are explicitly running a translation workflow.
 
 ## Style guide source files
 
@@ -153,9 +149,7 @@ validurls['/docs/user_guide/old_section/old_page/'] = '/docs/user_guide/new_sect
 
 - One entry per moved path.
 - Paths include the `/docs/` prefix, lowercase, trailing slash.
-- Never include locale prefixes in redirect paths. Strip `/docs/en/`, `/docs/es/`,
-  `/docs/ko/`, and any other language tag down to `/docs/`. Redirects only map
-  canonical English paths.
+- Never include locale prefixes in redirect paths. Strip `/docs/en/`, `/docs/es/`,   `/docs/ko/`, and any other language tag down to `/docs/`. Redirects only map canonical English paths.
 - Collapse redirect chains (old to new directly, not old to intermediate to new).
 - Other mechanisms: `layout: redirect` in frontmatter, `local_redirect` for heading-level redirects.
 
