@@ -292,7 +292,7 @@ module Jekyll
         !item.path.include?('_site/') &&
         !item.path.start_with?('_') &&
         %w[_includes _layouts _data _plugins].none? { |d| item.path.start_with?(d) } &&
-        is_developer_guide?(item)
+        is_supported_guide?(item)
     end
 
     def self.markdown?(item, site)
@@ -303,17 +303,14 @@ module Jekyll
       false
     end
 
-    def self.is_developer_guide?(item)
-      # Check if the item belongs to the developer_guide collection
-      return true if item.respond_to?(:collection) && item.collection.label == 'developer_guide'
-      
-      # Check if the path contains developer_guide
-      return true if item.path.include?('developer_guide')
-      
-      # Check if the URL contains developer_guide
-      return true if item.url.include?('developer_guide')
-      
-      false
+    SUPPORTED_COLLECTIONS = %w[developer_guide user_guide].freeze
+
+    def self.is_supported_guide?(item)
+      if item.respond_to?(:collection)
+        return true if SUPPORTED_COLLECTIONS.include?(item.collection.label)
+      end
+
+      SUPPORTED_COLLECTIONS.any? { |col| item.path.include?(col) || item.url.include?(col) }
     end
 
     # Rewrites certain tag names to export-only aliases, then renders Liquid.
@@ -380,7 +377,7 @@ module Jekyll
         copied += 1
       end
 
-      Jekyll.logger.info "MarkdownCopyLLM:", "Exported #{copied} Markdown files from developer_guide collection"
+      Jekyll.logger.info "MarkdownCopyLLM:", "Exported #{copied} Markdown files from supported guide collections"
     end
 
     def self.output_path_for(item)
