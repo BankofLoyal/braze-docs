@@ -22,7 +22,7 @@ Use this endpoint to record custom events and purchases and update user profile 
 
 Like the [`/users/track` endpoint]({{site.baseurl}}/api/endpoints/user_data/post_user_track/), you can use this endpoint to update user profiles. This endpoint is better suited for bulk updates:
 
-- **Larger requests:** Send up to your account's request object limit (1,000 or 10,000 users) per request, so you can make fewer requests for large backfills and syncs.
+- **Larger requests:** Send up to 1,000 users per request, so you can make fewer requests for large backfills and syncs.
 - **Prioritization:** During peak traffic conditions, requests to `/users/track` are prioritized over requests to `/users/track/bulk`.
 
 Use this endpoint when you're backfilling many user profiles during onboarding, or syncing large volumes of profiles as part of a daily sync.
@@ -43,9 +43,9 @@ For most customers, this endpoint has a base speed limit of 50 requests per seco
 
 Customers on newer contracts may instead have burst (per-second) and steady (per-hour) limits based on contracted monthly active users.
 
-Each `/users/track/bulk` request has a payload limit of 2 MB and can include up to 1,000 or 10,000 objects total across attributes, events, and purchases, depending on your account's bulk rate-limit policy.
+Each `/users/track/bulk` request has a payload limit of 2 MB and can include up to 1,000 objects total across attributes, events, and purchases, depending on your account's bulk rate-limit policy.
 
-Each object can update one user, so a single request can update up to your account's request object limit of different users. A single user profile can update up to 100 objects in one request.
+Each object can update one user, so a single request can update up to your account's request object limit of different users. Additionally, each request can contain a maximum of 100 objects per user profile across attributes, events, and purchases.
 
 ## Request body
 
