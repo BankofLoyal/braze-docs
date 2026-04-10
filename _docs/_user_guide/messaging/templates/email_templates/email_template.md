@@ -57,12 +57,11 @@ Here's a list of errors that are accounted for in our editor:
 
 After you finish composing your template, you can test it before sending it out.
 
-From the bottom of the overview screen, select **Preview and Test**. Here, you can preview how your email will appear in a customer's inbox. With **Preview as User** selected, you can preview your email as a random user, select a specific user, or create a custom user. This allows you to test that your Connected Content and personalization calls are working as they should. 
+From the bottom of the overview screen, select **Preview and Test**. Here, you can preview how your email will appear in a customer's inbox. With **Preview as User** selected, you can preview your email as a random user, select a specific user, or create a custom user. This allows you to test that your Connected Content and personalization calls are working as they should.
 
 Then, you can **Copy preview link** to generate and copy a shareable preview link that shows what the email looks like for a random user. The link lasts for seven days before it needs to be regenerated.
 
-You can also switch between desktop, mobile, and plaintext views to get a sense of how your message appears in different contexts. If you need to make changes to the template, note that edits made in the **Classic** editor may not be reflected in the HTML editor or the email preview.
-
+You can also switch between desktop, mobile, and plaintext views to get a sense of how your message appears in different contexts.
 
 {% alert tip %}
 Curious about what your email looks like for dark mode users? Select the **Dark Mode Preview** toggle located in the **Preview and Test** section (drag-and-drop editor only).
@@ -72,7 +71,7 @@ When you're ready for a final check, select **Test Send** and send a test messag
 
 ![Example email preview to be sent for testing.]({% image_buster /assets/img_archive/newEmailTest.png %})
 
-If you see any issues with your template or want to make any changes, select **Edit Email** to return to the editor.
+If you see any issues with your template or want to make any changes, select **Edit Email** to return to the editor. Note that edits made in the **Classic** editor may not be reflected in the HTML editor or the email preview.
 
 ## Step 6: Save your template
 
