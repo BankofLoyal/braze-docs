@@ -33,7 +33,7 @@ The `/users/track` endpoint request object limits vary by pricing model and conf
 
 ## Prerequisites
 
-To use this endpoint, you'll need an [API key]({{site.baseurl}}/api/api_key/) with the `users.track.bulk` permission.
+To use this endpoint, you must have an [API key]({{site.baseurl}}/api/api_key/) with the `users.track.bulk` permission.
 
 If you're making server-to-server calls behind a firewall, you may need to allowlist your Braze REST endpoint (for example, `rest.iad-01.braze.com`). For more information, see [API endpoints]({{site.baseurl}}/api/basics/#api-definitions).
 
