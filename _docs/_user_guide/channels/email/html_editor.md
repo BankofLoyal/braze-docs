@@ -172,8 +172,7 @@ The total key-value pairs added should not exceed 1 KB. Otherwise, the messages 
 
 Email extra values are not published to Currents or Snowflake. If you're looking to send additional metadata or dynamic values to Currents or Snowflake, use [`message_extras`]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/liquid/advanced_filters/message_extras/) instead.
 
-### Step 3.2: Preview and test your message
-{: #step-3b-preview-and-test-your-message }
+### Step 3.2: Preview and test your message {#step-3b-preview-and-test-your-message}
 
 After you finish composing your email, test it before sending. From the bottom of the overview screen, select **Preview and Test**. 
 
