@@ -31,41 +31,7 @@ Braze recognizes only URLs that start with `http://` or `https://`. When a URL i
 
 ## Liquid personalization in URLs
 
-You can dynamically construct your URL directly within the Braze composer, allowing you to add dynamic UTM parameters to your URLs or send users unique links (such as directing users to their abandoned cart or to a specific product that is back in stock).
-
-### Create a URL with supported Liquid personalization tags
-
-URLs can be dynamically generated through the use of any [supported Liquid personalization tags]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/liquid/supported_personalization_tags/).
-
-{% raw %}
-```liquid
-https://example.com/?campaign_utm={{campaign.${api_id}}}&user_attribute={{custom_attribute.${attribute1}}}
-```
-{% endraw %}
-
-We also support the shortening of custom-defined Liquid variables. Several examples are shown below:
-
-### Create a URL using Liquid variables
-
-{% raw %}
-```liquid
-{% assign url_var = {{event_properties.${url_slug}}} %}
-https://example.com/{{url_var}}
-```
-{% endraw %}
-
-### Shorten URLs rendered by Liquid variables
-
-We shorten URLs that are rendered by Liquid, even those included in API-trigger properties. For example, if {% raw %}`{{api_trigger_properties.${url_value}}}`{% endraw %} represents a valid URL, we shorten and track that URL before sending the message. 
-
-### Shorten URLs in `/messages/send` endpoint
-
-Link shortening is also turned on for API-only messages through the [`/messages/send` endpoint]({{site.baseurl}}/api/endpoints/messaging/send_messages/post_send_messages/). For a full list of request parameters, go to [request parameters]({{site.baseurl}}/api/endpoints/messaging/send_messages/post_send_messages/#request-parameters).
-
-| Parameter | Required | Data type | Description |
-| --------- | ---------| --------- | ----------- |
-|`link_shortening_enabled`| Yes | Boolean | Set `link_shortening_enabled` to `true` to turn on link shortening. To use tracking, a `campaign_id` and `message_variation_id` must be present.|
-{: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3  .reset-td-br-4 role="presentation" }
+For information on how to dynamically construct URLs directly within the Braze composer, allowing you to add dynamic UTM parameters to your URLs or send users unique links, see [Use Liquid personalization in URLs]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/actions_and_media_urls/#use-liquid-personalization-in-urls).
 
 ## Testing
 

@@ -67,6 +67,10 @@ You can deactivate or archive suppression lists when you no longer need them.
 
 To check if your suppression list prevented a user from receiving a message, use **User Lookup** in the **Target Audience** step within your campaign or Canvas. Here, you'll be able to see which suppression list they're part of.
 
+{% alert note %}
+Suppression lists update before a message sends, not after a campaign launches. This means a user who is added to a suppression list after campaign launch but before the message sends could still receive the message.  
+{% endalert %}
+
 !["User Lookup" window showing that a user is in a suppression list.]({% image_buster /assets/img/suppression_list_user_lookup.png %}){: style="max-width:70%;"}
 
 {% alert tip %}

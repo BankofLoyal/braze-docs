@@ -13,8 +13,8 @@ guide_featured_list:
 - name: Sources
   link: /docs/user_guide/messaging/design_and_edit/personalize/sources
   image: /assets/img/braze_icons/dataflow-03.svg
-- name: "Deep link to in-app content"
-  link: /docs/user_guide/messaging/design_and_edit/personalize/deep_linking_to_in-app_content
+- name: "Personalize action and media URLs"
+  link: /docs/user_guide/messaging/design_and_edit/personalize/actions_and_media_urls
   image: /assets/img/braze_icons/phone-02.svg
 - name: Liquid reference
   link: /docs/user_guide/messaging/design_and_edit/personalize/liquid

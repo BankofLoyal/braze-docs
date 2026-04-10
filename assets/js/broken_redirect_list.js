@@ -3918,9 +3918,31 @@ validurls['/docs/create_mms_message'] = '/docs/user_guide/channels/sms_mms_and_r
 validurls['/docs/sms_faq'] = '/docs/user_guide/channels/sms_mms_and_rcs/faqs/';
 validurls['/docs/mms_faq'] = '/docs/user_guide/channels/sms_mms_and_rcs/faqs/';
 validurls['/docs/user_guide/data/technology_partners'] = '/docs/partners/data_and_analytics/';
-validurls['/docs/user_guide/analytics/dashboards/diagnostics_dashboard'] = '/docs/user_guide/analytics/dashboards/dashboard_builder/diagnostics_dashboard/';
+validurls['/docs/user_guide/analytics/dashboard/diagnostics_dashboard'] = '/docs/user_guide/analytics/dashboards/dashboard_builder/diagnostics_dashboard/';
 
 // Broken links resolved from scripts/temp/broken-links.csv (IA / renamed paths)
+validurls['/docs/user_guide/messaging/messaging_fundamentals/targeting_users/'] = '/docs/user_guide/messaging/messaging_fundamentals/target_users/';
+validurls['/docs/user_guide/messaging/testing/multivariant_testing/'] = '/docs/user_guide/messaging/ab_testing/';
+validurls['/docs/user_guide/messaging/testing/multivariant_testing/optimizations/'] = '/docs/user_guide/messaging/ab_testing/optimizations/';
+validurls['/docs/user_guide/channels/in_app_messages/traditional/customize/'] = '/docs/user_guide/channels/in_app_messages/customize/';
+validurls['/docs/user_guide/channels/whatsapp/overview/'] = '/docs/user_guide/channels/whatsapp/whatsapp_setup/';
+validurls['/docs/user_guide/channels/whatsapp/overview/byo_connector/'] = '/docs/user_guide/channels/whatsapp/whatsapp_setup/byo_connector/';
+validurls['/docs/user_guide/channels/whatsapp/overview/transfer_between_workspaces/'] = '/docs/user_guide/channels/whatsapp/whatsapp_setup/whatsapp_phone_numbers/transfer_between_workspaces/';
+validurls['/docs/user_guide/channels/whatsapp/whatsapp_campaign/optimized_delivery/'] = '/docs/user_guide/channels/whatsapp/message_features_and_optimization/optimized_delivery/';
+validurls['/docs/user_guide/channels/whatsapp/whatsapp_campaign/product_messages/'] = '/docs/user_guide/channels/whatsapp/message_features_and_optimization/product_messages/';
+validurls['/docs/user_guide/channels/whatsapp/whatsapp_campaign/whatsapp_flows/'] = '/docs/user_guide/channels/whatsapp/message_features_and_optimization/whatsapp_flows/';
+validurls['/docs/user_guide/channels/whatsapp/whatsapp_use_cases/external_system/'] = '/docs/user_guide/channels/whatsapp/use_cases/whatsapp_and_external_systems/';
+validurls['/docs/user_guide/channels/webhooks/understanding_webhooks/'] = '/docs/user_guide/channels/webhooks/';
+validurls['/docs/user_guide/administrative/app_settings/email_settings/bot_filtering/'] = '/docs/user_guide/administer/global/workspace_settings/email_preferences/bot_filtering/';
+validurls['/docs/user_guide/administrative/app_settings/messaging_rate_limits/'] = '/docs/user_guide/administer/global/workspace_settings/messaging_rate_limits/';
+validurls['/docs/user_guide/message_building_by_channel/'] = '/docs/user_guide/channels/';
+validurls['/docs/user_guide/message_building_by_channel/banners/custom_code/'] = '/docs/user_guide/channels/banners/custom_code/';
+validurls['/docs/user_guide/message_building_by_channel/whatsapp/whatsapp_campaign/template_builder/'] = '/docs/user_guide/channels/whatsapp/message_features_and_optimization/template_builder/';
+validurls['/docs/user_guide/message_building_by_channel/whatsapp/whatsapp_campaign/template_builder/whatsapp_carousel_templates/'] = '/docs/user_guide/channels/whatsapp/message_features_and_optimization/template_builder/whatsapp_carousel_templates/';
+validurls['/docs/user_guide/engagement_tools/canvas/ideas_and_strategies/matching_entry_and_exit_criteria/'] = '/docs/user_guide/messaging/canvas/ideas_and_strategies/matching_entry_and_exit_criteria/';
+validurls['/docs/user_guide/data/activation/custom_data/managing_custom_data/faq/'] = '/docs/user_guide/data/activation/custom_data/managing_custom_data/';
+
+validurls['/docs/user_guide/messaging/design_and_edit/personalize/deep_linking_to_in-app_content'] = '/docs/user_guide/messaging/design_and_edit/personalize/actions_and_media_urls/';
 validurls['/docs/user_guide/administrative/app_settings/email_settings/bot_filtering'] = '/docs/user_guide/administer/global/workspace_settings/email_preferences/bot_filtering/';
 validurls['/docs/user_guide/administrative/app_settings/messaging_rate_limits'] = '/docs/user_guide/administer/global/workspace_settings/messaging_rate_limits/';
 validurls['/docs/user_guide/message_building_by_channel'] = '/docs/user_guide/channels/';
@@ -3948,6 +3970,7 @@ validurls['/docs/user_guide/message_building_by_channel/sms/setup'] = '/docs/use
 validurls['/docs/user_guide/personalization_and_dynamic_content/liquid/supported_filters'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/filters/';
 validurls['/docs/user_guide/message_building_by_channel/email/drag_and_drop/editor_components'] = '/docs/user_guide/messaging/design_and_edit/editor_blocks/?sdktab=email';
 
+validurls['/docs/user_guide/data/activation/attributes/nested_custom_attribute_support/#segmentation'] = '/docs/user_guide/audience/segments/segment_with_nested_custom_attributes/#filter-by-nested-custom-attributes';
 // Backfill dropped redirects, sorted by source path
 
 validurls['/docs/developer_guide/changelogs/web'] = '/docs/developer_guide/changelogs/';
