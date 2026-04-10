@@ -4272,3 +4272,44 @@ validurls['/docs/user_guide/message_building_by_channel/content_cards/create_a_c
 
 // RCS — no dedicated page, part of combined SMS/MMS/RCS create page
 validurls['/docs/user_guide/channels/sms_mms_and_rcs/create/rcs'] = '/docs/user_guide/channels/sms_mms_and_rcs/create/';
+
+// ====================================================================
+// BrazeAI Operator failed doc lookups — batch 2, added 2026-04-10
+// ====================================================================
+
+// Push — IA restructure (message_building_by_channel → channels)
+validurls['/docs/user_guide/message_building_by_channel/push/reporting'] = '/docs/user_guide/channels/push/reporting/';
+
+// Campaigns — old engagement_tools path
+validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_more/reporting'] = '/docs/user_guide/analytics/reports/funnel_reports/';
+
+// Canvas analytics — old engagement_tools path
+validurls['/docs/user_guide/engagement_tools/canvas/analytics'] = '/docs/user_guide/messaging/canvas/testing_canvases/measuring_and_testing_with_canvas_analytics/';
+
+// In-app messages — IA restructure (message_building_by_channel → channels)
+validurls['/docs/user_guide/message_building_by_channel/in-app_messages/message_types/custom_html'] = '/docs/user_guide/channels/in_app_messages/message_types/custom_html/';
+
+// Email setup — IA restructure (message_building_by_channel → channels)
+validurls['/docs/user_guide/message_building_by_channel/email/ip_warming'] = '/docs/user_guide/channels/email/email_setup/ip_warming/';
+validurls['/docs/user_guide/message_building_by_channel/email/deliverability'] = '/docs/user_guide/channels/email/email_setup/deliverability_pitfalls_and_spam_traps/';
+
+// Connected Content — moved from email-specific to general personalization
+validurls['/docs/user_guide/message_building_by_channel/email/using_liquid/connected_content'] = '/docs/user_guide/messaging/design_and_edit/personalize/connected_content/';
+
+// Link aliasing — moved from administrative/app_settings to messaging/templates
+validurls['/docs/user_guide/administrative/app_settings/email_settings/link_aliasing'] = '/docs/user_guide/messaging/templates/email_templates/link_aliasing/';
+
+// Triggered delivery — campaigns path restructure
+validurls['/docs/user_guide/messaging/campaigns/building_campaigns/delivery_types/triggered_delivery'] = '/docs/user_guide/messaging/campaigns/schedule_your_campaign/triggered_delivery/';
+
+// Diagnostics dashboard — analytics path restructure
+validurls['/docs/user_guide/analytics/dashboard/diagnostics_dashboard'] = '/docs/user_guide/analytics/dashboards/dashboard_builder/diagnostics_dashboard/';
+
+// Message extras — moved deeper under liquid/advanced_filters
+validurls['/docs/user_guide/messaging/design_and_edit/personalize/message_extras'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/advanced_filters/message_extras/';
+
+// Canvas audience sync — old engagement_tools path
+validurls['/docs/user_guide/engagement_tools/canvas/canvas_components/audience_updates'] = '/docs/partners/canvas_audience_sync/';
+
+// Short-path alias — drag-and-drop IAM creation
+validurls['/docs/create_dnd_iam'] = '/docs/user_guide/channels/in_app_messages/drag_and_drop/';
