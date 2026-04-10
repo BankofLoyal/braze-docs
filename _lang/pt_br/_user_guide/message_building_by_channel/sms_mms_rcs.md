@@ -1,7 +1,7 @@
 ---
 nav_title: "SMS, MMS e RCS"
 article_title: "SMS, MMS e RCS"
-page_order: 4
+page_order: 7
 layout: dev_guide
 channel:
   - SMS
@@ -9,7 +9,7 @@ channel:
   - RCS
 search_rank: 3
 guide_top_header: "SMS, MMS e RCS"
-guide_top_text: "SMS (Short Messaging Service), MMS (Multimedia Messaging Service) e RCS (Rich Communication Services) oferecem uma maneira mais direta de alcançar seus usuários do que a maioria dos outros canais de envio de mensagens, pois utilizam o número de telefone deles, permitindo que você os alcance em tempo real. Dê uma olhada nos tópicos a seguir para começar a usar o Braze SMS, MMS ou RCS!<br><br>Não está preparado para nenhum dos tópicos a seguir? Acesse nossa coleção de <a href='/docs/about_sms/'>configurações de SMS</a> para conhecer o SMS no Braze. <br><br>**A disponibilidade de SMS, MMS e RCS depende de seu pacote Braze. Entre em contato com seu gerente de conta ou gerente de sucesso do cliente para começar.**"
+guide_top_text: "SMS (Short Messaging Service), MMS (Multimedia Messaging Service) e RCS (Rich Communication Services) oferecem uma maneira mais direta de alcançar seus usuários do que a maioria dos outros canais de envio de mensagens, pois utilizam o número de telefone deles, permitindo que você os alcance em tempo real. Dê uma olhada nos tópicos a seguir para começar a usar o SMS, MMS ou RCS da Braze!<br><br>Não está preparado para nenhum dos tópicos a seguir? Acesse nossa coleção de <a href='/docs/about_sms/'>configurações de SMS</a> para conhecer o SMS na Braze. <br><br>**A disponibilidade de SMS, MMS e RCS depende do seu pacote da Braze. Entre em contato com seu gerente de conta ou gerente de sucesso do cliente para começar.**"
 description: "Essa landing page contém SMS (Short Messaging Service), MMS (Multimedia Messaging Service) e RCS (Rich Communication Services). Esses serviços oferecem uma maneira mais direta de alcançar seus usuários do que a maioria dos outros canais de envio de mensagens, pois utilizam o número de telefone deles, permitindo que você entre em contato com eles em tempo real."
 
 guide_featured_title: "Artigos gerais"
@@ -47,13 +47,13 @@ guide_featured_list:
 - name: "Calculadoras de faturamento"
   link: /docs/sms_rcs_billing_calculators/
   image: /assets/img/braze_icons/calculator.svg
-- name: "Painel de Uso de Mensagens"
+- name: "Dashboard de uso de mensagens"
   link: /docs/message_usage_dashboard/
   image: /assets/img/braze_icons/file-07.svg
 
 guide_menu_title: "SMS"
 guide_menu_list:
-- name: "Sobre a SMS"
+- name: "Sobre o SMS"
   link: /docs/about_sms/
   image: /assets/img/braze_icons/check-square-broken.svg
 - name: "Termos importantes de SMS"
@@ -62,7 +62,7 @@ guide_menu_list:
 - name: "Envio de mensagens SMS"
   link: /docs/sms_message_sending/
   image: /assets/img/braze_icons/phone-02.svg
-- name: "Criação de um envio de mensagens SMS"
+- name: "Criação de uma mensagem SMS"
   link: /docs/create_sms_message/
   image: /assets/img/braze_icons/table.svg
 - name: "Perguntas frequentes sobre SMS"
@@ -71,7 +71,7 @@ guide_menu_list:
 
 guide_menu_title2: "MMS"
 guide_menu_list2:
-- name: "Sobre a MMS"
+- name: "Sobre o MMS"
   link: /docs/about_mms/
   image: /assets/img/braze_icons/brush-02.svg
 - name: "Códigos curtos e longos de MMS"
@@ -83,13 +83,13 @@ guide_menu_list2:
 - name: "Cartões de contato"
   link: /docs/mms_contact_cards/
   image: /assets/img/braze_icons/user-circle.svg
-- name: "Perguntas frequentes sobre a MMS"
+- name: "Perguntas frequentes sobre MMS"
   link: /docs/mms_faq/
   image: /assets/img/braze_icons/annotation-question.svg
 
 guide_menu_title3: "RCS"
 guide_menu_list3:
-- name: "Sobre a RCS"
+- name: "Sobre o RCS"
   link: /docs/about_rcs/
   image: /assets/img/braze_icons/brush-02.svg
 - name: "Criação de uma campanha RCS"

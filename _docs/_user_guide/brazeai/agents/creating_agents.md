@@ -14,7 +14,7 @@ alias: /creating-agents/
 
 Before you start, you'll need the following:
 
-- [Permission]({{site.baseurl}}/user_guide/administrative/app_settings/manage_your_braze_users/user_permissions/#list-of-permissions) to access the **Agent Console** in your workspace. Check with your Braze admins if you don’t see this option.  
+- [Permission]({{site.baseurl}}/user_guide/administer/global/user_management/permissions#list-of-permissions) to access the **Agent Console** in your workspace. Check with your Braze admins if you don’t see this option.  
 - Permission to create and edit custom AI Agents.
 - An [AI model provider]({{site.baseurl}}/partners/ai_model_providers) integrated with Braze.
 - An idea of what you want the agent to accomplish. Braze Agents can support the following actions:  
@@ -73,8 +73,8 @@ Select **Add resources** to choose what your agent can reference. This includes:
 
 - [Catalog fields]({{site.baseurl}}/user_guide/brazeai/agents/reference/#catalogs-and-fields): Give the agent access to your catalog data for more accurate responses.
 - [Segment membership]({{site.baseurl}}/user_guide/brazeai/agents/reference/#segment-membership-context): Let the agent personalize responses based on which segments a user belongs to. You can select up to five segments.
-- [Brand guidelines]({{site.baseurl}}/user_guide/administrative/app_settings/brand_guidelines): Reference the brand voice and style guidelines for the agent to follow. For example, if you want your agent to generate SMS copy to encourage users to sign up for a gym membership, you can use this field to reference your predefined bold, motivational guideline.
-- [All Canvas Context]({{site.baseurl}}/user_guide/engagement_tools/canvas/create_a_canvas/context_variables): Analyze all Canvas context data for a user when this agent is invoked, including any variables that are not referenced in the **Instructions** section.
+- [Brand guidelines]({{site.baseurl}}/user_guide/administer/global/workspace_settings/brand_guidelines/): Reference the brand voice and style guidelines for the agent to follow. For example, if you want your agent to generate SMS copy to encourage users to sign up for a gym membership, you can use this field to reference your predefined bold, motivational guideline.
+- [All Canvas Context]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/sources/context_variables): Analyze all Canvas context data for a user when this agent is invoked, including any variables that are not referenced in the **Instructions** section.
 
 #### Step 3.2: Add optional settings
 
@@ -82,72 +82,13 @@ In the **Optional settings**, you can adjust the [temperature]({{site.baseurl}}/
 
 ### Step 4: Select the output {#select-output}
 
-In the **Output** section, you can organize and define the agent's output by basic schemas or advanced schemas.
+In the **Output** section, you can organize and define the agent's [output]({{site.baseurl}}/user_guide/brazeai/agents/reference/#outputs) by basic schemas or advanced schemas.
 
 For best results, make sure that what you specify in the **Output** section matches any agent instructions you entered in [Step 3](#agent-instructions). For example, if you mentioned in the agent instructions that you want an object with two strings, make sure you specify an object with two strings in the **Output** section. If your agent instructions don't align with your specified output, the agent may get confused, time out, or generate undesired outputs.
 
-#### Basic schemas
-
-Basic schemas are a simple output that an agent returns. This can be a string, a number, a boolean, an array of strings, or array of numbers.
-
-For example, if you want to collect user sentiment scores from a simple feedback survey to determine how satisfied your customers are after receiving a product, you can select **Number** as a basic schema to structure the output format.
-
-{% alert important %}
-Arrays are only available for Canvas agents, not catalog agents.
+{% alert tip %}
+When you use an [advanced output schema]({{site.baseurl}}/user_guide/brazeai/agents/reference/#advanced-schemas), add a string field named `explanation` if you want the agent to return its rationale in addition to its other outputs. Tell the agent in your [instructions](#agent-instructions) to populate `explanation` when that helps you review or debug responses.
 {% endalert %}
-
-![Agent Console with number selected as a basic schema.]({% image_buster /assets/img/ai_agent/basic_schema.png %}){: style="max-width:85%;"}
-
-#### Advanced schemas
-
-Advanced schema options include manually structuring fields or using JSON.
-
-- **Fields:** A no-code way to enforce an agent output that you can use consistently.
-- **JSON:** A code approach to creating a precise output format, where you can nest variables and objects within the JSON schema. Only available for Canvas agents, not catalog agents.
-
-We recommend using advanced schemas when you want the agent to return a data structure with multiple values defined in a structured manner, rather than a single-value output. This allows the output to be better formatted as a consistent context variable.
-
-For example, you may use an output format within an agent that is intended to create a sample travel itinerary for a user based on a form they submitted. The output format allows you to define that every agent response should come back with values for `tripStartDate`, `tripEndDate`, and `destination` values. Each of these values can be extracted from context variables and placed in a Message step for personalization using Liquid.
-
-{% tabs %}
-{% tab Fields %}
-
-If you want to format responses to a simple feedback survey to determine how likely respondents are to recommend your restaurant's newest ice cream flavor, you can set up the following fields to structure the output format:
-
-| Field name | Value |
-| --- | --- |
-| **likelihood_score** | Number |
-| **explanation** | String |
-| **confidence_score** | Number |
-{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
-
-![Agent Console showing three output fields for likelihood score, explanation, and confidence score.]({% image_buster /assets/img/ai_agent/output_format_fields.png %}){: style="max-width:85%;"}
-
-{% endtab %}
-{% tab JSON schema %}
-
-If you want to collect user feedback for their most recent dining experience at your restaurant chain, you can select **JSON Schema** as the output format and insert the following JSON to return a data object that includes a sentiment variable and reasoning variable.
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "sentiment": {
-      "type": "string"
-    },
-    "reasoning": {
-      "type": "string"
-    }
-  },
-  "required": [
-    "sentiment",
-    "reasoning"
-  ]
-}
-```
-
-{% endtab %}
-{% endtabs %}
 
 ### Step 5: Test and create the agent
 

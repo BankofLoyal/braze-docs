@@ -1,9 +1,11 @@
 # Translates English docs into all supported languages using Claude.
-# Currently manual-only (workflow_dispatch). Re-enable the push trigger
-# below once the workflow is production-ready.
+#
+# Triggers automatically when a deploy PR merges to main (nightly or manual),
+# detecting changed _docs/ and _includes/ markdown files.
+# Also supports manual runs via workflow_dispatch with explicit file paths.
 #
 # Flow:
-#   1. Identify _docs/ markdown files changed in the push
+#   1. Identify _docs/ and _includes/ markdown files changed in the push
 #   2. Translate each file into 6 languages via Claude API
 #   3. Build each language with Jekyll to verify translations
 #   4. If a build fails, send errors back to Claude for auto-fix (up to 3 attempts)
@@ -12,14 +14,14 @@
 name: Auto-translate
 
 on:
-  # push:
-  #   branches: [main]
-  #   paths: ['_docs/**']
+  push:
+    branches: [main]
+    paths: ['_docs/**', '_includes/**']
   workflow_dispatch:
     inputs:
       files:
         description: >
-          Space-separated _docs/ paths to translate
+          Space-separated _docs/ or _includes/ paths to translate
           (leave empty to detect from the last push)
         required: false
         type: string
@@ -42,6 +44,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       # ------------------------------------------------------------------
       # Detect which English docs changed
@@ -54,11 +57,11 @@ jobs:
           elif [ -n "${{ github.event.before }}" ] && [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
             git diff --name-only --diff-filter=ACMR \
               ${{ github.event.before }} ${{ github.sha }} \
-              -- '_docs/' > changed_files.txt
+              -- '_docs/' '_includes/' > changed_files.txt
           else
             git diff --name-only --diff-filter=ACMR \
               HEAD~1 HEAD \
-              -- '_docs/' > changed_files.txt
+              -- '_docs/' '_includes/' > changed_files.txt
           fi
 
           # Keep only markdown files
@@ -82,7 +85,7 @@ jobs:
       # ------------------------------------------------------------------
       - name: Set up Python
         if: steps.changes.outputs.count != '0'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
@@ -91,14 +94,18 @@ jobs:
         run: pip install anthropic
 
       - name: Translate changed files
+        id: translate
         if: steps.changes.outputs.count != '0'
+        continue-on-error: true
         run: python scripts/auto_translate.py translate --changed-files changed_files.txt
 
       # ------------------------------------------------------------------
       # Quality checks
       # ------------------------------------------------------------------
       - name: Run translation QC checks
+        id: qc
         if: steps.changes.outputs.count != '0'
+        continue-on-error: true
         run: python scripts/auto_translate.py qc
 
       # ------------------------------------------------------------------
@@ -111,15 +118,14 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
 
-      # Orphaned translation cleanup is temporarily disabled while the
-      # clean_orphaned_translations.py script is validated to avoid
-      # accidental deletions. Re-enable once confirmed safe in production.
-      # - name: Clean up orphaned translations
-      #   if: steps.changes.outputs.count != '0'
-      #   run: python scripts/clean_orphaned_translations.py
+      - name: Clean up orphaned translations
+        if: steps.changes.outputs.count != '0'
+        run: python scripts/clean_orphaned_translations.py
 
       - name: Verify builds and fix errors
+        id: verify
         if: steps.changes.outputs.count != '0'
+        continue-on-error: true
         run: python scripts/auto_translate.py verify --max-attempts 3
 
       # ------------------------------------------------------------------
@@ -130,16 +136,28 @@ jobs:
         run: python scripts/auto_translate.py summary
 
       - name: Create pull request
+        id: create-pr
         if: steps.changes.outputs.count != '0'
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: auto-translate/${{ github.run_id }}
           base: develop
           title: "Auto-translations — ${{ github.event.head_commit.message || 'manual run' }}"
           body-path: translation_pr_body.md
-          labels: auto-translation
+          labels: |
+            auto-translation
+            In Review
           commit-message: "chore: auto-translate changed English docs"
           delete-branch: true
           add-paths: |
             _lang/
+
+      - name: Report failures
+        if: steps.translate.outcome == 'failure' || steps.qc.outcome == 'failure' || steps.verify.outcome == 'failure'
+        run: |
+          echo "::warning::One or more translation steps had failures — check the PR summary for details."
+          echo "  Translate: ${{ steps.translate.outcome }}"
+          echo "  QC:        ${{ steps.qc.outcome }}"
+          echo "  Verify:    ${{ steps.verify.outcome }}"
+          exit 1

@@ -104,6 +104,8 @@ valid_partner_list:
   url: /docs/partners/amazon_personalize/
 - name: Certona
   url: /docs/partners/certona/
+- name: CataBoom
+  url: /docs/partners/cataboom/
 - name: Playable
   url: /docs/partners/playable/
 - name: Movable Ink
@@ -346,8 +348,8 @@ valid_partner_list:
   url: /docs/partners/tapcart/
 - name: Mention Me
   url: /docs/partners/mention_me/
-- name: Just Words
-  url: /docs/partners/just_words/
+- name: JustAI
+  url: /docs/partners/just_ai/
 - name: Eagle Eye
   url: /docs/partners/eagle_eye/
 - name: Eppo
@@ -408,4 +410,8 @@ valid_partner_list:
   url: /docs/partners/canva/
 - name: Figma
   url: /docs/partners/figma/
+- name: Poq
+  url: /docs/partners/poq/
+- name: VideoSmart
+  url: /docs/partners/videosmart/
 ---

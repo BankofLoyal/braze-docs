@@ -43,6 +43,8 @@ valid_partner_list:
   url: /docs/partners/komo/
 - name: Odicci
   url: /docs/partners/odicci/
+- name: CataBoom
+  url: /docs/partners/cataboom/
 - name: Digioh
   url: /docs/partners/digioh/
 - name: Knak

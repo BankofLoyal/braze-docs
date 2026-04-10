@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "language": "en",
+  "dictionaries": ["en_us", "braze-words"],
+  "dictionaryDefinitions": [
+    {
+      "name": "braze-words",
+      "path": "./config/cspell/braze-dictionary.txt",
+      "description": "Braze docs: product terms, glossary, Liquid/Kramdown tokens, and intentional style-guide wording."
+    }
+  ],
+  "ignorePaths": [
+    "_lang/**",
+    "_docs/_hidden/**",
+    "node_modules/**",
+    "vendor/**",
+    ".git/**",
+    "config/cspell/unique-unknown-from-full-sweep.txt"
+  ],
+  "ignoreRegExpList": [
+    "Urls",
+    "Email",
+    "href",
+    "/^---\\s*\\r?\\n[\\s\\S]*?\\r?\\n---\\s*\\r?\\n/",
+    "/@[a-z0-9][-a-z0-9.]*\\.[a-z]{2,}\\b/gi",
+    "/\\b(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+(?:com|io|net|org|dev|co|app|ai|us|uk|edu|gov|me|xyz|cloud|tech|bz|ca|de|fr|jp)\\b/gi",
+    "/\\{::[^}]+\\}/g",
+    "/\\{:[^}]*\\}/g",
+    "/\\{%[\\s\\S]*?%\\}/g",
+    "/\\{\\{[\\s\\S]*?\\}\\}/g",
+    "/`[^`]*`/g",
+    "/<[^>\\s][^>]*>/g",
+    "/url\\s*\\(\\s*\"data:[^\"]*\"\\)/gi",
+    "/url\\s*\\(\\s*'data:[^']*'\\)/gi",
+    "/^[^\\n]*Lorem ipsum[^\\n]*$/gim",
+    "/\\b[a-z]{2,}in['\\u2019]/gi"
+  ],
+  "overrides": [
+    {
+      "filename": "**/*.md",
+      "dictionaries": ["en_us", "braze-words"],
+      "ignoreRegExpList": [
+        "Urls",
+        "Email",
+        "href",
+        "/^---\\s*\\r?\\n[\\s\\S]*?\\r?\\n---\\s*\\r?\\n/",
+        "/@[a-z0-9][-a-z0-9.]*\\.[a-z]{2,}\\b/gi",
+        "/\\b(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+(?:com|io|net|org|dev|co|app|ai|us|uk|edu|gov|me|xyz|cloud|tech|bz|ca|de|fr|jp)\\b/gi",
+        "/\\{::[^}]+\\}/g",
+        "/\\{:[^}]*\\}/g",
+        "/\\{%[\\s\\S]*?%\\}/g",
+        "/\\{\\{[\\s\\S]*?\\}\\}/g",
+        "/`[^`]*`/g",
+        "/<[^>\\s][^>]*>/g",
+        "/url\\s*\\(\\s*\"data:[^\"]*\"\\)/gi",
+        "/url\\s*\\(\\s*'data:[^']*'\\)/gi",
+        "/^[^\\n]*Lorem ipsum[^\\n]*$/gim",
+        "/\\b[a-z]{2,}in['\\u2019]/gi"
+      ]
+    },
+    {
+      "filename": "_docs/_contributing/styling_examples.md",
+      "words": [
+        "UNBROKENHIGHLIGHTTHATISVERYLONGUNBROKENHIGHLIGHTTHATISVERYLONG",
+        "UNBROKENWORDTHATISVERYLONGUNBROKENWORDTHATISVERYLONG"
+      ]
+    }
+  ]
+}

@@ -13,15 +13,15 @@ search_tag: Partner
 
 Esta página presenta dos formas de conservar los datos no anonimizados: 
 
-- Copia tus datos a otra base de datos Snowflake
-- Descarga tus datos en un escenario
+- Copiar tus datos a otra base de datos de Snowflake
+- Descargar tus datos a un stage
 
 {% alert warning %}
-Braze anonimiza automáticamente los datos de eventos de los usuarios que se borran de Braze, tal y como se describe en [la Asistencia Técnica de Protección de Datos]({{site.baseurl}}/dp-technical-assistance/). Los datos copiados fuera de la base de datos compartida no se incluirán en este proceso, puesto que Braze ya no los administra.
+Braze anonimiza automáticamente los datos de eventos de los usuarios que se eliminan de Braze, tal y como se describe en [Asistencia técnica de protección de datos]({{site.baseurl}}/dp-technical-assistance/). Los datos copiados fuera de la base de datos compartida no se incluirán en este proceso, puesto que Braze ya no los administra. 
 {% endalert %}
 
 ## Eventos exentos de la política de retención de dos años
-Braze conserva los eventos relacionados con el ciclo de vida del usuario, el estado de la suscripción y la mensajería entrante hasta que se elimina un usuario. Los siguientes eventos están exentos de la política estándar de retención de dos años:
+Braze conserva los eventos relacionados con el ciclo de vida del usuario, el estado de la suscripción y la mensajería de entrada hasta que se elimina un usuario. Los siguientes eventos están exentos de la política estándar de retención de dos años:
 - `users.UserOrphan`
 - `users.UserDeleteRequest`
 - `users.behaviors.subscription.GlobalStateChange`
@@ -29,7 +29,7 @@ Braze conserva los eventos relacionados con el ciclo de vida del usuario, el est
 - `users.messages.sms.InboundReceive`
 - `users.messages.whatsapp.InboundReceive`
 
-## Copiar todos los datos a otra base de datos Snowflake
+## Copiar todos los datos a otra base de datos de Snowflake
 
 Puedes conservar los datos no anonimizados copiando tus datos del esquema compartido `BRAZE_RAW_EVENTS` a otra base de datos y esquema en Snowflake. Para ello, sigue estos pasos:
 
@@ -132,12 +132,12 @@ $$;
 {% endraw %}
 
 {: start="2"}
-2\. Ejecuta uno de los siguientes comandos en tu cuenta Snowflake para ejecutar el procedimiento.
+2. Ejecuta uno de los siguientes comandos en tu cuenta de Snowflake para ejecutar el procedimiento.
 
 {% tabs %}
-{% tab Default %}
+{% tab Predeterminado %}
 
-Por defecto, el procedimiento hará una copia de seguridad de los datos de más de dos años para todos los tipos de eventos de `USERS_*`. 
+Por defecto, el procedimiento hará una copia de seguridad de los datos de más de dos años para todos los tipos de eventos `USERS_*`. 
 
 {% raw %}
 ```sql
@@ -148,9 +148,9 @@ CALL COPY_BRAZE_SHARE('SOURCE_DB', 'SOURCE_SCHEMA', 'DEST_DB', 'DEST_SCHEMA')
 ```
 {% endraw %}
 {% endtab %}
-{% tab Filtered %}
+{% tab Filtrado %}
 
-Especifica un filtro para elegir de qué datos de edad hacer copia de seguridad, y especifica un filtro de nombre de tabla para hacer copia de seguridad sólo de las tablas de eventos seleccionadas. 
+Especifica un filtro para elegir la antigüedad de los datos de los que hacer copia de seguridad, y especifica un filtro de nombre de tabla para hacer copia de seguridad solo de las tablas de eventos seleccionadas. 
 
 {% raw %}
 ```sql
@@ -164,14 +164,14 @@ CALL COPY_BRAZE_SHARE('SOURCE_DB', 'SOURCE_SCHEMA', 'DEST_DB', 'DEST_SCHEMA', DA
 {% endtabs %}
 
 {% alert note %}
-Ejecutar repetidamente el procedimiento no creará registros duplicados, porque este procedimiento comprueba el `SF_CREATED_AT` más reciente y sólo hace copias de seguridad de los datos más recientes.
+Ejecutar repetidamente el procedimiento solo hace copia de seguridad de las filas con `SF_CREATED_AT` mayor que el máximo ya existente en tu tabla, lo que evita copiar filas de las que ya se ha hecho copia de seguridad.
 {% endalert %}
 
-## Descarga de datos en el escenario
+## Descargar datos a un stage
 
-Puedes conservar los datos no anonimizados descargando los datos del esquema compartido `BRAZE_RAW_EVENTS` en una etapa. Para ello, sigue estos pasos:
+Puedes conservar los datos no anonimizados descargando los datos del esquema compartido `BRAZE_RAW_EVENTS` a un stage. Para ello, sigue estos pasos:
 
-1. Crea el procedimiento `UNLOAD_BRAZE_SHARE`, que se utilizará para copiar todos los datos compartidos por Braze a la etapa especificada.
+1. Crea el procedimiento `UNLOAD_BRAZE_SHARE`, que se utilizará para copiar todos los datos compartidos por Braze al stage especificado.
 
 {% raw %}
 ```sql
@@ -244,10 +244,10 @@ $$;
 {% endraw %}
 
 {: start="2"}
-2\. Ejecuta uno de los siguientes comandos para ejecutar el procedimiento. 
+2. Ejecuta uno de los siguientes comandos para ejecutar el procedimiento. 
 
 {% tabs %}
-{% tab Default %}
+{% tab Predeterminado %}
 
 Por defecto, el procedimiento copiará todas las tablas con el prefijo `USERS_`.
 
@@ -266,9 +266,9 @@ LIST @MY_EXPORT_STAGE;
 ```
 {% endraw %}
 {% endtab %}
-{% tab Filtered %}
+{% tab Filtrado %}
 
-Especifica un filtro en el procedimiento para descargar sólo las tablas especificadas.
+Especifica un filtro en el procedimiento para descargar solo las tablas especificadas.
 
 {% raw %}
 ```sql
