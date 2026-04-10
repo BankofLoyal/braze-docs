@@ -91,7 +91,7 @@ Need help creating awesome copy? Try using the [AI copywriting assistant]({{site
 
 Need help crafting right-to-left messages for languages like Arabic and Hebrew? Refer to [Creating right-to-left messages]({{site.baseurl}}/user_guide/messaging/messaging_fundamentals/localization/right_to_left_messages/) for best practices.
 
-### Step 3a: Add your sending information
+### Step 3.1: Add your sending information
 
 After you finish designing and building your email message, add your sending information in **Sending Settings**.
 
@@ -172,7 +172,7 @@ The total key-value pairs added should not exceed 1 KB. Otherwise, the messages 
 
 Email extra values are not published to Currents or Snowflake. If you're looking to send additional metadata or dynamic values to Currents or Snowflake, use [`message_extras`]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/liquid/advanced_filters/message_extras/) instead.
 
-### Step 3b: Preview and test your message
+### Step 3.2: Preview and test your message {#step-3b-preview-and-test-your-message}
 
 After you finish composing your email, test it before sending. From the bottom of the overview screen, select **Preview and Test**. 
 
@@ -205,9 +205,9 @@ For the drag-and-drop editor, add only the zero-width non-joiners (‌`&zwnj;`) 
 
 {% endalert %}
 
-### Step 3c: Check for email errors
+### Step 3.3: Check for email errors
 
-The editor will call out any problems it catches with your message before you send it. Here's a list of errors that are accounted for in our editor:
+The editor flags the following errors before you send it:
 
 - **From Display Name** and **Header** not specified together
 - Invalid **From** and **Reply-To** addresses
@@ -281,6 +281,6 @@ If you haven't done so already, complete the remaining sections of your Canvas c
 
 ## Step 5: Review and deploy
 
-The final section summarizes the campaign you designed. Confirm all relevant details and select **Launch Campaign**. 
+The final section summarizes the campaign you designed. Confirm all relevant details and select **Launch Campaign**.
 
 To learn how you can access the results of your email campaigns, check out [Email reporting]({{site.baseurl}}/user_guide/channels/email/reporting/).
