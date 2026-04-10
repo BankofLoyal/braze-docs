@@ -105,6 +105,10 @@ For the drag-and-drop editor, copy and paste the generated HTML code into the [c
 The Promotions script only appears if your email lands in the Gmail Promotions tab. Currently, Gmail uses algorithms to determine where your email will land. However, if a user ever marks your email as a promotion, Gmail's algorithm will be ignored, and your email will automatically land in the Promotions tab moving forward.
 {% endalert %}
 
+### Step 5: Test using Gmail's preview tool 
+
+To test annotations for low-volume sends, you must use Gmail's [preview tool](https://developers.google.com/workspace/gmail/promotab/preview) to validate the annotations first. If you skip this step, the product carousel and single image preview will only trigger at higher send volumes.
+
 ## Measure Gmail Cards
 
 Gmail does not return analytics on these cards, and email service providers (ESPs) like Braze cannot insert their own link tracking on links in the header section (including promotion cards and product carousels). However, you can append UTM parameters or unique codes to the URLs during setup. These parameters allow you to track engagement using your own website analytics or conversion tracking, because the tracking is part of the URL itself—not inserted by the ESP. ESP-level click tracking is not available for these links.
@@ -148,7 +152,6 @@ Gmail recommends avoiding:
 
 For your annotations to render correctly, confirm that the submitted domains are registered with DMARC and all policies are enabled.
 
-
 ## Frequently asked questions
 
 ### Why is my promotional message not displaying the promotion card or product carousel in the end user's inbox?
@@ -157,7 +160,7 @@ There are many factors that determine whether the product carousel will be shown
 
 All images in the annotation still have to pass a quality filter. In order for the product carousel to populate, all images in the annotation must be in the recommended image aspect ratio and be high-quality, high-resolution close-up product images. The images should contain little to no text. The quality filter also filters inappropriate content, so the images must be family, user, and child-friendly.
 
-Furthermore, Gmail has a density cap on how many product carousels appear in a user’s Gmail Promotions tab. For instance, if a user subscribes to a lot of brands that use product carousels in their promotion email, Gmail eventually puts a cap on how many product carousels are shown.
+Furthermore, Gmail has a density cap on how many product carousels appear in a user's Gmail Promotions tab. For instance, if a user subscribes to a lot of brands that use product carousels in their promotion email, Gmail eventually puts a cap on how many product carousels are shown.
 
 Due to Google's privacy and safety regulations, emails with annotations must be widely sent for the annotation to work. It's recommended to launch a campaign and send it to at least 100 recipients for Google's system to detect it as a "mass send." Image URLs may not vary across recipients.
 
