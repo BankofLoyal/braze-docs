@@ -149,7 +149,7 @@ validurls['/docs/user_guide/old_section/old_page/'] = '/docs/user_guide/new_sect
 
 - One entry per moved path.
 - Paths include the `/docs/` prefix, lowercase, trailing slash.
-- Never include locale prefixes in redirect paths. Strip `/docs/en/`, `/docs/es/`,   `/docs/ko/`, and any other language tag down to `/docs/`. Redirects only map canonical English paths.
+- Never include locale prefixes in redirect paths. Strip `/docs/en/`, `/docs/es/`, `/docs/ko/`, and any other language tag down to `/docs/`. Redirects only map canonical English paths.
 - Collapse redirect chains (old to new directly, not old to intermediate to new).
 - Other mechanisms: `layout: redirect` in frontmatter, `local_redirect` for heading-level redirects.
 
