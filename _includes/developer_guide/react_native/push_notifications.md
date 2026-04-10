@@ -138,7 +138,7 @@ For a full list of push notification fields, refer to the table below:
 
 To enable Braze to handle deep links inside React components when a push notification is clicked, first implement the steps described in [React Native Linking](https://reactnative.dev/docs/linking) library, or with your solution of choice. Then, follow the additional steps below.
 
-To learn more about what deep links are, see our [FAQ article]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/deep_linking_to_in-app_content/#what-is-deep-linking).
+To learn more about what deep links are, see our [FAQ article]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/actions_and_media_urls/#what-is-deep-linking).
 
 {% alert important %}
 If you're migrating an existing React Native push integration, re-test deep linking after you upgrade the Braze SDK, React Native, Expo, or related libraries. Confirm that:

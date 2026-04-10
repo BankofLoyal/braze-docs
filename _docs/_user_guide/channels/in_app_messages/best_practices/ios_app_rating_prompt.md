@@ -22,7 +22,7 @@ While Apple requires you to use the native prompt, you can still take advantage 
 
 ### Approach 1: Deep linking to the App Store
 
-With this approach, you want to encourage users to visit the App Store to add a review. To do so, create an in-app message campaign that [deep links]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/deep_linking_to_in-app_content/) to the App Store.
+With this approach, you want to encourage users to visit the App Store to add a review. To do so, create an in-app message campaign that [deep links]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/actions_and_media_urls/) to the App Store.
 
 ![Two mobile screens side-by-side. The first is an in-app message that asks the user to rate the app on the App Store. The second is the iOS App Store page for that app.]({% image_buster /assets/img_archive/app_store_app_review.png %})
 

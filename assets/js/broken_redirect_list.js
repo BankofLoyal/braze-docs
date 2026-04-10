@@ -3644,7 +3644,8 @@ validurls['/docs/user_guide/personalization_and_dynamic_content/connected_conten
 validurls['/docs/user_guide/personalization_and_dynamic_content/connected_content/making_an_api_call'] = '/docs/user_guide/messaging/design_and_edit/personalize/connected_content/making_an_api_call/';
 validurls['/docs/user_guide/personalization_and_dynamic_content/connected_content/public_apis'] = '/docs/user_guide/messaging/design_and_edit/personalize/connected_content/public_apis/';
 validurls['/docs/user_guide/personalization_and_dynamic_content/connected_content/user_profile_fields_connected_content'] = '/docs/user_guide/messaging/design_and_edit/personalize/connected_content/user_profile_fields_connected_content/';
-validurls['/docs/user_guide/personalization_and_dynamic_content/deep_linking_to_in-app_content'] = '/docs/user_guide/messaging/design_and_edit/personalize/deep_linking_to_in-app_content/';
+validurls['/docs/user_guide/personalization_and_dynamic_content/deep_linking_to_in-app_content'] = '/docs/user_guide/messaging/design_and_edit/personalize/actions_and_media_urls/';
+validurls['/docs/user_guide/messaging/design_and_edit/personalize/deep_linking_to_in-app_content'] = '/docs/user_guide/messaging/design_and_edit/personalize/actions_and_media_urls/';
 validurls['/docs/user_guide/personalization_and_dynamic_content/key_value_pairs'] = '/docs/user_guide/messaging/design_and_edit/personalize/sources/key_value_pairs/';
 validurls['/docs/user_guide/personalization_and_dynamic_content/liquid/aborting_messages'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/aborting_messages/';
 validurls['/docs/user_guide/personalization_and_dynamic_content/liquid/advanced_filters'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/advanced_filters/';
@@ -3969,7 +3970,7 @@ validurls['/docs/user_guide/message_building_by_channel/sms/setup'] = '/docs/use
 validurls['/docs/user_guide/personalization_and_dynamic_content/liquid/supported_filters'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/filters/';
 validurls['/docs/user_guide/message_building_by_channel/email/drag_and_drop/editor_components'] = '/docs/user_guide/messaging/design_and_edit/editor_blocks/?sdktab=email';
 
-validurls['/docs/user_guide/data/activation/attributes/nested_custom_attribute_support/#segmentation'] = '/docs/user_guide/data/activation/attributes/nested_custom_attribute_support/#segmentation';
+validurls['/docs/user_guide/data/activation/attributes/nested_custom_attribute_support/#segmentation'] = '/docs/user_guide/audience/segments/segment_with_nested_custom_attributes';
 // Backfill dropped redirects, sorted by source path
 
 validurls['/docs/developer_guide/changelogs/web'] = '/docs/developer_guide/changelogs/';
