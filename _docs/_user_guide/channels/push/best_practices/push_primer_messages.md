@@ -76,7 +76,7 @@ android.permission.POST_NOTIFICATIONS
 
 ## Step 1: Create an in-app message
 
-First, [create an in-app message]({{site.baseurl}}/user_guide/channels/in_app_messages/create/), then select your message type and layout.
+First, [create an in-app message]({{site.baseurl}}/user_guide/channels/in_app_messages/traditional/), then select your message type and layout.
 
 To ensure you have enough space for both your message and buttons, use a fullscreen or modal message layout. If you choose fullscreen, note that an image is required.
 

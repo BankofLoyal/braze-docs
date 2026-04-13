@@ -115,7 +115,7 @@ Because Braze in-app messages don't include a built-in button action to invoke t
 - A deep link that triggers the native location permission prompt from within your app.
 - A deep link that opens the app's location settings page in the device's OS settings, which is useful for re-prompting users who previously denied or limited their permissions.
 
-For more information about deep links, see [Deep linking to in-app content]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/deep_linking_to_in-app_content/). For platform-specific guidance on location and geofence integration, see [Geofences]({{site.baseurl}}/developer_guide/geofences/) in the developer guide.
+For more information about deep links, see [Deep linking to in-app content]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/actions_and_media_urls/). For platform-specific guidance on location and geofence integration, see [Geofences]({{site.baseurl}}/developer_guide/geofences/) in the developer guide.
 
 ### Step 2: Build the location primer in-app message
 

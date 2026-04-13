@@ -30,7 +30,7 @@ To get started building your seasonal promotion, select the button component in 
 
 ![The in-app message editor with a side menu for customizing the button element.]({% image_buster /assets/img/drag_and_drop/templates/seasonal_promo_button.png %})
 
-You can also add additional messages to your product announcement in the **Pages** section, and then link them together for a sequential flow. For example, you can put together a sequence of messages that briefly describe the product's capabilities and end with button that takes users to the product page. Learn how to do that in [Connect pages together]({{site.baseurl}}/user_guide/channels/in_app_messages/drag_and_drop/create/?tab=adding%20pages#step-3a-connect-pages-together).
+You can also add additional messages to your seasonal promotion in the **Pages** section, and then link them together for a sequential flow. For example, you can put together a sequence of messages that briefly describe the product's capabilities and end with a button that takes users to the product page. Learn how to do that in [Connect pages together]({{site.baseurl}}/user_guide/channels/in_app_messages/drag_and_drop/?tab=adding%20pages#step-3a-connect-pages-together).
 
 ### Step 4: Style your message
 
