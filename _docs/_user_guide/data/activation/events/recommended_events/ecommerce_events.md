@@ -189,7 +189,10 @@ If there are two carts, add both to the merged user. Re-enqueue the Canvas if it
 | Property name | Required | Data type | Description | 
 |---|---|---|---|
 | `cart_id` | Yes | String | If you are not using a third-party platform that provides a `cart_id`, you can use the [Braze session ID]({{site.baseurl}}/developer_guide/analytics/tracking_sessions). |
-| `total_value` | Yes | Float | Total monetary value of the cart. | 
+| `total_value` | Yes | Float | Total monetary value of the cart. |
+| `subtotal_value` | No | Float | Subtotal value of the cart after discounts and before tax and shipping. |
+| `tax` | No | Float | Total tax applied to the cart. |
+| `shipping` | No | Float | Total shipping cost for the cart. |
 | `currency` | Yes | String | The currency in which the product price is listed (such as "USD" or "EUR") in [ISO 4217 format](https://www.iso.org/iso-4217-currency-codes.html). |
 | `products` | Yes | Array |  |
 | `product_id` | Yes | String | A unique identifier for the product that was viewed. <br> This value be can be the product ID or SKU. |
@@ -215,6 +218,9 @@ braze.logCustomEvent("ecommerce.cart_updated", {
     "cart_id": "cart_12345",
     "currency": "USD",
     "total_value": 199.98,
+    "subtotal_value": 179.98,
+    "tax": 15.00,
+    "shipping": 5.00,
     "products": [
         {
             "product_id": "8266836345064",
@@ -261,6 +267,9 @@ BrazeProperties properties = new BrazeProperties()
     .addProperty("cart_id", "cart_12345")
     .addProperty("currency", "USD")
     .addProperty("total_value", 199.98)
+    .addProperty("subtotal_value", 179.98)
+    .addProperty("tax", 15.00)
+    .addProperty("shipping", 5.00)
     .addProperty("products", products)
     .addProperty("source", "https://braze-apparel.com")
     .addProperty("metadata", new JSONObject());
@@ -294,6 +303,9 @@ let properties: [String: Any] = [
     "cart_id": "cart_12345",
     "currency": "USD",
     "total_value": 199.98,
+    "subtotal_value": 179.98,
+    "tax": 15.00,
+    "shipping": 5.00,
     "products": products,
     "source": "https://braze-apparel.com",
     "metadata": [:]
@@ -317,6 +329,9 @@ AppDelegate.braze?.logCustomEvent(name: "ecommerce.cart_updated", properties: pr
         "cart_id": "cart_12345",
         "currency": "USD",
         "total_value": 199.98,
+        "subtotal_value": 179.98,
+        "tax": 15.00,
+        "shipping": 5.00,
         "products": [
           {
             "product_id": "8266836345064",
@@ -366,6 +381,9 @@ Similar to the `ecommerce.cart_updated` event, this event allows you to leverage
 | `checkout_id` | Yes | String | Unique identifier for the checkout. |
 | `cart_id` | No | String | If you are not using a third-party platform that provides a `cart_id`, you can use the [Braze session ID]({{site.baseurl}}/developer_guide/analytics/tracking_sessions). | 
 | `total_value` | Yes | Float | Total monetary value of the cart. |
+| `subtotal_value` | No | Float | Subtotal value of the cart after discounts and before tax and shipping. |
+| `tax` | No | Float | Total tax applied to the cart. |
+| `shipping` | No | Float | Total shipping cost for the cart. |
 | `currency` | Yes | String | Currency in which the cart is valued. |
 | `products` | Yes | Array of objects |  |
 | `product_id` | Yes | String | A unique identifier for the product that was viewed. For example, this value could be the product ID or SKU. |
@@ -392,6 +410,9 @@ braze.logCustomEvent("ecommerce.checkout_started", {
     "checkout_id": "checkout_abc123",
     "cart_id": "cart_12345",
     "total_value": 199.98,
+    "subtotal_value": 179.98,
+    "tax": 15.00,
+    "shipping": 5.00,
     "currency": "USD",
     "products": [
         {
@@ -435,6 +456,9 @@ BrazeProperties properties = new BrazeProperties()
     .addProperty("checkout_id", "checkout_abc123")
     .addProperty("cart_id", "cart_12345")
     .addProperty("total_value", 199.98)
+    .addProperty("subtotal_value", 179.98)
+    .addProperty("tax", 15.00)
+    .addProperty("shipping", 5.00)
     .addProperty("currency", "USD")
     .addProperty("products", products)
     .addProperty("source", "https://braze-audio.com")
@@ -467,6 +491,9 @@ let properties: [String: Any] = [
     "checkout_id": "checkout_abc123",
     "cart_id": "cart_12345",
     "total_value": 199.98,
+    "subtotal_value": 179.98,
+    "tax": 15.00,
+    "shipping": 5.00,
     "currency": "USD",
     "products": products,
     "source": "https://braze-audio.com",
@@ -493,6 +520,9 @@ AppDelegate.braze?.logCustomEvent(name: "ecommerce.checkout_started", properties
         "checkout_id": "checkout_abc123",
         "cart_id": "cart_12345",
         "total_value": 199.98,
+        "subtotal_value": 179.98,
+        "tax": 15.00,
+        "shipping": 5.00,
         "currency": "USD",
         "products": [
           {
@@ -531,7 +561,10 @@ You can use the order placed event to trigger when a customer successfully compl
 |---|---|---|---|
 | `order_id` | Yes | String | Unique identifier for the order placed. |
 | `cart_id` | No | String | If you are not using a third-party platform that provides a `cart_id`, you can use the [Braze session ID]({{site.baseurl}}/developer_guide/analytics/tracking_sessions). |
-| `total_value` | Yes | Float | Total monetary value of the cart. | 
+| `total_value` | Yes | Float | Total monetary value of the cart. |
+| `subtotal_value` | No | Float | Subtotal value of the order after discounts and before tax and shipping. |
+| `tax` | No | Float | Total tax applied to the order. |
+| `shipping` | No | Float | Total shipping cost for the order. |
 | `currency` | Yes | String | Currency in which the cart is valued. |
 | `total_discounts` | No | Float | Total amount of discounts applied to the order. | 
 | `discounts`| No | Array of objects | Detailed list of discounts applied to the order. |
@@ -563,6 +596,9 @@ braze.logCustomEvent("ecommerce.order_placed", {
     "order_id": "order_67890",
     "cart_id": "cart_12345",
     "total_value": 189.98,
+    "subtotal_value": 169.98,
+    "tax": 14.40,
+    "shipping": 5.60,
     "currency": "USD",
     "total_discounts": 10.00,
     "discounts": [
@@ -622,6 +658,9 @@ BrazeProperties properties = new BrazeProperties()
     .addProperty("order_id", "order_67890")
     .addProperty("cart_id", "cart_12345")
     .addProperty("total_value", 189.98)
+    .addProperty("subtotal_value", 169.98)
+    .addProperty("tax", 14.40)
+    .addProperty("shipping", 5.60)
     .addProperty("currency", "USD")
     .addProperty("total_discounts", 10.00)
     .addProperty("discounts", discounts)
@@ -667,6 +706,9 @@ let properties: [String: Any] = [
     "order_id": "order_67890",
     "cart_id": "cart_12345",
     "total_value": 189.98,
+    "subtotal_value": 169.98,
+    "tax": 14.40,
+    "shipping": 5.60,
     "currency": "USD",
     "total_discounts": 10.00,
     "discounts": discounts,
@@ -699,6 +741,9 @@ AppDelegate.braze?.logCustomEvent(name: "ecommerce.order_placed", properties: pr
         "order_id": "order_67890",
         "cart_id": "cart_12345",
         "total_value": 189.98,
+        "subtotal_value": 169.98,
+        "tax": 14.40,
+        "shipping": 5.60,
         "currency": "USD",
         "total_discounts": 10.00,
         "discounts": [
@@ -957,6 +1002,9 @@ You can use the order cancelled event to trigger when a customer cancels an orde
 | `order_id`            | Yes      | String    | Unique identifier for the order placed.              |
 | `cancel_reason`       | Yes      | String    | Reason why the order was cancelled.           |
 | `total_value`         | Yes      | Float     | Total monetary value of the cart.         |
+| `subtotal_value`      | No       | Float     | Subtotal value of the order after discounts and before tax and shipping. |
+| `tax`                 | No       | Float     | Total tax applied to the order. |
+| `shipping`            | No       | Float     | Total shipping cost for the order. |
 | `currency`            | Yes      | String    | Currency in which the cart is valued.           |
 | `total_discounts`     | No       | Float     | Total amount of discounts applied to the order.     |
 | `discounts`           | No       | Array of objects     | Detailed list of discounts applied to the order.             |
@@ -987,6 +1035,9 @@ braze.logCustomEvent("ecommerce.order_cancelled", {
     "order_id": "order_67890",
     "cancel_reason": "customer changed mind",
     "total_value": 189.98,
+    "subtotal_value": 169.98,
+    "tax": 14.40,
+    "shipping": 5.60,
     "currency": "USD",
     "total_discounts": 10.00,
     "discounts": [
@@ -1044,6 +1095,9 @@ BrazeProperties properties = new BrazeProperties()
     .addProperty("order_id", "order_67890")
     .addProperty("cancel_reason", "customer changed mind")
     .addProperty("total_value", 189.98)
+    .addProperty("subtotal_value", 169.98)
+    .addProperty("tax", 14.40)
+    .addProperty("shipping", 5.60)
     .addProperty("currency", "USD")
     .addProperty("total_discounts", 10.00)
     .addProperty("discounts", discounts)
@@ -1087,6 +1141,9 @@ let properties: [String: Any] = [
     "order_id": "order_67890",
     "cancel_reason": "customer changed mind",
     "total_value": 189.98,
+    "subtotal_value": 169.98,
+    "tax": 14.40,
+    "shipping": 5.60,
     "currency": "USD",
     "total_discounts": 10.00,
     "discounts": discounts,
@@ -1117,6 +1174,9 @@ AppDelegate.braze?.logCustomEvent(name: "ecommerce.order_cancelled", properties:
         "order_id": "order_67890",
         "cancel_reason": "customer changed mind",
         "total_value": 189.98,
+        "subtotal_value": 169.98,
+        "tax": 14.40,
+        "shipping": 5.60,
         "currency": "USD",
         "total_discounts": 10.00,
         "discounts": [
