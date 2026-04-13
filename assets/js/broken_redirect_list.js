@@ -4188,3 +4188,37 @@ validurls['/docs/user_guide/message_building_by_channel/line/lineusers/'] = '/do
 validurls['/docs/user_guide/message_building_by_channel/line/messagingusers/'] = '/docs/user_guide/channels/line/message_users/';
 validurls['/unlisted_docs/track_users_bulk_partners'] = '/docs/api/endpoints/user_data/post_user_track_bulk/';
 validurls['/unlisted_docs/track_users_bulk_partners/'] = '/docs/api/endpoints/user_data/post_user_track_bulk/';
+
+// ====================================================================
+// BrazeAI Operator failed doc lookups — batch 5, added 2026-04-13
+// ====================================================================
+
+// Campaigns — wrong parent path (building_campaigns/delivery_types → schedule_your_campaign)
+validurls['/docs/user_guide/messaging/campaigns/building_campaigns/delivery_types/campaign_calendar'] = '/docs/user_guide/messaging/campaigns/schedule_your_campaign/campaign_calendar/';
+
+// Content Cards — IA restructure (message_building_by_channel → channels)
+validurls['/docs/user_guide/message_building_by_channel/content_cards/reporting_and_analytics'] = '/docs/user_guide/channels/content_cards/reporting/';
+validurls['/docs/user_guide/message_building_by_channel/content_cards/create_a_content_card'] = '/docs/user_guide/channels/content_cards/create_a_content_card/';
+
+// SMS — old sms_mms_rcs spelling (without _and_)
+validurls['/docs/user_guide/message_building_by_channel/sms_mms_rcs/sms_subscription_groups'] = '/docs/user_guide/channels/sms_mms_and_rcs/message_setup/subscription_groups/';
+
+// Email — IA restructure (message_building_by_channel → channels)
+validurls['/docs/user_guide/message_building_by_channel/email/email_setup/subscription_groups'] = '/docs/user_guide/channels/email/subscriptions/';
+validurls['/docs/user_guide/message_building_by_channel/email/overview'] = '/docs/user_guide/channels/email/';
+
+// Analytics — path fixes
+validurls['/docs/user_guide/analytics/reporting'] = '/docs/user_guide/analytics/reports/';
+validurls['/docs/user_guide/data_and_analytics/reporting/metrics_glossary'] = '/docs/user_guide/analytics/metrics_glossary/';
+
+// Campaigns — old engagement_tools path, conversion_tracking renamed
+validurls['/docs/user_guide/engagement_tools/campaigns/testing_and_more/conversion_tracking'] = '/docs/user_guide/messaging/messaging_fundamentals/conversion_events/';
+
+// Personalization — fabricated parent path
+validurls['/docs/user_guide/messaging/personalization/liquid'] = '/docs/user_guide/messaging/design_and_edit/personalize/liquid/';
+
+// Navigation — old home path
+validurls['/docs/user_guide/home/navigating_braze'] = '/docs/user_guide/get_started/';
+
+// LINE — file named line_click_tracking, not click_tracking
+validurls['/docs/user_guide/channels/line/create_a_line_message/click_tracking'] = '/docs/user_guide/channels/line/create_a_line_message/line_click_tracking/';
