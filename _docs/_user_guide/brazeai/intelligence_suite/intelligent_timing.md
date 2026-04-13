@@ -18,8 +18,8 @@ Braze calculates the optimal send time based on a statistical analysis of your u
 - Push Direct Opens
 - Push Influenced Opens
 - Email Clicks
-- Email Opens (excluding [Machine Opens]({{site.baseurl}}/user_guide/data/report_metrics/#machine-opens))
-- SMS Clicks (only if [link shortening]({{site.baseurl}}/user_guide/message_building_by_channel/sms_mms_rcs/link_shortening/) and advanced tracking are enabled)
+- Email Opens (excluding [Machine Opens]({{site.baseurl}}/user_guide/analytics/metrics_glossary#machine-opens))
+- SMS Clicks (only if [link shortening]({{site.baseurl}}/user_guide/channels/sms_mms_and_rcs/message_features_and_optimization/link_shortening/) and advanced tracking are enabled)
 
 For example, Sam might open your emails in the morning regularly, but she opens your app and interacts with notifications in the evening. That means Sam would receive an email campaign with Intelligent Timing in the morning, while she would receive campaigns with push notifications in the evening, when she's more likely to engage.
 
@@ -42,28 +42,28 @@ This section describes how to configure Intelligent Timing for your campaigns an
 1. Create a campaign and compose your message.
 2. Select the **Scheduled Delivery** as your delivery type.
 3. Under **Time-Based Scheduling Options**, select **Intelligent Timing**.
-4. Set the entry frequency. For one-time sends, select **Once** and select a send date. For recurring sends, select **Daily**, **Weekly**, or **Monthly** and configure the recurrence options. See [limitations](#limitations) for more guidance.
+4. Set the entry frequency. For one-time sends, select **Once** and select a send date. For recurring sends, select **Daily**, **Weekly**, or **Monthly** and configure the recurrence options. See [Considerations](#considerations) for more guidance.
 5. Optionally, configure [Quiet Hours](#quiet-hours).
 6. Specify a [fallback time](#campaign-fallback). This is when the message is sent if a user's profile doesn't have any relevant events to calculate an optimal time.
 
-![Campaign scheduling screen showing Intelligent Timing with fallback time and Quiet Hours settings]({% image_buster /assets/img/intelligent_timing/campaign_scheduling.png %})
+![Campaign scheduling screen showing Intelligent Timing with fallback time and quiet hours settings]({% image_buster /assets/img/intelligent_timing/campaign_scheduling.png %})
 
-#### Quiet Hours {#quiet-hours}
+#### Quiet hours {#quiet-hours}
 
-Use Quiet Hours to prevent messages from being sent during specific hours. This is helpful when you want to avoid sending messages during early morning hours or overnight, while still allowing Intelligent Timing to determine the best delivery window.
+Use quiet hours to prevent messages from being sent during specific hours. This is helpful when you want to avoid sending messages during early morning hours or overnight, while still allowing Intelligent Timing to determine the best delivery window.
 
 {% alert note %}
-Quiet Hours has replaced the **Only send within specific hours** setting. Instead of choosing when messages can be sent, you now choose when they shouldn’t be sent. For example, to send messages between 4 pm and 6 pm, set Quiet Hours from 6 pm to 4 pm the next day.
+Quiet hours has replaced the **Only send within specific hours** setting. Instead of choosing when messages can be sent, you now choose when they shouldn’t be sent. For example, to send messages between 4 pm and 6 pm, set quiet hours from 6 pm to 4 pm the next day.
 {% endalert %}
 
 1. Select **Enable Quiet Hours**.
 2. Select the start and end time when **not** to send messages.
 
-![Quiet Hours toggle turned on with start and end time set to block message delivery overnight]({% image_buster /assets/img/intelligent_timing/quiet_hours.png %})
+![Quiet hours toggle turned on with start and end time set to block message delivery overnight]({% image_buster /assets/img/intelligent_timing/quiet_hours.png %})
 
-When Quiet Hours are turned on, Braze won't send messages during the quiet period—even if that time matches a user's optimal send time. If a user's optimal time falls within the quiet window, the message will be sent instead at the nearest edge of the window.
+When quiet hours are turned on, Braze won't send messages during the quiet period—even if that time matches a user's optimal send time. If a user's optimal time falls within the quiet window, the message will be sent instead at the nearest edge of the window.
 
-For example, if Quiet Hours are set from 10:00 PM to 6:00 AM, and a user's optimal time is 5:30 AM, Braze will hold the message and deliver it at 6:00 AM—the closest time outside the quiet window.
+For example, if quiet hours are set from 10:00 PM to 6:00 AM, and a user's optimal time is 5:30 AM, Braze will hold the message and deliver it at 6:00 AM—the closest time outside the quiet window.
 
 #### Preview delivery times
 
@@ -99,24 +99,22 @@ For more information, refer to [FAQ: Intelligent Timing](#when-does-braze-check-
 
 #### Schedule winning variants 2 days after A/B test
 
-If you are leveraging [A/B testing with an optimization]({{site.baseurl}}/user_guide/engagement_tools/testing/multivariant_testing/optimizations/), such as automatically sending the **Winning Variant** or using a **Personalized Variant**, Intelligent Timing may affect the duration and timing of your campaign.
+If you are leveraging [A/B testing with an optimization]({{site.baseurl}}/user_guide/messaging/ab_testing/optimizations/), such as automatically sending the **Winning Variant** or using a **Personalized Variant**, Intelligent Timing may affect the duration and timing of your campaign.
 
 When using Intelligent Timing, we recommend scheduling the Winning Variant send time at least **2 days after** the A/B test begins. For example, if your A/B test starts on April 16 at 4:00 PM, schedule the Winning Variant to send no sooner than April 18 at 4:00 PM. This gives Braze enough time to evaluate user behavior and send messages at the optimal time.
 
 ![A/B testing sections showing A/B test with Winning Variant selected, with winning criteria, send date, and local send time selected]({% image_buster /assets/img/intelligent_timing/ab_testing_intelligent_timing.png %})
 
-### Step 3: Choose a delivery window (optional)
+### Step 3: Configure quiet hours (optional)
 
-Optionally, you can choose to limit the delivery window. This may be useful if your campaign pertains to a specific event, sale, or promotion, but is generally not recommended when using Intelligent Timing. For more information, refer to [limitations](#limitations).
+Optionally, you can choose to limit the delivery window. This may be useful if your campaign pertains to a specific event, sale, or promotion, but is generally not recommended when using Intelligent Timing. For more information, refer to [Considerations](#considerations).
 
-When specified, Braze only uses engagement data within that window to determine a user's optimal delivery time. If there aren't any relevant events within that window, the message sends at your set fallback time.
+Quiet hours act as a no-send window. Intelligent Timing still determines each user's optimal send time, but if that time falls within quiet hours, Braze delays the message until the next available time outside the quiet hours period.
 
-To set a delivery window:
+To configure quiet hours:
 
-1. When configuring Intelligent Timing, select **Only send messages within specific hours**.
-2. Enter the start and end time of the delivery window.
-
-![Checkbox for "Only send messages within specific hours" selected, where the time window is set to between 8 am and 12 am in the user's local time.]({% image_buster /assets/img/intelligent_timing_hours.png %})
+1. When configuring Intelligent Timing, select **Enable Quiet Hours**.
+2. Enter the start and end time of the quiet hours window.
 
 ### Step 4: Choose a fallback time {#campaign-fallback}
 
@@ -130,8 +128,8 @@ Choose a fallback time to use if a user's profile doesn't have any relevant even
 
 To see an estimate of how many users will receive the message in each hour of the day, use the preview chart.
 
-1. Add segments or filters in the Target Audiences step.
-2. In the section **Preview Delivery Times for** (which appears in both the Target Audiences and Schedule Delivery steps), select your channel.
+1. Add segments or filters in the **Target Audiences** step.
+2. In the section **Preview Delivery Times for** (which appears in both the **Target Audiences** and **Schedule Delivery** steps), select your channel.
 3. Select **Refresh Data**.
 
 ![Example preview of delivery times for Android Push.]({% image_buster /assets/img/intel-timing-preview.png %})
@@ -145,7 +143,7 @@ The chart shows users who had relevant events to calculate an optimal time in bl
 
 ### Step 1: Add Intelligent Timing
 
-In your Canvas, add a [Message step]({{site.baseurl}}/user_guide/engagement_tools/canvas/canvas_components/message_step/), then go to **Delivery Settings** and select **Using Intelligent Timing**.
+In your Canvas, add a [Message step]({{site.baseurl}}/user_guide/messaging/canvas/canvas_components/message_step/), then go to **Delivery Settings** and select **Using Intelligent Timing**.
 
 Messages will be sent to users who entered the step that day at their optimal local time. However, if their optimal time has already passed that day, it'll be delivered at that time during the following day instead. Message steps that target multiple channels may send or attempt to send messages at different times for different channels. When the first message in a Message step attempts to send, all users are auto-advanced.
 
@@ -157,7 +155,7 @@ Choose a fallback time for the message to send to users in your audience who don
 
 Unlike with campaigns, you don't need to launch your Canvas 48 hours before the send date because Intelligent Timing is set on the step level, not the Canvas level.
 
-Instead, add a [Delay step]({{site.baseurl}}/user_guide/engagement_tools/canvas/canvas_components/delay_step/) of at least two calendar days between the user entering the Canvas and when they receive the Intelligent Timing step.
+Instead, add a [Delay step]({{site.baseurl}}/user_guide/messaging/canvas/canvas_components/delay_step/) of at least two calendar days between the user entering the Canvas and when they receive the Intelligent Timing step.
 
 #### Calendar vs. 24-hour days
 
@@ -179,7 +177,7 @@ However, Intelligent Timing is set to deliver at 2 pm, which has already passed.
 {% endtab %}
 {% endtabs %}
 
-## Limitations
+## Considerations
 
 - In-app messages and webhooks are delivered immediately and not given optimal times.
 - Intelligent Timing is not available for action-based or API-triggered campaigns.
@@ -201,7 +199,7 @@ If users don't receive messages as expected, check that the time zone field in t
 
 ### Sending past the scheduled date
 
-Your Intelligent Timing campaign might be sending past the scheduled date if you are leveraging [A/B testing with an optimization]({{site.baseurl}}/user_guide/engagement_tools/testing/multivariant_testing/optimizations/). Campaigns using A/B testing optimizations can automatically send the Winning Variant after the initial test is over, increasing the duration of the campaign. By default, campaigns with an optimization will send the Winning Variant to the remaining users the day after the initial test, but you can change this send date.
+Your Intelligent Timing campaign might be sending past the scheduled date if you are leveraging [A/B testing with an optimization]({{site.baseurl}}/user_guide/messaging/ab_testing/optimizations/). Campaigns using A/B testing optimizations can automatically send the Winning Variant after the initial test is over, increasing the duration of the campaign. By default, campaigns with an optimization will send the Winning Variant to the remaining users the day after the initial test, but you can change this send date.
 
 If you use Intelligent Timing, we recommend leaving more time for the A/B test to finish and scheduling the Winning Variant to send for 2 days after the initial test instead of 1 day.
 
@@ -233,7 +231,7 @@ To calculate the optimal time, Intelligent Timing:
 
 #### Are Machine Opens included when calculating optimal time?
 
-No, [Machine Opens]({{site.baseurl}}/user_guide/data/report_metrics/#machine-opens) are excluded from calculations for optimal time. This means that send times are based solely on genuine user engagement, providing more accurate timing for your campaigns.
+No, [Machine Opens]({{site.baseurl}}/user_guide/analytics/metrics_glossary#machine-opens) are excluded from calculations for optimal time. This means that send times are based solely on genuine user engagement, providing more accurate timing for your campaigns.
 
 #### How precise is the optimal time?
 
@@ -270,13 +268,13 @@ Braze performs two checks when a campaign is launched:
 
 Be careful when filtering based on other campaign sends to avoid targeting ineligible segments. For example, if you were to send out two campaigns on the same day for different times, and add a filter that only allows users to receive the second campaign if they’ve received the first, users won’t receive the second campaign. This is because no one was eligible when the campaign was first created, and segments were formed.
 
-#### Can I use Quiet Hours in my Intelligent Timing campaign?
+#### Can I use quiet hours in my Intelligent Timing campaign?
 
-Quiet Hours can be used on a campaign that uses Intelligent Timing. The Intelligent Timing algorithm will avoid Quiet Hours so that it still sends the message to all eligible users. That said, we recommend turning Quiet Hours off unless there are policy, compliance, or other legal implications to when messages can and can't be sent.
+Quiet hours can be used on a campaign that uses Intelligent Timing. The Intelligent Timing algorithm will avoid quiet hours so that it still sends the message to all eligible users. That said, we recommend turning quiet hours off unless there are policy, compliance, or other legal implications to when messages can and can't be sent.
 
-#### What happens if the optimal time for a user is within the Quiet Hours? 
+#### What happens if the optimal time for a user is within the quiet hours? 
 
-If the determined optimal time falls within Quiet Hours, Braze finds the nearest edge of the Quiet Hours and schedules the message for the next allowable hour before or after Quiet Hours. The message is enqueued to send at the closest boundary of Quiet Hours relative to the optimal time.
+If the determined optimal time falls within quiet hours, Braze finds the nearest edge of the quiet hours and schedules the message for the next allowable hour before or after quiet hours. The message is enqueued to send at the closest boundary of quiet hours relative to the optimal time.
 
 #### Can I use Intelligent Timing and rate-limiting?
 

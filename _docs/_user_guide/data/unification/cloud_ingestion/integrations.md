@@ -3,7 +3,7 @@ nav_title: Data warehouse integrations
 article_title: Data Warehouse Integrations
 alias: /partners/databricks/
 description: "This page covers how to use Braze Cloud Data Ingestion to sync relevant data with your Snowflake, Redshift, BigQuery, and Databricks integration."
-page_order: 2
+page_order: 3
 page_type: reference
 
 ---
@@ -19,42 +19,42 @@ Cloud Data Ingestion integrations require some setup on the Braze side and in yo
 {% tabs %}
 {% tab Snowflake %}
 1. In your Snowflake instance, set up the tables or views you want to sync to Braze.
-2. Create a new integration in the Braze dashboard.
+2. Create a new Snowflake source in the Braze dashboard.
 3. Retrieve the public key provided in the Braze dashboard and [append it to the Snowflake user for authentication](https://docs.snowflake.com/en/user-guide/key-pair-auth.html).
-4. Test the integration and start the sync.
+4. Create a sync in the Braze dashboard, test the integration, and start the sync.
 
 {% alert tip %}
 The [Snowflake quickstart guide](https://quickstarts.snowflake.com/guide/braze_cdi/index.html) provides sample code and walks through the required steps to create an automated pipeline using Snowflake Streams and CDI to sync data to Braze. 
 {% endalert %}
 {% endtab %}
 {% tab Redshift %}
-1. Make sure Braze access is allowed to the Redshift tables you want to sync. Braze will connect to Redshift over the internet.
+1. Make sure Braze access is allowed to the Redshift tables you want to sync. Braze connects to Redshift over the internet.
 2. In your Redshift instance, set up the tables or views you want to sync to Braze.
-3. Create a new integration in the Braze dashboard.
+3. Create a new source and sync in the Braze dashboard.
 4. Test the integration and start the sync.
 {% endtab %}
 {% tab BigQuery %}
 1. Create a service account and allow access to the BigQuery project(s) and dataset(s) that contain the data you want to sync.  
 2. In your BigQuery account, set up the tables or views you want to sync to Braze.   
-3. Create a new integration in the Braze dashboard.  
-4. Test the integration and start the sync.  
+3. Create a new source and sync in the Braze dashboard.  
+4. Test the integration and start the sync. 
 {% endtab %}
 {% tab Databricks %}
 1. Create a service account and allow access to the Databricks project(s) and dataset(s) that contain the data you want to sync.  
 2. In your Databricks account, set up the tables or views you want to sync to Braze.   
-3. Create a new integration in the Braze dashboard.  
+3. Create a new source and sync in the Braze dashboard.
 4. Test the integration and start the sync.
 
 {% alert important %}
-There may be two to five minutes of warm-up time when Braze connects to Classic and Pro SQL instances, which will lead to delays during connection setup and testing, as well as at the beginning of scheduled syncs. Using a serverless SQL instance will minimize warmup time and improve query throughput, but may result in slightly higher integration costs.
+There may be two to five minutes of warm-up time when Braze connects to Classic and Pro SQL instances, which can lead to delays during connection setup and testing, as well as at the beginning of scheduled syncs. Using a serverless SQL instance minimizes warmup time and improves query throughput, but may result in slightly higher integration costs.
 {% endalert %}
 
 {% endtab %}
 {% tab Microsoft Fabric %}
 1. Create a service principal and grant access to Fabric APIs.
 2. Set up a shared workspace and grant the service principal access to it.
-3. In the shared Fabric workspace you created in step 2, set up the tables or views you want to sync to Braze.   
-4. Create a new integration in the Braze dashboard.  
+3. In the shared Fabric workspace, set up the tables or views you want to sync to Braze.   
+4. Create a new source and sync in the Braze dashboard.  
 5. Test the integration and start the sync.
 {% endtab %}
 {% endtabs %}
@@ -117,7 +117,7 @@ GRANT USAGE ON WAREHOUSE BRAZE_INGESTION_WAREHOUSE TO ROLE BRAZE_INGESTION_ROLE;
 ```
 
 {% alert note %}
-The warehouse needs to have the **auto-resume** flag on. If not, you will need to grant Braze additional `OPERATE` privileges on the warehouse for us to turn it on when it's time to run the query.
+The warehouse needs to have the **auto-resume** flag on. If not, grant Braze additional `OPERATE` privileges on the warehouse so Braze can turn it on when the query runs.
 {% endalert %}
 
 #### Step 1.4: Set up the user
@@ -128,10 +128,10 @@ CREATE USER BRAZE_INGESTION_USER;
 GRANT ROLE BRAZE_INGESTION_ROLE TO USER BRAZE_INGESTION_USER;
 ```
 
-After this step, you will share connection information with Braze and receive a public key to append to the user.
+After this step, share connection information with Braze to receive a public key to append to the user.
 
 {% alert note %}
-When connecting different workspaces to the same Snowflake account, you must create a unique user for each Braze workspace where you are creating an integration. Within a workspace, you can reuse the same user across integrations, but integration creation will fail if a user on the same Snowflake account is duplicated across workspaces.
+When connecting different workspaces to the same Snowflake account, you must create a unique user for each Braze workspace where you are creating an integration. Within a workspace, you can reuse the same user across integrations, but integration creation fails if a user on the same Snowflake account is duplicated across workspaces.
 {% endalert %}
 
 #### Step 1.5: Allow Braze IPs in Snowflake network policy (optional)
@@ -197,7 +197,7 @@ Some important things to know:
 - You may also need to change your security groups to allow Braze to access your data in Redshift.
 - Make sure to explicitly allow inbound traffic on the IPs in the table and on the port used to query your Redshift cluster (default is 5439). You should explicitly allow Redshift TCP connectivity on this port even if the inbound rules are set to “allow all”.
 - The endpoint for the Redshift cluster must be publicly accessible for Braze to connect to your cluster.
-     - If you don't want your Redshift cluster to be publicly accessible, you can set up a VPC and EC2 instance to use an SSH tunnel to access the Redshift data. Check out this [AWS Knowledge Center post](https://repost.aws/knowledge-center/private-redshift-cluster-local-machine) for more information.
+     - If you don't want your Redshift cluster to be publicly accessible, you can set up a VPC and EC2 instance to use an SSH tunnel to access the Redshift data. For more information, see the [AWS Knowledge Center post](https://repost.aws/knowledge-center/private-redshift-cluster-local-machine).
  
 Allow access from the following IPs corresponding to your Braze dashboard’s region.
 
@@ -270,18 +270,18 @@ For more information, refer to the [BigQuery partitioning documentation](https:/
 
 #### Step 1.2: Create a Service Account and grant permissions 
 
-Create a service account in GCP for Braze to use to connect and read data from your table(s). The service account should have the below permissions: 
+Create a service account in GCP for Braze to use to connect and read data from your table(s). The service account should have the following permissions: 
 
-- **BigQuery Connection User:** This will allow Braze to make connections
-- **BigQuery User:** This will provide Braze access to run queries, read dataset metadata, and list tables.
-- **BigQuery Data Viewer:** This will provide Braze access to view datasets and their contents.
-- **BigQuery Job User:** This will provide Braze access to run jobs
+- **BigQuery Connection User:** Allows Braze to make connections
+- **BigQuery User:** Provides Braze access to run queries, read dataset metadata, and list tables.
+- **BigQuery Data Viewer:** Provides Braze access to view datasets and their contents.
+- **BigQuery Job User:** Provides Braze access to run jobs
 
-After creating the service account and granting permissions, generate a JSON key. See more information on how to do this [here](https://cloud.google.com/iam/docs/keys-create-delete). You will update this to the Braze dashboard later. 
+After creating the service account and granting permissions, generate a JSON key. For more information, see [Create and delete service account keys](https://cloud.google.com/iam/docs/keys-create-delete). Upload this key to the Braze dashboard in a later step. 
 
 #### Step 1.3: Allow access to Braze IPs    
 
-If you have network policies in place, you must give Braze network access to your Big Query instance. Allow access from the below IPs corresponding to your Braze dashboard's region.  
+If you have network policies in place, you must give Braze network access to your Big Query instance. Allow access from the following IPs corresponding to your Braze dashboard's region.  
 
 {% multi_lang_include data_centers.md datacenters='ips' %}
 
@@ -354,7 +354,7 @@ Keep the token in a safe place until you need to enter it on the Braze dashboard
 
 #### Step 1.3: Allow access to Braze IPs    
 
-If you have network policies in place, you must give Braze network access to your Databricks instance. Allow access from the below IPs corresponding to your Braze dashboard's region.  
+If you have network policies in place, you must give Braze network access to your Databricks instance. Allow access from the following IPs corresponding to your Braze dashboard's region.  
 
 {% multi_lang_include data_centers.md datacenters='ips' %}
 
@@ -362,7 +362,7 @@ If you have network policies in place, you must give Braze network access to you
 {% tab Microsoft Fabric %}
 
 #### Step 1.1: Set up the service principal and grant access
-Braze will connect to your Fabric warehouse using a service principal with Entra ID authentication. You will create a new service principal for Braze to use, and grant access to Fabric resources as needed. Braze will need the following details to connect:    
+Braze connects to your Fabric warehouse using a service principal with Entra ID authentication. Create a new service principal for Braze to use, and grant access to Fabric resources as needed. Braze needs the following details to connect:    
 
 * Tenant ID (also called directory) for your Azure account 
 * Principal ID (also called application ID) for the service principal 
@@ -380,7 +380,7 @@ Azure doesn't allow unlimited expiry on service principal secrets. Remember to r
 {% endalert %}
 
 #### Step 1.2: Grant access to Fabric resources 
-You will provide access for Braze to connect to your Fabric instance. In your Fabric admin portal, navigate to **Settings** > **Governance and insights** > **Admin portal** > **Tenant settings**.    
+Provide access for Braze to connect to your Fabric instance. In your Fabric admin portal, navigate to **Settings** > **Governance and insights** > **Admin portal** > **Tenant settings**.    
 
 * In **Developer settings** enable **Service principals can use Fabric APIs** so Braze can connect using Microsoft Entra ID.
 * In **OneLake settings** enable **Users can access data stored in OneLake with apps external to Fabric** so that the service principal can access data from an external app.
@@ -399,7 +399,7 @@ After you have a shared workspace, grant the service principal access:
 3. Search for and select the name of the service principal you created in Step 1.1. If it doesn't appear, confirm you've enabled the **Service principals can use Fabric APIs** setting in Step 1.2.
 4. In the role dropdown, select **Contributor**.
 
-The service principal can now access Fabric warehouse resources in this workspace through their SQL endpoints, including the warehouse you will use for Braze.
+The service principal can now access Fabric warehouse resources in this workspace through their SQL endpoints, including the warehouse to use for Braze.
 
 #### Step 1.4: Set up the table
 Braze supports both tables and views in Fabric Warehouses. If you need to create a new warehouse, create it within the shared workspace from Step 1.3. Go to **Create > Data Warehouse > Warehouse** in the Fabric console.
@@ -436,7 +436,7 @@ You can name the warehouse, schema, and table or view as you'd like, but the col
 
 
 #### Step 1.5: Get warehouse connection string
-You will need the SQL endpoint for your warehouse in order for Braze to connect. In order to retrieve this, go to the **workspace** in Fabric, and in the list of items, hover over the warehouse name and select **Copy SQL connection string**.
+To retrieve the SQL endpoint for your warehouse, go to the **workspace** in Fabric, hover over the warehouse name in the item list, and select **Copy SQL connection string**.
 
 ![The "Fabric Console" page in Microsoft Azure, where users should retrieve the SQL Connection String.]({% image_buster /assets/img/cloud_ingestion/fabric_1.png %})
 
@@ -451,39 +451,27 @@ Depending on the configuration of your Microsoft Fabric account, you may need to
 
 {% endtabs %}
 
-### Step 2: Create a new integration in the Braze dashboard
+### Step 2: Create a new source in the Braze dashboard
+
 
 {% tabs %}
 {% tab Snowflake %}
 
-In the Braze Dashboard, go to **Data Settings** > **Cloud Data Ingestion**, select **Create New Data Sync**, and then select **Snowflake Import**.
+In the Braze Dashboard, go to **Data Settings** > **Cloud Data Ingestion** > **Sources**, select **Add data source**, and then select **Snowflake**.
 
-#### Step 2.1: Add Snowflake connection information and source table
+#### Step 2.1: Add Snowflake connection information
 
-Input the information for your Snowflake data warehouse and source table, then proceed to the next step.
+Choose a name for your source and input your Snowflake credentials and configuration, then proceed to the next step.
 
 {% alert note %}
 For the **Snowflake Account Locator** field, enter your Snowflake [account identifier](https://docs.snowflake.com/en/user-guide/admin-account-identifier), which typically follows a format like `xy12345.us-east-1.aws`. This is not the same as a database name or warehouse name.
-{% endalert %}
+{% endalert %} 
 
-#### Step 2.2: Configure sync details
+#### Step 2.2: Add a public key to the Braze user
 
-Next, choose a name for your sync and input contact emails. We'll use this contact information to notify you of any integration errors, such as unexpected removal of access to the table.
+After inputting your credentials and configuration, click **Save credentials** and generate an RSA key and go back to Snowflake to complete the setup. Add the public key displayed on the dashboard to the user you created for Braze to connect to Snowflake.
 
-Contact emails will only receive notifications of global or sync-level errors such as missing tables, permissions, and others. They will not receive row-level issues. Global errors indicate critical problems with the connection that prevent syncs from running. Such problems can include the following:
-
-- Connectivity issues
-- Lack of resources
-- Permissions issues
-- (For catalogs syncs only) Catalog tier is out of space
-
-You will also choose the data type and sync frequency. Frequency can be anywhere from every 15 minutes to once per month. We'll use the time zone configured in your Braze dashboard to schedule the recurring sync. Supported data types are Custom Attributes, Custom Events, and Purchase Events, and the data type for a sync cannot be changed after creation. 
-
-#### Add a public key to the Braze user
-
-At this point, you must go back to Snowflake to complete the setup. Add the public key displayed on the dashboard to the user you created for Braze to connect to Snowflake.
-
-For additional information on how to do this, see the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth.html). If you want to rotate the keys at any point, we can generate a new key pair and provide you with the new public key.
+For additional information on how to do this, see the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth.html). If you want to rotate the keys at any point, Braze can generate a new key pair and provide the new public key.
 
 ```sql
 ALTER USER BRAZE_INGESTION_USER SET RSA_PUBLIC_KEY='MIIBIjANBgkqhkiG9w0BA...';
@@ -491,152 +479,240 @@ ALTER USER BRAZE_INGESTION_USER SET RSA_PUBLIC_KEY='MIIBIjANBgkqhkiG9w0BA...';
 {% endtab %}
 {% tab Redshift %}
 
-In the Braze Dashboard, go to **Data Settings** > **Cloud Data Ingestion**, select **Create New Data Sync**, and then select **Amazon Redshift Import**.
+In the Braze Dashboard, go to **Data Settings** > **Cloud Data Ingestion** > **Sources**, select **Add data source**, and then select **Amazon Redshift**.
 
 #### Step 2.1: Add Redshift connection information and source table
 
-Input the information for your Redshift data warehouse and source table. If you're using a private network tunnel, toggle the slider and input the tunnel information. Then, proceed to the next step. 
+Choose a name for your source and input your Redshift credentials and configuration. If you're using a private network tunnel, toggle the slider and input the tunnel information. Then, proceed to the next step. 
 
 {% alert note %}
 In the Braze dashboard, the **Database name** field only accepts letters (A–Z, a–z), numbers (0–9), and underscores (_), even though Amazon Redshift supports additional characters in database identifiers.
 {% endalert %}
 
-#### Step 2.2: Configure sync details
+#### Step 2.2: Test connection and connect to source
 
-Next, choose a name for your sync and input contact emails. We'll use this contact information to notify you of any integration errors, such as unexpected removal of access to the table.
-
-Contact emails will only receive notifications of global or sync-level errors such as missing tables, permissions, and others. They will not receive row-level issues. Global errors indicate critical problems with the connection that prevent syncs from running. Such problems can include the following:
-
-- Connectivity issues
-- Lack of resources
-- Permissions issues
-- (For catalogs syncs only) Catalog tier is out of space
-
-You will also choose the data type and sync frequency. Frequency can be anywhere from every 15 minutes to once per month. We'll use the time zone configured in your Braze dashboard to schedule the recurring sync. Supported data types are Custom Attributes, Custom Events, and Purchase Events, and the data type for a sync cannot be changed after creation. 
+Next, select **Test connection**. Once successful, finalize remaining settings and click **Connect to Source**. If the connection fails, an error message appears to help troubleshoot the issue.
 {% endtab %}
 {% tab BigQuery %}
 
-In the Braze Dashboard, go to **Data Settings** > **Cloud Data Ingestion**, select **Create New Data Sync**, and then select **Google BigQuery Import**.
+In the Braze Dashboard, go to **Data Settings** > **Cloud Data Ingestion** > **Sources**, select **Add data source**, and then select **Google BigQuery**.
 
 #### Step 2.1: Add BigQuery connection information and source table
 
-Upload the JSON key and provide a name for the service account, then input the details of your source table.
+Choose a name for your source. Then, upload the JSON key and provide a name for the service account. Then, input the remaining configuration fields.
 
-#### Step 2.2: Configure sync details
+#### Step 2.2: Test connection and connect to source
 
-Next, choose a name for your sync and input contact emails. We'll use this contact information to notify you of any integration errors, such as unexpected removal of access to the table.
-
-Contact emails will only receive notifications of global or sync-level errors such as missing tables, permissions, and others. They won't receive row-level issues. Global errors indicate critical problems with the connection that prevent syncs from running. Such problems can include the following:
-
-- Connectivity issues
-- Lack of resources
-- Permissions issues
-- (For catalogs syncs only) Catalog tier is out of space
-
-You will also choose the data type and sync frequency. Frequency can be anywhere from every 15 minutes to once per month. We'll use the time zone configured in your Braze dashboard to schedule the recurring sync. Supported data types are Custom Attributes, Custom Events, Purchase Events, and User Deletes. The data type for a sync cannot be changed after creation. 
+Next, select **Test connection**. Once successful, finalize remaining settings and click **Connect to Source**. If the connection fails, an error message appears to help troubleshoot the issue.
 
 {% endtab %}
 {% tab Databricks %}
 
-In the Braze Dashboard, go to **Data Settings** > **Cloud Data Ingestion**, select **Create New Data Sync**, and then select **Databricks Import**.
+In the Braze Dashboard, go to **Data Settings** > **Cloud Data Ingestion** > **Sources**, select **Add data source**, and then select **Databricks**.
 
 #### Step 2.1: Add Databricks connection information and source table
 
-Input the information for your Databricks data warehouse and source table, then proceed to the next step.
+Choose a name for your source and input your Databricks credentials and configuration. Then, proceed to the next step.
 
-#### Step 2.2: Configure sync details
+#### Step 2.2: Test connection and connect to source
 
-Next, choose a name for your sync and input contact emails. We'll use this contact information to notify you of any integration errors, such as unexpected removal of access to the table.
+Next, select **Test connection**. Once successful, finalize remaining settings and click **Connect to Source**. If the connection fails, an error message appears to help troubleshoot the issue.
 
-Contact emails will only receive notifications of global or sync-level errors such as missing tables, permissions, and others. They will not receive row-level issues. Global errors indicate critical problems with the connection that prevent syncs from running. Such problems can include the following:
-
-- Connectivity issues
-- Lack of resources
-- Permissions issues
-- (For catalogs syncs only) Catalog tier is out of space
-
-You will also choose the data type and sync frequency. Frequency can be anywhere from every 15 minutes to once per month. We'll use the time zone configured in your Braze dashboard to schedule the recurring sync. Supported data types are custom attributes, custom events, purchase events, and user deletes. The data type for a sync cannot be changed after creation. 
+{% alert note %}
+You must successfully test a source before it can be created. If you close the creation page, your source is not saved.
+{% endalert %}
 
 {% endtab %}
 {% tab Microsoft Fabric %}
 
+In the Braze dashboard, go to Data Settings > Cloud Data Ingestion > Sources, select **Add data source**, and then select **Microsoft Fabric**.
+
 #### Step 2.1: Set up a Cloud Data Ingestion sync
 
-You will create a new data sync for Microsoft Fabric. In the Braze dashboard, go to **Data Settings** > **Cloud Data Ingestion**, select **Create New Data Sync**, and then select **Microsoft Fabric Import**.
-
-#### Step 2.2: Add Microsoft Fabric connection information and source table
-
-Input the information for your Microsoft Fabric warehouse credentials and source table, then proceed to the next step.
-
-- Credentials Name is a label for these credentials in Braze, you can set a helpful value here
+Choose a name for your source and input your Microsoft Fabric credentials and configuration.
+- **Credentials Name** is a label for these credentials in Braze, you can set a helpful value here
 - See steps in section 1 for details on how to retrieve Tenant ID, Principal ID, Client Secret, and Connection String
 
-#### Step 2.3: Configure sync details
+#### Step 2.2: Test connection and connect to source
 
-Next, configure the following details for your sync: 
+Next, select **Test connection**. Once successful, finalize remaining settings and click **Connect to Source**. If the connection fails, an error message appears to help troubleshoot the issue.
 
-- Sync name 
-- Data type - Supported data types are custom attributes, custom events, purchase events, catalogs, and user deletes. The data type for a sync cannot be changed after creation. 
-- Sync Frequency - Frequency can be anywhere from every 15 minutes to once per month. We'll use the time zone configured in your Braze dashboard to schedule the recurring sync. 
-  - Non-recurring syncs can be triggered manually or via the [API]({{site.baseurl}}/api/endpoints/cdi) 
-
-#### Step 2.4: Configure notification preferences
-
-Next, input contact emails. We'll use this contact information to notify you of any integration errors, such as unexpected removal of access to the table, or alert when specific rows fail to update .
-
-By default, contact emails will only receive notifications of global or sync-level errors such as missing tables, permissions, and others. Global errors indicate critical problems with the connection that prevent syncs from running. Such problems can include the following:
-
-- Connectivity issues
-- Lack of resources
-- Permissions issues
-- (For catalogs syncs only) Catalog tier is out of space
-
-You may also configure alerts for row-level issues, or choose to receive an alert every time a sync runs successfully. 
+{% alert note %}
+You must successfully test a source before it can be created. If you close the creation page, your source is not saved.
+{% endalert %}
 
 {% endtab %}
 
 {% endtabs %}
 
-### Step 3: Test connection
+### Step 3: Create a new sync in the Braze dashboard
+Go to **Data Settings** > **Cloud Data Ingestion** > **Syncs**, and select **Create data sync**.
 
 {% tabs %}
 {% tab Snowflake %}
 
-Return to the Braze dashboard and select **Test connection**. If successful, you'll see a preview of the data. If, for some reason, we can't connect, we'll display an error message to help you troubleshoot the issue.
+#### Step 3.1: Configure sync details and test connection
+Choose a name for your sync. Then, select from any active source and input your source table for the sync. Select a data type and click **Test Connection**.
+
+Once successful, a preview of the data appears. Select **Next: Notifications** to continue. If the connection fails, an error message appears to help troubleshoot the issue.
+
+{% alert note %}
+You must successfully test a sync before progressing to next steps. If you need to close out of the sync creation page, click **Save as draft** to keep your work in progress.
+{% endalert %}
+
+#### Step 3.2: Add notification preferences
+Input contact email(s) for sync error notifications. Braze uses this contact information to send notifications about integration errors, such as unexpected loss of table access.
+
+Contact emails only receive notifications of global or sync-level errors such as missing tables, permissions, and others. They do not receive row-level issues. Global errors indicate critical problems with the connection that prevent syncs from running. 
+
+Such problems can include the following:
+
+- Connectivity issues
+- Lack of resources
+- Permissions issues
+- (For catalogs syncs only) Catalog tier is out of space
+
+#### Step 3.3: Scheduling
+Lastly, configure your sync as non-recurring or recurring.
+
+Non-recurring syncs can be triggered manually or via the API.
+
+Recurring syncs can have a frequency anywhere from every 15 minutes to once per month. Braze uses the time zone configured in your Braze dashboard to schedule the recurring sync.
+
 {% endtab %}
 
 {% tab Redshift %}
-{% subtabs local %}
-{% subtab Public Network %}
-Return to the Braze dashboard and select **Test connection**. If successful, you'll see a preview of the data. If, for some reason, we can't connect, we'll display an error message to help you troubleshoot the issue.
-{% endsubtab %}
 
-{% subtab Private Network %}
-Return to the Braze dashboard and select **Test connection**. If successful, you'll see a preview of the data. If, for some reason, we can't connect, we'll display an error message to help you troubleshoot the issue.
-{% endsubtab %}
-{% endsubtabs %}
+#### Step 3.1: Configure sync details and test connection
+Choose a name for your sync. Then, select from any active source and input your source table for the sync. Select a data type and click **Test Connection**.
+
+Once successful, a preview of the data appears. Select **Next: Notifications** to continue. If the connection fails, an error message appears to help troubleshoot the issue.
+
+{% alert note %}
+You must successfully test a sync before progressing to next steps. If you need to close out of the sync creation page, click **Save as draft** to keep your work in progress.
+{% endalert %}
+
+#### Step 3.2: Add notification preferences
+Input contact email(s) for sync error notifications. Braze uses this contact information to send notifications about integration errors, such as unexpected loss of table access.
+
+Contact emails only receive notifications of global or sync-level errors such as missing tables, permissions, and others. They do not receive row-level issues. Global errors indicate critical problems with the connection that prevent syncs from running. 
+
+Such problems can include the following:
+
+- Connectivity issues
+- Lack of resources
+- Permissions issues
+
+(For catalogs syncs only) Catalog tier is out of space
+
+#### Step 3.3: Scheduling
+Lastly, configure your sync as non-recurring or recurring.
+
+Non-recurring syncs can be triggered manually or via the API.
+
+Recurring syncs can have a frequency anywhere from every 15 minutes to once per month. Braze uses the time zone configured in your Braze dashboard to schedule the recurring sync.
+
 {% endtab %}
 
 {% tab BigQuery %}
 
-After all configuration details for your sync are entered, select **Test connection**. If successful, you'll see a preview of the data. If, for some reason, we can't connect, we'll display an error message to help you troubleshoot the issue.
+#### Step 3.1: Configure sync details and test connection
+Choose a name for your sync. Then, select from any active source and input your source table for the sync. Select a data type and click **Test Connection**.
+
+Once successful, a preview of the data appears. Select **Next: Notifications** to continue. If the connection fails, an error message appears to help troubleshoot the issue.
+
+{% alert note %}
+You must successfully test a sync before progressing to next steps. If you need to close out of the sync creation page, click **Save as draft** to keep your work in progress.
+{% endalert %}
+
+#### Step 3.2: Add notification preferences
+Input contact email(s) for sync error notifications. Braze uses this contact information to send notifications about integration errors, such as unexpected loss of table access.
+
+Contact emails only receive notifications of global or sync-level errors such as missing tables, permissions, and others. They do not receive row-level issues. Global errors indicate critical problems with the connection that prevent syncs from running. Such problems can include the following:
+
+- Connectivity issues
+- Lack of resources
+- Permissions issues
+
+(For catalogs syncs only) Catalog tier is out of space
+
+#### Step 3.3: Scheduling
+Lastly, configure your sync as non-recurring or recurring.
+
+Non-recurring syncs can be triggered manually or via the API.
+
+Recurring syncs can have a frequency anywhere from every 15 minutes to once per month. Braze uses the time zone configured in your Braze dashboard to schedule the recurring sync.
 
 {% endtab %}
 
 {% tab Databricks %}
 
-After all configuration details for your sync are entered, select **Test connection**. If successful, you'll see a preview of the data. If, for some reason, we can't connect, we'll display an error message to help you troubleshoot the issue.
+#### Step 3.1: Configure sync details and test connection
+Choose a name for your sync. Then, select from any active source and input your source table for the sync. Select a data type and click **Test Connection**.
+
+Once successful, a preview of the data appears. Select **Next: Notifications** to continue. If the connection fails, an error message appears to help troubleshoot the issue.
+
+{% alert note %}
+You must successfully test a sync before progressing to next steps. If you need to close out of the sync creation page, click **Save as draft** to keep your work in progress.
+{% endalert %}
+
+#### Step 3.2: Add notification preferences
+Input contact email(s) for sync error notifications. Braze uses this contact information to send notifications about integration errors, such as unexpected loss of table access.
+
+Contact emails only receive notifications of global or sync-level errors such as missing tables, permissions, and others. They do not receive row-level issues. Global errors indicate critical problems with the connection that prevent syncs from running. 
+
+Such problems can include the following:
+- Connectivity issues
+- Lack of resources
+- Permissions issues
+
+(For catalogs syncs only) Catalog tier is out of space
+
+#### Step 3.3: Scheduling
+Lastly, configure your sync as non-recurring or recurring.
+
+Non-recurring syncs can be triggered manually or via the API.
+
+Recurring syncs can have a frequency anywhere from every 15 minutes to once per month. Braze uses the time zone configured in your Braze dashboard to schedule the recurring sync.
 
 {% endtab %}
 {% tab Microsoft Fabric %}
 
-After all configuration details for your sync are entered, select **Test connection**. If successful, you'll see a preview of the data. If, for some reason, we can't connect, we'll display an error message to help you troubleshoot the issue.
+#### Step 3.1: Configure sync details and test connection
+
+Choose a name for your sync. Then, select from any active source and input your source table for the sync. Select a data type and click **Test Connection**.
+
+Once successful, a preview of the data appears. Select **Next: Notifications** to continue. If the connection fails, an error message appears to help troubleshoot the issue.
+
+{% alert note %}
+You must successfully test a sync before progressing to next steps. If you need to close out of the sync creation page, click **Save as draft** to keep your work in progress.
+{% endalert %}
+
+#### Step 3.2: Add notification preferences
+Input contact email(s) for sync error notifications. Braze uses this contact information to send notifications about integration errors, such as unexpected loss of table access.
+
+Contact emails only receive notifications of global or sync-level errors such as missing tables, permissions, and others. They do not receive row-level issues. Global errors indicate critical problems with the connection that prevent syncs from running. 
+
+Such problems can include the following:
+
+- Connectivity issues
+- Lack of resources
+- Permissions issues
+
+(For catalogs syncs only) Catalog tier is out of space
+
+#### Step 3.3: Scheduling
+Lastly, configure your sync as non-recurring or recurring.
+
+Non-recurring syncs can be triggered manually or via the API.
+
+Recurring syncs can have a frequency anywhere from every 15 minutes to once per month. Braze uses the time zone configured in your Braze dashboard to schedule the recurring sync.
 
 {% endtab %}
 {% endtabs %}
 
 {% alert note %}
-You must successfully test an integration before it can move from Draft to Active state. If you need to close out of the creation page, your integration will be saved, and you can revisit the details page to make changes and test.  
+You must successfully test an integration before it can move from Draft to Active state. If you close the creation page, your integration is saved, and you can revisit the details page to make changes and test.  
 {% endalert %}
 
 ## Set up additional integrations or users (optional)
@@ -645,7 +721,7 @@ You must successfully test an integration before it can move from Draft to Activ
 {% tab Snowflake %}
 You may set up multiple integrations with Braze, but each integration should be configured to sync a different table. When creating additional syncs, you may reuse existing credentials if connecting to the Snowflake account.
 
-If you reuse the same user and role across integrations, you will **not** need to go through the step of adding the public key again.
+If you reuse the same user and role across integrations, you do not need to add the public key again.
 {% endtab %}
 {% tab Redshift %}
 You may set up multiple integrations with Braze, but each integration should be configured to sync a different table. When creating additional syncs, you may reuse existing credentials if connecting to the same Snowflake or Redshift account.
@@ -679,26 +755,26 @@ If you reuse the same user across integrations, you cannot delete the user in th
 
 {% tabs %}
 {% tab Snowflake %}
-When activated, your sync will run on the schedule configured during setup. If you want to run the sync outside the normal testing schedule or to fetch the most recent data, select **Sync Now**. This run will not impact regularly scheduled future syncs.
+When activated, your sync runs on the schedule configured during setup. If you want to run the sync outside the normal testing schedule or to fetch the most recent data, select **Sync Now**. This run does not impact regularly scheduled future syncs.
 
 {% endtab %}
 {% tab Redshift %}
-When activated, your sync will run on the schedule configured during setup. If you want to run the sync outside the normal testing schedule or to fetch the most recent data, select **Sync Now**. This run will not impact regularly scheduled future syncs.
+When activated, your sync runs on the schedule configured during setup. If you want to run the sync outside the normal testing schedule or to fetch the most recent data, select **Sync Now**. This run does not impact regularly scheduled future syncs.
 
 {% endtab %}
 {% tab BigQuery %}
 
-When activated, your sync will run on the schedule configured during setup. If you want to run the sync outside the normal testing schedule or to fetch the most recent data, select **Sync Now**. This run will not impact regularly scheduled future syncs.
+When activated, your sync runs on the schedule configured during setup. If you want to run the sync outside the normal testing schedule or to fetch the most recent data, select **Sync Now**. This run does not impact regularly scheduled future syncs.
 
 {% endtab %}
 {% tab Databricks %}
 
-When activated, your sync will run on the schedule configured during setup. If you want to run the sync outside the normal testing schedule or to fetch the most recent data, select **Sync Now**. This run will not impact regularly scheduled future syncs.
+When activated, your sync runs on the schedule configured during setup. If you want to run the sync outside the normal testing schedule or to fetch the most recent data, select **Sync Now**. This run does not impact regularly scheduled future syncs.
 
 {% endtab %}
 {% tab Microsoft Fabric %}
 
-When activated, your sync will run on the schedule configured during setup. If you want to run the sync outside the normal testing schedule or to fetch the most recent data, select **Sync Now**. This run will not impact regularly scheduled future syncs.
+When activated, your sync runs on the schedule configured during setup. If you want to run the sync outside the normal testing schedule or to fetch the most recent data, select **Sync Now**. This run does not impact regularly scheduled future syncs.
 
 {% endtab %}
 
