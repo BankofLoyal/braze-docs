@@ -4409,3 +4409,5 @@ validurls['/docs/user_guide/administrative/workspace_settings'] = '/docs/user_gu
 
 // Personalization — canvas_entry_properties moved to design_and_edit/personalize/sources
 validurls['/docs/user_guide/personalization_and_dynamic_content/canvas_entry_properties'] = '/docs/user_guide/messaging/design_and_edit/personalize/sources/canvas_entry_properties/';
+validurls['/unlisted_docs/track_users_bulk_partners'] = '/docs/api/endpoints/user_data/post_user_track_bulk/';
+validurls['/unlisted_docs/track_users_bulk_partners/'] = '/docs/api/endpoints/user_data/post_user_track_bulk/';

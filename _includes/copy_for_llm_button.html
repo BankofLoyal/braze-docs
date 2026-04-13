@@ -23,7 +23,7 @@ Copy for LLM Button - Only show on developer guide pages that have processed mar
     <span class="copy-for-llm-text">View as Markdown</span>
   </button>
 
-  {%- unless page.name == 'build_with_llm.md' -%}
+  {%- unless page.name == 'build_with_llm.md' or page.url contains '/user_guide/' or page.collection == 'user_guide' -%}
   <button
     id="build-with-llm-btn"
     type="button"

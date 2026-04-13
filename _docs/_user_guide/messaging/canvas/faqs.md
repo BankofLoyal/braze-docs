@@ -83,6 +83,18 @@ If _Messages sent_ are always zero for a Canvas containing an in-app message ste
 
 In-app messages are "pulled" by the SDK, rather than "pushed" from Braze. In-app messages for eligible users are delivered automatically on session start and "wait" for the trigger event before displaying. Because eligible users receive the message when they start a session, Braze doesn't report this as a send event. When users perform the trigger event, the message displays and Braze logs an impression and marks the Canvas step (or campaign) as received on the user profile. Consequently, the _Sends_ total will be zero for in-app messages.
 
+### Can I schedule different send times for each variant in the same Canvas Message step or multivariate send?
+
+No. Variants in the same multivariate configuration or Message step share one delivery schedule. You can't assign one variant to send at 6 pm and another at 7 pm for that same scheduled send.
+
+To stagger sends or use different times per path, try the following methods:
+
+- Separate Message steps with Delay steps between them so each message has its own schedule.
+- Branches or an [Experiment Paths]({{site.baseurl}}/user_guide/messaging/canvas/canvas_components/experiment_step/) step so users follow paths with different timing.
+- Separate campaigns if the use case doesn't need to stay inside one Canvas.
+
+For multivariate and A/B concepts in campaigns, see [Multivariate and A/B testing]({{site.baseurl}}/user_guide/messaging/ab_testing/).
+
 ## Analytics and conversions
 
 ### How are user conversions tracked in a Canvas?

@@ -12,7 +12,13 @@ description: "This how-to article will walk you through how to set up your IPs a
 
 {% multi_lang_include video.html id="iTm3yQkJ0UU" align="right"  %}
 
-> This article will walk you through the requirements and steps needed to set up your IP addresses and pools, as well as domains and subdomains needed before you can begin sending emails with Braze.<br><br>Though most of the setup process is done by Braze, we have outlined the requirements and materials for this setup.
+> This article walks you through the requirements and steps needed to set up your IP addresses and pools, as well as domains and subdomains needed before you can begin sending emails with Braze. <br><br>Though most of the setup process is done by Braze, we have outlined the requirements and materials for this setup.
+
+<br>
+
+{% alert important %}
+You can use SendGrid, SparkPost, or Amazon Simple Email Service (SES) as your email service provider (ESP) partner. Starting in 2026, Braze uses Amazon SES as the default ESP for new email setups. For more details, see [Amazon SES setup]({{site.baseurl}}/user_guide/channels/email/email_setup/setting_up_ips_and_domains/amazon_ses).
+{% endalert %}
 
 ## Method 1: Coordinate with Braze (recommended)
 
@@ -58,7 +64,7 @@ To use self-service email setup, you must meet the following prerequisites:
 
 1. Go to **Settings** > **Admin Settings** under **Company Settings**. 
 2. Next, select the **Sender Verification** tab. To view this tab, you must have the "Manage Company Settings" company-level permission.
-3. Click the **Start setup** button.
+3. Select **Start setup**.
 
 ### Step 2: Add and verify a sending domain
 
@@ -78,15 +84,16 @@ The sending domain must be a subordinate to a domain you own. For example, if yo
 
 A tracking domain is used to wrap links in your emails for click-tracking and branding purposes. This will be visible to users when they hover over or click your email links. We recommend matching this to your sending domain.
 
-Enter a tracking domain and click **Submit**. Next, add the CNAME records from the bottom of the page to your DNS provider. Then, return to the Braze dashboard and click **Verify**.
+1. Enter a tracking domain and select **Submit**. 
+2. Next, add the CNAME records from the bottom of the page to your DNS provider. 
+3. Then, return to the Braze dashboard and select **Verify**.
 
 ### Step 4: Add an IP address
 
-Braze will generate an A record to associate your IP address with your sending subdomain in a setup called reverse DNS (rDNS). Add the A record in your DNS provider then click **Set up rDNS** to support deliverability.
+Braze generates an A record to associate your IP address with your sending subdomain in a setup called reverse DNS (rDNS). Add the A record in your DNS provider then click **Set up rDNS** to support deliverability.
 
-Note that additional domains that have been added will not appear in the **Sender Verification** section. To add more domains, contact the Braze Support team.
+Note that additional domains that have been added do not appear in the **Sender Verification** section. To add more domains, contact the Braze Support team.
 
 ### Next steps
 
-After your sender verification is complete, we recommend IP warming so that your messages reach their destination inboxes at a consistently high rate. After completing this setup, be sure to also consult with the Braze Onboarding team to confirm if your domains and [IP address]({{site.baseurl}}/user_guide/channels/email/email_setup/ip_warming/) are working.
-
+After your sender verification is complete, we recommend IP warming so that your messages reach their destination inboxes at a consistently high rate. After completing this setup, be sure to also consult with the Braze Onboarding team to confirm if your domains and [IP address]({{site.baseurl}}/user_guide/message_building_by_channel/email/email_setup/ip_warming/) are working.

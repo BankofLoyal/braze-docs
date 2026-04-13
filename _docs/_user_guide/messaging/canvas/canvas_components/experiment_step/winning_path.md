@@ -52,7 +52,7 @@ After a Winning Path concludes, all subsequent users who enter the Canvas go dow
 
 If Winning Path is turned on, your analytics view is separated into two tabs: **Initial Experiment** and **Winning Path**.
 
-- **Initial Experiment:** Shows the metrics for each path during the experiment window. You can see a summary of how all the paths performed for the specified conversion events and which path was selected as the winner.
+- **Initial Experiment:** Shows the metrics for each path during the experiment window, which path was selected as the winner, and Canvas conversion metrics. The conversion event used to pick the winner, configured in Winning Path settings, might not be the same as the conversion metric highlighted in Canvas analytics. For more information on how Experiment Path analytics relate to Canvas conversion events and the winning metric, see [Experiment Paths]({{site.baseurl}}/user_guide/engagement_tools/canvas/canvas_components/experiment_step/#winning-path-and-personalized-paths-performance).
 - **Winning Path:** Shows only the metrics for the Winning Path starting from the moment the Initial Experiment finished.
 
 ## Things to know

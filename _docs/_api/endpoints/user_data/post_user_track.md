@@ -20,6 +20,10 @@ toc_headers: h2
 Braze processes the data passed through the API at face value, and customers should only pass deltas (changing data) to minimize unnecessary data point logging. To read more, refer to [Data points]({{site.baseurl}}/user_guide/data/infrastructure/data_points/).
 {% endalert %}
 
+## Need to update users in bulk?
+
+Use the [`/users/track/bulk` endpoint]({{site.baseurl}}/api/endpoints/user_data/post_user_track_bulk/) to send larger batches and reduce request volume.
+
 {% apiref postman %}https://documenter.getpostman.com/view/4689407/SVYrsdsG?version=latest#4cf57ea9-9b37-4e99-a02e-4373c9a4ee59 {% endapiref %}
 
 ## Prerequisites

@@ -136,6 +136,16 @@ For more details on how server-side scanning can affect email metrics, refer to 
 
 Machine open percentages are not a reliable measure of actual engagement. For a more accurate view of email performance, focus on *Other Opens* (non-machine opens) and *Unique Clicks*. You can also compare these metrics over time using the [Email Performance Dashboard]({{site.baseurl}}/user_guide/analytics/dashboards/channel_performance/).
 
+### Why are my deep links not working in Gmail?
+
+Gmail strips all non-HTTP/HTTPS links from email messages. If your deep link uses a custom scheme (such as `myapp://path/to/content`), Gmail will remove it, and the link won't function for recipients reading the email in Gmail. This is a Gmail limitation, not a Braze limitation.
+
+To work around this:
+
+- **Use Universal Links (iOS) or App Links (Android).** These use standard `https://` URLs that open your app when installed and fall back to a web page otherwise. Refer to [Universal Links and App Links]({{site.baseurl}}/user_guide/channels/email/customize/universal_links_and_app_links/) for setup instructions.
+- **Use a deep linking provider.** Services like [Branch](https://www.branch.io/) generate HTTP-formatted deep links that are compatible with email clients including Gmail.
+- **Set up a redirect endpoint.** Host an `https://` endpoint on your server that redirects to your app's custom-scheme URL. Email clients will preserve the `https://` link, and the redirect handles opening the app.
+
 ### Does the *Unique Opens* metric include *Machine Opens*?
 
 No. *Unique Opens* count only [Other Opens]({{site.baseurl}}/user_guide/analytics/metrics_glossary#other-opens), which excludes emails identified as machine opens. *Machine Opens* are tracked separately. In the **Campaign Analytics** view and **Report Builder**, you can view both metrics independently.
@@ -154,7 +164,6 @@ This warning can persist for campaigns duplicated from a campaign that did not h
 - After duplicating, duplicate the variant, then remove the original variant. **Do not** select the original variant, or the warning can carry over.
 
 ### What are reasons why my user hasn't received an email campaign?
-
 
 Reasons why a user hasn't received an email campaign include:
 
@@ -187,3 +196,6 @@ Go to **Templates** > **Email Templates**. You can filter by type (HTML or drag-
 
 Confirm you have permission to view templates—see [User permissions]({{site.baseurl}}/user_guide/administer/global/user_management/permissions/).
 
+### Do I need to register domains for relay or masked emails?
+
+[Apple’s Private Email Relay]({{site.baseurl}}/user_guide/channels/email/best_practices/apple_mail/email_private_relay_apple_SSO/) requires you to register your sending domains in the Apple Developer Portal to prevent bounces. Google Shielded Email does not require a manual domain registration or allowlisting process.
