@@ -35,6 +35,10 @@ Designated support contacts can access all support cases for your company, regar
 
 After a user is designated as a support contact, the Braze Support Portal sends that user a welcome email with instructions to set up their access.
 
+## View cases from your company
+
+If you're a designated support contact, use the **My Org's** filter views in the support portal to view all cases submitted by users in your company. Cases from all submission channels (BrazeAI Operator<sup>TM</sup>, web form, email, or portal) are included in these views.
+
 ## Provide developer console screenshots
 
 When communicating with support, you may find you need to access your developer console to provide additional information:
