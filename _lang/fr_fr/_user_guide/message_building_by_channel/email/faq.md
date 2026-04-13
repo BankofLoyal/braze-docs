@@ -15,7 +15,13 @@ channel: email
 
 Si plusieurs utilisateurs avec la même adresse e-mail se trouvent dans un segment destiné à recevoir une campagne, un profil utilisateur aléatoire avec cette adresse e-mail est choisi au moment de l'envoi. De cette façon, l'e-mail n'est envoyé qu'une seule fois et est dédupliqué, garantissant ainsi qu'il ne touche pas la même adresse e-mail plusieurs fois.
 
-Notez que cette déduplication se produit lorsque les utilisateurs ciblés sont inclus dans le même envoi. Les campagnes déclenchées peuvent entraîner plusieurs envois à la même adresse e-mail (même pendant une période où les utilisateurs pourraient être exclus en raison de leur rééligibilité) si des utilisateurs différents avec des adresses e-mail correspondantes enregistrent l'événement déclencheur à des moments différents. Les utilisateurs ne sont pas dédupliqués par e-mail à l'entrée du Canvas, il est donc possible qu'ils ne soient pas dédupliqués au-delà de la première étape d'un Canvas s'ils progressent à des moments légèrement différents en raison de l'entrée limitée en débit. Lorsqu'un utilisateur lié à une adresse e-mail donnée ouvre ou clique sur un e-mail, tous les profils utilisateur partageant cette adresse e-mail sont marqués comme ayant ouvert ou cliqué sur la campagne.
+Voici les scénarios qui peuvent donner l'impression qu'un utilisateur a reçu un e-mail deux fois :
+
+- **Une erreur s'est produite lors de la création de la campagne ou du Canvas :** L'utilisateur n'a peut-être pas reçu exactement le même envoi deux fois, mais il a pu recevoir deux e-mails distincts avec la même ligne d'objet. Lorsqu'une campagne ou un Canvas est dupliqué(e), vérifiez les détails de configuration de l'e-mail tels que les images ou les lignes d'objet. Vous pouvez également consulter les journaux des modifications pour voir si la campagne ou le Canvas a été modifié(e) après le lancement — un doublon peut partager la même ligne d'objet que l'original au moment où l'utilisateur l'a reçu.
+- **Plusieurs profils utilisateur ont un transfert d'e-mails activé :** Si un utilisateur possède plusieurs comptes dans une application donnée mais qu'un compte transfère les e-mails, l'utilisateur reçoit la campagne une fois par boîte de réception ; les e-mails peuvent apparaître deux fois dans la boîte de réception où les messages sont transférés. Seuls certains fournisseurs indiquent qu'un e-mail a été transféré depuis un autre compte.
+- **Configuration de la messagerie du destinataire :** Certains clients fusionnent les boîtes de réception (« boîte de réception universelle »). Si la même campagne cible plusieurs comptes partageant une seule boîte de réception, il peut sembler qu'une personne a reçu la campagne deux fois alors que deux profils distincts ont en réalité été contactés. Le destinataire peut vérifier si plusieurs comptes sont regroupés dans une seule boîte de réception.
+
+Notez que cette déduplication se produit lorsque les utilisateurs ciblés sont inclus dans le même envoi. Les campagnes déclenchées peuvent entraîner plusieurs envois à la même adresse e-mail (même pendant une période où les utilisateurs pourraient être exclus en raison de leur rééligibilité) si des utilisateurs différents avec des adresses e-mail identiques enregistrent l'événement déclencheur à des moments différents. Les utilisateurs ne sont pas dédupliqués par e-mail à l'entrée du Canvas, il est donc possible qu'ils ne soient pas dédupliqués au-delà de la première étape d'un Canvas s'ils progressent à des moments légèrement différents en raison de l'entrée limitée en débit. Lorsqu'un utilisateur lié à une adresse e-mail donnée ouvre ou clique sur un e-mail, tous les profils utilisateur partageant cette adresse e-mail sont marqués comme ayant ouvert ou cliqué sur la campagne.
 
 #### Exception : campagnes déclenchées par API
 
@@ -45,13 +51,21 @@ Les indicateurs de distribution des e-mails (livraisons, rebonds et taux de cour
 
 Les échecs provisoires d'envoi désignent les e-mails rejetés en raison d'un problème temporaire ou transitoire, comme une « boîte de réception pleine » ou un « serveur temporairement indisponible ». Si un e-mail ayant fait l'objet d'un échec provisoire d'envoi n'est toujours pas livré après 72 heures, il ne sera pas pris en compte dans les indicateurs de livraison de la campagne.
 
+### Qu'est-ce qu'une boucle de rétroaction par e-mail ?
+
+Une boucle de rétroaction par e-mail (FBL) permet aux expéditeurs de surveiller leur réputation en identifiant les campagnes qui reçoivent un volume élevé de plaintes. Pour les étapes de mise en œuvre d'une boucle de rétroaction Gmail, consultez l'article [Boucle de rétroaction de Google](https://support.google.com/a/answer/6254652).
+
 ### Que sont les pixels de suivi d'ouverture ?
 
 Les [pixels de suivi d'ouverture]({{site.baseurl}}/user_guide/administrative/app_settings/email_settings/#changing-location-of-tracking-pixel) utilisent le domaine de suivi des clics de l'expéditeur pour suivre les événements d'ouverture des e-mails. Le pixel est une balise d'image ajoutée au HTML de l'e-mail. Il s'agit généralement du dernier élément HTML dans la balise body. Lorsqu'un utilisateur charge son e-mail, une requête est effectuée pour charger l'image à partir du domaine de suivi de marque, ce qui enregistre un événement d'ouverture.
 
 ### Que se passe-t-il lors de l'arrêt d'une campagne e-mail ou d'un Canvas ?
 
-Les utilisateurs ne pourront plus entrer dans le Canvas et aucun message supplémentaire ne sera envoyé. Pour les campagnes e-mail et les Canvas, le bouton d'arrêt ne stoppe pas immédiatement les envois. En effet, une fois que les demandes d'envoi sont transmises, il est impossible d'empêcher leur livraison à l'utilisateur.
+Les utilisateurs ne pourront plus entrer dans le Canvas et aucun message supplémentaire ne sera envoyé.
+
+Pour les campagnes e-mail et les Canvas, le bouton d'arrêt ne stoppe pas immédiatement les envois. Une fois que les demandes d'envoi sont transmises, il est impossible d'empêcher leur livraison à l'utilisateur, ce qui peut se produire après un certain délai.
+
+Bien que Braze n'envoie plus de demandes une fois la campagne ou le Canvas arrêté(e), les données analytiques peuvent continuer à augmenter pendant que l'ESP termine le traitement des demandes déjà en cours.
 
 ### Pourquoi est-ce que je constate plus de clics que d'ouvertures d'e-mail ?
 
@@ -76,6 +90,12 @@ Pour les bonnes pratiques sur la gestion de ces réponses, consultez [Gestion de
 
 Braze suit les liens de désabonnement si le Liquid suivant est utilisé dans les e-mails : {%raw%}`${set_user_to_unsubscribed_url}`{%endraw%}
 
+### Pourquoi le nombre de désabonnements est-il différent du nombre de clics sur mon lien de désabonnement ?
+
+Si le nombre de _désabonnements_ est supérieur au nombre d'utilisateurs ayant cliqué sur le lien de désabonnement dans le corps de l'e-mail, les actions liées à l'en-tête list-unsubscribe expliquent souvent cet écart — un clic sur l'en-tête list-unsubscribe est comptabilisé comme un _désabonnement_ mais pas comme un _clic_ sur le lien dans le corps du message.
+
+Si le nombre total de clics sur le lien de désabonnement dans le corps est supérieur au nombre de _désabonnements_, il est possible que des utilisateurs aient cliqué sur le lien plus d'une fois.
+
 ### Puis-je ajouter un lien « Afficher cet e-mail dans un navigateur » à mes e-mails ?
 
 Non, Braze ne propose pas cette fonctionnalité. En effet, une majorité croissante d'e-mails sont ouverts sur des appareils mobiles et dans des clients de messagerie modernes, qui affichent les images et le contenu sans problème.
@@ -88,7 +108,7 @@ Certains outils de sécurité des e-mails d'entreprise (tels que Barracuda, Proo
 
 Pour atténuer ce problème :
 
-- **Recommandez aux destinataires d'ajouter votre domaine d'envoi à leur liste d'autorisation :** Collaborez avec les équipes informatiques des destinataires concernés afin d'ajouter votre domaine d'envoi et les domaines de suivi Braze à leur liste d'autorisation de sécurité des e-mails.
+- **Recommandez aux destinataires d'ajouter votre domaine d'envoi à leur liste d'autorisation :** Collaborez avec les équipes informatiques des destinataires concernés afin d'ajouter votre domaine d'envoi et les domaines de suivi de Braze à leur liste d'autorisation de sécurité des e-mails.
 - **Utilisez un centre de préférences :** Au lieu d'un lien de désabonnement direct, utilisez un [centre de préférences]({{site.baseurl}}/user_guide/message_building_by_channel/email/preference_center/overview/) qui nécessite une interaction de l'utilisateur pour confirmer le désabonnement. Les scanners de sécurité ne remplissent généralement pas les formulaires comportant plusieurs étapes.
 - **Examinez les journaux de désabonnement :** Vérifiez l'en-tête `User-Agent` et l'adresse IP dans les données d'événements de désabonnement de Currents afin d'identifier les schémas correspondant à une analyse automatisée (par exemple, des en-têtes `User-Agent` identiques pour plusieurs désabonnements).
 
@@ -107,3 +127,49 @@ Les pourcentages d'ouverture automatique ne constituent pas une mesure fiable de
 ### L'indicateur *Ouvertures uniques* inclut-il les *ouvertures automatiques* ?
 
 Oui. Les *ouvertures uniques* incluent les *ouvertures automatiques*. Dans la page **Analyse des campagnes** et le **générateur de rapports**, vous pouvez consulter ces deux indicateurs.
+
+### Pourquoi mon volume de livraison d'e-mails ne correspond-il pas à mon volume d'envoi ?
+
+Après l'envoi d'un e-mail, la boîte de réception du destinataire décide du moment de la livraison. Les messages peuvent être différés pendant des heures, voire des jours, en raison d'une boîte de réception pleine, d'une limitation de débit par l'ESP pour une adresse IP donnée, ou pour des raisons similaires.
+
+Lorsque des messages différés sont livrés un jour calendaire différent de celui de l'envoi, les _livraisons_ peuvent dépasser les _envois_ pour la même période. Lorsque de nombreux reports se concentrent sur un même jour, les _envois_ peuvent dépasser les _livraisons_ pour cette période.
+
+### Pourquoi un avertissement m'invite-t-il à inclure un lien de désabonnement alors que mon e-mail en contient déjà un ?
+
+Cet avertissement peut persister pour les campagnes dupliquées à partir d'une campagne qui ne contenait pas de lien de désabonnement. Pour le supprimer :
+
+- Pour les e-mails HTML, accédez à l'onglet **Texte brut**, puis sélectionnez **Régénérer à partir du HTML**.
+- Après la duplication, dupliquez la variante, puis supprimez la variante d'origine. **Ne sélectionnez pas** la variante d'origine, sinon l'avertissement peut se propager.
+
+### Quelles sont les raisons pour lesquelles un utilisateur n'a pas reçu une campagne e-mail ?
+
+Les raisons pour lesquelles un utilisateur n'a pas reçu une campagne e-mail incluent :
+
+- L'utilisateur n'était pas éligible pour recevoir l'e-mail.
+- Son adresse e-mail est invalide ou n'existe pas.
+- L'utilisateur a peut-être manqué ou supprimé le message.
+- Le message se trouve peut-être dans son dossier de courriers indésirables.
+
+### Comment optimiser les images dans Outlook ?
+
+Outlook utilise souvent un rendu de type Microsoft Word, ce qui peut ajouter une bordure autour des images. Vous pouvez encapsuler le contenu pour le masquer dans les clients Office à l'aide de commentaires conditionnels standard, par exemple :
+
+```html
+<!--[if !mso]><!-- -->
+<span>Content hidden in Outlook desktop</span>
+<!--<![endif]-->
+```
+
+### Puis-je utiliser des images SVG ou WEBP dans mes e-mails ?
+
+Les images SVG ne s'affichent pas dans Gmail web ni dans Gmail iOS. Le format WEBP n'est pas pris en charge de manière uniforme par tous les clients de messagerie. Utilisez plutôt des formats largement supportés comme PNG ou JPEG pour garantir un affichage fiable des images.
+
+### Les variables Liquid assignées dans une partie du compositeur de messages peuvent-elles être utilisées dans une autre ?
+
+Non. Chaque partie de l'e-mail (objet, corps, en-têtes, boutons, etc.) est générée séparément, de sorte que les variables Liquid assignées dans un champ ne sont pas disponibles dans un autre. Assignez les variables dans chaque champ qui en a besoin.
+
+### Mon modèle d'e-mail est introuvable. Où est-il ?
+
+Accédez à **Modèles** > **Modèles d'e-mail**. Vous pouvez filtrer par type (HTML ou glisser-déposer).
+
+Vérifiez que vous disposez des autorisations nécessaires pour consulter les modèles — voir [Autorisations utilisateur]({{site.baseurl}}/user_guide/administrative/app_settings/manage_your_braze_users/user_permissions/).

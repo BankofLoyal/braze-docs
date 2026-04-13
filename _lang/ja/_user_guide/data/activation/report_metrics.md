@@ -21,7 +21,7 @@ tool: Reports
 ### AMP クリック数
 
 {% apitags %}
-メール
+Email
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='AMP Clicks' %}
@@ -33,7 +33,7 @@ tool: Reports
 ### AMPが開く
 
 {% apitags %}
-メール
+Email
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='AMP Opens' %}
@@ -45,7 +45,7 @@ tool: Reports
 ### オーディエンス
 
 {% apitags %}
-すべて
+All
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Audience' %}
@@ -59,7 +59,7 @@ tool: Reports
 ### バウンス数
 
 {% apitags %}
-メール, Web プッシュ, iOS プッシュ
+Email, Web Push, iOS Push
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Bounces' %} これは、有効なプッシュトークンがない、キャンペーン開始後にユーザーが配信停止した、メールアドレスが不正確または無効になっているなどの理由で発生する可能性がある。
@@ -87,7 +87,7 @@ tool: Reports
 ### 本文クリック数 (1 回)
 
 {% apitags %}
-iOS プッシュ, Android プッシュ
+iOS Push, Android Push
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Body Click' %}
@@ -101,7 +101,7 @@ iOS プッシュ, Android プッシュ
 ### 本文クリック数 (複数回)
 
 {% apitags %}
-アプリ内メッセージ
+In-App Message
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Body Clicks' %} 詳細については、[iOSと]({{site.baseurl}}/developer_guide/platform_integration_guides/ios/changelog/objc_changelog#3310) [Androidの]({{site.baseurl}}/developer_guide/platform_integration_guides/android/changelog#1100)SDK変更履歴を参照のこと。
@@ -115,7 +115,7 @@ iOS プッシュ, Android プッシュ
 ### ボタン 1 のクリック数
 
 {% apitags %}
-アプリ内メッセージ
+In-App Message
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Button 1 Clicks' %} _ボタン1クリックの_レポートは、アプリ内メッセージで**レポートの識別子を**「0」に指定した場合のみ機能する。
@@ -129,7 +129,7 @@ iOS プッシュ, Android プッシュ
 ### ボタン 2 のクリック数
 
 {% apitags %}
-アプリ内メッセージ
+In-App Message
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Button 2 Clicks' %} _ボタン2クリックの_レポートは、アプリ内メッセージで**レポートの識別子を**「1」に指定した場合のみ機能する。
@@ -143,7 +143,7 @@ iOS プッシュ, Android プッシュ
 ### キャンペーン分析
 
 {% apitags %}
-フィーチャーフラッグ
+Feature Flags
 {% endapitags %}
 
 さまざまなチャネルにわたるメッセージのパフォーマンス。表示されるメトリックは、選択したメッセージングチャネルによって異なり、[Feature Flag experiment]({{site.baseurl}}/developer_guide/platform_wide/feature_flags/experiments/#campaign-analytics) が多変量検定であるかどうかによって異なります。
@@ -155,7 +155,7 @@ iOS プッシュ, Android プッシュ
 ### 選択肢の送信数
 
 {% apitags %}
-アプリ内メッセージ
+In-App Message
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Choices Submitted' %}
@@ -167,7 +167,7 @@ iOS プッシュ, Android プッシュ
 ### クリック開封率
 
 {% apitags %}
-メール
+Email
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Click-to-Open Rate' %}
@@ -203,7 +203,7 @@ SMS/MMS, RCS
 ### 信頼度
 
 {% apitags %}
-コンテンツカード, メール, アプリ内メッセージ, Web プッシュ, iOS プッシュ, Android プッシュ, ウェブフック, SMS/MMS, WhatsApp
+Content Cards, Email, In-App Message, Web Push, iOS Push, Android Push, Webhook, SMS/MMS, WhatsApp
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Confidence' %}
@@ -215,7 +215,7 @@ SMS/MMS, RCS
 ### 確認ページのボタン
 
 {% apitags %}
-アプリ内メッセージ
+In-App Message
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Confirmation Page Button' %}
@@ -227,7 +227,7 @@ SMS/MMS, RCS
 ### 確認ページの却下
 
 {% apitags %}
-アプリ内メッセージ
+In-App Message
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Confirmation Page Dismissals' %}
@@ -239,7 +239,7 @@ SMS/MMS, RCS
 ### コンバージョン (B、C、D)
 
 {% apitags %}
-コンテンツカード, メール, アプリ内メッセージ, Web プッシュ, iOS プッシュ, Android プッシュ, ウェブフック, SMS/MMS
+Content Cards, Email, In-App Message, Web Push, iOS Push, Android Push, Webhook, SMS/MMS
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Conversions (B, C, D)' %} この定義されたイベントは、キャンペーンを構築する際にあなたが決定する。 
@@ -258,7 +258,7 @@ SMS/MMS, RCS
 ### コンバージョン数合計
 
 {% apitags %}
-アプリ内メッセージ
+In-App Message
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Total Conversions' %}
@@ -274,7 +274,7 @@ SMS/MMS, RCS
 ### メッセージを閉じる
 
 {% apitags %}
-アプリ内メッセージ
+In-App Message
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Close Message' %}
@@ -286,7 +286,7 @@ SMS/MMS, RCS
 ### コンバージョン率
 
 {% apitags %}
-コンテンツカード, メール, アプリ内メッセージ, Web プッシュ, iOS プッシュ, Android プッシュ, ウェブフック, SMS/MMS
+Content Cards, Email, In-App Message, Web Push, iOS Push, Android Push, Webhook, SMS/MMS
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Conversion Rate' %}
@@ -313,7 +313,7 @@ SMS/MMS, RCS
 ### コンバージョン期間
 
 {% apitags %}
-すべて
+All
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Conversion Window' %}
@@ -325,7 +325,7 @@ SMS/MMS, RCS
 ### 配信数
 
 {% apitags %}
-メール, Web プッシュ, iOS プッシュ, Android プッシュ, WhatsApp
+Email, Web Push, iOS Push, Android Push, WhatsApp
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Deliveries' %}
@@ -400,7 +400,7 @@ SMS/MMS
 ### 直接開封数
 
 {% apitags %}
-iOS プッシュ
+iOS Push
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Direct Opens' %}
@@ -414,7 +414,7 @@ iOS プッシュ
 ### メール可能
 
 {% apitags %}
-メール
+Email
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Emailable' %}
@@ -428,7 +428,7 @@ iOS プッシュ
 ### エラー数
 
 {% apitags %}
-ウェブフック
+Webhook
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Errors' %} エラーは<i>送信</i>数には含まれるが、<i>ユニーク受信者</i>数には含まれない。
@@ -440,7 +440,7 @@ iOS プッシュ
 ### 推定実質開封数
 
 {% apitags %}
-メール
+Email
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Estimated Real Opens' %}
@@ -466,7 +466,7 @@ WhatsApp
 ### 特徴フラグ実験性能
 
 {% apitags %}
-フィーチャーフラッグ
+Feature Flags
 {% endapitags %}
 
 Feature Flag 実験でのメッセージのパフォーマンスメトリクス。表示される特定のメトリクスは、メッセージングチャネル、および実験が多変量検定であるかどうかによって異なります。
@@ -478,7 +478,7 @@ Feature Flag 実験でのメッセージのパフォーマンスメトリクス�
 ### ハードバウンス
 
 {% apitags %}
-メール
+Email
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Hard Bounce' %} 
@@ -504,7 +504,7 @@ SMS/MMS, RCS
 ### 誘発された開封数
 
 {% apitags %}
-iOS プッシュ, Android プッシュ
+iOS Push, Android Push
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Influenced Opens' %}
@@ -518,7 +518,7 @@ iOS プッシュ, Android プッシュ
 ### 生涯収益
 
 {% apitags %}
-コンテンツカード, メール, アプリ内メッセージ, Web プッシュ, iOS プッシュ, Android プッシュ, ウェブフック, SMS/MMS, LINE
+Content Cards, Email, In-App Message, Web Push, iOS Push, Android Push, Webhook, SMS/MMS, LINE
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Lifetime Revenue' %}
@@ -530,7 +530,7 @@ iOS プッシュ, Android プッシュ
 ### ユーザーあたりの生涯価値
 
 {% apitags %}
-コンテンツカード, メール, アプリ内メッセージ, Web プッシュ, iOS プッシュ, Android プッシュ, ウェブフック, SMS/MMS, LINE
+Content Cards, Email, In-App Message, Web Push, iOS Push, Android Push, Webhook, SMS/MMS, LINE
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Lifetime Value Per User' %}
@@ -542,7 +542,7 @@ iOS プッシュ, Android プッシュ
 ### 平均日次収益
 
 {% apitags %}
-コンテンツカード, メール, アプリ内メッセージ, Web プッシュ, iOS プッシュ, Android プッシュ, ウェブフック, SMS/MMS, LINE
+Content Cards, Email, In-App Message, Web Push, iOS Push, Android Push, Webhook, SMS/MMS, LINE
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Average Daily Revenue' %}
@@ -554,7 +554,7 @@ iOS プッシュ, Android プッシュ
 ### 日々の購入
 
 {% apitags %}
-コンテンツカード, メール, アプリ内メッセージ, Web プッシュ, iOS プッシュ, Android プッシュ, ウェブフック, SMS/MMS, LINE
+Content Cards, Email, In-App Message, Web Push, iOS Push, Android Push, Webhook, SMS/MMS, LINE
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Daily Purchases' %}
@@ -566,7 +566,7 @@ iOS プッシュ, Android プッシュ
 ### ユーザーあたりの日割り収益
 
 {% apitags %}
-コンテンツカード, メール, アプリ内メッセージ, Web プッシュ, iOS プッシュ, Android プッシュ, ウェブフック, SMS/MMS, LINE
+Content Cards, Email, In-App Message, Web Push, iOS Push, Android Push, Webhook, SMS/MMS, LINE
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Daily Revenue Per User' %}
@@ -578,10 +578,10 @@ iOS プッシュ, Android プッシュ
 ### マシン開封数
 
 {% apitags %}
-メール
+Email
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Machine Opens' %} この指標は、SendGridでは2021年11月11日から、SparkPostでは2021年12月2日からトラッキング 追跡される。Amazon SES の場合、分析は_開封数_として表示されます。ただし、クリックに対するボットフィルターはサポートされる予定です。
+{% multi_lang_include analytics/metrics.md metric='Machine Opens' %} この指標は、SendGridでは2021年11月11日から、SparkPostでは2021年12月2日からトラッキング 追跡される。Amazon SES の場合、分析は*開封数*として表示されます。ただし、クリックに対するボットフィルターはサポートされる予定です。
 
 {% endapi %}
 
@@ -590,7 +590,7 @@ iOS プッシュ, Android プッシュ
 ### 開封数
 
 {% apitags %}
-Web プッシュ, iOS プッシュ, Android プッシュ
+Web Push, iOS Push, Android Push
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Opens' %}
@@ -614,7 +614,7 @@ SMS/MMS, RCS
 ### その他の開封数
 
 {% apitags %}
-メール
+Email
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Other Opens' %} マシン開封カウントが記録される前に、ユーザーがメールを開封することも可能であることに注意すること（その他の開封に向けた開封カウントなど）。あるユーザーが、マシン開封イベント後に Apple Mail 以外の受信トレイメールを1回 (またはそれ以上) 開封した場合、ユーザーによるメール開封数がその他の開封数に加算され、ユニーク開封数には1回のみが加算されます。
@@ -626,7 +626,7 @@ SMS/MMS, RCS
 ### 再試行保留中
 
 {% apitags %}
-メール
+Email
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Pending Retry' %}
@@ -638,7 +638,7 @@ SMS/MMS, RCS
 ### 1 次コンバージョン (A) または 1 次コンバージョンイベント
 
 {% apitags %}
-コンテンツカード, メール, アプリ内メッセージ, Web プッシュ, iOS プッシュ, Android プッシュ, ウェブフック, SMS/MMS, WhatsApp
+Content Cards, Email, In-App Message, Web Push, iOS Push, Android Push, Webhook, SMS/MMS, WhatsApp
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Primary Conversions (A) or Primary Conversion Event' %} 
@@ -692,7 +692,7 @@ WhatsApp
 ### 受信済み
 
 {% apitags %}
-メール, コンテンツカード, アプリ内メッセージ, Web プッシュ, iOS プッシュ, Android プッシュ, SMS/MMS, WhatsApp
+Email, Content Cards, In-App Message, Web Push, iOS Push, Android Push, SMS/MMS, WhatsApp
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Received' %} 
@@ -736,7 +736,7 @@ SMS/MMS, RCS
 ### 収益
 
 {% apitags %}
-メール
+Email
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Revenue' %}
@@ -762,7 +762,7 @@ SMS/MMS
 ### 送信数
 
 {% apitags %}
-コンテンツカード, メール, アプリ内メッセージ, Web プッシュ, iOS プッシュ, Android プッシュ, ウェブフック, SMS/MMS, RCS, WhatsApp, LINE
+Content Cards, Email, In-App Message, Web Push, iOS Push, Android Push, Webhook, SMS/MMS, RCS, WhatsApp, LINE
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Sends' %} この指標はBrazeが提供している。スケジュールされた キャンペーンを起動すると、このメトリクスには、レート制限のためにまだ送信されたかどうかに関係なく、送信されたすべてのメッセージが含まれることに注意してください。
@@ -783,7 +783,7 @@ SMS/MMS
 ### 送信済みメッセージ
 
 {% apitags %}
-コンテンツカード, メール, アプリ内メッセージ, Web プッシュ, iOS プッシュ, Android プッシュ, ウェブフック, SMS/MMS, WhatsApp, LINE
+Content Cards, Email, In-App Message, Web Push, iOS Push, Android Push, Webhook, SMS/MMS, WhatsApp, LINE
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Messages Sent' %}  この指標はBrazeが提供している。スケジュールされた キャンペーンを起動すると、このメトリクスには、レート制限のためにまだ送信されたかどうかに関係なく、送信されたすべてのメッセージが含まれることに注意してください。
@@ -826,7 +826,7 @@ SMS/MMS
 ### ソフトバウンス
 
 {% apitags %}
-メール
+Email
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Soft Bounce' %} _ソフトバウンスは_ _延期とは_異なることに注意。この再試行期間中にメールが正常に配信されなかった場合、Brazeは送信されたキャンペーンごとに1つのソフトバウンスイベントを送信する。2025年2月25日以前は、これらの再試行は1回のキャンペーン送信に対して複数のソフトバウンスとしてカウントされていた。
@@ -840,7 +840,7 @@ SMS/MMS
 ### スパム
 
 {% apitags %}
-メール
+Email
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Spam' %}
@@ -866,7 +866,7 @@ SMS/MMS
 ### 調査ページの却下数
 
 {% apitags %}
-アプリ内メッセージ
+In-App Message
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Survey Page Dismissals' %}
@@ -878,7 +878,7 @@ SMS/MMS
 ### 調査の送信数
 
 {% apitags %}
-アプリ内メッセージ
+In-App Message
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Survey Submissions' %}
@@ -890,7 +890,7 @@ SMS/MMS
 ### クリック数の合計
 
 {% apitags %}
-メール, コンテンツカード, SMS/MMS, LINE
+Email, Content Cards, SMS/MMS, LINE
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Total Clicks' %}
@@ -919,7 +919,7 @@ SMS/MMS
 ### 却下数の合計
 
 {% apitags %}
-コンテンツカード
+Content Cards
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Total Dismissals' %} ユーザーが同じキャンペーンから2つの異なるカードを受け取り、両方を却下した場合、このカウントは2つ増える。再適格性により、ユーザーがカードを受け取るたびに_却下数の合計_を増やすことができます。各カードは異なるメッセージです。
@@ -941,7 +941,7 @@ SMS/MMS
 ### インプレッション数の合計
 
 {% apitags %}
-アプリ内メッセージ, コンテンツカード
+In-App Message, Content Cards
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Total Impressions' %} この数値は、BrazeがSDKから受け取るインプレッションイベント数の合計である。
@@ -961,7 +961,7 @@ SMS/MMS
 ### 開封数の合計
 
 {% apitags %}
-メール, iOS プッシュ, Android プッシュ, Web プッシュ, LINE
+Email, iOS Push, Android Push, Web Push, LINE
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Total Opens' %}
@@ -993,7 +993,7 @@ SMS/MMS
 ### 総収益
 
 {% apitags %}
-コンテンツカード, メール, アプリ内メッセージ, Web プッシュ, iOS プッシュ, Android プッシュ, ウェブフック, SMS/MMS, WhatsApp
+Content Cards, Email, In-App Message, Web Push, iOS Push, Android Push, Webhook, SMS/MMS, WhatsApp
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Total Revenue' %} この指標は、<a href='https://braze.com/docs/user_guide/data_and_analytics/reporting/report_builder/'>レポートビルダーによる</a>キャンペーン比較レポートでのみ利用可能である。
@@ -1005,7 +1005,7 @@ SMS/MMS
 ### ユニーククリック数
 
 {% apitags %}
-メール, コンテンツカード, LINE
+Email, Content Cards, LINE
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Unique Clicks' %}
@@ -1036,7 +1036,7 @@ SMS/MMS
 ### ユニーク却下数
 
 {% apitags %}
-コンテンツカード
+Content Cards
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Unique Dismissals' %}
@@ -1050,7 +1050,7 @@ SMS/MMS
 ### ユニークインプレッション数
 
 {% apitags %}
-アプリ内メッセージ, コンテンツカード
+In-App Message, Content Cards
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Unique Impressions' %} 
@@ -1070,7 +1070,7 @@ SMS/MMS
 ### ユニーク開封数
 
 {% apitags %}
-メール, LINE
+Email, LINE
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Unique Opens' %}
@@ -1098,7 +1098,7 @@ SMS/MMS
 ### ユニーク受信者数
 
 {% apitags %}
-すべて
+All
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Unique Recipients' %}
@@ -1114,7 +1114,7 @@ SMS/MMS
 ### 配信停止数
 
 {% apitags %}
-メール
+Email
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Unsubscribers or Unsub' %}
@@ -1136,7 +1136,7 @@ SMS/MMS
 ### 配信停止数
 
 {% apitags %}
-メール
+Email
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Unsubscribes' %}
@@ -1150,7 +1150,7 @@ SMS/MMS
 ### バリエーション
 
 {% apitags %}
-コンテンツカード, メール, アプリ内メッセージ, Web プッシュ, iOS プッシュ, Android プッシュ, ウェブフック, SMS/MMS, WhatsApp
+Content Cards, Email, In-App Message, Web Push, iOS Push, Android Push, Webhook, SMS/MMS, WhatsApp
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Variation' %}

@@ -142,10 +142,20 @@ El archivo de datos históricos de eventos en Snowflake se remonta a abril de 20
 
 {% multi_lang_include partners/snowflake_pii_gdpr.md %}
 
+### Consulta de datos compartidos: `TIME` y rendimiento de consultas
+
+Los datos de eventos en las vistas de compartición de datos (por ejemplo, `USERS_BEHAVIORS_CUSTOMEVENT_SHARED`) están **agrupados por el campo `TIME`**. Cuando filtres por **cuándo ocurrió el evento**, usa **`TIME`** como filtro preferido. Las consultas que restringen filas usando **`TIME`** son generalmente **más eficientes** que las consultas que filtran por **`SF_CREATED_AT`**, porque la agrupación se alinea con el momento del evento.
+
+| Campo | Significado |
+| ----- | ------- |
+| `TIME` | Marca de tiempo unix en la que ocurrió el evento. Usa este campo preferentemente cuando filtres por momento de ocurrencia. |
+| `SF_CREATED_AT` | Marca de tiempo en la que la fila se cargó en Snowflake (momento de ingesta). |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
+
 ### Velocidad, rendimiento y coste de las consultas
 
 La velocidad, el rendimiento y el coste de cualquier consulta realizada sobre los datos vienen determinados por el tamaño del almacén que utilices para consultar los datos. En algunos casos, dependiendo de la cantidad de datos a los que accedas para el análisis, puede que necesites utilizar un almacén de mayor tamaño para que la consulta tenga éxito. Snowflake dispone de excelentes recursos sobre la mejor forma de determinar qué tamaño utilizar, entre los que se incluyen [Resumen de los almacenes](https://docs.snowflake.net/manuals/user-guide/warehouses-overview.html) y [Consideraciones sobre los almacenes](https://docs.snowflake.net/manuals/user-guide/warehouses-considerations.html).
 
-> Si quieres consultar un conjunto de consultas de ejemplo para configurar Snowflake, echa un vistazo a nuestros ejemplos de [consultas de ejemplo]({{site.baseurl}}/partners/data_and_infrastructure_agility/data_warehouses/snowflake/sample_queries/) y de [configuración de canalización de eventos ETL]({{site.baseurl}}/partners/data_and_infrastructure_agility/data_warehouses/snowflake/etl_pipline_setup/).
+> Si quieres consultar un conjunto de consultas de ejemplo para configurar Snowflake, echa un vistazo a nuestros ejemplos de [consultas de ejemplo]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/sample_queries/) y de [configuración de canalización de eventos ETL]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/etl_pipline_setup/).
 
 Para instrucciones de configuración, consulta [Ingesta de datos en la nube: integraciones de almacén de datos]({{site.baseurl}}/user_guide/data/unification/cloud_ingestion/integrations/).

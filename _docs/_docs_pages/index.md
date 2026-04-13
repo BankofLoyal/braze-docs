@@ -18,7 +18,7 @@ doc_menu_list:
   - name: User Guide
     bg_color: '#3accdd'
     image: /assets/img/braze_icons/users-01.svg
-    link: /docs/user_guide/introduction/
+    link: /docs/user_guide/home/
     description: "Learn how to use the Braze platform to foster a more impactful customer experience."
   - name: Developer Guide
     bg_color: '#f7918e'
@@ -47,22 +47,22 @@ doc_menu_list:
     description: "Compliance documentation outlines specific terms applicable to your purchased product or service."
 
 popular_topic_list:
-  - name: Braze API Dictionary
-    link: /docs/api/home/
-  - name: API Overview
-    link: /docs/api/basics/
-  - name: POST&#58; Track Users Endpoint
+  - name: Location tracking
+    link: /docs/user_guide/audience/locations_and_geofences/location_tracking/
+  - name: "POST: Track users endpoint"
     link: /docs/api/endpoints/user_data/post_user_track/
-  - name: User Import
-    link: /docs/user_guide/data/user_data_collection/user_import/
-  - name: Web SDK Setup
+  - name: API overview
+    link: /docs/api/basics/
+  - name: Integrate the Braze SDK
     link: /docs/developer_guide/sdk_integration/?sdktab=web
-  - name: Custom Events
-    link: /docs/user_guide/data/custom_data/custom_events/
-  - name: Custom Attributes
-    link: /docs/user_guide/data/custom_data/custom_attributes/
-  - name: Braze Currents
-    link: /docs/user_guide/data/braze_currents/
+  - name: User attributes object
+    link: /docs/api/objects_filters/user_attributes_object/
+  - name: Braze Agents
+    link: /docs/user_guide/brazeai/agents/
+  - name: Currents
+    link: /docs/user_guide/data/distribution/braze_currents/
+  - name: Cloud Data Ingestion
+    link: /docs/user_guide/data/unification/cloud_ingestion/
 
 helpful_resources_list:
   - name: Innovation Statement

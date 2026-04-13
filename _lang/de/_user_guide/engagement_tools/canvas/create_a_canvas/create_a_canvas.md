@@ -32,7 +32,7 @@ Der Canvas-Builder führt Sie Schritt für Schritt durch die Einrichtung Ihres C
     - Tags hinzufügen
     - Konversions-Events zuweisen und deren Event-Typen und Fristen wählen
 
-    Learn more about the [Basics step](#step-2a-set-up-your-canvas-basics).
+    Mehr erfahren über den [Grundlagen-Schritt](#step-2a-set-up-your-canvas-basics).
   {% endtab %}
   {% tab Entry Schedule %}
     Hier legen Sie fest, wie und wann Ihre Nutzer:innen in Ihr Canvas eintreten:
@@ -40,7 +40,7 @@ Der Canvas-Builder führt Sie Schritt für Schritt durch die Einrichtung Ihres C
     - Aktionsbasiert: Ihre Nutzer:innen treten in Ihr Canvas ein, nachdem sie eine bestimmte Aktion ausgeführt haben
     - API-getriggert: Verwenden Sie eine API-Anfrage, um Nutzer:innen in Ihr Canvas aufzunehmen
 
-    Learn more about the [Entry Schedule step](#step-2b-determine-your-canvas-entry-schedule).
+    Mehr erfahren über den [Eintrittszeitplan-Schritt](#step-2b-determine-your-canvas-entry-schedule).
   {% endtab %}
   {% tab Target Audience %}
     Hier wählen Sie Ihre Zielgruppe aus:
@@ -48,7 +48,7 @@ Der Canvas-Builder führt Sie Schritt für Schritt durch die Einrichtung Ihres C
     - Feinabstimmung der Limits für erneuten Eintritt und Eintritt in Canvas
     - Sehen Sie sich eine Zusammenfassung Ihrer Zielgruppe an
 
-    Learn more about the [Target Audience step](#step-2c-set-your-target-entry-audience).
+    Mehr erfahren über den [Zielgruppen-Schritt](#step-2c-set-your-target-entry-audience).
   {% endtab %}
   {% tab Send Settings %}
     Hier wählen Sie Ihre Canvas-Sendeeinstellungen aus:
@@ -56,12 +56,12 @@ Der Canvas-Builder führt Sie Schritt für Schritt durch die Einrichtung Ihres C
     - Legen Sie ein Rate-Limit für Ihre Canvas-Nachrichten fest
     - Ruhezeiten aktivieren und einstellen
 
-    Learn more about the [Send Settings step](#step-2d-select-your-send-settings).
+    Mehr erfahren über den [Sendeeinstellungen-Schritt](#step-2d-select-your-send-settings).
   {% endtab %}
   {% tab Build Canvas %}
     Hier erstellen Sie Ihr Canvas.
 
-    Learn how to [build your Canvas](#step-3-build-your-canvas) using the Canvas builder.
+    Erfahren Sie, wie Sie [Ihr Canvas erstellen](#step-3-build-your-canvas) – mit dem Canvas-Builder.
   {% endtab %}
   {% tab Summary %}
     Hier finden Sie eine Zusammenfassung Ihrer Canvas-Details. Wenn Sie den [Canvas-Genehmigungsworkflow]({{site.baseurl}}/user_guide/engagement_tools/messaging_fundamentals/approvals/) aktiviert haben, können Sie die aufgeführten Canvas-Details vor dem Start genehmigen.
@@ -102,6 +102,8 @@ Sie können eine von drei Möglichkeiten wählen, wie Nutzer:innen in Ihr Canvas
     In diesem Beispiel treten Nutzer:innen basierend auf den zeitbasierten Optionen jeden Dienstag um 12 Uhr in ihrer Ortszeit wöchentlich in dieses Canvas ein, beginnend am 14. November 2025 bis zum 31. Dezember 2025.
 
     ![Die Seite „Eintrittszeitplan" mit dem Typ „Geplant". Aufgrund der Auswahl werden zeitbasierte Optionen angezeigt, darunter Häufigkeit, Startzeit, Wiederholung, Tage und mehr.]({% image_buster /assets/img_archive/Canvas_Scheduled_Delivery.png %})
+
+    Bei der Zustellung in der Ortszeit bewertet Braze die Eintrittsberechtigung zweimal: zuerst zur Samoa-Zeit (UTC+13 oder UTC+14 während der Sommerzeit) am geplanten Tag und dann erneut zur Ortszeit der Nutzer:innen. Ein:e Nutzer:in muss beide Prüfungen bestehen, um in das Canvas einzutreten. Wenn Ihre Eintrittsfilter relative Zeitfenster verwenden (z. B. „mehr als 2 Tage her"), ist der 24-Stunden-Zeitraum zum Zeitpunkt der ersten Prüfung möglicherweise noch nicht abgelaufen, was dazu führen kann, dass Nutzer:innen einen Tag zu spät eintreten. Um dies zu vermeiden, verwenden Sie ein breiteres Zeitfenster, z. B. mindestens zwei Tage. Weitere Details finden Sie unter [Wann bewertet Braze Nutzer:innen für die Zustellung in der Ortszeit?]({{site.baseurl}}/user_guide/engagement_tools/campaigns/faq/#when-does-braze-evaluate-users-for-local-time-zone-delivery)
   {% endtab %}
   {% tab Action-Based Delivery %}
     Bei der aktionsbasierten Zustellung treten Nutzer:innen in das Canvas ein und erhalten Nachrichten, wenn sie bestimmte Aktionen ausführen, z. B. Ihre App öffnen, einen Kauf tätigen oder ein angepasstes Event auslösen.
@@ -136,7 +138,7 @@ Wenn ein:e Nutzer:in das Canvas erneut betritt, dieselbe Komponente wie beim vor
 
 Nur Nutzer:innen, die Ihren definierten Kriterien entsprechen, können die Journey im Schritt **Zielgruppe** betreten. Das bedeutet, dass Braze die Zielgruppe zunächst auf ihre Eignung prüft, **bevor** Nutzer:innen die Canvas-Journey betreten. Wenn Sie zum Beispiel neue Nutzer:innen ansprechen möchten, können Sie ein Segment von Nutzer:innen auswählen, die Ihre App vor weniger als einer Woche zum ersten Mal verwendet haben.
 
-Unter **Eintrittskontrollen** können Sie die Anzahl der Nutzer:innen begrenzen, die jedes Mal eintreten, wenn das Canvas planmäßig ausgeführt wird. Bei API-getriggerten und aktionsbasierten Canvasen tritt dieses Limit zu jeder UTC-Stunde ein.
+Unter **Eintrittskontrollen** können Sie die Anzahl der Nutzer:innen begrenzen, die jedes Mal eintreten, wenn das Canvas planmäßig ausgeführt wird. Bei API-getriggerten und aktionsbasierten Canvasen greift dieses Limit zu jeder UTC-Stunde.
 
 {% multi_lang_include alerts/warning_alerts.md alert='Canvas race condition audience trigger' %}
 
@@ -148,7 +150,7 @@ Nachdem Sie Segmente und Filter zu Ihrer Zielgruppe hinzugefügt haben, können 
 
 ##### Eintrittskontrollen auswählen
 
-Eintrittskontrollen bestimmen, ob Nutzer:innen ein Canvas erneut betreten dürfen. Sie können auch die Anzahl der Personen begrenzen, die dieses Canvas potenziell betreten können, mit einer ausgewählten Kadenz abhängig von Ihrem Eintrittszeitplan-Typ:
+Eintrittskontrollen bestimmen, ob Nutzer:innen ein Canvas erneut betreten dürfen. Sie können auch die Anzahl der Personen begrenzen, die dieses Canvas potenziell betreten können – mit einer wählbaren Kadenz abhängig von Ihrem Eintrittszeitplan-Typ:
 
 - **Geplant:** Lifetime des Canvas oder jedes Mal, wenn das Canvas planmäßig ausgeführt wird
 - **Aktionsbasiert:** Stündlich, täglich oder Lifetime des Canvas
@@ -201,7 +203,7 @@ Diese Abo-Einstellungen werden pro Schritt angewendet, d. h. es gibt keine Auswi
 Fügen Sie bei dieser Konfiguration keine Filter in den Schritt **Zielgruppe** ein, die die Zielgruppe auf einen einzigen Kanal beschränken (z. B. `Foreground Push Enabled = True` oder `Email Subscription = Opted-In`).
 {% endalert %}
 
-Legen Sie bei Bedarf Ruhezeiten (die Zeit, in der Ihre Nachrichten nicht gesendet werden) für Ihr Canvas fest. Aktivieren Sie **Ruhezeiten aktivieren** in Ihren **Sendeeinstellungen**. Wählen Sie dann Ihre Ruhezeiten in der Ortszeit Ihrer Nutzer:innen und die Aktion, die folgen soll, wenn die Nachricht innerhalb dieser Ruhezeiten ausgelöst wird.
+Legen Sie bei Bedarf Ruhezeiten (die Zeit, in der Ihre Nachrichten nicht gesendet werden) für Ihr Canvas fest. Aktivieren Sie **Ruhezeiten aktivieren** in Ihren **Sendeeinstellungen**. Wählen Sie dann Ihre Ruhezeiten in der Ortszeit Ihrer Nutzer:innen und die Aktion, die folgen soll, wenn die Nachricht innerhalb dieser Ruhezeiten getriggert wird.
 
 ![Die Seite „Ruhezeiten" mit einem Kontrollkästchen zur Aktivierung der Ruhezeiten. Wenn aktiviert, können Startzeit, Endzeit und Fallback-Verhalten festgelegt werden.]({% image_buster /assets/img/quiet_hours.png %})
 
@@ -283,7 +285,7 @@ Die Nachrichtenkomponente verwaltet die an Nutzer:innen gesendeten Nachrichten. 
 Wählen Sie **Fertig**, nachdem Sie die Konfiguration Ihrer Canvas-Komponente abgeschlossen haben.
 
 {% tabs local %}
-{% tab Canvas Entry Properties %}
+{% tab Canvas-Eingangs-Eigenschaften %}
 
 Das [`context`-Objekt]({{site.baseurl}}/api/objects_filters/context_object) wird im Schritt **Eintrittszeitplan** beim Erstellen eines Canvas konfiguriert und gibt den Auslöser an, der eine:n Nutzer:in in ein Canvas einführt. Diese Eigenschaften können auch auf die Eigenschaften von Eintritts-Payloads in API-getriggerten Canvasen zugreifen. Beachten Sie, dass das `context`-Objekt bis zu 50 KB groß sein kann.
 
@@ -295,7 +297,7 @@ Betrachten Sie zum Beispiel die folgende Anfrage: `\"context\" : {\"product_name
 
 {% endtab %}
 
-{% tab Event Properties %}
+{% tab Event-Eigenschaften %}
 Event-Eigenschaften sind die Eigenschaften, die Sie für angepasste Events und Käufe festlegen. Diese `event_properties` können sowohl in Kampagnen mit aktionsbasierter Zustellung als auch in Canvasen verwendet werden.
 
 In Canvas können angepasste Event- und Kauf-Event-Eigenschaften in Liquid in jedem Nachrichtenschritt verwendet werden, der auf einen Aktionspfade-Schritt folgt. Verwenden Sie dieses Liquid {% raw %} ``{{event_properties.${property_name}}}`` {% endraw %}, wenn Sie auf diese `event_properties` verweisen. Diese Events müssen angepasste Events oder Kauf-Events sein, um auf diese Weise in der Nachrichtenkomponente verwendet werden zu können.

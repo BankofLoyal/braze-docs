@@ -1,17 +1,9 @@
-{% if include.section == "Prerequisites" %}
-## 前提条件
+{% if include.section == "multi-language prerequisites" %}
 
-[多言語サポート]({{site.baseurl}}/multi_language_support/)を編集および管理するには、ワークスペースに対して以下の[ユーザー権限]({{site.baseurl}}/user_guide/administrative/app_settings/manage_your_braze_users/user_permissions/)が必要です。
-
-- ローカライゼーション設定の表示
-- ローカライゼーション設定の編集
-- ローカライゼーション設定の削除
-
-メッセージにロケールを追加するには、「キャンペーン編集」の権限が必要です。
-
-{% alert important %}
-現在、多言語サポートは早期アクセス段階です。この早期アクセスへの参加にご興味がある場合は、Braze のアカウントマネージャーにお問い合わせください。
-{% endalert %}
+| 機能 | 必須のユーザー権限 |
+| --- | --- |
+| 多言語ロケール | 多言語ロケールを作成および管理するには、以下の権限が必要です。<br><br> {::nomarkdown}詳細な権限: <ul><li>ローカライゼーション設定の編集</li><li>ローカライゼーション設定の削除</li></ul> レガシー権限: <ul><li>多言語設定の管理</li></ul>{:/} |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
 {% endif %}
 

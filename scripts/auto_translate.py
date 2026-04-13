@@ -222,8 +222,28 @@ def match_existing_chunks(english_chunks, existing_translation):
     return result
 
 
+def _build_system_blocks(system_prompt):
+    """Wrap a system prompt for prompt caching.
+
+    Accepts either a plain string (returned as-is for backward compat)
+    or a list of (text, cacheable) tuples.  Cacheable blocks get an
+    ``ephemeral`` cache_control marker so Anthropic can reuse them
+    across calls within the same batch window (~5 min).
+    """
+    if isinstance(system_prompt, str):
+        return system_prompt
+    blocks = []
+    for text, cacheable in system_prompt:
+        block = {"type": "text", "text": text}
+        if cacheable:
+            block["cache_control"] = {"type": "ephemeral"}
+        blocks.append(block)
+    return blocks
+
+
 def call_claude(client, system_prompt, user_message, retries=3):
     """Call the Claude API via streaming with exponential-backoff retry."""
+    system_blocks = _build_system_blocks(system_prompt)
     for attempt in range(retries):
         try:
             text_chunks = []
@@ -232,7 +252,7 @@ def call_claude(client, system_prompt, user_message, retries=3):
                 model=MODEL,
                 max_tokens=MAX_TOKENS,
                 temperature=0,
-                system=system_prompt,
+                system=system_blocks,
                 messages=[{"role": "user", "content": user_message}],
             ) as stream:
                 for text in stream.text_stream:
@@ -257,7 +277,9 @@ def call_claude(client, system_prompt, user_message, retries=3):
 
 def translate_file(client, prompt, english_content, existing_translation, language_name, extra_context=""):
     """Translate a single English file into the target language."""
-    system = prompt + extra_context
+    system = [(prompt, True)]
+    if extra_context:
+        system.append((extra_context, False))
 
     user_msg = f"## Target language\n{language_name}\n\n"
     user_msg += f"## English source (translate this)\n\n{english_content}\n\n"
@@ -275,13 +297,13 @@ def translate_file(client, prompt, english_content, existing_translation, langua
 
 def fix_file(client, prompt, translated_content, build_error, language_name):
     """Send a translated file back to Claude to fix Jekyll build errors."""
-    system = (
-        prompt
-        + "\n\n## ADDITIONAL CONTEXT: FIX MODE\n"
+    fix_suffix = (
+        "\n\n## ADDITIONAL CONTEXT: FIX MODE\n"
         "The file below failed the Jekyll build. Fix ONLY the structural or "
         "syntax issues that caused the failure. Preserve all translations. "
         "Return the complete fixed file and nothing else."
     )
+    system = [(prompt, True), (fix_suffix, False)]
 
     user_msg = f"## Target language\n{language_name}\n\n"
     user_msg += f"## Translated file (has build errors)\n\n{translated_content}\n\n"
@@ -314,7 +336,9 @@ no commentary. If the translation is already high quality, return it unchanged.\
 
 def review_file(client, english_content, translated_content, language_name, extra_context=""):
     """Second-pass review of a translation for quality improvement."""
-    system = REVIEW_PROMPT + extra_context
+    system = [(REVIEW_PROMPT, True)]
+    if extra_context:
+        system.append((extra_context, False))
 
     user_msg = f"## Target language\n{language_name}\n\n"
     user_msg += f"## English source\n\n{english_content}\n\n"
@@ -629,6 +653,61 @@ def repair_front_matter(english_content, translated_content):
 
     if repairs:
         translated_content = f"---\n{repaired_fm}\n---\n{tr_body}"
+
+    return translated_content, repairs
+
+
+def repair_yaml_syntax(translated_content):
+    """Validate YAML front matter and auto-fix common parse errors.
+
+    Fixes:
+    - German „...ASCII" → „...Unicode" (ASCII closing quote inside YAML strings)
+    - Unquoted values containing colons (wraps in double quotes)
+    """
+    import yaml as _yaml
+
+    tr_fm, tr_body = _extract_front_matter(translated_content)
+    if not tr_fm:
+        return translated_content, []
+
+    try:
+        _yaml.safe_load(tr_fm)
+        return translated_content, []
+    except _yaml.YAMLError:
+        pass
+
+    repairs = []
+    repaired_fm = tr_fm
+
+    # Fix 1: German ASCII closing quotes — „(text)" where " is U+0022
+    if "\u201e" in repaired_fm:
+        fixed = re.sub(r'\u201e([^\u201e\u201c]*?)"', '\u201e\\1\u201c', repaired_fm)
+        if fixed != repaired_fm:
+            repaired_fm = fixed
+            repairs.append("yaml_syntax — replaced ASCII closing quotes after „ with Unicode \u201c")
+
+    # Fix 2: Unquoted values containing bare colons
+    fixed_lines = []
+    for line in repaired_fm.split("\n"):
+        m = re.match(r'^(\s*(?:description|name|title|nav_title|article_title'
+                     r'|guide_top_text|guide_top_header|glossary_top_header'
+                     r'|glossary_top_text|glossary_filter_text'
+                     r'|search_tag)):\s+(.+)$', line)
+        if m:
+            key_part, value = m.group(1), m.group(2)
+            if not value.startswith('"') and ":" in value:
+                escaped = value.replace("\\", "\\\\").replace('"', '\\"')
+                line = f'{key_part}: "{escaped}"'
+                repairs.append(f"yaml_syntax — quoted {key_part.strip()} (contains colon)")
+        fixed_lines.append(line)
+    repaired_fm = "\n".join(fixed_lines)
+
+    if repairs:
+        try:
+            _yaml.safe_load(repaired_fm)
+            translated_content = f"---\n{repaired_fm}\n---\n{tr_body}"
+        except _yaml.YAMLError:
+            repairs.append("yaml_syntax — auto-repair attempted but YAML still invalid")
 
     return translated_content, repairs
 
@@ -967,6 +1046,9 @@ def qc_check_file(english_path, translated_path, lang_key):
         english_content, translated_content
     )
     findings["repairs"].extend(fm_repairs)
+
+    translated_content, yaml_repairs = repair_yaml_syntax(translated_content)
+    findings["repairs"].extend(yaml_repairs)
 
     translated_content, cb_repairs = repair_code_blocks(
         english_content, translated_content

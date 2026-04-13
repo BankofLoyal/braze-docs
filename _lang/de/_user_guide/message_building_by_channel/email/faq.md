@@ -15,6 +15,12 @@ channel: email
 
 Wenn mehrere Nutzer:innen mit übereinstimmenden E-Mail-Adressen in einem Segment sind, das eine Kampagne erhalten soll, wird zum Zeitpunkt des Versands ein zufälliges Nutzerprofil mit dieser E-Mail-Adresse ausgewählt. Auf diese Weise wird die E-Mail nur einmal versendet und dedupliziert, wodurch sichergestellt wird, dass die E-Mail nicht mehrmals an dieselbe E-Mail-Adresse gesendet wird.
 
+Die folgenden Szenarien können den Eindruck erwecken, dass eine Nutzer:in eine E-Mail zweimal erhalten hat:
+
+- **Bei der Erstellung der Kampagne oder des Canvas ist ein Fehler aufgetreten:** Die Nutzer:in erhält möglicherweise nicht buchstäblich denselben Versand zweimal, kann aber zwei separate E-Mails mit derselben Betreffzeile erhalten. Wenn eine Kampagne oder ein Canvas dupliziert wird, überprüfen Sie die E-Mail-Konfigurationsdetails wie Bilder oder Betreffzeilen. Sie können auch die Changelogs einsehen, um festzustellen, ob die Kampagne oder der Canvas nach dem Start geändert wurde – ein Duplikat kann dieselbe Betreffzeile wie das Original haben, als die Nutzer:in es erhalten hat.
+- **Mehrere Nutzerprofile haben E-Mail-Weiterleitung:** Wenn eine Nutzer:in mehrere Konten in einer bestimmten App hat, aber ein Konto E-Mails weiterleitet, erhält die Nutzer:in die Kampagne einmal pro Posteingang; E-Mails können im Posteingang, an den Nachrichten weitergeleitet werden, doppelt erscheinen. Nur einige Anbieter zeigen an, wenn eine E-Mail von einem anderen Konto weitergeleitet wurde.
+- **E-Mail-Konfiguration bei der Empfänger:in:** Einige Clients führen Posteingänge zusammen („universeller Posteingang"). Wenn dieselbe Kampagne mehrere Konten anspricht, die sich einen Posteingang teilen, kann es so aussehen, als hätte eine Person die Kampagne zweimal erhalten, obwohl tatsächlich zwei verschiedene Profile angeschrieben wurden. Die Empfänger:in kann bestätigen, ob mehrere Konten in einem Posteingang zusammengeführt sind.
+
 Beachten Sie, dass diese Deduplizierung erfolgt, wenn die anvisierten Nutzer:innen in derselben Sendung enthalten sind. Getriggerte Kampagnen können zu mehreren Versendungen an dieselbe E-Mail-Adresse führen (sogar innerhalb eines Zeitraums, in dem Nutzer:innen aufgrund einer erneuten Teilnahmeberechtigung ausgeschlossen werden könnten), wenn verschiedene Nutzer:innen mit übereinstimmenden E-Mail-Adressen das auslösende Ereignis zu unterschiedlichen Zeiten protokollieren. Nutzer:innen werden beim Eingang in ein Canvas nicht per E-Mail dedupliziert. Es ist also möglich, dass sie nicht über den ersten Schritt eines Canvas hinaus dedupliziert werden, wenn sie aufgrund einer begrenzten Eingangsgeschwindigkeit zu leicht unterschiedlichen Zeiten vorankommen. Wenn eine Nutzer:in, die mit einer bestimmten E-Mail-Adresse verknüpft ist, eine E-Mail öffnet oder anklickt, werden alle Nutzerprofile, die dieselbe E-Mail-Adresse haben, als Öffner:innen bzw. Klicker:innen der Kampagne markiert.
 
 #### Eine Ausnahme: Per API getriggerte Kampagnen
@@ -39,11 +45,15 @@ Außerdem kann es vorkommen, dass Nachrichten zwar zugestellt werden, aber im Sp
 
 Schließlich können auch Ihr Unternehmen und die Art der von Ihnen versendeten E-Mails die Zustellung beeinflussen. Wer zum Beispiel hauptsächlich [Transaktions-E-Mails]({{site.baseurl}}/api/api_campaigns/transactional_api_campaign) versendet, sollte mit einer besseren Quote rechnen als jemand, der viele Marketing-Nachrichten verschickt.
 
-### Warum ergeben die Kennzahlen zur E-Mail-Zustellung zusammengenommen nicht 100 %?
+### Warum ergeben die Metriken zur E-Mail-Zustellung zusammengenommen nicht 100 %?
 
-Die Kennzahlen zur E-Mail-Zustellung (Zustellungen, Bounces und Spam-Quote) können sich auf weniger als 100 % summieren, da E-Mails, die einen Soft Bounce erhalten, nach einer Wiederholungsfrist von bis zu 72 Stunden möglicherweise nicht zugestellt werden.
+Die Metriken zur E-Mail-Zustellung (Zustellungen, Bounces und Spam-Quote) können sich auf weniger als 100 % summieren, da E-Mails, die einen Soft Bounce erhalten, nach einer Wiederholungsfrist von bis zu 72 Stunden möglicherweise nicht zugestellt werden.
 
 Soft Bounces sind E-Mails, die wegen eines temporären Problems wie eines vollen Postfachs, eines zeitweilig nicht verfügbaren Servers o. Ä. zurückgeschickt werden. Wenn eine Soft-Bounce-E-Mail nach 72 Stunden immer noch nicht zugestellt wurde, wird diese E-Mail in den Zustellungsmetriken der Kampagne nicht berücksichtigt.
+
+### Was ist eine E-Mail-Feedback-Schleife?
+
+Eine E-Mail-Feedback-Schleife (FBL) ermöglicht es Absendern, ihre Reputation zu überwachen, indem Kampagnen identifiziert werden, die eine hohe Anzahl an Beschwerden erhalten. Schritte zur Implementierung einer Gmail-Feedback-Schleife finden Sie im Artikel [Google Feedback Loop](https://support.google.com/a/answer/6254652).
 
 ### Was versteht man unter Öffnungs-Trackingpixeln?
 
@@ -51,7 +61,11 @@ Soft Bounces sind E-Mails, die wegen eines temporären Problems wie eines vollen
 
 ### Was passiert, wenn eine E-Mail-Kampagne oder ein Canvas gestoppt wird?
 
-Die Nutzer:innen werden daran gehindert, den Canvas zu betreten, und es werden keine weiteren Nachrichten verschickt. Bei E-Mail-Kampagnen und Canvases bewirkt die Stopptaste nicht, dass der Versand sofort beendet wird. Denn wenn die Sendeaufträge einmal übermittelt wurden, kann ihre Zustellung nicht mehr verhindert werden.
+Die Nutzer:innen werden daran gehindert, den Canvas zu betreten, und es werden keine weiteren Nachrichten verschickt. 
+
+Bei E-Mail-Kampagnen und Canvases bewirkt die Stopptaste nicht, dass der Versand sofort beendet wird. Denn wenn die Sendeaufträge einmal übermittelt wurden, kann ihre Zustellung nicht mehr verhindert werden, was mit einer gewissen Verzögerung geschehen kann. 
+
+Obwohl Braze keine weiteren Anfragen sendet, sobald die Kampagne oder der Canvas gestoppt wurde, können die Analytics weiterhin ansteigen, während der ESP bereits übermittelte Anfragen noch verarbeitet.
 
 ### Warum erhalte ich mehr E-Mail-Klicks als Öffnungen?
 
@@ -75,6 +89,12 @@ Bewährte Methoden für den Umgang mit diesen Reaktionen finden Sie unter [Handh
 ### Kann Braze Abmeldelinks erfassen, die zur Metrik „Abmeldungen" gezählt werden?
 
 Braze erfasst Abmeldelinks, wenn folgendes Liquid in E-Mails verwendet wird: {%raw%}`${set_user_to_unsubscribed_url}`{%endraw%}
+
+### Warum sehe ich eine andere Anzahl von Abmeldungen als Klicks auf meinen Abmeldelink?
+
+Wenn es mehr _Abmeldungen_ gibt als Nutzer:innen, die auf den Abmeldelink im E-Mail-Text geklickt haben, erklären List-Unsubscribe-Header-Aktionen häufig die Differenz – ein Klick auf den List-Unsubscribe-Header zählt als _Abmeldung_, aber nicht als _Klick_ auf den Link im Text.
+
+Wenn die Gesamtzahl der Klicks auf den Abmeldelink im Text größer ist als die Anzahl der _Abmeldungen_, haben Nutzer:innen möglicherweise mehr als einmal auf den Link geklickt.
 
 ### Kann ich einen Link „Diese E-Mail im Browser anzeigen" zu meinen E-Mails hinzufügen?
 
@@ -107,3 +127,49 @@ Die Prozentsätze der maschinellen Öffnungen stellen keinen verlässlichen Maß
 ### Beinhaltet die Metrik *Eindeutige Öffnungen* auch *Maschinelle Öffnungen*?
 
 Ja. *Eindeutige Öffnungen* beinhalten *Maschinelle Öffnungen*. In der Ansicht **Kampagnen-Analytics** und im **Berichts-Builder** können Sie beide Metriken einsehen.
+
+### Warum stimmt mein E-Mail-Zustellungsvolumen nicht mit meinem Sendevolumen überein?
+
+Nachdem eine E-Mail versendet wurde, entscheidet der Posteingang der Empfänger:in, wann sie zugestellt wird. Nachrichten können aufgrund eines vollen Postfachs, ESP-Drosselung von einer bestimmten IP und ähnlicher Gründe um Stunden oder Tage verzögert werden.
+
+Wenn verzögerte Nachrichten an einem anderen Kalendertag als dem Sendetag zugestellt werden, können die _Zustellungen_ die _Sendungen_ für denselben Zeitraum übersteigen. Wenn viele Verzögerungen an einem Tag zusammenkommen, können die _Sendungen_ die _Zustellungen_ für diesen Zeitraum übersteigen.
+
+### Warum wird mir eine Warnung angezeigt, einen Abmeldelink einzufügen, obwohl meine E-Mail bereits einen enthält?
+
+Diese Warnung kann bei Kampagnen bestehen bleiben, die von einer Kampagne ohne Abmeldelink dupliziert wurden. So beheben Sie das:
+
+- Bei HTML-E-Mails gehen Sie zum Tab **Klartext** und wählen Sie **Aus HTML neu generieren**.
+- Duplizieren Sie nach dem Duplizieren die Variante und entfernen Sie dann die ursprüngliche Variante. Wählen Sie **nicht** die ursprüngliche Variante aus, da die Warnung sonst übernommen werden kann.
+
+### Aus welchen Gründen hat meine Nutzer:in eine E-Mail-Kampagne nicht erhalten?
+
+Gründe, warum eine Nutzer:in eine E-Mail-Kampagne nicht erhalten hat:
+
+- Sie war nicht berechtigt, die E-Mail zu erhalten.
+- Ihre E-Mail-Adresse ist ungültig oder existiert nicht.
+- Sie hat die Nachricht möglicherweise verpasst oder gelöscht.
+- Die Nachricht befindet sich möglicherweise in ihrem Spam-Ordner.
+
+### Wie kann ich Bilder in Outlook optimieren?
+
+Outlook verwendet häufig ein Microsoft-Word-ähnliches Rendering, das einen Rahmen um Bilder hinzufügen kann. Sie können Inhalte so umschließen, dass sie in Office-Clients ausgeblendet werden, indem Sie standardmäßige bedingte Kommentare verwenden, zum Beispiel:
+
+```html
+<!--[if !mso]><!-- -->
+<span>Content hidden in Outlook desktop</span>
+<!--<![endif]-->
+```
+
+### Kann ich SVG- oder WEBP-Bilder in meinen E-Mail-Nachrichten verwenden?
+
+SVG-Bilder werden in Gmail Web oder Gmail iOS nicht dargestellt. WEBP wird nicht durchgängig von allen Clients unterstützt. Verwenden Sie stattdessen weit verbreitete Formate wie PNG oder JPEG, damit Bilder zuverlässig angezeigt werden.
+
+### Können Liquid-Variablen, die in einem Teil des Nachrichten-Editors zugewiesen wurden, in einem anderen verwendet werden?
+
+Nein. Jeder Teil der E-Mail (Betreffzeile, Text, Header, Buttons usw.) wird separat generiert, sodass Liquid, das in einem Feld zugewiesen wurde, in einem anderen nicht verfügbar ist. Weisen Sie Variablen in jedem Feld zu, das sie benötigt.
+
+### Mein E-Mail-Template fehlt. Wo finde ich es?
+
+Gehen Sie zu **Templates** > **E-Mail-Templates**. Sie können nach Typ filtern (HTML oder Drag-and-Drop).
+
+Stellen Sie sicher, dass Sie die Berechtigung haben, Templates einzusehen – siehe [Nutzerberechtigungen]({{site.baseurl}}/user_guide/administrative/app_settings/manage_your_braze_users/user_permissions/).

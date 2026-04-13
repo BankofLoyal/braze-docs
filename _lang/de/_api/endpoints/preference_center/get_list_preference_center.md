@@ -5,7 +5,7 @@ search_tag: Endpoint
 page_order: 2
 layout: api_page
 page_type: reference
-description: "Dieser Artikel beschreibt die Details des Braze-Endpunkts „Liste der Präferenzzentren"."
+description: "Dieser Artikel beschreibt die Details des Braze-Endpunkts „Liste der Präferenzzentren“."
 
 ---
 {% api %}
