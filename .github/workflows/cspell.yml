@@ -63,7 +63,7 @@ jobs:
 
       - name: Sync spelling PR comment
         if: always() && (steps.spellcheck.outcome == 'success' || steps.spellcheck.outcome == 'failure')
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         env:
           SPELLCHECK_OUTCOME: ${{ steps.spellcheck.outcome }}
           SPELLCHECK_RAN: ${{ steps.spellcheck.outputs.ran }}
