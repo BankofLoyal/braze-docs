@@ -27,7 +27,11 @@ For best results, refer to the following image size and message length guideline
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3  .reset-td-br-4 role="presentation" }
 
 {% alert note %}
-GIFs are not supported in Android push notifications. This is a platform limitation, not a Braze limitation. For in-app messages and Content Cards on Android, GIF support requires integrating an external image library such as [Glide](https://bumptech.github.io/glide/) or [Fresco](https://frescolib.org/). On iOS, GIFs are natively supported across push, in-app messages, and Content Cards.
+GIFs are not supported in Android push notifications. This is an Android platform limitation, not a Braze limitation.
+
+For in-app messages and Content Cards on Android, you can support GIFs by integrating a third-party image library, such as [Glide](https://bumptech.github.io/glide/) or [Fresco](https://frescolib.org/).
+
+On iOS, push notifications support GIFs. In-app messages and Content Cards require a custom GIF image provider.
 {% endalert %}
 
 {% endtab %}
