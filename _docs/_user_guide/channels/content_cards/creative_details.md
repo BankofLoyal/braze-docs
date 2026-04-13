@@ -63,7 +63,7 @@ If you want more creative control, the image-only card is for you. Create your i
 
 ## Global creative details {#general}
 
-Content Cards come with great functionality from the very beginning. At this time, card styling cannot be done natively in your Braze account, but you can style your Content Card by type and the Content Card feed during integration. Refer to [Customizing Content Cards]({{site.baseurl}}/developer_guide/content_cards/) for more information.
+Content Cards support text and images, including GIFs, out of the box. At this time, custom styling for the card, such as different font colors or multiple images, can't be done in the dashboard. You can custom style your Content Card and feed during integration. For more details, refer to [Customize cards]({{site.baseurl}}/developer_guide/content_cards/customizing_cards/) for the Braze SDK.
 
 ### Dismissal behavior
 
@@ -85,6 +85,4 @@ Keep Content Cards relevant by setting them to dismiss when a user takes relevan
 | --- | --- |---|
 | The Android SDK does not provide animated GIF support by default. For more details on activating GIF support, refer to [GIFs]({{site.baseurl}}/developer_guide/content_cards/embedding_gifs/?sdktab=android). | The Swift SDK does not provide animated GIF support by default. For more details on activating GIF support, refer to the [GIF support tutorial](https://braze-inc.github.io/braze-swift-sdk/tutorials/braze/c3-gif-support). | GIF support is included by default in the Web SDK integration. |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 role="presentation" }
-
-<br><br>
 

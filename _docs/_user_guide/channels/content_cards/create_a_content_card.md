@@ -76,7 +76,7 @@ Select **Add Languages** to add your desired languages from the provided list. T
 
 ![A window with English, Spanish, and French selected for the languages, and title, description, and link text selected for fields to internationalize.]({% image_buster /assets/img/add_languages.png %}){: style="max-width:70%;"}
 
-##### Creating right-to-left messages
+##### Create right-to-left messages
 
 The final appearance of right-to-left messages depends largely on how service providers render them. For best practices on crafting right-to-left messages that display as accurately as possible, refer to [Creating right-to-left messages]({{site.baseurl}}/user_guide/messaging/messaging_fundamentals/localization/right_to_left_messages/).
 
@@ -86,7 +86,9 @@ Write anything you want. There are no limits, but the faster you can get your me
 
 #### Image
 
-Add an image to your Content Card by selecting **Add Image** or providing an image URL. Selecting **Add Image** opens the **Media Library**, where you can select a previously uploaded image or add a new one. Each message type and platform may have its own suggested proportions and requirements, so be sure to check what those are before commissioning or making an image from scratch! Keep in mind that Content Card message fields are limited to 2&nbsp;KB in total size.
+To add an image to your Content Card, you can select **Add Image** or provide an image URL. Selecting **Add Image** opens the **Media Library**, where you can select a previously uploaded image or add a new one. 
+
+Each message type and platform may have its own suggested proportions and requirements, so be sure to check what those are before commissioning or making an image from scratch. Keep in mind that Content Card message fields are limited to 2&nbsp;KB in total size.
 
 {% multi_lang_include alerts/important_alerts.md alert='dynamic image URL' %}
 
