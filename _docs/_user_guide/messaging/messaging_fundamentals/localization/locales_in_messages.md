@@ -15,6 +15,10 @@ description: "This article provides steps on how to use locales in your messages
 
 ## Prerequisites
 
+Watch the following video for an optional overview of setting up and using multi-language messages.
+
+{% multi_lang_include video.html id="whfstwrel5" source="wistia" %}
+
 {% tabs %}
 {% tab Multi-language locales %}
 

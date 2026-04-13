@@ -17,6 +17,10 @@ In brief, the Braze SDK:
 * Captures marketing engagement data and custom data specific to your business
 * Powers push notifications, in-app messages, and Content Card messaging channels
 
+Watch the following video for a brief introduction to Braze SDK integration basics and core functionality.
+
+{% multi_lang_include video.html id="il152jayp0" source="wistia" %}
+
 ## App performance
 
 Braze should have no negative impact on your app's performance.
