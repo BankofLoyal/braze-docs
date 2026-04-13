@@ -36,7 +36,7 @@ It's also important to understand your [active users]({{site.baseurl}}/user_guid
 
 If your goal is to draw your users toward a new feature or app version, use a multichannel strategy with a focus on in-app channels. [In-app messages]({{site.baseurl}}/in-app_messages/) and [Content Cards]({{site.baseurl}}/user_guide/channels/content_cards/) are generally less disruptive if a user doesn't wish to update immediately. 
 
-Be sure to include [deep links]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/deep_linking_to_in-app_content/) to the appropriate app store.
+Be sure to include [deep links]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/actions_and_media_urls/) to the appropriate app store.
 
 Persuading users to update their app or change how they use your app can be difficult, so let them know about all the benefits of the new version or features and how it will improve their experience with your app. 
 

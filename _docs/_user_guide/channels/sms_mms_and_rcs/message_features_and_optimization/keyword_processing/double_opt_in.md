@@ -76,7 +76,7 @@ SDK | Users will automatically enter the double opt-in workflow when subscribed 
 REST API | Users can be entered into the workflow when the subscription status is set through `/subscription/status/set`, `/v2/subscription/status/set` or `/users/track` and the optional parameter `use_double_opt_in_logic` is passed as `true` (for example, [{"subscription_group_id" : "subscription_group_identifier", "subscription_state" : "subscribed", "use_double_opt_in_logic": true}]). If this parameter is omitted, users will not be entered into the double opt-in workflow.
 Shopify | Users will not be entered into the  double opt-in workflow when their subscription status is set by our Shopify integration.
 User Import | Users will not be entered into the double opt-in workflow when their subscription status is set by User Import.
-[Preference Center]({{site.baseurl}}/user_guide/channels/email/preference_center) | Users will automatically enter into the double opt-in workflow when subscribed through a preference center.
+[Preference Center]({{site.baseurl}}/user_guide/audience/subscription_preferences/preference_center) | Users will automatically enter into the double opt-in workflow when subscribed through a preference center.
 User Update Step | Users can be entered into the  double opt-in workflow when their subscription status is set through the User Update step and the optional parameter `use_double_opt_in_logic` is passed as `true`. If this parameter is omitted, users will not be entered into the double opt-in workflow.
 {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 

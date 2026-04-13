@@ -96,7 +96,7 @@ You can include any link in any SMS campaign you would like. However, there are 
 - Companies often use link shorteners to limit the character count impact of a link. However, if sending a shortened link through a long code, carriers may block or deny the message, as they may be suspicious of the link redirect.
 - Using a [short code]({{site.baseurl}}/user_guide/channels/sms_mms_and_rcs/message_setup/sender_setup/) would be the most reliable number type for including links.
 
-Braze also has its own link-shortening feature that will shorten links and provide click-through analytics automatically. Refer to [Link Shortening]({{site.baseurl}}/user_guide/channels/sms_mms_and_rcs/link_shortening/) for more information.
+Braze also has its own link-shortening feature that will shorten links and provide click-through analytics automatically. Refer to [Link Shortening]({{site.baseurl}}/user_guide/channels/sms_mms_and_rcs/message_features_and_optimization/link_shortening/) for more information.
 
 ### Do you need to rate-limit how fast you send SMS messages?
 

@@ -47,8 +47,8 @@ For example, a user might receive an in-app message with an eight-second delay a
 ## Conversion considerations
 
 - What is your goal for this message? How can you represent that in your message?
-- Do your buttons offer options that make sense to your user? What is your [primary call to action]({{site.baseurl}}/user_guide/channels/in_app_messages/create/#buttons)?
-- Are you [deep linking to other in-app content]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/deep_linking_to_in-app_content/#deep-linking-to-in-app-content)? Are you using this in-app message to send and accept a [permission or push priming request]({{site.baseurl}}/user_guide/channels/push/best_practices/)?
+- Do your buttons offer options that make sense to your user? What is your [primary call to action]({{site.baseurl}}/user_guide/channels/in_app_messages/traditional/#buttons)?
+- Are you [deep linking to other in-app content]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/actions_and_media_urls/#deep-link-to-in-app-content)? Are you using this in-app message to send and accept a [permission or push priming request]({{site.baseurl}}/user_guide/channels/push/best_practices/)?
 - Do you have a message exit option? If not, you can always copy and paste this snippet to create a quick button:
     ```html
     <a href="appboy://close">X</a>
