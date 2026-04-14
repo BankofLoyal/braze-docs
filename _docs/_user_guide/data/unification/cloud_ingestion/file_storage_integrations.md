@@ -250,7 +250,7 @@ Cloud Data Ingestion supports JSON, CSV, and Parquet files. The required columns
 - User data (attributes, custom events, purchase events) uses user identifiers and a payload
 - Catalog data uses catalog identifiers
 
-If you're using S3 for catalog data, pair this page with [Sync and delete catalog data]({{site.baseurl}}/user_guide/data/unification/cloud_ingestion/sync_catalogs_data/) for catalog-specific requirements and behavior.
+If you're using S3 for catalog data, use this page with [Sync and delete catalog data]({{site.baseurl}}/user_guide/data/unification/cloud_ingestion/sync_catalogs_data/) for catalog-specific requirements and behavior.
 
 Braze doesn’t enforce any additional filename requirements beyond what's enforced by AWS. Filenames should be unique. Appending a timestamp helps ensure uniqueness.
 
