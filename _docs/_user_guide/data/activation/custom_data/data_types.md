@@ -272,10 +272,14 @@ For more on how to use regular expressions (regex), check out these resources:
 {% endtab %}
 {% tab Time %}
 
-Time filters using relative dates (for example, more than 1 day ago, less than 2 days ago) measure 1 day as 24 hours. For example, to build a segment that targets users with a time attribute between 24 and 48 hours in the future, apply the filters `in more than 1 day in the future` and `in less than 2 days in the future`.
+Time attributes are useful for storing the last time a specific action was taken, so you can offer content specific re-engagement messaging to your users.
+
+Time filters using relative dates (for example, more than 1 day ago, less than 2 days ago) measure 1 day as 24 hours. Any campaign that you run using these filters will include all users in 24-hour increments. For example, `last used app more than 1 day ago` will capture all users who "last used the app more than 24 hours" from the exact time the campaign runs. The same will be true for campaigns set with longer date ranges—so five days from activation will mean the prior 120 hours.
+
+To target users who have a time attribute that falls within a time range, use two audience filters: `in more than` for the lower bound and `in less than` for the upper bound. A single filter can't express both sides of that range. For example, to target users with a time attribute in the next 24 hours (between now and one day from now), apply `in more than 0 days` and `in less than 1 day`.
 
 {% alert warning %}
-The last date a custom event or purchase event occurred is automatically recorded and shouldn't be recorded again via a custom time attribute.
+The last date a custom event or purchase event occurred is automatically recorded and shouldn't be recorded again through a custom time attribute.
 {% endalert %}
 
 For **Time** attributes, the following segmentation options are available.

@@ -137,7 +137,9 @@ If you have row descriptions, you must use **Matches regex** to specify a row. F
 
 ![A WhatsApp trigger using the filter for "Matches regex" to capture response messages with "ankle boots".]({% image_buster /assets/img/whatsapp/regex_list_message.png %})
 
-## Considerations for response messages
+## Considerations
+
+### Timing requirements for response messages
 
 Response messages need to be sent within 24 hours of receiving a user's message. To help build successful experiences, Braze checks the message logic to confirm there is an upstream inbound user message that unblocks the response message. 
 
@@ -154,3 +156,6 @@ The following events unblock response messages:
 
 ![An Action Path with the trigger of a performed custom event `ecommerce.cart_updated`.]({% image_buster /assets/img/whatsapp/ecommerce_cart_updated.png %})
 
+### Filtering by a custom time attribute
+
+If your action-based WhatsApp campaign or Canvas audience depends on a custom time attribute falling within a relative window (for example, between now and the next 24 hours), combine two filters as described in [Time]({{site.baseurl}}/user_guide/data/activation/custom_data/custom_attributes/#time).
