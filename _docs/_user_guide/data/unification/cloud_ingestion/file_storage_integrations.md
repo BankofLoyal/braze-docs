@@ -226,6 +226,8 @@ Cloud Data Ingestion supports JSON, CSV, and Parquet files. The required columns
 - User data (attributes, custom events, purchase events) uses user identifiers and a payload
 - Catalog data uses catalog identifiers
 
+If you're using S3 for catalog data, use this page with [Sync and delete catalog data]({{site.baseurl}}/user_guide/data/unification/cloud_ingestion/sync_catalogs_data/) for catalog-specific requirements and behavior.
+
 Braze doesn’t enforce any additional filename requirements beyond what's enforced by AWS. Filenames should be unique. Appending a timestamp helps ensure uniqueness.
 
 For examples of all supported file types (attributes, custom events, purchases, catalogs, and user deletes), see the sample files in [braze-examples](https://github.com/braze-inc/braze-examples/tree/main/cloud-data-ingestion/braze-examples/payloads/file_storage).
@@ -310,7 +312,7 @@ ID,PAYLOAD,DELETED
 85,"{""product_name"": ""Product 85"", ""price"": 85.85}",false
 1,"{""product_name"": ""Product 1"", ""price"": 1.01}",true
 ```
-Include an optional `DELETED` column. When `DELETED` is `true`, that catalog item is removed from the catalog in Braze. For the full list of required columns, see [Catalog identifiers](#catalog-identifiers). For delete behavior, see [Deleting catalog items](#deleting-catalog-items).
+Include an optional `DELETED` column. When `DELETED` is `true`, that catalog item is removed from the catalog in Braze. For the full list of required columns, see [Catalog identifiers](#catalog-identifiers). For delete behavior, see [Deleting catalog items](#deleting-catalog-items). For an end-to-end catalog setup flow (including creating the target catalog and sync behavior), see [Sync and delete catalog data]({{site.baseurl}}/user_guide/data/unification/cloud_ingestion/sync_catalogs_data/).
 {% endtab %}
 
 {% endtabs %}  
@@ -403,3 +405,9 @@ You can use existing files to validate that Braze can access your bucket and det
 If you're observing a high number of errors or failed files, you may have another process adding files to the S3 bucket in a folder other than the target folder for CDI.
 
 When files are uploaded to the source bucket but not in the source folder, CDI will process the SQS notification, but it does not take any action on the file, so this may appear as an error.
+
+If your issue is related to S3 notifications or SQS destination permissions (for example, destination validation errors), refer to AWS documentation:
+
+- [Enabling and configuring event notifications using the Amazon S3 console](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-event-notifications.html)
+- [Granting permissions to publish event notification messages to a destination](https://docs.aws.amazon.com/AmazonS3/latest/userguide/grant-destinations-permissions-to-s3.html)
+- [Troubleshooting issues in Amazon SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-troubleshooting.html)
