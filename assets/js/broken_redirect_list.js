@@ -4445,3 +4445,51 @@ validurls['/docs/user_guide/home/navigating_braze'] = '/docs/user_guide/get_star
 
 // LINE — file named line_click_tracking, not click_tracking
 validurls['/docs/user_guide/channels/line/create_a_line_message/click_tracking'] = '/docs/user_guide/channels/line/create_a_line_message/line_click_tracking/';
+
+// Analytics — singular dashboard path redirects to plural dashboards section
+validurls['/docs/user_guide/analytics/dashboard/'] = '/docs/user_guide/analytics/dashboards/';
+
+// Email — managing_user_subscriptions/subscription_groups child path not covered by parent redirect
+validurls['/docs/user_guide/message_building_by_channel/email/managing_user_subscriptions/subscription_groups'] = '/docs/user_guide/channels/email/subscriptions/';
+
+// Messaging fundamentals — missing messaging/ prefix in path
+validurls['/docs/user_guide/messaging_fundamentals/frequency_capping/'] = '/docs/user_guide/messaging/messaging_fundamentals/frequency_capping/';
+
+// Analytics — dashboard (singular) child paths missing redirect to dashboards (plural)
+validurls['/docs/user_guide/analytics/dashboard/api_usage'] = '/docs/user_guide/analytics/dashboards/api_usage/';
+validurls['/docs/user_guide/analytics/dashboard/channel_performance'] = '/docs/user_guide/analytics/dashboards/channel_performance/';
+validurls['/docs/user_guide/analytics/dashboard/conversions'] = '/docs/user_guide/analytics/dashboards/conversions/';
+validurls['/docs/user_guide/analytics/dashboard/dashboard_builder'] = '/docs/user_guide/analytics/dashboards/dashboard_builder/';
+validurls['/docs/user_guide/analytics/dashboard/dashboard_builder/diagnostics_dashboard'] = '/docs/user_guide/analytics/dashboards/dashboard_builder/diagnostics_dashboard/';
+validurls['/docs/user_guide/analytics/dashboard/dashboard_builder/ecommerce_revenue_dashboard'] = '/docs/user_guide/analytics/dashboards/dashboard_builder/ecommerce_revenue_dashboard/';
+validurls['/docs/user_guide/analytics/dashboard/home'] = '/docs/user_guide/analytics/dashboards/home/';
+
+// Email — message_building_by_channel child paths missing redirect to channels
+validurls['/docs/user_guide/message_building_by_channel/email/best_practices/apple_mail'] = '/docs/user_guide/channels/email/best_practices/apple_mail/';
+validurls['/docs/user_guide/message_building_by_channel/email/best_practices/apple_mail/email_private_relay_apple_sso'] = '/docs/user_guide/channels/email/best_practices/apple_mail/email_private_relay_apple_SSO/';
+validurls['/docs/user_guide/message_building_by_channel/email/best_practices/apple_mail/mpp'] = '/docs/user_guide/channels/email/best_practices/apple_mail/mpp/';
+validurls['/docs/user_guide/message_building_by_channel/email/best_practices/email_guidelines'] = '/docs/user_guide/channels/email/best_practices/email_guidelines/';
+validurls['/docs/user_guide/message_building_by_channel/email/best_practices/know_before_you_send'] = '/docs/user_guide/channels/email/best_practices/know_before_you_send/';
+validurls['/docs/user_guide/message_building_by_channel/email/customize'] = '/docs/user_guide/channels/email/customize/';
+validurls['/docs/user_guide/message_building_by_channel/email/customize/amp_for_email'] = '/docs/user_guide/channels/email/customize/amp_for_email/';
+validurls['/docs/user_guide/message_building_by_channel/email/customize/custom_email_footer'] = '/docs/user_guide/channels/email/customize/custom_email_footer/';
+validurls['/docs/user_guide/message_building_by_channel/email/customize/email_global_style_settings'] = '/docs/user_guide/channels/email/customize/email_global_style_settings/';
+validurls['/docs/user_guide/message_building_by_channel/email/customize/universal_links_and_app_links'] = '/docs/user_guide/channels/email/customize/universal_links_and_app_links/';
+validurls['/docs/user_guide/message_building_by_channel/email/email_setup/open_pixel_and_click_tracking'] = '/docs/user_guide/channels/email/email_setup/open_pixel_and_click_tracking/';
+validurls['/docs/user_guide/message_building_by_channel/email/email_setup/setting_up_ips_and_domains/amazon_ses'] = '/docs/user_guide/channels/email/email_setup/setting_up_ips_and_domains/amazon_ses/';
+validurls['/docs/user_guide/message_building_by_channel/email/reporting/analytics_glossary'] = '/docs/user_guide/channels/email/reporting/analytics_glossary/';
+validurls['/docs/user_guide/message_building_by_channel/email/subscriptions'] = '/docs/user_guide/channels/email/subscriptions/';
+validurls['/docs/user_guide/message_building_by_channel/email/use_cases'] = '/docs/user_guide/channels/email/use_cases/';
+
+// Messaging fundamentals — missing messaging/ prefix for all sibling pages
+validurls['/docs/user_guide/messaging_fundamentals/accessibility'] = '/docs/user_guide/messaging/messaging_fundamentals/accessibility/';
+validurls['/docs/user_guide/messaging_fundamentals/conversion_events'] = '/docs/user_guide/messaging/messaging_fundamentals/conversion_events/';
+validurls['/docs/user_guide/messaging_fundamentals/delivery_and_entry_types'] = '/docs/user_guide/messaging/messaging_fundamentals/delivery_and_entry_types/';
+validurls['/docs/user_guide/messaging_fundamentals/duplicating'] = '/docs/user_guide/messaging/messaging_fundamentals/duplicating/';
+validurls['/docs/user_guide/messaging_fundamentals/know_before_you_send'] = '/docs/user_guide/messaging/messaging_fundamentals/know_before_you_send/';
+validurls['/docs/user_guide/messaging_fundamentals/localization'] = '/docs/user_guide/messaging/messaging_fundamentals/localization/';
+validurls['/docs/user_guide/messaging_fundamentals/localization/locales_in_messages'] = '/docs/user_guide/messaging/messaging_fundamentals/localization/locales_in_messages/';
+validurls['/docs/user_guide/messaging_fundamentals/localization/right_to_left_messages'] = '/docs/user_guide/messaging/messaging_fundamentals/localization/right_to_left_messages/';
+validurls['/docs/user_guide/messaging_fundamentals/re_eligibility'] = '/docs/user_guide/messaging/messaging_fundamentals/re_eligibility/';
+validurls['/docs/user_guide/messaging_fundamentals/sending_test_messages'] = '/docs/user_guide/messaging/messaging_fundamentals/sending_test_messages/';
+validurls['/docs/user_guide/messaging_fundamentals/target_users'] = '/docs/user_guide/messaging/messaging_fundamentals/target_users/';
