@@ -212,7 +212,7 @@ If you were sending push notifications prior to integrating Braze, either on you
 
 After you [integrate the Braze SDK]({{site.baseurl}}/developer_guide/sdk_integration/), push tokens for your opted-in users are automatically migrated the next time they open your app. Until then, you can't send those users push notifications through Braze.
 
-Alternatively, you can [migrate your push tokens manually](#manual-migration-via-api), allowing you to re-engage your users more promptly.
+Alternatively, you can [migrate your push tokens manually](#manual-migration-through-api), allowing you to re-engage your users more promptly.
 
 #### Web token considerations
 
