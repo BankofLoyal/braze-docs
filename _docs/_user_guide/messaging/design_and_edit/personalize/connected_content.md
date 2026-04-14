@@ -1,7 +1,7 @@
 ---
 nav_title: Connected Content reference
 article_title: Connected Content Reference
-page_order: 3
+page_order: 4
 layout: dev_guide
 search_rank: 3
 guide_top_header: "Connected Content"

@@ -10,6 +10,9 @@ description: "Personalize your Braze campaigns with Liquid, Connected Content, d
 
 guide_featured_title: "Topics"
 guide_featured_list:
+- name: Dashboard tools for personalization
+  link: /docs/user_guide/messaging/design_and_edit/personalize/dashboard_tools
+  image: /assets/img/braze_icons/tool-02.svg
 - name: Sources
   link: /docs/user_guide/messaging/design_and_edit/personalize/sources
   image: /assets/img/braze_icons/dataflow-03.svg

@@ -1,7 +1,7 @@
 ---
 nav_title: Sources
 article_title: Personalization sources
-page_order: 0
+page_order: 1
 layout: dev_guide
 
 guide_top_header: "Sources"
