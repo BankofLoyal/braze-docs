@@ -18,7 +18,7 @@ WhatsApp carousel templates are in early access. Contact your customer success m
 
 ## Prerequisites
 
-{% multi_lang_include whatsapp/carousel_template_prerequisites.md %}
+{% multi_lang_include whatsapp/template_prerequisites.md %}
 
 ## Create a carousel template
 
