@@ -85,6 +85,8 @@ Authorization: Bearer YOUR-REST-API-KEY
 
 This section discusses how Braze picks a user profile for sending and what happens when one profile is not selected.
 
+A user's subscription group status can be updated using the inclusion of a `subscription_groups` parameter within the `attributes` object. For more details, refer to [User attributes object]({{site.baseurl}}/api/objects_filters/user_attributes_object/#migrating-push-tokens).
+
 #### Recipient limits and profile creation
 
 Learn more about how recipient limits and profile creation work for this endpoint.
@@ -202,7 +204,7 @@ If your request encounters a fatal error, refer to [Errors and responses]({{site
 
 ## Attributes object for campaigns
 
-Braze has a messaging object called `attributes` that lets you add, create, or update attributes and values for a user before you send them an API-triggered campaign. Using the `campaign/trigger/send` endpoint as this API call processes the user attributes object before it processes and sends the campaign. This helps minimize the risk of there being issues caused by [race conditions]({{site.baseurl}}/user_guide/engagement_tools/testing/race_conditions/).
+Braze has a messaging object called `attributes` that lets you add, create, or update attributes and values for a user before you send them an API-triggered campaign. Using the `campaign/trigger/send` endpoint as this API call processes the user attributes object before it processes and sends the campaign. This helps minimize the risk of there being issues caused by [race conditions]({{site.baseurl}}/user_guide/messaging/ab_testing/concepts/race_conditions/).
 
 {% alert tip %}
 Looking for the Canvas version of this endpoint? Check out [Sending Canvas messages using API-triggered delivery]({{site.baseurl}}/api/endpoints/messaging/send_messages/post_send_triggered_canvases/#create-send-endpoint).
