@@ -50,6 +50,34 @@ You can use the product viewed event to trigger when a customer views a product 
 {% subtabs %}
 {% subtab Web SDK %}
 
+{% sdk_min_versions web:6.7.0 %}
+
+On newer SDK versions, call `logEcommerceEvent()`:
+
+```javascript
+braze.logEcommerceEvent({ 
+    "name": "ecommerce.product_viewed", 
+    "properties": {
+        "product_id": "4111176",
+        "product_name": "Torchie runners",
+        "variant_id": "4111176700",
+        "image_url": "https://braze-apparel.com/images/products/large/torchie-runners.jpg",
+        "product_url": "https://braze-apparel.com/footwear-categories/sneakers/braze-orange-torchie-runners/",
+        "price": 85,
+        "currency": "GBP",
+        "source": "https://braze-apparel.com/",
+        "metadata": {
+            "sku": "",
+            "color": "ORANGE",
+            "size": "6",
+            "brand": "Braze"
+        }
+    }
+});
+```
+
+On legacy SDK versions, call `logCustomEvent()`:
+
 ```javascript
 braze.logCustomEvent("ecommerce.product_viewed", {
     "product_id": "4111176",
@@ -212,6 +240,42 @@ If there are two carts, add both to the merged user. Re-enqueue the Canvas if it
 
 {% subtabs %}
 {% subtab Web SDK %}
+
+{% sdk_min_versions web:6.7.0 %}
+
+On newer SDK versions, call `logEcommerceEvent()`:
+
+```javascript
+braze.logEcommerceEvent({ 
+    "name": "ecommerce.cart_updated", 
+    "properties": {
+        "cart_id": "cart_12345",
+        "currency": "USD",
+        "total_value": 199.98,
+        "products": [
+            {
+                "product_id": "8266836345064",
+                "product_name": "Classic T-Shirt",
+                "variant_id": "44610569208040",
+                "image_url": "https://braze-apparel.com/images/tshirt-blue-medium.jpg",
+                "product_url": "https://braze-apparel.com/products/classic-tshirt?variant=44610569208040",
+                "quantity": 2,
+                "price": 99.99,
+                "metadata": {
+                    "sku": "TSH-BLU-M",
+                    "color": "BLUE",
+                    "size": "Medium",
+                    "brand": "Braze"
+                }
+            }
+        ],
+        "source": "https://braze-apparel.com",
+        "metadata": {}
+    }
+});
+```
+
+On legacy SDK versions, call `logCustomEvent()`:
 
 ```javascript
 braze.logCustomEvent("ecommerce.cart_updated", {
@@ -405,6 +469,42 @@ Similar to the `ecommerce.cart_updated` event, this event allows you to leverage
 {% subtabs %}
 {% subtab Web SDK %}
 
+{% sdk_min_versions web:6.7.0 %}
+
+On newer SDK versions, call `logEcommerceEvent()`:
+
+```javascript
+braze.logEcommerceEvent({ 
+    "name": "ecommerce.checkout_started", 
+    "properties": {
+        "checkout_id": "checkout_abc123",
+        "cart_id": "cart_12345",
+        "total_value": 199.98,
+        "currency": "USD",
+        "products": [
+            {
+                "product_id": "632910392",
+                "product_name": "Wireless Headphones",
+                "variant_id": "808950810",
+                "quantity": 1,
+                "price": 199.98,
+                "metadata": {
+                    "sku": "WH-BLK-PRO",
+                    "color": "Black",
+                    "brand": "BrazeAudio"
+                }
+            }
+        ],
+        "source": "https://braze-audio.com",
+        "metadata": {
+            "checkout_url": "https://checkout.braze-audio.com/abc123"
+        }
+    }
+});
+```
+
+On legacy SDK versions, call `logCustomEvent()`:
+
 ```javascript
 braze.logCustomEvent("ecommerce.checkout_started", {
     "checkout_id": "checkout_abc123",
@@ -590,6 +690,53 @@ You can use the order placed event to trigger when a customer successfully compl
 
 {% subtabs %}
 {% subtab Web SDK %}
+
+{% sdk_min_versions web:6.7.0 %}
+
+On newer SDK versions, call `logEcommerceEvent()`:
+
+```javascript
+braze.logEcommerceEvent({ 
+    "name": "ecommerce.order_placed", 
+    "properties": {
+        "order_id": "order_67890",
+        "cart_id": "cart_12345",
+        "total_value": 189.98,
+        "currency": "USD",
+        "total_discounts": 10.00,
+        "discounts": [
+            {
+                "code": "SAVE10",
+                "amount": 10.00
+            }
+        ],
+        "products": [
+            {
+                "product_id": "632910392",
+                "product_name": "Wireless Headphones",
+                "variant_id": "808950810",
+                "quantity": 1,
+                "price": 199.98,
+                "metadata": {
+                    "sku": "WH-BLK-PRO",
+                    "color": "Black",
+                    "brand": "BrazeAudio"
+                }
+            }
+        ],
+        "source": "https://braze-audio.com",
+        "metadata": {
+            "order_status_url": "https://braze-audio.com/orders/67890/status",
+            "order_number": "ORD-2024-001234",
+            "tags": ["electronics", "audio"],
+            "referring_site": "https://www.e-referrals.com",
+            "payment_gateway_names": ["tap2pay", "dotcash"]
+        }
+    }
+});
+```
+
+On legacy SDK versions, call `logCustomEvent()`:
 
 ```javascript
 braze.logCustomEvent("ecommerce.order_placed", {
