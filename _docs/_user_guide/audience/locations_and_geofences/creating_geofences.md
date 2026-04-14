@@ -202,7 +202,13 @@ Next, add geofences to your geofence set.
 
 1. Select **Draw Geofence** to click and drag the circle on the map. Repeat to add more geofences to your set as needed.
 2. (Optional) Select **Edit** and replace the geofence description with a name.
-3. Select **Save Geofence Set** to save.
+3. (Optional) Select **Show Advanced Settings**, then use these settings to control how geofence analytics are recorded:
+  - Select **Enable Analytics for Enter** and **Enable Analytics for Exit** to log enter and exit activity in the [`USERS_BEHAVIORS_GEOFENCE_DATAEVENT_SHARED` SQL table]({{site.baseurl}}/user_guide/audience/segments/segment_extension/sql_segments/sql_segments_tables/#USERS_BEHAVIORS_GEOFENCE_DATAEVENT_SHARED) for reporting and analysis.
+  - Configure a cooldown period to set how many seconds must pass before the same user can trigger another enter or exit event for that geofence. If you don't set a cooldown, the default is six hours.
+  - Use **Android Notification Responsiveness** to set the maximum delay, in seconds, that Android devices use when delivering enter or exit events to your app.
+
+{: start="4" }
+4. Select **Save Geofence Set** to save.
 
 {% alert tip %}
 Create geofences with a radius of at least 200 meters for optimal functionality. For more information, refer to [Geofence best practices](#geofence-best-practices).
