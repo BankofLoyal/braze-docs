@@ -17,7 +17,7 @@ _This integration is maintained by LJI._
 
 ## About the integration
 
-The Braze and GRAVTY® integration connects loyalty data and messaging triggers across both platforms. GRAVTY® sends customer data to Braze as attributes, events, and purchases. Braze stores that data and delivers messages across channels such as SMS, email, and push notifications. You use the synced data for segmentation, personalization, and triggers.
+The Braze and GRAVTY® integration connects loyalty data and messaging triggers across both platforms. GRAVTY® sends user data to Braze as attributes, events, and purchases. Braze stores that data and delivers messages across channels such as SMS, email, and push notifications. You use the synced data for segmentation, personalization, and triggers.
 
 ## Prerequisites
 
@@ -37,7 +37,7 @@ Before you start, you need the following:
 This integration supports the following Braze capabilities:
 
 1. **User data sync (`/users/track`)**  
-   Sync member attributes, events, and purchases to Braze for segmentation and personalization.
+   Sync user attributes, events, and purchases to Braze for segmentation and personalization.
 
 2. **Campaign triggering (`/campaigns/trigger/send`)**  
    Trigger one-time or transactional messages using Braze **Campaigns**.
@@ -57,32 +57,30 @@ The GRAVTY® and Braze integration is API-based. It supports real-time data sync
 ### Step 1: Connect Braze with GRAVTY®
 
 1. Go to **Subscriber Setup** in GRAVTY® to manage external integrations.
-2. Click **Add New Subscriber**.
+2. Select **Add New Subscriber**.
 3. Select **Braze** as the integration provider.
 4. Enter the following:
    * **API URL** (your Braze REST endpoint)
    * **API Key** (your Braze REST API key)
 5. Save the configuration and confirm the connection is active.
 
-![GRAVTY® Add Subscriber form with Braze selected, API URL and API key fields, and an active subscriber toggle.]({% image_buster /assets/img/lji/braze-subscriber-setup.png %})
+![GRAVTY® Add Subscriber form with Braze selected, API URL and API key fields, and an active subscriber toggle.]({% image_buster /assets/img/lji/braze-subscriber-setup.png %}){: style="max-width:70%;"}
 
 ### Step 2: Configure template attribute mapping
 
 After you save the Braze subscriber, GRAVTY® opens the **Template Attribute Mapping** page. Use it to map fields to Braze.
 
-1. Click **Add New Field**.
+1. Select **Add New Field**.
 2. Select a **GRAVTY® attribute** from the list.
 3. Enter the **Braze attribute name** (custom attribute) where the value should appear in Braze.
 
 {% alert important %}
-You don't need to map `external_id`. GRAVTY® generates it internally by hashing the member ID, and Braze receives that hashed value as `external_id` on the user profile.
-
-Before you enable the integration, confirm this matches how you set `external_id` in Braze today. If Braze already uses a different `external_id` for the same people, work with LJI to align identifiers before you sync data.
+You don't need to map `external_id`. GRAVTY® generates it internally by hashing the member ID, and Braze receives that hashed value as `external_id` on the user profile.<br><br> Before you enable the integration, confirm this matches how you set `external_id` in Braze today. If Braze already uses a different `external_id` for the same people, work with LJI to align identifiers before you sync data.
 {% endalert %}
 
 {: start="4"}
 4. Repeat steps 1–3 to add more mappings.
-5. Click **Save**.
+5. Select **Save**.
 
 ![GRAVTY® Subscription Setup showing entity, GRAVTY attribute, and template attribute columns mapped for Braze sync.]({% image_buster /assets/img/lji/gravty-attribute-mapping.png %})
 
