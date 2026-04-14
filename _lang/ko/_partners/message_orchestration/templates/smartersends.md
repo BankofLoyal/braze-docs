@@ -54,7 +54,7 @@ With the Braze and SmarterSends integration, you can take advantage of distribut
 - `segments.data_series`
 - `segments.details`
 - `sends.data_series`
-4. Add the SmarterSends IP address to the **Whislist IPs** section.
+4. Add the SmarterSends IP address to the **Whitelist IPs** section.
 5. Click **Save API Key**.
 6. Copy and paste the API key with the appropriate permissions to the **Braze Email Service Provider** settings in SmarterSends.
 

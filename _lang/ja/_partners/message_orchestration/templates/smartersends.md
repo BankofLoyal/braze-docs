@@ -54,7 +54,7 @@ BrazeとSmarterSendsの統合により、複数のチャネルや場所にまた
 - `segments.data_series`
 - `segments.details`
 - `sends.data_series`
-4. SmarterSendsのIPアドレスを**Whislist IPs**セクションに追加する。
+4. SmarterSendsのIPアドレスを**Whitelist IPs**セクションに追加する。
 5. [**API キーを保存**] をクリックします。
 6. SmarterSendsの**Braze Email Service Provider**設定に、適切なパーミッションを持つAPIキーをコピー＆ペーストする。
 

@@ -75,7 +75,7 @@ La façon la plus directe d'utiliser des images et des vidéos directement à pa
 Reportez-vous à la [vidéo]({{site.baseurl}}/user_guide/message_building_by_channel/in-app_messages/traditional/customize/video/) pour connaître les spécificités d'Android et d'iOS. 
 
 {% endtab %}
-{% tab Convert videoes into GIFs %}
+{% tab Convert videos into GIFs %}
 
 ## Convertissez des vidéos en GIFs pour vos e-mails
 

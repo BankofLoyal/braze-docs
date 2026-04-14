@@ -98,7 +98,7 @@ Digamos que su esquema de perfil XDM y su instancia Braze contienen los siguient
 
 La asignación correcta sería la siguiente:
 
-![Asignaciones de destino: IdentityMap:IDFA mapeado a IdentityMap:external_id, IdentityMap:GAID mapeado a IdentityMap:external_id, IdentityMap:Email mapeado a IdentityMap:external_id, xdm:mobilePhone.number mapeado a CustomAttribute:PhoneNumber, xdm:person.name.lastName mapeado a CustomAtrribute:LastName, xdm:person.name.firstName mapeado a CustomAttribute:FirstName]({% image_buster /assets/img/adobe/braze-destination-mapping-example.png %})
+![Asignaciones de destino: IdentityMap:IDFA mapeado a IdentityMap:external_id, IdentityMap:GAID mapeado a IdentityMap:external_id, IdentityMap:Email mapeado a IdentityMap:external_id, xdm:mobilePhone.number mapeado a CustomAttribute:PhoneNumber, xdm:person.name.lastName mapeado a CustomAttribute:LastName, xdm:person.name.firstName mapeado a CustomAttribute:FirstName]({% image_buster /assets/img/adobe/braze-destination-mapping-example.png %})
 
 ## Datos exportados
 Para verificar si los datos se han exportado correctamente a Braze, comprueba tu cuenta Braze. Los segmentos de Adobe Experience Platform se exportan a Braze con el atributo `AdobeExperiencePlatformSegments`.

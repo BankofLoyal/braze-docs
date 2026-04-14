@@ -74,7 +74,7 @@ Para importar apenas o plug-in para iOS ou Android, desmarque o subdiretório `P
 {% tab Android %}
 #### Etapa 3.1: Configurar `AndroidManifest.xml`
 
-To fullo [`AndroidManifest.xml`](https://docs.unity3d.com/Manual/android-manifest.html) funcionar. Se o seu app não tiver um `AndroidManifest.xml`, você poderá usar o seguinte modelo. Caso contrário, se você já tiver um `AndroidManifest.xml`, confira se falta alguma das seções a seguir e adicione-as ao seu `AndroidManifest.xml` existente.
+Configure [`AndroidManifest.xml`](https://docs.unity3d.com/Manual/android-manifest.html) para que o SDK da Braze funcione. Se o seu app não tiver um `AndroidManifest.xml`, você poderá usar o seguinte modelo. Caso contrário, se você já tiver um `AndroidManifest.xml`, confira se falta alguma das seções a seguir e adicione-as ao seu `AndroidManifest.xml` existente.
 
 1. Acesse o diretório `Assets/Plugins/Android/` e abra o arquivo `AndroidManifest.xml`. Esse é o [local padrão no Unity Editor](https://docs.unity3d.com/Manual/android-manifest.html).
 2. Em seu site `AndroidManifest.xml`, adicione as permissões e atividades necessárias do modelo a seguir.
