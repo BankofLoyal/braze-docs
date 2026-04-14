@@ -12,6 +12,10 @@ description: "This reference article covers how to import your products from Sho
 
 Shopify catalogs will update in near real-time as you make edits and changes to the products in your Shopify store. You can enrich your abandoned cart, order confirmation, and more with the most up-to-date product details and information.
 
+{% alert warning %}
+Braze syncs up to 250 variants of each Shopify product into your catalog. Variants beyond that limit are not synced. If you need more than 250 variants per product, contact your Braze customer success manager.
+{% endalert %}
+
 ## Setting up your Shopify product sync {#setting-up}
 
 If you have already installed your Shopify store, you can still sync your products by following the instructions below. 

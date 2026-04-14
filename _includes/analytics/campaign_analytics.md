@@ -1,6 +1,6 @@
 ## Viewing analytics
 
-Once you've launched your campaign, you can return to the details page for that campaign to view key metrics. Navigate to the **Campaigns** page and select your campaign to open the details page.{% if include.channel != "banner" %} For {% if include.channel == "Content Card" %}Content Cards {% elsif include.channel == "banner" %}Banner {% elsif include.channel == "email" %}email {% elsif include.channel == "in-app message" %}in-app messages {% elsif include.channel == "push" %}push messages {% elsif include.channel == "SMS" %}SMS messages {% elsif include.channel == "whatsapp" %}WhatsApp messages {% elsif include.channel == "webhook" %}webhooks {% endif %}sent in Canvas, refer to [Canvas analytics]({{site.baseurl}}/user_guide/engagement_tools/canvas/testing_canvases/measuring_and_testing_with_canvas_analytics/).{% endif %}
+Once you've launched your campaign, you can return to the details page for that campaign to view key metrics. Navigate to the **Campaigns** page and select your campaign to open the details page.{% if include.channel != "banner" %} For {% if include.channel == "Content Card" %}Content Cards {% elsif include.channel == "banner" %}Banner {% elsif include.channel == "email" %}email {% elsif include.channel == "in-app message" %}in-app messages {% elsif include.channel == "KakaoTalk" %}KakaoTalk messages {% elsif include.channel == "push" %}push messages {% elsif include.channel == "SMS" %}SMS messages {% elsif include.channel == "whatsapp" %}WhatsApp messages {% elsif include.channel == "webhook" %}webhooks {% endif %}sent in Canvas, refer to [Canvas analytics]({{site.baseurl}}/user_guide/engagement_tools/canvas/testing_canvases/measuring_and_testing_with_canvas_analytics/).{% endif %}
 
 {% alert tip %}
 Looking for definitions for the terms and metrics listed in your report? Refer to our 
@@ -27,9 +27,10 @@ The **Campaign Details** panel shows a high-level overview of the entire perform
   {% elsif include.channel == "Content Card" %}Content Card.
   {% elsif include.channel == "email" %}email.
   {% elsif include.channel == "in-app message" %}in-app message.
+  {% elsif include.channel == "KakaoTalk" %}KakaoTalk message.
   {% elsif include.channel == "push" %}push message.
   {% elsif include.channel == "SMS" %}SMS, MMS, and RCS.
-  {% elsif include.channel == "whatsapp" %}WhatApp messages.
+  {% elsif include.channel == "whatsapp" %}WhatsApp messages.
   {% elsif include.channel == "webhook" %}webhook.
   {% endif %}
 
@@ -63,10 +64,27 @@ In Canvas, you'll see in-app message performance mapped onto the Canvas you've c
 
 ![]({% image_buster /assets/img/in-app_message_canvas_reporting.png %})
 
+{% elsif include.channel == "KakaoTalk" %}
+![The Campaign Details section.]({% image_buster /assets/img/kakaotalk/campaign_details.png %})
+
 {% elsif include.channel == "webhook" %}
 ![Campaign Details panel with an overview of metrics used to determine campaign performance.]({% image_buster /assets/img/campaign_details_webhook.png %})
 
 {% endif %}
+
+#### Estimated Audience and Current Audience
+
+Depending on how large your workspace is, the **Campaign Details** panel may label audience statistics **Estimated Audience** or **Current Audience**.
+
+The following table explains when each label is used and what it means.
+
+| Footer label | When it is used |
+| --- | --- |
+| **Estimated Audience** | Braze does not run a full-database count by default. Audience size is estimated from a sample and extrapolated, similar to the **Reachable Users** range in the segment builder. Margins of error are expected, especially for large workspaces or small segments as a share of the workspace. |
+| **Current Audience** | Braze can compute the default statistic with a full scan of workspace profiles, so the displayed audience size is a current, unsampled count (still subject to channel reachability, subscription rules, and other targeting options). |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
+
+For details on sampling behavior, **Calculate exact statistics**, and segmenting **Reachable users**, see [Measure segment size]({{site.baseurl}}/user_guide/engagement_tools/segments/measuring_segment_size/).
 
 {% if include.channel == "Content Card" %}
 
@@ -145,6 +163,11 @@ The **Banner Performance** panel outlines how well your message has performed ac
 
 ![SMS/MMS Performance panel that includes a table of metrics for a control group, Variant 1, and Variant 2.]({% image_buster /assets/img/banners/banner_performance.png %})
 
+{% elsif include.channel == "KakaoTalk" %}
+### KakaoTalk Performance
+
+The **KakaoTalk Performance** panel outlines how well your message has performed across various dimensions. The metrics in this panel vary depending on your chosen messaging channel, and whether or not you are running a multivariate test. You can click on the <i class="fa fa-eye preview-icon"></i> **Preview** icon to view your message for each variant or channel.
+
 {% elsif include.channel == "webhook" %}
 ### Webhook Performance
 
@@ -175,7 +198,9 @@ In this view, you can use the **Show Heatmap** toggle to bring up a visual view 
 
 #### Images
 
-We suggest enabling CORS for your image URLs to help prevent images from breaking in heatmap previews and exports.
+We recommend enabling CORS for your image URLs to help prevent images from breaking in heatmap previews and exports.
+
+If images are missing from an export, work with your developers so image assets allow cross-origin access: the server should return the `Access-Control-Allow-Origin` header with either `*` or your Braze dashboard domain.
 
 {% endif %}
 
@@ -399,6 +424,20 @@ Here are some key email-specific metrics that you won't see in other channels. T
     </tbody>
 </table>
 
+##### Deliveries and bounces
+
+The dashboard highlights _Hard Bounces_. Some _Bounces_ may be soft bounces and won't match that count alone. You can approximate soft bounces with this formula:
+
+_Sends − (Deliveries + Hard Bounces) ≈ Soft Bounces_
+
+_Deliveries_ can rise during the first 72 hours as retries succeed, while _Sends_ and hard bounces for a one-time send stay fixed once the send completes.
+
+##### Clicks without an open event
+
+A click can be logged without an open when the open pixel never loads. For example, the message is clipped in Gmail, or the user has disabled images (the open pixel is usually at the footer). Some clients proxy images (such as Apple Mail), so the open may log when the server first fetches the pixel, not when the user reads the mail. Corporate domains often block images by default.
+
+A click and open can also land on different days: a user might click on May 16 with images off (no open), then open in webmail on May 17 (open logged then).
+
 ##### Deferrals
 
 Deferred or deferral is when an email was not immediately delivered, but Braze will retry the email for up to 72 hours after this temporary delivery failure to maximize the chances of successful delivery before attempts for that specific campaign are stopped. Typical reasons for deferrals include reputation-based email volume rate-limiting from the inbox provider, temporary connectivity issues, or DNS errors.
@@ -417,7 +456,7 @@ Because this metric is recalculated on an ongoing cadence, the _Estimated Real O
 
 Typically around 10,000 delivered emails are required for the statistic to be computed successfully, though that number can vary depending on click rate. If the statistic can't be computed, then the column displays "--".
 
-###### Limitations
+###### Considerations
 
 Estimated Real Open Rate is only available in campaigns, and is not reported in Current events. This metric is only retroactively calculated for active campaigns launched before November 14, 2023.
 
@@ -500,6 +539,29 @@ Reporting for _Button 1 Clicks_ and _Button 2 Clicks_ only works when you specif
         </tr>
     </tbody>
 </table>
+
+#### Discrepancies between control groups and variants
+
+When an in-app message campaign has a 50-50 variant split, sometimes the control group will have a slightly higher percentage than the variant (such as 51% for the control group and 49% for the variant). This discrepancy is caused by a difference in rendering time.
+
+The distribution between control and variant groups is intended to be roughly even, but assignment to a variant occurs when the in-app message is actually sent to the device. Some users may never trigger the in-app message (for example, they never perform the action that triggers the required custom event), which can cause differences in group sizes.
+
+{% elsif include.channel == "KakaoTalk" %}
+
+### KakaoTalk metrics
+
+Here are some key KakaoTalk metrics you may see in your analytics. For more details, see the [Report Metrics Glossary]({{site.baseurl}}/user_guide/data/report_metrics/).
+
+| Term | Definition |
+| --- | --- |
+| Audience | _Audience_ is the percentage of users who received a particular message. <br><br>_(Number of recipients in variant) / (Unique Recipients)_ |
+| Unique Recipients | _Unique Recipients_ is the number of unique daily recipients, or users who received a new message in a day. For this count to increment for a user more than once, the user must receive a new message on a different day. This number is based on the `user_id`. For more details, see [Unique Recipients in the Report Metrics Glossary]({{site.baseurl}}/user_guide/data/report_metrics/#unique-recipients). |
+| Sends | The total number of messages sent in a campaign. This doesn’t mean the message was received or delivered to a device, only that the message was sent. |
+| Total Clicks | The total number of times that the KakaoTalk messages sent were clicked by users. |
+| Errors | _Errors_ is the number of errors returned by the KakaoTalk provider (incremented during the sending process). |
+| Revenue | _Revenue_ is the revenue in dollars from campaign recipients within the set primary conversion window. |
+| Primary Conversions | _Primary Conversions_ is the number of times a defined event occurred after interacting with or viewing a received message from a Braze campaign. This defined event is determined by you when building the campaign. |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
 {% elsif include.channel == "push" %}
 
@@ -780,11 +842,19 @@ The **Conversion Correlation** panel gives you insight into what user attributes
 
 ![The Conversion Correlation panel with an analysis on user attributes and behavior from the Primary Conversion Event - A.]({% image_buster /assets/img/convcorr.png %})
 
+{% if include.channel == "KakaoTalk" %}
+
+## Report Builder
+
+You can also use [Report Builder]({{site.baseurl}}/user_guide/analytics/reporting/report_builder/) to build custom reports for your KakaoTalk campaigns. When creating a report, you can filter to include only KakaoTalk campaigns by selecting **KakaoTalk** under **Channels**, or by filtering by any tags you've applied to your KakaoTalk campaigns.
+
+{% endif %}
+
 {% if include.channel == "whatsapp" %}
 
 ### Meta analytics
 
-In addition to Braze analytics, template-level analytics can be accessed in the WhatsApp Business Manager. For information, check out [Meta's documentation](https://www.facebook.com/business/help/218116047387456). 
+In addition to Braze analytics, template-level analytics can be accessed in the WhatsApp Business Manager. For information, check out [Meta's documentation](https://www.facebook.com/business/help/218116047387456).
 
 {% endif %}
 

@@ -46,7 +46,7 @@ To use this endpoint, you'll need an [API key]({{site.baseurl}}/api/basics#rest-
 | `name`           | Required | String    | The name of the catalog selection. |
 | `description`    | Optional | String    | A description of the catalog selection. |
 | `external_id`    | Required | String    | A unique identifier for the selection. |
-| `source`         | Required | String    | The source of the catalog data. For Shopify catalogs, use `"Shopify"`. For custom catalogs, use `"custom"`. |
+| `source`         | Optional | String    | The source of the catalog data. For Shopify catalogs, use `"Shopify"`. Accepted values are `"Shopify"` and `"Braze"`. |
 | `filters`        | Optional | Array    | An array of filter objects to apply to the catalog items. You can specify up to four filters per request. If no filters are provided, all items from the catalog are included. |
 | `results_limit`  | Optional | Integer   | The maximum number of results to return. Must be a number between 1 and 50. |
 | `sort_field`     | Optional | String    | The field to sort results by. This must be paired with `sort_order`. If both `sort_field` and `sort_order` are not present, the results are randomized. |
@@ -68,7 +68,6 @@ curl --location --request POST 'https://rest.iad-03.braze.com/catalogs/restauran
     "name": "favorite-restaurants",
     "description": "Favorite restaurants in NYC",
     "external_id": "favorite-nyc-restaurants",
-    "source": "custom",
     "filters": [
       {
         "field": "City",

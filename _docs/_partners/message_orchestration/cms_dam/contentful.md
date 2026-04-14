@@ -17,7 +17,7 @@ After you're integrated, you can use Contentful's RESTful APIs to deliver your c
 
 Before you start, you'll need the following:
 
-| Prerequisite          | Description                        |
+| Requirements          | Description                        |
 |-----------------------|------------------------------------|
 | A Contentful account | You need a Contentful account with access to the Content Delivery API. |
 | A Braze account | You need a Braze account with access to the Connected Content feature. |
@@ -34,7 +34,7 @@ Before you start, you'll need the following:
 ### Step 2: Configure Braze Connected Content
 
 1. [Log into Braze](https://dashboard.braze.com/sign_in) with your credentials.
-2. In the Braze dashboard, go to **Templates** > **Content Blocks** > **Create Content Block** > **HTML Content Block**.
+2. In the Braze dashboard, go to **Templates** > **Content Blocks** > **Create Content Block** > **HTML code editor**.
 3. Create a Connected Content request to Contentful's [Contentful Content Delivery API URL](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/links). An example Contentful Content Delivery API URL is ```https://cdn.contentful.com/spaces/{space_id}/environments/{environment_id}/entries```.<br><br> Retrieving different assets requires including specific variables. The example Connected Content URL request targets Contentful's [Entry](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/entries/entry/get-a-single-entry/console) endpoint. This endpoint needs variables like `{space_id}` and `{environment_id}`, or `{entry_id}` and `{access_token}`. These can be taken from your Contentful instance. In this example Content Block, the variables must be replaced with your Contentful Space ID and Environment ID.<br><br>The example Content Delivery API URL uses only one of Contentful's available endpoints. Different use cases may be achieved by leveraging different URLs. For example, the [Image API](https://www.contentful.com/developers/docs/references/images-api/) can be used to capture images stored in Contentful. For more information, review [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/).
 
 {% alert note %}
@@ -133,5 +133,5 @@ Verify that the response path mappings are correctly configured and that the API
 ## Additional resources
 
 - [Contentful Content Delivery API documentation](https://www.contentful.com/developers/docs/references/content-delivery-api/)
-- [Braze Connected Content]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/connected_content/)
-- [Braze Content Blocks]({{site.baseurl}}/user_guide/engagement_tools/templates_and_media/content_blocks/)
+- [Braze Connected Content]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/connected_content/)
+- [Braze Content Blocks]({{site.baseurl}}/user_guide/messaging/design_and_edit/content_blocks/)

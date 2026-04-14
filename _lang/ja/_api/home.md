@@ -4,7 +4,7 @@ nav_title: ホーム
 article_title: Braze API ガイド
 layout: api_glossary
 glossary_top_header: "Braze API ガイド"
-glossary_top_text: "Braze には、ユーザー の追跡、メッセージの送信、データのエクスポートなどを可能にする高パフォーマンス RESTなAPI が用意されています。ここでは、使用可能なBraze API エンドポイントとその用途について説明します。"
+glossary_top_text: "Braze には、ユーザーs の追跡、メッセージの送信、データのエクスポートなどを可能にする高パフォーマンス RESTなAPI が用意されています。ここでは、使用可能なBraze API エンドポイントとその用途について説明します。"
 page_type: glossary
 description: "このランディングページには、利用可能なBraze APIエンドポイントとその用途が掲載されている。"
 glossary_tag_name: Endpoint Type
@@ -34,26 +34,27 @@ guide_featured_list:
 
 # channel to icon/fa or image mapping
 glossary_tags:
-  - name: キャンペーン
-  - name: キャンバス
-  - name: カタログ
-  - name: コンテンツブロック
-  - name: カスタムイベント
-  - name: Eメールリスト
-  - name: メールテンプレート
+  - name: Campaigns
+  - name: Canvas
+  - name: Catalogs
+  - name: Content Blocks
+  - name: Custom Events
+  - name: Email List
+  - name: Email Templates
   - name: KPI
-  - name: 購入
-  - name: 環境設定センター
-  - name: メッセージをスケジュール
+  - name: Media Library
+  - name: Purchases
+  - name: Preference Center
+  - name: Schedule Messages
   - name: SCIM
-  - name: SDK認証
-  - name: セグメント
-  - name: メッセージを送る
+  - name: SDK Authentication
+  - name: Segments
+  - name: Send Messages
   - name: SMS
-  - name: サブスクリプショングループ
-  - name: ユーザーデータ
-  - name: ライブアクティビティ
-  - name: クラウドデータ取り込み
+  - name: Subscription Groups
+  - name: User Data
+  - name: Live Activity
+  - name: Cloud Data Ingestion
 
 glossaries:
   - name: "<a href='/docs/api/endpoints/user_data/post_user_alias/'>/users/alias/new</a>"
@@ -257,11 +258,11 @@ glossaries:
     tags:
       - Segments
   - name: "<a href='/docs/api/endpoints/export/segments/get_segment/'>/segments/list</a>"
-    description: "Segments の一覧をエクスポートします。それぞれに名前、Segment API 識別子、および分析 \"トラッキングが有効になっているかどうかが含まれます。"
+    description: "セグメントs の一覧をエクスポートします。それぞれに名前、セグメント API 識別子、および分析 \"トラッキングが有効になっているかどうかが含まれます。"
     tags:
       - Segments
-  - name: "<a href='/docs/api/endpoints/export/segments/post_cancel_export/'>/export/Segment/キャンセル</a>"
-    description: 指定されたSegment ID のエクスポートを取り消します。
+  - name: "<a href='/docs/api/endpoints/export/segments/post_cancel_export/'>/export/セグメント/キャンセル</a>"
+    description: 指定されたセグメント ID のエクスポートを取り消します。
     tags:
       - Segments
   - name: "<a href='/docs/api/endpoints/export/sessions/get_sessions_analytics/'>/sessions/data_series</a>"
@@ -472,4 +473,8 @@ glossaries:
     description: アプリの SDK 認証キーを削除する。
     tags:
       - SDK Authentication
+  - name: "<a href='/docs/api/endpoints/media_library/manage_assets/create/'>/media_ライブラリー/作成</a>"
+    description: 素材をメディアライブラリーに読み込むします。
+    tags:
+      - Media Library
 ---

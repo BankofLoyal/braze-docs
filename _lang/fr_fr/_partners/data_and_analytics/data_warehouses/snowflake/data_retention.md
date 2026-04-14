@@ -11,17 +11,17 @@ search_tag: Partner
 
 > Braze anonymise (supprime les informations personnelles identifiables, ou IPI) la plupart des données d'événements stockées dans Snowflake qui datent de plus de deux ans. Certains événements sont conservés jusqu'à la suppression de l'utilisateur, comme indiqué plus loin sur cette page. Si vous utilisez le partage de données Snowflake, vous pouvez choisir de conserver l'intégralité des données d'événements dans votre environnement en stockant une copie dans votre compte Snowflake avant l'application de la politique de conservation.
 
-Cette page décrit deux façons de conserver des données non anonymisées : 
+Cette page décrit deux façons de conserver des données non anonymisées :
 
-- Copiez vos données dans une autre base de données Snowflake
-- Déharger les données dans une étape intermédiaire
+- Copier vos données dans une autre base de données Snowflake
+- Décharger vos données vers un stage
 
 {% alert warning %}
-Braze anonymise automatiquement les données des événements pour les utilisateurs qui sont supprimés de Braze, comme décrit dans l'[assistance technique sur la protection des données]({{site.baseurl}}/dp-technical-assistance/). Les données copiées en dehors de la base de données partagée ne seront pas incluses dans ce processus, car Braze ne les gère plus.
+Braze anonymise automatiquement les données d'événements pour les utilisateurs supprimés de Braze, comme décrit dans l'[assistance technique sur la protection des données]({{site.baseurl}}/dp-technical-assistance/). Les données copiées en dehors de la base de données partagée ne seront pas incluses dans ce processus, car Braze ne les gère plus. 
 {% endalert %}
 
 ## Événements exemptés de la politique de conservation de deux ans
-Braze conserve les événements liés au cycle de vie de l'utilisateur, à l'état de l'abonnement et aux envois de messages entrants jusqu'à ce qu'un utilisateur soit supprimé. Les événements suivants sont exemptés de la politique de conservation standard de deux ans :
+Braze conserve les événements liés au cycle de vie de l'utilisateur, à l'état de l'abonnement et à l'envoi de messages entrants jusqu'à ce qu'un utilisateur soit supprimé. Les événements suivants sont exemptés de la politique de conservation standard de deux ans :
 - `users.UserOrphan`
 - `users.UserDeleteRequest`
 - `users.behaviors.subscription.GlobalStateChange`
@@ -31,7 +31,7 @@ Braze conserve les événements liés au cycle de vie de l'utilisateur, à l'ét
 
 ## Copier toutes les données dans une autre base de données Snowflake
 
-Vous pouvez conserver des données non anonymisées en copiant vos données du schéma partagé `BRAZE_RAW_EVENTS` vers une autre base de données et un autre schéma dans Snowflake. Pour ce faire, suivez les étapes suivantes :
+Vous pouvez conserver des données non anonymisées en copiant vos données du schéma partagé `BRAZE_RAW_EVENTS` vers une autre base de données et un autre schéma dans Snowflake. Pour ce faire, suivez les étapes suivantes :
 
 1. Dans votre compte Snowflake, créez la procédure `COPY_BRAZE_SHARE`, qui sera utilisée pour copier toutes les données partagées par Braze vers une autre base de données et un autre schéma au sein de Snowflake. 
 
@@ -132,10 +132,10 @@ $$;
 {% endraw %}
 
 {: start="2"}
-2\. Exécutez l'une des commandes ci-dessous dans votre compte Snowflake pour exécuter la procédure.
+2. Exécutez l'une des commandes ci-dessous dans votre compte Snowflake pour lancer la procédure.
 
 {% tabs %}
-{% tab Default %}
+{% tab Par défaut %}
 
 Par défaut, la procédure sauvegarde les données datant de plus de deux ans pour tous les types d'événements `USERS_*`. 
 
@@ -148,9 +148,9 @@ CALL COPY_BRAZE_SHARE('SOURCE_DB', 'SOURCE_SCHEMA', 'DEST_DB', 'DEST_SCHEMA')
 ```
 {% endraw %}
 {% endtab %}
-{% tab Filtered %}
+{% tab Filtré %}
 
-Spécifiez un filtre pour choisir les données d'âge à sauvegarder et spécifiez un filtre de nom de table pour ne sauvegarder que les tables d'événements sélectionnées. 
+Spécifiez un filtre pour choisir l'ancienneté des données à sauvegarder, et un filtre de nom de table pour ne sauvegarder que les tables d'événements sélectionnées. 
 
 {% raw %}
 ```sql
@@ -164,14 +164,14 @@ CALL COPY_BRAZE_SHARE('SOURCE_DB', 'SOURCE_SCHEMA', 'DEST_DB', 'DEST_SCHEMA', DA
 {% endtabs %}
 
 {% alert note %}
-L'exécution répétée de la procédure n’aura pas pour effet de créer des enregistrements en double, car cette procédure vérifie le paramètre `SF_CREATED_AT` le plus récent et ne sauvegarde que les données les plus récentes.
+L'exécution répétée de la procédure ne sauvegarde que les lignes dont la valeur `SF_CREATED_AT` est supérieure au maximum déjà présent dans votre table, ce qui évite de copier des lignes déjà sauvegardées.
 {% endalert %}
 
-## Déchargement des données sur scène
+## Déchargement des données vers un stage
 
-Vous pouvez conserver les données non anonymisées en déchargeant les données du schéma partagé `BRAZE_RAW_EVENTS` vers une étape. Pour ce faire, suivez les étapes suivantes :
+Vous pouvez conserver des données non anonymisées en déchargeant les données du schéma partagé `BRAZE_RAW_EVENTS` vers un stage. Pour ce faire, suivez les étapes suivantes :
 
-1. Créez la procédure `UNLOAD_BRAZE_SHARE`, qui sera utilisée pour copier toutes les données partagées par Braze à l'étape spécifiée.
+1. Créez la procédure `UNLOAD_BRAZE_SHARE`, qui sera utilisée pour copier toutes les données partagées par Braze vers le stage spécifié.
 
 {% raw %}
 ```sql
@@ -244,12 +244,12 @@ $$;
 {% endraw %}
 
 {: start="2"}
-2\. Lancez l'une des commandes suivantes pour exécuter la procédure. 
+2. Lancez l'une des commandes suivantes pour exécuter la procédure. 
 
 {% tabs %}
-{% tab Default %}
+{% tab Par défaut %}
 
-Par défaut, la procédure copiera toutes les tables avec le préfixe `USERS_`.
+Par défaut, la procédure copie toutes les tables avec le préfixe `USERS_`.
 
 {% raw %}
 ```sql
@@ -266,9 +266,9 @@ LIST @MY_EXPORT_STAGE;
 ```
 {% endraw %}
 {% endtab %}
-{% tab Filtered %}
+{% tab Filtré %}
 
-Spécifiez un filtre dans la procédure pour ne décharger que les tables spécifiées.
+Spécifiez un filtre dans la procédure pour ne décharger que les tables souhaitées.
 
 {% raw %}
 ```sql

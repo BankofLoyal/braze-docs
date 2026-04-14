@@ -46,7 +46,7 @@ To find your REST endpoint in Braze:
 {% alert important %}
 When using endpoints for API calls, use the REST endpoint.
 
-For SDK integration, use the [SDK endpoint]({{site.baseurl}}/user_guide/administrative/access_braze/sdk_endpoints/), not the REST endpoint.
+For SDK integration, use the [SDK endpoint]({{site.baseurl}}/user_guide/administer/personal/sdk_endpoints/), not the REST endpoint.
 {% endalert %}
 
 {% multi_lang_include data_centers.md datacenters='instances' %}
@@ -60,7 +60,7 @@ For most APIs, Braze has a default rate limit of 250,000 requests per hour. Howe
 - **External user ID**: The `external_id` serves as a unique user identifier for whom you are submitting data. This identifier should be the same as the one you set in the Braze SDK in order to avoid creating multiple profiles for the same user.
 - **Braze user ID**: `braze_id` serves as a unique user identifier that Braze sets. You can use this identifier to delete users through the REST API in addition to external_ids.
 
-For more information, refer to the following articles based on your platform: [iOS]({{site.baseurl}}/developer_guide/platform_integration_guides/swift/analytics/setting_user_ids/), [Android]({{site.baseurl}}/developer_guide/platform_integration_guides/android/analytics/setting_user_ids/), and [Web]({{site.baseurl}}/developer_guide/platform_integration_guides/web/analytics/setting_user_ids/).
+For more information, refer to the following articles based on your platform: [iOS]({{site.baseurl}}/developer_guide/analytics/setting_user_ids/?tab=swift), [Android]({{site.baseurl}}/developer_guide/analytics/setting_user_ids/?tab=android), and [Web]({{site.baseurl}}/developer_guide/analytics/setting_user_ids/?tab=web).
 
 ## About REST API keys
 
@@ -236,7 +236,7 @@ API key permissions are permissions you can assign a user or group to limit thei
 
 | Permission | Description |
 |---|---|---|
-| `sso.saml.login` | Set up identity provider-initiated login. For more information, refer to [Service Provider (SP) initiated login]({{site.baseurl}}/user_guide/administrative/access_braze/single_sign_on/set_up/). |
+| `sso.saml.login` | Set up identity provider-initiated login. For more information, refer to [Service Provider (SP) initiated login]({{site.baseurl}}/user_guide/administer/global/saml_single_sign_on/saml_sso_setup/). |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 role="presentation" }
 
 {% endtab %}
@@ -333,7 +333,7 @@ To view the details of an API key, hover over the key and select <i class="fa-so
 
 ![The list of API key permissions in the Braze dashboard.]({% image_buster /assets/img_archive/view-api-key.png %})
 
-Note when [deleting a user]({{site.baseurl}}/user_guide/administrative/app_settings/manage_your_braze_users/), Braze does not delete the associated API keys that user created. To delete a key, hover over the key and select <i class="fa-solid fa-trash-can" alt="Delete"></i> **Delete**.
+Note when [deleting a user]({{site.baseurl}}/user_guide/administer/global/user_management/manage_company_users/), Braze does not delete the associated API keys that user created. To delete a key, hover over the key and select <i class="fa-solid fa-trash-can" alt="Delete"></i> **Delete**.
 
 ![An API key named 'Last Seen' with the trash icon highlighted, showing 'Delete'.]({% image_buster /assets/img_archive/api-key-options.png %}){: style="max-width:30%;"}
 
@@ -350,6 +350,17 @@ Given that REST API keys allow access to potentially sensitive REST API endpoint
 {% endalert %}
 
 If you accidentally expose a key, you can delete it from the Developer Console. For help with this process, open a [support ticket]({{site.baseurl}}/braze_support/).
+
+### Security of REST API keys and SDK API keys
+
+REST API keys and SDK API keys have different security profiles.
+
+| | REST API keys | SDK API keys |
+|---|---|---|
+| Purpose | Server-side authentication for the REST API (sending messages, exporting data, managing users) | Client-side identification for the Braze SDK (data ingestion, in-app messages, Content Cards) |
+| Visibility | **Must remain private**. Never expose in client-side code, public repositories, or user applications. | Designed to be public. Bundled inside your app binary or visible in web browser JavaScript, similar to a Google Analytics tracking ID. |
+| Solution if exposed | Immediately revoke the key and create a replacement in **Settings** > **APIs and Identifiers** > **API Keys**. An exposed REST API key can be used to send messages, export user data, or modify account settings. | No action required. An SDK API key can only ingest data and retrieve client-side messaging (such as in-app messages and Content Cards). It cannot export user data, send messages on your behalf, or modify campaigns. |
+{: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 role="presentation" }
 
 ### API IP allowlisting
 
