@@ -1,30 +1,30 @@
 ---
-nav_title: About Audience Sync
-article_title: About Audience Sync
+nav_title: Audience Sync 소개
+article_title: Audience Sync 소개
 alias: /partners/about_audience_sync/
-description: "This reference article will cover how to use Braze Audience Sync to Facebook, to deliver advertisements based upon behavioral triggers, segmentation, and more."
+description: "이 참조 문서에서는 Braze Audience Sync to Facebook을 사용하여 행동 트리거, 세분화 등을 기반으로 광고를 전달하는 방법을 다룹니다."
 page_order: 0
 Tool:
   - Canvas
 
 ---
 
-# About Audience Sync
+# Audience Sync 소개
 
-> The Braze Audience Sync feature helps you extend the reach of your campaigns to many of the top social and advertising technologies. Through [Braze Canvas]({{site.baseurl}}/user_guide/engagement_tools/canvas), brands can dynamically and securely sync first-party user data into the advertising ecosystem to drive marketing and operational efficiencies.
+> Braze Audience Sync 기능은 캠페인의 도달 범위를 주요 소셜 및 광고 기술로 확장하는 데 도움을 줍니다. [Braze Canvas]({{site.baseurl}}/user_guide/engagement_tools/canvas)를 통해 브랜드는 퍼스트파티 사용자 데이터를 광고 생태계에 동적이고 안전하게 동기화하여 마케팅 및 운영 효율성을 높일 수 있습니다.
 
-## Feature availability
+## 기능 가용성
 
-All Braze customers will immediately have access to Audience Sync to Google and Facebook. To unlock additional Audience Sync destinations including TikTok, Pinterest, Snapchat, or Criteo, you will need to purchase Audience Sync Pro. Contact your Braze account manager for more details.
+모든 Braze 고객은 Audience Sync to Google 및 Facebook에 즉시 액세스할 수 있으며, 메시지 크레딧을 사용하는 고객은 모든 Audience Sync 파트너에 액세스할 수 있습니다. 추가 Audience Sync 대상을 잠금 해제하려면 Audience Sync Pro를 구매하세요. 자세한 내용은 Braze 계정 매니저에게 문의하세요.
 
-## Use cases
+## 활용 사례
 
-- Targeting high-value users using owned and paid channels to drive incremental purchases or engagement.
-- Creating lookalike audiences of your high-value users to optimize new user acquisition costs and conversions.
-- Retargeting users with ads who are less responsive to other marketing channels.
-- Creating suppression audiences to prevent users from receiving advertisements when they’re already loyal consumers of your brand.
+- 자사 및 유료 채널을 사용하여 고가치 사용자를 타겟팅하여 추가 구매 또는 참여를 유도합니다.
+- 고가치 사용자의 유사 오디언스를 생성하여 신규 사용자 획득 비용과 전환을 최적화합니다.
+- 다른 마케팅 채널에 반응이 적은 사용자를 광고로 리타겟팅합니다.
+- 이미 브랜드의 충성 소비자인 사용자가 광고를 받지 않도록 억제 오디언스를 생성합니다.
 
-## Overview
+## 개요
 
 <style>
 table td {
@@ -32,93 +32,91 @@ table td {
 }
 </style>
 
-| 대상 | Time for destination to match audience members | 사용량 제한 | Lookalike or actalike | Tips |
+| 대상 | 대상이 오디언스 멤버를 매칭하는 데 걸리는 시간 | 사용량 제한 | 유사 또는 유사 행동 오디언스 | 팁 |
 | --- | --- | --- | --- | --- |
-| [Criteo]({{site.baseurl}}/partners/canvas_audience_sync/criteo_audience_sync/) | Up to 24 hours | 250,000 requests per minute. Batched every 5 seconds with an auto-retry based on Google feedback. | 예 | {::nomarkdown}<ul><li>Criteo supports up to 1,000 ad audiences.</li><li>The minimum audience size is 500, and the recommend is over 20,000.</li></ul>{:/} |
-| [Facebook or Instagram]({{site.baseurl}}/partners/canvas_audience_sync/facebook_audience_sync/) | Up to 24 hours | 190,000 ad accounts per hour | 예 | {::nomarkdown}<ul><li>Facebook supports up to 500 ad audiences.</li><li>Facebook requires audiences to be at least 1,000 users.</li></ul>{:/} |
-| [Google Ads or YouTube]({{site.baseurl}}/partners/canvas_audience_sync/google_audience_sync/) | Between 6 to 12 hours | Batched every 5 seconds with an auto-retry based on Google feedback | 아니요 | {::nomarkdown}<ul><li><b>Customer match:</b> Use either mobile ad, or email address or phone number.</li><li>Google Audiences require at least 5,000 users to start serving ads.</li><li>The audience size will show as zero until there are at least 1,000 users.</li></ul>{:/} |
-| [LinkedIn]({{site.baseurl}}/partners/canvas_audience_sync/linkedin_audience_sync/) | 48 hours | LinkedIn processes 10 queries per second and 100,000 users per request. Braze batches users every 5 seconds. | AI predictive audiences | {::nomarkdown}<ul><li>The minimum audience size is 300 members with location targeting taken into consideration.</li><li>LinkedIn shows match the rate in the Braze dashboard.</li></ul>{:/} |
-| [Pinterest]({{site.baseurl}}/partners/canvas_audience_sync/pinterest_audience_sync/) | Between 24 and 48 hours | Pinterest는 초당 7개의 쿼리를 처리하고 요청당 1,900명의 사용자를 처리합니다. Braze batches users every 5 seconds. | 예 | Pinterest audiences require at least 100 users. |
-| [Snapchat]({{site.baseurl}}/partners/canvas_audience_sync/snapchat_audience_sync/) | N/A | Snapchat processes 10 queries per second and 100,000 users per request. Braze batches users every 5 seconds. | 예 | Snapchat supports up to 1,000 ad audiences. |
-| [TikTok]({{site.baseurl}}/partners/canvas_audience_sync/tiktok_audience_sync/) | Between 24 and 48 hours | TikTok processes 50 queries per second and 10,000 users per request. Braze batches users every 5 seconds. | 예 | {::nomarkdown}<ul><li>TikTok supports up to 400 ad audiences.</li><li>TikTok audiences require at least 1,000 users to start serving ads.</li></ul>{:/} |
+| [Criteo]({{site.baseurl}}/partners/canvas_audience_sync/criteo_audience_sync/) | 최대 24시간 | 분당 250,000건의 요청. Google 피드백에 기반한 자동 재시도로 5초마다 배치 처리됩니다. | 예 | {::nomarkdown}<ul><li>Criteo는 최대 1,000개의 광고 오디언스를 지원합니다.</li><li>최소 오디언스 크기는 500이며, 20,000 이상을 권장합니다.</li></ul>{:/} |
+| [Facebook 또는 Instagram]({{site.baseurl}}/partners/canvas_audience_sync/facebook_audience_sync/) | 최대 24시간 | 시간당 190,000개의 광고 계정 | 예 | {::nomarkdown}<ul><li>Facebook은 최대 500개의 광고 오디언스를 지원합니다.</li><li>Facebook은 오디언스가 최소 1,000명의 사용자여야 합니다.</li></ul>{:/} |
+| [Google Ads 또는 YouTube]({{site.baseurl}}/partners/canvas_audience_sync/google_audience_sync/) | 6~12시간 | Google 피드백에 기반한 자동 재시도로 5초마다 배치 처리됩니다 | 아니요 | {::nomarkdown}<ul><li><b>고객 매칭:</b> 모바일 광고 ID, 이메일 주소 또는 전화번호를 사용합니다.</li><li>Google 오디언스는 광고 게재를 시작하려면 최소 5,000명의 사용자가 필요합니다.</li><li>오디언스 크기는 최소 1,000명의 사용자가 될 때까지 0으로 표시됩니다.</li></ul>{:/} |
+| [LinkedIn]({{site.baseurl}}/partners/canvas_audience_sync/linkedin_audience_sync/) | 48시간 | LinkedIn은 초당 10개의 쿼리를 처리하고 요청당 100,000명의 사용자를 처리합니다. Braze는 5초마다 사용자를 배치 처리합니다. | AI 예측 오디언스 | {::nomarkdown}<ul><li>최소 오디언스 크기는 위치 타겟팅을 고려하여 300명입니다.</li><li>LinkedIn은 Braze 대시보드에서 매칭률을 표시합니다.</li></ul>{:/} |
+| [Pinterest]({{site.baseurl}}/partners/canvas_audience_sync/pinterest_audience_sync/) | 24~48시간 | Pinterest는 초당 7개의 쿼리를 처리하고 요청당 1,900명의 사용자를 처리합니다. Braze는 5초마다 사용자를 배치 처리합니다. | 예 | Pinterest 오디언스는 최소 100명의 사용자가 필요합니다. |
+| [Snapchat]({{site.baseurl}}/partners/canvas_audience_sync/snapchat_audience_sync/) | N/A | Snapchat은 초당 10개의 쿼리를 처리하고 요청당 100,000명의 사용자를 처리합니다. Braze는 5초마다 사용자를 배치 처리합니다. | 예 | Snapchat은 최대 1,000개의 광고 오디언스를 지원합니다. |
+| [TikTok]({{site.baseurl}}/partners/canvas_audience_sync/tiktok_audience_sync/) | 24~48시간 | TikTok은 초당 50개의 쿼리를 처리하고 요청당 10,000명의 사용자를 처리합니다. Braze는 5초마다 사용자를 배치 처리합니다. | 예 | {::nomarkdown}<ul><li>TikTok은 최대 400개의 광고 오디언스를 지원합니다.</li><li>TikTok 오디언스는 광고 게재를 시작하려면 최소 1,000명의 사용자가 필요합니다.</li></ul>{:/} |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 .reset-td-br-4 .reset-td-br-5 role="presentation" }
-<sup>When the rate limit is reached, Braze will retry syncs for 13 hours.</sup>
+<sup>사용량 제한에 도달하면 Braze는 13시간 동안 동기화를 재시도합니다.</sup>
 
-## How it works
+## 작동 방식
 
-To use Audience Sync to Google or Facebook, connect your ad account by searching for the partner on the **Technology Partners** page.
+Audience Sync to Google 또는 Facebook을 사용하려면 **기술 파트너** 페이지에서 파트너를 검색하여 광고 계정을 연결하세요.
 
-![Facebook technology partner.]({% image_buster /assets/img/audience_sync/facebook_partner.png %}){: style="max-width:35%;"} ![Google Ads technology partner.]({% image_buster /assets/img/audience_sync/google_ads_partner.png %}){: style="max-width:35%;"}
+![Facebook 기술 파트너.]({% image_buster /assets/img/audience_sync/facebook_partner.png %}){: style="max-width:35%;"} ![Google Ads 기술 파트너.]({% image_buster /assets/img/audience_sync/google_ads_partner.png %}){: style="max-width:35%;"}
 
-After connecting your ad account, you can create a Canvas with an Audience Sync step.
+광고 계정을 연결한 후 Audience Sync 단계가 포함된 캔버스를 생성할 수 있습니다.
 
-![Canvas component menu to add the Audience Sync step to the user journey.]({% image_buster /assets/img/audience_sync/audience_sync7.png %}){: style="max-width:75%;"}
+![사용자 여정에 Audience Sync 단계를 추가하는 캔버스 구성요소 메뉴.]({% image_buster /assets/img/audience_sync/audience_sync7.png %}){: style="max-width:75%;"}
 
-Next, select the partner to sync audiences.
+다음으로, 오디언스를 동기화할 파트너를 선택합니다.
 
-![Option to select your audience sync partner in the Audience Sync step.]({% image_buster /assets/img/audience_sync/audience_sync4.png %}){: style="max-width:85%;"}
+![Audience Sync 단계에서 오디언스 동기화 파트너를 선택하는 옵션.]({% image_buster /assets/img/audience_sync/audience_sync4.png %}){: style="max-width:85%;"}
 
-For each partner, you’ll need to configure the following as part of your Audience Sync step: 
+각 파트너에 대해 Audience Sync 단계의 일부로 다음을 구성해야 합니다:
 
-- Ad account
-- Audience 
-- Action to either add or remove users 
-- Fields to match 
+- 광고 계정
+- 오디언스
+- 사용자를 추가하거나 제거하는 동작
+- 매칭할 필드
 
-Keep in mind that Braze will sync users as soon as they enter the Audience Sync step within your Canvas. 
+Braze는 사용자가 캔버스 내의 Audience Sync 단계에 진입하는 즉시 동기화한다는 점을 유의하세요.
 
-For each Audience Sync destination, the partner may have different requirements for which fields we can send. Refer to the specific partner documentation for more details. 
+각 Audience Sync 대상에 대해 파트너마다 전송할 수 있는 필드에 대한 요구 사항이 다를 수 있습니다. 자세한 내용은 해당 파트너 설명서를 참조하세요.
 
 ### Audience Sync Pro
 
-To use an Audience Sync Pro partner including TikTok, Pinterest, Snapchat, or Criteo, you’ll be able to select your partners based on your Audience Sync Pro purchase allotments in the **Audience Sync Pro** section on the **Technology Partners** page.
+TikTok, Pinterest, Snapchat 또는 Criteo를 포함한 Audience Sync Pro 파트너를 사용하려면 **기술 파트너** 페이지의 **Audience Sync Pro** 섹션에서 Audience Sync Pro 구매 할당량에 따라 파트너를 선택할 수 있습니다.
 
-![Audience Sync Pro with no partners selected yet.]({% image_buster /assets/img/audience_sync/audience_sync_pro1.png %}){: style="max-width:75%;"}
+![아직 파트너가 선택되지 않은 Audience Sync Pro.]({% image_buster /assets/img/audience_sync/audience_sync_pro1.png %}){: style="max-width:75%;"}
 
-First, select the partners you intend to use by selecting Select Partners. Each purchase of Audience Sync Pro will provide you 3 allotted Audience Sync Pro destinations, which will be available within each of your workspaces within your dashboard.
+먼저 파트너 선택을 클릭하여 사용하려는 파트너를 선택합니다. Audience Sync Pro를 구매할 때마다 3개의 Audience Sync Pro 대상이 할당되며, 대시보드 내 각 워크스페이스에서 사용할 수 있습니다.
 
-![Option to select up to three partners to connect to Braze.]({% image_buster /assets/img/audience_sync/audience_sync_pro2.png %}){: style="max-width:65%;"}
+![Braze에 연결할 최대 3개의 파트너를 선택하는 옵션.]({% image_buster /assets/img/audience_sync/audience_sync_pro2.png %}){: style="max-width:65%;"}
 
-After selecting your Audience Sync Pro destinations, connect your selected partner ad account by clicking on the partner tile.
+Audience Sync Pro 대상을 선택한 후 파트너 타일을 클릭하여 선택한 파트너 광고 계정을 연결합니다.
 
-![An example of Snapchat and TikTok selected as partners for Audience Sync.]({% image_buster /assets/img/audience_sync/audience_sync_pro3a.png %}){: style="max-width:70%;"}
+![Audience Sync의 파트너로 Snapchat과 TikTok이 선택된 예시.]({% image_buster /assets/img/audience_sync/audience_sync_pro3a.png %}){: style="max-width:70%;"}
 
-![Snapchat Audience Sync settings with the message: "You successfully connected 1 Snapchat account".]({% image_buster /assets/img/audience_sync/audience_sync_pro4.png %}){: style="max-width:70%;"}
+!["Snapchat 계정 1개를 성공적으로 연결했습니다"라는 메시지가 표시된 Snapchat Audience Sync 설정.]({% image_buster /assets/img/audience_sync/audience_sync_pro4.png %}){: style="max-width:70%;"}
 
-Lastly, create your Audience Sync step in Canvas using this Audience Sync Pro destination.
+마지막으로, 이 Audience Sync Pro 대상을 사용하여 캔버스에서 Audience Sync 단계를 생성합니다.
 
-### Audience Sync error emails
+### Audience Sync 오류 이메일
 
-If the error is related to the overall partner integration (such as an authorization issue), an email is sent to the user who connected the integration. If that user no longer exists, then the administrators will receive the emails. 
+오류가 전체 파트너 통합과 관련된 경우(예: 승인 문제), 통합을 연결한 사용자에게 이메일이 전송됩니다. 해당 사용자가 더 이상 존재하지 않으면 관리자가 이메일을 받게 됩니다.
 
-If the error is related to issues with the Audience Sync component (such as "Audience Does Not Exist") in Canvas, an email is sent to the user who set up the Canvas. If that user no longer exists, then it falls back to the company administrator.
+오류가 캔버스의 Audience Sync 구성요소와 관련된 문제(예: "오디언스가 존재하지 않음")인 경우, 캔버스를 설정한 사용자에게 이메일이 전송됩니다. 해당 사용자가 더 이상 존재하지 않으면 회사 관리자에게 전달됩니다.
 
-To configure who will receive these emails, contact your customer success manager to add recipients under **Notification Preferences**. Because this feature will change the current behavior, you'll need to immediately add recipients to this new notification preference as Braze doesn't opt-in anyone by default, and to make sure no error emails are missed.
+이러한 이메일을 받을 사람을 구성하려면 고객 성공 매니저에게 연락하여 **알림 기본 설정**에서 수신자를 추가하세요. 이 기능은 현재 동작을 변경하므로, Braze는 기본적으로 누구도 옵트인하지 않기 때문에 오류 이메일이 누락되지 않도록 이 새로운 알림 기본 설정에 즉시 수신자를 추가해야 합니다.
 
-## Data privacy considerations
+## 데이터 프라이버시 고려 사항
 
 {% alert important %}
-This documentation is not intended to provide, nor may it be relied upon as providing legal advice. The use of Audience Sync is subject to specific legal requirements. To ensure that you are using it in compliance with all applicable laws, you should seek the advice of your legal counsel.
+이 설명서는 법적 조언을 제공하기 위한 것이 아니며, 법적 조언으로 의존해서는 안 됩니다. Audience Sync의 사용은 특정 법적 요구 사항의 적용을 받습니다. 모든 관련 법률을 준수하여 사용하고 있는지 확인하려면 법률 고문의 조언을 구해야 합니다.
 {% endalert %}
 
-When building audiences for Ad Tracking, you may wish to include or exclude certain users based on their preferences, and to comply with privacy laws, such as the “Do Not Sell or Share” right under the [CCPA](https://oag.ca.gov/privacy/ccpa). Marketers should implement the relevant filters for users’ eligibility within their Canvas entry criteria. Below we list some options.
+광고 추적을 위한 오디언스를 구축할 때, 사용자의 선호도에 따라 특정 사용자를 포함하거나 제외하고, [CCPA](https://oag.ca.gov/privacy/ccpa)에 따른 "판매 또는 공유 금지" 권리와 같은 개인정보 보호법을 준수하고자 할 수 있습니다. 마케터는 캔버스 진입 기준 내에서 사용자 자격에 대한 관련 필터를 구현해야 합니다. 아래에 몇 가지 옵션을 나열합니다.
 
-If you have collected the [iOS IDFA through the Braze SDK]({{site.baseurl}}/developer_guide/platform_integration_guides/ios/initial_sdk_setup/other_sdk_customizations/#optional-idfa-collection), you will be able to use the "Ads Tracking Enabled" filter. Select the value as `true` to only send users into Audience Sync destinations where they have opted in.
+[Braze SDK를 통해 iOS IDFA]({{site.baseurl}}/developer_guide/platform_integration_guides/ios/initial_sdk_setup/other_sdk_customizations/#optional-idfa-collection)를 수집한 경우, "광고 추적 활성화됨" 필터를 사용할 수 있습니다. 값을 `true`로 선택하면 옵트인한 사용자만 Audience Sync 대상으로 전송됩니다.
 
-![A Canvas with an entry audience of "Ad Tracking Enabled is true".]({% image_buster /assets/img/audience_sync/audience_sync2.png %})
+![진입 오디언스가 "광고 추적 활성화됨이 true"인 캔버스.]({% image_buster /assets/img/audience_sync/audience_sync2.png %})
 
-If you are collecting `opt-ins`, `opt-outs`, `Do Not Sell Or Share`, or any other relevant custom attributes, you should include these within your Canvas entry criteria as a filter:
+`opt-ins`, `opt-outs`, `Do Not Sell Or Share` 또는 기타 관련 커스텀 속성을 수집하는 경우, 캔버스 진입 기준에 필터로 포함해야 합니다:
 
-![입장 관객이 "opted_in_marketing인 캔버스는 참입니다".]({% image_buster /assets/img/audience_sync/audience_sync.png %})
+![진입 오디언스가 "opted_in_marketing이 true"인 캔버스.]({% image_buster /assets/img/audience_sync/audience_sync.png %})
 
-To learn more on how to comply with these Data Protection laws within the Braze platform, see [Data Protection Technical Assistance]({{site.baseurl}}/dp-technical-assistance/).
+Braze 플랫폼 내에서 이러한 데이터 보호법을 준수하는 방법에 대해 자세히 알아보려면 [데이터 보호 기술 지원]({{site.baseurl}}/dp-technical-assistance/)을 참조하세요.
 
-## Managing consent for ad targeting
+## 광고 타겟팅에 대한 동의 관리
 
-As the advertiser, it is your responsibility to manage consent for ad tracking or targeting of your users.
+광고주로서 사용자의 광고 추적 또는 타겟팅에 대한 동의를 관리하는 것은 귀하의 책임입니다.
 
-To send ads to your users, you must comply with all applicable laws and regulations, and the ad platform's policies and requirements. Only use Braze to target and sync users where you have obtained their consent. 
+사용자에게 광고를 전송하려면 모든 관련 법률 및 규정, 그리고 광고 플랫폼의 정책 및 요구 사항을 준수해야 합니다. 동의를 얻은 사용자에 대해서만 Braze를 사용하여 타겟팅하고 동기화하세요.
 
-To keep your audience lists in these ad platforms up-to-date and remove users who have revoked their consent, set up a Canvas to remove users from these existing audience lists using an Audience Sync step.
-
-
+이러한 광고 플랫폼에서 오디언스 목록을 최신 상태로 유지하고 동의를 철회한 사용자를 제거하려면, Audience Sync 단계를 사용하여 기존 오디언스 목록에서 사용자를 제거하는 캔버스를 설정하세요.

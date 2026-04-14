@@ -22,7 +22,7 @@ export REDIRECT_MATCHES="$PROJECT_ROOT/scripts/temp/redirect_matches.json"
 
 # All scripts exported so they can source bdocs and call each other if needed.
 export DEPLOY="$PROJECT_ROOT/scripts/create_deploy_text.sh"
-export RELEASE="$PROJECT_ROOT/scripts/create_release_text.sh"
+export GEN_RELEASE_DEPLOY="$PROJECT_ROOT/scripts/generate_releases_deploy.py"
 export TLINKS="$PROJECT_ROOT/scripts/transform_reference_links.py"
 export RLINKS="$PROJECT_ROOT/scripts/remove_unused_reference_links.rb"
 export ULINKS="$PROJECT_ROOT/scripts/update_old_links.py"
@@ -34,6 +34,7 @@ export SYNTAX="$PROJECT_ROOT/scripts/print_unique_syntax.sh"
 
 # Utility scripts that are not directly used in bdocs:
 export MRD="$PROJECT_ROOT/scripts/utils/merge_redirect_descendants.py"
+export CHECK_REDIRECTS="$PROJECT_ROOT/scripts/validate_doc_redirects.rb"
 export TEMP_DIR="$PROJECT_ROOT/scripts/temp"
 
 # Displays usage for bdocs
@@ -46,11 +47,12 @@ USAGE:
 
 OPTIONS:
   deploy         Create the deploy body text for weekly deployments
-  release        Create the release body text for monthly releases
+  release        Generate deploy-PR list from last v.* tag through today (gh + git); optional args
   tlinks         Transform reference links to inline links on 1 or more pages
   rlinks         Remove unused reference links on 1 or more pages
   ulinks         Update old links using newest redirect on 1 or more pages
   mredirects     Make redirects for all renamed files in this branch
+  check_redirects   Validate redirects vs Jekyll URLs (develop...HEAD) for doc moves
   lredirects     Test new redirects by listing old URLs in this branch
   fblinks        Finds broken links throughout the docs site
   clangs         Clean language directories by deleting orphaned files
@@ -84,12 +86,12 @@ require_new_merges() {
     fi
 }
 
-# If a the 'jq' package is required, pass or fail. This is needed to parse JSON.
-# For more info, see: https://jqlang.org/
-require_jq() {
-    if ! command -v jq &> /dev/null; then
-        echo "Error: 'jq' is required to run this command. On MacOS, run:"
-        echo "  brew install jq"
+# If the GitHub CLI is required, pass or fail.
+require_gh() {
+    if ! command -v gh &> /dev/null; then
+        echo "Error: 'gh' (GitHub CLI) is required to run this command. On macOS, run:"
+        echo "  brew install gh"
+        echo "  gh auth login"
         exit 1
     fi
 }
@@ -184,10 +186,61 @@ case $1 in
         fi
         ;;
     release)
-        require_git_fetch
-        require_new_merges
-        require_jq
-        "$RELEASE"
+        require_gh
+        # Latest v.* tag (same anchor as auto date window in generate_releases_deploy.py)
+        git fetch origin main --tags --quiet 2>/dev/null || git fetch origin --tags --quiet 2>/dev/null || true
+        case $# in
+            1)
+                python3 "$GEN_RELEASE_DEPLOY" \
+                    --git-repo-root "$PROJECT_ROOT" \
+                    --auto-from-last-release-tag
+                ;;
+            2)
+                OUT="$2"
+                if [[ "$OUT" != /* ]]; then
+                    OUT="$PROJECT_ROOT/$OUT"
+                fi
+                python3 "$GEN_RELEASE_DEPLOY" \
+                    --git-repo-root "$PROJECT_ROOT" \
+                    --auto-from-last-release-tag \
+                    --output "$OUT"
+                ;;
+            4|5)
+                START_DATE="$2"
+                END_DATE="$3"
+                MONTH_TITLE="$4"
+                if [[ $# -eq 5 ]]; then
+                    OUTPUT="$5"
+                    if [[ "$OUTPUT" != /* ]]; then
+                        OUTPUT="$PROJECT_ROOT/$OUTPUT"
+                    fi
+                else
+                    OUTPUT="$PROJECT_ROOT/scripts/temp/releases_deploy_${START_DATE}_to_${END_DATE}.md"
+                fi
+                python3 "$GEN_RELEASE_DEPLOY" \
+                    --git-repo-root "$PROJECT_ROOT" \
+                    --merged-search "${START_DATE}..${END_DATE}" \
+                    --window-start "${START_DATE}T00:00:00Z" \
+                    --window-end "${END_DATE}T23:59:59Z" \
+                    --month-title "$MONTH_TITLE" \
+                    --output "$OUTPUT"
+                ;;
+            *)
+                echo "Usage:"
+                echo "  ./bdocs release"
+                echo "      Lists merged 'deploy' PRs from the day after the latest v.* tag through today (UTC)."
+                echo "      Default output: scripts/temp/releases_deploy_<start>_to_<end>.md"
+                echo ""
+                echo "  ./bdocs release <output.md>"
+                echo "      Same window, write to the given path (relative paths are under the repo root)."
+                echo ""
+                echo "  ./bdocs release <start-date> <end-date> <month-title> [output.md]"
+                echo "      Explicit YYYY-MM-DD range (optional output path)."
+                echo ""
+                echo "Filtering and format: scripts/generate_releases_deploy.py"
+                exit 1
+                ;;
+        esac
         ;;
     tlinks)
         require_path_or_file "$2"
@@ -209,6 +262,10 @@ case $1 in
         ;;
     mredirects)
         "$MREDIRECTS"
+        ;;
+    check_redirects)
+        shift
+        bundle exec ruby "$CHECK_REDIRECTS" "$@"
         ;;
     lredirects)
         require_git_fetch

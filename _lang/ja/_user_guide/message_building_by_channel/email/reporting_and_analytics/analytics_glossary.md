@@ -1,11 +1,11 @@
 ---
-nav_title: 電子メール分析用語集
-article_title: 電子メール分析用語集
+nav_title: メール分析用語集
+article_title: メール分析用語集
 layout: email_report_metrics
 page_order: 0
 excerpt_separator: ""
 page_type: glossary
-description: "この用語集には、起動後にメール キャンペーンまたはキャンバスの分析の項に記載されている用語が含まれています。この用語集には、Currents測定基準は含まれていません。"
+description: "この用語集には、起動後のメールキャンペーンまたはキャンバスの分析セクションに表示される用語が含まれています。この用語集には、Currents の指標は含まれていません。"
 channel: 
   - email
 ---
@@ -22,7 +22,7 @@ channel:
 ### バリエーション
 
 {% apitags %}
-カウント
+Count
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Variation' %}
@@ -36,7 +36,7 @@ channel:
 ### メール可能
 
 {% apitags %}
-カウント
+Count
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Emailable' %}
@@ -50,12 +50,12 @@ channel:
 ### オーディエンス (%)
 
 {% apitags %}
-パーセンテージ
+Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Audience' %}
 
-<span class="calculation-line">計算式: (バリアントの受信者数)/(ユニーク受信者数)</span>
+<span class="calculation-line">計算式: (バリアントの受信者数) / (ユニーク受信者数)</span>
 
 {% endapi %}
 
@@ -64,10 +64,10 @@ channel:
 ### ユニーク受信者数
 
 {% apitags %}
-カウント
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Unique Recipients' %} この番号はBrazeから受け取ります。
+{% multi_lang_include analytics/metrics.md metric='Unique Recipients' %} この数値は Braze から提供されます。
 
 <span class="calculation-line">計算式: カウント</span>
 
@@ -78,10 +78,10 @@ channel:
 ### 送信数
 
 {% apitags %}
-カウント
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Sends' %}  このメトリクスは、Brazeによって提供されます。
+{% multi_lang_include analytics/metrics.md metric='Sends' %}  この指標は Braze から提供されます。
 
 <span class="calculation-line">計算式: カウント</span>
 
@@ -92,10 +92,10 @@ channel:
 ### 送信済みメッセージ
 
 {% apitags %}
-カウント
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Messages Sent' %}  このメトリクスは、Brazeによって提供されます。
+{% multi_lang_include analytics/metrics.md metric='Messages Sent' %}  この指標は Braze から提供されます。
 
 <span class="calculation-line">計算式: カウント</span>
 
@@ -106,10 +106,10 @@ channel:
 ### 配信数
 
 {% apitags %}
-カウント
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Deliveries' %} メール s の場合、*Deliveries* は、メール可能なパーティに正常に送受信されたメッセージ(送信)の総数です。
+{% multi_lang_include analytics/metrics.md metric='Deliveries' %} メールの場合、*配信数*は、メール可能な宛先に正常に送信および受信されたメッセージ（送信数）の合計です。
 
 <span class="calculation-line">計算式: (送信数) - (バウンス数) </span>
 
@@ -117,10 +117,10 @@ channel:
 
 {% api %}
 
-### 配信 (%)
+### 配信率 (%)
 
 {% apitags %}
-パーセンテージ
+Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Deliveries %' %}
@@ -134,21 +134,21 @@ channel:
 ### バウンス数
 
 {% apitags %}
-カウント、パーセント
+Count, Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Bounces' %} 
 
-メールの場合、[*バウンス率 (%)*] または [*バウンス率*] は、使用した送信サービスが送信に失敗した、または「返送された」や「受信されなかった」が示されたメッセージ、あるいは目的のメール可能なユーザーが受信しなかったメッセージの割合です。
+メールの場合、*バウンス率 (%)* または*バウンス率*は、使用した送信サービスが送信に失敗した、または「返送された」や「受信されなかった」と指定されたメッセージ、あるいは目的のメール可能なユーザーが受信しなかったメッセージの割合です。
 
-SendGrid を使用している顧客のメールバウンスには、ハードバウンス、スパム (`spam_report_drops`)、および無効なアドレスに送信されたメール (`invalid_emails`) があります。
+SendGrid を使用している顧客のメールバウンスには、ハードバウンス、スパム (`spam_report_drops`)、および無効なアドレスに送信されたメール (`invalid_emails`) が含まれます。
 
 {::nomarkdown}
 <span class="calculation-line">
-    計算式: 
+    計算式:
     <ul>
-        <li><b><i>バウンス数</i>:</b>カウント</li>
-        <li><b><i>バウンス%</i>または<i>バウンス率%</i>:</b>(バウンス数) / (送信数)</li>
+        <li><b><i>バウンス数</i>:</b> カウント</li>
+        <li><b><i>バウンス %</i> または <i>バウンス率 %</i>:</b> (バウンス数) / (送信数)</li>
     </ul>
 </span>
 {:/}
@@ -160,7 +160,7 @@ SendGrid を使用している顧客のメールバウンスには、ハード�
 ### ハードバウンス
 
 {% apitags %}
-カウント
+Count
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Hard Bounce' %} 
@@ -174,12 +174,12 @@ SendGrid を使用している顧客のメールバウンスには、ハード�
 ### ソフトバウンス
 
 {% apitags %}
-カウント
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Soft Bounce' %} メールがソフトバウンスを受信した場合、通常は72時間以内に再試行されますが、再試行回数は受信側ごとに異なります。 
+{% multi_lang_include analytics/metrics.md metric='Soft Bounce' %} メールがソフトバウンスになった場合、通常は72時間以内に再試行されますが、再試行回数は受信側ごとに異なります。 
 
-ソフトバウンスはキャンペーン分析では追跡されませんが、[メッセージアクティビティログ]({{site.baseurl}}/user_guide/administrative/app_settings/message_activity_log_tab/)で監視できます。あるいは、[ソフトバウンスセグメンテーションフィルター]({{site.baseurl}}/user_guide/engagement_tools/segments/segmentation_filters#soft-bounced)を使用して送信対象からこのようなユーザーを除外できます。メッセージアクティビティログでは、ソフトバウンスの理由を確認し、メールキャンペーンの「送信」と「配信」の間で発生する可能性のある不一致を把握することもできます。
+ソフトバウンスはキャンペーン分析では追跡されませんが、[メッセージアクティビティログ]({{site.baseurl}}/user_guide/administrative/app_settings/message_activity_log_tab/)で監視できます。また、[ソフトバウンスセグメントフィルター]({{site.baseurl}}/user_guide/engagement_tools/segments/segmentation_filters#soft-bounced)を使用して、送信対象からこれらのユーザーを除外することもできます。メッセージアクティビティログでは、ソフトバウンスの理由を確認し、メールキャンペーンの「送信数」と「配信数」の間で生じる可能性のある差異を把握することもできます。
 
 <span class="calculation-line">計算式: カウント </span>
 
@@ -190,17 +190,17 @@ SendGrid を使用している顧客のメールバウンスには、ハード�
 ### スパム
 
 {% apitags %}
-カウント、パーセント
+Count, Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Spam' %}
 
 {::nomarkdown}
 <span class="calculation-line">
-    計算式: 
+    計算式:
     <ul>
-        <li><b><i>スパム</i>:</b>カウント</li>
-        <li><b><i>スパム率</i><i> (%)</i>:</b>(スパムとしてマークされた数) / (送信数)</li>
+        <li><b><i>スパム</i>:</b> カウント</li>
+        <li><b><i>スパム %</i> または <i>スパム率 %</i>:</b> (スパムとしてマークされた数) / (送信数)</li>
     </ul>
 </span>
 {:/}
@@ -212,17 +212,17 @@ SendGrid を使用している顧客のメールバウンスには、ハード�
 ### ユニーク開封数
 
 {% apitags %}
-カウント、パーセント
+Count, Percentage
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Unique Opens' %} メールの場合、これは7 日間にわたって追跡されます。
+{% multi_lang_include analytics/metrics.md metric='Unique Opens' %} メールの場合、これは7日間にわたって追跡されます。つまり、同じメールを7日後に再度開封した同一ユーザーは、新しいユニーク開封としてカウントされます。そのため、ダッシュボードのユニーク開封数は、Currents データに対する単純な `DISTINCT user_id` クエリよりも高くなる場合があります。ダッシュボードの数値を Currents から一致させるには、`is_unique` が `true` のイベントでフィルタリングしてください。
 
 {::nomarkdown}
 <span class="calculation-line">
-    計算式: 
+    計算式:
     <ul>
-        <li><b><i>ユニーク開封数</i>:</b>カウント</li>
-        <li><b><i>ユニーク開封率 (%)</i> または<i>ユニーク開封率</i>:</b>(ユニーク開封数) / (配信数)</li>
+        <li><b><i>ユニーク開封数</i>:</b> カウント</li>
+        <li><b><i>ユニーク開封率 (%)</i> または <i>ユニーク開封率</i>:</b> (ユニーク開封数) / (配信数)</li>
     </ul>
 </span>
 {:/}
@@ -234,17 +234,17 @@ SendGrid を使用している顧客のメールバウンスには、ハード�
 ### ユニーククリック数
 
 {% apitags %}
-カウント、パーセント
+Count, Percentage
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Unique Clicks' %} これは、メールの7 日間にわたって追跡され、<a href='/docs/help/help_articles/data/dispatch_id/'>dispatch_id</a> によって測定されます。これには、Brazeが提供する配信停止リンクのクリックも含まれる。
+{% multi_lang_include analytics/metrics.md metric='Unique Clicks' %} これは、メールの場合7日間にわたって追跡され、<a href='/docs/help/help_articles/data/dispatch_id/'>dispatch_id</a> によって測定されます。これには、Braze が提供する配信停止リンクのクリックも含まれます。ユニーク開封と同様に、同じリンクを7日後に再度クリックした同一ユーザーは、新しいユニーククリックとしてカウントされます。ダッシュボードの数値を Currents から一致させるには、`is_unique` が `true` のイベントでフィルタリングしてください。
 
 {::nomarkdown}
 <span class="calculation-line">
-    計算式: 
+    計算式:
     <ul>
-        <li><b><i>ユニーククリック数</i>:</b>カウント</li>
-        <li><b><i>一意のクリック%</i>または<i>クリック率</i>:</b>(ユニーククリック数) / (配信数)</li>
+        <li><b><i>ユニーククリック数</i>:</b> カウント</li>
+        <li><b><i>ユニーククリック率 (%)</i> または <i>クリック率</i>:</b> (ユニーククリック数) / (配信数)</li>
     </ul>
 </span>
 {:/}
@@ -256,17 +256,17 @@ SendGrid を使用している顧客のメールバウンスには、ハード�
 ### 配信停止数
 
 {% apitags %}
-カウント、パーセント
+Count, Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Unsubscribers or Unsub' %}
 
 {::nomarkdown}
 <span class="calculation-line">
-    計算式: 
+    計算式:
     <ul>
-        <li><b><i>配信</i><i>停止数</i>:</b>カウント</li>
-        <li><b><i>配信</i><i>停止率 (%)</i>:</b>(配信停止数) / (配信数)</li>
+        <li><b><i>配信停止数</i> または <i>購読解除</i>:</b> カウント</li>
+        <li><b><i>配信停止率 (%)</i> または <i>配信停止率</i>:</b> (配信停止数) / (配信数)</li>
     </ul>
 </span>
 {:/}
@@ -278,7 +278,7 @@ SendGrid を使用している顧客のメールバウンスには、ハード�
 ### 収益
 
 {% apitags %}
-カウント
+Count
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Revenue' %}
@@ -289,20 +289,20 @@ SendGrid を使用している顧客のメールバウンスには、ハード�
 
 {% api %}
 
-### 1 次コンバージョン (A) または 1 次コンバージョンイベント
+### 1次コンバージョン (A) または1次コンバージョンイベント
 
 {% apitags %}
-カウント、パーセント
+Count, Percentage
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Primary Conversions (A) or Primary Conversion Event' %} メール、プッシュ、webhookでは、最初の送信後に"トラッキング コンバージョンs を起動します。
+{% multi_lang_include analytics/metrics.md metric='Primary Conversions (A) or Primary Conversion Event' %} メール、プッシュ、webhook では、最初の送信後にコンバージョンの追跡を開始します。
 
 {::nomarkdown}
 <span class="calculation-line">
-    計算式: 
+    計算式:
     <ul>
-        <li><b><i>1次コンバージョン (A)</i> または <i>1次コンバージョンイベント</i>:</b>カウント</li>
-        <li><b><i>1次コンバージョン (A) %</i> または<i>1次コンバージョンイベント率</i>:</b>(1次コンバージョン数) / (ユニーク受信者数)</li>
+        <li><b><i>1次コンバージョン (A)</i> または <i>1次コンバージョンイベント</i>:</b> カウント</li>
+        <li><b><i>1次コンバージョン (A) %</i> または <i>1次コンバージョンイベント率</i>:</b> (1次コンバージョン数) / (ユニーク受信者数)</li>
     </ul>
 </span>
 {:/}
@@ -314,7 +314,7 @@ SendGrid を使用している顧客のメールバウンスには、ハード�
 ### 信頼度
 
 {% apitags %}
-カウント
+Count
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Confidence' %}
@@ -325,7 +325,7 @@ SendGrid を使用している顧客のメールバウンスには、ハード�
 
 ### マシン開封数
   
-{% multi_lang_include analytics/metrics.md metric='Machine Opens' %} このメトリクスは、SendGridの場合は2021年11月11日から、SparkPostの場合は2021年12月2日から追跡されます。
+{% multi_lang_include analytics/metrics.md metric='Machine Opens' %} この指標は、SendGrid の場合は2021年11月11日から、SparkPost の場合は2021年12月2日から追跡されています。
 
 <span class="calculation-line">計算式: カウント </span>
 
@@ -336,10 +336,10 @@ SendGrid を使用している顧客のメールバウンスには、ハード�
 ### その他の開封数
 
 {% apitags %}
-カウント
+Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Other Opens' %} ユーザーは、<i>マシン開封s</i>数が記録される前に、(<i>他の開封s</i>に対する開封数などの)メールも開封できることに注意してください。あるユーザーが、マシン開封イベント後に Apple Mail 以外の受信トレイメールを 1 回 (またはそれ以上) 開封した場合、ユーザーによるメール開封数が<i>その他の開封数</i>に加算され、<i>ユニーク開封数</i>には 1 回のみが加算されます。
+{% multi_lang_include analytics/metrics.md metric='Other Opens' %} ユーザーは、<i>マシン開封数</i>が記録される前にメールを開封する（<i>その他の開封数</i>としてカウントされる開封など）こともあります。あるユーザーが、マシン開封イベント後に Apple Mail 以外の受信トレイからメールを1回（またはそれ以上）開封した場合、そのユーザーによるメール開封回数は<i>その他の開封数</i>に加算され、<i>ユニーク開封数</i>には1回のみカウントされます。
 
 <span class="calculation-line">計算式: カウント </span>
 
@@ -350,7 +350,7 @@ SendGrid を使用している顧客のメールバウンスには、ハード�
 ### クリック開封率
 
 {% apitags %}
-パーセンテージ
+Percentage
 {% endapitags %}
 
 {% multi_lang_include analytics/metrics.md metric='Click-to-Open Rate' %}

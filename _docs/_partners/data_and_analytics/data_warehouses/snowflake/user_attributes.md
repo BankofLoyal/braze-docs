@@ -15,6 +15,14 @@ toc_headers: h2
 User profile attributes are currently in beta for Snowflake Data Sharing customers. If you're using Snowflake Data Sharing and would like access to this beta, contact your customer success manager or Braze Support.
 {% endalert %}
 
+## Data parity with the dashboard
+
+In rare circumstances, default and custom attribute values in the Snowflake views on this page may not match what you see on a user's profile in the Braze dashboard.
+
+During the beta, discrepancies can occur. For example, an attribute may appear as `NULL` in Snowflake while the dashboard shows a value for that user.
+
+If you see widespread mismatches, contact your customer success manager or Braze Support.
+
 ## Available views
 
 <table>

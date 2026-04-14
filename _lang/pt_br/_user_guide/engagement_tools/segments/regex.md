@@ -84,11 +84,11 @@ Resultados combinados<span id="reg_count"></span>: <div id="regex_results"></div
 <script type="text/javascript">
 $( document ).ready(function() {
   function update_inputmatch() {
-    var tomatch = $('#regex_input').val();
+    var regexInput = $('#regex_input').val();
     var validreg = true;
     $('#regex_input').removeClass('invalid');
     try {
-      var regex = new RegExp(tomatch,'gi');
+      var regex = new RegExp(regexInput,'gi');
       $('#regex_results').html('');
     } catch(e) {
       $('#regex_input').addClass('invalid');
@@ -97,7 +97,7 @@ $( document ).ready(function() {
     }
     if (validreg){
       if ($('#regex_text').val() ) {
-        if (tomatch) {
+        if (regexInput) {
           var input_str = $('#regex_text').val().split(/\r?\n/);
           var input_replaced = [];
           var reg_count = 0;
@@ -198,7 +198,7 @@ Antes de usar regex para filtrar números de telefone, lembre-se de que os núme
 
 Supondo que esteja pesquisando números de telefone dos EUA, use o formato regex `1?\d\d\d\d\d\d\d\d\d\d`, em que cada repetição de `\d` é um dígito que deseja especificar. Os três primeiros dígitos são o código de área.
 
-Da mesma forma, o formato dos números de telefone do Reino Unido é `^\+4\d\d\d\d\d\d\d\d\d\d\d`. Qualquer outro país teria o código do respectivo país, seguido do número necessário de `\d` repetições para cada dígito restante. Portanto, no caso da Lituânia, com um código de país "3", o regex seria `^\+3\d\d\d\d\d\d\d\d\d\d`.
+Da mesma forma, o formato dos números de telefone do Reino Unido é `^\+4\d\d\d\d\d\d\d\d\d\d\d`. Qualquer outro país seria o respectivo código do país, seguido pelo número necessário de `\d` repetições para cada dígito restante. Portanto, no caso da Lituânia, com um código de país "3", o regex seria `^\+3\d\d\d\d\d\d\d\d\d\d`.
 
 Por exemplo, digamos que você queira filtrar os usuários por número de telefone para um código de área específico, "718". Use o filtro de número de telefone, defina-o como `matches regex` e digite o seguinte regex:
 

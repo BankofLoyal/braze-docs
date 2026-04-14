@@ -86,7 +86,7 @@ Substitua o seguinte:
 
 #### Como fazer um link para a página Web da Punchh
 
-Para criar um link para uma página da Web hospedada pelo Puncch, adicione `{% raw %}{{jwt}}{% endraw %}` ao URL de geração dinâmica [que você criou anteriormente](#step-1-create-a-coupon-campaign-in-punchh). Seu link deve ser semelhante ao seguinte: 
+Para criar um link para uma página da Web hospedada pelo Punchh, adicione `{% raw %}{{jwt}}{% endraw %}` ao URL de geração dinâmica [que você criou anteriormente](#step-1-create-a-coupon-campaign-in-punchh). Seu link deve ser semelhante ao seguinte: 
 
 {% raw %}
 ```

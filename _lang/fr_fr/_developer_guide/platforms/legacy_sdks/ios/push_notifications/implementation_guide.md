@@ -158,7 +158,7 @@ Pour configurer une notification push de capture d’information dans le tableau
 
 #### Gérer les actions des boutons
 
-Chaque bouton d’action est identifié de manière unique. Le code vérifie si votre identifiant de réponse est égal à `actionIndentifier`, et, si c’est le cas, sait que l’utilisateur a cliqué sur le bouton d’action.
+Chaque bouton d’action est identifié de manière unique. Le code vérifie si votre identifiant de réponse est égal à `actionIdentifier`, et, si c’est le cas, sait que l’utilisateur a cliqué sur le bouton d’action.
 
 **Gestion des réponses aux boutons d'action des notifications push**<br>
 

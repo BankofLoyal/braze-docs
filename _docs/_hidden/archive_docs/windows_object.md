@@ -42,5 +42,5 @@ See the Windows Universal [toast template catalog](https://msdn.microsoft.com/en
 }
 ```
 
-For more information on using the `extra_launch_string` parameter for [deep linking]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/deep_linking_to_in-app_content/#what-is-deep-linking), see [Deep Linking with Windows Universal.]({{site.baseurl}}/developer_guide/platform_integration_guides/windows_universal/push_notifications/integration/#step-4-deep-linking-from-push-into-your-app)
+For more information on using the `extra_launch_string` parameter for [deep linking]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/actions_and_media_urls/#what-is-deep-linking), see [Deep Linking with Windows Universal.]({{site.baseurl}}/developer_guide/platform_integration_guides/windows_universal/push_notifications/integration/#step-4-deep-linking-from-push-into-your-app)
 

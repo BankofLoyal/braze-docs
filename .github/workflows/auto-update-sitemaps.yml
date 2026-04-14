@@ -1,0 +1,66 @@
+# Automatically updates sitemap last-modified dates on every PR that touches
+# docs content.
+#
+# Non-fork PRs: runs generate_sitemap_lastmodified.rb and commits any changed
+#   _data/sitemap_*.json files back to the PR branch. The updated sitemaps
+#   are included in the PR and land on develop when it merges.
+#
+# Fork PRs: skipped — the bot cannot push back to a fork branch.
+#
+# Shares concurrency group with auto-update-redirects.yml on develop so both
+# workflows never push to the same PR branch at once after that workflow lands.
+
+name: "Auto-update sitemap last-modified dates"
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - "_docs/**"
+      - "_lang/**"
+      - "scripts/generate_sitemap_lastmodified.rb"
+      - "_data/sitemap_*.json"
+
+permissions:
+  contents: write
+
+# Same group as auto-update-redirects.yml: one PR-branch writer at a time.
+# Overlapping runs are not canceled so rapid pushes still get a full run each.
+# Rebase before push reduces non-fast-forward failures if another run committed first.
+concurrency:
+  group: pr-branch-automation-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  sitemaps:
+    name: "Update sitemap last-modified dates"
+    runs-on: ubuntu-latest
+    # Skip fork PRs (can't push back to a fork branch).
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: "Set up Ruby"
+        uses: ruby/setup-ruby@3ff19f5e2baf30647122352b96108b1fbe250c64  # v1.299.0
+        with:
+          ruby-version: "3.3"
+
+      - name: "Update sitemaps"
+        run: ruby scripts/generate_sitemap_lastmodified.rb all
+
+      - name: "Commit sitemap updates"
+        env:
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        run: |
+          if [ -n "$(git status --porcelain _data/sitemap_*.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add _data/sitemap_*.json
+            git commit -m "chore: auto-update sitemap last-modified dates"
+            git pull --rebase --no-edit origin "$HEAD_REF"
+            git push origin "HEAD:$HEAD_REF"
+          fi

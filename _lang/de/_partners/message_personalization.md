@@ -4,16 +4,16 @@ article_title: Partner für die Personalisierung von Nachrichten
 page_order: 1
 
 page_type: landing
-description: "Diese Landing Page listet Braze-Partner (Technologie-Partner) auf, die es Ihnen erlauben, Ihren Kampagnen und Canvase zusätzliche Personalisierungen hinzuzufügen."
+description: "Diese Landing-Page listet Braze Technologie-Partner auf, die es Ihnen ermöglichen, Ihren Braze-Kampagnen und Canvasen zusätzliche Personalisierung hinzuzufügen."
 layout: partner_page
 search_tag: Partner
 
-partner_top_header: "Message Personalization"
+partner_top_header: "Personalisierung von Nachrichten"
 
 valid_partner_list:
 - name: Jacquard
   url: /docs/partners/jacquard/
-- name: Benachrichtigen Sie
+- name: Notify
   url: /docs/partners/notify/
 - name: Trustpilot
   url: /docs/partners/trustpilot/
@@ -27,6 +27,8 @@ valid_partner_list:
   url: /docs/partners/movable_ink/
 - name: Sheetlabs
   url: /docs/partners/sheetlabs/
+- name: Limbik
+  url: /docs/partners/limbik/
 - name: Amplitude
   url: /docs/partners/amplitude/
 - name: Certona
@@ -97,4 +99,6 @@ valid_partner_list:
   url: /docs/partners/viralsweep/
 - name: Mention Me
   url: /docs/partners/mention_me/
+- name: VideoSmart
+  url: /docs/partners/videosmart/
 ---

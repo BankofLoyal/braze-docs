@@ -1,7 +1,7 @@
 ---
 nav_title: Uninstall tracking
-article_title: Uninstall Tracking
-page_order: 6
+article_title: Uninstall tracking
+page_order: 1
 page_type: reference
 description: "This reference article covers implementing uninstall tracking for campaign-level and app-level statistics."
 tool: Reports
@@ -24,6 +24,10 @@ You must opt in to uninstall tracking on your Braze dashboard. This feature is a
 ## How it works
 
 Braze automatically collects a base level of uninstall information from your regular push campaigns. However, because the frequency with which different users receive push campaigns may vary, we offer uninstall tracking to provide a more accurate snapshot of uninstall activity among your users.
+
+When Braze detects an uninstall, the user is tagged as having uninstalled. If you use the **Has Not Uninstalled** filter in a campaign, these tagged users are excluded. If a user reinstalls the app but does not open it, the uninstall tag remains on their profile. The tag is removed only when the user starts a new session in the reinstalled app. This means a user who reinstalls but never opens the app continues to appear as uninstalled.
+
+For more on using uninstall tracking, see our blog post [Uninstall Tracking: An Industry Look at its Strengths and Limitations](https://www.braze.com/blog/uninstall-tracking-an-industry-look-at-its-strengths-and-limitations/).
 
 ## Turning on uninstall tracking
 
@@ -71,8 +75,6 @@ Braze tracks uninstalls by observing when push messages sent to users' devices r
 
 FCM and APNs place restrictions on uninstall tracking. Braze increments only the uninstall count when FCM or APNs tell us that a user has uninstalled, but these third-party systems can notify us of uninstalls at any point. Use uninstall tracking to detect directional trends rather than precise statistics.
 
-For more on using uninstall tracking, see our blog post [Uninstall Tracking: An Industry Look at its Strengths and Limitations](https://www.braze.com/blog/uninstall-tracking-an-industry-look-at-its-strengths-and-limitations/).
-
 ## Troubleshooting
 
 ### Why am I suddenly seeing a spike in uninstalls?
@@ -82,6 +84,20 @@ If you see a spike in app uninstalls, it may be due to Firebase Cloud Messaging 
 {% alert note %} 
 For privacy reasons, Braze’s push providers may revoke tokens at irregular intervals, meaning uninstall counts can sometimes spike in a given time period.<br><br>To validate these changes, monitor uninstall tracking alongside a user-action metric, such as direct push open rate. If uninstalls increase sharply but direct push opens remain stable, the spike likely reflects a partner revoking old tokens rather than actual user behavior.
 {% endalert %}
+
+### How do I determine if a specific campaign caused uninstalls?
+
+Check the analytics for the campaigns that sent messages around the same time the uninstall spike occurred. If a particular message correlates with a rise in uninstalls, it may be influencing users to uninstall. 
+
+To view uninstalls by segment:
+1. Go to the **Home** page of the dashboard.
+2. In the **Performance Over Time** section, select **Uninstalls** for **Statistics For** and **By Segment** for **Breakdown**.
+
+If you have a segment tracking lapsing users with [analytics tracking]({{site.baseurl}}/user_guide/analytics/tracking/segment_analytics_tracking/) enabled, compare its uninstall trend to the overall app trend.
+
+### How do I confirm uninstalls are genuine?
+
+For APNs, check user profiles for the `BadDeviceToken` push error. If you see this error in bulk around the same time frame as the uninstall spike, the uninstalls are likely genuine. `BadDeviceToken` indicates the device's push token is no longer valid, which typically happens when the app is uninstalled.
 
 ### Why are the number of app uninstalls different from what's in APNs?
 

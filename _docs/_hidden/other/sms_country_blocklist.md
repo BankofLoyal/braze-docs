@@ -2,12 +2,12 @@
 nav_title: SMS country blocklist
 article_title: SMS Country Blocklist
 hidden: true
-permalink: /sms_country_blocklist/ 
+permalink: /sms_country_blocklist/
 ---
 
 # SMS country blocklist
 
-In an effort to protect our customers against SMS traffic pumping, Braze currently maintains a blocklist of countries for both US-embargoed countries, as well as for countries known to be high risk for traffic pumping. By default, Braze will not send SMS to these countries: 
+In an effort to protect our customers against SMS traffic pumping, Braze currently maintains a blocklist of countries for both US-embargoed countries, as well as for countries known to be high risk for traffic pumping. By default, Braze will not send SMS to these countries:
 
 - “AF” # Afghanistan
 - “AO” # Angola
@@ -40,7 +40,7 @@ In an effort to protect our customers against SMS traffic pumping, Braze current
 - “MW” # Malawi
 - “NE” # Niger
 - “NF” # Norfolk Island
-- “NG” # Nigera
+- “NG” # Nigeria
 - “NU” # Niue
 - “OM” # Oman
 - “PK” # Pakistan
@@ -60,7 +60,7 @@ In an effort to protect our customers against SMS traffic pumping, Braze current
 - “UA” # Ukraine
 - “UZ” # Uzbekistan
 - “VN” # Vietnam
-- “WF” # Wallis and Fortuna
+- “WF” # Wallis and Futuna
 - “YE” # Yemen
 - “ZB” # Zimbabwe
 - “ZM” # Zambia

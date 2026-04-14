@@ -1,7 +1,7 @@
 ---
 nav_title: Data points
 article_title: Data Points Overview
-page_order: 10
+page_order: 3
 page_type: reference
 description: "This reference article outlines what data points are at Braze and how you can be aware of their usage."
 search_rank: 6
@@ -25,7 +25,7 @@ See this article's [Consumption count](#consumption-count) section to understand
 
 To view your data point usage, go to **Settings** > **Billing** and select the **Total Data Points Usage** tab.
 
-For more information on the data point dashboard components, refer to [Billing]({{site.baseurl}}/user_guide/administrative/app_settings/subscription_and_usage/).
+For more information on the data point dashboard components, refer to [Billing]({{site.baseurl}}/user_guide/administer/global/billing/).
 
 {% alert tip %}
 **Don't waste data points. Only update changing data!**<br><br>
@@ -49,7 +49,7 @@ The following actions do not log data points:
 
 #### Arrays
 
-An array is an ordered collection of items stored within a custom attribute. In terms of consumption, updating an array costs one data point per API call. If you add values to an array incrementally, it will count as one data point per value. 
+An array is an ordered collection of items stored within a custom attribute. Updating an array costs one data point per API call, even if the array doesn't actually change. For example, sending a `remove` operation for a value that doesn't exist in the array still consumes one data point. Similarly, setting a custom attribute to `null` to remove it from the profile consumes a data point. If you add values to an array incrementally, it will count as one data point per value. 
 
 {% alert tip %}
 For simple arrays, if you set the whole array at once, it will count as a single data point. As such, arrays are a great tool to keep user profiles up-to-date with relevant information and reduce costs. <br><br> Arrays of objects consume a data point for each key that is updated. Reduce unnecessary data point consumption by only passing updates to Braze.

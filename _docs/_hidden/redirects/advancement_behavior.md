@@ -1,5 +1,5 @@
 ---
 layout: redirect
-redirect_to: /docs/user_guide/engagement_tools/canvas/create_a_canvas/advancement/
+redirect_to: /docs/user_guide/messaging/canvas/canvas_components/message_step/#how-users-advance
 permalink: "/advancement_behavior/"
 ---
