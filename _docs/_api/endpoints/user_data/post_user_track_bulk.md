@@ -18,6 +18,10 @@ description: "This article outlines details about the bulk Track users endpoint.
 
 Use this endpoint to record custom events and purchases and update user profile attributes in bulk.
 
+{% alert important %}
+This endpoint is currently in early access. Contact your Braze customer success manager if you are interested in participating in the early access.
+{% endalert %}
+
 ## When to use this endpoint
 
 Like the [`/users/track` endpoint]({{site.baseurl}}/api/endpoints/user_data/post_user_track/), you can use this endpoint to update user profiles. This endpoint is better suited for bulk updates:
