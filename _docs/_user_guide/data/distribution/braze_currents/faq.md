@@ -49,7 +49,7 @@ For a full list of events that Currents logs, refer to the [Customer behavior ev
 ### Why does the `external_id` in my Currents email open or click event differ from the user profile in the Braze dashboard?
 
 - **In the Braze dashboard:** When a user associated with an email address opens or clicks an email, all user profiles that share that email address are marked as having opened or clicked that email. For more information, see [What happens when an email is sent out, and multiple profiles have the same email address?]({{site.baseurl}}/user_guide/channels/email/faq/#what-happens-when-an-email-is-sent-out-and-multiple-profiles-have-the-same-email-address).
-- **In Currents:** That same open or click is stored on one profile. Braze attributes it to the profile that was originally targeted for the send when that still applies. Otherwise, Braze attributes it to one randomly selected profile among those that share the email address.
+- **In Currents:** That same open or click is stored on one profile. Braze attributes it to the profile that was originally targeted for the send if that profile still shares the email address. Otherwise, Braze attributes it to one randomly selected profile among those that share the email address.
 
 Because of this, the `external_id` on a Currents email open or click event may not match the user profile you expect when you compare Currents to the Braze dashboard.
 
