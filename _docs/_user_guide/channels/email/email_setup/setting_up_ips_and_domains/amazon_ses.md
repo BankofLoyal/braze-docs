@@ -71,7 +71,7 @@ This is based on the rule that the click tracking domain needs to match at least
 - Each sending domain has a MAIL FROM identifier attached to it to help with SPF validations. 
     - The value for each sending domain is “e”. 
     - The MAIL FROM value does not change the From address your customers see.
-- If Amazon SES is your ESP, Microsoft Smart Network Data Services (SNDS) is not currently supported.
+- If Amazon SES is your email service provider, Microsoft Smart Network Data Services (SNDS) isn't supported.
 
 ## Next steps
 
