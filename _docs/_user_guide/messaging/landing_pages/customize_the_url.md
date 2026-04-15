@@ -30,6 +30,10 @@ To connect a domain to your Braze account, have an administrator follow the step
 Depending on your domain provider, the connection can take up to 48 hours. When the process is complete, we’ll start using your custom domain for your landing pages in the Braze dashboard.
 {% endalert %}
 
+### SSL certificate setup
+
+Braze uses Cloudflare to automatically provision SSL certificates for your custom domain through an [ACME DNS-01 challenge](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge). This continuous validation method is enabled by one of the CNAME records you provided during setup, and allows the certificate authority (LetsEncrypt) to verify your domain ownership through DNS records without requiring Braze to own your domain.
+
 ## Remove your domain
 
 If you're a Braze administrator, you can remove a previously-configured domain by completing the following steps:
@@ -63,6 +67,10 @@ Verify that your domain was entered correctly and that it matches what you submi
 
 ## Frequently asked questions
 
+### Can I use nested subdomains for my custom domain?
+
+Yes, you can use nested subdomains for your landing pages. For example, `forms.braze.com`, `pages.forms.braze.com`, or deeper levels are all supported. The only requirement is that you cannot use an apex domain (such as `braze.com`) because Braze uses CNAME records for the connection.
+
 ### Can I connect multiple subdomains to my workspace, or connect one subdomain to multiple workspaces?
 
 No, you currently can only connect one subdomain to a workspace.
@@ -94,3 +102,7 @@ To resolve this, ask your IT team to temporarily release the zone hold. For more
 #### Restarting the validation process
 
 After resolving either issue, delete and recreate your custom domain in the Braze dashboard to restart the validation process.
+
+### Can I use a reverse proxy to serve landing pages under my main domain or a subdirectory?
+
+No, landing page URL Liquid tags will not work correctly with reverse proxies.
