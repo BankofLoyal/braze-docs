@@ -278,7 +278,7 @@ case $1 in
     fblinks)
         # require_git_fetch
         require_yarn
-        npx ts-node ./scripts/find_broken_links.ts
+        "$PROJECT_ROOT/node_modules/.bin/ts-node" ./scripts/find_broken_links.ts
         ;;
     clangs)
         "$CLANGS"
