@@ -77,4 +77,4 @@ Alternatively, if you wish to use local delivery, use an experiment window of 24
 
 ### Variants based on clicks
 
-If you're setting up a Winning Path variant based on clicks, note that the definitions for opens and clicks differ by channel. For specific metric and definitions by channel, refer to [Report metrics glossary]({{site.baseurl}}/user_guide/analytics/reporting/report_metrics) and [Email report metrics glossary]({{site.baseurl}}/user_guide/message_building_by_channel/email/reporting_and_analytics/analytics_glossary).
+If you're setting up a Winning Path variant based on clicks, note that the definitions for opens and clicks differ by channel. For specific metrics and definitions by channel, refer to [Report metrics glossary]({{site.baseurl}}/user_guide/analytics/reporting/report_metrics) and [Email report metrics glossary]({{site.baseurl}}/user_guide/message_building_by_channel/email/reporting_and_analytics/analytics_glossary).
