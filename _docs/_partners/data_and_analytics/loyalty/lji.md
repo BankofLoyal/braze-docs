@@ -36,17 +36,10 @@ Before you start, you need the following:
 
 This integration supports the following Braze capabilities:
 
-1. **User data sync (`/users/track`)**  
-   Sync user attributes, events, and purchases to Braze for segmentation and personalization.
-
-2. **Campaign triggering (`/campaigns/trigger/send`)**  
-   Trigger one-time or transactional messages using Braze **Campaigns**.
-
-3. **Canvas triggering (`/canvas/trigger/send`)**  
-   Start multi-step journeys and lifecycle messaging using Braze **Canvas**.
-
-4. **Segmentation and personalization**  
-   Build targeted audiences and deliver personalized communications from synced data.
+- **User data sync (`/users/track`):** Sync member attributes, events, and purchases to Braze for segmentation and personalization.
+- **Campaign triggering (`/campaigns/trigger/send`):** Trigger one-time or transactional messages using Braze campaigns.
+- **Canvas triggering (`/canvas/trigger/send`):** Start multi-step journeys and lifecycle messaging using Braze Canvas**.
+- **Segmentation and personalization:** Build targeted audiences and deliver personalized communications from synced data.
 
 ## Integration
 
