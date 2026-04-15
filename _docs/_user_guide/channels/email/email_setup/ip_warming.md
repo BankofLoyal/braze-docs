@@ -132,8 +132,12 @@ In most cases, warm up to your average daily send volume rather than your peak. 
 After IP warming is complete and you've reached your desired daily volume, you should aim to maintain that volume daily. Some fluctuation is expected, but reaching the desired volume, then only doing a mass blast once a week, may negatively affect your delivery metrics and sender reputation. 
 
 {% alert important %}
-Most ISPs only store reputation data for 30 days. If you go a month without sending any messages, you'll have to repeat the IP warming process.
+Most ISPs only store reputation data for 30 days. If you go a month without sending any messages, you must repeat the IP warming process.
 {% endalert %}
+
+### IP addresses
+
+After three months of non-use, Braze may recycle and reassign IP addresses. Regardless of an IP address's prior history, full IP warming is recommended for all newly assigned IPs, as most ISPs only store reputation data for 30 days. For most ISPs, this means a three-month cooldown effectively resets reputation. If you have further questions about the history of a specific IP address, contact [Braze Support]({{site.baseurl}}/user_guide/administer/personal/braze_support).
 
 ## How to limit sends during warming
 
