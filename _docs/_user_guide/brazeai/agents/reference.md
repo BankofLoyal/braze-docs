@@ -7,7 +7,7 @@ page_order: 3
 
 # Reference for agents
 
-> As you create custom agents, refer to this article for more information on key settings, such as instructions and output schemas. For an introduction, see [Braze Agents]({{site.baseurl}}/user_guide/brazeai/agents/).
+> As you create custom agents, refer to this article for more information on key settings, such as instructions and output schemas. For an introduction, see [Braze Agents]({{site.baseurl}}/user_guide/brazeai/agents/) and [Frequently asked questions]({{site.baseurl}}/user_guide/brazeai/agents/faq/).
 
 ## Models
 

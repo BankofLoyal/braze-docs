@@ -126,3 +126,4 @@ Refer to the [Message engagement events glossary]({{site.baseurl}}/user_guide/da
 ## Related articles  
 
 - [Reference for agents]({{site.baseurl}}/user_guide/brazeai/agents/reference/)
+- [Frequently asked questions]({{site.baseurl}}/user_guide/brazeai/agents/faq/)

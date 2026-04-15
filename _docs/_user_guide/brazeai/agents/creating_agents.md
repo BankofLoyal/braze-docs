@@ -67,7 +67,7 @@ Refer to the [Writing instructions]({{site.baseurl}}/user_guide/brazeai/agents/r
 For Canvas agents, you can use Liquid in your instructions to reference user attributes, such as their first and last name, or custom attributes. Any Liquid variable in the agent instructions is automatically passed to the Agent step when a user enters the step.
 {% endalert %}
 
-#### Step 3.1: Add resources
+#### Step 3.1: Add resources {#add-resources}
 
 Select **Add resources** to choose what your agent can reference. This includes:
 
@@ -123,3 +123,4 @@ Your agent is now ready to use! For details, refer to [Deploy agents]({{site.bas
 ## Related articles  
 
 - [Reference for agents]({{site.baseurl}}/user_guide/brazeai/agents/reference/)
+- [Frequently asked questions]({{site.baseurl}}/user_guide/brazeai/agents/faq/)
