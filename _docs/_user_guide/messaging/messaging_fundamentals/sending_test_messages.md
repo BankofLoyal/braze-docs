@@ -244,7 +244,7 @@ The scanner runs automatically on custom HTML messages and evaluates your entire
 
 If you have already accepted push messages from the Braze dashboard, the message displays in the corner of your screen. Otherwise, select **Allow** when prompted, and the message displays.
 
-If you see an error that none of the selected users have matching push tokens for iOS, Android Push, or Web Push, verify that the test user has a valid push token registered for the selected platform. To receive a push token, the user must be configured to receive push notifications for the app on their device. For more details, see [Push enablement and push subscription]({{site.baseurl}}/user_guide/channels/push/push_setup/push_subscription_states).
+If you see an error that none of the selected users have matching push tokens for Web Push, verify that the test user has a valid push token registered for the selected platform. To receive a push token, the user must be configured to receive push notifications for the app on their device. For more details, see [Push enablement and push subscription]({{site.baseurl}}/user_guide/channels/push/push_setup/push_subscription_states).
 
 {% endtab %}
 {% tab SMS/MMS and RCS %}
