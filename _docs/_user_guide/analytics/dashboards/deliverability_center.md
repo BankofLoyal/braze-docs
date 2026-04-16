@@ -83,7 +83,7 @@ Before connecting to the Deliverability Center, you'll need to set up a Google P
 If your subdomains aren't included in the Deliverability Center for Google Postmaster, this can be a result of only adding the root (parent) domain to Google Postmaster. After the root domains are verified in Google Postmaster, you can add your subdomains, which are verified automatically. This process allows Google to report back on metrics on the subdomain-level, which can then be pulled into the Braze Deliverability Center.
 {% endalert %}
 
-## Integrate Google Postmaster
+## Integrate Google Postmaster {#integrating-google-postmaster}
 
 Before setting up your Deliverability Center, check that your domains have been [added to the Gmail Postmaster Tools](https://support.google.com/mail/answer/9981691?hl=en).
 
