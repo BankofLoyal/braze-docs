@@ -7,9 +7,13 @@ description: "This reference article covers how to use catalogs to reference non
 
 # Using catalogs
 
-> After creating a catalog, you can reference non-user data in your Braze campaigns through [Liquid]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/liquid). You can use catalogs in all of your messaging channels, including anywhere in the drag-and-drop editor where Liquid is supported.
+> After creating a catalog, you can reference non-user data in your Braze campaigns through [Liquid]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/liquid/). You can use catalogs in all of your messaging channels, including anywhere in the drag-and-drop editor where Liquid is supported.
 
 ## Using catalogs in a message
+
+The following video walks through how to use catalogs in a message.
+
+{% multi_lang_include video.html id="4yc2jkyn6w" source="wistia" %}
 
 ### Step 1: Add personalization type {#step-one-personalization}
 
@@ -81,9 +85,24 @@ Check out [selections]({{site.baseurl}}/user_guide/data/activation/catalogs/sele
 
 ### Using Liquid `if` statements
 
-You can use catalog items to create conditional statements. For example, you can trigger a certain message to display when a specific item is selected in your campaign.
+You can use catalog items to create conditional statements. For example, you can trigger a certain message to display when a specific item is selected in your campaign. You must declare the catalog (and, if applicable, the selection) before referencing `items` in an `if` statement.
 
-To do this, you'll use a Liquid `if` statement, such as in this example:
+#### With catalog items
+
+{% raw %}
+```liquid
+{% catalog_items Games 1234 %}
+{% if items[0].on_sale == true %}
+  {{ items[0].title }} is on sale! Get it for {{ items[0].price }}.
+{% else %}
+  Check out {{ items[0].title }} at full price.
+{% endif %}
+```
+{% endraw %}
+
+In this example, the `catalog_items` tag fetches item `1234` from the `Games` catalog, and then the `if` statement checks the `on_sale` field to display different messages.
+
+#### With catalog selections
 
 {% raw %}
 ```liquid
@@ -98,9 +117,11 @@ Message if the venue name's size is 10 characters or fewer.
 ```
 {% endraw %}
 
-In this example, different messages display depending on the number of characters in the catalog item field `venue_name`. If `venue_name` is blank, the message is aborted.
+In this example, different messages display based on whether the `venue_name` field has more or fewer than 10 characters. If `venue_name` is blank, the message is aborted.
 
-Note that you must declare the catalog list and, if applicable, the selection before using `if` statements. In the example, `item-list` is the catalog list, and `selections` is the selection name.
+{% alert tip %}
+To avoid Liquid syntax errors, select the **+** plus button in the message composer to insert catalog Liquid tags automatically.
+{% endalert %}
 
 ### Using images {#using-images}
 
@@ -141,7 +162,7 @@ You can also use templating to dynamically pull catalog items based on custom at
 JSON objects in catalogs are only ingested through the API. You can't upload a JSON object using a CSV file.
 {% endalert %}
 
-Using Liquid templating, you can dynamically pull out the wishlist IDs and then use them in your message. To do so, [assign a variable]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/liquid/using_liquid/#assigning-variables) to your custom attribute, then use the **Add Personalization** modal to pull a specific item from the array. Variables referenced as the catalog item ID must be wrapped in curly brackets to be referenced properly, such as `{{result}}`.
+Using Liquid templating, you can dynamically pull out the wishlist IDs and then use them in your message. To do so, [assign a variable]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/liquid/using_liquid#assigning-variables) to your custom attribute, then use the **Add Personalization** modal to pull a specific item from the array. Variables referenced as the catalog item ID must be wrapped in curly brackets to be referenced properly, such as `{{result}}`.
 
 {% alert tip %}
 Remember, arrays start at `0`, not `1`.
@@ -173,7 +194,7 @@ You can also manually piece together catalogs with Liquid logic. However, note t
 
 #### Templating catalog items including Liquid
 
-Similar to [Connected Content]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/connected_content), you must use the `:rerender` flag in a Liquid tag to render a catalog item's Liquid content. Note that the `:rerender` flag is only one level deep, meaning it won't apply to any nested Liquid tag calls.
+Similar to [Connected Content]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/connected_content/), you must use the `:rerender` flag in a Liquid tag to render a catalog item's Liquid content. Note that the `:rerender` flag is only one level deep, meaning it won't apply to any nested Liquid tag calls.
 
 If a catalog item contains user profile fields (within a Liquid personalization tag), these values must be defined in Liquid earlier in the message and before the templating in order to render the Liquid properly. If the `:rerender` flag isn't provided, it will render the raw Liquid content.
 
@@ -206,6 +227,31 @@ Welcome to our store, Peter!
 Catalog Liquid tags can't be used recursively inside catalogs.
 {% endalert %}
 
+## Structuring your catalog data
+
+When planning how to structure your catalog data, start from your intended use case and design the catalog around it. Each row in the catalog represents an item (with a unique `id`). The columns should contain the attributes for that item, such as URLs, description copy, image URLs, price, rating, size, or color.
+
+### When to use standard catalog calls
+
+With standard catalog calls, you match a value against the `id` column. By inserting a custom attribute or event property (as an ID string) into the catalog Liquid tag, you can pull multiple attributes for a single item into your message. Common use cases include:
+
+- Recently viewed product or service
+- Wishlist items
+- Deals by location
+- Product purchased
+- Lifecycle stage content
+- Most recently searched product or service
+
+### When to use catalog selections
+
+[Catalog selections]({{site.baseurl}}/user_guide/data/activation/catalogs/selections/) let you filter across any column in your catalog and return up to 50 matching items. By inserting custom attributes or event properties into the selection filters, the results are personalized for each user. Common use cases include:
+
+- Items where category equals a user's preference
+- Items matching a user's preferred brand, cuisine, or size
+- Subscription type or loyalty tier content
+- Products within a user's average order value range
+
+The key difference is that standard catalog calls look up a single known item by `id`, while catalog selections query across the catalog and return multiple items that match your filter criteria.
 
 [1]: {% image_buster /assets/img_archive/use_catalog_personalization.png %}
 [2]: {% image_buster /assets/img_archive/catalog_multiple_items.png %}

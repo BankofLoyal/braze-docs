@@ -14,7 +14,7 @@ Braze est fier de proposer désormais des [rapports de rétention]({{site.baseur
 ![Rapport complet]({% image_buster /assets/img/retention_report_full_report.png %})
 
 {% alert important %}
-Au 13 janvier 2020, cette fonctionnalité n’est pas encore disponible pour notre client déployé dans notre région UE ou dans notre groupe conforme à la norme HIPPA. Nous mettrons ce rapport à disposition de ces régions alors que nous continuons à déployer des fonctionnalités sur toute notre plateforme.
+Au 13 janvier 2020, cette fonctionnalité n’est pas encore disponible pour notre client déployé dans notre région UE ou dans notre groupe conforme à la norme HIPAA. Nous mettrons ce rapport à disposition de ces régions alors que nous continuons à déployer des fonctionnalités sur toute notre plateforme.
 {% endalert %}
 
 ## Nouvel endpoint de l’API pour bloc de contenu e-mail

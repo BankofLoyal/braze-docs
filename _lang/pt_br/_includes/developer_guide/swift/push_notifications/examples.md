@@ -141,7 +141,7 @@ Como visto no exemplo, você também pode incluir uma imagem em sua notificaçã
 
 ### Manipulação de ações de botões
 
-Cada botão de ação é identificado de forma exclusiva. O código verifica se o identificador da resposta é igual a `actionIndentifier` e, em caso afirmativo, sabe que o usuário clicou no botão de ação.
+Cada botão de ação é identificado de forma exclusiva. O código verifica se o identificador da resposta é igual a `actionIdentifier` e, em caso afirmativo, sabe que o usuário clicou no botão de ação.
 
 **Manipulação de respostas de botões de ação por push**<br>
 

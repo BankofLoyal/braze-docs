@@ -1,11 +1,11 @@
 ---
-nav_title: "POST: API 트리거 전달을 사용하여 캠페인 보내기"
+nav_title: "POST: API 트리거 전송을 사용하여 캠페인 보내기"
 article_title: "POST: API 트리거 전송을 사용하여 캠페인 보내기"
 search_tag: Endpoint
 page_order: 4
 layout: api_page
 page_type: reference
-description: "이 문서에서는 API 트리거 배달 Braze 엔드포인트를 사용하여 캠페인을 보내는 방법에 대해 자세히 설명합니다."
+description: "이 문서에서는 API 트리거 전송을 사용하여 캠페인을 보내는 Braze 엔드포인트에 대해 자세히 설명합니다."
 
 ---
 {% api %}
@@ -14,19 +14,19 @@ description: "이 문서에서는 API 트리거 배달 Braze 엔드포인트를 
 /campaigns/trigger/send
 {% endapimethod %}
 
-> 이 엔드포인트를 사용하면 API 트리거 배달을 사용하여 지정된 사용자에게 즉각적인 일회성 메시지를 보낼 수 있습니다.
+> 이 엔드포인트를 사용하면 API 트리거 전송을 통해 지정된 사용자에게 즉각적인 일회성 메시지를 보낼 수 있습니다.
 
 API 트리거 전송을 사용하면 메시지 콘텐츠를 Braze 대시보드 내에 보관하면서 API를 사용하여 메시지 전송 시기와 수신자를 지정할 수 있습니다.
 
-세그먼트를 타겟팅하는 경우 요청 기록이 [개발자 콘솔에](https://dashboard.braze.com/app_settings/developer_console/activitylog/) 저장됩니다. 이 엔드포인트로 메시지를 보내려면 [API 트리거 캠페인]({{site.baseurl}}/api/api_campaigns/)을 구축할 때 생성한 [캠페인 ID](https://www.braze.com/docs/api/identifier_types/)가 있어야 합니다.
+세그먼트를 타겟팅하는 경우, 요청 기록이 [개발자 콘솔](https://dashboard.braze.com/app_settings/developer_console/activitylog/)에 저장됩니다. 이 엔드포인트로 메시지를 보내려면 [API 트리거 캠페인]({{site.baseurl}}/api/api_campaigns/)을 구축할 때 생성한 [캠페인 ID](https://www.braze.com/docs/api/identifier_types/)가 있어야 합니다.
 
 {% apiref postman %}https://documenter.getpostman.com/view/4689407/SVYrsdsG?version=latest#aef185ae-f591-452a-93a9-61d4bc023b05 {% endapiref %}
 
-## 필수 구성 요소
+## 필수 조건
 
-이 엔드포인트를 사용하려면 `campaigns.trigger.send` 권한으로 API 키를 생성해야 합니다.
+이 엔드포인트를 사용하려면 `campaigns.trigger.send` 권한이 있는 API 키를 생성해야 합니다.
 
-## 요금 제한
+## 사용량 제한
 
 {% multi_lang_include rate_limits.md endpoint='send endpoints' category='send messages endpoints' %}
 
@@ -72,19 +72,27 @@ Authorization: Bearer YOUR-REST-API-KEY
 
 | 매개변수 | 필수 | 데이터 유형 | 설명 |
 | --------- | ---------| --------- | ----------- |
-|`campaign_id`|Required|문자열|[캠페인 식별자를]({{site.baseurl}}/api/identifier_types/) 참조하세요. |
-|`send_id`| Optional | 문자열 | [식별자 보내기]({{site.baseurl}}/api/identifier_types/)을 참조하십시오. |
-|`trigger_properties`| 선택 사항 | 객체 | 트리거 속성을 참조하십시오. 개인화 키-값 페어는 이 요청의 모든 사용자에게 적용됩니다. |
-|`broadcast`| 선택 사항 | 부울 | 전체 세그먼트에 캠페인 또는 캔버스가 타겟팅하는 메시지를 보낼 때 `broadcast`을(를) true로 설정해야 합니다. 이 매개변수는 기본적으로 false로 설정됩니다 (2017년 8월 31일 기준). <br><br> `broadcast`가 true로 설정하면 `recipients` 목록을 포함할 수 없습니다. 그러나 이 플래그를 실수로 설정하면 예상보다 많은 대상에게 메시지를 보낼 수 있으므로 `broadcast: true` 을 설정할 때는 주의하세요. |
-|`audience`| 선택 사항 | 연결된 오디언스 객체| [연결된 오디언스]({{site.baseurl}}/api/objects_filters/connected_audience/)을 참조하십시오. |
-|`recipients`| 선택 사항 | 배열 | 수신자 객체를 참조하십시오.<br><br>`send_to_existing_only`가 `false`인 경우 속성 객체를 포함해야 합니다.<br><br>`recipients` 을 제공하지 않고 `broadcast` 을 true로 설정하면 캠페인이 타겟팅하는 전체 세그먼트에 메시지가 전송됩니다. <br><br> `email` 이 식별자인 경우 수신자 객체에 다음을 포함해야 합니다. [`prioritization`]({{site.baseurl}}/api/endpoints/user_data/post_user_identify#identifying-users-by-email) 를 수신자 객체에 포함해야 합니다. |
-|`attachments`| 선택 사항 | 배열 | `broadcast` 이 true로 설정되어 있으면 `attachments` 목록은 포함할 수 없습니다. |
+|`campaign_id`|필수|문자열|[캠페인 식별자]({{site.baseurl}}/api/identifier_types/)를 참조하세요. |
+|`send_id`| 선택 사항 | 문자열 | [전송 식별자]({{site.baseurl}}/api/identifier_types/)를 참조하세요. |
+|`trigger_properties`| 선택 사항 | 오브젝트 | [트리거 등록정보]({{site.baseurl}}/api/objects_filters/trigger_properties_object/)를 참조하세요. 개인화 키-값 페어는 이 요청의 모든 사용자에게 적용됩니다. |
+|`broadcast`| 선택 사항 | 부울 | Braze 대시보드에서 캠페인의 타겟 오디언스로 구성된 전체 세그먼트에 메시지를 전송할 때 `broadcast`를 true로 설정해야 합니다. 이 매개변수는 기본적으로 false로 설정됩니다(2017년 8월 31일 기준). <br><br> `broadcast`가 true로 설정되면 `recipients` 목록을 포함할 수 없습니다. 그러나 이 플래그를 실수로 설정하면 예상보다 많은 오디언스에게 메시지를 보낼 수 있으므로 `broadcast: true`를 설정할 때는 주의하세요. |
+|`audience`| 선택 사항 | 연결된 오디언스 오브젝트| [연결된 오디언스]({{site.baseurl}}/api/objects_filters/connected_audience/)를 참조하세요. `audience`를 포함하면, 커스텀 속성 및 구독 상태와 같은 정의된 필터와 일치하는 사용자에게만 메시지가 전송됩니다. |
+|`recipients`| 선택 사항 | 배열 | [수신자 오브젝트]({{site.baseurl}}/api/objects_filters/recipient_object/)를 참조하세요.<br><br>`send_to_existing_only`가 `false`인 경우 속성 오브젝트를 포함해야 합니다.<br><br>`recipients`가 제공되지 않고 `broadcast`가 true로 설정된 경우, Braze 대시보드에서 캠페인의 타겟 오디언스로 구성된 전체 세그먼트에 메시지가 전송됩니다. <br><br> `email`이 식별자인 경우 수신자 오브젝트에 [`prioritization`]({{site.baseurl}}/api/endpoints/user_data/post_user_identify#identifying-users-by-email)을 포함해야 합니다. |
+|`attachments`| 선택 사항 | 배열 | `broadcast`가 true로 설정되어 있으면 `attachments` 목록을 포함할 수 없습니다. |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3  .reset-td-br-4 role="presentation" }
 
-- 수신자 배열에는 최대 50개의 개체가 포함될 수 있으며, 각 개체에는 단일 `external_user_id` 문자열과 `trigger_properties` 개체가 포함됩니다.
-- `send_to_existing_only` 이 `true` (기본값)인 경우 Braze는 기존 사용자에게만 메시지를 보냅니다. `false` 로 설정하고 속성 개체를 제공하면, 사용자가 존재하지 않는 경우 Braze는 새 사용자를 생성합니다. `send_to_existing_only` 을 `false` 으로 설정하는 것은 사용자 별칭 지정에 지원되지 않으며, 이 엔드포인트를 통해 새로운 별칭 전용 사용자를 만들 수 없습니다. 사용자 별칭 지정 사용자에게 보내려면 해당 사용자가 이미 Braze에 존재해야 합니다.
+- 수신자 배열에는 최대 50개의 오브젝트가 포함될 수 있으며, 각 오브젝트에는 단일 사용자 식별자(`external_user_id`, `user_alias` 또는 `email`)와 선택적 `trigger_properties` 오브젝트가 포함됩니다.
+- `send_to_existing_only`가 `true`(기본값)일 때, Braze는 기존 사용자에게만 메시지를 전송합니다. 수신자 오브젝트의 식별자(`external_user_id`, `user_alias` 또는 `email`)가 기존 사용자와 일치하지 않으면, API는 여전히 `dispatch_id`와 함께 `201` 성공 응답을 반환하지만, 전송은 내부적으로 취소되며 메시지는 전달되지 않습니다. `external_user_id`의 경우 결과는 `Unknown External User ID`로 기록되며 커런츠 이벤트는 생성되지 않습니다. `false`로 설정되고 속성 오브젝트가 제공되면, Braze는 사용자가 존재하지 않을 경우 새 사용자를 생성합니다. `send_to_existing_only`를 `false`로 설정하는 것은 사용자 별칭에 대해 지원되지 않으며&#8212;새 별칭 전용 사용자는 이 엔드포인트를 통해 생성할 수 없습니다. 별칭 전용 사용자에게 전송하려면, 해당 사용자가 이미 Braze에 존재해야 합니다.
 
-사용자의 구독 그룹 상태는 `attributes` 객체 내에 `subscription_groups` 매개변수를 포함하여 업데이트할 수 있습니다. 자세한 내용은 [사용자 속성 개체]({{site.baseurl}}/api/objects_filters/user_attributes_object)를 참조하십시오.
+{% alert important %}
+`dispatch_id`와 함께 `201` 응답은 Braze가 요청을 수락했음을 확인하지만, 메시지 전달을 보장하지는 않습니다. 사용자를 찾을 수 없거나, 구독을 취소했거나, 해당 채널에 대한 유효한 연락처 주소가 없는 경우 전달이 실패할 수 있습니다.
+{% endalert %}
+
+사용자의 구독 그룹 상태는 `attributes` 오브젝트 내에 `subscription_groups` 매개변수를 포함하여 업데이트할 수 있습니다. 자세한 내용은 [사용자 속성 오브젝트]({{site.baseurl}}/api/objects_filters/user_attributes_object)를 참조하세요.
+
+{% alert note %}
+이 엔드포인트에서는 `segment_id` 매개변수가 지원되지 않습니다. 세그먼트를 타겟팅하려면, Braze 대시보드에서 캠페인의 타겟 오디언스 설정에서 세그먼트를 구성하고 `"broadcast": true`를 사용하거나, [연결된 오디언스]({{site.baseurl}}/api/objects_filters/connected_audience/) 필터와 함께 `audience` 매개변수를 사용하세요.
+{% endalert %}
 
 ## 요청 예시
 ```
@@ -168,16 +176,16 @@ curl --location --request POST 'https://rest.iad-01.braze.com/campaigns/trigger/
 
 ## 응답 세부 정보
 
-메시지 전송 엔드포인트 응답에는 메시지 발송을 다시 참조할 수 있도록 메시지의 `dispatch_id` 주소가 포함됩니다. `dispatch_id` 은 메시지 발송의 ID로, Braze에서 전송되는 각 전송의 고유 ID입니다. 이 엔드포인트를 사용하면 전체 배치된 사용자 집합에 대해 단일 `dispatch_id` 을 받게 됩니다. 자세한 내용은 `dispatch_id` 에서 [디스패치 ID 동작에]({{site.baseurl}}/help/help_articles/data/dispatch_id/) 대한 문서를 참조하세요.
+메시지 전송 엔드포인트 응답에는 메시지 발송을 참조할 수 있도록 메시지의 `dispatch_id`가 포함됩니다. `dispatch_id`는 메시지 발송의 ID로, Braze에서 전송하는 각 전송에 대한 고유 ID입니다. 이 엔드포인트를 사용하면 전체 배치 사용자 집합에 대해 단일 `dispatch_id`를 받게 됩니다. `dispatch_id`에 대한 자세한 내용은 [디스패치 ID 동작]({{site.baseurl}}/help/help_articles/data/dispatch_id/) 설명서를 참조하세요.
 
-요청에 치명적인 오류가 발생하면 오류 코드와 설명은 오류 [및 응답을]({{site.baseurl}}/api/errors/#fatal-errors) 참조하세요.
+요청에 심각한 오류가 발생하면 오류 코드와 설명은 [오류 및 응답]({{site.baseurl}}/api/errors/#fatal-errors)을 참조하세요.
 
-## 캠페인용 속성 개체
+## 캠페인용 속성 오브젝트
 
-Braze에는 API 트리거 캠페인을 보내기 전에 사용자에 대한 속성과 값을 추가, 생성 또는 업데이트할 수 있는 `attributes` 이라는 메시징 객체가 있습니다. `campaign/trigger/send` 엔드포인트를 사용하는 이 API 호출은 캠페인을 처리하고 전송하기 전에 사용자 속성 개체를 처리합니다. 이것은 [경쟁 조건]({{site.baseurl}}/user_guide/engagement_tools/testing/race_conditions/)으로 인해 발생할 수 있는 문제의 위험을 최소화하는 데 도움이 됩니다.
+Braze에는 `attributes`라는 메시징 오브젝트가 있어, API 트리거 캠페인을 전송하기 전에 사용자의 속성과 값을 추가, 생성 또는 업데이트할 수 있습니다. `campaign/trigger/send` 엔드포인트를 사용하면 이 API 호출이 사용자 속성 오브젝트를 먼저 처리한 후 캠페인을 처리하고 전송합니다. 이를 통해 [경합 조건]({{site.baseurl}}/user_guide/engagement_tools/testing/race_conditions/)으로 인해 발생할 수 있는 문제의 위험을 최소화할 수 있습니다.
 
 {% alert tip %}
-이 엔드포인트의 캔버스 버전을 찾고 있습니까? [API 트리거 배달을 사용하여 캔버스 메시지 보내기를]({{site.baseurl}}/api/endpoints/messaging/send_messages/post_send_triggered_canvases/#create-send-endpoint) 확인하세요.
+이 엔드포인트의 캔버스 버전을 찾고 계신가요? [API 트리거 전송을 사용하여 캔버스 메시지 보내기]({{site.baseurl}}/api/endpoints/messaging/send_messages/post_send_triggered_canvases/#create-send-endpoint)를 확인하세요.
 {% endalert %}
 
 {% endapi %}

@@ -15,9 +15,9 @@ guide_featured_list:
   link: /docs/user_guide/message_building_by_channel/email/link_templates/
 ---
 
-This is a test page for testing `ulinks`. When adding "bad links", the syntax needs to match the syntax on this page:
+This is a test page for testing `ulinks`. When adding "bad links", the syntax needs to match the syntax on this page. For example, the following absolute URL is a bad link that `ulinks` will update:
 
-https://www.braze.com/docs/contributing/content_management/cross_referencing
+https://www.braze.com/docs/contributing/content_management/language_translations
 
 i.e. no `/docs` should be found in the `site.baseurl`.
 

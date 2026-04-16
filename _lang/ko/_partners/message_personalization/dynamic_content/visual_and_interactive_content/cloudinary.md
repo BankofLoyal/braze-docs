@@ -75,7 +75,7 @@ Braze 캠페인과 캔버스에서 Cloudinary의 DAM에 있는 이미지와 동�
 구체적인 Android 및 iOS 고려 사항은 [동영상을]({{site.baseurl}}/user_guide/message_building_by_channel/in-app_messages/traditional/customize/video/) 참조하세요. 
 
 {% endtab %}
-{% tab Convert videoes into GIFs %}
+{% tab Convert videos into GIFs %}
 
 ## 이메일을 위해 동영상을 GIF로 변환하기
 

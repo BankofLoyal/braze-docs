@@ -19,7 +19,7 @@ description: "이 페이지에는 자주 묻는 질문이 카테고리별로 정
 ### 익명 사용자 데이터는 어떻게 처리하나요?
 
 {% apitags %}
-사용자
+Users
 {% endapitags %}
 
 처음에 SDK를 통해 고객 프로필이 인식되면 Braze는 Braze에서 설정한 고유 사용자 식별자(`braze_id`:)가 연결된 익명 사용자를 생성합니다.
@@ -38,7 +38,7 @@ For a full breakdown of different methods for collecting new and existing user d
 ### 이미 수집하고 식별한 사용자를 Braze 외부에서 가져오려면 어떻게 해야 하나요?
 
 {% apitags %}
-사용자
+Users
 {% endapitags %}
 
 이전에 식별된 사용자를 가져오려면 CSV를 Braze에 업로드하거나 API를 통해 데이터를 전송하면 됩니다.
@@ -72,7 +72,7 @@ API를 통해 사용자를 업로드하려면 [사용자 추적 엔드포인트]
 ### 푸시 구독 상태의 차이점은 무엇인가요?
 
 {% apitags %}
-사용자
+Users
 {% endapitags %}
 
 푸시 구독 상태 옵션에는 구독, 옵트인, 구독 취소의 세 가지가 있습니다.
@@ -92,7 +92,7 @@ API를 통해 사용자를 업로드하려면 [사용자 추적 엔드포인트]
 ### 중복된 사용자를 식별한 경우 어떻게 하나요?
 
 {% apitags %}
-사용자
+Users
 {% endapitags %}
 
 중복 사용자를 식별한 경우 해당 사용자 프로필을 정리해야 합니다. 이를 위해서는 다음 단계를 거칩니다.
@@ -120,7 +120,7 @@ API를 통해 사용자를 업로드하려면 [사용자 추적 엔드포인트]
 ### CSV를 통해 사용자 그룹을 가져올 때 세그먼트를 만들려면 어떻게 해야 하나요?
 
 {% apitags %}
-세그먼트
+Segments
 {% endapitags %}
 
 CSV 파일을 가져오려면 사용자 섹션 아래의 **사용자 가져오기** 페이지로 이동합니다. **최근 가져오기** 표에는 가장 최근에 가져온 파일 20개, 파일 이름, 파일의 줄 수, 성공적으로 가져온 줄 수, 각 파일의 총 줄 수 및 각 가져오기 상태가 나열됩니다.
@@ -137,7 +137,7 @@ CSV 템플릿을 다운로드하려면 [사용자 가져오기를]({{site.baseur
 ### 세그먼트를 만들 때 어떤 유형의 필터를 사용할 수 있나요?
 
 {% apitags %}
-세그먼트
+Segments
 {% endapitags %}
 
 Braze SDK는 특정 기능 및 속성을 기반으로 사용자를 세분화하고 타겟팅할 수 있는 강력한 필터를 제공합니다. [세분화 필터]({{site.baseurl}}/user_guide/engagement_tools/segments/segmentation_filters) 용어집을 사용하여 필터 카테고리(사용자 데이터, 사용자 활동, 리타겟팅, 마케팅 활동, 사용자 속성, 설치 어트리뷰션, 소셜 활동, 테스트, 기타)별로 이러한 필터를 검색하거나 범위를 좁힐 수 있습니다.
@@ -148,7 +148,7 @@ Braze SDK는 특정 기능 및 속성을 기반으로 사용자를 세분화하�
 ### 가장 최근 위치를 기준으로 사용자를 세분화하여 위치 기반 캠페인 및 전략에 사용할 수 있도록 위치 타겟팅을 설정하려면 어떻게 해야 하나요?
 
 {% apitags %}
-세그먼트
+Segments
 {% endapitags %}
 
 참여 아래의 **세그먼트** 페이지로 이동하여 현재 모든 사용자 세그먼트를 확인합니다. 이 페이지에서 새 세그먼트를 만들고 이름을 지정할 수 있습니다. 시작하려면 **세그먼트 생성을** 클릭하고 세그먼트의 이름을 지정합니다.
@@ -168,7 +168,7 @@ Braze 파트너의 도움을 받아 위치 타겟팅을 활용하고 싶으신�
 ### 지난 365일 동안의 사용자 지정 이벤트 및 구매 행동을 기반으로 정확한 사용자 목록을 타겟팅하려면 어떻게 해야 하나요?
 
 {% apitags %}
-세그먼트
+Segments
 {% endapitags %}
 
 [세그먼트 확장]({{site.baseurl}}/user_guide/engagement_tools/segments/segment_extension/)을 사용할 수 있습니다! 세그먼트 확장을 사용하면 일반 세그먼트를 사용할 때보다 더 정확한 사용자 목록을 타겟팅할 수 있습니다.
@@ -198,7 +198,7 @@ We also support segmentation based on [nested event properties]({{site.baseurl}}
 #### 세그먼트 확장 기능을 최신 상태로 유지
 
 {% apitags %}
-세그먼트
+Segments
 {% endapitags %}
 
 이 확장을 시간 단위의 단일 스냅샷으로 표현할지, 아니면 이 확장을 매일 재생성할지를 지정할 수 있습니다. 초기 저장 후에 항상 확장이 처리됩니다. 연장을 매일 **재생성하려면 매일 연장 재생성**을 선택하면 회사 시간대의 매일 자정 무렵에 재생성 처리가 시작됩니다.
@@ -215,7 +215,7 @@ We also support segmentation based on [nested event properties]({{site.baseurl}}
 ### 멀티채널 캠페인은 어떻게 만드나요?
 
 {% apitags %}
-캠페인
+Campaigns
 {% endapitags %}
 
 멀티채널 캠페인을 만들려면 **캠페인** 페이지로 이동하여 **캠페인 만들기를** 선택한 다음 **멀티채널 캠페인을** 선택합니다. 멀티채널 캠페인 내에서 작성 탭에서 **메시징 채널 추가를** 선택하여 원하는 채널을 추가합니다. 여러 채널에 대한 캠페인 문구를 작성할 때 표시되는 채널 아이콘을 클릭하면 다양한 메시지 작성기를 전환할 수 있습니다.
@@ -226,7 +226,7 @@ We also support segmentation based on [nested event properties]({{site.baseurl}}
 ### 캠페인 테스트 및 최적화를 시작할 수 있는 방법에는 어떤 것이 있나요?
 
 {% apitags %}
-캠페인
+Campaigns
 {% endapitags %}
 
 다변량 캠페인을 만들고 여러 배리언트가 있는 캔버스를 실행하는 것은 시작하기에 좋은 방법입니다! 예를 들어, [다변량 캠페인을]({{site.baseurl}}/user_guide/engagement_tools/testing/multivariant_testing/) 실행하여 사본이나 제목이 다른 하나의 메시지를 테스트할 수 있습니다. 여러 변형이 있는 캔버스는 전체 워크플로를 테스트하는 데 유용합니다.
@@ -237,7 +237,7 @@ We also support segmentation based on [nested event properties]({{site.baseurl}}
 ### 특정 캠페인 또는 캔버스에 대해 고유 수신자 수와 전송 횟수에 차이가 있는 이유는 무엇인가요?
 
 {% apitags %}
-캠페인
+Campaigns
 {% endapitags %}
 
 이 차이에 대한 한 가지 가능한 설명은 캠페인 또는 캔버스의 재인증이 켜져 있기 때문일 수 있습니다. 이 기능을 켜면 세그먼트 및 전달 설정에 적합한 사용자가 메시지를 두 번 이상 받을 수 있습니다. 재인증이 켜져 있지 않은 경우 발신자와 고유 수신자 간의 차이에 대한 가능한 설명은 사용자가 프로필과 연결된 플랫폼에 여러 개의 기기를 가지고 있기 때문일 수 있습니다.
@@ -250,7 +250,7 @@ We also support segmentation based on [nested event properties]({{site.baseurl}}
 ### 현지 시간대 전달은 무엇을 제공하나요?
 
 {% apitags %}
-캠페인
+Campaigns
 {% endapitags %}
 
 현지 시간대 전달을 사용하면 사용자의 개별 시간대를 기준으로 세그먼트에 메시징 캠페인을 전달할 수 있습니다. 현지 시간대 배송을 사용하지 않는 캠페인은 Braze에서 회사의 시간대 설정에 따라 예약됩니다.
@@ -263,7 +263,7 @@ We also support segmentation based on [nested event properties]({{site.baseurl}}
 ### Braze는 사용자의 시간대를 어떻게 인식하나요?
 
 {% apitags %}
-캠페인
+Campaigns
 {% endapitags %}
 
 Braze는 디바이스에서 사용자의 시간대를 자동으로 확인합니다. 이는 시간대의 정확성과 사용자의 전체 범위를 지원하도록 설계되었습니다. 사용자 API를 통해 생성된 사용자 또는 표준 시간대가 없는 사용자는 SDK에서 앱에서 인식할 때까지 회사의 표준 시간대가 기본 시간대로 사용됩니다.
@@ -276,14 +276,14 @@ You can check your company's time zone in your [company settings]({{site.baseurl
 ### 현지 시간대 캠페인을 예약하려면 어떻게 해야 하나요?
 
 {% apitags %}
-캠페인
+Campaigns
 {% endapitags %}
 
 캠페인을 예약할 때 지정된 시간에 캠페인을 보내도록 선택한 다음 **현지 시간대의 사용자에게 캠페인 보내기**를 선택해야 합니다.
 
 Braze는 모든 현지 시간대 캠페인을 24시간 전에 예약할 것을 적극 권장합니다. 이러한 캠페인은 하루 종일 전송해야 하므로 24시간 전에 예약하면 전체 세그먼트에 메시지가 도달할 수 있습니다. 그러나 필요한 경우 24시간 전에 이러한 캠페인을 예약할 수 있습니다. Braze는 전송 시간을 1시간 이상 놓친 사용자에게는 메시지를 보내지 않는다는 점에 유의하세요.
 
-예를 들어 오후 1시에 현지 시간대 캠페인을 오후 3시로 예약하면 현지 시간이 오후 3~4시인 모든 사용자에게는 캠페인이 즉시 전송되지만 현지 시간이 오후 5시인 사용자에게는 전송되지 않습니다. 또한 캠페인에 대해 선택한 전송 시간은 회사 시간대에 아직 발생하지 않은 시간이어야 합니다.
+예를 들어, 만약 오후 1시이고 3시에 지역 시간대 캠페인을 예약하면, 캠페인은 즉시 오후 3-4시인 모든 사용자에게 전송되지만, 오후 5시인 사용자에게는 전송되지 않습니다. 또한 캠페인에 대해 선택한 전송 시간은 회사 시간대에 아직 발생하지 않은 시간이어야 합니다.
 
 24시간 전에 예약된 현지 시간대 캠페인을 수정해도 메시지의 일정은 변경되지 않습니다. 현지 시간대 캠페인을 편집하여 나중에 전송하기로 결정한 경우(예: 오후 6시 대신 오후 7시), 원래 전송 시간을 선택할 때 타겟 세그먼트에 있던 사용자는 여전히 원래 시간(오후 6시)에 메시지를 받게 됩니다. 현지 시간대를 편집하여 더 이른 시간(예: 오후 5시 대신 오후 4시)에 전송하는 경우 캠페인은 여전히 원래 시간(오후 5시)에 모든 세그먼트 멤버에게 전송됩니다.
 
@@ -299,7 +299,7 @@ Braze는 모든 현지 시간대 캠페인을 24시간 전에 예약할 것을 �
 ### 현지 시간대 캠페인의 변경 사항은 언제 적용되나요?
 
 {% apitags %}
-캠페인
+Campaigns
 {% endapitags %}
 
 현지 시간대 캠페인의 타겟 세그먼트에는 모든 시간 기반 필터에 최소 48시간의 기간이 포함되어야 전체 세그먼트에 전달이 보장됩니다. 예를 들어 다음 필터를 사용하여 둘째 날 사용자를 타겟팅하는 세그먼트를 생각해 보겠습니다:
@@ -315,7 +315,7 @@ Braze는 모든 현지 시간대 캠페인을 24시간 전에 예약할 것을 �
 ### 출시 전에 예약된 캠페인을 변경하려면 어떻게 해야 하나요?
 
 {% apitags %}
-캠페인
+Campaigns
 {% endapitags %}
 
 캠페인이 예약되면 전송할 메시지를 대기열에 추가하기 전에 메시지 구성 이외의 내용을 수정해야 합니다. 모든 캠페인과 마찬가지로 캠페인이 시작된 후에는 전환 이벤트를 편집할 수 없습니다.
@@ -326,7 +326,7 @@ Braze는 모든 현지 시간대 캠페인을 24시간 전에 예약할 것을 �
 ### 예약된 캠페인의 메시지가 대기열에 추가되기 전의 '안전 영역'이란 무엇인가요?
 
 {% apitags %}
-캠페인
+Campaigns
 {% endapitags %}
 
 - 일회성의 스케줄된 캠페인은 예약된 전송 시간 직전까지 수정 가능합니다.
@@ -340,7 +340,7 @@ Braze는 모든 현지 시간대 캠페인을 24시간 전에 예약할 것을 �
 ### '안전 영역' 내에서 수정하면 어떻게 되나요?
 
 {% apitags %}
-캠페인
+Campaigns
 {% endapitags %}
 
 예를 들어 이 시간 내에 캠페인의 전송 시간을 변경하면 원치 않는 동작이 발생할 수 있습니다:
@@ -354,7 +354,7 @@ Braze는 모든 현지 시간대 캠페인을 24시간 전에 예약할 것을 �
 ### '안전 구역'이 이미 지나간 경우 어떻게 해야 하나요?
 
 {% apitags %}
-캠페인
+Campaigns
 {% endapitags %}
 
 캠페인이 원하는 대로 작동하도록 하려면 현재 캠페인을 중지하는 것이 좋습니다(이렇게 하면 대기 중인 메시지가 모두 중지됩니다). 그런 다음 캠페인을 복제하여 필요에 따라 변경하고 새 캠페인을 시작할 수 있습니다. 이미 첫 번째 캠페인을 받은 사용자를 이 캠페인에서 제외해야 할 수도 있습니다.
@@ -367,7 +367,7 @@ Braze는 모든 현지 시간대 캠페인을 24시간 전에 예약할 것을 �
 ### Braze는 현지 시간대 배송을 위해 언제 사용자를 평가하나요?
 
 {% apitags %}
-캠페인
+Campaigns
 {% endapitags %}
 
 현지 시간대 배송의 경우, Braze는 이 두 가지 경우에 사용자의 참가 자격을 평가합니다:
@@ -388,7 +388,7 @@ Braze는 모든 현지 시간대 캠페인을 24시간 전에 예약할 것을 �
 ### 캠페인에 참여한 사용자 수가 예상한 수와 일치하지 않는 이유는 무엇인가요?
 
 {% apitags %}
-캠페인
+Campaigns
 {% endapitags %}
 
 캠페인에 참여하는 사용자 수는 오디언스 및 트리거가 평가되는 방식에 따라 예상되는 수와 다를 수 있습니다. Braze에서는 트리거 전에 오디언스를 평가합니다([속성 변경 트리거]({{site.baseurl}}/user_guide/engagement_tools/campaigns/building_campaigns/delivery_types/triggered_delivery/attribute_triggers#change-custom-attribute-value)를 사용하지 않는 한). 이렇게 하면 트리거 동작이 평가되기 전에 사용자가 처음에 선택한 오디언스에 포함되지 않은 경우 캠페인에서 이탈하게 됩니다.
@@ -401,7 +401,7 @@ Braze는 모든 현지 시간대 캠페인을 24시간 전에 예약할 것을 �
 ### 하나의 배리언트 상품이 있지만 여러 개의 브랜치가 있는 캔버스의 대상과 전송 시간이 동일하면 어떻게 되나요?
 
 {% apitags %}
-캔버스
+Canvases
 {% endapitags %}
 
 각 단계마다 작업을 대기열에 추가하여 거의 동시에 실행하고 그 중 하나가 "승리"합니다. 실제로는 어느 정도 균등하게 정렬될 수 있지만, 적어도 먼저 생성된 단계에 약간의 편향이 있을 수 있습니다.
@@ -414,7 +414,7 @@ Braze는 모든 현지 시간대 캠페인을 24시간 전에 예약할 것을 �
 ### 캔버스를 중지하면 어떻게 되나요?
 
 {% apitags %}
-캔버스
+Canvases
 {% endapitags %}
 
 캔버스를 중지하면 다음 사항이 적용됩니다:
@@ -433,7 +433,7 @@ Braze는 모든 현지 시간대 캠페인을 24시간 전에 예약할 것을 �
 ### 예외 이벤트는 언제 트리거되나요?
 
 {% apitags %}
-캔버스
+Canvases
 {% endapitags %}
 
 예외 이벤트는 사용자가 연결된 캔버스 컴포넌트를 수신하기 위해 대기하는 동안에만 트리거됩니다. 사용자가 미리 작업을 수행하면 예외 이벤트가 트리거되지 않습니다.
@@ -446,7 +446,7 @@ Braze는 모든 현지 시간대 캠페인을 24시간 전에 예약할 것을 �
 ### 캔버스를 편집하면 이미 캔버스에 있는 사용자에게 어떤 영향이 있나요?
 
 {% apitags %}
-캔버스
+Canvases
 {% endapitags %}
 
 다단계 캔버스의 일부 단계를 편집하는 경우 이미 오디언스에 속해 있지만 단계를 받지 않은 사용자는 업데이트된 버전의 메시지를 받게 됩니다. 아직 해당 단계에 대한 평가가 이루어지지 않은 경우에만 이런 일이 발생한다는 점에 유의하세요.
@@ -459,7 +459,7 @@ For more information on what you can or can't edit after launch, check out [Chan
 ### 캔버스에서 사용자 전환은 어떻게 추적하나요?
 
 {% apitags %}
-캔버스
+Canvases
 {% endapitags %}
 
 사용자는 캔버스 항목당 한 번만 변환할 수 있습니다.
@@ -501,7 +501,7 @@ For more information on what you can or can't edit after launch, check out [Chan
 ### 고유 사용자 수를 살펴볼 때 캔버스 애널리틱스와 세그먼트 중 어느 것이 더 정확할까요?
 
 {% apitags %}
-캔버스
+Canvases
 {% endapitags %}
 
 세그미터는 Canvas나 캠페인 통계에 비해 고유한 사용자 데이터에 대해 더 정확한 통계를 제공합니다. 이는 캔버스와 캠페인 통계가 어떤 일이 발생하면 Braze가 증분하는 숫자이므로, 이 숫자가 세그먼트의 숫자와 다를 수 있는 변수가 존재하기 때문입니다. 예를 들어, 사용자는 캔버스 또는 캠페인에 대해 두 번 이상 전환할 수 있습니다.  
@@ -512,7 +512,7 @@ For more information on what you can or can't edit after launch, check out [Chan
 ### 캔버스에 입장하는 사용자 수가 예상한 수와 일치하지 않는 이유는 무엇인가요?
 
 {% apitags %}
-캔버스
+Canvases
 {% endapitags %}
 
 캔버스에 입장하는 사용자 수는 오디언스 및 트리거가 평가되는 방식에 따라 예상되는 수와 다를 수 있습니다. Braze에서는 트리거 전에 오디언스를 평가합니다([속성 변경]({{site.baseurl}}/user_guide/engagement_tools/campaigns/building_campaigns/delivery_types/triggered_delivery/attribute_triggers/#change-custom-attribute-value) 트리거를 사용하지 않는 한). 이렇게 하면 트리거 동작이 평가되기 전에 선택한 대상 그룹에 속하지 않는 사용자가 캔버스에서 이탈하게 됩니다.
@@ -525,7 +525,7 @@ For more information on what you can or can't edit after launch, check out [Chan
 ### Braze는 어떤 지표를 측정하나요?
 
 {% apitags %}
-분석
+Analytics
 {% endapitags %}
 
 Braze는 채널에 따라 다양한 측정기준을 측정하여 캠페인의 성공 여부를 판단하고 향후 캠페인에 대한 정보를 제공합니다. You can find a comprehensive list in our [report metrics glossary]({{site.baseurl}}/user_guide/data/report_metrics/).
@@ -536,7 +536,7 @@ Braze는 채널에 따라 다양한 측정기준을 측정하여 캠페인의 �
 ### Braze에서 수익은 어떻게 계산되나요?
 
 {% apitags %}
-분석
+Analytics
 {% endapitags %}
 
 **매출** 페이지에서는 특정 기간, 특정 제품 또는 앱의 총 매출 또는 구매에 대한 데이터를 볼 수 있습니다. 이러한 매출 수치는 특정 전환 기간 내에 캠페인 수신자가 구매한 구매에서 생성됩니다.
@@ -549,7 +549,7 @@ Braze는 채널에 따라 다양한 측정기준을 측정하여 캠페인의 �
 ### Currents는 어떤 보고 기능을 지원하나요?
 
 {% apitags %}
-분석
+Analytics
 {% endapitags %}
 
 커런츠 도구는 메시징 참여도와 고객 행동 데이터를 지속적으로 여러 데이터 파트너 중 한 곳으로 스트리밍하여 Braze가 생성하는 고유하고 가치 있는 데이터를 사용하여 다른 최고의 파트너에서 비즈니스 인텔리전스 및 분석 작업을 강화할 수 있도록 지원합니다.
@@ -562,7 +562,7 @@ Braze는 채널에 따라 다양한 측정기준을 측정하여 캠페인의 �
 ### 반복 참여 보고서를 예약하려면 어떻게 해야 하나요?
 
 {% apitags %}
-분석
+Analytics
 {% endapitags %}
 
 반복 인게이지먼트 보고서를 예약하려면 다음과 같이 하세요.
@@ -572,7 +572,7 @@ Braze는 채널에 따라 다양한 측정기준을 측정하여 캠페인의 �
 3. 보고서에 컴파일하려는 [캠페인과 캔버스 메시지]({{site.baseurl}}/user_guide/data_and_analytics/reporting/engagement_reports/#manually-select-campaigns-or-canvases)를 개별적으로 또는 [태그별]({{site.baseurl}}/user_guide/data_and_analytics/reporting/engagement_reports/#automatically-select-campaigns-or-canvases)로 추가합니다.
 4. 보고서에 [통계를 추가합니다]({{site.baseurl}}/user_guide/data_and_analytics/reporting/engagement_reports/#add-statistics-to-your-report).
 5. 보고서의 압축 및 구분 기호를 선택합니다.
-6. 이 보고서를 받아야 하는 회사 사용자의 이메일 주소를 입력합니다.
+6. 이 보고서를 받아야 하는 회사 사용자들의 이메일 주소를 입력하세요.
 7. 보고서에서 데이터를 실행할 [기간]({{site.baseurl}}/user_guide/data_and_analytics/reporting/engagement_reports/#time-frame)을 선택합니다.
 8. 데이터 분석을 보고 싶은 [간격(일별, 주별 등)]({{site.baseurl}}/user_guide/data_and_analytics/reporting/engagement_reports/#data-display)을 선택합니다.
 9. 보고서를 [즉시]({{site.baseurl}}/user_guide/data_and_analytics/reporting/engagement_reports/#send-immediately) 또는 [나중에 지정된 시간에]({{site.baseurl}}/user_guide/data_and_analytics/reporting/engagement_reports/#send-at-designated-time) 전송하도록 예약하세요.
@@ -584,7 +584,7 @@ Braze는 채널에 따라 다양한 측정기준을 측정하여 캠페인의 �
 ### 참여 보고서와 보고서 빌더의 차이점은 무엇인가요?
 
 {% apitags %}
-분석
+Analytics
 {% endapitags %}
 
 참여 보고서는 트리거된 이메일을 통해 캠페인 및 캔버스의 특정 메시지에 대한 인게이지먼트 통계의 CSV를 제공합니다. 특정 데이터는 캠페인 또는 캔버스 수준과 개별 배리언트 상품 또는 단계 수준에서 집계됩니다. 보고서는 대시보드에 저장되지 않으며, 보고서를 다시 실행하면 통계가 업데이트될 수 있습니다.
