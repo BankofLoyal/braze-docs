@@ -16,16 +16,16 @@ tool:
 
 ## When sends are logged
 
-The timing of a "Sent" event for Content Cards depends on the delivery type and Card Creation setting.
+The timing of a _Sent_ event for Content Cards depends on the delivery type and **Card Creation** setting.
 
 ### Scheduled delivery
 
-For scheduled Content Cards, the timing of a "Sent" event depends on the **Card Creation** setting:
+For scheduled Content Cards, the timing of a _Sent_ event depends on the **Card Creation** setting:
 
 - **At campaign launch:** The send is logged at the scheduled send time, when the card is written to the user's feed. This happens regardless of whether the user has opened the app or viewed the card.
 - **At first impression:** The send is logged the first time the app requests the card after the scheduled send time, when the card is created on demand.
 
-If your campaign is configured to use **At first impression** (Recommended), the "Sent" count in campaign analytics grows gradually as individual apps request the card. If the app never requests a card (e.g., a user never opens the app) before the card expires, no send is recorded, and the card is never delivered. If your campaign is configured to use **At campaign launch**, the "Sent" count in campaign analytics spikes at the scheduled time.
+If your campaign is configured to use **At first impression** (recommended), the _Sent_ count in campaign analytics grows gradually as individual apps request the card. If the app never requests a card (such as, a user never opens the app) before the card expires, no send is recorded, and the card is never delivered. If your campaign is configured to use **At campaign launch**, the _Sent_ count in campaign analytics spikes at the scheduled time.
 
 ### Action-based delivery
 
@@ -33,6 +33,6 @@ For action-based Content Cards, the send is logged shortly after the user perfor
 
 ### Campaigns Received and retargeting filters
 
-Regardless of the delivery type or Card Creation setting, a Content Card campaign appears in the user's profile under **Campaigns Received** only after they have actually viewed the card in the app. The **Last Received Any Message** and **Last Received Campaign** retargeting filters update at view time for the same reason.
+Regardless of the delivery type or **Card Creation** setting, a Content Card campaign appears in the user's profile under **Campaigns Received** only after they have actually viewed the card in the app. The **Last Received Any Message** and **Last Received Campaign** retargeting filters update at view time for the same reason.
 
 {% multi_lang_include analytics/campaign_analytics.md channel="Content Card" %}
