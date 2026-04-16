@@ -75,7 +75,7 @@ Before connecting to the Deliverability Center, you'll need to set up a Google P
 4. Google generates a TXT record that can be added directly to your domain's DNS. This is generally owned by whoever manages your DNS. For information and guidance on how to update your specific DNS, check out [Verify your domain (host-specific steps)](https://support.google.com/a/topic/1409901).
 5. Select **Next**. <br>![An example domain "demo.braze.com" to authenticate an email.]({% image_buster /assets/img_archive/domain_authentication.png %})
 6. After the TXT record is added to the DNS, return to the Google Postmaster Tools dashboard and select **Verify**. This step confirms you own the domain, so you can access Gmail deliverability metrics in your Postmaster account. <br>![A prompt to verify ownership of the domain "demo.braze.com".]({% image_buster /assets/img_archive/domain_verification.png %})
-8. After verifying the root (parent) domain, add your sending subdomains to Google Postmaster.
+7. After verifying the root (parent) domain, add your sending subdomains to Google Postmaster.
 
 {% alert note %}
 If your subdomains aren't included in the Deliverability Center for Google Postmaster, this can be a result of only adding the root (parent) domain to Google Postmaster. After the root domains are verified in Google Postmaster, you can add your subdomains, which are verified automatically. This process allows Google to report back on metrics on the subdomain-level, which can then be pulled into the Braze Deliverability Center.
