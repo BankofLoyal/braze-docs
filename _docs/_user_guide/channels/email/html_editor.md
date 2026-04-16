@@ -210,7 +210,7 @@ For the drag-and-drop editor, add only the zero-width non-joiners (‌`&zwnj;`) 
 Before send, the editor flags common issues:
 
 - From display name and header not set together
-- Invalid From or Reply-To
+- Invalid From or reply-to addresses
 - Duplicate header keys
 - Liquid syntax errors
 - Content Blocks that include a full `<!DOCTYPE html>`
