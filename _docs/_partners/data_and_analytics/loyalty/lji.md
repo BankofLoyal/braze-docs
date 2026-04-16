@@ -68,19 +68,39 @@ The GRAVTY® integration with Braze is API-based and enables real-time data sync
 ![Connecting Braze as a subscriber in GRAVTY®.]({% image_buster /assets/img/lji/braze-subscriber-setup.png %})
 
 ---
+### Step 2: Configure Event Trigger
 
-### Step 2: Configure Template Attribute Mapping
+Create an event in GRAVTY® that will trigger when a transaction is created or updated for a member based on defined conditions.
 
-After saving the Braze subscriber, you will be redirected to the **Template Attribute Mapping** page in GRAVTY® to configure how data is mapped to Braze.
+1. Navigate to the **Events** section in GRAVTY®.
+2. Click **Create Event**.
+3. Define the event conditions (for example, transaction created, points earned, or tier upgrade).
+4. Configure the rules that determine when the event should be triggered.
+5. Attach the Braze subscriber to the event to enable communication triggers.
+6. Save the event configuration.
+
+The following is an example of an event configured to trigger when a member is enrolled into the program:
+
+![Connecting Braze as a subscriber in GRAVTY®.]({% image_buster /assets/img/lji/gravty-attribute-mapping.png %})
+
+
+### Step 3: Configure Template Attribute Mapping
+
+After configuring the event, complete the subscriber configuration to enable data sync and communication triggers:
+
+1. Select the **Braze subscriber** created in Step 1 from the subscriber dropdown.
+2. Choose the appropriate **channel** (**Campaign** or **Canvas**) based on your use case. For data sync–only scenarios, the channel can be left unselected.
+3. Enter the corresponding **Campaign ID** or **Canvas ID** in the **Template Name** field, as applicable.
+4. Configure the communication type to support sync and/or trigger-based messaging.
 
 To configure field mapping in GRAVTY®:
 
 1. Click **Add New Field**.
 2. Select the **GRAVTY® attribute** from the dropdown.
-3. Enter the corresponding **Braze attribute name** (custom attribute) where the data should be mapped.
+3. Enter the corresponding **Braze attribute name** where the data should be mapped.
 
 {% alert important %}
-There is no need to map `external_id`. GRAVTY® automatically generates and maps it internally by hashing the member ID to ensure consistent and secure identification in Braze.
+There is no need to map `external_id`. GRAVTY® automatically generates and maps it internally by hashing the member ID, which serves as the unique identifier for members within GRAVTY®.
 {% endalert %}
 
 4. Repeat steps **1–3** to add additional mappings as needed.
@@ -94,11 +114,17 @@ The integration supports all Braze custom attribute data types, including number
 
 ---
 
-### Step 3: Test the Integration
+### Step 4: Test the Integration
 
-Trigger a sample event  in GRAVTY® to verify that sync, communication triggers, and overall integration are working as expected.
+Trigger a sample event in GRAVTY® to verify that sync, communication triggers, and overall integration are working as expected.
+
+* Member data is synced to Braze and reflected in the member profile.
 
 ![The data fields are populated based on the configured field mapping.]({% image_buster /assets/img/lji/braze-member-profile.png %})
+
+* Communication is triggered based on the configured Campaign or Canvas.
+
+![Example of an email triggered from Braze.]({% image_buster /assets/img/lji/braze-email-example.png %})
 
 ---
 ## Support
