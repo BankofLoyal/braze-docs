@@ -108,7 +108,7 @@ These features increase the rendered message size by small amounts:
 - Link templates: Appends any query parameters configured in the dashboard to matching URLs 
 - CSS inlining (optional): Applies embedded stylesheet rules inline to HTML elements, which may add redundant CSS depending on stylesheet complexity
 
-The preheader and tracking pixel add roughly 600 characters (less than 1&nbsp;KB). Braze typically adds between 0 to 5&nbsp;KB depending on the number of links, link template complexity, and whether CSS inlining is enabled. If your email size is near the limit, we recommend testing emails before sending since the final rendered size depends on these inputs.
+The preheader and tracking pixel add roughly 600 characters (less than 1&nbsp;KB). Braze typically adds between 0&nbsp;KB and 5&nbsp;KB depending on the number of links, link template complexity, and whether CSS inlining is enabled. If your email size is near the limit, we recommend testing emails before sending since the final rendered size depends on these inputs.
 
 ## Text length
 
