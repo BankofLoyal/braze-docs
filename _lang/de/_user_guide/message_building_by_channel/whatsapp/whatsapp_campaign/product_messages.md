@@ -133,7 +133,7 @@ Sie können eine Nachricht über ein Produkt erstellen, indem Sie eine WhatsApp 
 {: start="5"}
 5\. Wählen Sie die [Art der Nachricht](#product-message-types), die Sie verwenden möchten.
 
-![Mesage Layout Auswahl von "Multi-Produkt".]({% image_buster /assets/img/whatsapp/multi-product_message_layout.png %}){: style="max-width:90%;"}
+![Message Layout Auswahl von "Multi-Produkt".]({% image_buster /assets/img/whatsapp/multi-product_message_layout.png %}){: style="max-width:90%;"}
 
 {: start="6"}
 6\. Setzen Sie den Aufbau Ihrer Nachricht fort.

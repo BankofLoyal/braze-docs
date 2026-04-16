@@ -59,7 +59,7 @@ Braze timestamps are expressed in seconds. To accurately reflect timestamps in A
 
 ### 3단계: Gather credentials
 
-Collect the following creditials to input into Braze, which will allow Braze to send data to Adobe Experience Platform.
+Collect the following credentials to input into Braze, which will allow Braze to send data to Adobe Experience Platform.
 
 | Field         |Description                          |
 |---------------|-------------------------------------|

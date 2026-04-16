@@ -13,7 +13,7 @@ description: "This reference article explains the different components of the Br
 
 You must include one of `external_user_id`, `user_alias`, `braze_id`, or `email` in this object. **Requests must specify only one.**
 
-The recipients object allows you to combine the [user alias object]({{site.baseurl}}/api/objects_filters/user_alias_object/), the [trigger properties object]({{site.baseurl}}/api/objects_filters/trigger_properties_object/), the [Canvas entry properties object]({{site.baseurl}}/api/objects_filters/canvas_entry_properties_object/), and the [user attributes object]({{site.baseurl}}/api/objects_filters/user_attributes_object/).
+The recipients object allows you to combine the [user alias object]({{site.baseurl}}/api/objects_filters/user_alias_object/), the [trigger properties object]({{site.baseurl}}/api/objects_filters/trigger_properties_object/), the [Canvas entry properties object]({{site.baseurl}}/user_guide/messaging/canvas/canvas_components/context/), and the [user attributes object]({{site.baseurl}}/api/objects_filters/user_attributes_object/#migrating-push-tokens).
 
 ## Object body
 
@@ -33,17 +33,22 @@ The recipients object allows you to combine the [user alias object]({{site.baseu
 
 When `send_to_existing_only` is `true`, Braze only sends the message to existing users. However, you cannot use this flag with user aliases. When `send_to_existing_only` is `false`, you must include an attribute. Braze creates a user with the `id` and attributes before sending the message.
 
-- [Braze ID]({{site.baseurl}}/user_guide/data/user_data_collection/user_profile_lifecycle/)
+- [Braze ID]({{site.baseurl}}/user_guide/data/unification/user_data/user_profile_lifecycle/)
 - [User aliases]({{site.baseurl}}/user_guide/data_and_analytics/user_data_collection/user_profile_lifecycle/#user-aliases)
 - [External user ID]({{site.baseurl}}/api/objects_filters/user_attributes_object/#braze-user-profile-fields)
 - [Prioritization]({{site.baseurl}}/api/endpoints/user_data/post_user_identify/#identifying-users-by-email)
-- [User attributes object]({{site.baseurl}}/api/objects_filters/user_attributes_object/)
+- [User attributes object]({{site.baseurl}}/api/objects_filters/user_attributes_object/#migrating-push-tokens)
 
 ## Recipient object deduping
 
 When making an API call with the recipient object, **if there exists a duplicated recipient targeting the same address (that is, email, push), Braze dedupes the user**, meaning Braze removes identical users, leaving one.
 
 For example, if you use the same `external_user_id`, then the user receives only one message. Consider making multiple API calls if you need a workaround for this behavior.
+
+When the same `external_user_id` appears multiple times in the recipients array, Braze sends only one message and uses 
+the trigger properties from the last occurrence in the array. This behavior is deterministic and based on array order.
+
+In the following example, `userid1` receives one message using `"name": "Beth Test 2"` because that entry appears last in the array.
 
 ```json
 {"campaign_id":"#####","recipients":[

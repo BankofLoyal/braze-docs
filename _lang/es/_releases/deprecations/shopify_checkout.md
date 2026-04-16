@@ -15,7 +15,7 @@ Shopify dejará de utilizar `checkout.liquid` en dos fases:
 1. **[13 de agosto de 2024](#phase-one-august-13-2024):** Fecha límite para actualizar tus páginas de información, envío y pago.
 2. **[28 de agosto de 2025](#phase-two-august-28-2025):** Fecha límite para actualizar tus páginas de agradecimiento y estado del pedido, incluyendo tus aplicaciones que utilizan etiquetas de script y scripts adicionales.
 
-Para obtener información general sobre la actualización a Checkout Extensibilty, consulta [la guía de actualización de Shopify](https://help.shopify.com/en/manual/checkout-settings/customize-checkout-configurations/checkout-extensibility).
+Para obtener información general sobre la actualización a Checkout Extensibility, consulta [la guía de actualización de Shopify](https://help.shopify.com/en/manual/checkout-settings/customize-checkout-configurations/checkout-extensibility).
 
 ## Impacto en tu integración
 

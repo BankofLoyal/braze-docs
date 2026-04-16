@@ -93,7 +93,7 @@ Use Braze mobile remote command data mappings to set default user attributes and
 | appendcustomarrayattribute | addToCustomAttributeArrayWithKey()|
 | emailnotification | setEmailNotificationSubscriptionType() |
 | incrementcustomattribute | incrementCustomAttribute() |
-| Initalize | startWithApiKey() |
+| initialize | startWithApiKey() |
 | logcustomevent | logCustomEvent() |
 | logpurchase | logPurchase() |
 | pushnotification | setPushNotificationSubscriptionType() |

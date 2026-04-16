@@ -93,7 +93,7 @@ Braze モバイルリモートコマンドのデータマッピングを使用�
 | appendcustomarrayattribute | addToCustomAttributeArrayWithKey()|
 | emailnotification | setEmailNotificationSubscriptionType() |
 | incrementcustomattribute | incrementCustomAttribute() |
-| Initalize | startWithApiKey() |
+| initialize | startWithApiKey() |
 | logcustomevent | logCustomEvent() |
 | logpurchase | logPurchase() |
 | pushnotification | setPushNotificationSubscriptionType() |

@@ -16,7 +16,7 @@ This guide uses Shopify’s Hydrogen framework as an example. However, you can f
 
 To integrate your Shopify headless store with Braze, you need to complete these two goals:
 
-1. **Initialize and load the Braze Web SDK to enable onsite tracking**<br><br> Manually add code into your Shopify website to enable Braze onsite tracking. By implementing the Braze SDK on your Shopify headless store, you can track onsite activities, including sessions, anonymous user behavior, pre-checkout shopper actions, and any [custom events]({{site.baseurl}}/user_guide/data/custom_data/custom_events/) or [custom attributes]({{site.baseurl}}/user_guide/data/custom_data/custom_attributes/) you choose to include with your development team. You can also add any channels supported by the SDKs, such as in-app messages or Content Cards. 
+1. **Initialize and load the Braze Web SDK to enable onsite tracking**<br><br> Manually add code into your Shopify website to enable Braze onsite tracking. By implementing the Braze SDK on your Shopify headless store, you can track onsite activities, including sessions, anonymous user behavior, pre-checkout shopper actions, and any [custom events]({{site.baseurl}}/user_guide/data/activation/events/custom_events/) or [custom attributes]({{site.baseurl}}/user_guide/data/activation/attributes/custom_attributes/) you choose to include with your development team. You can also add any channels supported by the SDKs, such as in-app messages or Content Cards. 
 
 {: start="2"}
 2. **Install the Braze Shopify integration**<br><br> After you connect your Shopify store to Braze, you'll gain access to customer, checkout, order, and product data through Shopify webhooks.
@@ -31,7 +31,7 @@ To complete these goals, follow these steps:
 
 ### Step 1: Create a Braze website app {#step-1}
 
-In Braze, go to **Settings** > **App Settings** > and then select **Add App**. Name the app as "Shopify".
+In Braze, go to **Settings** > **App Settings**, then select **Add app**. Enter "Shopify" as the app name.
 
 {% alert warning %}
 The shop must be named “Shopify” or the integration may not work properly.
@@ -390,7 +390,7 @@ async function loadCriticalData({context, params, request}) {
 
 #### Cart Updated events
 
-In addition to tracking the `cart_updated` event, you need to send the cart token value over to Braze. We use the cart token value to process order webhooks received from Shopify. This is done by creating a user alias with the Shopify cart token as its name. 
+{% multi_lang_include alerts/important_alerts.md alert='Shopify cart token alias' %}
 
 1. Define functions for tracking the `cart_updated` event and setting the cart token:
 
@@ -605,7 +605,7 @@ This table contains the data that will be initially loaded through the backfill.
 
 | Braze recommended events | Shopify custom events | Braze standard attributes | Braze subscription statuses |
 | --- | --- | --- | --- |
-| {::nomarkdown}<ul><li>Order placed</li></ul>{:/}  | {::nomarkdown}<ul><li>shopify_tags</li><li>shopify_total_spent</li><li>shopify_order_count</li><li>shopify_last_order_id</li><li>shopify_last_order_name</li><li>shopify_zipcode</li>shopify_province</li></ul>{:/} | {::nomarkdown}<ul><li>Email</li><li>First Name</li><li>Last Name</li><li>Phone</li><li>City</li><li>Country</li></ul>{:/} | {::nomarkdown}<ul><li>Email marketing subscriptions associated with this Shopify store</li><li>SMS marketing subscriptions associated with this Shopify store</li></ul>{:/} |
+| {::nomarkdown}<ul><li>Order placed</li><li>Order cancelled</li><li>Order refunded</li></ul>{:/}  | {::nomarkdown}<ul><li>shopify_tags</li><li>shopify_total_spent</li><li>shopify_order_count</li><li>shopify_last_order_id</li><li>shopify_last_order_name</li><li>shopify_zipcode</li><li>shopify_province</li></ul>{:/} | {::nomarkdown}<ul><li>Email</li><li>First Name</li><li>Last Name</li><li>Phone</li><li>City</li><li>Country</li><li>Total Revenue</li><li>Total Refunds</li><li>Total Orders</li></ul>{:/} | {::nomarkdown}<ul><li>Email marketing subscriptions associated with this Shopify store</li><li>SMS marketing subscriptions associated with this Shopify store</li></ul>{:/} |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 .reset-td-br-4 role="presentation"}
 
 ### Step 5: Custom data tracking setup (advanced) 

@@ -1,7 +1,7 @@
 ---
 nav_title: Snowplow
 article_title: Snowplow
-description: "この参考記事では、BrazeとデータインフラプラットフォームであるSnowplowのパートナーシップについて概説しており、SnowplowのEvent Forwardingを使用して、SnowplowのイベントをリアルタイムでBrazeに転送することができる。"
+description: "この参考記事では、BrazeとデータインフラプラットフォームであるSnowplowのパートナーシップについて概説しています。SnowplowのEvent Forwardingを使用して、SnowplowのイベントをリアルタイムでBrazeに転送できます。"
 alias: /partners/snowplow/
 page_type: partner
 search_tag: Partner
@@ -10,80 +10,80 @@ search_tag: Partner
 
 # Snowplow
 
-> [Snowplowは](https://snowplowanalytics.com)、リッチで高品質な低遅延データ収集のためのスケーラブルなプラットフォームである。Snowplowは、企業向けに高品質で完全な行動データを収集するように設計されている。
+> [Snowplow](https://snowplow.io)は、リッチで高品質な低遅延データ収集のためのスケーラブルなオープンソースプラットフォームです。Snowplowは、企業向けに高品質で完全な行動データを収集するように設計されています。
 
-_この統合は Snowplow によって管理されます。_
+_この統合は Snowplow によって管理されています。_
 
 ## 統合について
 
-BrazeとSnowplowの統合により、Snowplowのイベント転送ソリューションを使って、SnowplowのイベントをリアルタイムでBrazeに転送することができる。この統合により、柔軟性とコントロールを提供しながら、Brazeにイベントを送信することができる。具体的にはこうだ：
-- Brazeに送信する前に、イベントにフィルターをかけて変換する。
-- SnowplowのイベントデータをBrazeのユーザー属性、カスタムイベント、購入にマッピング。
-- 転送を選択するまで、すべてのデータをプライベート・クラウドに保持する。
-- 既存のSnowplowクラウドアカウント内にソリューションを自分で展開する。 
+BrazeとSnowplowの統合により、Snowplowのイベント転送ソリューションを使って、SnowplowのイベントをリアルタイムでBrazeに転送できます。この統合により、柔軟性とコントロールを提供しながら、Brazeにイベントを送信できます。具体的には、以下のことが可能です：
+- Brazeに送信する前に、イベントのフィルタリングと変換を行います。
+- SnowplowのイベントデータをBrazeのユーザー属性、カスタムイベント、購入にマッピングします。
+- 転送を選択するまで、すべてのデータをプライベートクラウドに保持します。
+- 既存のSnowplowクラウドアカウント内にソリューションを自分でデプロイします。 
 
-Snowplowの[イベント転送は](https://docs.snowplow.io/docs/destinations/forwarding-events/)、Snowplowの顧客が利用できる有料のアドオン機能である。このアドオンなしでBrazeにイベントを転送するには、Snowplowの[Googleタグマネージャーサーバーサイド](https://docs.snowplow.io/docs/destinations/forwarding-events/google-tag-manager-server-side/)統合を使用する。
+Snowplowの[Event Forwarding](https://docs.snowplow.io/docs/destinations/forwarding-events/)は、Snowplowの顧客が利用できる有料のアドオン機能です。このアドオンなしでBrazeにイベントを転送するには、Snowplowの[Google Tag Manager Server-Side](https://docs.snowplow.io/docs/destinations/forwarding-events/google-tag-manager-server-side/)統合を使用してください。
 
-Snowplowの豊富な顧客行動データを活用して、Brazeで強力な顧客中心インタラクションを促進し、パーソナライズされたメッセージをリアルタイムで配信する。
+Snowplowの豊富な行動データを活用して、Brazeで強力な顧客中心のインタラクションを促進し、パーソナライズ済みメッセージをリアルタイムで配信しましょう。
 
 ## 前提条件
 
 | 必要条件             | 説明                                                                                                                                                                                                                                                                              |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Snowplow パイプライン       | スノープラウのパイプラインを稼働させる必要がある。                                                                                                                                                                                                                                          |
-| 除雪コンソールへのアクセス | イベントフォワーダーを設定するには、Snowplow Consoleにアクセスする必要がある。                                                                                                                                                                                                                                |
-| Braze REST API キー      | 以下の権限を持つBraze REST APIキー：`users.track` `users.alias.new`,`users.identify`,`users.export.ids`,`users.merge`,`users.external_ids.rename`, および`users.alias.update` 。<br><br> ダッシュボードの**「設定」**>「**APIキー**」から作成できる。 |
-| Braze REST エンドポイント     | [あなたのRESTエンドポイントURL]({{site.baseurl}}/developer_guide/rest_api/basics/#endpoints)。エンドポイントはインスタンスの Braze URL に応じて異なります。                                                                                                                                     |
+| Snowplow パイプライン       | Snowplowのパイプラインを稼働させる必要があります。                                                                                                                                                                                                                                          |
+| Snowplow Console へのアクセス | イベントフォワーダーを設定するには、Snowplow Consoleにアクセスする必要があります。                                                                                                                                                                                                                                |
+| Braze REST APIキー      | 以下の権限を持つBraze REST APIキー：`users.track`、`users.alias.new`、`users.identify`、`users.export.ids`、`users.merge`、`users.external_ids.rename`、および`users.alias.update`。<br><br> Brazeダッシュボードの**「設定」**>**「APIキー」**から作成できます。 |
+| Braze REST エンドポイント     | [REST エンドポイント URL]({{site.baseurl}}/developer_guide/rest_api/basics/#endpoints)。エンドポイントはインスタンスの Braze URL に応じて異なります。                                                                                                                                     |
 {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
 ## ユースケース
 
-### パーソナライズされた、アクションベースの配信
-Snowplow がデフォルトで収集する多数のリッチなイベントのいずれかを使用するか、カスタムイベントを定義して、ビジネスに適したより細かなカスタマージャーニーを形成します。Snowplowの豊富な行動データを活用して顧客ファネルを設計し、マーケティングおよび製品チームの価値を引き出し、Brazeを通じてコンバージョンと製品使用を最大化するのに役立てます。
+### パーソナライズされたアクションベースの配信
+Snowplowがデフォルトで収集する多数のリッチなイベントのいずれかを使用するか、カスタムイベントを定義して、ビジネスに適したより細かなカスタマージャーニーを形成できます。Snowplowの豊富な行動データを活用して顧客ファネルを設計し、マーケティングおよび製品チームの価値を引き出し、Brazeを通じてコンバージョンと製品使用を最大化するのに役立てましょう。
 
 ### ダイナミックなセグメンテーション
-Snowplowの高品質な行動データに基づいてBrazeでダイナミックなオーディエンスを作成する:ユーザーが製品、アプリ、またはWebサイトでアクションを実行すると、Snowplowが収集するリアルタイムの行動データを活用して、Brazeの関連セグメントにユーザーを自動的に追加または削除できます。
+Snowplowの高品質な行動データに基づいてBrazeでダイナミックなオーディエンスを作成できます。ユーザーが製品、アプリ、またはWeb サイトでアクションを実行すると、Snowplowが収集するリアルタイムの行動データを活用して、Brazeの関連セグメントにユーザーを自動的に追加または削除できます。
 
 ## 統合
 
-### ステップ1:Snowplow Consoleで送信先を設定する
+### ステップ 1: Snowplow Consoleで送信先を設定する
 
-イベント・フォワーダーを作成する：
+イベントフォワーダーを作成するには：
 
-1. Snowplow Consoleで、**Destinationsに**移動し、**Create new destinationを**選択する。
-2. 接続を設定する際、接続タイプに**Brazeを**選択する。
-3. Braze APIキーとREST APIエンドポイントを入力する。
-4. 接続を保存する。
+1. Snowplow Consoleで、**Destinations**に移動し、**Create new destination**を選択します。
+2. 接続を設定する際、接続タイプに**Braze**を選択します。
+3. Braze APIキーとREST APIエンドポイントを入力します。
+4. 接続を保存します。
 
-### ステップ2:イベント・フォワーダーを設定する
+### ステップ 2: イベントフォワーダーを設定する
 
-フォワーダーを設定する際、転送するSnowplowイベントを選択し、Brazeオブジェクトタイプにマッピングすることができる：
+フォワーダーを設定する際、転送するSnowplowイベントを選択し、Brazeオブジェクトタイプにマッピングできます：
 
-1. **[ユーザー属性]({{site.baseurl}}/api/objects_filters/user_attributes_object)**:ユーザープロファイルデータとカスタムユーザープロパティを更新する。
-2. **[カスタムイベント]({{site.baseurl}}/api/objects_filters/event_object)**:ユーザーのアクションや行動を送信する。
-3. **[購入品目]({{site.baseurl}}/api/objects_filters/purchase_object)**:商品詳細の取引データを送信する。
+1. **[ユーザー属性]({{site.baseurl}}/api/objects_filters/user_attributes_object)**：ユーザープロファイルデータとカスタムユーザープロパティを更新します。
+2. **[カスタムイベント]({{site.baseurl}}/api/objects_filters/event_object)**：ユーザーのアクションや行動を送信します。
+3. **[購入]({{site.baseurl}}/api/objects_filters/purchase_object)**：商品詳細を含む取引データを送信します。
 
-オブジェクトタイプごとに、フィールドマッピングを設定して、SnowplowイベントデータをBrazeフィールドにマッピングする方法を指定できる。詳細なセットアップ手順とフィールドマッピング設定については、Snowplowの[Creating forwardersドキュメントを](https://docs.snowplow.io/docs/destinations/forwarding-events/creating-forwarders/)参照のこと。
+オブジェクトタイプごとに、フィールドマッピングを設定して、SnowplowイベントデータをBrazeフィールドにマッピングする方法を指定できます。詳細なセットアップ手順とフィールドマッピングの設定については、Snowplowの[Creating forwardersドキュメント](https://docs.snowplow.io/docs/destinations/forwarding-events/creating-forwarders/)を参照してください。
 
-### ステップ 3:統合を検証する
+### ステップ 3: 統合を検証する
 
-Brazeアカウントで以下のページをチェックし、イベントがBrazeに届いていることを確認する：
+Brazeアカウントで以下のページを確認し、イベントがBrazeに届いていることを検証します：
 
-1. **クエリー・ビルダー**Brazeで、「**Analytics**>**Query Builder**」に移動する。スノープラウから転送されたデータをプレビューするために、以下のテーブルにクエリーを書くことができる：`USER_BEHAVIORS_CUSTOMEVENT_SHARED` と`USERS_BEHAVIORS_PURCHASE_SHARED` 。
-2. **API利用ダッシュボード**：Brazeの**「設定**」>「**APIと識別子**」で、API使用量の時系列チャートを見ることができる。Snowplowが使用しているAPIキーに特化してフィルターをかけ、成功と失敗の両方を見ることができる。
+1. **クエリビルダー**：Brazeで、**「分析」**>**「Query Builder」**に移動します。Snowplowから転送されたデータをプレビューするために、以下のテーブルに対してクエリを記述できます：`USER_BEHAVIORS_CUSTOMEVENT_SHARED`と`USERS_BEHAVIORS_PURCHASE_SHARED`。
+2. **API利用ダッシュボード**：Brazeで、**「設定」**>**「APIと識別子」**に移動すると、API使用量の時系列チャートを確認できます。Snowplowが使用しているAPIキーでフィルタリングし、成功と失敗の両方を確認できます。
 
-## カスタムプロパティを送信する
+## カスタムプロパティの送信
 
-標準フィールド以外にもカスタムプロパティを送信できる。その構造は、どのBrazeオブジェクトタイプを使用しているかによって異なる：
+標準フィールド以外にもカスタムプロパティを送信できます。その構造は、使用しているBrazeオブジェクトタイプによって異なります：
 
-- **ユーザー属性で**ある：トップレベルフィールドとして追加する（例えば、`subscription_tier` 、`loyalty_points` ）。
-- **イベントのプロパティ**：`properties` オブジェクトの下にネストする（例えば、`properties.plan_type`,`properties.feature_flag` ）。
-- **プロパティを購入する**：`properties` オブジェクトの下にネストする（例えば、`properties.color`,`properties.size` ）。
+- **ユーザー属性**：トップレベルフィールドとして追加します（例：`subscription_tier`、`loyalty_points`）
+- **イベントプロパティ**：`properties`オブジェクトの下にネストします（例：`properties.plan_type`、`properties.feature_flag`）
+- **購入プロパティ**：`properties`オブジェクトの下にネストします（例：`properties.color`、`properties.size`）
 
-スペースを含むプロパティ名には、ブラケット表記を使用する（例えば、`["account type"]` や`properties["campaign source"]` ）。
+スペースを含むプロパティ名には、ブラケット表記を使用します（例：`["account type"]`や`properties["campaign source"]`）。
 
-サポートされるデータタイプ、プロパティ命名要件、ペイロードサイズ制限の詳細については、[イベントオブジェクトのドキュメントを]({{site.baseurl}}/api/objects_filters/event_object)参照のこと。
+サポートされるデータタイプ、プロパティ命名要件、ペイロードサイズ制限の詳細については、[イベントオブジェクトのドキュメント]({{site.baseurl}}/api/objects_filters/event_object)を参照してください。
 
 ## 制限事項
 
-**レート制限：**Brazeは、Track Users APIのレート制限を3秒ごとに3,000APIコールとしている。Snowplowはイベントフォワーダーのバッチ処理をサポートしていないため、このAPIレート制限はイベントレート制限としても機能する。入力スループットが3秒間に3,000イベントを超えると、レイテンシーが増大する可能性がある。
+**レート制限：** Brazeは、Track Users APIに対して3秒ごとに3,000 APIコールのレート制限を適用しています。Snowplowはイベントフォワーダーのバッチ処理をサポートしていないため、このAPIレート制限はイベントレート制限としても機能します。入力スループットが3秒間に3,000イベントを超えると、レイテンシーが増大する可能性があります。

@@ -6,7 +6,7 @@ page_order: 4
 layout: api_page
 page_type: reference
 description: "This article outlines details about the Track user Braze endpoint."
-
+toc_headers: h2
 ---
 {% api %}
 # Create and update users
@@ -17,8 +17,12 @@ description: "This article outlines details about the Track user Braze endpoint.
 > Use this endpoint to record custom events and purchases and update user profile attributes.
 
 {% alert note %}
-Braze processes the data passed through the API at face value, and customers should only pass deltas (changing data) to minimize unnecessary data point logging. To read more, refer to [Data points]({{site.baseurl}}/user_guide/data/data_points/).
+Braze processes the data passed through the API at face value, and customers should only pass deltas (changing data) to minimize unnecessary data point logging. To read more, refer to [Data points]({{site.baseurl}}/user_guide/data/infrastructure/data_points/).
 {% endalert %}
+
+## Need to update users in bulk?
+
+Use the [`/users/track/bulk` endpoint]({{site.baseurl}}/api/endpoints/user_data/post_user_track_bulk/) to send larger batches and reduce request volume.
 
 {% apiref postman %}https://documenter.getpostman.com/view/4689407/SVYrsdsG?version=latest#4cf57ea9-9b37-4e99-a02e-4373c9a4ee59 {% endapiref %}
 
@@ -55,7 +59,7 @@ For each request component listed in the following table, you must include one o
 
 | Parameter | Required | Data Type | Description |
 | --------- | ---------| --------- | ----------- |
-| `attributes` | Optional | Array of attributes objects | See [user attributes object]({{site.baseurl}}/api/objects_filters/user_attributes_object/) |
+| `attributes` | Optional | Array of attributes objects | See [user attributes object]({{site.baseurl}}/api/objects_filters/user_attributes_object/#migrating-push-tokens) |
 | `events` | Optional | Array of event objects | See [events object]({{site.baseurl}}/api/objects_filters/event_object/) |
 | `purchases` | Optional | Array of purchase objects | See [purchases object]({{site.baseurl}}/api/objects_filters/purchase_object/) |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3  .reset-td-br-4 role="presentation" }
@@ -217,7 +221,7 @@ curl --location --request POST 'https://rest.iad-01.braze.com/users/track' \
 ```
 
 {% alert note %}
-For SMS subscription groups, when you set a group's `subscription_state` to `subscribed`, you can include the optional `use_double_opt_in_logic` parameter set to `true` within that subscription group object to enter the user into the [SMS double opt-in]({{site.baseurl}}/user_guide/message_building_by_channel/sms_mms_rcs/keywords/double_opt_in/) workflow. If this parameter is omitted or set to `false` when `subscription_state` is `subscribed`, the user is subscribed without entering the double opt-in workflow. This parameter is not applied when `subscription_state` is set to other values, such as `unsubscribed`.
+For SMS subscription groups, when you set a group's `subscription_state` to `subscribed`, you can include the optional `use_double_opt_in_logic` parameter set to `true` within that subscription group object to enter the user into the [SMS double opt-in]({{site.baseurl}}/user_guide/channels/sms_mms_and_rcs/message_features_and_optimization/keyword_processing/double_opt_in/) workflow. If this parameter is omitted or set to `false` when `subscription_state` is `subscribed`, the user is subscribed without entering the double opt-in workflow. This parameter is not applied when `subscription_state` is set to other values, such as `unsubscribed`.
 {% endalert %}
 
 ### Example request to create an alias-only user
@@ -298,6 +302,30 @@ If your message has a fatal error, you receive the following response:
 For status codes and associated error messages that Braze returns if your request encounters a fatal error, reference [Fatal errors & responses]({{site.baseurl}}/api/errors/#fatal-errors).
 
 If you receive the error "provided external_id is blacklisted and disallowed", your request may have included a "dummy user." For more information, refer to [Spam blocking]({{site.baseurl}}/user_guide/data_and_analytics/user_data_collection/user_archival/#spam-blocking).
+
+### Endpoint-specific errors
+
+The following errors are specific to the `/users/track` endpoint and are returned in the `errors` array of the response. Use these to troubleshoot issues with individual objects in a request.
+
+| Error | Description |
+|---|---|
+| `BAD_DEVICE_ID` | The `device_id` for a token import must be between 8 and 255 bytes. |
+| `BAD_EMAIL_SUBSCRIPTION_STATE` | `email_subscribe` must be `subscribed`, `unsubscribed`, or `opted_in`. |
+| `BAD_LOCATION_UPDATE` | `current_location` must be an object containing `longitude` and `latitude`. |
+| `BAD_PUSH_SUBSCRIPTION_STATE` | `push_subscribe` must be `subscribed`, `unsubscribed`, or `opted_in`. |
+| `BAD_PUSH_TOKEN_APP_ID` | The `app_id` in a token import must be a valid app identifier from the current workspace. |
+| `BAD_PUSH_TOKEN_IMPORT` | Token imports must include tokens and exclude `external_id` and `braze_id`. |
+| `BAD_PUSH_TOKEN_STRING` | The `token` value in a token import must be a string. |
+| `BAD_PUSH_TOKEN_VALUE` | `push_tokens` must be an array of objects. |
+| `BAD_SUBSCRIPTION_GROUP_ARRAY` | `subscription_groups` must be an array. |
+| `BAD_SUBSCRIPTION_GROUP_HASH` | Each item in the `subscription_groups` array must be a JSON object with `subscription_group_id` and `subscription_state` keys. |
+| `BAD_SUBSCRIPTION_GROUP_ID` | `subscription_group_id` must be a valid subscription group UUID. |
+| `BAD_SUBSCRIPTION_GROUP_STATE` | `subscription_state` for a subscription group must be `subscribed` or `unsubscribed`. |
+| `BLACKLISTED_EXTERNAL_USER_ID` | The provided `external_id` is blocklisted and disallowed. |
+| `EMAIL_BAD_FORMAT` | The value provided for `email` is not a valid email address. |
+| `EXTERNAL_USER_ID_TOO_LARGE` | The `external_id` exceeds the maximum allowed length of 987 bytes. |
+| `INVALID_ATTRIBUTE_EMAIL_SUBSCRIPTION_INFO` | `email_subscription_info` is not a valid attribute. |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
 ## Frequently asked questions
 

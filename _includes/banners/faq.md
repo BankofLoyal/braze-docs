@@ -1,4 +1,4 @@
-# Banners: Frequently Asked Questions
+# Frequently asked questions
 
 > These are answers to frequently asked questions about Banners in Braze. For more general information, see [About Banners]({% if include.section == "user" %}{{site.baseurl}}/user_guide/message_building_by_channel/banners{% elsif include.section == "developer" %}{{site.baseurl}}/developer_guide/banners{% endif %}).
 
@@ -23,6 +23,10 @@ If a user qualifies for multiple Banner campaigns that share the same placement,
 ## Can I use Banners in my existing Content Card feed?
 
 Banners are different from Content Cards, meaning you can’t use Banners and Content Cards in the same feed. To replace existing Content Card feeds with Banners, you’ll need to [create placements in your app or website]({{site.baseurl}}/developer_guide/banners/placements/).
+
+## Can Banners include video?
+
+The standard Banner composer supports images, text, and buttons. To include a video in a Banner, you could use a **Custom Code** block and render a video or embedded player in your app or website.
 
 ## Can I trigger a banner based on user actions?
 
