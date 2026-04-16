@@ -102,6 +102,7 @@ BASA
 bdocs
 behaviour
 BENA
+BIMI
 Birthdates
 Bitcode
 Blastr

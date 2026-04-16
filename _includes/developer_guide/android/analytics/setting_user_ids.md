@@ -42,7 +42,7 @@ Refer to the [`changeUser`](https://braze-inc.github.io/braze-android-sdk/kdoc/b
 
 Use [`subscribeToChangeUserEvents`](https://braze-inc.github.io/braze-android-sdk/kdoc/braze-android-sdk/com.braze/-i-braze/subscribe-to-change-user-events.html) to run logic when your app changes users with `changeUser()`. This method is available in Android SDK 40.0.0 and later.
 
-The subscriber callback runs when a user is changed through `changeUser()`. The callback receives a `BrazeUserChangeEvent`. The SDK can fire multiple events for the same user, even when no transition occurs.
+The subscriber callback runs when a user is changed through `changeUser()` and receives a `BrazeUserChangeEvent`. `BrazeUserChangeEvent` is fired when the current user has changed or when the SDK has just been initialized. The SDK can fire multiple events for the same user, even when no transition occurs.
 
 {% tabs %}
 {% tab JAVA %}
