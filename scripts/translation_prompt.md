@@ -11,7 +11,8 @@ Translate the provided English documentation file into the specified target lang
 - These YAML front matter values ONLY (translate the values, never the keys):
   - `title`, `nav_title`, `article_title`
   - `description`, `descriptions`
-  - `name` (at any nesting level, e.g., inside `guide_featured_list`, `guide_menu_list`, `doc_menu_list`)
+  - `name` (inside `guide_featured_list`, `guide_menu_list`, `doc_menu_list`, `doc_menu_list2`) — but see "Glossary filter identifiers" below for special handling of `name` inside `glossary_tags` and `glossaries`
+  - `display_name` (inside `glossaries` entries, for non-Latin-script languages — add this field with the translated name while keeping `name` in English)
   - `guide_top_header`, `guide_top_text`
   - `guide_featured_title`
   - `guide_footer_header`, `guide_footer_text`
@@ -19,7 +20,7 @@ Translate the provided English documentation file into the specified target lang
   - `doc_menu_list` (translate `name` and `description` values within)
   - `user_top_header`, `user_top_text`
   - `partner_top_header`, `partner_top_text`, `partners_top_text`
-  - `glossary_top_header`, `glossary_top_text`
+  - `glossary_top_header`, `glossary_top_text`, `glossary_filter_text`, `glossary_tag_name`
   - `braze_learning`
   - `search_tag`
 - Alt text inside image syntax `![alt text](...)`
@@ -34,7 +35,7 @@ Preserve all of the following exactly as they appear in the English source:
 - **These YAML values**: `page_order`, `layout`, `page_type`, `channel`, `platform`, `tool`, `link`, `image`, `permalink`, `hidden`, `noindex`, `config_only`, `search_rank`, `page_layout`
 - **Liquid tags**: `{% ... %}` and `{{ ... }}` — copy exactly, including all parameters, whitespace, and hyphens
 - **Code blocks** (fenced with ``` or ~~~) — preserve all content inside verbatim
-- **Inline code** (wrapped in backticks) — preserve exactly
+- **Inline code** (wrapped in backticks) — preserve exactly, UNLESS the backtick-wrapped text is clearly a UI label or dropdown option (not actual code, a variable name, or a technical identifier). UI labels in backticks should be translated to match the localized Braze dashboard while keeping the backtick formatting. For example, "do" and "do not" wrapped in backticks are UI dropdown options and should be translated; "user_id" and "campaign_name" wrapped in backticks are code and must not be translated.
 - **URLs and link targets** `](url)` — preserve the URL exactly
 - **Image paths** and `{% image_buster ... %}` tags — preserve exactly
 - **HTML tags** — preserve exactly
@@ -43,7 +44,9 @@ Preserve all of the following exactly as they appear in the English source:
 - **Dotted identifiers** (e.g., `Braze.iOS.BrazeLocation`) — preserve exactly
 - **Tokens with underscores** (e.g., `user_id`, `campaign_name`) — preserve exactly
 - **Markdown link syntax structure** — translate the link text but preserve `[text](url)` structure and URLs
-- **Glossary filter identifiers** — on pages that use `glossary_tags` (e.g. `layout: glossary_page`), preserve the `glossary_tags` list and the `tags` under each glossary entry exactly as in the English source. These values drive filter/checkbox logic and must match exactly; do not translate them.
+- **Glossary filter identifiers** — on pages that use `glossary_tags` (e.g., `layout: glossary_page`):
+  - **Non-Latin-script languages (e.g., Japanese, Korean, Chinese, Arabic, Thai, and any other language whose characters are not in the basic Latin alphabet):** preserve the following YAML values exactly as in the English source — do not translate them: the `glossary_tags` list (each `- name:` value), each `glossaries` entry `name`, and every `tags` list item. Non-Latin characters are stripped by Jekyll's `slugify` filter and the JavaScript `string_to_slug` function, producing empty or identical HTML IDs that break the filtering UI. Instead, add a `display_name` field to each `glossaries` entry with the translated name. The layout will show `display_name` to the user while using `name` for filtering. Example: `- name: Custom Event` followed by `display_name: "カスタムイベント"`. Only translate `description` values and add `display_name` — do not translate `name` or `tags`.
+  - **Latin-script languages (e.g., German, Spanish, French, Portuguese):** you may translate `glossary_tags` names, entry `name` values, and `tags` — but you **must** ensure that `glossary_tags` name values and corresponding entry `tags` values are **identical strings** so the filter/checkbox matching works correctly.
 
 ## Braze product terminology
 
@@ -75,8 +78,11 @@ A style guide for the target language may be appended to the end of these instru
 
 - Preserve all blank lines and overall whitespace structure
 - Preserve markdown formatting (bold `**`, italic `*`, lists, tables, horizontal rules)
+- **Italics**: Always use asterisks (`*text*`) for italic formatting, never underscores (`_text_`). Underscore-based italics break in many Markdown renderers when adjacent to non-Latin characters (Japanese, Korean, etc.).
 - Preserve the exact YAML front matter structure: key order, indentation, and quoting style
 - If a YAML value is quoted in English (e.g., `nav_title: "Some title"`), keep it quoted in the translation
+- **YAML-safe translations**: If your translation introduces characters that are special in YAML (colons `:`, hash `#`, square brackets `[]`, curly braces `{}`, or ASCII double quotes `"`), you MUST wrap the entire value in double quotes even if the English source was unquoted. For example, if the English `description: Segment users by whether they bounced` becomes a translation containing `(예: ...)` or `(z.B.: ...)`, the value needs quotes: `description: "...예: ...에 따라..."`. Failing to quote will break the YAML parser.
+- **YAML-safe quotation marks**: When a YAML value is wrapped in ASCII double quotes (`"`), avoid *unescaped* ASCII `"` (U+0022) inside that value. For prose, use typographic quotation marks: for German, use `„` (U+201E) and `"` (U+201C); for French, use `«` and `»`; for other languages, use the language's standard typographic quotes. Use escaped ASCII quotes (`\"`) only when literal ASCII quotes are required (for example, in HTML attributes or code) inside a YAML-quoted string.
 - Preserve numbered list continuation markers like `{: start="5"}`
 - Preserve Kramdown table classes like `{: .reset-td-br-1 .reset-td-br-2 role="presentation" }`
 - Do NOT escape `[`, `]`, or `!` characters — use them as-is in markdown syntax
@@ -91,8 +97,32 @@ The file `_includes/rate_limits.md` uses Liquid conditionals with include parame
 
 ## Quality guidelines
 
-- Use a formal, professional register appropriate for technical documentation
-- Maintain consistent terminology throughout the file
-- If an existing translation is provided, maintain consistency with its terminology and style choices
+### Voice and tone
+
+- Use active voice and present tense
+- Keep the tone positive, encouraging, and approachable — similar to speaking with a knowledgeable colleague
+- Use a professional but conversational register appropriate for technical documentation (see language-specific style guides for formal/informal pronoun choices)
+- Aim to empower and educate the reader
+
+### Translation quality
+
+- **Always translate from the English source as the primary input.** If an existing translation is provided, use it only as a reference for terminology consistency — do NOT copy it verbatim or use it as your starting template. The existing translation may contain errors, omissions, or outdated content. Your output must accurately reflect the current English source, not the previous translation.
 - Adapt sentence structure naturally for the target language — do not translate word-for-word
+- The content should read as if it was originally written in the target language, not translated
+- Maintain consistent terminology throughout the file; follow the approved glossary
 - Keep translations concise; do not expand significantly beyond the English source length
+
+### Inclusivity
+
+- Use gender-neutral language and avoid gendered terms where possible
+- Be considerate of diverse audiences and avoid biased or ableist language
+
+### Cultural sensitivity
+
+- Be mindful of cultural references and avoid idioms that may not translate well into the target language
+- Follow standard grammar and punctuation rules for the target language
+
+### Formatting preservation
+
+- Translate text that is in bold but keep the bold formatting — these often refer to UI elements
+- For rules about preserving identifiers and tokens (including underscores), follow the “What to NEVER translate or modify” section above

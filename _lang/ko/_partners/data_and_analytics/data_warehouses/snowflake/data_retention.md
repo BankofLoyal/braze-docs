@@ -1,27 +1,27 @@
 ---
-nav_title: "Data Retention"
-article_title: Snowflake Data Retention
+nav_title: "데이터 보존"
+article_title: Snowflake 데이터 보존
 page_order: 3
-description: "This page covers how to retain full events data when the Braze retention policy is applied."
+description: "이 페이지에서는 Braze 보존 정책이 적용될 때 전체 이벤트 데이터를 보존하는 방법을 다룹니다."
 page_type: partner
 search_tag: Partner
 ---
 
-# Snowflake data retention
+# Snowflake 데이터 보존
 
-> Braze는 2년 이상 된 대부분의 이벤트 데이터에서 Snowflake에 저장된 개인 식별자 정보(PII)를 익명화(개인 식별자 정보 제거)합니다. 이 페이지 뒷부분에 설명된 대로 특정 이벤트는 사용자가 삭제될 때까지 유지됩니다. If you use Snowflake data sharing, you may choose to retain the full events data in your environment by storing a copy in your Snowflake account before the retention policy is applied.
+> Braze는 Snowflake에 저장된 2년 이상 된 대부분의 이벤트 데이터에서 개인 식별 정보(PII)를 익명화(제거)합니다. 이 페이지 뒷부분에 설명된 대로 특정 이벤트는 사용자가 삭제될 때까지 유지됩니다. Snowflake 데이터 공유를 사용하는 경우, 보존 정책이 적용되기 전에 Snowflake 계정에 사본을 저장하여 환경에서 전체 이벤트 데이터를 보존할 수 있습니다.
 
-This page presents two ways you can retain non-anonymized data: 
+이 페이지에서는 익명화되지 않은 데이터를 보존하는 두 가지 방법을 소개합니다:
 
-- Copy your data to another Snowflake database
-- Unload your data to a stage
+- 다른 Snowflake 데이터베이스로 데이터 복사
+- 스테이지로 데이터 언로드
 
 {% alert warning %}
-Braze automatically anonymizes events data for users that are deleted from Braze, as described in [Data Protection Technical Assistance]({{site.baseurl}}/dp-technical-assistance/). Any data copied outside of the shared database will not be included in this process, as Braze no longer manages it.
+Braze는 [데이터 보호 기술 지원]({{site.baseurl}}/dp-technical-assistance/)에 설명된 대로 Braze에서 삭제된 사용자의 이벤트 데이터를 자동으로 익명화합니다. 공유 데이터베이스 외부로 복사된 데이터는 Braze가 더 이상 관리하지 않으므로 이 프로세스에 포함되지 않습니다.
 {% endalert %}
 
 ## 2년 보존 정책에서 면제되는 이벤트
-Braze는 사용자가 삭제될 때까지 사용자 라이프사이클, 구독 상태 및 인바운드 메시징과 관련된 이벤트를 보관합니다. 다음 이벤트는 표준 2년 보존 정책에서 제외됩니다:
+Braze는 사용자가 삭제될 때까지 사용자 라이프사이클, 구독 상태 및 인바운드 메시징과 관련된 이벤트를 보존합니다. 다음 이벤트는 표준 2년 보존 정책에서 제외됩니다:
 - `users.UserOrphan`
 - `users.UserDeleteRequest`
 - `users.behaviors.subscription.GlobalStateChange`
@@ -29,11 +29,11 @@ Braze는 사용자가 삭제될 때까지 사용자 라이프사이클, 구독 �
 - `users.messages.sms.InboundReceive`
 - `users.messages.whatsapp.InboundReceive`
 
-## Copying all data to another Snowflake database
+## 다른 Snowflake 데이터베이스로 모든 데이터 복사
 
-You can retain non-anonymized data by copying your data from the shared `BRAZE_RAW_EVENTS` schema to another database and schema in Snowflake. To do so, follow these steps:
+공유된 `BRAZE_RAW_EVENTS` 스키마에서 Snowflake의 다른 데이터베이스 및 스키마로 데이터를 복사하여 익명화되지 않은 데이터를 보존할 수 있습니다. 다음 단계를 따르세요:
 
-1. In your Snowflake account, create the procedure `COPY_BRAZE_SHARE`, which will be used to copy all the data shared by Braze to another database and schema within Snowflake. 
+1. Snowflake 계정에서 `COPY_BRAZE_SHARE` 프로시저를 생성합니다. 이 프로시저는 Braze가 공유한 모든 데이터를 Snowflake 내의 다른 데이터베이스 및 스키마로 복사하는 데 사용됩니다.
 
 {% raw %}
 ```sql
@@ -132,12 +132,12 @@ $$;
 {% endraw %}
 
 {: start="2"}
-2\. Run one of the below commands in your Snowflake account to execute the procedure.
+2. Snowflake 계정에서 아래 명령 중 하나를 실행하여 프로시저를 실행합니다.
 
 {% tabs %}
-{% tab Default %}
+{% tab 기본값 %}
 
-By default, the procedure will back up data older than two years for all `USERS_*` event types. 
+기본적으로 이 프로시저는 모든 `USERS_*` 이벤트 유형에 대해 2년 이상 된 데이터를 백업합니다.
 
 {% raw %}
 ```sql
@@ -148,9 +148,9 @@ CALL COPY_BRAZE_SHARE('SOURCE_DB', 'SOURCE_SCHEMA', 'DEST_DB', 'DEST_SCHEMA')
 ```
 {% endraw %}
 {% endtab %}
-{% tab Filtered %}
+{% tab 필터 적용 %}
 
-Specify a filter to choose what age data to back up, and specify a table name filter to back up only selected events tables. 
+필터를 지정하여 백업할 데이터의 기간을 선택하고, 테이블 이름 필터를 지정하여 선택한 이벤트 테이블만 백업할 수 있습니다.
 
 {% raw %}
 ```sql
@@ -164,14 +164,14 @@ CALL COPY_BRAZE_SHARE('SOURCE_DB', 'SOURCE_SCHEMA', 'DEST_DB', 'DEST_SCHEMA', DA
 {% endtabs %}
 
 {% alert note %}
-Repeatedly running the procedure won't create duplicate records because this procedure checks the most recent `SF_CREATED_AT` and only backs up data newer than that.
+프로시저를 반복 실행하면 테이블에 이미 있는 최대 `SF_CREATED_AT` 값보다 큰 행만 백업하므로, 이미 백업한 행을 다시 복사하지 않습니다.
 {% endalert %}
 
-## Unloading data to stage
+## 스테이지로 데이터 언로드
 
-You can retain non-anonymized data by unloading data from the shared `BRAZE_RAW_EVENTS` schema to a stage. To do so, follow these steps:
+공유된 `BRAZE_RAW_EVENTS` 스키마에서 스테이지로 데이터를 언로드하여 익명화되지 않은 데이터를 보존할 수 있습니다. 다음 단계를 따르세요:
 
-1. Create the procedure `UNLOAD_BRAZE_SHARE`, which will be used to copy all the data shared by Braze to the specified stage.
+1. `UNLOAD_BRAZE_SHARE` 프로시저를 생성합니다. 이 프로시저는 Braze가 공유한 모든 데이터를 지정된 스테이지로 복사하는 데 사용됩니다.
 
 {% raw %}
 ```sql
@@ -244,12 +244,12 @@ $$;
 {% endraw %}
 
 {: start="2"}
-2\. Run one of the below commands to execute the procedure. 
+2. 아래 명령 중 하나를 실행하여 프로시저를 실행합니다.
 
 {% tabs %}
-{% tab Default %}
+{% tab 기본값 %}
 
-By default, the procedure will copy all tables with `USERS_` prefix.
+기본적으로 이 프로시저는 `USERS_` 접두사가 있는 모든 테이블을 복사합니다.
 
 {% raw %}
 ```sql
@@ -266,9 +266,9 @@ LIST @MY_EXPORT_STAGE;
 ```
 {% endraw %}
 {% endtab %}
-{% tab Filtered %}
+{% tab 필터 적용 %}
 
-Specify a filter in the procedure to unload only specified tables.
+프로시저에 필터를 지정하여 특정 테이블만 언로드할 수 있습니다.
 
 {% raw %}
 ```sql

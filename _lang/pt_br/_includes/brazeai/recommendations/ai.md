@@ -2,16 +2,16 @@
 
 ## Recursos de IA específicos do plano
 
-A tabela a seguir descreve as diferenças entre a versão gratuita e a versão profissional dos tipos de recomendação IA Personalized, Popular e Trending:
+A tabela a seguir descreve as diferenças entre a versão gratuita e a versão pro dos tipos de recomendação IA Personalizado, Mais Popular, Mais Recente e Tendências:
 
-| Área                   | Versão gratuita                          | Versão Pro            |
+| Área                   | Versão gratuita                          | Versão pro            |
 | :---------------------- | ------------------------------------- | :--------------------------------------- |
-| <sup>Frequência</sup> de atualização do usuário1   | Semanalmente                                | Diariamente                                    |
-| Frequência de retreinamento do modelo  | Mensalmente                               | Semanalmente                                   |
-| Modelos de recomendação máxima | 1 modelo por <sup>tipo2</sup> | 100 modelos por <sup>tipo2</sup> |
+| Frequência de atualização do usuário<sup>1</sup>   | Semanal                                | Diária                                    |
+| Frequência de retreinamento do modelo  | Mensal                               | Semanal                                   |
+| Máximo de modelos de recomendação | 1 modelo por tipo<sup>2</sup> | 100 modelos por tipo<sup>2</sup> |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 role="presentation" }
 
-<sup>1\. Essa é a frequência com que as recomendações de itens específicos do usuário são atualizadas (todos os modelos, exceto os itens Mais populares, que são atualizados quando o modelo é retreinado). Por exemplo, se um usuário comprar um item recomendado com base nas recomendações de itens da IA, seus itens recomendados serão atualizados de acordo com essa frequência</sup><br>
-<sup>2\. Os tipos de recomendação disponíveis são IA Personalizada, Mais recente, Mais popular e Tendências.</sup>
+<sup>1. Essa é a frequência com que as recomendações de itens específicos do usuário são atualizadas (somente IA Personalizado e Mais Recente). Mais Popular e Tendências são recomendações globais que são atualizadas quando o modelo é retreinado. Por exemplo, se um usuário comprar um item recomendado com base nas recomendações de itens de IA, seus itens recomendados serão atualizados de acordo com essa frequência.</sup><br>
+<sup>2. Os tipos de recomendação disponíveis são IA Personalizado, Mais Recente, Mais Popular e Tendências.</sup>
 
 {% endif %}

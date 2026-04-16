@@ -15,7 +15,7 @@ Shopify will deprecate `checkout.liquid` in two phases:
 1. **[August 13, 2024](#phase-one-august-13-2024):** Deadline to upgrade your information, shipping, and payment pages.
 2. **[August 28, 2025](#phase-two-august-28-2025):** Deadline to upgrade your thank you and order status pages, including your apps using script tags and additional scripts.
 
-For general information on upgrading to Checkout Extensibilty, see [Shopify's upgrade guide](https://help.shopify.com/en/manual/checkout-settings/customize-checkout-configurations/checkout-extensibility).
+For general information on upgrading to Checkout Extensibility, see [Shopify's upgrade guide](https://help.shopify.com/en/manual/checkout-settings/customize-checkout-configurations/checkout-extensibility).
 
 ## Impact to your integration
 

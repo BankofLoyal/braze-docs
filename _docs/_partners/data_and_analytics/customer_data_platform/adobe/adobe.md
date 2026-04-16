@@ -98,7 +98,7 @@ Let's say your XDM profile schema and your Braze instance contains the following
 
 The correct mapping would look like this:
 
-![Destination mappings: IdentityMap:IDFA mapped to IdentityMap:external_id, IdentityMap:GAID mapped to IdentityMap:external_id, IdentityMap:Email mapped to IdentityMap:external_id, xdm:mobilePhone.number mapped to CustomAttribute:PhoneNumber, xdm:person.name.lastName mapped to CustomAtrribute:LastName, xdm:person.name.firstName mapped to CustomAttribute:FirstName]({% image_buster /assets/img/adobe/braze-destination-mapping-example.png %})
+![Destination mappings: IdentityMap:IDFA mapped to IdentityMap:external_id, IdentityMap:GAID mapped to IdentityMap:external_id, IdentityMap:Email mapped to IdentityMap:external_id, xdm:mobilePhone.number mapped to CustomAttribute:PhoneNumber, xdm:person.name.lastName mapped to CustomAttribute:LastName, xdm:person.name.firstName mapped to CustomAttribute:FirstName]({% image_buster /assets/img/adobe/braze-destination-mapping-example.png %})
 
 ## Exported data
 To verify if data has been exported successfully to Braze, check your Braze account. Adobe Experience Platform segments are exported to Braze under the `AdobeExperiencePlatformSegments` attribute.

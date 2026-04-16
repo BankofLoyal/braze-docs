@@ -14,7 +14,7 @@ Braze ist stolz darauf, Ihnen jetzt [Berichte über die Bindung]({{site.baseurl}
 ![Vollständiger Bericht]({% image_buster /assets/img/retention_report_full_report.png %})
 
 {% alert important %}
-Ab dem 13\. Januar 2020 ist dieses Feature noch nicht für unsere Clients in der EU-Region oder unseren HIPPA-konformen Cluster verfügbar. Wir werden diesen Bericht für diese Regionen zur Verfügung stellen, sobald wir die Funktionalität auf unserer gesamten Plattform eingeführt haben.
+Ab dem 13\. Januar 2020 ist dieses Feature noch nicht für unsere Clients in der EU-Region oder unseren HIPAA-konformen Cluster verfügbar. Wir werden diesen Bericht für diese Regionen zur Verfügung stellen, sobald wir die Funktionalität auf unserer gesamten Plattform eingeführt haben.
 {% endalert %}
 
 ## Neuer E-Mail Content-Block API Endpunkt

@@ -98,7 +98,7 @@ Nehmen wir an, Ihr XDM-Profilschema und Ihre Braze-Instanz enthalten die folgend
 
 Die korrekte Abbildung würde wie folgt aussehen:
 
-![Ziel-Abbildungen: IdentityMap:IDFA abgebildet auf IdentityMap:external_id, IdentityMap:GAID abgebildet auf IdentityMap:external_id, IdentityMap:E-Mail abgebildet auf IdentityMap:external_id, xdm:mobilePhone.number abgebildet auf CustomAttribute:PhoneNumber, xdm:person.name.lastName abgebildet auf CustomAtrribute:LastName, xdm:person.name.firstName abgebildet auf CustomAttribute:FirstName]({% image_buster /assets/img/adobe/braze-destination-mapping-example.png %})
+![Ziel-Abbildungen: IdentityMap:IDFA abgebildet auf IdentityMap:external_id, IdentityMap:GAID abgebildet auf IdentityMap:external_id, IdentityMap:E-Mail abgebildet auf IdentityMap:external_id, xdm:mobilePhone.number abgebildet auf CustomAttribute:PhoneNumber, xdm:person.name.lastName abgebildet auf CustomAttribute:LastName, xdm:person.name.firstName abgebildet auf CustomAttribute:FirstName]({% image_buster /assets/img/adobe/braze-destination-mapping-example.png %})
 
 ## Exportierte Daten
 Um zu überprüfen, ob die Daten erfolgreich nach Braze exportiert wurden, sehen Sie in Ihrem Braze-Konto nach. Adobe Experience Platform Segmente werden unter dem Attribut `AdobeExperiencePlatformSegments` nach Braze exportiert.

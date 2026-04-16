@@ -51,7 +51,7 @@ markdown_api: true
 # Markdown copy plugin - copies original .md files to _site for LLM processing
 markdown_copies: true
 
-# LLMs.txt generator - creates dynamic llms.txt file. Supported for the Developer Guide only.
+# LLMs.txt generator - creates dynamic llms.txt and llms-full.txt for supported guide collections.
 llms_txt: true
 
 # CLA Endpoint
@@ -78,7 +78,7 @@ collections:
   user_guide:
     title: User Guide
     output: true
-    default_nav_url: introduction/
+    default_nav_url: home/
     page_order: 2
   developer_guide:
     title: Developer Guide
