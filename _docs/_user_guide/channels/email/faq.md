@@ -79,9 +79,10 @@ For email campaigns and Canvases, the stop button does not immediately stop the 
 
 While Braze won't send further requests once the campaign or Canvas is stopped, analytics may still increase while the ESP finishes processing requests already in flight.
 
-### Why am I seeing more email clicks than opens?
+### Why am I seeing more _Total Clicks_ than _Total Opens_ in my email analytics?
 
-You may be seeing more clicks than opens for any of the following reasons:
+_Total Opens_ is the count of how many times the email was opened by users, whereas _Total Clicks_ is the count of how many times users clicked within the delivered email, including any type of clicks such as link clicks. You may be seeing more clicks than opens for any of the following reasons:
+
 - Users are performing multiple clicks on the body of the email within a single open.
 - Users click on some email links within the preview pane of their phones. In this case, Braze logs this email as being clicked but not opened.
 - Users reopen an email that they previewed earlier.
