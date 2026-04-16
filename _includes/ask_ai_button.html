@@ -257,23 +257,31 @@
       btn.setAttribute('aria-expanded', isOpen);
       if (isOpen) {
         positionDropdown();
-        logAskAiEvent("ask_ai_menu_opened", {
+        var baseOpenProperties = {
           page_url: window.location.pathname,
           page_title: document.title,
           markdown_url: markdownPath
-        });
+        };
+        logAskAiEvent("ask_ai_menu_opened", baseOpenProperties);
       }
     });
 
     wrapper.querySelectorAll('.ask-ai-inline-option').forEach(function(option) {
       option.addEventListener('click', function() {
-        logAskAiEvent("ask_ai_option_clicked", {
+        var optionValue = option.getAttribute('data-ai-option') || 'unknown';
+        var baseOptionProperties = {
           page_url: window.location.pathname,
           page_title: document.title,
           markdown_url: markdownPath,
-          option_name: option.getAttribute('data-ai-option') || 'unknown',
+          option: optionValue,
+          option_name: optionValue,
           target_url: option.getAttribute('href') || ''
-        });
+        };
+        logAskAiEvent("ask_ai_option_clicked", baseOptionProperties);
+
+        if (["chatgpt", "claude", "docs_mcp"].includes(optionValue)) {
+          logAskAiEvent("ask_ai_option_clicked_" + optionValue, baseOptionProperties);
+        }
       });
     });
 
