@@ -103,7 +103,7 @@ To save your email campaign or template, make sure your email body does not exce
 
 These features increase the rendered message size by small amounts:
 - Open tracking pixel: Adds a 1 x 1&nbsp;px image tag to the message body
-- Preheader: Adds a hidden `<div>` added at the top of the body
+- Preheader: Adds a hidden `<div>` at the top of the body
 - Link aliasing: Appends a 16-character query parameter (`lid=`) to each tracked URL
 - Link templates: Appends any query parameters configured in the dashboard to matching URLs 
 - CSS inlining (optional): Applies embedded stylesheet rules inline to HTML elements, which may add redundant CSS depending on stylesheet complexity
