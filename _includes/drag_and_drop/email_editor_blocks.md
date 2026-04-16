@@ -31,7 +31,7 @@ The following table describes how users can use each editor block type.
 ### Personalization in email
 
 - **Liquid:** Under **Content** > **Personalization**, select an attribute, copy the snippet, and paste it into a text block (basic Liquid) or HTML block (advanced Liquid). In general, while you can use basic Liquid in text blocks, we recommend using HTML blocks for heavier logic to avoid layout issues. Note that Liquid isn't supported in image blocks or in button URL fields.
-- **Connected Content:** Add an **HTML** block and place your `{% connected_content %}` call there.
+- **Connected Content:** Add an **HTML** block and place your {% raw %}`{% connected_content %}`{% endraw %} call there.
 
 ## Properties
 
