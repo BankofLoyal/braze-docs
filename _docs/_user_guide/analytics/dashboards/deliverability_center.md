@@ -65,22 +65,25 @@ To access the Deliverability Center, you need the "Access Campaigns, Canvases, C
 
 {% enddetails %}
 
-## Setting up your Google Postmaster account
+## Set up your Google Postmaster account
 
 Before connecting to the Deliverability Center, you'll need to set up a Google Postmaster Tools account. You can use a work or personal Gmail account to set up your Google Postmaster. 
 
 1. Go to the [Google Postmaster Tools dashboard](https://postmaster.google.com/managedomains?pli=1).
 2. In the bottom right, select the <i class="fas fa-plus-circle"></i> plus icon.
 3. Enter your root (parent) domain to authenticate your email. Be sure the TXT record is tied to this root (parent) domain, **not** the subdomain you're using through Braze. Verifying the root (parent) domain lets you later add subdomains in Postmaster Tools without creating additional TXT records. For example, by verifying `braze.com`, you can later add `demo.braze.com` as a separate subdomain in Postmaster Tools to see subdomain-level metrics.
-4. Google generates a TXT record that can be added directly to your domain's DNS. This is generally owned by whoever manages your DNS. For information and guidance on how to update your specific DNS, check out [Verify your domain (host-specific steps)](https://support.google.com/a/topic/1409901).
-5. Select **Next**. <br>![An example domain "demo.braze.com" to authenticate an email.]({% image_buster /assets/img_archive/domain_authentication.png %})
-6. After the TXT record is added to the DNS, return to the Google Postmaster Tools dashboard and select **Verify**. This step confirms you own the domain, so you can access Gmail deliverability metrics in your Postmaster account. <br> ![A prompt to verify ownership of the domain "demo.braze.com".]({% image_buster /assets/img_archive/domain_verification.png %})
+4. After verifying the parent domain, add your sending subdomains to Google Postmaster.
+5. Google generates a TXT record that can be added directly to your domain's DNS. This is generally owned by whoever manages your DNS. For information and guidance on how to update your specific DNS, check out [Verify your domain (host-specific steps)](https://support.google.com/a/topic/1409901).
+6. Select **Next**. <br>![An example domain "demo.braze.com" to authenticate an email.]({% image_buster /assets/img_archive/domain_authentication.png %})
+7. After the TXT record is added to the DNS, return to the Google Postmaster Tools dashboard and select **Verify**. This step confirms you own the domain, so you can access Gmail deliverability metrics in your Postmaster account. 
+
+![A prompt to verify ownership of the domain "demo.braze.com".]({% image_buster /assets/img_archive/domain_verification.png %})
 
 {% alert note %}
 If your subdomains aren't included in the Deliverability Center for Google Postmaster, this can be a result of only adding the root (parent) domain to Google Postmaster. After the root domains are verified in Google Postmaster, you can add your subdomains, which are verified automatically. This process allows Google to report back on metrics on the subdomain-level, which can then be pulled into the Braze Deliverability Center.
 {% endalert %}
 
-## Integrating Google Postmaster
+## Integrate Google Postmaster
 
 Before setting up your Deliverability Center, check that your domains have been [added to the Gmail Postmaster Tools](https://support.google.com/mail/answer/9981691?hl=en).
 
@@ -154,7 +157,7 @@ Refer to this table to understand what percentage of your inbound and outbound t
 
 For more ideas on improving deliverability, read [Deliverability pitfalls and spam traps]({{site.baseurl}}/user_guide/channels/email/email_setup/deliverability_pitfalls_and_spam_traps#deliverability-pitfalls-and-spam-traps). Be sure to reference our [Email best practices]({{site.baseurl}}/user_guide/channels/email/best_practices/) for things you should check for before sending an email campaign.
 
-## Setting up Microsoft Smart Network Data Services (SNDS)
+## Set up Microsoft Smart Network Data Services (SNDS)
 
 If Microsoft is your main mailbox provider, you can use this integration to access and view your Microsoft reputation data. This way, you can monitor the health of your IPs to help determine how your emails are being received.
 
@@ -207,5 +210,3 @@ Spam trap hits are the number of messages sent to "trap accounts," which are acc
 {% alert tip %}
 If you're looking for records related to one of your verified domains in Braze, note that the Deliverability Center lists your data from Google Postmaster or Microsoft SNDS, meaning it's likely that either platform doesn't have any data to share with Braze. Alternatively, try maintaining consistent email delivery, as this can lead to a higher reputation. 
 {% endalert %}
-
-
