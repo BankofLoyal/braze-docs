@@ -263,16 +263,6 @@
           markdown_url: markdownPath
         };
         logAskAiEvent("ask_ai_menu_opened", baseOpenProperties);
-
-        ["chatgpt", "claude", "docs_mcp"].forEach(function(optionValue) {
-          logAskAiEvent("ask_ai_menu_opened_" + optionValue, {
-            page_url: baseOpenProperties.page_url,
-            page_title: baseOpenProperties.page_title,
-            markdown_url: baseOpenProperties.markdown_url,
-            option: optionValue,
-            option_name: optionValue
-          });
-        });
       }
     });
 
