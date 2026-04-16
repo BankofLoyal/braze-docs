@@ -61,7 +61,7 @@ Keep in mind, your preview may not be identical to the final render on a user's 
 {% endtab %}
 {% tab Content Card %}
 
-{% alert warning %}
+{% alert important %}
 To send a test to either [content test groups]({{site.baseurl}}/user_guide/administer/global/user_management/internal_groups/#content-test-groups) or individual users, push must be enabled on your test devices with valid push tokens registered for the test user before sending. For iOS users, you must tap the push notification sent by Braze in order to view the test Content Card. This behavior only applies to test Content Cards.
 {% endalert %}
 
@@ -242,7 +242,9 @@ The scanner runs automatically on custom HTML messages and evaluates your entire
 
 ![Test web push]({% image_buster /assets/img_archive/testwebpush.png %})
 
-If you have already accepted push messages from the Braze dashboard, the push will come through in the corner of your screen. Otherwise, click **Allow** when prompted, and the message will appear.
+If you have already accepted push messages from the Braze dashboard, the message displays in the corner of your screen. Otherwise, select **Allow** when prompted, and the message displays.
+
+If you see an error that none of the selected users have matching push tokens for Web Push, verify that the test user has a valid push token registered for the selected platform. To receive a push token, the user must be configured to receive push notifications for the app on their device. For more details, see [Push enablement and push subscription]({{site.baseurl}}/user_guide/channels/push/push_setup/push_subscription_states).
 
 {% endtab %}
 {% tab SMS/MMS and RCS %}
