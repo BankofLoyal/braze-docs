@@ -5,7 +5,7 @@ alias: /tiktok_audience_sync/
 description: "This reference article will cover how to use Braze Audience Sync to TikTok to deliver advertisements based upon behavioral triggers, segmentation, and more."
 Tool:
   - Canvas
-page_order: 7
+page_order: 8
 
 ---
 
@@ -43,7 +43,7 @@ You must ensure the following items are created, completed, and/or accepted befo
 ### Step 1: Connect to TikTok
 
 {% alert important %}
-You must have the ["Admin" permission]({{site.baseurl}}/user_guide/administrative/app_settings/manage_your_braze_users/user_permissions/#admin) to connect TikTok to your Braze account.
+You must have the ["Admin" permission]({{site.baseurl}}/user_guide/administer/global/user_management/permissions/#admin) to connect TikTok to your Braze account.
 {% endalert %}
 
 In the Braze dashboard, go to **Partner Integrations** > **Technology Partners** and select **TikTok**. Under TikTok Audience Sync, select **Connect TikTok**.

@@ -1,7 +1,7 @@
 ---
 nav_title: Delete users with CDI
 article_title: Delete Users with Cloud Data Ingestion
-page_order: 30
+page_order: 9
 page_type: reference
 description: "This page provides an overview of the process for deleting users with Cloud Data Ingestion."
 
@@ -15,7 +15,7 @@ User delete syncs are supported for all available Cloud Data Ingestion data sour
 
 ## Configuring the integration 
 
-Follow the standard process to [create a new integration in the Braze dashboard]({{site.baseurl}}/user_guide/data_and_analytics/cloud_ingestion/integrations/#step-1-set-up-tables-or-views) for the data warehouse you want to connect to. Ensure that you include a role that can access the delete table. On the **Create import sync** page, set the **Data Type** to **Delete Users** so that the proper actions are taken during the integration run to delete users.
+Follow the standard process to [create a new integration in the Braze dashboard]({{site.baseurl}}/user_guide/data/unification/cloud_ingestion/integrations#step-1-set-up-tables-or-views) for the data warehouse you want to connect to. Ensure that you include a role that can access the delete table. On the **Create import sync** page, set the **Data Type** to **Delete Users** so that the proper actions are taken during the integration run to delete users.
 
 ![]({% image_buster /assets/img/cloud_ingestion/deletion_1.png %})
 
@@ -25,7 +25,7 @@ Source tables for user deletes should include one or more user identifier types 
 
 ### `UPDATED_AT`
 
-Add an `UPDATED_AT` timestamp to your source table. This timestamp indicates the time that this row was updated or added to the table. Braze will only sync rows that have been added or updated since the last sync.
+Add an `UPDATED_AT` timestamp to your source table. This timestamp indicates the time that this row was updated or added to the table. Braze syncs rows where `UPDATED_AT` is later than the last synced value. Rows at the exact boundary timestamp may be re-synced if new rows share that same timestamp.
 
 ### User identifier columns
 

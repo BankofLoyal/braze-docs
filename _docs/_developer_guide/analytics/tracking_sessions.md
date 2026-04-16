@@ -252,3 +252,29 @@ The React Native SDK relies on the native SDKs to manage sessions. To change the
 {% alert note %}
 If you set a session timeout, all session semantics will automatically extend to the set timeout.
 {% endalert %}
+
+## Troubleshooting
+
+### User profile has 0 sessions
+
+A user profile can have 0 sessions if the user was created outside the SDK:
+
+- **Created by REST API:** If a user is created through the [`/users/track`]({{site.baseurl}}/api/endpoints/user_data/post_user_track/) endpoint with an `app_id` in the request, the profile appears associated with that app but has no session data because the SDK was never initialized for that user.
+- **Created by CSV import:** If a user is imported through [CSV]({{site.baseurl}}/user_guide/audience/manage_audience/import_users/csv_import/) without values for first or last session fields, the profile exists with 0 sessions.
+### Some users are not logging sessions
+
+Because sessions are tracked only after the SDK is initialized, users who don't trigger SDK initialization don't log any sessions. This typically happens when your app uses conditional logic before initializing the SDK, such as delaying initialization behind a login flow, consent prompt, or feature flag. For implementation guidance, see [Delayed initialization]({{site.baseurl}}/developer_guide/sdk_initalization/?sdktab=swift). In these cases, any user who doesn't satisfy the condition never starts a session.
+
+If some users are logging sessions and others aren't, verify the following:
+
+- **Check your initialization logic.** Confirm that the SDK is initialized for all users and app entry points, not just some.
+- **Look for recent app changes.** New conditional logic around SDK initialization can cause a sudden drop in session counts.
+- **Compare affected and unaffected users.** Identify differences in app version, device type, or user flow that could explain why initialization is skipped for certain users.
+
+If the issue persists after verifying your implementation, reproduce the problem and collect the following information before contacting support:
+
+- Steps to reproduce the problem
+- The affected app version
+- [Verbose SDK logs]({{site.baseurl}}/developer_guide/sdk_integration/verbose_logging), captured while the issue occurs (or by platform: [Android]({{site.baseurl}}/developer_guide/sdk_integration/?sdktab=android#android_enabling-logs), [Swift]({{site.baseurl}}/developer_guide/sdk_integration/?sdktab=swift#swift_setting-the-log-level), [Web]({{site.baseurl}}/developer_guide/sdk_integration/?sdktab=web#web_logging))
+- The code snippet for SDK initialization
+- A summary of any conditional logic applied before initialization

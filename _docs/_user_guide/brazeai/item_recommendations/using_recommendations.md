@@ -15,7 +15,7 @@ For a step-by-step walkthrough, check out our Braze Learning course: [Crafting P
 
 ## Prerequisites
 
-Before you can use recommendations in your messaging, you'll need to [create and train a recommendation engine]({{site.baseurl}}/user_guide/brazeai/recommendations/creating_recommendations/). Training can take anywhere between 10 minutes and 36 hours&#8212;you'll receive an email when it's finished or if an error has occurred.
+Before you can use recommendations in your messaging, you'll need to [create and train a recommendation engine]({{site.baseurl}}/user_guide/brazeai/item_recommendations/creating_recommendations/). Training can take anywhere between 10 minutes and 36 hours&#8212;you'll receive an email when it's finished or if an error has occurred.
 
 ## Using recommendations in your messaging
 
@@ -96,12 +96,11 @@ In the email drag-and-drop editor, add an image block to your email, then select
 
 ![Image properties panel in the drag-and-drop editor]({% image_buster /assets/img/image_with_liquid.png %}){: style="max-width:45%"}
 
-Toggle **Image with Liquid**, then add the following to the **Dynamic URL** field:
+Toggle **Image with Liquid**, then add the following to the **Dynamic URL** field (the URL field does not support newlines, so make sure the code appears on one line):
 
 {% raw %}
 ```liquid
-{% assign items = {{product_recommendation.${recommendation_name}}} %}
-{{ items[0].image_url_field }}
+{% assign items = {{product_recommendation.${recommendation_name}}} %}{{ items[0].image_url_field }}
 ```
 {% endraw %}
 

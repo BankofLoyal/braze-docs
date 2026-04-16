@@ -1,5 +1,5 @@
 ---
-nav_title: Shareplay
+nav_title: Gemeinsames Spielen
 article_title: SharePlay-Implementierungsleitfaden für In-App-Nachrichten
 platform: iOS
 page_order: 1
@@ -83,7 +83,7 @@ func configureVideoPlayer() {
 
 #### Dashboard Konfiguration
 
-**Schlüssel-Wert-Paare**: Die Videodatei muss in den Schlüssel-Wert-Paaren der In-App-Nachricht angegeben werden und kann nicht an den Medienartikel selbst angehängt werden. Sie können auch eine URL-Gültigkeitsprüfung in `beforeInAppMesageDisplayed` als Guardrail hinzufügen, bevor Sie den Inhalt anzeigen.
+**Schlüssel-Wert-Paare**: Die Videodatei muss in den Schlüssel-Wert-Paaren der In-App-Nachricht angegeben werden und kann nicht an den Medienartikel selbst angehängt werden. Sie können auch eine URL-Gültigkeitsprüfung in `beforeInAppMessageDisplayed` als Guardrail hinzufügen, bevor Sie den Inhalt anzeigen.
 
 **Trigger**: Die In-App-Nachricht sollte für alle Nutzer mit wieder aktivierter Berechtigung zugänglich sein. Dazu können Sie zwei Trigger festlegen, einen Standard-Trigger, um die Nachricht zu starten, und einen weiteren, um die Nachricht zu starten, wenn sie von SharePlay initiiert wird. Nutzer:innen, die nicht über iOS 15 verfügen, können Nachrichten nur lokal einsehen. 
 

@@ -141,7 +141,7 @@ Wie im Beispiel zu sehen, können Sie auch ein Bild in Ihre Push-Benachrichtigun
 
 ### Verarbeitung von Button-Aktionen
 
-Jeder Aktions-Button ist eindeutig gekennzeichnet. Der Code prüft, ob der Antwort-Bezeichner mit `actionIndentifier` übereinstimmt. Wenn ja, weiß er, dass der Nutzer auf den Aktions-Button geklickt hat.
+Jeder Aktions-Button ist eindeutig gekennzeichnet. Der Code prüft, ob der Antwort-Bezeichner mit `actionIdentifier` übereinstimmt. Wenn ja, weiß er, dass der Nutzer auf den Aktions-Button geklickt hat.
 
 **Verarbeitung von Antworten auf Aktions-Buttons in Push-Benachrichtigungen**<br>
 

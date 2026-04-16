@@ -141,7 +141,7 @@ Como se ve en el ejemplo, también puedes incluir una imagen en tu notificación
 
 ### Manejar las acciones de los botones
 
-Cada botón de acción tiene un identificador único. El código comprueba si tu identificador de respuesta es igual a `actionIndentifier`, y si es así, sabe que el usuario ha hecho clic en el botón de acción.
+Cada botón de acción tiene un identificador único. El código comprueba si tu identificador de respuesta es igual a `actionIdentifier`, y si es así, sabe que el usuario ha hecho clic en el botón de acción.
 
 **Manejar las respuestas del botón de acción para notificación push**<br>
 

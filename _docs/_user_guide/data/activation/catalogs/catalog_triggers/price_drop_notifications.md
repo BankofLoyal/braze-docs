@@ -90,7 +90,7 @@ After setting up the price drop notifications in a catalog, follow these steps t
 1. Set up an action-based Canvas.
 2. Select **Perform Price Drop Event** as the trigger.
 3. Select the name of the catalog with the price drop notifications.
-4. Continue [setting up]({{site.baseurl}}/user_guide/engagement_tools/canvas/create_a_canvas/create_a_canvas/) your Canvas as you would.
+4. Continue [setting up]({{site.baseurl}}/user_guide/messaging/canvas/create_a_canvas/) your Canvas as you would.
 
 Now, your customers will be notified when an item's price drops.
 
@@ -110,4 +110,4 @@ Use the Liquid tag {%raw%}``{% catalog_items <name_of_your_catalog> {{context.${
 
 - Users are subscribed for 90 days. If an item does not drop in price in 90 days, the user is removed from the subscription.
 - When using the **Notify all subscribed users** notification rule, Braze will notify 100,000 users over 10 minutes.
-- Braze will process 10 requests to update catalog items per minute. Update endpoints allow for 50 item updates per request, supporting up to 500 item updates per minute that can trigger back-in-stock notifications.
+- Braze supports up to 50,000 updated items daily that are eligible for triggering price drop notifications. You can have up to 100 million active subscriptions at a given time, where each subscription represents a user profile subscribed to watch a catalog item.

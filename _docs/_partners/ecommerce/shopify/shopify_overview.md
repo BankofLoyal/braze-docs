@@ -30,7 +30,7 @@ Braze offers two integration options for Shopify merchants that are designed to 
 
 ## How the integration works
 
-If you've already set up and turned on historical backfill in your configuration settings, the intial data sync will immediately begin. Braze will import all customers and order placed events from the last 90 days prior to your Shopify integration connection. When Braze imports your Shopify customers, we will assign the `external_id` type that you chose in your configuration settings.
+If you've already set up and turned on historical backfill in your configuration settings, the initial data sync will immediately begin. Braze will import all customers and order placed events from the last 90 days prior to your Shopify integration connection. When Braze imports your Shopify customers, we will assign the `external_id` type that you chose in your configuration settings.
 
 If you plan to integrate with a custom external ID (for either the [standard integration]({{site.baseurl}}/partners/ecommerce/shopify/shopify_standard_integration/#step-4-configure-how-you-manage-users) or the [custom integration]({{site.baseurl}}/partners/ecommerce/shopify/shopify_custom_integration/#step-6-configure-how-you-manage-users-optional)), you will be required to add your custom external ID as a Shopify customer metafield to all existing Shopify customer profiles and then perform the [historical backfill]({{site.baseurl}}/partners/ecommerce/shopify/shopify_data_features/#historical-backfill). 
 
@@ -63,7 +63,7 @@ Braze uses the Shopify integration to support multiple identifiers that track yo
 | --- | --- |
 | Braze `device_id` | A randomly generated ID stored in the browser that tracks anonymous user activity through Braze SDKs. |
 | Cart token user alias | An alias that Braze creates to track cart update events. This token is created by using Shopify cart token. |
-| Checkout token user alias | An alias that Braze creates when the user starts the checkout process. This token is created by using the Shopify checkout token. |
+| Checkout token user alias | An alias that Braze creates when the user starts the checkout process. This token is created by using the Shopify checkout token.<br><br> If a customer uses Shop Pay as an accelerated checkout option, Shopify may bypass certain standard checkout events and prevent Braze from receiving the data needed to add the checkout token alias. |
 | Shopify customer ID alias | The Shopify customer ID is assigned as an alias when the external ID is assigned during account login or when an order is placed. |
 | Braze `external_id` | A unique identifier that helps track customers across devices and platforms. This maintains a consistent user experience and improves analytics by preventing multiple profiles when users switch devices or reinstall the app.<br><br>The Shopify integration supports the following `external_id` types: <br><br>{::nomarkdown}<ul><li>Shopify customer ID (default)</li><li>Custom external ID</li><li>Hashed email (SHA-256)</li><li>Hashed email (SHA-1)</li><li>Hashed email (MD5)</li><li>Email</li></ul>{:/}Braze assigns an `external_id` to your users by calling the changeUser method within the SDKs when: <br><br>{::nomarkdown}<ul><li>A user logs in or creates an account</li><li>An order is placed</li></ul>{:/}<br> For more information on what happens when you assign an `external_id` to an anonymous profile, refer to [User profile lifecycle]({{site.baseurl}}/user_guide/data/user_data_collection/user_profile_lifecycle#what-happens-when-you-identify-anonymous-users).<br><br>Braze will also leverage the `external_id` to attribute downstream eCommerce behavioral data from Shopify webhooks.|
 {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
@@ -85,7 +85,7 @@ The Shopify marketing opt-in status for email and SMS marketing can be updated i
 - **Checkout process:** If a user updates their opt-in status during checkout.
 
 {% alert note %}
-The email marketing opt-in status from Shopify will not change a user’s [global email subscription state]({{site.baseurl}}/user_guide/message_building_by_channel/email/managing_user_subscriptions/) in Braze. The default subscription state when a user profile is created is “subscribed.” Remember to use the subscription group as part of your campaign or Canvas entry criteria.
+The email marketing opt-in status from Shopify will not change a user’s [global email subscription state]({{site.baseurl}}/user_guide/channels/email/subscriptions/) in Braze. The default subscription state when a user profile is created is “subscribed.” Remember to use the subscription group as part of your campaign or Canvas entry criteria.
 {% endalert %}
 
 This table shows which Shopify marketing opt-in states correlate with the statuses within your Braze subscription group. 
@@ -93,7 +93,7 @@ This table shows which Shopify marketing opt-in states correlate with the status
 | Shopify marketing opt-in state | Braze subscription group state |
 | --- | --- |
 | Email is subscribed | Subscribed |
-| Email is unsubcribed | Unsubscribed |
+| Email is unsubscribed | Unsubscribed |
 | Email is pending confirmation | Unsubscribed |
 | Email is invalid | Unsubscribed |
 | SMS subscribed | Subscribed |
@@ -113,7 +113,7 @@ Users who enter their email address into the Shopify newsletter footer will expe
 3. The Braze SDK updates the anonymous profile with the email address.
 
 {% alert note %}
-This might result in a duplicate profile until the user identifies themselves by creating their account, logging into their account, or placing an order. Braze offers bulk merging tools to help you automate the reconciliation of duplicate profiles. Refer to [Duplicate users]({{site.baseurl}}/user_guide/engagement_tools/segments/user_profiles/duplicate_users/) for more details.
+This might result in a duplicate profile until the user identifies themselves by creating their account, logging into their account, or placing an order. Braze offers bulk merging tools to help you automate the reconciliation of duplicate profiles. Refer to [Duplicate users]({{site.baseurl}}/user_guide/audience/manage_audience/merge_duplicate_users/) for more details.
 {% endalert %}
 
 ##### Users who have already logged into their account
@@ -123,8 +123,8 @@ Braze will create a user profile containing the email address and Shopify custom
 #### Braze sign-up forms
 
 Braze provides two types of sign-up form templates:
-- **[Email sign-up forms]({{site.baseurl}}/user_guide/message_building_by_channel/in-app_messages/drag_and_drop/templates/email_capture/):** Create these using the drag-and-drop editor.
-- **[Traditional editor email capture form]({{site.baseurl}}/user_guide/message_building_by_channel/in-app_messages/traditional/customize/email_capture_form/):** A more straightforward form for capturing email addresses.
+- **[Email sign-up forms]({{site.baseurl}}/user_guide/messaging/templates/in_app_message_templates/email_capture/):** Create these using the drag-and-drop editor.
+- **[Traditional editor email capture form]({{site.baseurl}}/user_guide/channels/in_app_messages/message_types/email_capture_form/):** A more straightforward form for capturing email addresses.
 
 When you use these sign-up form templates, Braze automatically updates the global email subscription status on the user profile. For more details on how the global email subscription state is handled, including information on on email validation, refer to documentation for each form template type.
 

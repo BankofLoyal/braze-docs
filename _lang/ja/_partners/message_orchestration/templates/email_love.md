@@ -40,7 +40,7 @@ search_tag: Partner
 
 Figma のツールを使用してコンポーネントを変更し、テキスト、画像、色、レイアウトの要素を調整して、ブランドに合わせてテンプレートをデザインします。フッターコンポーネントを追加すると、エクスポート時に Braze 購読解除リンクが自動的に追加されます。
 
-![Figmaでコンポメントをカスタマイズする。]({% image_buster /assets/img/email_love/emaillove2_components.png %})
+![Figmaでコンポーネントをカスタマイズする。]({% image_buster /assets/img/email_love/emaillove2_components.png %})
 
 ### ステップ 5: Braze へのメールテンプレートのエクスポート
 

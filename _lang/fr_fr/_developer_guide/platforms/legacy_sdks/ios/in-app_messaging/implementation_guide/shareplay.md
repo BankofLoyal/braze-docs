@@ -1,5 +1,5 @@
 ---
-nav_title: Shareplay
+nav_title: Partage de lecture
 article_title: Guide d’implémentation des messages in-app SharePlay
 platform: iOS
 page_order: 1
@@ -83,7 +83,7 @@ func configureVideoPlayer() {
 
 #### Configuration du tableau de bord
 
-**Paires clé-valeur**: Le fichier vidéo doit être défini dans les paires clé-valeur sur le message in-app et ne peut pas être attaché à l’élément média lui-même. Vous pouvez également ajouter une vérification de validité d’URL dans `beforeInAppMesageDisplayed` comme sécurité avant d’afficher le contenu.
+**Paires clé-valeur**: Le fichier vidéo doit être défini dans les paires clé-valeur sur le message in-app et ne peut pas être attaché à l’élément média lui-même. Vous pouvez également ajouter une vérification de validité d’URL dans `beforeInAppMessageDisplayed` comme sécurité avant d’afficher le contenu.
 
 **Déclenchement**: Le message in-app doit être éligible pour tous les utilisateurs ayant une rééligibilité activée. Cela peut être fait en définissant deux déclencheurs, un déclencheur par défaut pour lancer le message et un autre pour lancer le message lorsqu’il est lancé à partir de SharePlay. Les utilisateurs ne disposant pas d’iOS 15 ne pourront afficher les messages que localement. 
 

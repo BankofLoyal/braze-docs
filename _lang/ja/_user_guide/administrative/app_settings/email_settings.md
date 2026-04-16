@@ -3,7 +3,7 @@ nav_title: メール設定
 article_title: メール設定
 page_type: reference
 page_order: 14
-description: "このリファレンス記事では、送信設定、開封追跡ピクセル、[サブスクリプション] ページとフッターなど、Braze ダッシュボードのメール設定について説明します。"
+description: "このリファレンス記事では、送信設定、開封追跡ピクセル、サブスクリプションページとフッターなど、Braze ダッシュボードのメール設定について説明します。"
 tool: Dashboard
 channel: email
 toc_headers: h2
@@ -27,13 +27,17 @@ toc_headers: h2
 {% tabs local %}
 {% tab Display Name Address %}
 
-このセクションでは、Brazeがユーザーにメールを送信する際に使用できる名前とメールアドレスを追加することができる。表示名とメールアドレスは、メールキャンペーンを作成する際に、**送信情報の編集**オプションで利用できる。送信メール設定を更新しても、過去にさかのぼって既存の送信には影響しないことに注意してください。
+このセクションでは、Braze がユーザーにメールを送信する際に使用できる名前とメールアドレスを追加できます。メールキャンペーンを作成する際、送信者名とメールアドレスは [**送信情報の編集**] オプションで設定できます。送信メール設定を更新しても、過去にさかのぼって既存の送信には影響しないことに注意してください。
 
-!["送信メール設定 "セクションには、さまざまな表示名とドメインのフィールドがある。]({% image_buster /assets/img/email_settings/display_name_address.png %})
+![「送信メール設定」セクションには、異なる表示名とドメイン用のフィールドがある。]({% image_buster /assets/img/email_settings/display_name_address.png %})
 
-#### リキッドでパーソナライズされる
+#### Liquid によるパーソナライゼーション
 
-また、**From Display Nameと** **Local Part**フィールドで[Liquidを]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/liquid/)使用すると、カスタム属性に基づいて送信メールをダイナミックにテンプレート化できる。例えば、条件付きロジックを使って、異なるブランドや地域から送信することができる：
+[Liquid]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/liquid/) は、**送信者名**、**ローカル部分**、および**ドメイン**フィールドで使用でき、カスタム属性に基づいて送信者名とメールアドレスをダイナミックにテンプレート化できます。**ドメイン**フィールドで Liquid を使用するには、メールキャンペーンの [**送信情報**] オプションに移動し、[**送信者名 + アドレスをカスタマイズ**] チェックボックスを選択する必要があります。
+
+![送信者名、アドレス、ドメインをカスタマイズするためのフィールドがある送信設定。]({% image_buster /assets/img/email_settings/email_campaign_domain.png %})
+
+例えば、条件分岐を使って異なるブランドや地域から送信できます：
 
 {% raw %}
 ```liquid
@@ -54,32 +58,31 @@ Default to English Display Name
 
 ![「返信先アドレス」セクションには、複数の返信先アドレスを入力するフィールドがある。]({% image_buster /assets/img/email_settings/reply_to_address.png %}){: style="max-width:75%;" }
 
-#### リキッドでパーソナライズされる
+#### Liquid によるパーソナライゼーション
 
-カスタム属性に基づいて返信先をダイナミックにテンプレート化するために、**返信先**フィールドで[リキッドを]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/liquid/)使うこともできる。例えば、条件付きロジックを使って、異なる地域や部署に返信を送ることができる：
+**返信先アドレス**フィールドでも [Liquid]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/liquid/) を使用でき、カスタム属性に基づいて返信先アドレスをダイナミックにテンプレート化できます。例えば、条件付きロジックを使って、返信先の地域や部署を指定できます：
 
 {% raw %}
 ```liquid
 {% if {{custom_attribute.${region}}} == 'US' %}
-us-support@company.com
+{% assign address = "us-support@company.com" %}
 {% elsif {{custom_attribute.${region}}} == 'EU' %}
-eu-support@company.com
+{% assign address = "eu-support@company.com" %}
 {% else %}
-global-support@company.com
-{% endif %}
+{% assign address = "global-support@company.com" %}{% endif %}{{address}}
 ```
 {% endraw %}
 
 {% endtab %}
 {% tab BCC Address %}
 
-このセクションでは、Brazeから送信されるメールメッセージに付加できるBCCアドレスを管理できる。BCCアドレスをメールメッセージに追加すると、ユーザーが受信したメッセージの同一コピーがBCC受信トレイに送信される。これは、コンプライアンス要件またはカスタマーサポートの問題のためにユーザーに送信したメッセージのコピーを保持するのに便利なツールです。BCCメールはメールレポートやアナリティクスには含まれない。
+このセクションでは、Braze から送信される送信メールに追加できる BCC アドレスを管理できます。メールに BCC アドレスを追加すると、ユーザーが受信するメッセージとまったく同じ内容が、BCC の受信トレイにも送信されます。これは、コンプライアンス要件またはカスタマーサポートの問題のためにユーザーに送信したメッセージのコピーを保持するのに便利なツールです。BCC メールはメールレポートや分析には含まれません。
 
-BCC アドレスは、SendGrid およびSparkPost でのみ使用できます。BCC アドレスの代わりに、[メッセージアーカイブ]({{site.baseurl}}/user_guide/data/export_braze_data/message_archiving/) を使用して、アーカイブまたはコンプライアンスの目的でユーザに送信されるメッセージのコピーを保存することをお勧めします。
+BCC アドレスは、SendGrid および SparkPost でのみ使用できます。BCC アドレスの代わりに、[メッセージアーカイブ]({{site.baseurl}}/user_guide/data/export_braze_data/message_archiving/)を使用して、アーカイブまたはコンプライアンスの目的でユーザーに送信されるメッセージのコピーを保存することをお勧めします。
 
 {% multi_lang_include alerts/important_alerts.md alert='BCC address billable emails' %}
 
-![メール設定]タブの[BCCアドレス]セクション。]({% image_buster /assets/img/email_settings/bcc_address.png %}){: style="max-width:75%;" }
+![メール設定タブの BCC アドレスセクション。]({% image_buster /assets/img/email_settings/bcc_address.png %}){: style="max-width:75%;" }
 
 アドレスを追加すると、キャンペーンまたはキャンバスステップでメールを作成するときに、アドレスを選択できるようになります。新規のメールキャンペーンまたはキャンバスコンポーネントを開始するときに、このアドレスがデフォルトで選択されるように設定するには、アドレスの横にある [**デフォルトにする**] を選択します。これをメッセージレベルでオーバーライドするには、メッセージの設定時に [**BCC なし**] を選択します。
 
@@ -87,11 +90,11 @@ Braze から送信されるすべてのメールメッセージに BCC アドレ
 
 #### ダイナミック BCC
 
-ダイナミックなBCCでは、BCCアドレスにLiquidを使うことができる。この機能は**メール設定でのみ**利用可能で、キャンペーン自体では設定できないことに注意。メール受信者1人につきBCCアドレスは1つしか許可されない。
+ダイナミック BCC を使えば、BCC アドレスに Liquid を使用できます。この機能は**メール設定**でのみ利用可能であり、キャンペーン自体では設定できないことに注意してください。メールの受信者ごとに、BCC アドレスは1つだけ許可されます。
 
-例えば、サポートチームからのメールのBCCアドレスとして{% raw %}`{{custom_attribute.${support_agent}}}`{% endraw %} 。
+例えば、サポートチームからのメールの BCC アドレスとして {% raw %}`{{custom_attribute.${support_agent}}}`{% endraw %} を追加できます。
 
-![メール設定タブのBCCアドレスセクションに、Liquidを使ってBCCアドレスを指定する。]({% image_buster /assets/img/email_settings/dynamic_bcc.png %}){: style="max-width:90%;" }
+![メール設定タブの BCC アドレスセクションに、Liquid を使用した BCC アドレスが入力されている。]({% image_buster /assets/img/email_settings/dynamic_bcc.png %}){: style="max-width:90%;" }
 
 {% endtab %}
 {% endtabs %}
@@ -100,133 +103,133 @@ Braze から送信されるすべてのメールメッセージに BCC アドレ
 
 [![Brazeラーニングコース]({% image_buster /assets/img/bl_icon3.png %})](https://learning.braze.com/email-open-tracking-pixel/){: style="float:right;width:120px;border:0;" class="noimgborder"}
 
-メール開封トラッキングピクセルは非表示の1×1pxの画像で、メールHTMLに自動的に挿入される。このピクセルは、ユーザーがメールを開封したかどうかを検知するのに役立つ。ユーザーのメールクライアントが当社のトラッキングピクセルにリクエストを行うと、リクエストにはIPアドレス、ユーザーエージェント、タイムスタンプなどの情報が含まれることがある。メールの開封情報は、対応する開封率を把握することで、効果的なマーケティング戦略を決定するのに役立ち、非常に有用である。
+メール開封トラッキングピクセルは目に見えない 1 x 1&nbsp;px の画像であり、メールの HTML に自動的に挿入されます。このピクセルは、Braze がユーザーのメール開封を検知するのに役立ちます。ユーザーのメールクライアントが当社のトラッキングピクセルにリクエストを送信すると、そのリクエストには IP アドレス、ユーザーエージェント、タイムスタンプなどの情報が含まれることがあります。メール開封情報は非常に有用であり、対応する開封率を把握することで効果的なマーケティング戦略を決定するのに役立ちます。
 
 ### 追跡ピクセルの配置
 
-Braze のデフォルトの動作では、メールの下部に追跡ピクセルが追加されます。ほとんどのユーザーにとって、これはピクセルを配置するときに最適な場所です。ピクセルのスタイルはすでに、視覚的な変化をできるだけ小さくするように設定されていますが、意図しない視覚的な変化はメールの下部にあるとほぼまったく目立ちません。これは、SendGrid や SparkPost などのメールプロバイダーのデフォルトでもあります。
+Braze のデフォルトの動作では、メールの下部に追跡ピクセルが追加されます。ほとんどのユーザーにとって、これはピクセルを配置する最適な場所です。ピクセルのスタイルはすでに、視覚的な変化をできるだけ小さくするように設定されていますが、意図しない視覚的な変化はメールの下部にあるとほぼまったく目立ちません。これは、SendGrid や SparkPost などのメールプロバイダーのデフォルトでもあります。
 
 ### 追跡ピクセルの位置の変更
 
-Braze は現在、メールサービスプロバイダー (ESP) のデフォルトの開封追跡ピクセルの位置 (メールの `<body>` の最後のタグ) をオーバーライドして `<body>` の最初のタグに移動することをサポートしています。
+Braze は現在、メールサービスプロバイダー (ESP) のデフォルトの開封追跡ピクセルの位置（メールの `<body>` の最後のタグ）をオーバーライドして `<body>` の最初のタグに移動することをサポートしています。
   
-!["Open Tracking Pixel "セクションで、SendGrid、SparkPost、Amazon SESのいずれかに移動するオプションを選択する。]({% image_buster /assets/img/open_pixel.png %}){: style="max-width:80%;" }
+![「オープントラッキングピクセル」セクションには、SendGrid、SparkPost、Amazon SES のいずれかに移動するオプションがある。]({% image_buster /assets/img/open_pixel.png %}){: style="max-width:80%;" }
 
 場所を変更するには、次の手順に従います。
 
 1. Braze で、[**設定**] > [**メール設定**] に移動します。
-2. 以下のオプションから選択する：[**SendGrid の移動**]、[**SparkPost の移動**]、または [**Amazon SES の移動**]
+2. 以下のオプションから選択します：[**SendGrid の移動**]、[**SparkPost の移動**]、または [**Amazon SES の移動**]
 3. [**保存**] を選択します。
 
-保存後、Brazeはメールサービスプロバイダーに特別な指示を送り、開封トラッキングピクセルをすべてのHTMLメールの上部に設置する（ESP）。
+保存後、Braze はメールサービスプロバイダー (ESP) に特別な指示を送信し、すべての HTML メールの最上部に開封トラッキングピクセルを配置させます。
   
-{% alert important %}
-SSLイネーブルメントは、トラッキングピクセルのURLをHTTPではなくHTTPSでラップする。SSLの設定が間違っていると、トラッキングピクセルの有効性に影響する可能性があります。
+{% alert important %} 
+SSL イネーブルメントは、トラッキングピクセルの URL を HTTP ではなく HTTPS でラップします。SSL の設定が間違っていると、トラッキングピクセルの有効性に影響する可能性があります。 
 {% endalert %}
 
 ## list-unsubscribe ヘッダー {#list-unsubscribe}
 
 {% alert note %}
-2024年2月15日以降、新規参入企業はlist-unsubscribeヘッダー（ワンクリックで配信停止）がデフォルトでイネーブルメントになっている。
+2024年2月15日以降、新規企業にはデフォルトで配信停止ヘッダー（ワンクリック配信停止機能付き）が有効になっています。
 {% endalert %}
 
-list-unsubscribe ヘッダーを使用すると、メッセージ本文ではなくメールボックス UI 内に [**購読解除**] ボタンが表示されるため、受信者はマーケティングメールから簡単に配信停止ができます。
+list-unsubscribe ヘッダーを使用すると、メッセージ本文ではなくメールボックス UI 内に [**配信停止**] ボタンが表示されるため、受信者はマーケティングメールから簡単に配信停止ができます。
 
 ![]({% image_buster /assets/img_archive/list_unsub_img1.png %}){: style="float:right;max-width:60%;margin-left:15px;"}
 
-受信者が**配信停止を**選択すると、メールボックスプロバイダはメールヘッダーで定義された送信先に配信停止リクエストを送信する。
+受信者が [**配信停止**] を選択すると、メールボックスプロバイダーはメールヘッダーに定義された送信先に配信停止リクエストを送信します。
 
-list-unsubscribe を有効にすることは、配信到達性のベストプラクティスであり、一部の主要なメールボックスプロバイダーでは要件になっています。これは、エンドユーザーが迷惑なメッセージから自分自身を安全に削除することを奨励するもので、メールクライアントのスパムボタンを押すのとは異なり、後者は送信の信頼度やメールの配信到達性に悪影響を与える。
+list-unsubscribe を有効にすることは、配信到達性のベストプラクティスであり、一部の主要なメールボックスプロバイダーでは要件になっています。エンドユーザーが不要なメッセージから安全に自身を解除することを推奨するものであり、メールクライアントのスパムボタンを押す行為とは対照的です。後者は送信者の信頼度およびメールの配信到達性に悪影響を及ぼします。
 
-[Gmailでサブスクリプションを管理する](https://support.google.com/mail/answer/15621070?sjid=2292320204527911296-NC)場合、Gmailはメッセージ本文から配信停止リンクを取り込むこともできるが、ヘッダーにある場合はリスト配信停止を優先する。
+[Gmail でサブスクリプションを管理する](https://support.google.com/mail/answer/15621070?sjid=2292320204527911296-NC)際、Gmail はメッセージ本文から配信停止リンクを取得することもできますが、ヘッダーに list-unsubscribe が存在する場合はそちらを優先します。
 
 ### メールボックスプロバイダーのサポート
 
-次の表に、「mailto:」ヘッダー、list-unsubscribe URL、およびワンクリック配信停止 ([RFC 8058](https://datatracker.ietf.org/doc/html/rfc8058)) に対するメールボックスプロバイダーのサポートをまとめています。
+次の表に、「mailto:」ヘッダー、list-unsubscribe URL、およびワンクリック配信停止（[RFC 8058](https://datatracker.ietf.org/doc/html/rfc8058)）に対するメールボックスプロバイダーのサポートをまとめています。
 
-| list-unsubscribe ヘッダー | Mailto: ヘッダー | list-unsubscribe URL | ワンクリック配信停止 （RFC 8058） | 
+| list-unsubscribe ヘッダー | Mailto: ヘッダー | list-unsubscribe URL | ワンクリック配信停止（RFC 8058） | 
 | ----- | --- | --- | --- |
 | Gmail | 対応* | 対応 | 対応 |
-| Gmailモバイル | サポートされていない | サポートされていない | サポートされていない |
-| Apple メール | 対応 | サポートされていない | サポートされていない |
-| Outlook.com | 対応 | サポートされていない | サポートされていない |
-| Yahoo!メール | 対応* | サポートされていない | 対応 |
+| Gmail モバイル | 非対応 | 非対応 | 非対応 |
+| Apple メール | 対応 | 非対応 | 非対応 |
+| Outlook.com | 対応 | 非対応 | 非対応 |
+| Yahoo! メール | 対応* | 非対応 | 対応 |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 .reset-td-br-4 role="presentation" }
 
-_\*YahooとGmailは最終的に "mailto: "ヘッダーを廃止し、ワンクリックのみに対応する。_
+_*Yahoo と Gmail は最終的に「mailto:」ヘッダーを廃止し、ワンクリックのみをサポートするようになります。_
 
-ヘッダーの表示は、最終的にメールボックスプロバイダーによって決定されます。Gmail で受信者宛ての未加工 (テキスト) メールに list-unsubscribe ヘッダーが含まれているかどうかを確認するには、次の手順に従います。
+ヘッダーの表示は、最終的にメールボックスプロバイダーによって決定されます。Gmail で受信者宛ての未加工（テキスト）メールに list-unsubscribe ヘッダーが含まれているかどうかを確認するには、次の手順に従います。
 
 1. メールの [**メッセージのソースを表示**] を選択します。これにより、メールの未加工バージョンとそのヘッダーを含む新しいタブが開きます。
 2. 「List-Unsubscribe」を検索します。
 
-このヘッダーが未加工バージョンのメールに含まれているにもかかわらず表示されない場合、メールボックスプロバイダーは配信停止オプションを表示しないと決定しています。つまり、メールボックスプロバイダーがヘッダーを表示しない理由についてはこれ以上のインサイトが得られません。list-unsubscribe ヘッダーの表示は、最終的に信頼度に基づいて行われます。たいていの場合、メールボックス・プロバイダでのあなたの送信者の評判が高ければ高いほど、配信停止ヘッダーが表示される可能性は高くなる。
+このヘッダーが未加工バージョンのメールに含まれているにもかかわらず表示されない場合、メールボックスプロバイダーが配信停止オプションを表示しないと判断しています。つまり、メールボックスプロバイダーがヘッダーを表示しない理由についてはこれ以上のインサイトは得られません。list-unsubscribe ヘッダーの表示は、最終的にレピュテーション（信頼度）に基づいて行われます。大抵の場合、メールボックスプロバイダーにおける送信者の評判が良ければ良いほど、list-unsubscribe ヘッダーが表示される可能性が高くなります。
 
 ### ワークスペースのメール配信停止ヘッダー
 
-![どのユーザーに送信するかは、「サブスクライバーまたはオプトインしているユーザー」を選択する。]({% image_buster /assets/img/email_settings/email_unsub_header_workspaces.png %}){: style="float:right;max-width:50%;margin-left:15px;"}
+![送信先として「購読中またはオプトインしているユーザー」を選択する。]({% image_buster /assets/img/email_settings/email_unsub_header_workspaces.png %}){: style="float:right;max-width:50%;margin-left:15px;"}
 
-メール配信停止ヘッダー機能がオンになっている場合、この設定は会社レベルではなく、ワークスペース全体に適用されます。キャンペーンおよびキャンバスビルダーの**Target Audience** ステップで、登録またはオプトインのユーザーまたはオプトインのユーザーに送信するように設定されたキャンペーンおよびキャンバスに追加されます。
+メール配信停止ヘッダー機能がオンになっている場合、この設定は会社レベルではなく、ワークスペース全体に適用されます。キャンペーンおよびキャンバスビルダーの [**ターゲットオーディエンス**] ステップで、購読中またはオプトインのユーザー、またはオプトインのユーザーに送信するように設定されたキャンペーンおよびキャンバスに追加されます。
 
-「ワークスペースのデフォルト」を使用する場合、Braze はトランザクションと見なされるキャンペーン ([購読解除済みのユーザーを含むすべてのユーザー] に設定されているキャンペーン) のワンクリック配信停止ヘッダーを追加しません。これをオーバーライドし、サブスクリプションされていないユーザーに送信するときにワンクリックでサブスクリプション解除ヘッダーを追加するには、メッセージレベルのワンクリックリスト-サブスクリプション解除設定で**すべてのメールからグローバルにサブスクリプション解除を選択できます**。
+「ワークスペースのデフォルト」を使用する場合、Braze はトランザクションと見なされるキャンペーン（「配信停止済みのユーザーを含むすべてのユーザーに送信」に設定されているキャンペーン）にはワンクリック配信停止ヘッダーを追加しません。これをオーバーライドし、配信停止済みのユーザーに送信するときにワンクリック配信停止ヘッダーを追加するには、メッセージレベルのワンクリックリスト配信停止設定で [**すべてのメールからグローバルに配信停止**] を選択できます。
 
 ### デフォルトの list-unsubscribe ヘッダー
 
 {% alert important %}
-Gmail は、2024 年 6 月 1 日以降、送信するすべての商用およびプロモーション メッセージについて、ワンクリック配信停止を実装するように、送信者に要求する予定です。詳細については、Gmail の「[メール送信者のガイドライン](https://support.google.com/mail/answer/81126?hl=en#subscriptions&zippy=%2Crequirements-for-sending-or-more-messages-per-day:~:text=Make%20it%20easy%20to%20unsubscribe)」と「[メール送信者のガイドラインに関するよくある質問](https://support.google.com/a/answer/14229414#zippy=%2Cwhat-time-range-or-duration-is-used-when-calculating-spam-rate%2Cif-the-list-header-is-missing-is-the-message-body-checked-for-a-one-click-unsubscribe-link%2Cif-unsubscribe-links-are-temporarily-unavailable-due-to-maintenance-or-other-reasons-are-messages-flagged-as-spam%2Ccan-a-one-click-unsubscribe-link-to-a-landing-or-preferences-page%2Cwhat-is-a-bulk-sender%2Chow-can-bulk-senders-make-sure-theyre-meeting-the-sender-guidelines%2Cdo-the-sender-guidelines-apply-to-messages-sent-to-google-workspace-accounts%2Cdo-the-sender-guidelines-apply-to-messages-sent-from-google-workspace-accounts%2Cwhat-happens-if-senders-dont-meet-the-requirements-in-the-sender-guidelines%2Cif-messages-are-rejected-because-they-dont-meet-the-sender-guidelines-do-you-send-an-error-message-or-other-alert%2Cwhat-happens-when-sender-spam-rate-exceeds-the-maximum-spam-rate-allowed-by-the-guidelines%2Cwhat-is-the-dmarc-alignment-requirement-for-bulk-senders%2Cif-messages-fail-dmarc-authentication-can-they-be-delivered-using-ip-allow-lists-or-spam-bypass-lists-or-will-these-messages-be-quarantined%2Ccan-bulk-senders-get-technical-support-for-email-delivery-issues%2Cdo-all-messages-require-one-click-unsubscribe:~:text=for%20mitigations.-,Unsubscribe%20links,-Do%20all%20messages)」を参照してください。Yahoo は、この更新された要件について、2024 年初頭のタイムラインを発表しました。詳細については、「[More Secure, Less Spam:Enforcing Email Standards for a Better Experience](https://blog.postmaster.yahooinc.com/)」を参照してください。
+Gmail は、2024年6月1日以降、送信するすべての商用およびプロモーションメッセージについて、ワンクリック配信停止を実装するよう送信者に要求する予定です。詳細については、Gmail の「[メール送信者のガイドライン](https://support.google.com/mail/answer/81126?hl=en#subscriptions&zippy=%2Crequirements-for-sending-or-more-messages-per-day:~:text=Make%20it%20easy%20to%20unsubscribe)」と「[メール送信者のガイドラインに関するよくある質問](https://support.google.com/a/answer/14229414#zippy=%2Cwhat-time-range-or-duration-is-used-when-calculating-spam-rate%2Cif-the-list-header-is-missing-is-the-message-body-checked-for-a-one-click-unsubscribe-link%2Cif-unsubscribe-links-are-temporarily-unavailable-due-to-maintenance-or-other-reasons-are-messages-flagged-as-spam%2Ccan-a-one-click-unsubscribe-link-to-a-landing-or-preferences-page%2Cwhat-is-a-bulk-sender%2Chow-can-bulk-senders-make-sure-theyre-meeting-the-sender-guidelines%2Cdo-the-sender-guidelines-apply-to-messages-sent-to-google-workspace-accounts%2Cdo-the-sender-guidelines-apply-to-messages-sent-from-google-workspace-accounts%2Cwhat-happens-if-senders-dont-meet-the-requirements-in-the-sender-guidelines%2Cif-messages-are-rejected-because-they-dont-meet-the-sender-guidelines-do-you-send-an-error-message-or-other-alert%2Cwhat-happens-when-sender-spam-rate-exceeds-the-maximum-spam-rate-allowed-by-the-guidelines%2Cwhat-is-the-dmarc-alignment-requirement-for-bulk-senders%2Cif-messages-fail-dmarc-authentication-can-they-be-delivered-using-ip-allow-lists-or-spam-bypass-lists-or-will-these-messages-be-quarantined%2Ccan-bulk-senders-get-technical-support-for-email-delivery-issues%2Cdo-all-messages-require-one-click-unsubscribe:~:text=for%20mitigations.-,Unsubscribe%20links,-Do%20all%20messages)」を参照してください。Yahoo は、この更新された要件について、2024年初頭のタイムラインを発表しました。詳細については、「[More Secure, Less Spam: Enforcing Email Standards for a Better Experience](https://blog.postmaster.yahooinc.com/)」を参照してください。
 {% endalert %}
 
-Braze の配信停止機能を使用して配信停止を直接処理するには、[**配信登録済みまたはオプトイン済みのユーザーに送信されるメールに One-Click List-Unsubscribe (mailto および HTTP) ヘッダーを含める**] を選択し、標準の Braze URL および mail-to として [**Braze のデフォルト**] を選択します。 
+Braze の配信停止機能を使用して配信停止を直接処理するには、[**購読中またはオプトイン済みのユーザーに送信されるメールに One-Click List-Unsubscribe（mailto および HTTP）ヘッダーを含める**] を選択し、標準の Braze URL および mail-to として [**Braze のデフォルト**] を選択します。 
 
-![サブスクライバーまたはオプトインユーザーに送信されるメールに、自動的に配信停止ヘッダーを含めるオプション。]({% image_buster /assets/img/email_settings/email_unsubscribe_header.png %})
+![購読中またはオプトインしたユーザーに送信するメールに、配信停止ヘッダーを自動的に含めるオプション。]({% image_buster /assets/img/email_settings/email_unsubscribe_header.png %})
 
 Braze は、次のバージョンの list-unsubscribe ヘッダーをサポートしています。
 
 | リスト配信停止バージョン | 説明 | 
 | ----- | --- |
 | ワンクリック（RFC 8058） | 受信者がワンクリックでメールからオプトアウトする簡単な方法を提供します。これは、Yahoo と Gmail から一括送信者に課される要件です。 |
-| リスト配信停止URLまたはHTTPS | 受信者に、購読を解除できるウェブページに誘導するリンクを提供する。 |
-| mailto | 受信者からブランドに送信されるサブスクリプション解除要求メッセージの送信先として電子メールアドレスを指定します。<br><br> _mailto list-unsubscribe リクエストを処理するには、そのような配信停止リクエストに、配信を停止するエンドユーザーについて Braze に保存されているメールアドレスが含まれている必要があります。これは、エンドユーザーが配信を停止するメールの「差出人アドレス」、配信を停止するエンドユーザーが受信したメールのエンコードされた件名またはエンコードされた本文で提供される場合があります。ごく限られたケースでは、一部の受信トレイプロバイダーは[RFC 2368](https://datatracker.ietf.org/doc/html/rfc2368)プロトコルに準拠していないため、メールアドレスが正しく渡されません。このため、配信停止リクエストが Braze で処理できないことがあります。_ |
+| リスト配信停止 URL または HTTPS | 受信者に、配信停止できるウェブページに誘導するリンクを提供します。 |
+| mailto | 受信者からブランドに送信される配信停止リクエストメッセージの送信先としてメールアドレスを指定します。<br><br> _mailto list-unsubscribe リクエストを処理するには、そのような配信停止リクエストに、配信を停止するエンドユーザーについて Braze に保存されているメールアドレスが含まれている必要があります。これは、エンドユーザーが配信を停止するメールの「差出人アドレス」、配信を停止するエンドユーザーが受信したメールのエンコードされた件名またはエンコードされた本文で提供される場合があります。ごく限られたケースでは、一部の受信トレイプロバイダーが [RFC 2368](https://datatracker.ietf.org/doc/html/rfc2368) プロトコルに準拠していないため、メールアドレスが正しく渡されないことがあります。このため、配信停止リクエストが Braze で処理できない場合があります。_ |
 {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
-Braze が上記の方法のいずれかでユーザーから list-unsubscribe リクエストを受信すると、このユーザーのグローバルサブスクリプション状態が配信停止に設定されます。一致しない場合、Brazeはこのリクエストを処理しない。
+Braze が上記の方法のいずれかでユーザーから list-unsubscribe リクエストを受信すると、このユーザーのグローバルメールサブスクリプション状態が配信停止に設定されます。一致するものがなければ、Braze はこのリクエストを処理しません。
 
 ### ワンクリック配信停止
 
-list-unsubscribe ヘッダー([RFC 8058](https://datatracker.ietf.org/doc/html/rfc8058)) に対してワンクリックでunsubscribe を使用すると、受信者がメールからオプトアウトするための簡単な方法を提供することに重点が置かれます。
+list-unsubscribe ヘッダー（[RFC 8058](https://datatracker.ietf.org/doc/html/rfc8058)）に対してワンクリック配信停止を使用すると、受信者がメールからオプトアウトするための簡単な方法を提供することに重点が置かれます。
 
-### メッセージレベルのワンクリック・リスト配信停止
+### メッセージレベルのワンクリックリスト配信停止
 
-メッセージレベルのワンクリックリスト配信停止設定は、ワークスペースのメール配信停止ヘッダー機能を上書きする。次の用途では、キャンペーンまたはキャンバスステップごとにワンクリック配信停止動作を適用します。
+メッセージレベルでのワンクリック配信停止設定は、ワークスペース向けに設定されたメール配信停止ヘッダー機能をオーバーライドします。次の用途では、キャンペーンまたはキャンバスステップごとにワンクリック配信停止動作を適用します。
 
-- 1 つのワークスペース内で複数のブランド/リストをサポートするために、特定の購読グループに対して Braze のワンクリック配信停止機能を追加する
-- デフォルトのBraze配信停止URLかカスタムURLかを切り替える
-- カスタム・ワンクリック配信停止URLを追加する
+- 1つのワークスペース内で複数のブランド/リストをサポートするために、特定のサブスクリプショングループに対して Braze のワンクリック配信停止機能を追加する
+- デフォルトの Braze 配信停止 URL かカスタム URL かを切り替える
+- カスタムのワンクリック配信停止 URL を追加する
 - このメッセージのワンクリック配信停止を省略する
 
 {% alert note %}
-メッセージレベルの1 クリックリスト/サブスクリプション解除設定は、ドラッグアンドドロップエディタと更新されたHTML エディタを使用する場合にのみ使用できます。以前のHTMLエディターを使用している場合は、更新されたHTMLエディターに切り替えてこの機能を使用する。
+メッセージレベルのワンクリックリスト配信停止設定は、ドラッグアンドドロップエディターと更新された HTML エディターを使用する場合にのみ使用できます。以前の HTML エディターを使用している場合は、更新された HTML エディターに切り替えてこの機能を使用してください。
 {% endalert %}
 
-メールエディターで、「**送信設定」**＞「**送信情報**」と進む。以下のオプションから選択する：
+メールエディターで、[**送信設定**] > [**送信情報**] と進みます。以下のオプションから選択します：
 
-- **ワークスペースのデフォルトを使用**: **メール**設定で設定された**メール配信停止ヘッダー**設定を使用する。この設定を変更すると、すべてのメッセージに適用される。
-- **すべてのメールからの配信をすべて停止**: Braze デフォルトのワンクリック配信停止ヘッダーを使用します。配信停止ボタンをクリックしたユーザーは、グローバルメールのサブスクリプション状態が「配信停止」に設定される。
-- **特定の購読グループから配信停止**: 指定されたサブスクリプショングループを使用する。Brazeは、選択したサブスクリプショングループから配信停止ボタンをクリックしたユーザーの配信を停止する。
-    - 購読グループを選択する際、この特定グループを購読しているユーザーのみをターゲットにするには、[**ターゲットオーディエンス**] で [**購読グループフィルター**] を追加します。ワンクリック配信停止用に選択した購読グループは、ターゲットにしている購読グループと一致していなければなりません。サブスクリプション・グループに不一致がある場合、すでにサブスクリプション解除されているサブスクリプション・グループからサブスクリプションを解除しようとしているユーザーに送信する危険性があります。
+- **ワークスペースのデフォルトを使用**：[**メール設定**] で設定された [**メール配信停止ヘッダー**] 設定を使用します。この設定への変更は、すべてのメッセージに適用されます。
+- **すべてのメールからグローバルに配信停止**：Braze デフォルトのワンクリック配信停止ヘッダーを使用します。配信停止ボタンをクリックしたユーザーは、グローバルなメールサブスクリプション状態が「配信停止」に設定されます。
+- **特定のサブスクリプショングループから配信停止**：指定されたサブスクリプショングループを使用します。Braze は、選択されたサブスクリプショングループから配信停止ボタンをクリックしたユーザーを配信停止します。
+    - サブスクリプショングループを選択する際、この特定グループを購読しているユーザーのみをターゲットにするには、[**ターゲットオーディエンス**] で [**サブスクリプショングループ**] フィルターを追加します。ワンクリック配信停止用に選択したサブスクリプショングループは、ターゲットにしているサブスクリプショングループと一致していなければなりません。サブスクリプショングループに不一致がある場合、すでに配信停止済みのサブスクリプショングループから配信停止しようとしているユーザーに送信するリスクがあります。
 
 {% alert important %}
-**特定のサブスクリプショングループからの配信停止**設定は、ワンクリックリストの配信停止ヘッダーにのみ適用される。このオプションを選択しても、mailto list-配信停止ヘッダーは影響を受けない。つまり、この方法で配信停止した受信者は、特定のサブスクリプショングループからの配信停止ではなく、グローバルな配信停止のログを記録することになる。mailto list-unsubscribeヘッダーをグローバルに配信停止するユーザーから除外するには、この設定を選択する際に、[サポートに]({{site.baseurl}}/support_contact/)連絡する。
+[**特定のサブスクリプショングループから配信停止**] 設定は、ワンクリックリスト配信停止ヘッダーにのみ適用されます。このオプションを選択しても、mailto の配信停止ヘッダーは影響を受けません。この方法を使って配信停止した受信者は、特定のサブスクリプショングループからの配信停止ではなく、グローバルな配信停止として記録されます。この設定を選択する際に、mailto リスト配信停止ヘッダーによるグローバル配信停止を除外したい場合は、[サポート]({{site.baseurl}}/support_contact/)に連絡してください。
 {% endalert %}
 
-- **カスタム:**配信停止を直接処理するためのカスタムのワンクリック配信停止 URL を追加します。
+- **カスタム**：配信停止を直接処理するためのカスタムのワンクリック配信停止 URL を追加します。
 - **配信停止を除外**
 
 {% alert important %}
 ワンクリック配信停止や任意の配信停止メカニズムを除外するのは、パスワードのリセット、領収書、確認メールなど、トランザクションメッセージングに対してのみ行ってください。
 {% endalert %}
 
-この設定を調整することで、このメールでのワンクリックによるリスト配信停止のデフォルトの動作が上書きされる。
+この設定を変更すると、このメールにおけるワンクリックリスト配信停止のデフォルト動作がオーバーライドされます。
 
 ![]({% image_buster /assets/img/email_settings/one_click_list_unsubscribe_message_level.png %}){: style="max-width:70%;"}
 
@@ -236,16 +239,16 @@ list-unsubscribe ヘッダー([RFC 8058](https://datatracker.ietf.org/doc/html/r
 
 * URL は配信停止 POST リクエストを処理できる必要があります。
 * URL は `https://` で始まる必要があります。
-* URLはHTTPSリダイレクトやボディを返してはならない。ランディングページや他のタイプのウェブページに移動するワンクリック退会リンクは、RFC 8058に準拠していない。
-* POST リクエストがクッキーを設定してはなりません。
+* URL は HTTPS リダイレクトやボディを返してはなりません。ランディングページや他のタイプのウェブページに移動するワンクリック配信停止リンクは、RFC 8058 に準拠していません。
+* POST リクエストが Cookie を設定してはなりません。
 
-[**カスタムの list-unsubscribe ヘッダー**] を選択して、独自に構成したワンクリック配信停止エンドポイントと、オプションの [mailto:] を追加します。ワンクリック配信停止 HTTP が Yahoo および Gmail の一括送信者に対する要件であるため、Braze では、カスタムの list-unsubscribe ヘッダーをサポートするために URL を入力する必要があります。
+[**カスタムの list-unsubscribe ヘッダー**] を選択して、独自に構成したワンクリック配信停止エンドポイントと、オプションの「mailto:」を追加します。ワンクリック配信停止 HTTP が Yahoo および Gmail の一括送信者に対する要件であるため、Braze では、カスタムの list-unsubscribe ヘッダーをサポートするために URL を入力する必要があります。
 
 ![]({% image_buster /assets/img/email_settings/email_unsubscribe_header_custom.png %}){: style="max-width:80%;"}
 
 ## メールの件名行の追加
 
-テストメールとシードメールの件名行に「[TEST]」と「[SEED]」を含めるには、次のトグルを使用します。これは、テストとして送信されたメールキャンペーンの識別に役立ちます。
+テストメールとシードメールの件名行に「[TEST]」と「[SEED]」を含めるには、トグルを使用します。これは、テストとして送信されたメールキャンペーンの識別に役立ちます。
 
 ![]({% image_buster /assets/img/email_settings/test_and_seed_email_subject_line.png %}){: style="max-width:70%;"}
 
@@ -253,11 +256,11 @@ list-unsubscribe ヘッダー([RFC 8058](https://datatracker.ietf.org/doc/html/r
 
 CSS インライン化は、メールと新規メールの CSS スタイルを自動的にインライン化する手法です。一部のメールクライアントでは、これによりメールのレンダリング方法が改善される可能性があります。
 
-この設定を変更しても、既存のメールメッセージやテンプレートには影響しない。メッセージまたはテンプレートの作成中に、いつでもこのデフォルトをオーバーライドできます。詳細については、[CSSインライン化]({{site.baseurl}}/user_guide/message_building_by_channel/email/html_editor/css_inline/)を参照してください。
+この設定を変更しても、既存のメールメッセージやテンプレートには一切影響しません。メッセージまたはテンプレートの作成中に、いつでもこのデフォルトをオーバーライドできます。詳細については、[CSS インライン化]({{site.baseurl}}/user_guide/message_building_by_channel/email/html_editor/css_inline/)を参照してください。
 
-## メールアドレスを変更したユーザーへの配信を再登録
+## メールアドレスを変更したユーザーの再購読
 
-ユーザーがメールアドレスを変更したときに、そのユーザーへの配信を自動的に再登録できます。例えば、以前に配信停止したワークスペース・ユーザーが、Brazeの配信停止リストにないメールアドレスに変更した場合、自動的に再登録となる。
+ユーザーがメールアドレスを変更したときに、そのユーザーを自動的に再購読させることができます。例えば、以前配信停止されていたワークスペースユーザーが、メールアドレスを Braze の配信停止リストにないものに変更した場合、自動的に再購読されます。
 
 ![]({% image_buster /assets/img/email_settings/resubscribe_users.png %}){: style="max-width:90%;" }
 
@@ -266,7 +269,7 @@ CSS インライン化は、メールと新規メールの CSS スタイルを�
 {% tabs local %}
 {% tab Custom Footer %}
 
-商用メールの場合、[CAN-SPAM 法](https://en.wikipedia.org/wiki/CAN-SPAM_Act_of_2003)では、すべての商用メールに配信停止オプションを含めることを義務付けています。[カスタムフッター] 設定を使用すると、CAN-SPAM を遵守したうえで、メールのオプトアウトフッターをカスタマイズできます。遵守状態を維持するために、このワークスペースのキャンペーンの一部として送信されるすべてのメールにカスタムフッターを追加する必要があります。
+商用メールの場合、[CAN-SPAM 法](https://en.wikipedia.org/wiki/CAN-SPAM_Act_of_2003)では、すべての商用メールに配信停止オプションを含めることを義務付けています。カスタムフッター設定を使用すると、CAN-SPAM を遵守したうえで、メールのオプトアウトフッターをカスタマイズできます。遵守状態を維持するために、このワークスペースのキャンペーンの一部として送信されるすべてのメールにカスタムフッターを追加する必要があります。
 
 メールメッセージングのカスタムフッターを作成するときには、次の要件に注意してください。
 - 配信停止 URL と物理的な郵送先住所を含める必要があります。
@@ -279,7 +282,7 @@ CSS インライン化は、メールと新規メールの CSS スタイルを�
 {% endtab %}
 {% tab Custom Unsubscribe Page %}
 
-Braze を使用すると、独自の HTML を使用して**カスタム配信停止ページ**を設定できます。このページは、ユーザーがメールの下部から配信停止を選択した後に表示される。このページは 750 KB 未満でなければならないことに注意してください。 
+Braze を使用すると、独自の HTML を使用して**カスタム配信停止ページ**を設定できます。このページは、ユーザーがメールの下部から配信停止を選択した後に表示されます。このページは 750 KB 未満でなければならないことに注意してください。 
 
 ![]({% image_buster /assets/img/email_settings/custom_unsubscribe.png %})
 
@@ -298,59 +301,59 @@ Braze を使用すると、独自の HTML を使用して**カスタム配信停
 {% endtabs %}
 
 {% alert tip %}
-サブスクリプションページまたはフッターの**プレビュー**セクションで、**プレビューリンクをコピー**するを選択し、ランダムなユーザーに対してメールフッター、配信停止ページ、またはオプトインページがどのように見えるかを示す共有可能なプレビューリンクを生成してコピーする。リンクは7日間持続し、その後再生が必要となる。
+サブスクリプションページやフッターの [**プレビュー**] セクションで、[**プレビューリンクをコピー**] を選択すると、ランダムなユーザーがメールフッター、配信停止ページ、またはオプトインページをどのように見るかを示す共有可能なプレビューリンクが生成され、コピーされます。リンクは7日間有効です。その後は再生成する必要があります。
 {% endalert %}
 
 ## よくある質問
 
 ### ワンクリック配信停止
 
-{% details Can the one-click unsubscribe URL (via list-unsubscribe header) link to a preference center? %}
-いいえ、これは RFC 8058 に準拠していません。つまり、Yahoo と Gmail のワンクリック配信停止要件に適合していません。
+{% details ワンクリック配信停止 URL（list-unsubscribe ヘッダー経由）をユーザー設定センターにリンクできますか？ %}
+いいえ、これは RFC 8058 に準拠していないため、Yahoo と Gmail のワンクリック配信停止要件に適合しません。
 {% enddetails %}
 
-{% details Why do I receive the error message "Your email body does not include an unsubscribe link" when composing my preference center? %}
-ユーザー設定センターは、配信停止リンクとはみなされません。CAN-SPAMに準拠するためには、メール受信者が商業メールの配信を停止できるようにしなければならない。
+{% details ユーザー設定センターを作成する際に「メール本文に配信停止リンクが含まれていません」というエラーメッセージが表示されるのはなぜですか？ %}
+ユーザー設定センターは、配信停止リンクとはみなされません。CAN-SPAM に準拠するためには、メール受信者が商用メールの配信を停止できるようにしなければなりません。
 {% enddetails %}
 
-{% details Do I need to edit past email campaigns and Canvases to apply the one-click unsubscribe setting after enabling it? %}
-メッセージレベルのワンクリックリスト配信停止設定のユースケースに該当しない場合は、「**メール設定**」でこの設定がオンになっている限り、必要なアクションはない。Brazeは、ワンクリック配信停止ヘッダーをすべての送信マーケティングやプロモーションメッセージに自動的に追加する。ただし、ワンクリック配信停止の動作をメッセージごとに設定する必要がある場合は、それに応じてメールで以前のキャンペーンとキャンバスステップを更新する必要があります。
+{% details ワンクリック配信停止設定を有効にした後、過去のメールキャンペーンやキャンバスを編集する必要がありますか？ %}
+メッセージレベルのワンクリックリスト配信停止設定のユースケースに該当しない場合は、[**メール設定**] でこの設定がオンになっている限り、必要なアクションはありません。Braze は、すべての送信されるマーケティングおよびプロモーションメッセージに、ワンクリック配信停止ヘッダーを自動的に追加します。ただし、ワンクリック配信停止の動作をメッセージごとに設定する必要がある場合は、それに応じてメールで以前のキャンペーンとキャンバスステップを更新する必要があります。
 {% enddetails %}
 
-{% details I can see the list-unsubscribe and one-click unsubscribe header in the original message or raw data, but why don't I see the Unsubscribe button in Gmail or Yahoo? %}
-最終的に、Gmail と Yahoo が list-unsubscribe ヘッダーまたはワンクリック配信停止ヘッダーを表示するかどうかを決定します。新しい送信者または送信者のレピュテーションが低い送信者の場合、サブスクリプション解除ボタンが表示されないことがあります。
+{% details 元のメッセージや生データで list-unsubscribe ヘッダーとワンクリック配信停止ヘッダーが確認できるのに、Gmail や Yahoo で配信停止ボタンが表示されないのはなぜですか？ %}
+最終的に、Gmail と Yahoo が list-unsubscribe ヘッダーまたはワンクリック配信停止ヘッダーを表示するかどうかを決定します。新しい送信者または送信者のレピュテーションが低い場合、配信停止ボタンが表示されないことがあります。
 {% enddetails %}
 
-{% details Does the custom one-click unsubscribe header support Liquid? %}
-はい、Liquid および条件付きロジックがサポートされており、ヘッダーのダイナミックワンクリック配信停止 URL を使用できます。
+{% details カスタムのワンクリック配信停止ヘッダーは Liquid をサポートしていますか？ %}
+はい、Liquid および条件付きロジックがサポートされており、ヘッダーのダイナミックなワンクリック配信停止 URL を使用できます。
 {% enddetails %}
 
 {% alert tip %}
-条件付きロジックを追加する場合、Braze は空白を削除しないため、URL に空白を追加する出力値を含めないでください。
+条件付きロジックを追加する場合、Braze は空白を削除しないため、URL に空白を追加する出力値を含めないようにしてください。
 {% endalert %}
 
-### メッセージレベルのワンクリック・リスト配信停止
+### メッセージレベルのワンクリックリスト配信停止
 
-{% details If I add the email headers for one-click manually, and I have the email unsubscribe header turned on, what is the expected behavior? %}
-ワンクリックリスト配信停止のために追加されたメールヘッダーは、このキャンペーンの今後のすべての送信に適用される。
+{% details ワンクリック用のメールヘッダーを手動で追加し、メール配信停止ヘッダーがオンになっている場合、どのような動作になりますか？ %}
+ワンクリック配信停止用に追加されたメールヘッダーは、このキャンペーンの今後のすべての送信に適用されます。
 {% enddetails %}
 
-{% details Why do subscription groups have to match across message variants in order to launch? %}
-ABテストのキャンペーンでは、Brazeはランダムにユーザーにバリアントの1つを送信する。同じキャンペーンに2つの異なるサブスクリプショングループが設定されている場合（バリアントAがサブスクリプショングループAに設定され、バリアントBがサブスクリプショングループBに設定されている）、サブスクリプショングループBのみにサブスクライブしているユーザーがバリアントBを受信することは保証できません。
+{% details キャンペーンを開始するために、メッセージバリアント間でサブスクリプショングループが一致している必要があるのはなぜですか？ %}
+AB テストを実施するキャンペーンでは、Braze はユーザーにランダムにいずれかのバリアントを送信します。同一キャンペーンに異なるサブスクリプショングループが2つ設定されている場合（バリアント A がサブスクリプショングループ A に、バリアント B がサブスクリプショングループ B に設定されている）、サブスクリプショングループ B のみに登録しているユーザーがバリアント B を受け取ることを保証できません。ユーザーが既にオプトアウト済みのサブスクリプショングループから再度配信停止するケースが考えられます。
 {% enddetails %}
 
-{% details The email unsubscribe header setting is turned off in Email Preferences, but in my campaign's sending info, the one-click list-unsubscribe setting is set to "Use workspace default". Is this a bug? %}
-ワークスペース設定がオフで、メッセージ設定が**Use workspace defaultに**設定されている場合、Brazeは**メール**設定で設定された内容に従う。これは、キャンペーンのワンクリック配信停止ヘッダーを追加しないことを意味する。
+{% details メール設定でメール配信停止ヘッダー設定がオフになっていますが、キャンペーンの送信情報ではワンクリックリスト配信停止設定が「ワークスペースのデフォルトを使用」に設定されています。これはバグですか？ %}
+いいえ。ワークスペース設定がオフで、メッセージ設定が [**ワークスペースのデフォルトを使用**] に設定されている場合、Braze は [**メール設定**] で構成された内容に従います。これは、キャンペーンに対してワンクリック配信停止ヘッダーを追加しないことを意味します。
 {% enddetails %}
 
-{% details What happens if a subscription group is archived? Does this break the one-click unsubscribe on emails sent? %}
-ワンクリックの**送信**情報で参照したサブスクリプショングループがアーカイブ化されている場合、Brazeはワンクリックからの配信停止を引き続き処理する。サブスクリプショングループがダッシュボード（セグメンテーションフィルター、ユーザープロファイル、および同様のエリア）に表示されなくなった。
+{% details サブスクリプショングループがアーカイブされた場合はどうなりますか？送信済みメールのワンクリック配信停止は機能しなくなりますか？ %}
+ワンクリックの [**送信情報**] で参照されているサブスクリプショングループがアーカイブされても、Braze はワンクリックからの配信停止を処理し続けます。サブスクリプショングループは、ダッシュボード（Segment フィルター、ユーザープロファイル、および類似の領域）に表示されなくなります。
 {% enddetails %}
 
-{% details Is the one-click unsubscribe setting available for email templates? %}
-メールテンプレートは送信ドメインに割り当てられていないため、現在この機能を追加する予定はありません。Eメールテンプレートのこの機能に興味がある場合は、[製品フィードバックを]({{site.baseurl}}/user_guide/administrative/access_braze/portal/)送信する。
+{% details ワンクリック配信停止設定はメールテンプレートで利用できますか？ %}
+メールテンプレートは送信ドメインに割り当てられていないため、現在この機能を追加する予定はありません。メールテンプレートのこの機能に興味がある場合は、[製品フィードバック]({{site.baseurl}}/user_guide/administrative/access_braze/portal/)を送信してください。
 {% enddetails %}
 
-{% details Does this feature check that the one-click unsubscribe URL added to the custom option is valid? %}
-Braze ダッシュボードでは、リンクのチェックや検証は行っていません。ローンチする前に、URLをきちんとテストすること。
+{% details この機能は、カスタムオプションに追加されたワンクリック配信停止 URL が有効かどうかをチェックしますか？ %}
+Braze ダッシュボードでは、リンクのチェックや検証は行っていません。ローンチする前に、URL を十分にテストしてください。
 {% enddetails %}

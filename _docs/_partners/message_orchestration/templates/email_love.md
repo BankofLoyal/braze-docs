@@ -40,7 +40,7 @@ Select the frame you created and begin adding components (headers, content block
 
 Modify components using Figma's tools to adjust your text, images, colors, and layout elements to align the template's design with your brand. If you add a footer component, a Braze unsubscribe link will automatically be included when you export.
 
-![Customize compoments in Figma.]({% image_buster /assets/img/email_love/emaillove2_components.png %})
+![Customize components in Figma.]({% image_buster /assets/img/email_love/emaillove2_components.png %})
 
 ### Step 5: Export your email template to Braze
 
