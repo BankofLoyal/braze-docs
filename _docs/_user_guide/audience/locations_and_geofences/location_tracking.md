@@ -28,7 +28,13 @@ Braze detects user locations from the geolocated country using the IP address fr
 
 Previously, Braze used the country code from the device locale during SDK user creation and for the duration of the first session. Only after processing the first session start would the IP address be used for setting the more reliable country on the user. This meant that user country was set with greater accuracy only from the second session onward, only after the first session start was processed.
 
-Now, Braze uses the IP address to set the country value on user profiles created via the SDK, and that IP-based country setting is available during and after the first session.
+Now, Braze uses the IP address to set the country value on user profiles created through the SDK, and that IP-based country setting is available during and after the first session.
+
+#### Automatic location collection
+
+When enabled, automatic location collection in the SDK is separate from IP-based country behavior. It relates to device location signals such as GPS when the user has granted permission, which powers filters like `Most Recent Location`. It does not automatically populate fine-grained fields such as city from IP alone. 
+
+For city or postal-level targeting, use [`setLastKnownLocation()`]({{site.baseurl}}/developer_guide/analytics/tracking_location/) (see the SDK article for your platform), your own IP geolocation service writing custom attributes, or [Location targeting]({{site.baseurl}}/user_guide/audience/segments/location_targeting/) with the data you collect.
 
 ## Location targeting
 
