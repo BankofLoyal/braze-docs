@@ -26,7 +26,7 @@ You can add these tags as needed for your key-value pairs in the message body. H
 
 ## How message extras data is sent using Currents
 
-**Message extras** are key-value pairs attached at send time. Configuration depends on the channel—for email they are added via headers; for iOS push, they are included in the push payload. All supported send events surface the same `message_extras` field in Currents (and Snowflake) once the message is sent.
+**Message extras** are key-value pairs attached at send time. Configuration depends on the channel. For email, they are added using headers. For iOS push, they are included in the push payload. All supported send events surface the same `message_extras` field in Currents (and Snowflake) once the message is sent.
 
 ## Supported channels
 

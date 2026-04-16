@@ -237,7 +237,7 @@ Count, Percentage
 Count, Percentage
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Unique Clicks' %} This is tracked over a seven-day period for email and measured by <a href='/docs/help/help_articles/data/dispatch_id/'>dispatch_id</a>. This includes clicks on Braze-provided unsubscribe links. After those seven days, another unique click can count for the same user if they click again; Braze then relies on its own event stream rather than aggregate ESP stats for that window. To match dashboard counts from Currents, filter for events where `is_unique` is `true`.
+{% multi_lang_include analytics/metrics.md metric='Unique Clicks' %} This is tracked over a seven-day period for email and measured by <a href='/docs/help/help_articles/data/dispatch_id/'>dispatch_id</a>. This includes clicks on Braze-provided unsubscribe links. After seven days, another unique click can count for the same user if they click again. To match dashboard counts from Currents, filter for events where `is_unique` is `true`.
 
 {::nomarkdown}
 <span class="calculation-line">

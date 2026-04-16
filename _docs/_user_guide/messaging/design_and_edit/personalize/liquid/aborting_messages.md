@@ -16,7 +16,7 @@ If a message step is aborted in a Canvas, the user **will not** exit the Canvas 
 
 ## Test sends with `abort_message()`
 
-`abort_message()` stops the send for users who don't meet your condition—the message won't appear on their profile and won't count toward deliveries or frequency capping.
+`abort_message()` stops the send for users who don't meet your condition. The message won't appear on their profile and won't count toward deliveries or frequency capping.
 
 If test sends never arrive, preview as a user who satisfies the abort condition, then on **Test Send** enable **Override recipients' attributes with current preview user's attributes** (or add a Content Test Group member who qualifies).
 
