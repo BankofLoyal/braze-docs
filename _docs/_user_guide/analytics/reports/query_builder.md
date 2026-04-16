@@ -31,10 +31,6 @@ To run a Query Builder report:
 
 ![Query Builder showing the results for the templated query "Channel engagement and revenue for the last 30 days".]({% image_buster /assets/img_archive/query_builder.png %})
 
-### Results preview and CSV exports
-
-Each on-screen results table shows up to 1,000 rows. Depending on your Braze package and workspace settings, **Export** can download a CSV with up to 100,000 rows. If you need larger extracts, recurring exports, or longer retention than Query Builder provides, use [Braze Currents]({{site.baseurl}}/user_guide/data/distribution/braze_currents/) or [Snowflake Data Sharing]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/), or contact your customer success manager.
-
 Results from each report can be generated once a day. If you run the same report more than once in one calendar day, you'll see the same results in both reports.
 
 ### Query templates
