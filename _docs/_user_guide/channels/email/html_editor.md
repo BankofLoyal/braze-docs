@@ -106,7 +106,9 @@ A preview in the right-hand panel will populate with the sending information you
 
 #### Advanced
 
-Under **Sending Settings** > **Advanced**, turn on inline CSS and add personalization for email headers and email extras to send additional data back to other email service providers.
+Under **Sending Settings** > **Advanced**, turn on **inline CSS** for the widest client support. If messages clip or images stretch to row height, try turning inline CSS **off** temporarily. Some templates behave better without inlining.
+
+You can also add personalization for email headers and email extras to send additional data back to other email service providers.
 
 ##### Email headers
 
@@ -192,8 +194,6 @@ When you're ready for a final check, select **Test Send** and send a test messag
 
 If you see any issues with your email, or want to make any changes, select **Edit Email** to return to the editor.
 
-For more information, see [Send test messages]({{site.baseurl}}/user_guide/messaging/messaging_fundamentals/sending_test_messages/?tab=email).
-
 {% alert tip %}
 Email clients that support preview text always pull in enough characters to fill all available preview text space. However, this can leave you in situations where the preview text is incomplete or unoptimized.
 <br><br>To avoid this, you can create white space after your desired preview text so that email clients don't pull other distracting text or characters into the envelope content. To do so, add a chain of zero-width non-joiners (‌`&zwnj;`) and non-breaking spaces (`&nbsp;`) after the preview text that you want displayed. <br><br>When added to the end of your preview text in the preheader section, the following piece of code for the HTML editor will add the white space you're looking for:<br><br>
@@ -201,22 +201,24 @@ Email clients that support preview text always pull in enough characters to fill
 ```html
 <div style="display: none; max-height: 0px; overflow: hidden;">&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;</div>
 ```
-For the drag-and-drop editor, add only the zero-width non-joiners (‌`&zwnj;`) without the `<div>` formatting directly in the preheader in the **Sending Settings** section.
 
+For the drag-and-drop editor, add only the zero-width non-joiners (‌`&zwnj;`) without the `<div>` formatting directly in the preheader in the **Sending Settings** section.
 {% endalert %}
 
 ### Step 3.3: Check for email errors
 
-The editor flags the following errors before you send it:
+Before send, the editor flags common issues:
 
-- **From Display Name** and **Header** not specified together
-- Invalid **From** and **Reply-To** addresses
-- Duplicate **Header** keys
-- Liquid syntax problems
-- Email bodies larger than 400kb (bodies are highly recommended to be [smaller than 102kb]({{site.baseurl}}/user_guide/channels/email/best_practices/email_guidelines/#email-size))
-- Emails with a blank **Body** or **Subject**
-- Emails without an unsubscribe link
-- Email you're sending from is not allowlisted (sends will be highly limited to ensure deliverability)
+- From display name and header not set together
+- Invalid From or reply-to addresses
+- Duplicate header keys
+- Liquid syntax errors
+- Content Blocks that include a full `<!DOCTYPE html>`
+- Email body is over 400&nbsp;KB
+  - Aim for [less than 102&nbsp;KB]({{site.baseurl}}/user_guide/message_building_by_channel/email/best_practices/guidelines_and_tips/#email-size) to avoid clipping.
+- Blank body or subject
+- Missing unsubscribe link
+- From domain not allowlisted (sends heavily throttled)
 
 ## Step 4: Build the remainder of your campaign or Canvas
 
