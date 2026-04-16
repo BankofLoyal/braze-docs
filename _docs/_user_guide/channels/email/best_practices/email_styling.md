@@ -85,7 +85,10 @@ Here are some best practices to keep in mind when writing your preheaders:
 
 ## Email size
 
-Make sure to limit your email size. Email bodies larger than 102&nbsp;KB are not only extremely taxing on Braze servers, but they're also clipped by Gmail and other email clients. Try to keep the size of your email under 25&nbsp;KB for just text or 60&nbsp;KB with images. We highly encourage you to use our image uploader to host images and to reference these images by the `href`.
+Email size refers to the size of your message HTML in Braze (the body you build and what Braze adds when the message is sent). 
+
+- Make sure to limit your email size. Email bodies larger than 102&nbsp;KB are not only extremely taxing on Braze servers, but they're also clipped by Gmail and other email clients. 
+- Hosted images that you reference by URL are not embedded in the HTML the same way as pasting huge inline assets. We recommend using the [Media Library]({{site.baseurl}}/user_guide/messaging/design_and_edit/media_library/) and linking by `href` helps keep the message smaller.
 
 |   Text Only   | Text with images |     Email width    |
 |:-------------:|:----------------:|:------------------:|
@@ -96,8 +99,9 @@ Make sure to limit your email size. Email bodies larger than 102&nbsp;KB are not
 To save your email campaign or template, make sure your email body does not exceed 400&nbsp;KB.
 {% endalert %}
 
-Note the following features and their estimated additions:
+### What can add to the final email size?
 
+These features increase the rendered message size by small amounts:
 - Open tracking pixel: Adds a 1 x 1&nbsp;px image tag to the message body
 - Preheader: Adds a hidden `<div>` added at the top of the body
 - Link aliasing: Appends a 16-character query parameter (`lid=`) to each tracked URL
