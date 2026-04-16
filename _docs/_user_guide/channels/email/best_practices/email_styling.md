@@ -14,7 +14,7 @@ channel: email
 
 ## Address styling
 
-The **Subject Line** is one of the first things that recipients will see upon receiving your message. Keeping it to 6 to 10 words will yield the highest open rates. 
+The subject line is one of the first things that recipients will see upon receiving your message. Keeping it to 6 to 10 words will yield the highest open rates. 
 
 There are also different approaches to creating a good subject line, ranging from asking a question to pique the reader's interest or being more direct, to personalizing it as to engage your clientele. Don't just stick with one subject line, leverage [A/B testing]({{site.baseurl}}/user_guide/messaging/ab_testing/#what-are-multivariate-and-ab-testing/) to try new ones out and gauge their effectiveness. Subject lines should be no more than 35 characters to display appropriately on mobile.
 
@@ -56,7 +56,7 @@ Here are some best practices to keep in mind when writing your preheaders:
 
 ### Preheader character limits
 
-  |   Mobile Email Client  |  Limit  |
+  |   Mobile email client  |  Limit  |
   |:----------------------:|:-------:|
   | iOS Outlook            | 74      |
   | Android Native         | 43      |
@@ -65,7 +65,7 @@ Here are some best practices to keep in mind when writing your preheaders:
   | iOS Gmail              | 30      |
   {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
-  |  Desktop Email Client  |  Limit  |
+  |  Desktop email client  |  Limit  |
   |:----------------------:|:-------:|
   | Apple Mail             | 33      |
   | Outlook '13            | 38      |
@@ -74,7 +74,7 @@ Here are some best practices to keep in mind when writing your preheaders:
   {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
 
-  |  Webmail Email Client  |  Limit  |
+  |  Webmail email client  |  Limit  |
   |:----------------------:|:-------:|
   | AOL Mail               | 81      |
   | Gmail                  | 119     |
@@ -87,7 +87,7 @@ Here are some best practices to keep in mind when writing your preheaders:
 
 Make sure to limit your email size. Email bodies larger than 102&nbsp;KB are not only extremely taxing on Braze servers, but they're also clipped by Gmail and other email clients. Try to keep the size of your email under 25&nbsp;KB for just text or 60&nbsp;KB with images. We highly encourage you to use our image uploader to host images and to reference these images by the `href`.
 
-|   Text Only   | Text With Images |     Email Width    |
+|   Text Only   | Text with images |     Email width    |
 |:-------------:|:----------------:|:------------------:|
 | 25&nbsp;KB maximum |   60&nbsp;KB maximum   | 600 pixels maximum |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 role="presentation" }
@@ -96,11 +96,21 @@ Make sure to limit your email size. Email bodies larger than 102&nbsp;KB are not
 To save your email campaign or template, make sure your email body does not exceed 400&nbsp;KB.
 {% endalert %}
 
+Note the following features and their estimated additions:
+
+- Open tracking pixel: Adds a 1 x 1&nbsp;px image tag to the message body
+- Preheader: Adds a hidden `<div>` added at the top of the body
+- Link aliasing: Appends a 16-character query parameter (`lid=`) to each tracked URL
+- Link templates: Appends any query parameters configured in the dashboard to matching URLs 
+- CSS inlining (optional): Applies embedded stylesheet rules inline to HTML elements, which may add redundant CSS depending on stylesheet complexity
+
+The preheader and tracking pixel add roughly 600 characters (less than 1&nbsp;KB). Braze typically adds between 0 to 5&nbsp;KB depending on the number of links, link template complexity, and whether CSS inlining is enabled. If your email size is near the limit, we recommend testing emails before sending since the final rendered size depends on these inputs.
+
 ## Text length
 
 Refer to the following table for recommended text lengths.
 
-| Text Specifications | Recommended Properties |
+| Text specifications | Recommended properties |
 | --- | --- |
 | Subject Line Length | 35 characters maximum (for optimal mobile display) (6 to 10 words) |
 | Sender Name Length | 25 characters maximum (for optimal mobile display) |
@@ -111,7 +121,7 @@ Refer to the following table for recommended text lengths.
 
 Refer to the following table for recommended image sizes. Smaller, high-quality images will load faster, so use the smallest asset possible to achieve your desired output.
 
-|     Size    | Header Image Width |  Body Image Width  |   File Types  |
+|     Size    | Header image width |  Body image width  |   File types  |
 |:-----------:|:------------------:|:------------------:|:-------------:|
 | 5&nbsp;MB maximum | 600 pixels maximum | 480 pixels maximum | PNG, JPEG, GIF |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 .reset-td-br-4 role="presentation" }
@@ -136,5 +146,5 @@ If you need to use the same Content Block in areas with different backgrounds (f
 If you prefer to drag the Content Block into the email as a row, you can set the row column background to transparent to override the global background.
 
 {% alert note %}
-Dragging a Content Block in as a row inserts a pre-rendered snapshot, which will not automatically update if the source Content Block changes.
+Dragging a Content Block in as a row inserts a pre-rendered snapshot, which does not automatically update if the source Content Block changes.
 {% endalert %}
