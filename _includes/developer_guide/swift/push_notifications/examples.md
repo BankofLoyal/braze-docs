@@ -141,7 +141,7 @@ As seen in the example, you may also include an image in your push notification.
 
 ### Handling button actions
 
-Each action button is uniquely identified. The code checks if your response identifier is equal to the `actionIndentifier`, and if so, knows that the user clicked the action button.
+Each action button is uniquely identified. The code checks if your response identifier is equal to the `actionIdentifier`, and if so, knows that the user clicked the action button.
 
 **Handling Push Notification Action Button Responses**<br>
 

@@ -1,7 +1,7 @@
 ---
 nav_title: WhatsApp
 article_title: WhatsApp
-page_order: 5
+page_order: 9
 layout: dev_guide
 channel:
   - WhatsApp
@@ -31,7 +31,7 @@ guide_featured_list:
 - name: "Générateur de modèles WhatsApp"
   link: /docs/whatsapp_template_builder/
   image: /assets/img/braze_icons/layout-alt-04.svg
-- name: "Reciblage utilisateur"
+- name: "Reciblage des utilisateurs"
   link: /docs/user_guide/message_building_by_channel/whatsapp/whatsapp_campaign/user_retargeting/
   image: /assets/img/braze_icons/users-01.svg
 - name: "Abonnements et désabonnements"
@@ -42,7 +42,7 @@ guide_featured_list:
   image: /assets/img/braze_icons/message-chat-circle.svg
 - name: "Gestion des numéros de téléphone inconnus"
   link: /docs/user_guide/message_building_by_channel/whatsapp/message_processing/handling_unknown_numbers/
-- name: "Expérience de marketing WhatsApp"
+- name: "Expérience marketing WhatsApp"
   link: /docs/user_guide/message_building_by_channel/whatsapp/meta_resources/#faq
   image: /assets/img/braze_icons/beaker-02.svg
 - name: "Rapports WhatsApp"

@@ -114,6 +114,7 @@ Atualmente, a Braze hospeda todos os dados em nível de usuário nestas regiões
 
  - US East-1
  - EU-Central (Frankfurt)
+ - AP-Northeast-1 (Tokyo)
  - AP-Southeast-2 (Sydney)
  - AP-Southeast-3 (Jakarta)
  

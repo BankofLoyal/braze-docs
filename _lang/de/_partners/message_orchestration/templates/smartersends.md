@@ -54,7 +54,7 @@ Mit der Integration von Braze und SmarterSends können Sie die Vorteile des vert
 - `segments.data_series`
 - `segments.details`
 - `sends.data_series`
-4. Fügen Sie die SmarterSends IP-Adresse zum Abschnitt **Whislist IPs** hinzu.
+4. Fügen Sie die SmarterSends IP-Adresse zum Abschnitt **Whitelist IPs** hinzu.
 5. Klicken Sie auf **API-Schlüssel speichern**.
 6. Kopieren Sie den API-Schlüssel mit den entsprechenden Berechtigungen und fügen Sie ihn in die Einstellungen des **Braze E-Mail Service Providers** in SmarterSends ein.
 

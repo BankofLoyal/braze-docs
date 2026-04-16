@@ -5,7 +5,7 @@ search_tag: Endpunkt
 page_order: 4
 layout: api_page
 page_type: reference
-description: "Dieser Artikel beschreibt die Details des Braze-Endpunkts „Canvas-Details exportieren"."
+description: "Dieser Artikel beschreibt die Details des Braze-Endpunkts „Canvas-Details exportieren“."
 
 ---
 {% api %}

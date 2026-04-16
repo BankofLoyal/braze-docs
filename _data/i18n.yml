@@ -1,11 +1,10 @@
 en:
   next: NEXT
   previous: PREVIOUS
-  popular_topic: Popular Topics
-  helpful_resources: Helpful Resources
+  popular_topic: Popular topics
+  helpful_resources: Helpful resources
   braze_status: BRAZE SYSTEM STATUS
   braze_status_check: Checking Braze Status
-  edit_github: Edit this page on GitHub
   page_nav_title: On this page
   helpful: "HOW HELPFUL WAS THIS PAGE?"
 fr:
@@ -15,7 +14,6 @@ fr:
   helpful_resources: Ressources utiles
   braze_status: ÉTAT DU SYSTÈME BRAZE
   braze_status_check: Vérification du statut Braze
-  edit_github: Modifier cette page sur GitHub
   page_nav_title: Sur cette page
   helpful: "CETTE PAGE A-T-ELLE ÉTÉ UTILE?"
   translation_banner: "Cette page a été traduite automatiquement et peut contenir des inexactitudes. Pour signaler une erreur de traduction,"
@@ -27,7 +25,6 @@ ja:
   helpful_resources: 役立つリソース
   braze_status: BRAZE システム ステータス
   braze_status_check: Braze ステータスの確認
-  edit_github: GitHub でこのページを編集
   page_nav_title: このページについて
   helpful: 「このページはどの程度役に立ちましたか?」
   translation_banner: "このページはAIにより自動翻訳されており、不正確な内容が含まれている可能性があります。翻訳の誤りを報告するには、"
@@ -39,7 +36,6 @@ ko:
   help_resources: 유용한 리소스
   braze_status: 브레이즈 시스템 상태
   braze_status_check: 브레이즈 상태 확인
-  edit_github: GitHub 에서 이 페이지를 편집합니다.
   page_nav_title: 이 페이지에
   helpful: "이 페이지가 얼마나 도움이 되었나요?"
   translation_banner: "이 페이지는 AI로 자동 번역되었으며 부정확한 내용이 포함될 수 있습니다. 번역 오류를 신고하려면"
@@ -51,7 +47,6 @@ pt-br:
   helpful_resources: Recursos úteis
   braze_status: STATUS DO SISTEMA BRAZE
   braze_status_check: Verificando o status do Braze
-  edit_github: Editar esta página no GitHub
   page_nav_title: Nesta página
   helpful: "QUÃO ÚTIL FOI ESTA PÁGINA?"
   translation_banner: "Esta página foi traduzida automaticamente e pode conter imprecisões. Para relatar um erro de tradução,"
@@ -63,7 +58,6 @@ es:
   helpful_resources: Recursos útiles
   braze_status: ESTADO DEL SISTEMA BRAZE
   braze_status_check: Verificación del estado de Braze
-  edit_github: Editar esta página en GitHub
   page_nav_title: En esta página
   helpful: "¿QUÉ TAN ÚTIL FUE ESTA PÁGINA?"
   translation_banner: "Esta página fue traducida automáticamente y puede contener errores. Para reportar un error de traducción,"
@@ -75,7 +69,6 @@ de:
   useful_resources: Hilfreiche Ressourcen
   braze_status: BRAZE-SYSTEMSTATUS
   braze_status_check: Braze-Status wird geprüft
-  edit_github: Diese Seite auf GitHub bearbeiten
   page_nav_title: Auf dieser Seite
   useful: "WIE HILFREICH WAR DIESE SEITE?"
   translation_banner: "Diese Seite wurde automatisch übersetzt und kann Ungenauigkeiten enthalten. Um einen Übersetzungsfehler zu melden,"

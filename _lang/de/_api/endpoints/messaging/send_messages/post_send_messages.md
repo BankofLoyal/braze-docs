@@ -5,7 +5,7 @@ search_tag: Endpoint
 page_order: 4
 layout: api_page
 page_type: reference
-description: "Dieser Artikel beschreibt die Details des Braze-Endpunkts „Nachrichten sofort nur über die API senden"."
+description: "Dieser Artikel beschreibt die Details des Braze-Endpunkts „Nachrichten sofort nur über die API senden“."
 
 ---
 {% api %}

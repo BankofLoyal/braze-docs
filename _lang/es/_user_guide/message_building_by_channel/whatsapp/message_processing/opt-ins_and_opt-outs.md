@@ -112,7 +112,7 @@ Actualice el perfil del usuario utilizando uno de los métodos descritos en [Gru
 
 Dentro del creador de plantillas de mensajes de WhatsApp, puedes incluir la opción de "exclusión de marketing". Cada vez que incluya esto, asegúrese de que la plantilla se utiliza en un Canvas con un paso posterior para un cambio de grupo de suscripción. 
 
-1. Cree una plantilla de mensaje con la respuesta rápida "marketing opt-out".<br>![Plantilla de mensaje con una opción de pie de página de "Exclusión voluntaria de marketing"]({% image_buster /assets/img/whatsapp/whatsapp121.png %})<br><br>![Sección para configurar un botón de oopt-out de marketing.]({% image_buster /assets/img/whatsapp/whatsapp122.png %})<br><br>
+1. Cree una plantilla de mensaje con la respuesta rápida "marketing opt-out".<br>![Plantilla de mensaje con una opción de pie de página de "Exclusión voluntaria de marketing"]({% image_buster /assets/img/whatsapp/whatsapp121.png %})<br><br>![Sección para configurar un botón de opt-out de marketing.]({% image_buster /assets/img/whatsapp/whatsapp122.png %})<br><br>
 2. Crea un Canvas que utilice esta plantilla de mensaje.<br><br>
 3. Sigue los pasos del ejemplo anterior pero con el texto desencadenante "DETENER PROMOCIONES".<br><br>
 4. Actualice el estado de suscripción del usuario utilizando uno de los métodos descritos en [Grupos de suscripción]({{site.baseurl}}/user_guide/message_building_by_channel/whatsapp/user_subscription/#update-subscription-status).

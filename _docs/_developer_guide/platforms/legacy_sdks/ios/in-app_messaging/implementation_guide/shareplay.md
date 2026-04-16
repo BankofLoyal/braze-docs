@@ -83,7 +83,7 @@ func configureVideoPlayer() {
 
 #### Dashboard configuration
 
-**Key-Value Pairs**: The video file must be set in the key-value pairs on the in-app message and cannot be attached to the media item itself. You can also add URL validity checking in `beforeInAppMesageDisplayed` as a guardrail before displaying the content.
+**Key-Value Pairs**: The video file must be set in the key-value pairs on the in-app message and cannot be attached to the media item itself. You can also add URL validity checking in `beforeInAppMessageDisplayed` as a guardrail before displaying the content.
 
 **Triggering**: The in-app message should be eligible for all users with re-eligibility enabled. This can be done by setting two triggers, a default trigger to launch the message and another to launch the message when initiated from SharePlay. Users not on iOS 15 will only be able to view messages locally. 
 

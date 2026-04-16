@@ -75,7 +75,7 @@ A maneira mais direta de usar imagens e vídeos diretamente do DAM do Cloudinary
 Consulte o [vídeo]({{site.baseurl}}/user_guide/message_building_by_channel/in-app_messages/traditional/customize/video/) para obter considerações específicas sobre Android e iOS. 
 
 {% endtab %}
-{% tab Convert videoes into GIFs %}
+{% tab Convert videos into GIFs %}
 
 ## Converta vídeos em GIFs para envio de e-mail
 

@@ -83,7 +83,7 @@ func configureVideoPlayer() {
 
 #### Configuração do dashboard
 
-**Pares de chave/valor:** O arquivo de vídeo deve ser configurado nos pares de chave-valor na mensagem no app e não pode ser anexado ao item de mídia em si. Você também pode adicionar a verificação de validade de URL em `beforeInAppMesageDisplayed` como um verificador de integridade antes de exibir o conteúdo.
+**Pares de chave/valor:** O arquivo de vídeo deve ser configurado nos pares de chave-valor na mensagem no app e não pode ser anexado ao item de mídia em si. Você também pode adicionar a verificação de validade de URL em `beforeInAppMessageDisplayed` como um verificador de integridade antes de exibir o conteúdo.
 
 **Disparo:** A mensagem no app deve ser elegível para todos os usuários com re-eligibilidade ativada. Isso pode ser feito configurando dois gatilhos: um gatilho padrão para disparar a mensagem, e outro para disparar a mensagem quando iniciada pelo SharePlay. Usuários de versões anteriores ao iOS 15 apenas visualizarão as mensagens. 
 

@@ -86,7 +86,7 @@ Sustituye lo siguiente:
 
 #### Enlace a la página web de Punchh
 
-Para enlazar con una página web alojada en Puncch, añada `{% raw %}{{jwt}}{% endraw %}` a la URL de generación dinámica [que creó anteriormente](#step-1-create-a-coupon-campaign-in-punchh). Su enlace debe ser similar al siguiente: 
+Para enlazar con una página web alojada en Punchh, añada `{% raw %}{{jwt}}{% endraw %}` a la URL de generación dinámica [que creó anteriormente](#step-1-create-a-coupon-campaign-in-punchh). Su enlace debe ser similar al siguiente: 
 
 {% raw %}
 ```

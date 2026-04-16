@@ -2,7 +2,7 @@
 nav_title: Kanalfilter
 article_title: Intelligenter Kanalfilter
 page_order: 1.5
-description: "Dieser Artikel behandelt den Intelligenten Kanalfilter, einen Filter, der den Teil Ihrer Zielgruppe auswählt, für den der ausgewählte Messaging-Kanal der beste Kanal ist. In diesem Fall bedeutet „am besten" die höchste Wahrscheinlichkeit für ein Engagement angesichts des Verlaufs der Nutzer:innen."
+description: "Dieser Artikel behandelt den Intelligenten Kanalfilter, einen Filter, der den Teil Ihrer Zielgruppe auswählt, für den der ausgewählte Messaging-Kanal der beste Kanal ist. In diesem Fall bedeutet „am besten“ die höchste Wahrscheinlichkeit für ein Engagement angesichts des Verlaufs der Nutzer:innen."
 search_rank: 11
 ---
 

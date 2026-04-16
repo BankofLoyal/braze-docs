@@ -1,17 +1,9 @@
-{% if include.section == "Prerequisites" %}
-## Voraussetzungen
+{% if include.section == "multi-language prerequisites" %}
 
-Um [die Mehrsprachenunterstützung]({{site.baseurl}}/multi_language_support/) zu bearbeiten und zu verwalten, benötigen Sie die folgenden [Nutzer:innen-Berechtigungen]({{site.baseurl}}/user_guide/administrative/app_settings/manage_your_braze_users/user_permissions/) für Ihren Workspace:
-
-- Lokalisierungseinstellungen anzeigen
-- Lokalisierungseinstellungen bearbeiten
-- Lokalisierungseinstellungen löschen
-
-Um die Ländereinstellung zu einer Nachricht hinzuzufügen, benötigen Sie die Berechtigung „Kampagnen bearbeiten".
-
-{% alert important %}
-Die Mehrsprachenunterstützung befindet sich derzeit im Early Access. Kontaktieren Sie Ihren Braze Account Manager, wenn Sie an der Early-Access-Phase teilnehmen möchten.
-{% endalert %}
+| Feature | Erforderliche Nutzer:innen-Berechtigungen |
+| --- | --- |
+| Mehrsprachige Lokalisierungen | Sie benötigen die folgenden Berechtigungen, um mehrsprachige Lokalisierungen zu erstellen und zu verwalten:<br><br> {::nomarkdown}Granulare Berechtigungen: <ul><li>Lokalisierungseinstellungen bearbeiten</li><li>Lokalisierungseinstellungen löschen</li></ul> Legacy-Berechtigungen: <ul><li> Mehrsprachige Einstellungen verwalten</li></ul>{:/} |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
 {% endif %}
 

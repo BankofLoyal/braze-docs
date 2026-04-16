@@ -21,6 +21,20 @@ description: "이 문서에서는 라이브 활동 시작 엔드포인트에 대
 
 `content-available`이 설정되지 않은 경우 기본 Apple 푸시 알림 서비스(APNs) 우선순위는 10입니다. `content-available`이 설정된 경우 이 우선순위는 5입니다. 자세한 내용은 [Apple push object]({{site.baseurl}}/api/objects_filters/messaging/apple_object)를 참조하세요.
 
+{% alert tip %}
+라이브 활동을 종료하려면 [`/messages/live_activity/update`]({{site.baseurl}}/api/endpoints/messaging/live_activity/update/) 엔드포인트에서 `end_activity`를 `true`로 설정하여 사용하세요.
+{% endalert %}
+
+## 자동 해제 설정
+
+라이브 활동이 시작된 후 자동 해제를 설정하려면 백엔드에서 업데이트 엔드포인트로 후속 요청을 예약하세요.
+
+1. 나중에 재사용할 수 있는 `activity_id`와 함께 `/messages/live_activity/start` 요청을 보냅니다.
+2. 해당 `activity_id`와 목표 종료 시간을 백엔드 스케줄러에 저장합니다.
+3. 목표 종료 시간에 `end_activity`를 `true`로 설정하여 `/messages/live_activity/update` 요청을 보냅니다.
+4. 동일한 업데이트 요청에서 해제 동작을 구성합니다. 자세한 내용은 [`/messages/live_activity/update`]({{site.baseurl}}/api/endpoints/messaging/live_activity/update/) 엔드포인트를 참조하세요.
+5. [메시지 활동 로그]({{site.baseurl}}/user_guide/administrative/app_settings/message_activity_log_tab/)에서 전송 및 결과 이벤트를 확인합니다.
+
 {% apiref postman %}https://documenter.getpostman.com/view/4689407/SVYrsdsG?version=latest#2300226e-f26a-4154-9bcc-5883f1f294cd {% endapiref %}
 
 ## 필수 조건
@@ -45,7 +59,6 @@ description: "이 문서에서는 라이브 활동 시작 엔드포인트에 대
   "activity_attributes_type": "(required, string) The activity attributes type you define within `liveActivities.registerPushToStart` in your app",
   "activity_attributes": "(required, object) The static attribute values for the activity type (such as the sports team names, which don't change)",
   "content_state": "(required, object) You define the ContentState parameters when you create your Live Activity. Pass the updated values for your ContentState using this object. The format of this request must match the shape you initially defined.",
-  "dismissal_date": "(optional, datetime in ISO-8601 format) The time to remove the Live Activity from the user’s UI. If this time is in the past, the Live Activity will be removed immediately.",
   "stale_date": "(optional, datetime in ISO-8601 format) The time the Live Activity content is marked as outdated in the user’s UI.",
   "notification": "(required, object) Include an `apple_push` object to define a push notification that creates an alert for the user, displayed on paired watchOS devices. Should include `notification.alert.title` and `notification.alert.body`",
   // One of the following:
@@ -63,8 +76,7 @@ description: "이 문서에서는 라이브 활동 시작 엔드포인트에 대
 | `activity_id` | 필수 | 문자열  | 커스텀 문자열을 `activity_id`로 정의합니다. 라이브 활동에 업데이트 또는 종료 이벤트를 보내려는 경우 이 ID를 사용합니다.  |
 | `activity_attributes_type`  | 필수 | 문자열 | 앱의 `liveActivities.registerPushToStart` 내에서 정의하는 활동 속성 유형입니다.  |
 | `activity_attributes` | 필수 | 오브젝트  | 활동 유형에 대한 정적 속성 값(예: 변경되지 않는 스포츠 팀 이름)입니다. |
-| `content_state` | 필수 | 오브젝트  | 라이브 활동을 만들 때 `ContentState` 매개변수를 정의합니다. 이 오브젝트를 사용하여 `ContentState`에 대해 업데이트된 값을 전달합니다.<br><br>이 요청의 형식은 처음에 정의한 형태와 일치해야 합니다. |
-| `dismissal_date` | 선택 사항 | 날짜/시간 <br>([ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) 문자열) | 이 매개변수는 사용자 UI에서 라이브 활동을 제거할 시간을 정의합니다.<br><br>이 해제 날짜는 `end_activity`가 `true`인 `/messages/live_activity/update` 요청을 수신한 후에 적용됩니다. |
+| `content_state` | 필수 | 오브젝트  | 라이브 활동을 만들 때 `ContentState` 매개변수를 정의합니다. 이 오브젝트를 사용하여 `ContentState`의 업데이트된 값을 전달합니다.<br><br>이 요청의 형식은 처음에 정의한 형태와 일치해야 합니다. |
 | `stale_date` | 선택 사항 | 날짜/시간 <br>([ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) 문자열) | 이 매개변수는 라이브 활동 콘텐츠가 사용자 UI에서 오래된 것으로 표시되는 시점을 시스템에 알려줍니다. |
 | `notification` | 필수 | 오브젝트 | [`apple_push`]({{site.baseurl}}/api/objects_filters/messaging/apple_object/) 오브젝트를 포함하여 푸시 알림을 정의합니다. 이 푸시 알림의 동작은 사용자가 활성 상태인지 또는 프록시 기기를 사용 중인지에 따라 다릅니다. {::nomarkdown}<ul><li><code>notification</code>이 포함되어 있고 업데이트가 전달될 때 사용자가 iPhone에서 활성 상태이면, 업데이트된 라이브 활동 UI가 아래로 슬라이드되어 푸시 알림처럼 표시됩니다.</li><li><code>notification</code>이 포함되어 있고 사용자가 iPhone에서 활성 상태가 아니면, 잠금 화면에 업데이트된 라이브 활동 UI가 표시되도록 화면이 켜집니다.</li><li><code>notification alert</code>는 표준 푸시 알림으로 표시되지 않습니다. 또한 사용자에게 Apple Watch와 같은 프록시 기기가 있는 경우에는 <code>alert</code>가 해당 기기에 표시됩니다.</li></ul>{:/} |
 | `external_user_ids` | `segment_id` 또는 `audience` 제공 시 선택 사항 | 문자열 배열 | [외부 사용자 ID]({{site.baseurl}}/api/objects_filters/user_attributes_object/#braze-user-profile-fields)를 참조하세요. 최대 50개의 외부 사용자 ID.  |
@@ -90,7 +102,6 @@ curl --location --request POST 'https://rest.iad-01.braze.com/messages/live_acti
         "team1Name": "Chiefs",
         "team2Name": "Bills"
     },
-    "dismissal_date": "2024-01-22T00:00:00+0000",
     "stale_date": "2024-01-22T16:55:49+0000",
     "notification": {
         "alert": {

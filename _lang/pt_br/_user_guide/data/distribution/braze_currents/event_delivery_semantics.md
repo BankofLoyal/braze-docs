@@ -10,9 +10,9 @@ tool: Currents
 
 # Semântica de entrega de eventos
 
-> Esta página descreve e define como a Currents gerencia os dados de eventos de arquivo simples que enviamos aos parceiros do Data Warehouse Storage.
+> Esta página descreve e define como o Currents gerencia os dados de eventos de arquivo simples que enviamos aos parceiros do Data Warehouse Storage.
 
-O Currents for Data Storage é um fluxo contínuo de dados de nossa plataforma para um bucket de armazenamento em uma das [conexões de nossos parceiros de data warehouse]({{site.baseurl}}/user_guide/data/braze_currents/available_partners/). O Currents grava arquivos Avro em seu bucket de armazenamento em limites regulares, permitindo que você processe e analise os dados do evento usando seu próprio conjunto de ferramentas de Business Intelligence.
+O Currents for Data Storage é um fluxo contínuo de dados da nossa plataforma para um bucket de armazenamento em uma das [conexões de nossos parceiros de data warehouse]({{site.baseurl}}/user_guide/data/braze_currents/available_partners/). O Currents grava arquivos Avro no seu bucket de armazenamento em intervalos regulares, permitindo que você processe e analise os dados do evento usando seu próprio conjunto de ferramentas de business intelligence (BI).
 
 {% alert important %}
 Note que esse conteúdo **se aplica apenas aos dados de eventos de arquivo simples que enviamos aos parceiros do Data Warehouse Storage (Google Cloud Storage, Amazon S3 e Microsoft Azure Blob Storage)**. <br><br>Para obter o conteúdo que se aplica a outros parceiros, consulte nossa lista de [parceiros disponíveis]({{site.baseurl}}/user_guide/data/braze_currents/available_partners/) e verifique suas respectivas páginas.
@@ -20,27 +20,27 @@ Note que esse conteúdo **se aplica apenas aos dados de eventos de arquivo simpl
 
 ## Eventos de teste
 
-Quando você configura uma integração Currents, clique **Enviar Eventos de Teste** para verificar a conexão com seu bucket de armazenamento. Esses eventos de teste validam se sua integração pode receber e processar dados corretamente.
+Quando você configura uma integração do Currents, clique em **Enviar Eventos de Teste** para verificar a conexão com seu bucket de armazenamento. Esses eventos de teste validam se sua integração pode receber e processar dados corretamente.
 
 {% alert important %}
 **Formato dos dados do evento de teste:** Eventos de teste contêm valores de espaço reservado que correspondem aos tipos de dados corretos para cada campo, mas não contêm dados realistas ou precisos. Por exemplo, um campo `timezone` pode conter uma string semelhante a UUID em vez de um identificador de fuso horário válido (como "America/Chicago"), e outros campos como `campaign_name` e `ip_pool` também podem conter valores de espaço reservado em vez de dados reais.<br>
 
-Esse é o comportamento esperado. Eventos de teste são principalmente para testar a conexão e a configuração da integração, não para validar a precisão dos dados. Para ver eventos reais com dados precisos, use uma integração Currents de teste para enviar dados de eventos reais através do seu pipeline.
+Esse é o comportamento esperado. Eventos de teste servem principalmente para testar a conexão e a configuração da integração, não para validar a precisão dos dados. Para ver eventos reais com dados precisos, use uma integração do Currents de teste para enviar dados de eventos reais pelo seu pipeline.
 {% endalert %}
 
 ## Entrega pelo menos uma vez
 
-Como um sistema de alto rendimento, o Currents oferece uma entrega de eventos "pelo menos uma vez", o que significa que eventos duplicados podem ocasionalmente ser gravados em seu bucket de armazenamento. Isso pode ocorrer quando os eventos são reprocessados de nossa fila por qualquer motivo.
+Como um sistema de alto rendimento, o Currents oferece uma entrega de eventos "pelo menos uma vez", o que significa que eventos duplicados podem ocasionalmente ser gravados no seu bucket de armazenamento. Isso pode ocorrer quando os eventos são reprocessados da nossa fila por qualquer motivo.
 
-Se os seus casos de uso exigirem uma entrega exatamente única, você poderá usar o campo identificador exclusivo que é enviado com cada evento (`id`) para desduplicar os eventos. Como o arquivo sai do nosso controle quando é gravado no seu bucket de armazenamento, não temos como garantir a deduplicação do nosso lado.
+Se os seus casos de uso exigirem uma entrega "exatamente uma vez", você poderá usar o campo de identificador exclusivo que é enviado com cada evento (`id`) para desduplicar os eventos. Como o arquivo sai do nosso controle quando é gravado no seu bucket de armazenamento, não temos como garantir a deduplicação do nosso lado.
 
 ## Carimbos de data/hora
 
-Todos os registros de data e hora exportados pelo Currents são enviados no fuso horário UTC. Para alguns eventos em que está disponível, também é incluído um campo de fuso horário, que fornece o formato IANA (Internet Assigned Numbers Authority) do fuso local do usuário no momento do evento.
+Todos os carimbos de data/hora exportados pelo Currents são enviados no fuso horário UTC. Para alguns eventos em que está disponível, também é incluído um campo de fuso horário, que fornece o formato IANA (Internet Assigned Numbers Authority) do fuso horário local do usuário no momento do evento.
 
 ### Latência
 
-Os eventos enviados ao Braze por meio do SDK ou da API podem incluir um registro de data e hora do passado. O exemplo mais notável é quando os dados do SDK são enfileirados, por exemplo, quando não há conectividade móvel. Nesse caso, o registro de data e hora do evento refletirá quando o evento foi gerado. Isso significa que uma porcentagem de eventos parecerá ter alta latência.
+Os eventos enviados à Braze por meio do SDK ou da API podem incluir um carimbo de data/hora do passado. O exemplo mais notável é quando os dados do SDK são enfileirados, por exemplo, quando não há conectividade móvel. Nesse caso, o carimbo de data/hora do evento refletirá quando o evento foi gerado. Isso significa que uma porcentagem de eventos parecerá ter alta latência.
 
 ## Formato Apache Avro
 
@@ -48,39 +48,47 @@ As integrações de armazenamento de dados do Braze Currents geram dados no form
 
 - O Avro é suportado por quase todos os principais data warehouses.
 - Caso deseje deixar seus dados no S3, o Avro compacta melhor do que CSV e JSON, portanto, você paga menos pelo armazenamento e pode usar menos CPU para analisar os dados.
-- O Avro requer esquemas quando os dados são gravados ou lidos. Os esquemas podem ser desenvolvidos ao longo do tempo para lidar com a adição de campos sem quebras.
+- O Avro requer esquemas quando os dados são gravados ou lidos. Os esquemas podem evoluir ao longo do tempo para lidar com a adição de campos sem quebras.
 
 O Currents criará um arquivo para cada tipo de evento usando o seguinte formato:
 
 ```
-<your-bucket-prefix>/dataexport.<cluster-identifier>.<connection-type-identifier>.integration.<integration-id>/event_type=<event-type>/date=<date>/<schema-id>/<zone>/dataexport.<cluster-identifier>.<connection-type-identifier>.integration.<integration-id>+<partition>+<offset>.avro
+<your-bucket-prefix>/dataexport.<cluster-identifier>.<connection-type-identifier>.integration.<integration-id>/event_type=<event-type>/date=<date>/version=<currents_version>/<environment>/dataexport.<cluster-identifier>.<connection-type-identifier>.integration.<integration-id>+<partition>+<offset>.avro
 ```
 
 {% alert tip %}
-Não é possível ver o código por causa da barra de rolagem? Saiba como corrigir isso [aqui]({{site.baseurl}}/help/help_articles/docs/scroll_bar_overlap/).
+Não consegue ver o código por causa da barra de rolagem? Saiba como corrigir isso [aqui]({{site.baseurl}}/help/help_articles/docs/scroll_bar_overlap/).
 {% endalert %}
 
-|Segmento de nome de arquivo |Definição|
+Por exemplo, o caminho de um evento de envio de push pode ter esta aparência:
+
+```
+currents-export/dataexport.prod-01.S3.integration.69cadaaed2d51b7c75b1a3e5/event_type=users.messages.pushnotification.Send/date=2025-04-01-17/version=6/us-01/dataexport.prod-01.S3.integration.69cadaaed2d51b7c75b1a3e5+0+123456.avro
+```
+
+O segmento de caminho `version` é um valor inteiro simples da versão do Currents, como `version=6`.
+
+|Segmento do nome de arquivo |Definição|
 |---|---|
-| `<your-bucket-prefix>` | O conjunto de prefixos para essa integração do Currents. |
+| `<your-bucket-prefix>` | O prefixo definido para essa integração do Currents. |
 | `<cluster-identifier>` | Para uso interno da Braze. Será uma string como "prod-01", "prod-02", "prod-03" ou "prod-04". Todos os arquivos terão o mesmo identificador de cluster.|
 | `<connection-type-identifier>` | O identificador do tipo de conexão. As opções são "S3", "AzureBlob" ou "GCS". |
-| `<integration-id>` | A ID exclusiva para essa integração do Currents. |
+| `<integration-id>` | O ID exclusivo para essa integração do Currents. |
 | `<event-type>` | O tipo de evento no arquivo. |
-| `<date>` | A hora em que os eventos são enfileirados em nosso sistema para processamento no fuso horário UTC. Formatado como AAAA-MM-DD-HH. |
-| `<schema-id>` | Usado para versionar esquemas `.avro` para compatibilidade com versões anteriores e evolução do esquema. Inteiro. |
-| `<zone>` | Para uso interno da Braze. |
+| `<date>` | A hora em que os eventos são enfileirados no nosso sistema para processamento no fuso horário UTC. Formatado como AAAA-MM-DD-HH. |
+| `version=<currents_version>` | A versão do Currents para o caminho do pipeline. Esse valor é um inteiro simples, como `6`. |
+| `<environment>` | Para uso interno da Braze. |
 | `<partition>` | Para uso interno da Braze. Inteiro. |
 | `<offset>`| Para uso interno da Braze. Inteiro. Note que arquivos diferentes enviados dentro da mesma hora terão um parâmetro `<offset>` diferente. |
 {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
 
 {% alert tip %}
-As convenções de nomenclatura de arquivos podem mudar. A Braze recomenda pesquisar todas as chaves em seu bucket que têm um prefixo de <your-bucket-prefix>.
+As convenções de nomenclatura de arquivos podem mudar. A Braze recomenda pesquisar todas as chaves no seu bucket que tenham o prefixo &lt;your-bucket-prefix&gt;.
 {% endalert %}
 
 ### Limite de gravação Avro
 
-Em circunstâncias normais, a Braze gravará arquivos de dados em seu bucket de armazenamento a cada 5 minutos ou 15.000 eventos, o que ocorrer primeiro. Sob carga pesada, podemos gravar arquivos de dados maiores, com até 100.000 eventos por arquivo.
+Em circunstâncias normais, a Braze gravará arquivos de dados no seu bucket de armazenamento a cada 5 minutos ou 15.000 eventos, o que ocorrer primeiro. Sob carga pesada, podemos gravar arquivos de dados maiores, com até 100.000 eventos por arquivo.
 
 {% alert important %}
 O Currents nunca gravará arquivos vazios.
@@ -88,20 +96,20 @@ O Currents nunca gravará arquivos vazios.
 
 ### Alterações no esquema Avro
 
-De tempos em tempos, a Braze poderá fazer alterações no esquema Avro quando os campos forem adicionados, alterados ou removidos. Para nossos propósitos aqui, há dois tipos de alterações: de ruptura e de não ruptura. Em todos os casos, `<schema-id>` será avançado para indicar que o esquema foi atualizado. Os eventos Currents gravados no Azure Blob Storage, no Google Cloud Storage e no Amazon S3 gravarão o endereço `<schema-id>` na jornada. Por exemplo, `<your-bucket-name0>/<currents-integration-id>/<event-type>/<date-of-event>/<schema-id>/<environment>/<avro-file>`.
+De tempos em tempos, a Braze poderá fazer alterações no esquema Avro quando campos forem adicionados, alterados ou removidos. Para nossos propósitos aqui, há dois tipos de alterações: de ruptura e de não ruptura. Em todos os casos, a versão do caminho do Currents será avançada para indicar que o esquema foi atualizado. Os eventos do Currents gravados no Azure Blob Storage, no Google Cloud Storage e no Amazon S3 registram isso como `version=<currents_version>` no caminho. Por exemplo: `<your-bucket-prefix>/.../event_type=<event-type>/date=<date>/version=6/<environment>/...`.
 
-#### Alterações ininterruptas
+#### Alterações de não ruptura
 
-Quando um campo é adicionado ao esquema Avro, consideramos isso uma alteração ininterrupta. Os campos adicionados serão sempre campos Avro "opcionais" (por exemplo, com um valor padrão de `null`), portanto, eles "corresponderão" a esquemas mais antigos de acordo com a [especificação de resolução de esquemas Avro](http://avro.apache.org/docs/current/spec.html#schema+resolution). Essas adições não devem afetar os processos de extração, transformação e carga (ETL) existentes, pois o campo será simplesmente ignorado até que seja adicionado ao seu processo de ETL. 
+Quando um campo é adicionado ao esquema Avro, consideramos isso uma alteração de não ruptura. Os campos adicionados serão sempre campos Avro "opcionais" (por exemplo, com um valor padrão de `null`), portanto, eles "corresponderão" a esquemas mais antigos de acordo com a [especificação de resolução de esquemas Avro](http://avro.apache.org/docs/current/spec.html#schema+resolution). Essas adições não devem afetar os processos de extração, transformação e carga (ETL) existentes, pois o campo será simplesmente ignorado até que seja adicionado ao seu processo de ETL. 
 
 {% alert important %}
 Recomendamos que sua configuração de ETL seja explícita sobre os campos que processa para evitar a interrupção do fluxo quando novos campos forem adicionados.
 {% endalert %}
 
-Embora nos esforcemos para avisar com antecedência sobre todas as alterações, podemos incluir alterações ininterruptas no esquema a qualquer momento.
+Embora nos esforcemos para avisar com antecedência sobre todas as alterações, podemos incluir alterações de não ruptura no esquema a qualquer momento.
 
-#### Mudanças significativas
+#### Alterações de ruptura
 
-Quando um campo é removido ou alterado no esquema Avro, consideramos isso uma alteração de ruptura. As alterações de ruptura podem exigir modificações nos processos ETL existentes, pois os campos que estavam em uso podem não ser mais registrados como esperado.
+Quando um campo é removido ou alterado no esquema Avro, consideramos isso uma alteração de ruptura. As alterações de ruptura podem exigir modificações nos processos de ETL existentes, pois os campos que estavam em uso podem não ser mais registrados como esperado.
 
-Todas as alterações significativas no esquema serão comunicadas antes da alteração.
+Todas as alterações de ruptura no esquema serão comunicadas antes da alteração.

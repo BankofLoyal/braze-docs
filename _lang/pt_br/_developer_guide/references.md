@@ -21,6 +21,7 @@ Atualmente, alguns SDKs não possuem documentação de referência dedicada, mas
 | Android SDK       | [Documentação de referência](https://braze-inc.github.io/braze-android-sdk/kdoc/index.html)                                                                           | [Repositório GitHub](https://github.com/braze-inc/braze-android-sdk)      | [App de exemplo](https://github.com/braze-inc/braze-android-sdk/tree/master/samples)      |
 | Swift SDK         | [Documentação de referência](https://braze-inc.github.io/braze-swift-sdk/documentation/brazekit/braze)                                                                | [Repositório GitHub](https://github.com/braze-inc/braze-swift-sdk)            | [App de exemplo](https://github.com/braze-inc/braze-swift-sdk/tree/main/Examples)            |
 | Web SDK           | [Documentação de referência](https://js.appboycdn.com/web-sdk/latest/doc/modules/braze.html#initialize)                                                               | [Repositório GitHub](https://github.com/braze-inc/braze-web-sdk)              | [App de exemplo](https://github.com/braze-inc/braze-web-sdk/tree/master/sample-builds)              |
+| Javascript SDK           | [Documentação de referência](https://braze-inc.github.io/braze-javascript-sdk/)                                                               | [Repositório GitHub](https://github.com/braze-inc/braze-javascript-sdk/tree/main)              | N/D              |
 | Cordova SDK       | [Arquivo de declaração](https://github.com/braze-inc/braze-cordova-sdk/blob/master/www/BrazePlugin.js)                                      | [Repositório GitHub](https://github.com/braze-inc/braze-cordova-sdk)      | [App de exemplo](https://github.com/braze-inc/braze-cordova-sdk/tree/master/sample-project)      |
 | Flutter SDK       | [Documentação de referência](https://pub.dev/documentation/braze_plugin/latest/braze_plugin/)                                                   | [Repositório GitHub](https://github.com/braze-inc/braze-flutter-sdk)      | [App de exemplo](https://github.com/braze-inc/braze-flutter-sdk/tree/master/example)      |
 | React Native SDK  | [Arquivo de declaração](https://github.com/braze-inc/braze-react-native-sdk/blob/master/src/index.d.ts)                   | [Repositório GitHub](https://github.com/braze-inc/braze-react-native-sdk) | [App de exemplo](https://github.com/braze-inc/braze-react-native-sdk/tree/master/BrazeProject) |
@@ -37,8 +38,8 @@ Atualmente, alguns SDKs não possuem documentação de referência dedicada, mas
 
 Nosso aplicativo de teste no [repositório GitHub do Android SDK](https://github.com/braze-inc/braze-android-sdk) é chamado Droidboy. Siga estas instruções para criar uma cópia totalmente funcional dele junto com seu projeto.
 
-1. Crie um novo [espaço de trabalho]({{site.baseurl}}/developer_guide/platform_wide/app_group_configuration/#app-group-configuration) e anote a chave de identificação da API da Braze.<br><br>
-2. Copie seu ID de remetente FCM e a chave de identificação da API da Braze nos locais apropriados em `/droidboy/res/values/braze.xml` (entre as tags das strings denominadas `com_braze_push_fcm_sender_id` e `com_braze_api_key`, respectivamente).<br><br>
+1. Crie um novo [espaço de trabalho]({{site.baseurl}}/developer_guide/platform_wide/app_group_configuration/#app-group-configuration) e anote a chave identificadora de API da Braze.<br><br>
+2. Copie seu ID de remetente FCM e a chave identificadora de API da Braze nos locais apropriados em `/droidboy/res/values/braze.xml` (entre as tags das strings denominadas `com_braze_push_fcm_sender_id` e `com_braze_api_key`, respectivamente).<br><br>
 3. Copie a chave do servidor FCM e o ID do servidor nas configurações do espaço de trabalho em **Gerenciar Configurações**.<br><br>
 4. Para montar o APK do Droidboy, execute `./gradlew assemble` no diretório do SDK. Use `gradlew.bat` no Windows.<br><br>
 5. Para instalar automaticamente o APK do Droidboy em um dispositivo de teste, execute `./gradlew installDebug` no diretório do SDK:
@@ -47,7 +48,7 @@ Nosso aplicativo de teste no [repositório GitHub do Android SDK](https://github
 
 O aplicativo de teste Hello Braze mostra um caso de uso mínimo do SDK da Braze e também demonstra como integrar facilmente o SDK da Braze em um projeto Gradle.
 
-1. Copie sua chave de identificador de API da página **Manage Settings** no seu arquivo `braze.xml` na pasta `res/values`.
+1. Copie sua chave identificadora de API da página **Manage Settings** no seu arquivo `braze.xml` na pasta `res/values`.
 ![]({% image_buster /assets/img_archive/hello_appboy.png %})<br><br>
 2. Para instalar o app de exemplo em um dispositivo ou emulador, execute o seguinte comando no diretório do SDK:
 ```

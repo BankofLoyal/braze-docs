@@ -15,7 +15,7 @@ Shopify wird `checkout.liquid` in zwei Phasen abschaffen:
 1. **[August 13, 2024](#phase-one-august-13-2024):** Deadline für das Upgraden Ihrer Informations-, Versand- und Zahlungsseiten.
 2. **[August 28, 2025](#phase-two-august-28-2025):** Deadline zum Upgraden Ihrer Dankes- und Bestellstatusseiten, einschließlich Ihrer Apps mit Script Tags und zusätzlichen Scripts.
 
-Allgemeine Informationen zum Upgrade auf Checkout Extensibilty finden Sie in [der Upgrade-Anleitung von Shopify](https://help.shopify.com/en/manual/checkout-settings/customize-checkout-configurations/checkout-extensibility).
+Allgemeine Informationen zum Upgrade auf Checkout Extensibility finden Sie in [der Upgrade-Anleitung von Shopify](https://help.shopify.com/en/manual/checkout-settings/customize-checkout-configurations/checkout-extensibility).
 
 ## Auswirkungen auf Ihre Integration
 

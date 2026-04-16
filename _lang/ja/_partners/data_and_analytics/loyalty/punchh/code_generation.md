@@ -86,7 +86,7 @@ Punchhのダイナミック・クーポン・コードAPIを使用するには�
 
 #### Punchh Web ページへのリンク
 
-Puncch がホストする Web ページにリンクするには、[以前に作成した](#step-1-create-a-coupon-campaign-in-punchh)動的生成 URLに `{% raw %}{{jwt}}{% endraw %}` を追加します。リンクは以下のようなものであるべきだ： 
+Punchh がホストする Web ページにリンクするには、[以前に作成した](#step-1-create-a-coupon-campaign-in-punchh)動的生成 URLに `{% raw %}{{jwt}}{% endraw %}` を追加します。リンクは以下のようなものであるべきだ： 
 
 {% raw %}
 ```
