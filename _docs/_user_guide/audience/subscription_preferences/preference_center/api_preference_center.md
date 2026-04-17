@@ -86,7 +86,7 @@ Braze manages the subscription state updates from the preference center, which k
 
 ### Option 1: Link with string query parameters
 
-Use query string field-value pairs in the body of the URL to pass the users ID and email category to the page so users only need to confirm their choice to unsubscribe. This option is good for those who store a user identifier in a hashed format and do not already have a subscription center.
+Use query string field-value pairs in the body of the URL to pass the user ID and email category to the page so users only need to confirm their choice to unsubscribe. This option is good for those who store a user identifier in a hashed format and do not already have a subscription center.
 
 For this option, each email category requires its own specific unsubscribe link:<br>
 `http://mycompany.com/query-string-form-fill?field_id=John&field_category=offers`
