@@ -245,9 +245,13 @@ Using this tool, you can diagnose issues with the request headers, request body,
 
 ## Frequently asked questions
 
-### Why are there more Connected Content calls than users or sends? 
+### Why are there more Connected Content calls than users or sends?
 
-This is expected behavior. Braze may make the same Connected Content API call more than once per recipient because message payloads can be rendered multiple times (for example, for email HTML, plain text, and AMP; for validation or retry logic; or other internal purposes). There is no guaranteed 1:1 ratio between sends and Connected Content calls. See [Understanding Connected Content call volume](#understanding-connected-content-call-volume) and [Best practices for high-volume endpoints](#best-practices-for-high-volume-endpoints) for details and mitigation.
+Braze may make the same Connected Content API call more than once per recipient to render a message payload. Message payloads can be rendered multiple times per recipient for validation, retry logic, or other internal purposes. However, note that only one of the Connected Content calls populates a message. 
+
+It’s expected that a Connected Content API call can be made more than once per recipient, even if the retry logic is not used in the call. We recommend setting the rate limit of any messages that contain Connected Content or configuring your servers to be better able to handle the expected volume that accounts for multiple Connected Content calls being made per message send.  
+
+See [Understanding Connected Content call volume](#understanding-connected-content-call-volume) and [Best practices for high-volume endpoints](#best-practices-for-high-volume-endpoints) for details and mitigation.
 
 ### How does rate limiting work with Connected Content?
 
