@@ -61,10 +61,12 @@ When adding an Apple Push Certificate in Braze, the **Send to Production** and *
 
 If the wrong option is selected, push notifications silently fail because the push token type does not match the gateway. Typically, apps distributed through TestFlight or the App Store should use **Send to Production**.
 
-### What is the difference between foreground push enabled and background push enabled?
+### What is the difference between the "Foreground Push Enabled" and "Background or Foreground Push Enabled" filters?
 
-Foreground push is for notifications that can appear in the notification tray. Background push is silent and supports use cases such as uninstall tracking or syncing without a visible alert. 
+In segmentation, **Foreground Push Enabled** corresponds to users who can receive displayable push notifications. **Background or Foreground Push Enabled** includes those users and may also include users who only have background or silent push capability.
 
-For how Braze maps these to segmentation filters (for example, **Foreground Push Enabled** and **Background or Foreground Push Enabled**), user actions, and subscription state, see [Push subscription states]({{site.baseurl}}/user_guide/channels/push/push_setup/push_subscription_states/). 
+Choose the filter that matches your campaign goal: use **Foreground Push Enabled** for campaigns that display a notification, and **Background or Foreground Push Enabled** to include devices that support only silent push.
+
+For how Braze maps these to segmentation filters, user actions, and subscription state, see [Push subscription states]({{site.baseurl}}/user_guide/channels/push/push_setup/push_subscription_states/). 
 
 For tokens, registration, and the foreground versus background distinction, see [Push token lifecycle]({{site.baseurl}}/user_guide/channels/push/push_setup/push_token_lifecycle/#foreground-vs-background).
