@@ -136,6 +136,8 @@ Hi there, here is some fun trivia for you!: {% connected_content https://yourweb
 If you delete a credential, keep in mind that any Connected Content calls trying to use it will be aborted.
 {% endalert %}
 
+Stored credentials apply to {% raw %}`{% connected_content %}`{% endraw %} requests while Braze renders a message. They are not applied to the primary HTTP request configured in a [webhook]({{site.baseurl}}/user_guide/channels/webhooks/create_a_webhook/#authentication-and-connected-content-credentials) step. Use Request headers or a {% raw %}`{% connected_content %}`{% endraw %} tag inside a webhook header or body field when you need to retrieve secrets for that call.
+
 ### Using token authentication
 
 When using Braze Connected Content, you may find that certain APIs require a token instead of a username and password. Braze can also store credentials that hold token authentication header values.

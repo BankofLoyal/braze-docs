@@ -38,14 +38,9 @@ Some more specific use cases include the following:
 
 ## Webhook error handling and rate limiting
 
-When Braze receives an error response from a webhook call, it automatically adjusts that webhook's sending behavior based on these response headers:
+Braze retries webhook delivery only for certain HTTP responses (for example, `408`, `429`, and `5XX`). Most other responses, including `401 Unauthorized` and other `4XX` errors, are not retried. Response headers such as `Retry-After` and `X-Rate-Limit-*` can influence backoff timing **when a response is already eligible for retry**; they do not cause Braze to retry errors that are outside the retriable set.
 
-- `Retry-After`
-- `X-Rate-Limit-Limit`
-- `X-Rate-Limit-Remaining`
-- `X-Rate-Limit-Reset`
-
-These headers help Braze interpret rate limits and adjust sending speed accordingly to avoid further errors. Braze also implements an exponential backoff strategy for retries, which helps reduce the risk of overwhelming your servers by spacing out retry attempts over time.
+For the full response code table, retry limits, and timeout behavior, see [Response codes and retry logic]({{site.baseurl}}/user_guide/channels/webhooks/create_a_webhook/#response-codes-and-retry-logic).
 
 If the majority of webhook requests to a specific host are failing, Braze temporarily defers all send attempts to that host. Sending resumes after a defined cooldown period, allowing your system to recover.
 
