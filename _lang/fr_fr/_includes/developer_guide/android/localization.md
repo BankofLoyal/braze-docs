@@ -40,7 +40,7 @@ Si vous recherchez une liste complète des langues prises en charge que vous pou
 - Chinois
 - Swahili du Congo
 - Bena
-- Criol
+- Créole
 - Croate
 - Tchèque
 - Danois

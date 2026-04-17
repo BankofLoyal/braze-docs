@@ -5,15 +5,52 @@
  * Usage: ./bdocs fblinks
  */
 
-import { existsSync, link } from 'fs';
-import path, { resolve } from 'path';
+import path from 'path';
 import fs from 'fs';
 import { execSync } from 'child_process';
 
 const PROJECT_ROOT = execSync('git rev-parse --show-toplevel', { encoding: 'utf8' }).trim();
 
-const redirectList: string[] = Object.keys(require(path.join(PROJECT_ROOT, 'assets/js/broken_redirect_list.js')));
+/**
+ * Mirrors scripts/validate_doc_redirects.rb `normalize_url_for_compare` so identity
+ * detection and CI agree. Does not lowercase (case-only differences stay distinct).
+ */
+function normalizeUrlForCompare(url: string): string {
+  let u = url.toString().trim().replace(/(?<!:)\/+/g, '/');
+  const hashIdx = u.indexOf('#');
+  let pathPart = hashIdx >= 0 ? u.slice(0, hashIdx) : u;
+  const frag = hashIdx >= 0 ? u.slice(hashIdx) : '';
+  let q = '';
+  const qIdx = pathPart.indexOf('?');
+  if (qIdx >= 0) {
+    q = pathPart.slice(qIdx);
+    pathPart = pathPart.slice(0, qIdx);
+  }
+  let p = pathPart.replace(/\/+$/, '');
+  const segments = p.split('/');
+  const fileSegment = segments[segments.length - 1] || '';
+  const hasExtension =
+    fileSegment.length > 0 && /\.[A-Za-z0-9]{2,}$/.test(fileSegment);
+  if (p !== '' && !hasExtension) p += '/';
+  return `${p}${q}${frag}`;
+}
+
+const validurls: Record<string, string> = require(path.join(
+  PROJECT_ROOT,
+  'assets/js/broken_redirect_list.js'
+));
+
+/** Redirect sources for link coverage: exclude identity mappings (from === to after normalize). */
+const redirectList: string[] = Object.entries(validurls)
+  .filter(([from, to]) => {
+    const dest = (to ?? '').toString().trim();
+    if (!dest) return false;
+    return normalizeUrlForCompare(from) !== normalizeUrlForCompare(dest);
+  })
+  .map(([from]) => from);
 const docsBasePath = path.join(PROJECT_ROOT, '_docs');
+/** Example and tooling docs under here intentionally use non-resolving links; skip (see contributing playbook). */
+const contributingDirResolved = path.resolve(path.join(docsBasePath, '_contributing'));
 interface LinkData {
   sourceFile: string;
   link: string;
@@ -176,6 +213,13 @@ const aliases: string[] = [];
 const permalinks: string[] = [];
 const ignored_files: string[] = [];
 function getLinksRecursive(dir: string) {
+  const dirResolved = path.resolve(dir);
+  if (
+    dirResolved === contributingDirResolved ||
+    dirResolved.startsWith(`${contributingDirResolved}${path.sep}`)
+  ) {
+    return;
+  }
   const files = fs.readdirSync(dir);
   for (const file of files) {
     const filePath = path.join(dir, file);
@@ -232,10 +276,19 @@ for (const item of links) {
 
 const deduplicated = Array.from(new Set(csv)).sort();
 
-fs.writeFileSync(path.join(PROJECT_ROOT, '/scripts/temp/broken-links.csv'), [headers, ...deduplicated].join('\n'));
+const csvPath = path.join(PROJECT_ROOT, 'scripts', 'temp', 'broken-links.csv');
+fs.mkdirSync(path.dirname(csvPath), { recursive: true });
+fs.writeFileSync(csvPath, [headers, ...deduplicated].join('\n'));
 
 if (deduplicated.length === 0) {
   console.log('No broken links found.');
 } else {
-  console.log(`${deduplicated.length} broken links were found. The full list can be found at:\n  ${path.join(PROJECT_ROOT, 'scripts/temp/broken-links.csv')}\n`);
+  console.log(
+    `${deduplicated.length} broken links were found. The full list can be found at:\n  ${csvPath}\n`
+  );
+  console.log('Rows (File,Broken Link,Path to Broken Link):');
+  for (const row of deduplicated) {
+    console.log(row);
+  }
+  process.exit(1);
 }

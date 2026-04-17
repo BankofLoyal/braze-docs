@@ -86,7 +86,7 @@ Ersetzen Sie Folgendes:
 
 #### Verlinkung zur Punchh-Webseite
 
-Um einen Link zu einer von Puncch gehosteten Internetseite zu erstellen, fügen Sie der dynamischen Generierungs-URL [, die Sie zuvor erstellt haben](#step-1-create-a-coupon-campaign-in-punchh), `{% raw %}{{jwt}}{% endraw %}` hinzu. Ihr Link sollte ähnlich wie der folgende aussehen: 
+Um einen Link zu einer von Punchh gehosteten Internetseite zu erstellen, fügen Sie der dynamischen Generierungs-URL [die Sie zuvor erstellt haben](#step-1-create-a-coupon-campaign-in-punchh) `{% raw %}{{jwt}}{% endraw %}` hinzu. Ihr Link sollte ähnlich wie der folgende aussehen: 
 
 {% raw %}
 ```

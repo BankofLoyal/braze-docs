@@ -46,6 +46,12 @@ Se você quiser que o token por push seja reatribuído ao usuário original:
 1. Faça o usuário original fazer login no perfil com o token por push ausente.
 2. Dispare um novo envio de push. Isso moverá o token de volta para a conta, caso o push ainda esteja ativado no nível do dispositivo.
 
+### Por que "Abrir URL da web dentro do app móvel" sempre abre o app quando estou testando uma campanha em rascunho?
+
+Quando uma campanha ainda está com o status **Rascunho** e você envia um push de teste, tocar na notificação sempre abre o app primeiro, independentemente de a opção **Abrir URL da web dentro do app móvel** estar selecionada ou não. Quando a campanha está **Ativa**, o comportamento ao clicar funciona conforme configurado.
+
+Se você selecionou **Abrir URL da web** sem a opção **Dentro do app**, o link abre diretamente no navegador padrão do dispositivo. Se você selecionou **Abrir URL da web dentro do app móvel**, o link abre em uma visualização web dentro do app.
+
 ### Qual é a diferença entre "Enviar para Produção" e "Enviar para Desenvolvimento" nos certificados de push do iOS?
 
 Ao adicionar um certificado de push da Apple na Braze, as opções **Enviar para Produção** e **Enviar para Desenvolvimento** determinam qual gateway do APNs (serviço de Notificações por Push da Apple) a Braze usa para entregar notificações por push:

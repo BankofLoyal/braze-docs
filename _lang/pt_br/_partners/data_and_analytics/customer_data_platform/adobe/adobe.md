@@ -98,7 +98,7 @@ Vamos supor que seu esquema de perfil XDM e sua instância do Braze contenham os
 
 O mapeamento correto ficaria assim:
 
-![Mapeamentos de destino: IdentityMap:IDFA mapeado para IdentityMap:external_id, IdentityMap:GAID mapeado para IdentityMap:external_id, IdentityMap:e-mail mapeado para IdentityMap:external_id, xdm:mobilePhone.number mapeado para CustomAttribute:PhoneNumber, xdm:person.name.lastName mapeado para CustomAtrribute:LastName, xdm:person.name.firstName mapeado para CustomAttribute:FirstName]({% image_buster /assets/img/adobe/braze-destination-mapping-example.png %})
+![Mapeamentos de destino: IdentityMap:IDFA mapeado para IdentityMap:external_id, IdentityMap:GAID mapeado para IdentityMap:external_id, IdentityMap:e-mail mapeado para IdentityMap:external_id, xdm:mobilePhone.number mapeado para CustomAttribute:PhoneNumber, xdm:person.name.lastName mapeado para CustomAttribute:LastName, xdm:person.name.firstName mapeado para CustomAttribute:FirstName]({% image_buster /assets/img/adobe/braze-destination-mapping-example.png %})
 
 ## Dados exportados
 Para verificar se os dados foram exportados com sucesso para a Braze, verifique sua conta da Braze. Os segmentos da Adobe Experience Platform são exportados para a Braze sob o atributo `AdobeExperiencePlatformSegments`.

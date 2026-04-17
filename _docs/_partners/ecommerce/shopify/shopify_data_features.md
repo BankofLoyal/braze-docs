@@ -14,7 +14,7 @@ page_order: 4
 
 ## Tracked Shopify events
 
-The Shopify integration uses [eCommerce recommended events]({{site.baseurl}}/user_guide/data/custom_data/recommended_events/ecommerce_events/) to capture key shopping behaviors. For implementation examples and marketing strategies using these events, refer to [eCommerce use cases]({{site.baseurl}}/user_guide/engagement_tools/canvas/ideas_and_strategies/ecommerce_use_cases/).
+The Shopify integration uses [eCommerce recommended events]({{site.baseurl}}/user_guide/data/activation/events/recommended_events/ecommerce_events/) to capture key shopping behaviors. For implementation examples and marketing strategies using these events, refer to [eCommerce use cases]({{site.baseurl}}/user_guide/messaging/canvas/ideas_and_strategies/ecommerce_use_cases/).
 
 {% multi_lang_include alerts/important_alerts.md alert='Shopify customer create' %}
 
@@ -81,6 +81,9 @@ The Shopify integration uses [eCommerce recommended events]({{site.baseurl}}/use
     "properties": {
         "cart_id": "eeafa272cebfd4b22385bc4b645e762c",
         "total_value": 421.88,
+        "subtotal_value": 396.88,
+        "tax": 15.00,
+        "shipping": 10.00,
         "currency": "USD",
         "products": [
             {
@@ -113,6 +116,9 @@ The Shopify integration uses [eCommerce recommended events]({{site.baseurl}}/use
         "order_id": "820982911946154508",
         "cart_id": "eeafa272cebfd4b22385bc4b645e762c",
         "total_value": 421.88,
+        "subtotal_value": 396.88,
+        "tax": 15.00,
+        "shipping": 10.00,
         "currency": "USD",
         "total_discounts": 5,
         "discounts": [],
@@ -331,6 +337,9 @@ The Shopify integration uses [eCommerce recommended events]({{site.baseurl}}/use
         "order_id": "820982911946154508",
         "cancel_reason": "no longer necessary",
         "total_value": 421.88,
+        "subtotal_value": 396.88,
+        "tax": 15.00,
+        "shipping": 10.00,
         "currency": "USD",
         "total_discounts": 5,
         "discounts": [],
@@ -545,7 +554,7 @@ Shopify’s checkout completed webhook doesn't contain product URLs or image URL
 {% endsubtab %}
 {% subtab Fulfilled order %}
 **Event**: `shopify_fulfilled_order`<br>
-**Type**: [Custom Event]({{site.baseurl}}/user_guide/data/custom_data/custom_events/)<br>
+**Type**: [Custom Event]({{site.baseurl}}/user_guide/data/activation/events/custom_events/)<br>
 **Triggered**: When a user’s order is fulfilled and ready for shipping<br>
 **Data source**: Braze REST API<br>
 **Use Case**: (Transactional) Fulfillment update 
@@ -596,7 +605,7 @@ Shopify’s checkout completed webhook doesn't contain product URLs or image URL
 {% endsubtab %}
 {% subtab Partially fulfilled order %}
 **Event**: `shopify_partially_fulfilled_order`<br>
-**Type**: [Custom Event]({{site.baseurl}}/user_guide/data/custom_data/custom_events/)<br>
+**Type**: [Custom Event]({{site.baseurl}}/user_guide/data/activation/events/custom_events/)<br>
 **Triggered**: When part of a user’s order is fulfilled and ready for shipping<br> 
 **Data source**: Braze REST API<br>
 **Use Case**: (Transactional) Fulfillment update 
@@ -647,7 +656,7 @@ Shopify’s checkout completed webhook doesn't contain product URLs or image URL
 {% endsubtab %}
 {% subtab Paid order %}
 **Event**: `shopify_paid_order`<br>
-**Type**: [Custom Event]({{site.baseurl}}/user_guide/data/custom_data/custom_events/)<br>
+**Type**: [Custom Event]({{site.baseurl}}/user_guide/data/activation/events/custom_events/)<br>
 **Triggered**: When a user’s order is marked as paid within Shopify<br>
 **Data source**: Braze REST API<br>
 **Use Case**: (Transactional) Payment confirmation
@@ -681,7 +690,7 @@ Shopify’s checkout completed webhook doesn't contain product URLs or image URL
 {% endsubtab %}
 {% subtab Order cancelled %}
 **Event**: `shopify_cancelled_order`<br>
-**Type**: [Custom Event]({{site.baseurl}}/user_guide/data/custom_data/custom_events/)<br>
+**Type**: [Custom Event]({{site.baseurl}}/user_guide/data/activation/events/custom_events/)<br>
 **Triggered**: When a user’s order is cancelled<br> 
 **Data source**: Braze REST API<br>
 **Use Case**: (Transactional) Order cancellation confirmation
@@ -717,7 +726,7 @@ Shopify’s checkout completed webhook doesn't contain product URLs or image URL
 {% endsubtab %}
 {% subtab Order refunded %}
 **Event**: `shopify_order_refunded`<br>
-**Type**: [Custom Event]({{site.baseurl}}/user_guide/data/custom_data/custom_events/)<br>
+**Type**: [Custom Event]({{site.baseurl}}/user_guide/data/activation/events/custom_events/)<br>
 **Triggered**: When a user’s order is refunded<br>
 **Data source**: Braze REST API<br>
 **Use Case**: (Transactional) Refund confirmation
@@ -744,7 +753,7 @@ Shopify’s checkout completed webhook doesn't contain product URLs or image URL
 {% subtab Account login %}
 
 **Event**: `shopify_account_login`<br>
-**Type**: [Custom Event]({{site.baseurl}}/user_guide/data/custom_data/custom_events/)<br>
+**Type**: [Custom Event]({{site.baseurl}}/user_guide/data/activation/events/custom_events/)<br>
 **Triggered**: When a user logs into their account<br>
 **Data source**: Braze REST API<br>
 **Use Case**: Welcome series
@@ -840,7 +849,7 @@ Braze will only update supported Shopify custom attributes and Braze standard at
 
 ## SDK data collection 
 
-For more information on what data is collected by the Braze SDKs, see [SDK data collection]({{site.baseurl}}/user_guide/data/user_data_collection/sdk_data_collection/). 
+For more information on what data is collected by the Braze SDKs, see [SDK data collection]({{site.baseurl}}/user_guide/data/unification/user_data/sdk_data_collection/). 
 
 ## Historical backfill
 

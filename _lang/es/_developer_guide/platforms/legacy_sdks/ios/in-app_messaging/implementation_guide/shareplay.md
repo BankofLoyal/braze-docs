@@ -83,7 +83,7 @@ func configureVideoPlayer() {
 
 #### Configuración del panel de control
 
-**Pares clave-valor**: El archivo de vídeo debe establecerse en los pares clave-valor del mensaje dentro de la aplicación y no puede adjuntarse al propio elemento multimedia. También puedes añadir la comprobación de validez de la URL en `beforeInAppMesageDisplayed` como barrera antes de mostrar el contenido.
+**Pares clave-valor**: El archivo de vídeo debe establecerse en los pares clave-valor del mensaje dentro de la aplicación y no puede adjuntarse al propio elemento multimedia. También puedes añadir la comprobación de validez de la URL en `beforeInAppMessageDisplayed` como barrera antes de mostrar el contenido.
 
 **Desencadenamiento**: El mensaje dentro de la aplicación debe ser elegible para todos los usuarios que tengan habilitada la reelegibilidad. Esto se puede hacer estableciendo dos desencadenantes: uno predeterminado para lanzar el mensaje y otro para lanzar el mensaje cuando se inicie desde SharePlay. Los usuarios que no usen iOS 15 solo podrán ver los mensajes localmente. 
 

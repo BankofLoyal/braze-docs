@@ -23,10 +23,10 @@ Use AI item recommendations to calculate the most popular products or create per
 
 ### Prerequisites
 
-Before you start, you'll need to complete the following:
+Before you start, you must have the following:
 
-- You must have at least one [catalog]({{site.baseurl}}/user_guide/data/activation/catalogs/) to use any of the recommendation types described below.
-- You must have purchase or event data on Braze (custom events or the purchase object) that includes a reference to unique product IDs stored in a catalog.
+- At least one [catalog]({{site.baseurl}}/user_guide/data/activation/catalogs/) to use any of the recommendation types described below.
+- Purchase or event data on Braze (custom events or the purchase object) that includes a reference to the item and must match the catalog item IDs.
 
 ### Step 1: Create a new recommendation
 
@@ -51,10 +51,10 @@ Give your recommendation a name and optional description.
 
 ### Step 3: Define your recommendation {#recommendation-type}
 
-Select a recommendation type. Each type uses the last six months of item interaction data, such as a purchase or custom event data. For more detailed information and uses cases for each, see [Types and Uses Cases]({{site.baseurl}}/user_guide/brazeai/recommendations/).
+Select a recommendation type. Each type uses the last six months of item interaction data, such as a purchase or custom event data. For more detailed information and uses cases for each, see [Types and Uses Cases]({{site.baseurl}}/user_guide/brazeai/item_recommendations/).
 
 {% alert tip %}
-When using **Most recent** or **AI Personalized**, users with insufficient data to create individualized recommendations will receive **Most popular** items as a fallback. The proportion of users receiving the **Most popular** fallback is displayed on the **Analytics** page.
+When using **Most Recent** or **AI Personalized**, users with insufficient data to create individualized recommendations will receive **Most Popular** items as a fallback. You can see an approximation of the proportion of users receiving the **Most Popular** fallback displayed on the **Analytics** page. The **Most Popular** fallback only returns items that exist in the linked catalog. 
 {% endalert %}
 
 #### Step 3.1: Exclude prior purchases or interactions (optional)
@@ -117,7 +117,7 @@ There are some requirements for selecting your property:
 - **If you selected Purchase Object:** Must be the `product_id` or a field of your interaction event's `properties`.
 - **If you selected Custom Event:** Must be a field of your custom event's `properties`.
 - Nested fields must be typed into the **Property Name** dropdown in dot notation with the format of `event_property.nested_property`. For example, if selecting the nested property `district_name` within the event property `location`, you would enter `location.district_name`.
-- **If using [eCommerce events]({{site.baseurl}}/user_guide/data/activation/custom_data/recommended_events/ecommerce_events/) to train item recommendations:** Add `products.product_id` to access the product ID from events.
+- **If using [eCommerce events]({{site.baseurl}}/user_guide/data/activation/events/recommended_events/ecommerce_events/) to train item recommendations:** Add `products.product_id` to access the product ID from events.
 - The field can be inside an array of products, or end with an array of IDs. In either case, each product ID will be treated as a separate, sequential event with the same timestamp.
 
 #### Example mappings

@@ -76,7 +76,7 @@ To selectively disable continuous location tracking at runtime, use [`BrazeConfi
 
 ```java
 BrazeConfig brazeConfig = new BrazeConfig.Builder()
-  .setIsLocationCollectionEnabled(false)
+  .setIsAutomaticLocationCollectionEnabled(false)
   .build();
 Braze.configure(this, brazeConfig);
 ```
@@ -86,7 +86,7 @@ Braze.configure(this, brazeConfig);
 
 ```kotlin
 val brazeConfig = BrazeConfig.Builder()
-    .setIsLocationCollectionEnabled(false)
+    .setIsAutomaticLocationCollectionEnabled(false)
     .build()
 Braze.configure(this, brazeConfig)
 ```

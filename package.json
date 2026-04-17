@@ -1,5 +1,11 @@
 {
+  "scripts": {
+    "spellcheck": "cspell lint --no-progress",
+    "fblinks": "ts-node ./scripts/find_broken_links.ts"
+  },
   "devDependencies": {
-    "@types/node": "^22.13.9"
+    "@types/node": "^22.13.9",
+    "cspell": "^8.17.5",
+    "ts-node": "^10.9.2"
   }
 }

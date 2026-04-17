@@ -627,7 +627,7 @@ For more information on customizing notifications, see [Custom notification fact
 
 #### Creating custom deep links
 
-Follow the instructions found within the [Android developer documentation](http://developer.android.com/training/app-indexing/deep-linking.html) on deep linking if you have not already added deep links to your app. To learn more about what deep links are, see our [FAQ article]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/deep_linking_to_in-app_content/#what-is-deep-linking).
+Follow the instructions found within the [Android developer documentation](http://developer.android.com/training/app-indexing/deep-linking.html) on deep linking if you have not already added deep links to your app. To learn more about what deep links are, see our [FAQ article]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/actions_and_media_urls/#what-is-deep-linking).
 
 #### Adding deep links
 
@@ -766,6 +766,6 @@ To request a rate limit increase from FCM, you can contact [Firebase Support](ht
 3. Select **Edit Quota**. 
 4. Enter a new value and submit your request.
 
-#### Request global rate limiting via Braze
+#### Apply a workspace rate limit
 
-To apply a workspace-wide limit for Android push notifications, contact [Braze Support]({{site.baseurl}}/help/support#access-the-support-portal).
+You can apply a workspace rate limit for Android push notifications. This can help regulate the delivery rate of your outgoing messages. For more details, see [Workspace messaging rate limits]({{site.baseurl}}/user_guide/administrative/app_settings/messaging_rate_limits).

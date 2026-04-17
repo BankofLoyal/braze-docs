@@ -34,27 +34,27 @@ guide_featured_list:
 
 # channel to icon/fa or image mapping
 glossary_tags:
-  - name: キャンペーン
-  - name: キャンバス
-  - name: カタログ
-  - name: コンテンツブロック
-  - name: カスタムイベント
-  - name: Eメールリスト
-  - name: メールテンプレート
+  - name: Campaigns
+  - name: Canvas
+  - name: Catalogs
+  - name: Content Blocks
+  - name: Custom Events
+  - name: Email List
+  - name: Email Templates
   - name: KPI
-  - name: メディアライブラリ
-  - name: 購入
-  - name: 環境設定センター
-  - name: メッセージをスケジュール
+  - name: Media Library
+  - name: Purchases
+  - name: Preference Center
+  - name: Schedule Messages
   - name: SCIM
-  - name: SDK認証
-  - name: セグメント
-  - name: メッセージを送る
+  - name: SDK Authentication
+  - name: Segments
+  - name: Send Messages
   - name: SMS
-  - name: サブスクリプショングループ
-  - name: ユーザーデータ
-  - name: ライブアクティビティ
-  - name: クラウドデータ取り込み
+  - name: Subscription Groups
+  - name: User Data
+  - name: Live Activity
+  - name: Cloud Data Ingestion
 
 glossaries:
   - name: "<a href='/docs/api/endpoints/user_data/post_user_alias/'>/users/alias/new</a>"

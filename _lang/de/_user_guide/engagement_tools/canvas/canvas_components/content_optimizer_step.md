@@ -1,9 +1,9 @@
 ---
 nav_title: Content Optimizer
-article_title: Schritt „Content Optimizer Agent"
+article_title: Schritt „Content Optimizer Agent“
 alias: "/content_optimizer_step/"
 page_order: 5
-description: "Mit dem Schritt „Content Optimizer Agent" können Sie mehrere Versionen von Inhaltskomponenten in einem einzigen Schritt konfigurieren und testen. Er unterstützt Sie dabei, mit verschiedenen Inhaltsvariationen zu experimentieren und optimiert diese im Laufe der Zeit automatisch in Richtung der Kombinationen mit der besten Performance."
+description: "Mit dem Schritt „Content Optimizer Agent“ können Sie mehrere Versionen von Inhaltskomponenten in einem einzigen Schritt konfigurieren und testen. Er unterstützt Sie dabei, mit verschiedenen Inhaltsvariationen zu experimentieren und optimiert diese im Laufe der Zeit automatisch in Richtung der Kombinationen mit der besten Performance."
 page_type: reference
 
 ---

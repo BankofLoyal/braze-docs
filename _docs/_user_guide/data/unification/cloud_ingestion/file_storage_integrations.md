@@ -2,7 +2,7 @@
 nav_title: File storage integrations
 article_title: File Storage Integrations
 description: "This page covers Braze Cloud Data Ingestion and how to sync relevant data from S3 to Braze."
-page_order: 3
+page_order: 4
 page_type: reference
 
 ---
@@ -10,8 +10,6 @@ page_type: reference
 # File storage integrations
 
 > This page covers how to set up Cloud Data Ingestion support and sync relevant data from S3 to Braze.
-
-This page shows the sync and source steps that are currently in Early Access (EA). For steps for the generally available experience, see [General availability experience](#general-availability-experience).
 
 ## How it works
 
@@ -220,28 +218,6 @@ Give the role a name and a description, and select **Create Role**.
 8. Add contact email(s) for notifications if the sync breaks because of access or permissions issues. Optionally, turn on notifications for user-level errors and sync successes.
 9. Create the sync.
 
-{% details General availability experience %}
-
-1. To create a new integration, go to **Data Settings** > **Cloud Data Ingestion**, select **Create New Data Sync**, and select **S3 Import** from the file sources section. 
-2. Input the information from the AWS setup process to create a new sync. Specify the following:
-
-  - Role ARN
-  - External ID
-  - SQS URL (must be unique for each new integration)
-  - Bucket name
-  - Folder path (optional, must be unique across syncs in a workspace)
-  - Region
-
-{: start="3"}
-3. Name your integration, and select the data type for this integration. 
-
-{: start="4"}
-4. Add a contact email for notifications if the sync breaks because of access or permissions issues. Optionally, turn on notifications for user-level errors and sync successes. 
-
-{: start="5"}
-5. Finally, select **Test connection** to confirm Braze can access your bucket and list the files available to ingest (not the data inside those files). Then, save the sync. 
-
-{% enddetails %}
 
 ## Required file formats
 
@@ -249,6 +225,8 @@ Cloud Data Ingestion supports JSON, CSV, and Parquet files. The required columns
 
 - User data (attributes, custom events, purchase events) uses user identifiers and a payload
 - Catalog data uses catalog identifiers
+
+If you're using S3 for catalog data, use this page with [Sync and delete catalog data]({{site.baseurl}}/user_guide/data/unification/cloud_ingestion/sync_catalogs_data/) for catalog-specific requirements and behavior.
 
 Braze doesn’t enforce any additional filename requirements beyond what's enforced by AWS. Filenames should be unique. Appending a timestamp helps ensure uniqueness.
 
@@ -334,7 +312,7 @@ ID,PAYLOAD,DELETED
 85,"{""product_name"": ""Product 85"", ""price"": 85.85}",false
 1,"{""product_name"": ""Product 1"", ""price"": 1.01}",true
 ```
-Include an optional `DELETED` column. When `DELETED` is `true`, that catalog item is removed from the catalog in Braze. For the full list of required columns, see [Catalog identifiers](#catalog-identifiers). For delete behavior, see [Deleting catalog items](#deleting-catalog-items).
+Include an optional `DELETED` column. When `DELETED` is `true`, that catalog item is removed from the catalog in Braze. For the full list of required columns, see [Catalog identifiers](#catalog-identifiers). For delete behavior, see [Deleting catalog items](#deleting-catalog-items). For an end-to-end catalog setup flow (including creating the target catalog and sync behavior), see [Sync and delete catalog data]({{site.baseurl}}/user_guide/data/unification/cloud_ingestion/sync_catalogs_data/).
 {% endtab %}
 
 {% endtabs %}  
@@ -427,3 +405,9 @@ You can use existing files to validate that Braze can access your bucket and det
 If you're observing a high number of errors or failed files, you may have another process adding files to the S3 bucket in a folder other than the target folder for CDI.
 
 When files are uploaded to the source bucket but not in the source folder, CDI will process the SQS notification, but it does not take any action on the file, so this may appear as an error.
+
+If your issue is related to S3 notifications or SQS destination permissions (for example, destination validation errors), refer to AWS documentation:
+
+- [Enabling and configuring event notifications using the Amazon S3 console](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-event-notifications.html)
+- [Granting permissions to publish event notification messages to a destination](https://docs.aws.amazon.com/AmazonS3/latest/userguide/grant-destinations-permissions-to-s3.html)
+- [Troubleshooting issues in Amazon SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-troubleshooting.html)
