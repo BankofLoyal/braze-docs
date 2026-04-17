@@ -39,7 +39,7 @@ Transifex 統合では、Transifex の[リソース翻訳 API](https://developer
 curl --request GET \
      --url 'https://rest.api.transifex.com/resource_translations?filter\[resource\]=o:<ORGANIZATION_NAME>:p:<PROJECT_NAME>:r:<RESOURCE_NAME>&filter\[language\]=l:<LANGUAGE>' \
      --header 'Accept: application/vnd.api+json' \
-     --header 'Authorization: Bearer 1/<TRANSFIX_BEARER_TOKEN>'
+     --header 'Authorization: Bearer 1/<TRANSIFEX_BEARER_TOKEN>'
 ```
 
 たとえば、Transifex プロジェクトが`https://www.transifex.com/appboy-3/french2/french_translationspo/` にある場合、`project_name` は"french2&quot になり、`resource_name` は次のようになります "french_translationspo".

@@ -1,36 +1,36 @@
 ---
-nav_title: "POST : Envoyez des campagnes à l'aide d'une réception/distribution déclenchée par API."
-article_title: "POST : Envoyez des campagnes à l'aide de la réception/distribution déclenchée par l'API"
+nav_title: "POST : Envoyer des campagnes via une distribution déclenchée par API"
+article_title: "POST : Envoyer des campagnes via une distribution déclenchée par API"
 search_tag: Endpoint
 page_order: 4
 layout: api_page
 page_type: reference
-description: "Cet article présente les détails du point de terminaison Braze d'envoi de campagnes à l'aide d'une réception/distribution déclenchée par API."
+description: "Cet article présente les détails de l'endpoint Braze permettant d'envoyer des campagnes via une distribution déclenchée par API."
 
 ---
 {% api %}
-# Envoyez des messages de campagne à l'aide de la réception/distribution déclenchée par l'API.
-{% apimethod postcore_endpoint|https://www.braze.com/docs/core_endpoints  %}
+# Envoyer des messages de campagne via une distribution déclenchée par API
+{% apimethod post core_endpoint|https://www.braze.com/docs/core_endpoints %}
 /campaigns/trigger/send
 {% endapimethod %}
 
-> Utilisez cet endpoint pour envoyer des messages immédiats et ponctuels à des utilisateurs désignés en utilisant la réception/distribution déclenchée par l'API.
+> Utilisez cet endpoint pour envoyer des messages immédiats et ponctuels à des utilisateurs désignés via une distribution déclenchée par API.
 
-La réception/distribution déclenchée par l'API vous permet d'héberger le contenu des messages dans le tableau de bord de Braze tout en dictant quand un message est envoyé, et à qui, à l'aide de votre API.
+La distribution déclenchée par API vous permet d'héberger le contenu des messages dans le tableau de bord de Braze tout en contrôlant, via votre API, quand un message est envoyé et à qui.
 
-Si vous effectuez un ciblage sur un segment, un enregistrement de votre demande est conservé dans la [console de développement](https://dashboard.braze.com/app_settings/developer_console/activitylog/). Pour envoyer des messages avec cet endpoint, vous devez disposer d'un [ID de campagne](https://www.braze.com/docs/api/identifier_types/) créé lorsque vous créez une [campagne déclenchée par l'API]({{site.baseurl}}/api/api_campaigns/).
+Si vous ciblez un segment, un enregistrement de votre requête est conservé dans la [console de développement](https://dashboard.braze.com/app_settings/developer_console/activitylog/). Pour envoyer des messages avec cet endpoint, vous devez disposer d'un [ID de campagne](https://www.braze.com/docs/api/identifier_types/) créé lors de la création d'une [campagne déclenchée par API]({{site.baseurl}}/api/api_campaigns/).
 
 {% apiref postman %}https://documenter.getpostman.com/view/4689407/SVYrsdsG?version=latest#aef185ae-f591-452a-93a9-61d4bc023b05 {% endapiref %}
 
 ## Conditions préalables
 
-Pour utiliser cet endpoint, vous devrez générer une clé API avec l’autorisation `campaigns.trigger.send`.
+Pour utiliser cet endpoint, vous devez générer une clé API avec l'autorisation `campaigns.trigger.send`.
 
 ## Limite de débit
 
 {% multi_lang_include rate_limits.md endpoint='send endpoints' category='send messages endpoints' %}
 
-## Corps de la demande
+## Corps de la requête
 
 ```
 Content-Type: application/json
@@ -68,29 +68,33 @@ Authorization: Bearer YOUR-REST-API-KEY
 }
 ```
 
-## Paramètres de demande
+## Paramètres de la requête
 
 | Paramètre | Requis | Type de données | Description |
 | --------- | ---------| --------- | ----------- |
 |`campaign_id`|Requis|Chaîne de caractères|Voir [identifiant de campagne]({{site.baseurl}}/api/identifier_types/). |
 |`send_id`| Facultatif | Chaîne de caractères | Voir [identifiant d'envoi]({{site.baseurl}}/api/identifier_types/). |
-|`trigger_properties`| Facultatif | Objet | Voir les [propriétés du déclencheur]({{site.baseurl}}/api/objects_filters/trigger_properties_object/). Les paires clé-valeur de personnalisation s'appliquent à tous les utilisateurs concernés par cette requête. |
-|`broadcast`| Facultatif | Valeur booléenne | Il est nécessaire de définir cette option`broadcast` sur « true » lorsque vous envoyez un message à l'ensemble du segment configuré comme public cible de la campagne dans le tableau de bord de Braze. Ce paramètre est défini sur Faux par défaut (au 31 août 2017). <br><br> Si `broadcast` est défini sur « true », une liste `recipients` ne peut pas être incluse. Toutefois, soyez prudent lorsque vous définissez `broadcast: true`, car en activant involontairement cet indicateur, vous risquez d'envoyer votre message à une audience plus large que prévu. |
-|`audience`| Facultatif | Objet Audience connectée| Voir [audience connectée]({{site.baseurl}}/api/objects_filters/connected_audience/). Lorsque vous incluez `audience`, le message est envoyé uniquement aux utilisateurs qui correspondent aux filtres définis, tels que les attributs personnalisés et les statuts d'abonnement. |
-|`recipients`| Facultatif | Tableau | Voir [objet destinataire]({{site.baseurl}}/api/objects_filters/recipient_object/).<br><br>Si `send_to_existing_only` est `false`, un objet Attribut doit être inclus.<br><br>Si`recipients`  n'est pas fourni et que`broadcast`  est défini sur true, le message est envoyé à l'ensemble du segment configuré comme public cible de la campagne dans le tableau de bord de Braze. <br><br> Si `email` est l'identifiant, vous devez inclure [`prioritization`]({{site.baseurl}}/api/endpoints/user_data/post_user_identify#identifying-users-by-email) dans l'objet destinataire. |
-|`attachments`| Facultatif | Tableau | Si `broadcast` est défini comme vrai, la liste `attachments` ne peut pas être incluse. |
+|`trigger_properties`| Facultatif | Objet | Voir [propriétés du déclencheur]({{site.baseurl}}/api/objects_filters/trigger_properties_object/). Les paires clé-valeur de personnalisation s'appliquent à tous les utilisateurs de cette requête. |
+|`broadcast`| Facultatif | Valeur booléenne | Vous devez définir `broadcast` sur true lorsque vous envoyez un message à l'ensemble du segment configuré comme audience cible de la campagne dans le tableau de bord de Braze. Ce paramètre est défini sur false par défaut (depuis le 31 août 2017). <br><br> Si `broadcast` est défini sur true, une liste `recipients` ne peut pas être incluse. Toutefois, soyez prudent lorsque vous définissez `broadcast: true`, car en activant involontairement cet indicateur, vous risquez d'envoyer votre message à une audience plus large que prévu. |
+|`audience`| Facultatif | Objet audience connectée| Voir [audience connectée]({{site.baseurl}}/api/objects_filters/connected_audience/). Lorsque vous incluez `audience`, le message est envoyé uniquement aux utilisateurs qui correspondent aux filtres définis, tels que les attributs personnalisés et les statuts d'abonnement. |
+|`recipients`| Facultatif | Tableau | Voir [objet destinataire]({{site.baseurl}}/api/objects_filters/recipient_object/).<br><br>Si `send_to_existing_only` est `false`, un objet attribut doit être inclus.<br><br>Si `recipients` n'est pas fourni et que `broadcast` est défini sur true, le message est envoyé à l'ensemble du segment configuré comme audience cible de la campagne dans le tableau de bord de Braze. <br><br> Si `email` est l'identifiant, vous devez inclure [`prioritization`]({{site.baseurl}}/api/endpoints/user_data/post_user_identify#identifying-users-by-email) dans l'objet destinataire. |
+|`attachments`| Facultatif | Tableau | Si `broadcast` est défini sur true, la liste `attachments` ne peut pas être incluse. |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3  .reset-td-br-4 role="presentation" }
 
-- Le tableau d'objets peut contenir jusqu'à 50 objets, chaque objet contenant une chaîne de caractères `external_user_id` et un objet `trigger_properties`.
-- Lorsque`send_to_existing_only`(`true`par défaut), Braze envoie le message uniquement aux utilisateurs existants. Si l'identifiant`external_user_id`ne correspond à aucun utilisateur existant, l'API renvoie tout de même une réponse`201` positive, mais l'envoi est annulé en interne avec un résultat négatif`Unknown External User ID`et aucun événement Currents n'est généré. Lorsque cette option est définie sur`false`et qu'un objet d'attributs est fourni, Braze crée un nouvel utilisateur s'il n'en existe pas déjà un. Veuillez noter que le paramètre`send_to_existing_only`  à`false`  n'est pas pris en charge pour les alias d'utilisateur. Il n'est pas possible de créer de nouveaux utilisateurs disposant uniquement d'un alias via cet endpoint. Pour envoyer un message à un utilisateur disposant uniquement d'un alias d'utilisateur, celui-ci doit déjà exister dans Braze.
+- Le tableau de destinataires peut contenir jusqu'à 50 objets, chacun contenant un identifiant utilisateur unique (`external_user_id`, `user_alias` ou `email`) et un objet `trigger_properties` facultatif.
+- Lorsque `send_to_existing_only` est `true` (valeur par défaut), Braze envoie le message uniquement aux utilisateurs existants. Si l'identifiant dans l'objet destinataire (`external_user_id`, `user_alias` ou `email`) ne correspond à aucun utilisateur existant, l'API renvoie tout de même une réponse `201` avec un `dispatch_id`, mais l'envoi est annulé en interne et aucun message n'est distribué. Pour `external_user_id`, le résultat est enregistré comme `Unknown External User ID` et aucun événement Currents n'est généré. Lorsque cette option est définie sur `false` et qu'un objet d'attributs est fourni, Braze crée un nouvel utilisateur s'il n'en existe pas. Notez que définir `send_to_existing_only` sur `false` n'est pas pris en charge pour les alias d'utilisateur — il n'est pas possible de créer de nouveaux utilisateurs disposant uniquement d'un alias via cet endpoint. Pour envoyer un message à un utilisateur disposant uniquement d'un alias, celui-ci doit déjà exister dans Braze.
 
-Le statut du groupe d'abonnement d'un utilisateur peut être mis à jour en incluant un paramètre `subscription_groups` dans l'objet `attributes`. Pour plus de détails, consultez [Objet Attributs d’utilisateur]({{site.baseurl}}/api/objects_filters/user_attributes_object).
-
-{% alert note %}
-Le`segment_id`paramètre n'est pas pris en charge pour cet endpoint. Pour cibler un segment, veuillez configurer le segment dans les paramètres du public cible de la campagne dans le tableau de bord de Braze et utiliser `"broadcast": true`, ou utiliser le`audience`paramètre avec les filtres [d'audience Connected Audience]({{site.baseurl}}/api/objects_filters/connected_audience/).
+{% alert important %}
+Une réponse `201` avec un `dispatch_id` confirme que Braze a accepté la requête, mais ne garantit pas la distribution du message. La distribution peut échouer si l'utilisateur est introuvable, s'est désabonné ou ne dispose pas d'une adresse de contact valide pour le canal concerné.
 {% endalert %}
 
-## Exemple de demande
+Le statut du groupe d'abonnement d'un utilisateur peut être mis à jour en incluant un paramètre `subscription_groups` dans l'objet `attributes`. Pour plus de détails, consultez [Objet attributs utilisateur]({{site.baseurl}}/api/objects_filters/user_attributes_object).
+
+{% alert note %}
+Le paramètre `segment_id` n'est pas pris en charge pour cet endpoint. Pour cibler un segment, configurez le segment dans les paramètres d'audience cible de la campagne dans le tableau de bord de Braze et utilisez `"broadcast": true`, ou utilisez le paramètre `audience` avec les filtres [Connected Audience]({{site.baseurl}}/api/objects_filters/connected_audience/).
+{% endalert %}
+
+## Exemple de requête
 ```
 curl --location --request POST 'https://rest.iad-01.braze.com/campaigns/trigger/send' \
 --header 'Content-Type: application/json' \
@@ -170,18 +174,18 @@ curl --location --request POST 'https://rest.iad-01.braze.com/campaigns/trigger/
 }'
 ```
 
-## Informations relatives à la réponse
+## Détails de la réponse
 
-Les réponses des endpoints d'envoi de messages incluent le message`dispatch_id`pour référence à l'envoi du message. Le `dispatch_id` est l'ID de l'envoi de messages, un ID unique pour chaque transmission envoyée depuis Braze. Lorsque vous utilisez cet endpoint, vous recevez un seul `dispatch_id` pour un ensemble complet d’utilisateurs regroupés. Pour plus d'informations sur `dispatch_id`, consultez notre documentation sur le [comportement du Dispatch ID]({{site.baseurl}}/help/help_articles/data/dispatch_id/).
+Les réponses des endpoints d'envoi de messages incluent le `dispatch_id` du message, qui sert de référence pour le suivi de l'envoi. Le `dispatch_id` est l'identifiant de l'envoi, un ID unique pour chaque transmission effectuée depuis Braze. Lorsque vous utilisez cet endpoint, vous recevez un seul `dispatch_id` pour l'ensemble du lot d'utilisateurs. Pour en savoir plus sur le `dispatch_id`, consultez notre documentation sur le [comportement du Dispatch ID]({{site.baseurl}}/help/help_articles/data/dispatch_id/).
 
-Si votre demande rencontre une erreur fatale, reportez-vous à la section [Erreurs et réponses]({{site.baseurl}}/api/errors/#fatal-errors) pour connaître le code d'erreur et sa description.
+Si votre requête rencontre une erreur fatale, consultez la section [Erreurs et réponses]({{site.baseurl}}/api/errors/#fatal-errors) pour connaître le code d'erreur et sa description.
 
-## Objet Attributs pour les campagnes
+## Objet attributs pour les campagnes
 
-Braze dispose d'un objet de messagerie appelé`attributes`qui vous permet d'ajouter, de créer ou de mettre à jour les attributs et les valeurs d'un utilisateur avant de lui envoyer une campagne déclenchée par une API. Veuillez utiliser `campaign/trigger/send`l'endpoint, car cet appel API traite l'objet des attributs utilisateur avant de traiter et d'envoyer la campagne. Cela permet de minimiser le risque de problèmes causés par des [conditions de concurrence]({{site.baseurl}}/user_guide/engagement_tools/testing/race_conditions/).
+Braze dispose d'un objet de messagerie appelé `attributes` qui vous permet d'ajouter, de créer ou de mettre à jour les attributs et les valeurs d'un utilisateur avant de lui envoyer une campagne déclenchée par API. L'utilisation de l'endpoint `campaign/trigger/send` permet de traiter l'objet des attributs utilisateur avant de traiter et d'envoyer la campagne. Cela permet de minimiser le risque de problèmes causés par des [conditions de concurrence]({{site.baseurl}}/user_guide/engagement_tools/testing/race_conditions/).
 
 {% alert tip %}
-Vous recherchez la version Canvas de cet endpoint ? Consultez la rubrique [Envoi de messages canvas à l'aide de la réception/distribution déclenchée par l'API]({{site.baseurl}}/api/endpoints/messaging/send_messages/post_send_triggered_canvases/#create-send-endpoint).
+Vous recherchez la version Canvas de cet endpoint ? Consultez [Envoyer des messages Canvas via une distribution déclenchée par API]({{site.baseurl}}/api/endpoints/messaging/send_messages/post_send_triggered_canvases/#create-send-endpoint).
 {% endalert %}
 
 {% endapi %}

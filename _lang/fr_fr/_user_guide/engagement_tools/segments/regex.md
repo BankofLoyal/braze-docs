@@ -10,7 +10,7 @@ tool:
   
 ---
 
-# [![Cours d'apprentissage ]({% image_buster /assets/img/bl_icon3.png %})](https://learning.braze.com/regular-expression-basics-for-braze){: style="float:right;width:120px;border:0;" class="noimgborder"}[Braze](https://learning.braze.com/regular-expression-basics-for-braze) Expressions régulières
+# [![Cours d'apprentissage de Braze]({% image_buster /assets/img/bl_icon3.png %})](https://learning.braze.com/regular-expression-basics-for-braze){: style="float:right;width:120px;border:0;" class="noimgborder"} Expressions régulières
 
 <!--{% multi_lang_include video.html id="3h5Xbhl-TxE" align="right" %}-->
 
@@ -84,11 +84,11 @@ Résultats correspondants<span id="reg_count"></span> :  <div id="regex_results
 <script type="text/javascript">
 $( document ).ready(function() {
   function update_inputmatch() {
-    var tomatch = $('#regex_input').val();
+    var regexInput = $('#regex_input').val();
     var validreg = true;
     $('#regex_input').removeClass('invalid');
     try {
-      var regex = new RegExp(tomatch,'gi');
+      var regex = new RegExp(regexInput,'gi');
       $('#regex_results').html('');
     } catch(e) {
       $('#regex_input').addClass('invalid');
@@ -97,7 +97,7 @@ $( document ).ready(function() {
     }
     if (validreg){
       if ($('#regex_text').val() ) {
-        if (tomatch) {
+        if (regexInput) {
           var input_str = $('#regex_text').val().split(/\r?\n/);
           var input_replaced = [];
           var reg_count = 0;

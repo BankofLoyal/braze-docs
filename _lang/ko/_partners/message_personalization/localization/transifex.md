@@ -39,7 +39,7 @@ Transifex 통합은 Transifex의 [리소스 번역 API](https://developers.trans
 curl --request GET \
      --url 'https://rest.api.transifex.com/resource_translations?filter\[resource\]=o:<ORGANIZATION_NAME>:p:<PROJECT_NAME>:r:<RESOURCE_NAME>&filter\[language\]=l:<LANGUAGE>' \
      --header 'Accept: application/vnd.api+json' \
-     --header 'Authorization: Bearer 1/<TRANSFIX_BEARER_TOKEN>'
+     --header 'Authorization: Bearer 1/<TRANSIFEX_BEARER_TOKEN>'
 ```
 
 예를 들어 Transifex 프로젝트가 `https://www.transifex.com/appboy-3/french2/french_translationspo/` 에 있는 경우 `project_name` 은 "french2"가 되고 `resource_name` 는 다음과 같이 됩니다. "french_translationspo".

@@ -1,6 +1,6 @@
 ---
 nav_title: Registrar eventos personalizados
-article_title: Registra eventos personalizados a través del SDK de Braze.
+article_title: Registrar eventos personalizados a través del SDK de Braze
 page_order: 3.1
 description: "Aprende a registrar eventos personalizados a través del SDK de Braze."
 
@@ -11,7 +11,7 @@ description: "Aprende a registrar eventos personalizados a través del SDK de Br
 > Aprende a registrar eventos personalizados a través del SDK de Braze.
 
 {% alert note %}
-Para los SDK de envoltura que no aparecen en la lista, utiliza el método nativo de Android o SWIFT correspondiente.
+Para los SDK envolventes que no aparecen en la lista, utiliza el método nativo de Android o SWIFT correspondiente.
 {% endalert %}
 
 ## Registro de un evento personalizado
@@ -26,12 +26,12 @@ Para una implementación estándar del SDK Web, puedes utilizar el siguiente mé
 braze.logCustomEvent("YOUR_EVENT_NAME");
 ```
 
-Si prefieres utilizar Google Tag Manager, puedes usar el tipo de etiqueta **«Evento personalizado»** para llamar al[`logCustomEvent`](https://js.appboycdn.com/web-sdk/latest/doc/modules/braze.html#logcustomevent)[método](https://js.appboycdn.com/web-sdk/latest/doc/modules/braze.html#logcustomevent) y enviar eventos personalizados a Braze, incluyendo opcionalmente propiedades del evento. Para ello:
+Si prefieres utilizar Google Tag Manager, puedes usar el tipo de etiqueta **Evento personalizado** para llamar al [método `logCustomEvent`](https://js.appboycdn.com/web-sdk/latest/doc/modules/braze.html#logcustomevent) y enviar eventos personalizados a Braze, incluyendo opcionalmente propiedades del evento personalizado. Para ello:
 
-1. Introduce el **Nombre del Evento** utilizando una variable o escribiendo un nombre de evento.
-2. Utiliza el botón **Añadir Fila** para añadir propiedades del evento.
+1. Introduce el **nombre del evento** utilizando una variable o escribiendo un nombre de evento.
+2. Utiliza el botón **Añadir fila** para añadir propiedades del evento.
 
-![Un cuadro de diálogo que muestra los ajustes de configuración de la etiqueta de acción Braze. Las configuraciones incluidas son «tipo de etiqueta» (evento personalizado), «nombre del evento» (clic en el botón) y «propiedades del evento».]({% image_buster /assets/img/web-gtm/gtm-custom-event.png %})
+![Un cuadro de diálogo que muestra los ajustes de configuración de la etiqueta de acción de Braze. Las configuraciones incluidas son «tipo de etiqueta» (evento personalizado), «nombre del evento» (clic en el botón) y «propiedades del evento».]({% image_buster /assets/img/web-gtm/gtm-custom-event.png %})
 {% endtab %}
 
 {% tab android %}
@@ -74,28 +74,28 @@ braze.logCustomEvent('YOUR_EVENT_NAME');
 {% endtab %}
 
 {% tab cordova %}
-Utiliza el método del complemento Braze Cordova:
+Utiliza el método del complemento de Braze para Cordova:
 
 ```javascript
 BrazePlugin.logCustomEvent("YOUR_EVENT_NAME");
 ```
 
-La`logCustomEvent`API acepta:
+La API `logCustomEvent` acepta:
 - `eventName` (cadena obligatoria): Utiliza hasta 255 caracteres. No comiences el nombre con `$`. Utiliza caracteres alfanuméricos y signos de puntuación.
 - `eventProperties` (objeto opcional): Añade pares clave-valor para los metadatos del evento. Utiliza claves de hasta 255 caracteres y no empieces las claves con `$`.
 
-Para los valores de propiedad, utiliza`string`  (hasta 255 caracteres), `numeric`,`boolean` , matrices de objetos u objetos JSON anidados.
+Para los valores de propiedad, utiliza `string` (hasta 255 caracteres), `numeric`, `boolean`, matrices u objetos JSON anidados.
 
-Para obtener más información sobre la implementación, consulta el código fuente del SDK de Braze Cordova:
-- [`www/BrazePlugin.js` `logCustomEvent` método (líneas 138-140)](https://github.com/braze-inc/braze-cordova-sdk/blob/86132bc7f0b6ddf1b598b0e612db70f11744801c/www/BrazePlugin.js#L138-L140)
-- [`www/BrazePlugin.js` JSDoc (líneas 128-140)](https://github.com/braze-inc/braze-cordova-sdk/blob/86132bc7f0b6ddf1b598b0e612db70f11744801c/www/BrazePlugin.js#L128-L140)
-- [Controlador Android en`src/android/BrazePlugin.kt`  (líneas 108-115)](https://github.com/braze-inc/braze-cordova-sdk/blob/86132bc7f0b6ddf1b598b0e612db70f11744801c/src/android/BrazePlugin.kt#L108-L115)
-- [Controlador iOS en`src/ios/BrazePlugin.m`  (líneas 308-313)](https://github.com/braze-inc/braze-cordova-sdk/blob/86132bc7f0b6ddf1b598b0e612db70f11744801c/src/ios/BrazePlugin.m#L308-L313)
-- [Declaración del método iOS en`src/ios/BrazePlugin.h`  (línea 24)](https://github.com/braze-inc/braze-cordova-sdk/blob/86132bc7f0b6ddf1b598b0e612db70f11744801c/src/ios/BrazePlugin.h#L24)
+Para obtener más información sobre la implementación, consulta el código fuente del SDK de Braze para Cordova:
+- [Método `logCustomEvent` en `www/BrazePlugin.js` (líneas 138-140)](https://github.com/braze-inc/braze-cordova-sdk/blob/86132bc7f0b6ddf1b598b0e612db70f11744801c/www/BrazePlugin.js#L138-L140)
+- [JSDoc en `www/BrazePlugin.js` (líneas 128-140)](https://github.com/braze-inc/braze-cordova-sdk/blob/86132bc7f0b6ddf1b598b0e612db70f11744801c/www/BrazePlugin.js#L128-L140)
+- [Controlador Android en `src/android/BrazePlugin.kt` (líneas 108-115)](https://github.com/braze-inc/braze-cordova-sdk/blob/86132bc7f0b6ddf1b598b0e612db70f11744801c/src/android/BrazePlugin.kt#L108-L115)
+- [Controlador iOS en `src/ios/BrazePlugin.m` (líneas 308-313)](https://github.com/braze-inc/braze-cordova-sdk/blob/86132bc7f0b6ddf1b598b0e612db70f11744801c/src/ios/BrazePlugin.m#L308-L313)
+- [Declaración del método iOS en `src/ios/BrazePlugin.h` (línea 24)](https://github.com/braze-inc/braze-cordova-sdk/blob/86132bc7f0b6ddf1b598b0e612db70f11744801c/src/ios/BrazePlugin.h#L24)
 {% endtab %}
 
 {% tab infillion %}
-Si has realizado la integración de [Infillion Beacons](https://infillion.com/software/beacons/) en tu aplicación Android, puedes utilizar `visit.getPlace()`opcionalmente  para registrar eventos específicos de ubicación.`requestImmediateDataFlush`  verifica que tu evento se registre incluso si tu aplicación está en segundo plano.
+Si has integrado [Infillion Beacons](https://infillion.com/software/beacons/) en tu aplicación Android, puedes utilizar opcionalmente `visit.getPlace()` para registrar eventos específicos de ubicación. `requestImmediateDataFlush` verifica que tu evento se registre incluso si tu aplicación está en segundo plano.
 
 {% subtabs %}
 {% subtab java %}
@@ -135,7 +135,7 @@ AppboyBinding.LogCustomEvent("YOUR_EVENT_NAME");
 
 ## Añadir propiedades de metadatos
 
-Cuando registras un evento personalizado, tienes la opción de añadir metadatos sobre ese evento personalizado pasando un objeto de propiedades con el evento. Las propiedades se definen como pares clave-valor. Las claves son cadenas y los valores pueden ser `string`, `numeric`, `boolean`,[`Date`](http://www.w3schools.com/jsref/jsref_obj_date.asp)  objetos, matrices u objetos JSON anidados.
+Cuando registras un evento personalizado, tienes la opción de añadir metadatos sobre ese evento personalizado pasando un objeto de propiedades con el evento. Las propiedades se definen como pares clave-valor. Las claves son cadenas y los valores pueden ser `string`, `numeric`, `boolean`, objetos [`Date`](http://www.w3schools.com/jsref/jsref_obj_date.asp), matrices u objetos JSON anidados.
 
 Para agregar propiedades de metadatos, utiliza el siguiente método de registro de eventos.
 
@@ -270,7 +270,7 @@ BrazePlugin.logCustomEvent("YOUR-EVENT-NAME", {
 La aplicación de muestra oficial de Cordova incluye propiedades de cadena, numéricas, booleanas, de matriz y de objetos anidados:
 - [`sample-project/www/js/index.js` (líneas 230-251)](https://github.com/braze-inc/braze-cordova-sdk/blob/86132bc7f0b6ddf1b598b0e612db70f11744801c/sample-project/www/js/index.js#L230-L251)
 
-Ejemplo de extracto del proyecto:
+Extracto del proyecto de ejemplo:
 
 ```javascript
 var properties = {};
@@ -297,9 +297,9 @@ BrazePlugin.logCustomEvent("cordovaCustomEventWithNestedProperties", {
 ```
 
 Para obtener más información sobre la API y el puente nativo, consulta:
-- [`www/BrazePlugin.js` JSDoc (líneas 128-140)](https://github.com/braze-inc/braze-cordova-sdk/blob/86132bc7f0b6ddf1b598b0e612db70f11744801c/www/BrazePlugin.js#L128-L140)
-- [Controlador Android en`src/android/BrazePlugin.kt`  (líneas 108-115)](https://github.com/braze-inc/braze-cordova-sdk/blob/86132bc7f0b6ddf1b598b0e612db70f11744801c/src/android/BrazePlugin.kt#L108-L115)
-- [Controlador iOS en`src/ios/BrazePlugin.m`  (líneas 308-313)](https://github.com/braze-inc/braze-cordova-sdk/blob/86132bc7f0b6ddf1b598b0e612db70f11744801c/src/ios/BrazePlugin.m#L308-L313)
+- [JSDoc en `www/BrazePlugin.js` (líneas 128-140)](https://github.com/braze-inc/braze-cordova-sdk/blob/86132bc7f0b6ddf1b598b0e612db70f11744801c/www/BrazePlugin.js#L128-L140)
+- [Controlador Android en `src/android/BrazePlugin.kt` (líneas 108-115)](https://github.com/braze-inc/braze-cordova-sdk/blob/86132bc7f0b6ddf1b598b0e612db70f11744801c/src/android/BrazePlugin.kt#L108-L115)
+- [Controlador iOS en `src/ios/BrazePlugin.m` (líneas 308-313)](https://github.com/braze-inc/braze-cordova-sdk/blob/86132bc7f0b6ddf1b598b0e612db70f11744801c/src/ios/BrazePlugin.m#L308-L313)
 {% endtab %}
 
 {% tab react native %}
@@ -326,7 +326,7 @@ AppboyBinding.LogCustomEvent("event name", properties(Dictionary<string, object>
 {% endtabs %}
 
 {% alert important %}
-Las teclas`time``event_name`  y  están reservadas y no pueden utilizarse como propiedades del evento personalizado.
+Las claves `time` y `event_name` están reservadas y no pueden utilizarse como propiedades del evento personalizado.
 {% endalert %}
 
 ## Buenas prácticas
@@ -334,24 +334,24 @@ Las teclas`time``event_name`  y  están reservadas y no pueden utilizarse como p
 Hay tres comprobaciones importantes que debes realizar para que las propiedades del evento personalizado se registren según lo esperado:
 
 * [Establecer qué eventos se registran](#verify-events)
-* [Verificar registro](#verify-log)
+* [Verificar el registro](#verify-log)
 * [Verificar los valores](#verify-values)
 
 Se pueden registrar varias propiedades cada vez que se registra un evento personalizado.
 
 ### Verificar eventos
 
-Comprueba con tus desarrolladores qué propiedades del evento están siendo objeto de seguimiento. Ten en cuenta que todas las propiedades del evento distinguen entre mayúsculas y minúsculas. Para obtener información adicional sobre el seguimiento de eventos personalizados, consulta estos artículos basados en tu plataforma:
+Comprueba con tus desarrolladores qué propiedades del evento están siendo objeto de seguimiento. Ten en cuenta que todas las propiedades del evento distinguen entre mayúsculas y minúsculas. Para obtener información adicional sobre el seguimiento de eventos personalizados, consulta estos artículos según tu plataforma:
 
 * [Android]({{site.baseurl}}/developer_guide/analytics/logging_events/?tab=android)
 * [iOS]({{site.baseurl}}/developer_guide/analytics/logging_events/?tab=swift)
 * [Web]({{site.baseurl}}/developer_guide/analytics/logging_events/?tab=web)
 
-### Verificar registro
+### Verificar el registro
 
-Para confirmar que las propiedades del evento se han seguido correctamente, puedes ver todas las propiedades del evento desde la página **Eventos personalizados**.
+Para confirmar que las propiedades del evento se han registrado correctamente, puedes ver todas las propiedades del evento desde la página **Eventos personalizados**.
 
-1. Vaya a **Configuración de datos** > **Eventos personalizados**.
+1. Ve a **Configuración de datos** > **Eventos personalizados**.
 2. Localiza tu evento personalizado en la lista.
 3. Para tu evento, selecciona **Administrar propiedades** para ver los nombres de las propiedades asociadas a un evento.
 
@@ -362,3 +362,30 @@ Después de [añadir tu usuario como usuario de prueba]({{site.baseurl}}/user_gu
 1. Realiza el evento personalizado dentro de la aplicación.
 2. Espera unos 10 segundos a que se vacíen los datos.
 3. Actualiza el [registro de usuarios del evento]({{site.baseurl}}/user_guide/administrative/app_settings/event_user_log_tab/) para ver el evento personalizado y el valor de la propiedad del evento que se pasó con él.
+
+## Solución de problemas de eventos personalizados
+
+Utiliza estos escenarios para solucionar problemas de registro de eventos personalizados en los distintos SDK.
+
+### Verificar el desencadenante del evento personalizado
+
+Si un evento personalizado no aparece, es posible que la acción rastreada en tu aplicación no coincida con la acción que estás probando.
+
+- Confirma con tu equipo de desarrolladores qué acción de la aplicación desencadena el evento personalizado.
+- Comprueba si hay rutas de código obsoletas después de actualizaciones del SDK, como referencias a `appboy` en lugar de `braze`.
+
+### Los eventos personalizados se registran en un perfil anónimo
+
+Si no identificas a un usuario antes de registrar un evento personalizado, Braze puede asociar ese evento con un perfil anónimo.
+
+- Llama a `changeUser()` antes de realizar el evento personalizado para que Braze lo registre en un perfil de usuario identificado.
+- Prueba con un usuario de prueba identificado y luego revisa el [registro de usuarios del evento]({{site.baseurl}}/user_guide/administrative/app_settings/event_user_log_tab/).
+
+### Verificar la configuración del registro de eventos personalizados
+
+Si los eventos personalizados no aparecen como se espera, confirma que tu equipo de desarrolladores ha implementado el registro de eventos personalizados para la acción correcta de la aplicación.
+
+- Pide a tu equipo de desarrolladores que verifique que el evento se registra correctamente y se desencadena desde la acción de usuario esperada.
+- Cuando tu equipo abra un ticket con soporte de Braze, incluye [registros detallados]({{site.baseurl}}/developer_guide/sdk_integration/verbose_logging/) y fragmentos de código relevantes.
+- Si tu aplicación usa SWIFT o Android, tu equipo de desarrolladores puede utilizar los [requisitos previos del depurador del SDK](https://www.braze.com/docs/developer_guide/sdk_integration/debugging/#prerequisites) para ayudar a generar registros detallados.
+- Si tu equipo de desarrolladores no puede identificar el problema, abre un [ticket de soporte de Braze]({{site.baseurl}}/user_guide/administrative/access_braze/support/).

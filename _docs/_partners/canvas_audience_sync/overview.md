@@ -11,11 +11,11 @@ Tool:
 
 # About Audience Sync
 
-> The Braze Audience Sync feature helps you extend the reach of your campaigns to many of the top social and advertising technologies. Through [Braze Canvas]({{site.baseurl}}/user_guide/engagement_tools/canvas), brands can dynamically and securely sync first-party user data into the advertising ecosystem to drive marketing and operational efficiencies.
+> The Braze Audience Sync feature helps you extend the reach of your campaigns to many of the top social and advertising technologies. Through [Braze Canvas]({{site.baseurl}}/user_guide/messaging/canvas/), brands can dynamically and securely sync first-party user data into the advertising ecosystem to drive marketing and operational efficiencies.
 
 ## Feature availability
 
-All Braze customers will immediately have access to Audience Sync to Google and Facebook. To unlock additional Audience Sync destinations including TikTok, Pinterest, Snapchat, or Criteo, you will need to purchase Audience Sync Pro. Contact your Braze account manager for more details.
+All Braze customers immediately have access to Audience Sync to Google and Facebook, but customers who use message credits can access all Audience Sync partners. To unlock additional Audience Sync destinations, purchase Audience Sync Pro. Contact your Braze account manager for more details.
 
 ## Use cases
 

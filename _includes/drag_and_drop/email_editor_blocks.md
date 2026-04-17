@@ -2,7 +2,7 @@
 
 Editor blocks are located under the **Content** section for email messages. To use an editor block, drag an editor block inside a column in the drag-and-drop editor. It will auto-adjust to the column width. Each editor block has its owns settings, such as granular control on padding.
 
-For more information on how to use and customize these editor blocks in your email, check out [Other customizations]({{site.baseurl}}/user_guide/message_building_by_channel/email/drag_and_drop/overview/#other-customizations).
+For more information on how to use and customize these editor blocks in your email, check out [Other customizations]({{site.baseurl}}/user_guide/message_building_by_channel/email/drag_and_drop/#other-customizations).
 
 {% alert tip %}
 You can also add [custom attributes]({{site.baseurl}}/user_guide/data/activation/custom_data/custom_attributes/) to any URL within the `Image`, `Button`, or `Text` editor blocks.
@@ -26,7 +26,12 @@ The following table describes how users can use each editor block type.
 |Icons| Inserts an icon. You can upload custom images. Braze uses an oversized placeholder icon until you upload an image. |
 |HTML| Inserts raw HTML. Recommended for [Liquid]({{site.baseurl}}/liquid/), such as Connected Content or conditional statements. | 
 |Menu| Creates a flexible menu for the message you're designing. |
-{: .reset-td-br-1 .reset-td-br-2 role="presentation" } 
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
+
+### Personalization in email
+
+- **Liquid:** Under **Content** > **Personalization**, select an attribute, copy the snippet, and paste it into a text block (basic Liquid) or HTML block (advanced Liquid). In general, while you can use basic Liquid in text blocks, we recommend using HTML blocks for heavier logic to avoid layout issues. Note that Liquid isn't supported in image blocks or in button URL fields.
+- **Connected Content:** Add an **HTML** block and place your {% raw %}`{% connected_content %}`{% endraw %} call there.
 
 ## Properties
 
@@ -222,7 +227,7 @@ Refer to the following table for details on the `Button` editor block.
 |---|---|
 |Link Type| Determines the action when clicking the button and sets the appropriate protocol. |
 |URL| Dynamic based on the **Open web page** link type.|
-|Mail to, Subject, and Body| For the **Send email** link type, this sets the receipent email address, subject, and content that will populate in a draft email when the user selects the button.|
+|Mail to, Subject, and Body| For the **Send email** link type, this sets the recipient email address, subject, and content that will populate in a draft email when the user selects the button.|
 |Tel| For the **Make call** and **Send SMS** link type, this sets the phone number the user will call or text when selecting the button.|
 |Message| For the **Send SMS** link type, this sets the content that will populate in a draft SMS message when the user selects the button.|
 |Button options| Sets various button options, such as font, width, color, and others.|

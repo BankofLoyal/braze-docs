@@ -1,0 +1,155 @@
+# Spellchecks English Markdown changed in the PR under _docs/ and _includes/.
+# Custom words: config/cspell/braze-dictionary.txt (see file header). Glossary source of truth for editorial terms: _docs/_contributing/style_guide/writing_style_guide.md (#glossary).
+name: Spellcheck
+
+on:
+  pull_request:
+    paths:
+      - "_docs/**"
+      - "_includes/**"
+      - "cspell.json"
+      - "config/cspell/**"
+      - ".github/workflows/cspell.yml"
+      - "package.json"
+      - "package-lock.json"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  cspell:
+    name: cspell (changed Markdown)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          # Full history keeps three-dot merge-base resolution reliable on long-lived branches.
+          fetch-depth: 0
+
+      - name: Fetch base branch for three-dot diff
+        run: git fetch --no-tags origin "${{ github.base_ref }}"
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          cache: npm
+
+      # --ignore-scripts: PRs can change the lockfile; skip lifecycle scripts so install stays a
+      # pure extract (cspell does not need postinstall to run the CLI).
+      - name: Install npm dependencies
+        run: npm ci --ignore-scripts
+
+      # Stale PR branches can lack cspell in package-lock.json; npm ci then succeeds but leaves no CLI.
+      - name: Verify cspell CLI is installed
+        run: |
+          if [[ ! -e node_modules/.bin/cspell ]]; then
+            echo "::error::cspell is missing after npm ci (node_modules/.bin/cspell not found). Merge the latest ${{ github.base_ref }} into your PR branch so package.json and package-lock.json include the cspell devDependency, then push."
+            exit 1
+          fi
+
+      - name: Run cspell on changed Markdown
+        id: spellcheck
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="origin/${{ github.base_ref }}"
+          mapfile -t FILES < <(git diff --name-only --diff-filter=ACMRT "$BASE"...HEAD -- _docs _includes | grep -E '\.md$' || true)
+          if ((${#FILES[@]} == 0)); then
+            echo "ran=false" >> "$GITHUB_OUTPUT"
+            echo "No changed Markdown under _docs/ or _includes/."
+            exit 0
+          fi
+          echo "ran=true" >> "$GITHUB_OUTPUT"
+          printf '%s\n' "${FILES[@]}"
+          set +e
+          npm exec -- cspell lint --no-progress "${FILES[@]}" 2>&1 | tee cspell-output.txt
+          exit "${PIPESTATUS[0]}"
+
+      - name: Sync spelling PR comment
+        if: always() && (steps.spellcheck.outcome == 'success' || steps.spellcheck.outcome == 'failure')
+        uses: actions/github-script@v9
+        env:
+          SPELLCHECK_OUTCOME: ${{ steps.spellcheck.outcome }}
+          SPELLCHECK_RAN: ${{ steps.spellcheck.outputs.ran }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const marker = '<!-- braze-docs-cspell-bot -->';
+            const prNumber = context.payload.pull_request.number;
+
+            if (process.env.SPELLCHECK_RAN !== 'true') {
+              core.info('Spellcheck did not run on Markdown files; skipping PR comment sync.');
+              return;
+            }
+
+            const fs = require('fs');
+            const { owner, repo } = context.repo;
+
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner,
+              repo,
+              issue_number: prNumber,
+              per_page: 100,
+            });
+            const existing = comments.find((c) => c.body && c.body.includes(marker));
+
+            if (process.env.SPELLCHECK_OUTCOME === 'success') {
+              if (existing) {
+                await github.rest.issues.deleteComment({
+                  owner,
+                  repo,
+                  comment_id: existing.id,
+                });
+                core.info(`Deleted resolved spelling comment ${existing.id}`);
+              }
+              return;
+            }
+
+            // failure: post or update comment (log is untrusted PR output — sanitize fences)
+            let log = '(no output captured)';
+            try {
+              log = fs.readFileSync('cspell-output.txt', 'utf8');
+            } catch (e) {
+              core.warning('cspell-output.txt missing: ' + e.message);
+            }
+            log = log.trim().replace(/```/g, '`' + '\u200b``');
+            const maxLen = 58000;
+            if (log.length > maxLen) {
+              log = log.slice(0, maxLen) + '\n\n…(truncated for GitHub comment length)';
+            }
+
+            const dictPath = 'config/cspell/braze-dictionary.txt';
+            const dictUrl = `https://github.com/${owner}/${repo}/blob/${context.payload.pull_request.head.sha}/${dictPath}`;
+            const body = [
+              marker,
+              '',
+              '### Spelling check failed',
+              '',
+              `[cspell](https://cspell.org/) reported issues in Markdown changed by this PR. **Fix the typo** or add a valid term to [\`${dictPath}\`](${dictUrl}) (see the file header for guidance).`,
+              '',
+              '```text',
+              log,
+              '```',
+            ].join('\n');
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner,
+                repo,
+                comment_id: existing.id,
+                body,
+              });
+              core.info(`Updated spelling comment ${existing.id}`);
+            } else {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: prNumber,
+                body,
+              });
+              core.info('Created spelling comment');
+            }

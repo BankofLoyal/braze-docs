@@ -70,27 +70,58 @@ $ ./bdocs deploy
 
 ### `release`
 
-This command creates the pull request description for monthly releases by comparing which pull requests have been merged into `main` since the last release and then listing them in the proper Markdown format.
+This command creates a Markdown file in your `scripts/temp` folder that lists merged `deploy` pull requests from [braze-inc/braze-docs](https://github.com/braze-inc/braze-docs) from the last release notes until today. Under each deploy PR is a list of merged contributor PRs, each as a markdown link in the form `[#NNNN](pull-url) - subject`.
+
+The default behavior uses the latest `v.*` git tag. First, it finds that tag in your local repo, then includes deploy PRs merged from 00:00:00 UTC on the calendar day after that tag’s commit through 23:59:59 UTC today. Run `git fetch origin main --tags` first if tags are stale.
+
+The generator script is [`scripts/generate_releases_deploy.py`](https://github.com/braze-inc/braze-docs/blob/develop/scripts/generate_releases_deploy.py).
 
 {% tabs local %}
 {% tab usage example %}
+#### Example command
+
 ```bash
 $ ./bdocs release
-
-## Deploy - September 17, 2024
-
-- https://github.com/braze-inc/braze-docs/pull/8104 - Deploy - September 17, 2024
-- https://github.com/braze-inc/braze-docs/pull/8039 - Add Trending item recommendations
-- https://github.com/braze-inc/braze-docs/pull/8073 - Add dynamic images to WhatsApp
-- https://github.com/braze-inc/braze-docs/pull/8069 - Response messages GA
-
-## Leftover deploy - September 12, 2024
-
-- https://github.com/braze-inc/braze-docs/pull/8045 - Add list of security events that are reported
-- https://github.com/braze-inc/braze-docs/pull/8047 - -2 Add sentence to security event report download
-- https://github.com/braze-inc/braze-docs/pull/8048 - SessionM Partnership Doc
-- https://github.com/braze-inc/braze-docs/pull/8051 - File file_storage_integrations.md committed.
+Merged deploy PRs: 2026-04-03..2026-04-13 (2026-04-03T00:00:00Z → 2026-04-13T23:59:59Z)
+Wrote /path/to/braze-docs/scripts/temp/releases_deploy_2026-04-03_to_2026-04-13.md (45123 bytes)
 ```
+
+The path depends on your clone location.
+
+#### Example: custom output file
+
+This command puts the output in a file called `my_deploy_list.md`.
+
+```bash
+$ ./bdocs release scripts/temp/my_deploy_list.md
+Merged deploy PRs: 2026-04-03..2026-04-13 (2026-04-03T00:00:00Z → 2026-04-13T23:59:59Z)
+Wrote /path/to/braze-docs/scripts/temp/my_deploy_list.md (45123 bytes)
+```
+
+#### Example: explicit date range
+
+This command pulls PRs from March 6, 2026 to April 2, 2026. 
+
+```bash
+$ ./bdocs release 2026-03-06 2026-04-02 "April 2026"
+Merged deploy PRs: 2026-03-06..2026-04-02 (2026-03-06T00:00:00Z → 2026-04-02T23:59:59Z)
+Wrote /path/to/braze-docs/scripts/temp/releases_deploy_2026-03-06_to_2026-04-02.md (28491 bytes)
+```
+
+#### Excerpt from example generated Markdown
+
+{% raw %}
+```markdown
+# Deploy PRs for April 2026 (2026-03-06T00:00:00Z → 2026-04-02T23:59:59Z)
+
+*Merged contributor PRs only: … Each sub-bullet links `[#NNNN](url) - subject` when the PR number is known.*
+
+## Nightly Deploy — April 02, 2026
+- https://github.com/braze-inc/braze-docs/pull/12955 - Nightly Deploy — April 02, 2026
+  - [#12947](https://github.com/braze-inc/braze-docs/pull/12947) - [BD-5977] Replace link in alert
+  - [#12637](https://github.com/braze-inc/braze-docs/pull/12637) - Release notes - April 2026
+```
+{% endraw %}
 {% endtab %}
 {% endtabs %}
 
@@ -190,7 +221,7 @@ Total replacements made: 1
 
 {% raw %}
 ```markdown
-Learn how to [log analytics]({{site.baseurl}}/developer_guides/android/content_cards/logging_analytics/) for your custom Content Cards.
+Learn how to [log analytics]({{site.baseurl}}/developer_guide/content_cards/logging_analytics/) for your custom Content Cards.
 ```
 {% endraw %}
 
@@ -198,7 +229,7 @@ Learn how to [log analytics]({{site.baseurl}}/developer_guides/android/content_c
 
 {% raw %}
 ```markdown
-Learn how to [log analytics]({{site.baseurl}}/developer_guides/content_cards/analytics/) for your custom Content Cards.
+Learn how to [log analytics]({{site.baseurl}}/user_guide/channels/content_cards/reporting/) for your custom Content Cards.
 ```
 {% endraw %}
 {% endtab %}

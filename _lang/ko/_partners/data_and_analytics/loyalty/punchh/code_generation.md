@@ -82,11 +82,11 @@ Replace the following:
 | `DYNAMIC_COUPON_GENERATION_TOKEN` | Your dynamic coupon generation token. |
 | `CAMPAIGN_ID`                     | Your campaign ID.                     |
 
-### Step 3: Append coupon code to message body
+### 3단계: 메시지 본문에 쿠폰 코드 추가
 
-#### Linking to Punchh web page
+#### Punchh 웹 페이지로 연결
 
-To link to a Puncch-hosted web page, add `{% raw %}{{jwt}}{% endraw %}` to the dynamic generation URL [you created earlier](#step-1-create-a-coupon-campaign-in-punchh). Your link should be similar to the following: 
+Punchh에서 호스팅하는 웹 페이지로 연결하려면 [이전에 생성한](#step-1-create-a-coupon-campaign-in-punchh) 동적 생성 URL에 `{% raw %}{{jwt}}{% endraw %}`를 추가하세요. 링크는 다음과 유사해야 합니다. 
 
 {% raw %}
 ```

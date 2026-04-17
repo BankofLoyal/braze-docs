@@ -12,7 +12,7 @@ page_order: 2
 
 ## Agents in Canvas  
 
-You can use agents as steps in a journey to personalize messages or guide decisioning in real time. For detailed setup steps, refer to [Agent step]({{site.baseurl}}/user_guide/engagement_tools/canvas/canvas_components/agent_step/).
+You can use agents as steps in a journey to personalize messages or guide decisioning in real time. For detailed setup steps, refer to [Agent step]({{site.baseurl}}/user_guide/messaging/canvas/canvas_components/agent_step/).
 
 ### Use cases
 
@@ -37,7 +37,7 @@ You can apply an agent to catalog fields so it automatically generates or calcul
 | Generate product descriptions | Automatically create short marketing copy for new catalog entries, for example, by generating a catchy description from structured product data like name, category, and features. |
 | Enrich product attributes | Fill in missing values such as color family, style, or season based on a product name and details. For example, if a product name is “Laguna Polarized Sunglasses,” the agent could assign the style as “sport” and the color family as “blue.” |
 | Calculate derived fields | Use existing fields to generate new data, such as a “fit score” based on attributes or a “popularity tag” from sales and review counts. |
-| Categorize or tag items | Assign tags for recommendation logic so personalization models can segment products more effectively. For example, tag products as “outdoor,” “festival-ready,” or “premium.” |
+| Categorize or tag items | Assign tags for recommendation logic so personalization models can segment products more effectively. For example, tag products as "outdoor," "festival-ready," or "premium." |
 | Localize content | Translate catalog text into another language for global campaigns, or adjust tone and length for region-specific channels. For example, translate “Classic Clubmaster Sunglasses” into Spanish as “Gafas de sol Classic Clubmaster,” or shorten descriptions for SMS campaigns. |
 | Summarize reviews or feedback | Summarize sentiment or feedback into a new field, such as assigning sentiment scores like Positive, Neutral, or Negative, or creating a short text summary like “Most customers mention great fit, but note slow shipping.” |
 {: .reset-td-br-1 .reset-td-br-2 role="presentation" }
@@ -105,7 +105,7 @@ In the **Usage** section of your agent, you can reference and navigate to where 
 In the **Logs** section of your agent, you can monitor actual agent calls that occur in your Canvases and catalogs. You can filter by information such as the date range, outcome (success or failure), or calling location. You can also select **Export CSV** to export the logs shown on the current page only.
 
 {% alert tip %}
-You can also monitor daily invocation limit errors at the [Message Activity Log]({{site.baseurl}}/user_guide/administrative/app_settings/message_activity_log_tab/).
+You can also monitor daily invocation limit errors at the [Message Activity Log]({{site.baseurl}}/user_guide/administer/global/workspace_settings/logs_and_alerts/message_activity_log/).
 {% endalert %}
 
 ![Logs for an agent AI Sentiment Score.]({% image_buster /assets/img/ai_agent/agent_logs.png %})
@@ -121,8 +121,9 @@ You can also use these Currents events to access the Kafka record schemas:
 - Agent executed events
 - Tool invocation events
 
-Refer to the [Message engagement events glossary]({{site.baseurl}}/user_guide/data/braze_currents/event_glossary/message_engagement_events/) for more details.
+Refer to the [Message engagement events glossary]({{site.baseurl}}/user_guide/data/distribution/braze_currents/event_glossary/message_engagement_events/) for more details.
 
 ## Related articles  
 
 - [Reference for agents]({{site.baseurl}}/user_guide/brazeai/agents/reference/)
+- [Frequently asked questions]({{site.baseurl}}/user_guide/brazeai/agents/faq/)

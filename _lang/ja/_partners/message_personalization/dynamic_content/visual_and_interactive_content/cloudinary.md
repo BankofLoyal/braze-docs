@@ -75,7 +75,7 @@ Braze キャンペーンおよびキャンバスでクラウディナリのDAM �
 具体的なAndroidおよびiOSの考慮事項については、[ビデオ]({{site.baseurl}}/user_guide/message_building_by_channel/in-app_messages/traditional/customize/video/)を参照してください。 
 
 {% endtab %}
-{% tab Convert videoes into GIFs %}
+{% tab Convert videos into GIFs %}
 
 ## 動画es をメールs のGIF に変換する
 
