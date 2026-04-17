@@ -286,6 +286,8 @@ valid_partner_list:
   url: /docs/partners/celebrus/
 - name: Friendbuy
   url: /docs/partners/friendbuy/
+- name: GRAVTY®
+  url: /docs/partners/lji/
 - name: Alpaco
   url: /docs/partners/alpaco/
 - name: NiftyImages
