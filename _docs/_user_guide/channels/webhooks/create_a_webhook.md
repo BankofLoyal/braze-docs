@@ -236,6 +236,16 @@ When the webhook request is sent, the receiving server will return a response co
 Braze retries the above status codes up to five times within 30 minutes using exponential backoff. If we can't reach your endpoint, retries may be spread over a 24-hour period.<br><br>Each webhook is allowed 90 seconds before it times out.
 {% endalert %}
 
+`Retry-After` and rate-limit response headers can affect how long Braze waits before a **retriable** attempt (for example, after `408`, `429`, or `5XX`). They do not make non-retriable responses, such as `401`, eligible for retry.
+
+#### Authentication and Connected Content credentials
+
+The outbound webhook HTTP request does not support attaching [Connected Content credentials]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/connected_content/making_an_api_call/#authentication-types) (`:basic_auth` or `:auth_credentials`) to authenticate against your endpoint. Set authentication using **Request headers** on the webhook instead. To fetch a token or secret at send time, you can place a {% raw %}`{% connected_content %}`{% endraw %} tag in a header or body field so Liquid resolves it before the webhook is sent.
+
+#### Saved webhook templates and campaign usage
+
+Braze does not provide a built-in report that lists every campaign or Canvas step that references a given **saved webhook template**. To audit usage, review webhook steps that use the same URL and HTTP method, or contact [Braze Support]({{site.baseurl}}/support_contact/).
+
 #### Troubleshooting and additional error details
 
 For detailed explanations, troubleshooting steps, and guidance on resolving specific webhook errors, refer to [Troubleshooting webhook and Connected Content requests]({{site.baseurl}}/help/help_articles/api/webhook_connected_content_errors/). You'll also find more explanations on how our unhealthy host detection system works and how Braze provides error notifications through automated emails and additional logging in Braze Currents.

@@ -95,6 +95,12 @@ Email size refers to the size of your message HTML in Braze (the body you build 
 | 25&nbsp;KB maximum |   60&nbsp;KB maximum   | 600 pixels maximum |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 role="presentation" }
 
+To reduce clipping risk:
+
+- Shorten copy and links.
+- Inline critical CSS where needed. Remove extra whitespace in HTML.
+- Compress images and HTML assets.
+
 {% alert note %}
 To save your email campaign or template, make sure your email body does not exceed 400&nbsp;KB.
 {% endalert %}
@@ -102,6 +108,7 @@ To save your email campaign or template, make sure your email body does not exce
 ### What can add to the final email size?
 
 These features increase the rendered message size by small amounts:
+
 - Open tracking pixel: Adds a 1 x 1&nbsp;px image tag to the message body
 - Preheader: Adds a hidden `<div>` at the top of the body
 - Link aliasing: Appends a 16-character query parameter (`lid=`) to each tracked URL
