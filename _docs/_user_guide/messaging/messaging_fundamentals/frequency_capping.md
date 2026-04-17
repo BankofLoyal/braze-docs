@@ -19,7 +19,7 @@ Braze allows you to control marketing pressure by rate limiting your campaigns, 
 1. [User-centric rate limiting:](#user-centric-rate-limiting) Focuses on providing the best experience for the user.
 2. [Delivery speed rate limiting:](#delivery-speed-rate-limiting) Takes into consideration the bandwidth of your servers.
 
-Braze does not support a per-second rate limit. Braze tries to evenly distribute the message sends throughout the minute, but cannot guarantee this. For example, if you have a campaign with a rate limit of 5,000 messages per minute, we will try to distribute the 5,000 requests evenly through the minute (about 84 messages per second), but there may be some variation in the per-second rate.
+Braze does not support a per-second rate limit. Braze tries to evenly distribute the message sends throughout the minute, but cannot guarantee this. For example, if you have a campaign with a rate limit of 5,000 messages per minute, we try to distribute the 5,000 requests evenly through the minute (about 84 messages per second), but there may be some variation in the per-second rate.
 
 ### User-centric rate limiting
 
