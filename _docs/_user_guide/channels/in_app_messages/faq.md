@@ -39,6 +39,18 @@ MESSAGE HERE
 ```
 {% endraw %}
 
+### Can users receive an in-app message again after they dismiss it?
+
+#### Campaigns
+
+For in-app message campaigns, you can allow users to become eligible to receive the campaign again by turning on re-eligibility in **Delivery Controls** (**Allow users to become re-eligible to receive campaign**). How soon they can receive it again depends on the re-eligibility window you set and how Braze recorded the prior send. See [Re-eligibility for campaigns and Canvas]({{site.baseurl}}/user_guide/messaging/messaging_fundamentals/re_eligibility/) for campaign behavior, including how re-eligibility relates to message receipt.
+
+If re-eligibility is off, users generally won't receive that same campaign again based on qualifying criteria alone after they've received it.
+
+#### Canvases
+
+For in-app messages sent from a Canvas, whether a user can see the message again depends on Canvas entry controls (such as allowing users to re-enter the Canvas) and your step configuration—not only the campaign delivery controls.
+
 ### When is eligibility for an in-app message calculated?
 
 Eligibility for an in-app message is calculated at the time of delivery. If an in-app message is scheduled to send at 7 am, then eligibility is checked for this in-app message at 7 am.

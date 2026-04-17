@@ -15,7 +15,7 @@ Shopify va supprimer `checkout.liquid` en deux phases :
 1. **Le [13 août 2024](#phase-one-august-13-2024):** Délai pour mettre à jour vos pages d'information, d'expédition et de paiement.
 2. **[28 août 2025](#phase-two-august-28-2025):** Statut de commande pour la mise à jour de vos pages de remerciement et d'état de la commande, y compris vos applications utilisant des étiquettes de script et des scripts supplémentaires.
 
-Pour obtenir des informations générales sur la mise à niveau vers Checkout Extensibilty, consultez le [guide de mise à niveau de Shopify.](https://help.shopify.com/en/manual/checkout-settings/customize-checkout-configurations/checkout-extensibility)
+Pour obtenir des informations générales sur la mise à niveau vers Checkout Extensibility, consultez le [guide de mise à niveau de Shopify.](https://help.shopify.com/en/manual/checkout-settings/customize-checkout-configurations/checkout-extensibility)
 
 ## Impact sur votre intégration
 

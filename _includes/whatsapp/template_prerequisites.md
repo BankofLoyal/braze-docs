@@ -1,4 +1,4 @@
-Before [creating carousel templates]({{site.baseurl}}/user_guide/message_building_by_channel/whatsapp/whatsapp_campaign/template_builder/whatsapp_carousel_templates/#create-a-carousel-template), you need:
+Before creating WhatsApp templates, you must complete the [WhatsApp setup]({{site.baseurl}}/user_guide/channels/whatsapp/whatsapp_setup/) and have:
 - An active WhatsApp Business Account (WABA) connected to Braze
 - Appropriate subscription groups configured within your WABA
 - Media assets (images or videos) ready for upload

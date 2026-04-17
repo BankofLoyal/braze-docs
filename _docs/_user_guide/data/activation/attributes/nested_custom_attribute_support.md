@@ -265,131 +265,6 @@ Use the `custom_attribute` personalization tag and dot notation to access proper
 
 ![Using Liquid to template a song name and the number of times a listener has played that song into a message]({% image_buster /assets/img_archive/nca_liquid_2.png %})
 
-## Segmentation
-
-You can build segments based on nested custom attributes to further target your users. To do so, filter your segment based on the custom attribute object, then specify the path to your property name and associated value you want to segment on. If you're not sure what that path looks like, you can [generate a schema](#generate-schema) and use the nested object explorer to have Braze populate that path for you.
-
-After adding a path to your property, select **Validate** to verify that the value in the path field is valid.
-
-![Filtering based on a most played song custom attribute where a listener has played a song over a specified number of times]({% image_buster /assets/img_archive/nca_segmentation_2.png %})
-
-To segment with nested custom attributes, select the **Nested Custom Attributes** filter to expose a dropdown from which you can select a specific nested custom attribute.
-
-![]({% image_buster /assets/img_archive/nested_custom_attributes.png %}){: style="max-width:70%;"}
-
-When working with nested custom attributes segmentation, you'll have access to a new comparator grouped by data type. For example, because `play_analytics.count` is a number, you can select a comparator under the **Number** category.
-
-![A user choosing an operator based on the data type for the nested custom attribute]({% image_buster /assets/img_archive/nca_comparator.png %})
-
-### Filtering for Time data types
-
-When filtering a nested time custom attribute, you can choose to filter with operators under the **Day of Year** or **Time** categories when comparing the date value. 
-
-If you select an operator under the **Day of Year** category, only the month and day will be checked for comparison instead of the full timestamp of the nested custom attribute value. Selecting an operator under the **Time** category will compare the full timestamp, including the year.
-
-### Multi-criteria segmentation
-
-Use **Multi-Criteria Segmentation** to create a segment that matches multiple criteria within a single object. This qualifies the user into the segment if they have at least one object array that matches all the criteria specified. For example, users will only match this segment if their key is not blank, and if their number is more than 0.
-
-You can also use the **Copy Liquid for segment** feature to generate Liquid code for this segment and use that in a message. For example, let's say you have an array of account objects and a segment that targets customers with active taxable accounts. To get customers to contribute to the account goal associated with one of their active and taxable account, you'll want to create a message to nudge them. 
-
-![An example segment with the selected checkbox for Multi-Criteria Segmentation.]({% image_buster /assets/img_archive/nca_multi_criteria.png %})
-
-When you select **Copy Liquid for segment**, Braze will automatically generate Liquid code that returns an object array that only contains accounts that are active and taxable.
-
-{% raw %}
-
-```
-{% assign segmented_nested_objects = '' | split: '' %}
-{% assign obj_array = {{custom_attribute.${accounts}}} %}
-{% for obj in obj_array %}
-  {% if obj["account_type"] == 'taxable' and obj["active"] == true %}
-    {% assign segmented_nested_objects = obj_array | slice: forloop.index0 | concat: segmented_nested_objects | reverse %}
-  {% endif %}
-{% endfor %}
-```
-
-From here, you can use `segmented_nested_objects` and personalize your message. In this example, we want to take a goal from the first active taxable account and personalize it:
-
-```
-Get to your {{segmented_nested_objects[0].goal}} goal faster, make a deposit using our new fast deposit feature!
-```
-
-{% endraw %}
-
-This returns the following message to your customer: "Get to your retirement goal faster, make a deposit using our new fast deposit feature!"
-
-### Generate a schema using the nested object explorer {#generate-schema}
-
-You can generate a schema for your objects to build segment filters without needing to memorize nested object paths. To do so, perform the following steps.
-
-#### Step 1: Generate a schema
-
-For this example, suppose we have an `accounts` object array that we've just sent to Braze:
-
-```json
-{"accounts": [
-  {"type": "taxable",
-  "balance": 22500,
-  "active": true},
-  {"type": "non-taxable",
-  "balance": 0,
-  "active": true}
-]}
-```
-
-In the Braze dashboard, go to **Data Settings** > **Custom Attributes**.
-
-Search for your object or object array. In the **Attribute Name** column, select **Generate Schema**.
-
-![]({% image_buster /assets/img_archive/nca_generate_schema.png %})
-
-{% alert tip %}
-It may take a few minutes for your schema to generate depending on how much data you've sent us.
-{% endalert %}
-
-After the schema has been generated, a new <i class="fas fa-plus"></i> plus button appears in place of the **Generate Schema** button. You can click on it to see what Braze knows about this nested custom attribute. 
-
-During schema generation, Braze looks at previous data sent and builds an ideal representation of your data for this attribute. Braze also analyzes and adds a data type for your nested values. This is done by sampling the previous data sent to Braze for the given nested attribute.
-
-For our `accounts` object array, you can see that within the object array, there's an object that contains the following:
-
-- A boolean type with a key of `active` (regardless of if the account is active or not)
-- A number type with a key of `balance` (balance amount in the account)
-- A string type with a key of `type` (non-taxable or taxable account)
-
-![]({% image_buster /assets/img_archive/nca_schema.png %}){: style="max-width:50%" }
-
-Now that we've analyzed and built a representation of the data, let's build a segment.
-
-#### Step 2: Build a segment
-
-Let's target customers who have a balance of less than 100 so that we can send them a message nudging them to make a deposit.
-
-Create a segment and add the filter `Nested Custom Attribute`, then search for and select your object or object array. Here we've added the `accounts` object array. 
-
-![]({% image_buster /assets/img_archive/nca_segment_schema.png %})
-
-Select the <i class="fas fa-plus"></i> plus button in the path field. This will bring up a representation of your object or object array. You can select any of the listed items and Braze will insert them into the path field for you. In this example, we need to get the balance. Select the balance and the path (in this case, `[].balance`) is automatically populated in the path field.
-
-![]({% image_buster /assets/img_archive/nca_segment_schema2.png %}){: style="max-width:70%" }
-
-You can select **Validate** to verify that the contents of the path field is valid, then build the rest of the filter as needed. Here we've specified that the balance should be less than 100.
-
-![]({% image_buster /assets/img_archive/nca_segment_schema_3.png %})
-
-That's it! You just created a segment using a nested custom attribute, all without needing to know how the data is structured. The nested object explorer in Braze generated a visual representation of your data and allowed you to explore and select exactly what you needed to create a segment.
-
-### Trigger nested custom attribute changes
-
-You can trigger when a nested custom attribute object changes. This option isn't available for changes to object arrays. If you don't see an option to view the path explorer, check that you've generated a schema. 
-
-![]({% image_buster /assets/img_archive/nca_triggered_changes2.png %})
-
-For example, in the following action-based campaign, you can add a new trigger action for **Change Custom Attribute Value** to target users who have changed their neighborhood office preferences. 
-
-![]({% image_buster /assets/img_archive/nca_triggered_changes.png %})
-
 ### Personalization
 
 Using the **Add Personalization** modal, you can also insert nested custom attributes into your messaging. Select **Nested Custom Attributes** as the personalization type. Next, select the top-level attribute and attribute key. 
@@ -402,9 +277,9 @@ For example, in the personalization modal below, this inserts the nested custom 
 Check that a schema has been generated if you don't see the option to insert nested custom attributes.
 {% endalert %}
 
-### Regenerate schemas {#regenerate-schema}
+## Regenerate schemas {#regenerate-schema}
 
-After a schema has been generated, it can be regenerated once every 24 hours. This section describes how to regenerate your schema. For more detailed information on schemas, refer to the section in this article on [generating a schema](#generate-schema).
+After a schema has been generated, it can be regenerated once every 24 hours. This section describes how to regenerate your schema. For more detailed information on schemas, see [Generate a schema using the nested object explorer]({{site.base}}/user_guide/audience/segments/segment_with_nested_custom_attributes/#generate-schema).
 
 To regenerate the schema for your nested custom attribute:
 
@@ -420,6 +295,14 @@ To reset the schema for an object array with an existing object, you need to cre
 {% endalert %}
 
 If data doesn't appear as expected after regenerating the schema, the attribute may not be ingested often enough. User data is sampled on previous data sent to Braze for the given nested attribute. If the attribute isn't ingested enough, it won't be picked up for the schema.
+
+## Trigger nested custom attribute changes
+
+You can trigger when a nested custom attribute object changes. This option isn't available for changes to object arrays. If you don't see an option to view the path explorer, check that you've generated a schema.
+
+For example, in an action-based campaign, you can add a new trigger action for **Change Custom Attribute Value** to target users who have changed their neighborhood office preferences.
+
+![Action-based campaign delivery settings with a Change Custom Attribute Value trigger for nested preferences.]({% image_buster /assets/img_archive/nca_triggered_changes.png %})
 
 ## Segmentation behavior with arrays of objects
 

@@ -109,10 +109,10 @@ AppboyBinding.IncrementCustomUserAttribute("key", increment(int))
 ```
 {% endtab %}
 
-{% tab Double %}
+{% tab Float %}
 
 ```csharp
-AppboyBinding.SetCustomUserAttribute("custom double attribute key", 'double value');
+AppboyBinding.SetCustomUserAttribute("custom float attribute key", 'float value');
 ```
 
 {% endtab %}

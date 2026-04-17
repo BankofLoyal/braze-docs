@@ -75,7 +75,7 @@ La forma más directa de utilizar imágenes y videos directamente desde el DAM d
 Consulta [el video]({{site.baseurl}}/user_guide/message_building_by_channel/in-app_messages/traditional/customize/video/) para ver consideraciones específicas sobre Android e iOS. 
 
 {% endtab %}
-{% tab Convert videoes into GIFs %}
+{% tab Convert videos into GIFs %}
 
 ## Convierte videos en GIFs para correos electrónicos
 

@@ -11,6 +11,10 @@ description: "This reference article covers how to use catalogs to reference non
 
 ## Using catalogs in a message
 
+The following video walks through how to use catalogs in a message.
+
+{% multi_lang_include video.html id="4yc2jkyn6w" source="wistia" %}
+
 ### Step 1: Add personalization type {#step-one-personalization}
 
 In the message composer of your choice, select the <i class="fas fa-plus-circle"></i> plus icon to open the **Add Personalization** modal and select **Catalog Items** for the **Personalization type**. Then, select your catalog name. Using our previous example, we'll select the "Games" catalog.

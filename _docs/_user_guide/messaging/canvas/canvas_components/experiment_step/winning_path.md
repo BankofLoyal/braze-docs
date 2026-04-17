@@ -34,6 +34,8 @@ Next, set the **Experiment Window**. The **Experiment Window** specifies how lon
 
 By default, if the results of the test aren't enough to determine a statistically significant winner, all future users are sent down the best-performing path. Alternatively, you can select **Continue sending all future users the mix of paths**. This option sends future users down the mix of paths according to the percentages specified in the experiment path distribution.
 
+In the event of a tie, Braze selects the path that appears first.
+
 !["Continue sending all future users the mix of paths" selected as what happens to users if the test result isn't statistically significant.]({% image_buster /assets/img/experiment_step/experiment_winning_statistical.png %})
 
 {% alert note %}
@@ -52,7 +54,7 @@ After a Winning Path concludes, all subsequent users who enter the Canvas go dow
 
 If Winning Path is turned on, your analytics view is separated into two tabs: **Initial Experiment** and **Winning Path**.
 
-- **Initial Experiment:** Shows the metrics for each path during the experiment window. You can see a summary of how all the paths performed for the specified conversion events and which path was selected as the winner.
+- **Initial Experiment:** Shows the metrics for each path during the experiment window, which path was selected as the winner, and Canvas conversion metrics. The conversion event used to pick the winner, configured in Winning Path settings, might not be the same as the conversion metric highlighted in Canvas analytics. For more information on how Experiment Path analytics relate to Canvas conversion events and the winning metric, see [Experiment Paths]({{site.baseurl}}/user_guide/engagement_tools/canvas/canvas_components/experiment_step/#winning-path-and-personalized-paths-performance).
 - **Winning Path:** Shows only the metrics for the Winning Path starting from the moment the Initial Experiment finished.
 
 ## Things to know
@@ -75,4 +77,4 @@ Alternatively, if you wish to use local delivery, use an experiment window of 24
 
 ### Variants based on clicks
 
-If you're setting up a Winning Path variant based on clicks, every interaction counts as a click unless it is identified as an unsubscribe click by Braze.
+If you're setting up a Winning Path variant based on clicks, note that the definitions for opens and clicks differ by channel. For specific metrics and definitions by channel, refer to [Report metrics glossary]({{site.baseurl}}/user_guide/analytics/reporting/report_metrics) and [Email report metrics glossary]({{site.baseurl}}/user_guide/message_building_by_channel/email/reporting_and_analytics/analytics_glossary).

@@ -15,7 +15,7 @@ main() {
         COMMIT_LOGS=$(git log --first-parent origin/$PRIMARY_BRANCH..origin/develop --pretty=%s»¦«%b)
     else
         # Use the provided start and end dates to get the commit logs
-        # Needed so 'release_text.sh' can get all deploys for a monthly release.
+        # Optional date-bounded log (e.g. explicit ./bdocs release start/end).
         START_DATE="$1"
         END_DATE="$2"
         COMMIT_LOGS=$(git log --first-parent --since="$START_DATE" --until="$END_DATE" origin/develop --pretty=%s»¦«%b)

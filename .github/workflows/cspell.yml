@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout PR head
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           # Full history keeps three-dot merge-base resolution reliable on long-lived branches.
@@ -33,7 +33,7 @@ jobs:
         run: git fetch --no-tags origin "${{ github.base_ref }}"
 
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
           cache: npm
@@ -42,6 +42,14 @@ jobs:
       # pure extract (cspell does not need postinstall to run the CLI).
       - name: Install npm dependencies
         run: npm ci --ignore-scripts
+
+      # Stale PR branches can lack cspell in package-lock.json; npm ci then succeeds but leaves no CLI.
+      - name: Verify cspell CLI is installed
+        run: |
+          if [[ ! -e node_modules/.bin/cspell ]]; then
+            echo "::error::cspell is missing after npm ci (node_modules/.bin/cspell not found). Merge the latest ${{ github.base_ref }} into your PR branch so package.json and package-lock.json include the cspell devDependency, then push."
+            exit 1
+          fi
 
       - name: Run cspell on changed Markdown
         id: spellcheck
@@ -58,12 +66,12 @@ jobs:
           echo "ran=true" >> "$GITHUB_OUTPUT"
           printf '%s\n' "${FILES[@]}"
           set +e
-          ./node_modules/.bin/cspell lint --no-progress "${FILES[@]}" 2>&1 | tee cspell-output.txt
+          npm exec -- cspell lint --no-progress "${FILES[@]}" 2>&1 | tee cspell-output.txt
           exit "${PIPESTATUS[0]}"
 
       - name: Sync spelling PR comment
         if: always() && (steps.spellcheck.outcome == 'success' || steps.spellcheck.outcome == 'failure')
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         env:
           SPELLCHECK_OUTCOME: ${{ steps.spellcheck.outcome }}
           SPELLCHECK_RAN: ${{ steps.spellcheck.outputs.ran }}

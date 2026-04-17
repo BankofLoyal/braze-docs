@@ -102,6 +102,7 @@ BASA
 bdocs
 behaviour
 BENA
+BIMI
 Birthdates
 Bitcode
 Blastr
@@ -301,6 +302,7 @@ Geofencing
 geolocated
 geolocation
 geotargeting
+Ghostbusters
 GIF
 Gimbal
 GLOBALCONTROLGROUP
@@ -623,6 +625,7 @@ repoint
 resends
 resulttemplate
 retarget
+retriable
 RETRYSEND
 revenuecat
 RGBA

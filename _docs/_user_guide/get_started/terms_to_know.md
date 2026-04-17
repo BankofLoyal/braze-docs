@@ -45,7 +45,7 @@ glossaries:
   - name: Data Point
     description: A data point is counted when a <a href="https://www.braze.com/docs/user_guide/data/activation/attributes/custom_attributes">custom attribute</a> is set or updated (even if you're updating it with the same value), a <a href="https://www.braze.com/docs/user_guide/data/activation/events/custom_events">custom event</a> or purchase event is logged, any standard data (for example, <code>email</code>, <code>first_name</code>, <code>last_name</code>, <code>country</code>, or <code>home_city</code>) is logged, when a session starts, and when a session ends.
   - name: Deep Linking
-    description: <a href="https://www.braze.com/docs/user_guide/messaging/design_and_edit/personalize/deep_linking_to_in-app_content">Deep links</a> are used to direct customers to their next action or engagement. Using deep links, you can connect a message with a targeted piece of content within a website or mobile app.
+    description: <a href="https://www.braze.com/docs/user_guide/messaging/design_and_edit/personalize/actions_and_media_urls/">Deep links</a> are used to direct customers to their next action or engagement. Using deep links, you can connect a message with a targeted piece of content within a website or mobile app.
   - name: Dormant Users
     description: A user is considered <a href="https://www.braze.com/docs/user_archival/#dormant-users">dormant</a> when there has been no activity in the last twelve months.
   - name: Endpoint

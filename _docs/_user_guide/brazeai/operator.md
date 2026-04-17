@@ -26,7 +26,11 @@ Open Operator from any page in the Braze dashboard.
 
 {% alert tip %}
 Maximize to expand the panel for easier reading, or minimize to keep Operator available while working.  
-{% endalert %} 
+{% endalert %}
+
+Watch this video to see one example of what Operator can do.
+
+{% multi_lang_include video.html id="lnv9t8hn11" source="wistia" %}
 
 ## Use Operator
 

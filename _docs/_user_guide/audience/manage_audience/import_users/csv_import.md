@@ -11,7 +11,7 @@ page_order: 1.2
 
 ## About CSV import
 
-You can use CSV import to record and update the following user attributes and custom events.
+You can use CSV import to record and update the following user attributes and custom events. Braze accepts this data as standard CSV files within the maximum sizes in the following table.
 
 |Type|Definition|Example|Maximum file size|
 |---|---|---|---|
@@ -224,12 +224,68 @@ For example, the custom event `trip_booked` may have the properties `destination
 | `time` | String | The time of the event. May be passed in one of the following ISO-8601 formats: "YYYY-MM-DD" "YYYY-MM-DDTHH:MM:SS+00:00" "YYYY-MM-DDTHH:MM:SSZ" "YYYY-MM-DDTHH:MM:SS" (for example, 2019-11-20T18:38:57) | Yes |
 | `<event name>.properties.<property name>` | Multiple | An event property associated with a custom event. An example is `trip_booked.properties.destination` | No |
 {: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 .reset-td-br-4 role="presentation"}
+
+#### Format requirements for custom events
+
+When importing custom events using CSV, you must format your file according to the following requirements for a successful data import.
+
+##### Understanding custom event formatting
+
+It is important to correctly format your custom events CSV using dot notation so each property is mapped to the right event. If the format is incorrect, properties may be dropped or the import may fail, especially when multiple event types are included in one file.
+
+##### Use dot notation for event properties
+
+Dot notation is used to define the hierarchical relationship between a custom event and its properties. This formatting convention allows you to import structured event data that includes specific attributes for each event.
+
+The dot notation format follows this structure: `event_name.properties.property_name`
+
+Dot notation works in the following sequence:
+
+1. The event name comes first
+2. Followed by `.properties.` to indicate that what follows is an event property
+3. Finally, the specific property name
+
+**Example:**
+
+For a custom event called `rented_movie` with properties `movie_name` and `genre`, your CSV column headers would be:
+
+- `rented_movie.properties.movie_name`
+- `rented_movie.properties.genre`
+
+This notation tells Braze to create a custom event named `rented_movie` and attach the properties `movie_name` and `genre` to that specific event instance.
+
+##### One event per row
+
+Each row in your CSV represents a single custom event for a single user. If a user has multiple events, you must include a separate row for each event, even if they share the same user identifier.
+
+{% alert important %}
+When a row contains data for a specific event, only populate the columns for that event's properties. Leave the columns for other events blank.
+{% endalert %}
+
+##### Example CSV structure
+
+The following table demonstrates the correct formatting for importing custom events with properties. This example shows two users who each performed different events: one rented a movie, and another bought a movie.
+
+| external_id | name | time | rented_movie.properties.movie_name | rented_movie.properties.genre | bought_movie.properties.movie_name | bought_movie.properties.genre |
+| :---- | :---- | :---- | :---- | :---- | :---- | :---- |
+| 123 | rented_movie | 2024-06-10T12:00:00Z | Ghostbusters | Action | | |
+| 456 | bought_movie | 2024-06-12T12:00:00Z | | | Ghostbusters | Action |
+{: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 .reset-td-br-4 .reset-td-br-5 .reset-td-br-6 .reset-td-br-7 role="presentation"}
+
+In this example:
+
+- User `123` triggered the `rented_movie` event with the properties `movie_name` (Ghostbusters) and `genre` (Action)
+- User `456` triggered the `bought_movie` event with the properties `movie_name` (Ghostbusters) and `genre` (Action)
+- Each event only populates its relevant property columns, leaving other event property columns blank
+
 {% endtab %}
 {% endtabs %}
 
 ### Step 4: Upload your file
 
 To upload your file, select **Attributes** or **Events**, click **Browse Files**, and upload your CSV. Braze displays a preview of the first few rows and a summary of the detected fields.
+
+For large files (up to 500 MB for default attributes and custom attributes, or 50 MB for custom events), the dashboard may appear temporarily unresponsive while the file uploads and Braze calculates the import. These uploads and calculations can take longer to complete than they do for smaller files. Let this step complete. For more context on file limits and timing, see [Constructing your CSV]({{site.baseurl}}/user_guide/data/user_data_collection/user_import/#constructing-your-csv).
 
 ![The upload completed modal showing a file preview, import name field, targeting preferences, and file validation checkbox.]({% image_buster /assets/img/csv_import/upload_completed.png %})
 
@@ -285,7 +341,7 @@ You can also choose from the following targeting preferences. If you don't need 
 
 ### Step 7: Start your CSV import
 
-When you're ready, select **Start import**. You can track the current progress on the **Import Users** page, which automatically refreshes every 5 seconds.
+When you're ready, select **Start import**. You can track the current progress on the **Import Users** page, which automatically refreshes every 5 seconds. Processing can take from a few minutes to a few hours depending on how large your CSV is. During this time, the dashboard may appear unresponsive or respond slowly, but the import is still running.
 
 {% alert note %}
 You can import more than one CSV at the same time. CSV imports run concurrently, so the order of updates is not guaranteed to be serial. If you require CSV imports to run one after another, wait until a CSV import has finished before uploading a second one.

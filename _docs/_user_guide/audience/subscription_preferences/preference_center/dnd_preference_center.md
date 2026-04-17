@@ -10,6 +10,11 @@ page_order: 2
 
 > Using the drag-and-drop editor, you can create and customize a preference center to help manage which users receive certain types of communication. You can have up to 100 preference centers per workspace.
 
+You can manage existing drag-and-drop preference centers from **Audience** > **Email Preference Centers**:
+
+- To change a preference center's name or content, open the preference center from the dashboard.
+- Drag-and-drop preference centers can't be deleted from the dashboard. To remove one, first remove its Liquid tag from any email campaigns or Canvas steps, then contact [Braze Support]({{site.baseurl}}/support_contact/).
+- If a removed preference center was used in previously sent messages, it will stop working in those delivered emails.
 {% multi_lang_include drag_and_drop/drag_and_drop_access.md variable_name='dnd editors' %}
 
 ## Step 1: Create an email preference center

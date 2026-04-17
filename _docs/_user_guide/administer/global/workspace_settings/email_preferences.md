@@ -78,7 +78,7 @@ You can also use [Liquid]({{site.baseurl}}/user_guide/messaging/design_and_edit/
 
 This section allows you to manage BCC addresses you can append to outbound email messages sent from Braze. Appending a BCC address to an email message sends an identical copy of the message that your user receives to your BCC inbox. This is a useful tool to retain copies of messages you sent to your users for compliance requirements or customer support issues. BCC emails are not included in email reporting and analytics.
 
-BCC addresses are available for SendGrid and SparkPost only. As an alternative to BCC addresses, we recommend using [messaging archiving]({{site.baseurl}}/user_guide/data/distribution/export_braze_data/message_archiving/) to save a copy of messages sent to users for archival or compliance purposes.
+BCC addresses are available for Amazon SES, SendGrid, and SparkPost. As an alternative to BCC addresses, we recommend using [messaging archiving]({{site.baseurl}}/user_guide/data/distribution/export_braze_data/message_archiving/) to save a copy of messages sent to users for archival or compliance purposes.
 
 {% multi_lang_include alerts/important_alerts.md alert='BCC address billable emails' %}
 
@@ -131,6 +131,10 @@ After you save, Braze sends special instructions to the ESP to place the open tr
 SSL enablement wraps the URL of the tracking pixel with HTTPS instead of HTTP. If your SSL is misconfigured, it may affect the efficacy of the tracking pixel. 
 {% endalert %}
 
+{% alert important %}
+Click tracking applies only to links that start with `http://` or `https://`. `mailto:` links (for example `mailto:support@example.com`) are not rewritten for tracking.
+{% endalert %}
+
 ## List-unsubscribe header {#list-unsubscribe}
 
 {% alert note %}
@@ -138,6 +142,8 @@ Since February 15, 2024, new companies have the list-unsubscribe header (with on
 {% endalert %}
 
 Using a list-unsubscribe header allows your recipients to unsubscribe easily from marketing emails by displaying an **Unsubscribe** button within the mailbox UI, and not the message body.
+
+Test sends typically **do not** include list-unsubscribe headers. Whether the live header appears is up to the mailbox provider and is reputation-based—stronger sender reputation usually improves visibility.
 
 ![]({% image_buster /assets/img_archive/list_unsub_img1.png %}){: style="float:right;max-width:60%;margin-left:15px;"}
 
@@ -321,7 +327,7 @@ A preference center is not considered an unsubscribe link. Your email recipients
 {% enddetails %}
 
 {% details Do I need to edit past email campaigns and Canvases to apply the one-click unsubscribe setting after enabling it? %}
-If you don't have any of the use cases for message-level one-click list-unsubscribe setting, there's no required action as long as the setting is turned on under **Email Preferences**. Braze automatically adds the one-click unsubscribe headers to all outgoing marketing and promotional messages. However, if you do need to configure one-click unsubscribe behavior on a per-message level, you'll need to update prior campaigns and Canvas steps with the email accordingly.
+If you don't have any of the use cases for the message-level one-click list-unsubscribe setting, there's no required action as long as the setting is turned on under **Email Preferences**. Braze automatically adds the one-click unsubscribe headers to all outgoing marketing and promotional messages. However, if you do need to configure one-click unsubscribe behavior on a per-message level, you must update prior email campaigns and Canvas steps accordingly.
 {% enddetails %}
 
 {% details I can see the list-unsubscribe and one-click unsubscribe header in the original message or raw data, but why don't I see the Unsubscribe button in Gmail or Yahoo? %}
@@ -342,7 +348,7 @@ If you're adding conditional logic, avoid having output values that add whitespa
 The email headers added for one-click list-unsubscribe apply to all future sends of this campaign.
 {% enddetails %}
 
-{% details Why do subscription groups have to match across message variants in order to launch? %}
+{% details Why do subscription groups have to match across message variants to launch? %}
 For a campaign with A/B testing, Braze randomly sends a user one of the variants. If you have two different subscription groups set on the same campaign (Variant A is set to Subscription Group A, and Variant B is set to Subscription Group B), we cannot guarantee that users who are subscribed to only Subscription Group B receive Variant B. There can be a scenario where users are unsubscribing from a subscription group they've already opted out of.
 {% enddetails %}
 

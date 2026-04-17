@@ -163,7 +163,9 @@ An email bounce for customers using SendGrid consists of hard bounces, spam (`sp
 Count
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Hard Bounce' %} 
+{% multi_lang_include analytics/metrics.md metric='Hard Bounce' %}
+
+When an email hard bounces or is marked as spam, Braze marks the email address as invalid but does not update the user's [subscription status]({{site.baseurl}}/user_guide/message_building_by_channel/email/managing_user_subscriptions/). Braze stops any future sends to that email address. To remove an email address from your hard bounce list, use the [Remove hard bounced emails endpoint]({{site.baseurl}}/api/endpoints/email/post_remove_hard_bounces).
 
 <span class="calculation-line">Calculation: Count </span>
 
@@ -237,7 +239,7 @@ Count, Percentage
 Count, Percentage
 {% endapitags %}
 
-{% multi_lang_include analytics/metrics.md metric='Unique Clicks' %} This is tracked over a seven-day period for email and measured by <a href='/docs/help/help_articles/data/dispatch_id/'>dispatch_id</a>. This includes clicks on Braze-provided unsubscribe links. Similar to unique opens, a user who clicks the same link again after 7 days counts as a new unique click. To match dashboard counts from Currents, filter for events where `is_unique` is `true`.
+{% multi_lang_include analytics/metrics.md metric='Unique Clicks' %} This is tracked over a seven-day period for email and measured by <a href='/docs/help/help_articles/data/dispatch_id/'>dispatch_id</a>. This includes clicks on Braze-provided unsubscribe links. After seven days, another unique click can count for the same user if they click again. To match dashboard counts from Currents, filter for events where `is_unique` is `true`.
 
 {::nomarkdown}
 <span class="calculation-line">
@@ -258,6 +260,8 @@ Count, Percentage
 {% apitags %}
 Count, Percentage
 {% endapitags %}
+
+_Unsubscribes_ reflect the standard unsubscribe link for Braze. Custom unsubscribe pages won't increment this metric unless you update users using the API. **Subscription Group Timeseries** still reflects API-driven changes.
 
 {% multi_lang_include analytics/metrics.md metric='Unsubscribers or Unsub' %}
 

@@ -1,7 +1,7 @@
 ---
 nav_title: Liquid reference
 article_title: Liquid reference
-page_order: 2
+page_order: 3
 layout: dev_guide
 alias: /liquid/
 search_rank: 3
@@ -76,20 +76,6 @@ The following new array and math filters are available for use in your Liquid as
 - `where`
 
 Refer to [Filters]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/liquid/filters/) for definitions.
-
-### Liquid updates
-
-#### Color labels
-
-Each Liquid element corresponds to a color, allowing you to differentiate your Liquid at-a-glance in your Liquid editor.
-
-![]({% image_buster /assets/img/liquid_color_code.png %})
-
-#### Predictive Liquid
-
-You can also leverage predictive Liquid for custom attributes, attribute names, and more as you build your personalized messages.
-
-![]({% image_buster /assets/img/liquid_auto_complete.gif %}){: style="max-width:70%;"}
 
 ## Terms to know
 

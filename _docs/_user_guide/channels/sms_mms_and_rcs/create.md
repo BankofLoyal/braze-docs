@@ -125,6 +125,10 @@ When a customer sends an inbound message that includes media, Braze exposes the 
 {% endtab %}
 {% tab RCS %}
 
+Watch this quick walkthrough to see how to create an RCS text or media message.
+
+{% multi_lang_include video.html id="3y0iiqqygw" source="wistia" %}
+
 Choose between a **Text** or **Media** message type.
 
 ![Options to select from a Text or Media message type.]({% image_buster /assets/img/rcs/rcs_text_media.png %}){: style="max-width:65%;"}

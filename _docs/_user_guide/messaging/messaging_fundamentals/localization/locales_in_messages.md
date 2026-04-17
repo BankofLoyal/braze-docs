@@ -15,6 +15,10 @@ description: "This article provides steps on how to use locales in your messages
 
 ## Prerequisites
 
+Watch the following video for an optional overview of setting up and using multi-language messages.
+
+{% multi_lang_include video.html id="whfstwrel5" source="wistia" %}
+
 {% tabs %}
 {% tab Multi-language locales %}
 
@@ -73,7 +77,25 @@ A standard URL that follows both recommendations is:
 
 {% raw %}
 ```
-<a href="{% translation id_1 %}{% landing_page_url xyz%}{% endtranslation %}">Click Here</a>
+<a href="https://{% translation id_1 %}example.shop.com{% endtranslation %}">Visit our store</a>
+```
+{% endraw %}
+
+##### Liquid-generated URLs
+
+If your URL is generated with Liquid (for example, {% raw %}`{% landing_page_url %}`{% endraw %}), we recommend the following:
+
+| Recommendation | Reasoning |
+| --- | --- |
+| Wrap the Liquid-generated URL in translation tags only if it must be localized. | Liquid syntax must be carefully preserved to render correctly. |
+| Do not include query parameters (for example, `?utm_source=promo`) inside translation tags.  | Translators may accidentally alter or remove special characters, resulting in broken links. |
+{: .reset-td-br-1 .reset-td-br-2 role="presentation" }
+
+A Liquid-generated URL that follows both recommendations is:
+
+{% raw %}
+```
+<a href="{% translation id_1 %}{% landing_page_url xyz %}{% endtranslation %}">View details</a>
 ```
 {% endraw %}
 

@@ -91,6 +91,92 @@ Custom attributes support the data types listed in the [Definitions](#definition
 {% tabs %}
 {% tab Boolean %}
 
+You can blocklist custom attributes individually in the actions menu, or you can select and blocklist up to 100 attributes in bulk. If you block a custom attribute, no data is collected regarding that attribute, existing data is unavailable unless reactivated, and blocklisted attributes do not show up in filters or graphs. Additionally, if the attribute is currently referenced by filters or triggers in other areas of the Braze dashboard, a warning modal appears explaining that all instances of the filters or triggers that reference it are removed and archived.
+
+### Marking as personally identifiable information (PII)
+
+Administrators can also create custom attributes and mark them as PII from this page. These attributes are visible only to admins and dashboard users with the “View Custom Attributes Marked as PII” permission.
+
+### Adding descriptions
+
+You can add a description to a custom attribute after it's created if you have the `Manage Events, Attributes, Purchases` [user permission]({{site.baseurl}}/user_guide/administrative/app_settings/manage_your_braze_users/user_permissions/). Edit the custom attribute and input whatever you like, such as a note for your team.
+
+### Adding tags
+
+You can add tags to a custom attribute after it's created if you have the "Manage Events, Attributes, Purchases" [user permission]({{site.baseurl}}/user_guide/administrative/app_settings/manage_your_braze_users/user_permissions/). You can then use the tags to filter the list of attributes. 
+
+### Removing custom attributes
+
+There are two ways you can remove custom attributes from user profiles:
+
+* Select the custom attribute name to be removed in a [User Update step]({{site.baseurl}}/user_guide/engagement_tools/canvas/canvas_components/user_update/#removing-custom-attributes).
+* Set the `null` value in your API request to the [`/users/track` endpoint]({{site.baseurl}}/api/endpoints/user_data/post_user_track#user-track).
+
+#### Setting the `null` value
+
+{% alert important %}
+Setting an attribute to `null` and setting it to `""` (empty string) are not the same.
+{% endalert %}
+
+- `null` removes the attribute from the user profile entirely. It does not appear in the profile or match any **IS NOT BLANK** filter. 
+- `""` sets the attribute to an empty string value. The attribute appears on the profile with an empty string value, but does not match **IS NOT BLANK** filters (it is treated as blank).
+
+Additionally, `""` is only valid for string-type attributes. If the attribute's data type is set to a non-string type (such as Boolean, number, or time) in the dashboard, sending `""` does not clear the value—use `null` instead.
+
+### Exporting data
+
+To export the list of custom attributes as a CSV file, select **Export all** at the top of the page. The system generates a CSV file and emails you a download link.
+
+## Viewing usage reports
+
+The usage report lists all the Canvases, campaigns, and segments using a specific custom attribute. This list doesn't include uses of Liquid. 
+
+You can view up to 100 usage reports at a time by selecting the checkboxes next to the respective custom attributes and then selecting **View usage report**.
+
+### Values tab
+
+When viewing a usage report, select the **Values** tab to view the top values of the selected custom attributes based on a sample of approximately 250,000 users. Note that because the results are sampled from a subset of users, the sample doesn't include all existing values. This means the **Values** tab shouldn't be used for troubleshooting or for use cases that require incorporating data from all users.
+
+![Usage report for selected custom attributes with an opened "Values" tab showing a pie chart of country attribute values, such as "US" and "PR".]({% image_buster /assets/img/usage_report_values.png %}){: style="max-width:80%;"}
+
+## Setting custom attributes
+
+The following lists methods across various platforms that are used to set custom attributes.
+
+{% details Expand for documentation by platform %}
+
+- [Android and FireOS]({{site.baseurl}}/developer_guide/analytics/setting_user_attributes/?sdktab=android)
+- [iOS]({{site.baseurl}}/developer_guide/analytics/setting_user_attributes/?sdktab=swift)
+- [Web]({{site.baseurl}}/developer_guide/analytics/setting_user_attributes/?sdktab=web)
+- [React Native]({{site.baseurl}}/developer_guide/platform_integration_guides/react_native/analytics/#logging-custom-attributes)
+- [Unity]({{site.baseurl}}/developer_guide/analytics/setting_user_attributes/?sdktab=unity)
+- [.NET MAUI (formerly Xamarin)]({{site.baseurl}}/developer_guide/platform_integration_guides/xamarin/analytics/#setting-custom-attributes)
+- [Roku]({{site.baseurl}}/developer_guide/analytics/setting_user_attributes/)
+
+{% enddetails %}
+
+## Custom attribute storage
+
+All data stored on the **User Profile**, including custom attribute data, is retained indefinitely as long as each profile is [active]({{site.baseurl}}/user_guide/data_and_analytics/user_data_collection/user_archival/#active-users).
+
+## Custom attribute data types
+
+Custom attributes are extraordinarily flexible tools that allow for great targeting.
+
+The following data types may be stored as custom attributes:
+
+- [Booleans](#booleans)
+- [Numbers](#numbers)
+- [Strings](#strings)
+- [Arrays](#arrays)
+- [Time](#time)
+- [Objects]({{site.baseurl}}/user_guide/data/custom_data/custom_attributes/nested_custom_attribute_support/)
+- [Arrays of objects]({{site.baseurl}}/user_guide/data/custom_data/custom_attributes/array_of_objects/)
+
+### Booleans (true/false) {#booleans}
+
+Boolean attributes are useful for storing simple binary data about your users, like subscription statuses. You can find users that explicitly have a variable set to a true or false value, in addition to those that don't have any record of that attribute recorded yet.
+
 For **Boolean** attributes, the following segmentation options are available.
 
 | Segmentation options | Dropdown filter | Input options | Examples |
@@ -186,10 +272,14 @@ For more on how to use regular expressions (regex), check out these resources:
 {% endtab %}
 {% tab Time %}
 
-Time filters using relative dates (for example, more than 1 day ago, less than 2 days ago) measure 1 day as 24 hours. For example, to build a segment that targets users with a time attribute between 24 and 48 hours in the future, apply the filters `in more than 1 day in the future` and `in less than 2 days in the future`.
+Time attributes are useful for storing the last time a specific action was taken, so you can offer content specific re-engagement messaging to your users.
+
+Time filters using relative dates (for example, more than 1 day ago, less than 2 days ago) measure 1 day as 24 hours. Any campaign that you run using these filters will include all users in 24-hour increments. For example, `last used app more than 1 day ago` will capture all users who "last used the app more than 24 hours" from the exact time the campaign runs. The same will be true for campaigns set with longer date ranges—so five days from activation will mean the prior 120 hours.
+
+To target users who have a time attribute that falls within a time range, use two audience filters: `in more than` for the lower bound and `in less than` for the upper bound. A single filter can't express both sides of that range. For example, to target users with a time attribute in the next 24 hours (between now and one day from now), apply `in more than 0 days` and `in less than 1 day`.
 
 {% alert warning %}
-The last date a custom event or purchase event occurred is automatically recorded and shouldn't be recorded again via a custom time attribute.
+The last date a custom event or purchase event occurred is automatically recorded and shouldn't be recorded again through a custom time attribute.
 {% endalert %}
 
 For **Time** attributes, the following segmentation options are available.

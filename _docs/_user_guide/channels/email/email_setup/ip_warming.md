@@ -15,6 +15,20 @@ local_redirect:
 
 IP warming is designed to help you establish a positive reputation with internet service providers (ISPs). Every time a new IP address is used to send an email, ISPs programmatically monitor those emails to verify that it isn't being used to send spam to users. Think of your IP and domain reputation like a credit score—ISPs use this reputation to determine whether your mail lands in the inbox or the spam folder. Much like a credit score, it takes time to build a positive reputation and even longer to rebuild a poor one.
 
+## Email delivery and deliverability
+
+**Delivery** is the share of emails that were accepted and did not hard bounce. **Deliverability** is whether mail reaches the inbox rather than spam—mailbox providers don't expose that as a single metric.
+
+A healthy delivery rate is often around 99% delivered with a bounce rate no higher than about 1%. Rates can look strong on paper and still hide problems (for example, many bounces from one domain, or mail delivered but filtered to spam). Watch opens and clicks, not only delivery. Even a small reported spam rate can warrant deeper review.
+
+### Recommendations before IP warming
+
+Before you start IP warming:
+
+1. In **Settings** > **Email Preferences**, set your default sending domain, add a valid unsubscribe link in your [custom footer]({{site.baseurl}}/user_guide/channels/email/customize/custom_email_footer/), turn on the [list-unsubscribe header]({{site.baseurl}}/user_guide/administer/global/workspace_settings/email_preferences/#list-unsubscribe), and consider custom unsubscribe/opt-in pages where needed.
+2. Configure [frequency capping]({{site.baseurl}}/user_guide/messaging/messaging_fundamentals/frequency_capping/) for email.
+3. Upload required templates under **Templates** > **Email Templates**.
+
 ## What if I don't have time to warm IPs?
 
 **IP warming is required.** If you don't warm IPs appropriately, and the pattern of your email causes any suspicion, your email delivery speed could be significantly throttled or slowed. Your domain or IP could also be blocked by the ISPs, which can result in your emails going directly to the spam folder of your user's inbox instead. As such, it's important to warm your IPs properly.
@@ -132,8 +146,12 @@ In most cases, warm up to your average daily send volume rather than your peak. 
 After IP warming is complete and you've reached your desired daily volume, you should aim to maintain that volume daily. Some fluctuation is expected, but reaching the desired volume, then only doing a mass blast once a week, may negatively affect your delivery metrics and sender reputation. 
 
 {% alert important %}
-Most ISPs only store reputation data for 30 days. If you go a month without sending any messages, you'll have to repeat the IP warming process.
+Most ISPs only store reputation data for 30 days. If you go a month without sending any messages, you must repeat the IP warming process.
 {% endalert %}
+
+### IP addresses
+
+After three months of non-use, Braze may recycle and reassign IP addresses. Regardless of an IP address's prior history, full IP warming is recommended for all newly assigned IPs, as most ISPs only store reputation data for 30 days. For most ISPs, this means a three-month cooldown effectively resets reputation. If you have further questions about the history of a specific IP address, contact [Braze Support]({{site.baseurl}}/user_guide/administer/personal/braze_support).
 
 ## How to limit sends during warming
 

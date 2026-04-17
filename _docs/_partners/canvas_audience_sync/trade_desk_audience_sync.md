@@ -42,6 +42,10 @@ Then, select **Connect**.
 
 ![An example of an unconnected Audience Sync for The Trade Desk.]({% image_buster /assets/img/audience_sync/trade_desk/connect_sync.png %}){: style="max-width:90%;"}
 
+#### Connect multiple The Trade Desk accounts (optional)
+
+After connecting your first The Trade Desk account, you can add additional advertiser accounts on The Trade Desk partner page by selecting **Connect more advertisers**, then providing the **Advertiser ID name** and **Advertiser ID** for each account.
+
 ### Step 2: Add an Audience Sync step with The Trade Desk
 
 Add a component in your Canvas and select **Audience Sync**. Then, select **The Trade Desk** as the Audience Sync partner.

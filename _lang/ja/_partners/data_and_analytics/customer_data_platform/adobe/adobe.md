@@ -98,7 +98,7 @@ Adobe Experience Platform から Braze にオーディエンスデータを正�
 
 正しいマッピングは次のようになります。
 
-![宛先マッピング:IdentityMap:IDFA m アプリed to IdentityMap:external_id, IdentityMap:GAID m アプリed to IdentityMap:external_id, IdentityMap:Eメールm アプリed to IdentityMap:external_id, xdm:mobilePhone.number m アプリed to CustomAttribute:PhoneNumber, xdm:person.name.lastName m アプリed to CustomAtrribute:LastName, xdm:<meta id="7"]({% image_buster /assets/img/adobe/braze-destination-mapping-example.png %})
+![宛先マッピング: IdentityMap:IDFA を IdentityMap:external_id にマッピング、IdentityMap:GAID を IdentityMap:external_id にマッピング、IdentityMap:Email を IdentityMap:external_id にマッピング、xdm:mobilePhone.number を CustomAttribute:PhoneNumber にマッピング、xdm:person.name.lastName を CustomAttribute:LastName にマッピング、xdm:person.name.firstName を CustomAttribute:FirstName にマッピング]({% image_buster /assets/img/adobe/braze-destination-mapping-example.png %})
 
 ## エクスポートされたデータ
 データが正常に Braze にエクスポートされたかどうかを確認するには、Braze アカウントをチェックします。Adobe Experience Platform Segmentは、`AdobeExperiencePlatformSegments`属性でBrazeにエクスポートされます。

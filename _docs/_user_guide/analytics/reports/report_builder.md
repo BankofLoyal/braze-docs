@@ -13,6 +13,10 @@ page_order: 3
 
 > This page covers how to use Report Builder to create and view granular reports using Braze data, and how to add reports to dashboards.
 
+The following video provides an overview of how to create and customize reports in Report Builder.
+
+{% multi_lang_include video.html id="oi66kwwldv" source="wistia" %}
+
 ## Using a report template
 
 1. Go to **Analytics** > **Report Builder (New)**.

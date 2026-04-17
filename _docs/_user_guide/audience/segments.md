@@ -43,6 +43,9 @@ guide_menu_list:
   - name: Measure segment size
     link: /docs/user_guide/audience/segments/measuring_segment_size
     image: /assets/img/braze_icons/pie-chart-02.svg
+  - name: "Use case: Segment with nested custom attributes"
+    link: /docs/user_guide/audience/segments/segment_with_nested_custom_attributes
+    image: /assets/img/braze_icons/dataflow-02.svg
   - name: Troubleshooting
     link: /docs/user_guide/audience/segments/troubleshooting
     image: /assets/img/braze_icons/annotation-question.svg

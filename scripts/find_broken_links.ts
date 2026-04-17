@@ -49,6 +49,8 @@ const redirectList: string[] = Object.entries(validurls)
   })
   .map(([from]) => from);
 const docsBasePath = path.join(PROJECT_ROOT, '_docs');
+/** Example and tooling docs under here intentionally use non-resolving links; skip (see contributing playbook). */
+const contributingDirResolved = path.resolve(path.join(docsBasePath, '_contributing'));
 interface LinkData {
   sourceFile: string;
   link: string;
@@ -211,6 +213,13 @@ const aliases: string[] = [];
 const permalinks: string[] = [];
 const ignored_files: string[] = [];
 function getLinksRecursive(dir: string) {
+  const dirResolved = path.resolve(dir);
+  if (
+    dirResolved === contributingDirResolved ||
+    dirResolved.startsWith(`${contributingDirResolved}${path.sep}`)
+  ) {
+    return;
+  }
   const files = fs.readdirSync(dir);
   for (const file of files) {
     const filePath = path.join(dir, file);
@@ -267,13 +276,19 @@ for (const item of links) {
 
 const deduplicated = Array.from(new Set(csv)).sort();
 
-fs.writeFileSync(
-  path.join(PROJECT_ROOT, 'scripts', 'temp', 'broken-links.csv'),
-  [headers, ...deduplicated].join('\n')
-);
+const csvPath = path.join(PROJECT_ROOT, 'scripts', 'temp', 'broken-links.csv');
+fs.mkdirSync(path.dirname(csvPath), { recursive: true });
+fs.writeFileSync(csvPath, [headers, ...deduplicated].join('\n'));
 
 if (deduplicated.length === 0) {
   console.log('No broken links found.');
 } else {
-  console.log(`${deduplicated.length} broken links were found. The full list can be found at:\n  ${path.join(PROJECT_ROOT, 'scripts/temp/broken-links.csv')}\n`);
+  console.log(
+    `${deduplicated.length} broken links were found. The full list can be found at:\n  ${csvPath}\n`
+  );
+  console.log('Rows (File,Broken Link,Path to Broken Link):');
+  for (const row of deduplicated) {
+    console.log(row);
+  }
+  process.exit(1);
 }

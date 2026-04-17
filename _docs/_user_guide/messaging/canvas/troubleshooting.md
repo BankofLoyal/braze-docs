@@ -52,6 +52,18 @@ Consider the following questions for your target audience:
 - Have you added any additional filters that would limit the number of users entering the Canvas?
 - Do the users qualify to receive the first step of your variants? For example, if the first step of your Canvas is a push notification, but the entry audience is all push-disabled, then no users will receive messages.
 
+## Why are sends or deliveries lower than my target audience size?
+
+The number of messages sent or delivered often differs from the estimated audience or recipient count. Common reasons include:
+
+- **Audience re-evaluation:** Users can fall out of the segment between when they enter a step and when the message is sent.
+- **Channel eligibility:** Users may be missing email addresses, push tokens, or the subscription status required for that channel in that step.
+- **Control groups:** A global or Canvas control group can withhold users from messaging.
+- **Quiet Hours, Intelligent Timing, and rate limits:** These settings can defer or suppress sends.
+- **In-app message steps:** In-app messages may show zero _Sends_ while impressions exist. This is expected because in-app delivery works differently from push notifications or email. See [Why may a Canvas show zero Sends even though impressions are logged?]({{site.baseurl}}/user_guide/messaging/canvas/faqs/#why-may-a-canvas-show-zero-sends-even-though-impressions-are-logged) in the Canvas FAQ.
+
+For email and other channels, many of the same factors apply as for campaigns. For a detailed list, see [Why are sends lower than the estimated audience size?]({{site.baseurl}}/user_guide/messaging/campaigns/faq/#why-are-sends-lower-than-the-estimated-audience-size).
+
 ## Why did no users enter my daily scheduled Canvas on Daylight Saving Time day?
 
 On Daylight Saving Time (DST) transition days, daily scheduled Canvases can run up to one hour earlier or later than usual. If your entry criteria relies on custom attributes or events with timestamps that fall within one hour of the scheduled entry time, users may not yet qualify on DST day because the attribute or event hasn't been logged.

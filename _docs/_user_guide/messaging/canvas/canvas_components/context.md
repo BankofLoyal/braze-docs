@@ -30,7 +30,7 @@ Within a Context step, you can define or update up to 10 context variables. Thes
 
 You can set context variables in two ways:
 
-- **At Canvas entry:** Data from the event or API trigger can automatically populate context variables.
+- **At Canvas entry:** Properties from the custom event or API trigger are automatically populated as context variables.
 - **In a Context step:** Define or update context variables manually by adding a Context step.
 
 Each context variable requires a name, a data type, and a value (set using Liquid or the Add Personalization tool). When defined, you can reference context variables throughout the Canvas using Liquid, such as {% raw %}`{{context.${flight_time}}}`{% endraw %}. In the **Context variable name** field, you can also enter the context variable name or select it from the dropdown in the step editor. For details, see [Context variables reference]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/sources/context_variables/).

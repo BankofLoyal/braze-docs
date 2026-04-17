@@ -143,7 +143,11 @@ Advanced functionality will appear in the campaign or Canvas composer. In advanc
 
 ### Step 4: Test your email
 
-After adding your sending information, it's time to finally test your email. 
+After adding your sending information, it's time to finally test your email.
+
+{% alert tip %}
+If the email looks different in the editor than in preview or test send, confirm that all tags are closed, image attributes have values, and background images aren't blurred at edges.
+{% endalert %}
 
 Go to the **Preview and Test** section. Here, you have the option of previewing your email as a user or sending a test message. This section also includes [Inbox Vision]({{site.baseurl}}/user_guide/channels/email/inbox_vision/), which allows you to check that your email has rendered correctly across different mobile and web clients.
 
@@ -175,9 +179,7 @@ Note that any edits made to an email template won't reflect in a previously gene
 
 Inbox Vision allows you to view your email campaigns from the perspective of email clients and mobile devices. To test your email message using Inbox Vision, select **Inbox Vision** in the **Preview & Test** section and select **Run Inbox Vision**.
 
-{% alert tip %}
-Background images in email messaging may sometimes cause white lines or disconnects to appear between images, so it's important to test and check the finer details of your email message.
-{% endalert %}
+It's important to test and check the finer details of your email message. For example, background images in email messaging may sometimes cause white lines or disconnects to appear between images, or clients such as Windows Outlook may not show background images. Using Inbox Vision can help identify these discrepancies between clients. In this scenario, set a fallback background color so that these images can render as expected.
 
 For more information, see [Send test messages]({{site.baseurl}}/user_guide/messaging/messaging_fundamentals/sending_test_messages/?tab=email).
 

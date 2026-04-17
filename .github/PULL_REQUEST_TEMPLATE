@@ -32,8 +32,9 @@ For Jira tickets, add the ticket number and a link to the ticket, like:
 
 ### Submitting for review
 
-If your PR meets the above requirements, select **Ready for review**, then add a reviewer:
-- **Non-Braze contributors:** Tag `@braze-inc/docs-team` in a comment below.
-- **Braze employees:** Have any relevant subject matter experts (like engineers or product managers) review your work first, then add the [tech writer assigned to your specific vertical](https://confluence.atl.braze.com/wiki/x/nAZuE). If you're not sure which tech writer to add, you can add `braze-inc/docs-team` instead.
+If your PR meets the above requirements, select **Ready for review**, then:
+
+1. Have any relevant subject matter experts (like engineers or product managers) review and approve your work.
+2. Add the [tech writer assigned to your specific vertical](https://confluence.atl.braze.com/wiki/x/nAZuE) as a reviewer. If you're not sure which tech writer to choose, add `braze-inc/docs-team`.
 
 Thanks for contributing! We look forward to reading your work.
