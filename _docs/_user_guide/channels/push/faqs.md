@@ -63,10 +63,12 @@ If the wrong option is selected, push notifications silently fail because the pu
 
 ### What is the difference between the "Foreground Push Enabled" and "Background or Foreground Push Enabled" filters?
 
-In segmentation, **Foreground Push Enabled** corresponds to users who can receive displayable push notifications. **Background or Foreground Push Enabled** includes those users and may also include users who only have background or silent push capability.
+These segmentation filters check for different conditions:
 
-Choose the filter that matches your campaign goal: use **Foreground Push Enabled** for campaigns that display a notification, and **Background or Foreground Push Enabled** to include devices that support only silent push.
+| Filter | What it checks | Use case |
+|--------|---------------|----------|
+| **Foreground Push Enabled** | The user has a valid foreground push token **and** their push subscription state is `Opted-In` or `Subscribed`. | Target users who can receive visible push notifications. |
+| **Background or Foreground Push Enabled** | The user has any push token (foreground or background) **and** their push subscription state is `Opted-In` or `Subscribed`. This includes users who have disabled visible push notifications but still have a background push token. | Used for [uninstall tracking]({{site.baseurl}}/user_guide/analytics/tracking/uninstall_tracking/), [silent push notifications]({{site.baseurl}}/developer_guide/push_notifications/silent/), and geofencing. |
+{: .reset-td-br-1 .reset-td-br-2 .reset-td-br-3 role="presentation" }
 
-For how Braze maps these to segmentation filters, user actions, and subscription state, see [Push subscription states]({{site.baseurl}}/user_guide/channels/push/push_setup/push_subscription_states/). 
-
-For tokens, registration, and the foreground versus background distinction, see [Push token lifecycle]({{site.baseurl}}/user_guide/channels/push/push_setup/push_token_lifecycle/#foreground-vs-background).
+A user can be `Background or Foreground Push Enabled` without being `Foreground Push Enabled`. This happens when the user has disabled visible push notifications in their device settings but the app still holds a background push token. For more details, see [Push users and subscriptions]({{site.baseurl}}/user_guide/channels/push/push_setup/push_subscription_states/#foreground-push-enabled).
