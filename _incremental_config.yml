@@ -1,5 +1,9 @@
-# Image asset pipeline setting for japr
+# Image asset pipeline setting for japr / jekyll_asset_pipeline
+# Repo-local staging avoids copying pipeline output through ../ on each run.
 asset_pipeline:
-  staging_path: '../.documentation_asset_pipeline'
+  staging_path: '.documentation_asset_pipeline'
 
+# Preserve generated _site/assets between incremental runs so large trees under
+# assets/ (for example images) are not fully recopied when only content changes.
+# See https://talk.jekyllrb.com/t/understanding-how-build-time-really-affects-jekyll-workflow/3077
 keep_files: ["assets"]

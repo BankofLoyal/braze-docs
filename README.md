@@ -69,6 +69,13 @@ MARKDOWN_API=true PARTNER_API=true rake
 > [!NOTE]
 > Prepending `MARKDOWN_API=true` to your rake command lets you preview content within a `{% markdown_embed %}` tag, such as the content on the [Developer Guide: Changelogs](https://www.braze.com/docs/developer_guide/changelogs/) page. Prepending `PARTNER_API=true` lets you render the tiles on a partner landing page, such as [Technology Partners](https://www.braze.com/docs/partners/home/).
 
+### Faster local builds
+
+Jekyll spends a lot of I/O copying static assets (for example images under `assets/`). For day-to-day work you can:
+
+- **Serve:** `rake` already uses `--incremental` and `_incremental_config.yml` (`keep_files` for `assets`). Restarting the server no longer deletes `.jekyll-metadata` by default, so incremental state is preserved. Run `JEKYLL_CLEAN=1 rake` when you need a full clean rebuild.
+- **One-off build:** `bundle exec rake docs_en:build_fast` (English) or `bundle exec rake "lang:build_fast[fr]"` (other locales). Alternatively, `JEKYLL_FAST=1 bundle exec rake docs_en:build` enables the same merged config and `--incremental` for the standard build task.
+
 ## About `bdocs` wrapper
 
 [`bdocs`](https://github.com/braze-inc/braze-docs/blob/develop/bdocs) is a wrapper script located in the root of this repository that helps you replace links, generate redirect URLs, create deployment descriptions, and more. For an in-depth walkthrough, see [`bdocs` wrapper](https://www.braze.com/docs/contributing/bdocs/). To get started quickly, run the following command to see a list of available commands:

@@ -8,6 +8,7 @@ _algolia_api_key
 .ruby-version
 jekyll-algolia-*
 **/.asset_pipeline
+.documentation_asset_pipeline
 .jekyll-cache
 .vscode
 .jekyll-metadata
