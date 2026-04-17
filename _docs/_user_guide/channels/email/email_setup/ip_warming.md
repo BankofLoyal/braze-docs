@@ -25,8 +25,8 @@ A healthy delivery rate is often around 99% delivered with a bounce rate no high
 
 Before you start IP warming:
 
-1. In **Settings** > **Email Preferences**, set your default sending domain, add a valid unsubscribe link in your [custom footer]({{site.baseurl}}/user_guide/message_building_by_channel/email/custom_email_footer/), turn on the [list-unsubscribe header]({{site.baseurl}}/user_guide/administrative/app_settings/email_settings/#list-unsubscribe-header), and consider custom unsubscribe/opt-in pages where needed.
-2. Configure [frequency capping]({{site.baseurl}}/user_guide/engagement_tools/campaigns/building_campaigns/frequency_capping/) for email.
+1. In **Settings** > **Email Preferences**, set your default sending domain, add a valid unsubscribe link in your [custom footer]({{site.baseurl}}/user_guide/channels/email/customize/custom_email_footer/), turn on the [list-unsubscribe header]({{site.baseurl}}/user_guide/administer/global/workspace_settings/email_preferences/#list-unsubscribe), and consider custom unsubscribe/opt-in pages where needed.
+2. Configure [frequency capping]({{site.baseurl}}/user_guide/messaging/messaging_fundamentals/frequency_capping/) for email.
 3. Upload required templates under **Templates** > **Email Templates**.
 
 ## What if I don't have time to warm IPs?

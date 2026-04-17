@@ -108,7 +108,7 @@ Many clients invert colors in Dark Mode. Transparent images, outlined text on im
 
 For HTML editor messages, you can set a solid background with a single-stop gradient (for example, `background-image: linear-gradient(#FFFFFF, #FFFFFF)` on `<td>` / `<th>`) to limit unwanted inversion, and use the `prefers-color-scheme` media query when appropriate.
 
-See [Building accessible messages in Braze]({{site.baseurl}}/help/accessibility/) for contrast guidance.
+See [Building accessible messages in Braze]({{site.baseurl}}/user_guide/messaging/messaging_fundamentals/accessibility/) for contrast guidance.
 
 ## Text length
 

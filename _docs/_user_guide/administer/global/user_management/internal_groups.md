@@ -110,7 +110,7 @@ Seed sends are designed for internal QA and review, so they intentionally bypass
 {% alert tip %}
 If Seed Group members don't see the message, confirm they're in the internal group, use distinct subject lines so Gmail doesn't thread messages together, and ask them to check spam.
 
-If the email uses [`abort_message()` Liquid]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/liquid/aborting_messages/), Seed Group members must still satisfy the abort condition to receive the send.
+If the email uses [`abort_message()` Liquid]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/liquid/aborting_messages/), Seed Group members must still satisfy the abort condition to receive the send.
 {% endalert %}
 
 #### For campaigns
