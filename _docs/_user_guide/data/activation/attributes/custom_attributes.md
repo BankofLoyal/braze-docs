@@ -26,7 +26,7 @@ Some common custom attribute use cases include:
 - Storing richer profile data as [objects]({{site.baseurl}}/user_guide/data/activation/attributes/nested_custom_attribute_support/) or [arrays of objects]({{site.baseurl}}/user_guide/data/activation/attributes/array_of_objects/), such as structured preferences or multiple saved addresses
 - Triggering action-based messages when an attribute value changes using [attribute triggers]({{site.baseurl}}/user_guide/messaging/campaigns/schedule_your_campaign/triggered_delivery/attribute_triggers/), such as sending a tier-up notification when a user's `rewards_tier` changes
 
-## Managing custom attributes
+## Manage custom attributes {#managing-custom-attributes}
 
 To create and manage custom attributes in the dashboard, go to **Data Settings** > **Custom Attributes**. 
 
@@ -40,7 +40,7 @@ For proper message targeting, be sure that your custom attribute data type match
 
 From this page, you can view, manage, create, or blocklist existing custom attributes. Select the menu next to a custom attribute for the following actions:
 
-### Blocklisting
+### Blocklist {#blocklisting}
 
 You can blocklist individual custom attributes through the actions menu, or select and blocklist up to 100 attributes in bulk.
 
@@ -54,30 +54,50 @@ Additionally, if a blocked custom attribute is currently referenced by filters o
 
 For more details on blocklisting and deleting custom data, see [Blocklist custom data]({{site.baseurl}}/user_guide/data/activation/custom_data/blocklist_custom_data/).
 
-### Marking as personally identifiable information (PII)
+### Mark as personally identifiable information (PII)
 
 Administrators can also create custom attributes and mark them as PII from this page. These attributes are only visible to admins and dashboard users with the "View Custom Attributes Marked as PII" permission.
 
-### Adding descriptions
+### Add descriptions
 
 You can add a description to a custom attribute after it's created if you have the `Manage Events, Attributes, Purchases` [user permission]({{site.baseurl}}/user_guide/administer/global/user_management/permissions/). Select **Edit description** for the custom attribute and input whatever you like, such as a note for your team.
 
-### Adding tags
+### Add tags
 
 You can add tags to a custom attribute after it's created if you have the "Manage Events, Attributes, Purchases" [user permission]({{site.baseurl}}/user_guide/administer/global/user_management/permissions/). The tags can then be used to filter the list of attributes. 
 
-### Removing custom attributes
+### Remove custom attributes
 
 There are two ways you can remove custom attributes from user profiles:
 
 * Select the custom attribute name to be removed in a [User Update step]({{site.baseurl}}/user_guide/messaging/canvas/canvas_components/user_update#removing-custom-attributes).
 * Set the `null` value in your API request to the [`/users/track` endpoint]({{site.baseurl}}/api/endpoints/user_data/post_user_track#user-track).
 
-### Exporting data
+### Export data
 
 To export the list of custom attributes as a CSV file, select **Export all** at the top of the page. The CSV file is generated, and a download link is emailed to you.
 
-## Viewing usage reports
+## Change custom attribute type
+
+### Prerequisites
+
+The custom attribute must not currently be in use in any active campaigns, Canvases, or segments. If you try to change the data type while the attribute is still referenced, the dashboard displays an error and block the change.
+
+### Changing the data type
+
+1. Stop any active campaigns or Canvases that use the attribute in segments or filters.
+2. Remove the attribute from all segment, campaign, and Canvas filters.
+3. Go to **Data Settings** > **Custom Attributes** (or **Custom Events**), find the attribute, and update it to the desired data type.
+4. Update the attribute values on existing user profiles to match the new data type (for example, using the [`/users/track` endpoint]({{site.baseurl}}/api/endpoints/user_data/post_user_track/)).
+5. Reapply the attribute to relevant segments, campaigns, and Canvases, then reactivate any stopped campaigns or Canvases.
+
+### Things to know
+
+- **User data is not retroactively updated.** If a user profile had the attribute with the old data type, that value remains unchanged. The segmentation filter looks for the new data type, so users with the old value are excluded from matching segments until their profile is updated.
+- **New data must match the new data type.** After the change, API calls or SDK events that send the previous data type for this attribute will not be accepted. Only values matching the new data type are ingested.
+- **Filters are not automatically updated.** Segments and campaign filters referencing the changed attribute are not retroactively updated. You must remove and re-add them after the change.
+
+## View usage reports
 
 The usage report lists all the Canvases, campaigns, and segments using a specific custom attribute. This list doesn't include uses of Liquid. 
 
@@ -89,7 +109,7 @@ When viewing a usage report, select the **Values** tab to view the top values of
 
 ![Usage report for selected custom attributes with an opened "Values" tab showing a pie chart of country attribute values, such as "US" and "PR".]({% image_buster /assets/img/usage_report_values.png %}){: style="max-width:80%;"}
 
-## Setting custom attributes
+## Set custom attributes
 
 The following lists methods across various platforms that are used to set custom attributes.
 
