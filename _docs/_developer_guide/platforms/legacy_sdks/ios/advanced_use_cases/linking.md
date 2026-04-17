@@ -12,7 +12,7 @@ noindex: true
 
 # Deep linking for iOS
 
-For introductory information on deep links, refer to our [User Guide article]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/deep_linking_to_in-app_content/#what-is-deep-linking). If you're looking to implement deep links for the first time in your Braze app, the steps below will get you started.
+For introductory information on deep links, refer to our [User Guide article]({{site.baseurl}}/user_guide/messaging/design_and_edit/personalize/actions_and_media_urls/#what-is-deep-linking). If you're looking to implement deep links for the first time in your Braze app, the steps below will get you started.
 
 ## Step 1: Register a scheme
 
@@ -282,6 +282,12 @@ func handleAppboyURL(_ url: URL?, from channel: ABKChannel, withExtras extras: [
 
 {% endtab %}
 {% endtabs %}
+
+{% alert important %}
+When `handleAppboyURL:fromChannel:withExtras:` returns `YES`, Braze assumes your app is handling the URL and will not open it. If you're handling Universal Links, you must explicitly route the URL to your app's Universal Link handler, such as by calling `application:continueUserActivity:restorationHandler:` yourself. Returning `YES` without handling the URL will cause the in-app message or Content Card to dismiss with no visible action.
+
+Return `NO` if you want Braze to handle the URL using its default behavior.
+{% endalert %}
 
 For more information, see [`ABKURLDelegate.h`](https://github.com/Appboy/appboy-ios-sdk/blob/master/AppboyKit/include/ABKURLDelegate.h).
 

@@ -40,7 +40,7 @@ If you are looking for a complete list of supported languages you may attribute 
 - Chinese
 - Congo swahili
 - Cornish
-- Criol
+- Creole
 - Croatian
 - Czech
 - Danish

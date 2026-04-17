@@ -8,7 +8,7 @@
   <link rel="icon" type="image/x-icon" href="{{site.baseurl}}/assets/favicon.ico" sizes="160x160">
 
   <meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncatewords: 25 }}{% else %}{% if page.content.size &gt; 5 %}{{ page.content | strip_html | truncatewords: 25 }}{% else %}{{{ page.id | slice: 1,page.id.size | replace: &apos;/&apos;, &apos; &apos; | replace: &apos;_&apos;, &apos; &apos; }}{% endif %}{% endif %}">
-  <link rel="canonical" {% if page.url="=" site.index_url %} href="{{ site.baseurl | prepend: site.homeurl }}" else endif/>
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.homeurl }}">
 
   <meta name="keywords" content="Braze, documentos, documentação, Appboy, academia{{ page.id | replace: &apos;_&apos;, &apos; &apos; | replace: &apos;/&apos;, &apos;, &apos; }} ">
 

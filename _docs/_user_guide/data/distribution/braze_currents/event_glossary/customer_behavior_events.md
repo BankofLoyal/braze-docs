@@ -1,7 +1,7 @@
 ---
 nav_title: Customer behavior and user events
 layout: customer_behavior_events_glossary
-page_order: 4
+page_order: 1
 excerpt_separator: ""
 page_type: glossary
 description: "This glossary lists the various Customer Behavior and User Events that Braze can track and send to chosen Data Warehouses using Currents."
@@ -9,7 +9,11 @@ tool: Currents
 search_rank: 7
 ---
 
-Contact your Braze representative or open a [support ticket]({{site.baseurl}}/braze_support/) if you need access to additional event entitlements. If you can't find what you need on this page, check out our [Message Engagement Events Library]({{site.baseurl}}/user_guide/data/braze_currents/event_glossary/message_engagement_events/) or our [Currents sample data examples](https://github.com/Appboy/currents-examples/tree/master/sample-data).
+{% alert tip %}
+These events are also available as SQL tables in the [Query Builder]({{site.baseurl}}/user_guide/analytics/reports/query_builder/), [SQL Segment Extensions]({{site.baseurl}}/user_guide/audience/segments/segment_extension/sql_segments/), and [Snowflake Data Sharing]({{site.baseurl}}/partners/data_and_analytics/data_warehouses/snowflake/). For SQL table schemas and column details, refer to the [SQL table reference]({{site.baseurl}}/user_guide/audience/segments/segment_extension/sql_segments/sql_segments_tables/).
+{% endalert %}
+
+Contact your Braze representative or open a [support ticket]({{site.baseurl}}/braze_support/) if you need access to additional event entitlements. If you can't find what you need on this page, check out our [Message Engagement Events Library]({{site.baseurl}}/user_guide/data/distribution/braze_currents/event_glossary/message_engagement_events/) or our [Currents sample data examples](https://github.com/Appboy/currents-examples/tree/master/sample-data).
 
 {% details Explanation of customer behavior and user event structure and platform values %}
 
@@ -40,7 +44,7 @@ Certain events return a `platform` value that specifies the platform of the user
 {% enddetails %}
 
 {% alert important %}
-Storage schemas apply to the flat file event data we send to data warehouse storage partners (such as Google Cloud Storage, Amazon S3, and Microsoft Azure Blob Storage). Some event and destination combinations listed here are not yet generally available. For information on which events are supported by various partners, refer to our list of [available partners]({{site.baseurl}}/user_guide/data/braze_currents/available_partners/) and check their respective pages.<br><br>Additionally, note that Currents will drop events with excessively large payloads of greater than 900&nbsp;KB.
+Storage schemas apply to the flat file event data we send to data warehouse storage partners (such as Google Cloud Storage, Amazon S3, and Microsoft Azure Blob Storage). Some event and destination combinations listed here are not yet generally available. For information on which events are supported by various partners, refer to our list of [available partners]({{site.baseurl}}/user_guide/data/distribution/braze_currents/setting_up_currents/available_partners/) and check their respective pages.<br><br>Additionally, note that Currents will drop events with excessively large payloads of greater than 900&nbsp;KB.
 {% endalert %}
 
 {% api %}
@@ -199,9 +203,9 @@ This event occurs when a specific custom event is triggered. Use this to track w
 
 #### Property details
 
-- For Custom Events, the payload will also be populated with any [custom event properties]({{site.baseurl}}/user_guide/data/custom_data/custom_events#custom-event-properties) that are associated with the event.
+- For Custom Events, the payload will also be populated with any [custom event properties]({{site.baseurl}}/user_guide/data/activation/events/custom_events/custom_event_properties#custom-event-properties) that are associated with the event.
 - For `ad_id`, `ad_id_type`, and `ad_tracking_enabled`, you need to explicitly collect the iOS IDFA and Android Google ad ID through the native SDKs. Learn more about them here: [iOS]({{site.baseurl}}/developer_guide/analytics/managing_data_collection/?sdktab=swift), [Android]({{site.baseurl}}/developer_guide/sdk_integration/?sdktab=android#android_google-advertising-id).
-- If you're using Kafka to ingest [Currents]({{site.baseurl}}/user_guide/data/braze_currents/) data, contact your customer success manager or account manager to enable the feature flipper for sending `ad_id`.
+- If you're using Kafka to ingest [Currents]({{site.baseurl}}/user_guide/data/distribution/braze_currents/) data, contact your customer success manager or account manager to enable the feature flipper for sending `ad_id`.
 {% endapi %}
 
 {% api %}
@@ -434,7 +438,7 @@ This event is triggered when a user visits a specified location. Use this to tra
 #### Property details
 
 - For `ad_id`, `ad_id_type`, and `ad_tracking_enabled`, you need to explicitly collect the iOS IDFA and Android Google ad ID through the native SDKs. Learn more about them here: [iOS]({{site.baseurl}}/developer_guide/analytics/managing_data_collection/?sdktab=swift), [Android]({{site.baseurl}}/developer_guide/sdk_integration/?sdktab=android#android_google-advertising-id).
-- If you're using Kafka to ingest [Currents]({{site.baseurl}}/user_guide/data/braze_currents/) data, contact your customer success manager or account manager to enable the feature flipper for sending `ad_id`.
+- If you're using Kafka to ingest [Currents]({{site.baseurl}}/user_guide/data/distribution/braze_currents/) data, contact your customer success manager or account manager to enable the feature flipper for sending `ad_id`.
 {% endapi %}
 
 {% api %}
@@ -572,9 +576,9 @@ Purchases are special custom events and come with a JSON encoded string of custo
 
 #### Property details
 
-- For Purchase events, the payload will also be populated with any [purchase event properties]({{site.baseurl}}/user_guide/data/custom_data/purchase_events/#purchase-properties) that are associated with the event.
+- For Purchase events, the payload will also be populated with any [purchase event properties]({{site.baseurl}}/user_guide/data/activation/events/purchase_events#purchase-properties) that are associated with the event.
 - For `ad_id`, `ad_id_type`, and `ad_tracking_enabled`, you need to explicitly collect the iOS IDFA and Android Google ad ID through the native SDKs. Learn more about them here: [iOS]({{site.baseurl}}/developer_guide/analytics/managing_data_collection/?sdktab=swift), [Android]({{site.baseurl}}/developer_guide/sdk_integration/?sdktab=android#android_google-advertising-id).
-- If you're using Kafka to ingest [Currents]({{site.baseurl}}/user_guide/data/braze_currents/) data, contact your customer success manager or account manager to enable the feature flipper for sending `ad_id`.
+- If you're using Kafka to ingest [Currents]({{site.baseurl}}/user_guide/data/distribution/braze_currents/) data, contact your customer success manager or account manager to enable the feature flipper for sending `ad_id`.
 {% endapi %}
 
 {% api %}
@@ -1281,7 +1285,7 @@ This event occurs when a push token is inserted, updated, or removed. Use this t
   - If the user explicitly denied push notification permission on their device, this will be `true`, and the token is only allowed with background push notifications.
   - If the push permission is unknown, this will be empty. By default, Braze will attempt to send foreground push notifications to the token.
 - The `push_token_provisionally_opted_in` field only applies to iOS push tokens.
-  - If you have [Provisional Authorization]({{site.baseurl}}/user_guide/message_building_by_channel/push/ios/notification_options/#provisional-push) set up, provisional tokens will have this field set to `true`. All other push tokens will be `false`.
+  - If you have [Provisional Authorization]({{site.baseurl}}/user_guide/channels/push/platform_specific_resources/ios/notification_options#provisional-push) set up, provisional tokens will have this field set to `true`. All other push tokens will be `false`.
 - The `sdk_version` field will only populate if the token state change is initiated by SDK.
   - If there is a `changeUser` SDK event that triggers the token to be moved from one user to another, the `sdk_version` field will populate.
   - If there is a push bounce (for example, due to uninstall), the `sdk_version` field will be blank.
@@ -1298,9 +1302,9 @@ An "add" event is ingested when a new token is registered. This happens when a u
 An "update" event is ingested when a property changes on an existing token without the token string itself changing. The token has the same string, same user, and same app, but one or more of the following fields changed: `foreground_push_disabled`, APNs gateway, web push keys, `provisionally_opted_in`, or `device_id`.
 
 {% alert note %}
-In most cases, app reinstall or backup restore results in a new "add" event with a new `push_token` and new `device_id` (because the SDK generates a new `device_id` and the OS provides a new push token string). This creates two separate token and device entries on the user profile, and the older entry is cleaned up later through uninstall tracking or campaign send.
+In most cases, app reinstall or backup restore results in a new "add" event with a new `push_token` and new `device_id` (because the SDK generates a new `device_id` and the OS provides a new push token string). This creates two separate token and device entries on the user profile, and the older entry is cleaned up later through uninstall tracking or campaign send.<br><br>
 
-It would be extremely rare for only the `device_id` to change without the `push_token` changing (this would require the OS to return the same token string after reinstall). 
+It would be extremely rare for only the `device_id` to change without the `push_token` changing (this would require the OS to return the same token string after reinstall).
 {% endalert %}
 
 ##### Remove
@@ -1350,5 +1354,6 @@ FROM latest_token_state
 WHERE rn = 1
   AND PUSH_TOKEN_STATE_CHANGE_TYPE != 'remove';
 ```
+
 
 {% endapi %}

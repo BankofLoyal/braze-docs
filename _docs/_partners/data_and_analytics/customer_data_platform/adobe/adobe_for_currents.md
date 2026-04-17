@@ -12,7 +12,7 @@ search_tag: Partner
 
 > [Adobe](https://www.adobe.com/) is a customer data platform that allows brands to connect and map their Adobe data (custom attributes and segments) to Braze in real time.
 
-The Braze and Adobe integration allows you to seamlessly control the flow of information between the two systems. With [Currents]({{site.baseurl}}/user_guide/data/braze_currents/), you can also connect data to Adobe to make it actionable across the entire growth stack. 
+The Braze and Adobe integration allows you to seamlessly control the flow of information between the two systems. With [Currents]({{site.baseurl}}/user_guide/data/distribution/braze_currents/), you can also connect data to Adobe to make it actionable across the entire growth stack. 
 
 ## Prerequisites
 
@@ -59,7 +59,7 @@ Braze timestamps are expressed in seconds. To accurately reflect timestamps in A
 
 ### Step 3: Gather credentials
 
-Collect the following creditials to input into Braze, which will allow Braze to send data to Adobe Experience Platform.
+Collect the following credentials to input into Braze, which will allow Braze to send data to Adobe Experience Platform.
 
 | Field         |Description                          |
 |---------------|-------------------------------------|

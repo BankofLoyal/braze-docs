@@ -185,6 +185,15 @@ Braze.configure(this, brazeConfig)
 {% endtab %}
 {% endtabs %}
 
+## Troubleshooting
+
+If deep links from push notifications aren't working on Android, try the following steps:
+
+1. **Test the deep link outside of Braze.** Open the deep link URL from another app, such as email or a browser. If it doesn't open your app, the deep link may not be configured correctly in your `AndroidManifest.xml`. For more information, see Android's [Create Deep Links](https://developer.android.com/training/app-links/deep-linking) documentation.
+2. **Check that automatic deep link handling is enabled.** Verify that `com_braze_handle_push_deep_links_automatically` is set to `true` in `braze.xml`, or set this option through [runtime configuration]({{site.baseurl}}/developer_guide/sdk_initalization/?sdktab=android). Without this setting, Braze doesn't automatically open your app and deep link destination when someone taps a push notification.
+3. **Verify your deep link handler delegate.** If you set a custom `IBrazeDeeplinkHandler`, confirm that your `gotoUri` implementation handles the URI and doesn't drop it.
+4. **Test across channels.** If the same deep link works in an in-app message but not from push, the issue is likely in your push deep link handling, not in the deep link itself.
+
 ## Using Jetpack Compose
 
 To handle deeplinks when using Jetpack Compose with NavHost:
