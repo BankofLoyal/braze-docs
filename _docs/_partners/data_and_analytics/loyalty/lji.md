@@ -38,7 +38,7 @@ This integration supports the following Braze capabilities:
 
 - **User data sync (`/users/track`):** Sync member attributes, events, and purchases to Braze for segmentation and personalization.
 - **Campaign triggering (`/campaigns/trigger/send`):** Trigger one-time or transactional messages using Braze campaigns.
-- **Canvas triggering (`/canvas/trigger/send`):** Start multi-step journeys and lifecycle messaging using Braze Canvas**.
+- **Canvas triggering (`/canvas/trigger/send`):** Start multi-step journeys and lifecycle messaging using Braze **Canvas**.
 - **Segmentation and personalization:** Build targeted audiences and deliver personalized communications from synced data.
 
 ## Integration
@@ -74,6 +74,8 @@ You don't need to map `external_id`. GRAVTY® generates it internally by hashing
 {: start="4"}
 4. Repeat steps 1–3 to add more mappings.
 5. Select **Save**.
+
+![GRAVTY® Subscription Setup with Template Attribute Configuration: entity, GRAVTY® attribute, and template attribute columns mapped for Braze sync.]({% image_buster /assets/img/lji/gravty-attribute-mapping.png %})
 
 {% alert note %}
 The integration supports Braze custom attribute data types, including numbers (integer, float), strings, arrays, booleans, objects, arrays of objects, and dates.
