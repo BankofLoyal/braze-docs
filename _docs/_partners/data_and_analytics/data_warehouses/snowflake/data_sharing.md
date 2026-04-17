@@ -12,6 +12,8 @@ search_tag: Partner
 
 > Snowflake [Secure Data Sharing](https://docs.snowflake.net/manuals/user-guide/data-sharing-intro.html) allows Braze to give you secure access to data on our Snowflake portal without worrying about workflow friction or slowdown, failure points, and unnecessary costs that come with typical data provider relationships. Data sharing can be set up through the following integration or through [Snowflake Reader Accounts]({{site.baseurl}}/user_guide/data/braze_currents/how_braze_uses_currents/#snowflake-reader-accounts).
 
+Snowflake Data Sharing is part of Braze Data Distribution. For a full overview of Data Distribution options, see [Data Distribution]({{site.baseurl}}/user_guide/data/distribution/).
+
 {% alert tip %}
 **Interested in having access to Snowflake-level data without the need for a Snowflake account?**<br>Check out [Snowflake Reader Accounts]({{site.baseurl}}/user_guide/data/braze_currents/how_braze_uses_currents/#snowflake-reader-accounts). With Reader Accounts, Braze will create and share your data into an account and provide you credentials to log in and access your data. This will result in all data sharing and usage billing being handled entirely by Braze.
 {% endalert %}
