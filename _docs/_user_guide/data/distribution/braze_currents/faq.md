@@ -89,6 +89,14 @@ When you create a new campaign or Canvas, the name may take some time to propaga
 
 If your storage bucket is unavailable at the time of data transfer, that data is lost. Braze is not able to backfill events that were not successfully delivered. To avoid data loss, ensure your storage bucket is available and properly configured at all times.
 
+### Why do I see "You do not have any remaining Customer Behavior Events entitlements" when editing my Currents integration?
+
+This message can appear when you update an existing Currents integration, and your workspace has reached its entitlement limit for customer behavior events. Contact your Braze account manager to request an entitlement or adjust your configuration.
+
 ### How often does the Currents version in the storage path change?
 
 The `version=<currents_version>` segment in the storage path advances with each Currents release on a monthly cadence (for example, `version=6` to `version=7`). We recommend reading files recursively from the root path rather than hardcoding a specific version segment, so your pipeline automatically picks up data after a version change. For more details on the path format, refer to [Event delivery semantics]({{site.baseurl}}/user_guide/data/distribution/braze_currents/setting_up_currents/event_delivery_semantics/). For a history of changes by version, refer to the [Currents changelog]({{site.baseurl}}/user_guide/data/distribution/braze_currents/event_glossary/currents_changelogs).
+
+### Why are `campaign_id` or `canvas_id` missing from a message engagement event?
+
+Depending on the event type and context, a message engagement event may not be tied to a specific campaign or Canvas step. In those cases, `campaign_id`, `canvas_id`, and related name fields can be omitted from the event payload. If you don’t see those fields on a given event, check whether that event type and context normally include campaign or Canvas identifiers.
