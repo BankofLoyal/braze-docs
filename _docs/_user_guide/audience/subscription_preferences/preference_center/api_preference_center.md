@@ -42,11 +42,7 @@ Let's begin building a preference center using the [Create preference center end
 The [Generate preference center URL endpoint]({{site.baseurl}}/api/endpoints/preference_center/get_create_url_preference_center/) allows you to grab the preference center URL for a specific user outside of an email that is sent through Braze.
 
 {% alert note %}
-Braze renders `confirmation_page_html` in an iframe that uses a `data:` URL. Browsers treat `data:` URLs as opaque origins. As a result, scripts in that iframe can't load additional external resources, and navigating the parent window or communicating across frames from that page fails.
-
-Instead:
-- Link to external content, such as a hosted survey URL, instead of embedding scripts.
-- If you must embed a third-party tool and the vendor allows it, use an `<iframe>` whose `src` points to the tool's hosted HTTPS URL.
+Braze renders `confirmation_page_html` in an iframe that uses a `data:` URL. Browsers treat `data:` URLs as opaque origins. As a result, scripts in that iframe can't load additional external resources, and navigating the parent window or communicating across frames from that page fails.<br><br>Instead, you can link to external content, such as a hosted survey URL, instead of embedding scripts. If you must embed a third-party tool and the vendor allows it, use an `<iframe>` whose `src` points to the tool's hosted HTTPS URL.
 {% endalert %}
 
 ### Step 2: Include in your email campaign
