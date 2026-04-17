@@ -75,8 +75,6 @@ You don't need to map `external_id`. GRAVTY® generates it internally by hashing
 4. Repeat steps 1–3 to add more mappings.
 5. Select **Save**.
 
-![GRAVTY® Subscription Setup showing entity, GRAVTY attribute, and template attribute columns mapped for Braze sync.]({% image_buster /assets/img/lji/gravty-attribute-mapping.png %})
-
 {% alert note %}
 The integration supports Braze custom attribute data types, including numbers (integer, float), strings, arrays, booleans, objects, arrays of objects, and dates.
 {% endalert %}
@@ -85,7 +83,7 @@ The integration supports Braze custom attribute data types, including numbers (i
 
 Trigger a sample event in GRAVTY® to confirm sync, communication triggers, and the end-to-end flow.
 
-![Braze user profile overview with custom attributes such as tier and tier dates populated from GRAVTY® mapping.]({% image_buster /assets/img/lji/braze-member-profile.png %})
+![Braze user profile overview showing Profile, Custom Attributes (tier, dates, country, city), and Custom Events populated from GRAVTY® mapping.]({% image_buster /assets/img/lji/braze-member-profile.png %})
 
 ## Support
 
