@@ -143,6 +143,7 @@ if (@available(iOS 12.0, *)) {
 
 {% alert warning %}
 You must assign your delegate object using `center.delegate = self` synchronously before your app finishes launching, preferably in `application:didFinishLaunchingWithOptions:`. Not doing so may cause your app to miss incoming push notifications. Visit Apple's [`UNUserNotificationCenterDelegate`](https://developer.apple.com/documentation/usernotifications/unusernotificationcenterdelegate) documentation to learn more.
+If your app calls `wipeData()` and later re-enables the Braze SDK in the same app run, you must call `registerForRemoteNotifications()` again to re-populate the device token used by the SDK.
 {% endalert %}
 
 #### Step 3.2: Register push tokens with Braze
