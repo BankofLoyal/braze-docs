@@ -89,3 +89,7 @@ This message can appear when you update an existing Currents integration, and yo
 ### How often does the Currents version in the storage path change?
 
 The `version=<currents_version>` segment in the storage path advances with each Currents release on a monthly cadence (for example, `version=6` to `version=7`). We recommend reading files recursively from the root path rather than hardcoding a specific version segment, so your pipeline automatically picks up data after a version change. For more details on the path format, refer to [Event delivery semantics]({{site.baseurl}}/user_guide/data/distribution/braze_currents/setting_up_currents/event_delivery_semantics/). For a history of changes by version, refer to the [Currents changelog]({{site.baseurl}}/user_guide/data/distribution/braze_currents/event_glossary/currents_changelogs).
+
+### Why are `campaign_id` or `canvas_id` missing from a message engagement event?
+
+Depending on the event type and context, a message engagement event may not be tied to a specific campaign or Canvas step. In those cases, `campaign_id`, `canvas_id`, and related name fields can be omitted from the event payload. If you don’t see those fields on a given event, check whether that event type and context normally include campaign or Canvas identifiers.
