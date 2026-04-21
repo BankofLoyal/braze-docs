@@ -43,9 +43,7 @@ This integration supports the following Braze capabilities:
 
 ## Integration
 
-The GRAVTY® and Braze integration is API-based. It supports real-time data synchronization and communication triggering.
-
-![Flow diagram of GRAVTY® sending data and triggers to Braze APIs, then messages to SMS, email, push, and WhatsApp.]({% image_buster /assets/img/lji/braze-gravty-integration.png %})
+The GRAVTY® and Braze integration is API-based, enabling real-time data synchronization and communication triggering between GRAVTY® and Braze.
 
 ### Step 1: Connect Braze with GRAVTY®
 
